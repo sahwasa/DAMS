@@ -18,8 +18,38 @@
     &--area{
       span{border:1px solid $text-muted;background-color:#fff;color:$text-muted;}
     }
-    &--divice{
+    &--device{
       span{border:1px solid $border;background-color:$muted;color:$text-sub;}
+    }
+  }
+  .msg-list{display:flex;flex-direction:column;gap:$sp-4;
+    dt{display:flex;align-items:center;color:var(--text-strong);@include fw(650);
+      &:not(:first-of-type){margin-top:$sp-4;}
+      span{margin-left:auto;}
+      .size{margin-left:auto;@include fw(500);color:var(--text-muted);
+        span{color:var(--color-primary-strong);vertical-align:initial;}
+      }
+    }
+    textarea{width:100%;min-height:auto;padding:5px;}
+  }
+  .issue-message__tool{text-align:right;}
+  .lang-select{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 8px;color:var(--text-body);
+    i{width:16px;height:16px;flex:none;pointer-events:none}
+    select{appearance:none;border:0;background:none;font-size:13px;color:inherit;cursor:pointer;outline:0}
+    &:has(select:focus-visible){outline:2px solid var(--color-primary);outline-offset:2px}
+  }
+
+  @supports (appearance:base-select){
+    .lang-select select,.lang-select ::picker(select){appearance:base-select}
+    .lang-select select{
+      &::picker-icon{content:"";width:16px;height:16px;margin-left:4px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23808080' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") center/contain no-repeat;transition:rotate .15s}
+      &:open::picker-icon{rotate:180deg}
+      &::picker(select){min-width:140px;margin-top:4px;padding:4px;border:1px solid var(--border-subtle);border-radius:8px;background:#fff;box-shadow:0 4px 16px rgba(0,0,0,.12)}
+      option{padding:8px 12px;border-radius:4px;font-size:13px;cursor:pointer;
+        &:hover{background:var(--bg-hover)}
+        &:checked{color:var(--color-primary);font-weight:700}
+        &::checkmark{display:none}
+      }
     }
   }
 }

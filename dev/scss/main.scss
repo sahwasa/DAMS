@@ -9,6 +9,7 @@
 // Base
 @use "./base/fonts";
 @use "./base/reset";
+@use "./base/utilities";
 
 // Layout
 @use "./layout/layout";
@@ -17,6 +18,7 @@
 // Components
 @use "./components/forms";
 @use "./components/buttons";
+@use "./components/tab";
 @use "./components/map";
 @use "./components/tables";
 @use "./components/paginate";

@@ -4,7 +4,7 @@
 @use 'sass:map';
 
 @layer pages {
-  // 발령이력
+  // 재난발령현황
   .history{	
     .tbl-area:has(.tbl-history){flex:none;}
     .tbl-history{max-height:246px;
@@ -15,17 +15,21 @@
         &:nth-last-of-type(2){width:400px;}
         &:nth-last-of-type(3){width:80px;}
       }
-    }	
-    .tbl-recv{
-      th,td{
-        &:nth-of-type(4),
-        &:nth-of-type(5),
-        &:nth-of-type(6){width:200px;}
-      }
     }
-    .tbl-term{
+    .tab-issue{
+      .issue-summary{flex:0 0 320px;border-right:1px solid $border;}
+    }
+
+    .tab-device{      
+      .flex-wrap{border:none;}
+      .section{padding:0;}
+      .map-wrap{flex:0 0 500px;overflow: hidden;}
+      .toolbar-card{margin-bottom:0;}
+      .tbl-area{border:1px solid $border;border-top-width:0;padding:20px;}
+    }
+    .tbl-device{
       th,td{
-        &:nth-last-of-type(3){width:200px;}
+        &:nth-last-of-type(3){width:170px;}
         &:nth-last-of-type(2){text-align:center;width:100px;}
       }
     }

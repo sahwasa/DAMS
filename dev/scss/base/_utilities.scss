@@ -1,0 +1,31 @@
+@use '../abstracts/' as *;
+@layer base {
+  /* Common */
+  .blind{@include blind;}
+  [hidden] { display: none !important; }
+  .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+  .clearfix{*zoom:1;
+    &::before,
+    &::after{display:block;content:"";line-height:0;clear:both;}
+  }
+
+  // keyframes
+  @keyframes spin {
+    0% { -moz-transform: rotate(0deg); -o-transform: rotate(0deg); -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+    100% { -moz-transform: rotate(359deg); -o-transform: rotate(359deg); -webkit-transform: rotate(359deg); transform: rotate(359deg);}
+  }
+  
+  .flex-wrap{display:flex;
+    &.vertical{flex-direction:column;gap:0;}    
+    & > .section{flex:1;}
+  }
+  .divide{@include divide;}
+
+  .tool{margin-left:auto;flex-shrink:0;display:flex;align-items:center;gap:5px;}
+  
+  [data-empty]:empty{
+    @include flex($align:center,$justify:center);color:var(--text-faint);font-size:$font-size-11;gap:$sp-6;
+    &::before{@include lucideIcon($icon : $icon-info, $size: 16px, $color:var(--text-faint));}
+    &::after{content:attr(data-empty);line-height:1;transform:translateY(1px);}
+  }
+}

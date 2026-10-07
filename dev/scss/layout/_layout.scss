@@ -86,7 +86,7 @@
       &__total{margin-top:10px;font-size:11px;color:$text-sub;strong{color:var(--color-primary);font-weight:700}}
     }   
   }
-  .lnb{width:250px;border-right:1px solid $primary;padding:$sp-20;
+  .lnb{flex-shrink:0;width:250px;border-right:1px solid $primary;padding:$sp-20;
     h1{color:$text-heading;font-size:$font-size-18;@include fw(750);margin-bottom:40px;}
     &-wrap{}
     &-list{@include flex($direction:column,$align:stretch);gap:$sp-8;
@@ -126,5 +126,7 @@
     }
   }
 
-  .link-indicator{@include flex($justify:center);margin-block:$sp-12;}
+  .link-indicator{@include flex($justify:center);margin-block:$sp-12;
+    .icon{width:26px;height:26px;}
+  }
 }

@@ -1,0 +1,62 @@
+<!-- 재난발령 -->
+<div class="symbol symbol--hazard" style="--left:700px;--top:50px">
+<button type="button" class="selected">
+  <i class="hazard-icon" data-event-cd="AVA"></i>
+  <strong>산사태주의보</strong>
+</button>
+<div class="layer" style="display: block;">
+  <header class="layer__heading">
+    <strong class="layer__title">산사태주의보</strong>
+    <button type="button" class="layer__close" area-label="닫기" onclick="document.activeElement.blur();"><i data-lucide="x">닫기</i></button>
+  </header>
+  <div class="layer__body">
+    <dl class="grid-list">
+      <dt>통합플랫폼</dt><dd>울산예경보 통합플렛폼</dd>
+      <dt>발생시각</dt><dd>2025-11-05 15:00:30</dd>
+      <dt>종료시각</dt><dd>2025-11-05 15:00:30</dd>
+      <dt>수신시각</dt><dd>2025-11-05 15:00:30</dd>
+      <dt>발령지역</dt>
+      <dd>
+        <div class="chip-list chip-list--area">
+          <span>울산 남구</span><span>울산 중구</span>
+          <button type="button" class="chip-list--more" popovertarget="--more2" style="anchor-name:--more2">+2</button>
+          <div id="--more2" class="chip-list-popover" popover style="position-anchor:--more2">
+            <span>울산 동구</span>
+            <span>울산 북구</span>
+            <span>울산 울주군</span>
+          </div>
+        </div>
+      </dd>
+      <dt>발령매체</dt>
+      <dd>
+        <div class="chip-list chip-list--device"><span>재해문자전광판(행안부)</span><span>재난방송(TV)</span><span>마을방송</span><span>문자방송(SMS)</span></div>
+      </dd>         
+    </dl>
+  </div>
+</div>
+</div>
+
+<div class="symbol symbol--hazard" style="--left:1100px;--top:50px">
+<button type="button">
+  <i class="hazard-icon" data-event-cd="FLN"></i>
+  <strong>홍수주의보</strong>
+</button>
+</div>
+
+<div class="map-cluster" style="left:1105px;top:127px;">
+<button type="button" class="map-cluster__btn" aria-expanded="true" aria-controls="cluster_1">
+  <span class="map-cluster__cnt">+2</span>
+  <span class="sr-only">발령 2건 더보기</span>
+</button>
+<ul class="cluster-tooltip" id="cluster_1">
+  <li class="cluster-tooltip__item">
+    <i class="hazard-icon" data-event-cd="MSS"></i>
+    <p class="cluster-tooltip__text">해양 선박 사고 안내정보</p>
+  </li>
+  <li class="cluster-tooltip__item">
+    <i class="hazard-icon" data-event-cd="FLN"></i>
+    <p class="cluster-tooltip__text">호우주의보</p>
+  </li>
+</ul>
+</div>
+<!-- 재난발령__e -->

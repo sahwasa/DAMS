@@ -90,7 +90,7 @@
   }
   .input.error { border-color:var(--status-live); &:focus { box-shadow:0 0 0 3px rgba(220,38,38,.12); } }
   .textarea { height:auto; min-height:80px; resize:vertical; line-height:1.6; padding:10px 12px; }
-  .input-search{@include flex($align:center);gap:10px;
+  .input-search{@include flex($align:center);gap:10px;min-width:200px;
     >input{border:none;width:0;flex:1 0 auto;background:transparent;
       &:focus{outline:none;}
     }

@@ -73,7 +73,6 @@
       }
     }
     &--lg {gap: 6px;
-
       @each $state, $data in $status {
         $index: list.index(map.keys($status), $state);        
         &.stat-text--#{$state}::before {
