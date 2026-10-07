@@ -1,0 +1,25 @@
+@use '../abstracts/' as *;
+@use 'sass:list';
+@use 'sass:color';
+@use 'sass:map';
+
+@layer pages {
+  .disaster{
+    &-list{flex:1;display:flex;flex-direction:column;gap:8px;padding-top:2px;overflow-y:auto;}
+    &-card{@include card($min-height:100px);
+      &__cnt{text-align:right;line-height:1;font-size:$font-size-10;b{color:$text-body;}}
+      &__link strong{@include ellipsis;}
+      &__badges{@include flex($align:center);margin-top:$sp-8;}}
+  }
+  .result{
+    &-list{flex:1;display:flex;flex-direction:column;gap:8px;overflow-y:auto;padding-top:2px;}
+    &-card{@include card($min-height:100px);
+      &__link strong{@include ellipsis;font-size:$font-size-14;}
+      &__foot{display:flex;align-items:center;justify-content:flex-end;gap:8px;margin-top:8px;font-size:11px;color:$text-body;
+        span:first-of-type{margin-right:auto}}
+
+      &__detail{display:none;margin-top:8px;padding-top:8px;border-top:1px solid var(--color-primary-line);}
+      &.is-active .result-card__detail{display:block}
+    }
+  }
+}

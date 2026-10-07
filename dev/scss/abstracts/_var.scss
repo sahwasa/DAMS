@@ -1,0 +1,127 @@
+// Breakpoints
+$breakpoint-mobile: 1024px;
+$breakpoint-mobile_tablet: 1279px;
+$breakpoint-tablet: 1439px;
+$breakpoint-desktop: 1440px;
+
+// color
+$primary:var(--color-primary);
+$secondary:var(--color-secondary);
+$accent:var(--color-accent);
+$muted:var(--color-primary-light);
+$neutral:#5d6063;
+
+$thColor:#EAECF0;
+$tdBorder:#ddd;
+
+$white:#fff;
+$black:#222;
+$red:#e42b29;
+$abnormal:#dd1d1d;
+$orange:#ff6941;
+$grayblue:#8b95a3;
+$blue:#2882df;
+$lightblue:#f1f8ff;
+$lightpurple:#b4bbe0;
+$lightindigo:#6776CD;
+$mint:#02a0aa;
+$mutered:#d37986;
+$muteolive:#b2a989; 
+$mutegreen:#8DA379; 
+$muteblue:#799fa0;
+$mutepurple:#9e82ae;
+$navy:#003964;
+$yellow:#d58007;
+$gray:#999;
+$lightgray:#cdd1d5;
+$greyish:#adadad;
+$green:#3C9513;
+$bggray:#fafafa;
+$bgblue:#f4f6fc;
+$border:#e0e3e6;
+$gray_on:#e5eeee;
+
+$crisisStage:(lv1:#14532d,lv2:#1e40af,lv3:#92400e,lv4:#991b1b);
+$status: (
+  all: (color: var(--status-all), bg: var(--status-all-dim)),
+  ok: (color: var(--status-ok), bg: var(--status-ok-dim)),
+  ng: (color: var(--status-ng),    bg: var(--status-ng-dim)),
+  off:(color: var(--status-off), bg: var(--status-off-dim)),
+);
+$conneciton:( connection:#25A849,disconnection:#DE3146 );
+
+// layout
+$mainwidth:1440px;
+$maingap:20px;
+$defaultFontSize:13px;
+$iptH:29px;
+
+// ─────────────────────────────────────────────
+// Design Tokens — 08-icon-catalog / 01~07 데모 공통 추출
+// 기존 _var.scss 하단에 추가, 또는 별도 partial로 분리 후 @use
+// ─────────────────────────────────────────────
+
+// 1. Spacing scale (px)
+$sp-4: 4px; $sp-6: 6px; $sp-8: 8px; $sp-10: 10px; $sp-12: 12px;
+$sp-14: 14px; // ★ 패널 표준 패딩
+$sp-16: 16px; $sp-20: 20px; $sp-24: 24px; $sp-28: 28px;
+
+// 2. Radius scale (px)
+$rad-3: 3px; $rad-4: 4px; $rad-6: 6px; $rad-8: 8px; $rad-10: 10px;
+$rad-12: 12px; $rad-14: 14px; // ★ 패널 표준 라운드
+$rad-20: 20px; $rad-pill: 9999px;
+
+// 3. Button sizes (padding-v / padding-h / font-size / radius)
+$btn-sm: 5px 11px, 12px, $rad-6;
+$btn-md: 8px 16px, 13px, $rad-8;   // default
+$btn-lg: 11px 22px, 14px, $rad-10;
+$btn-xl: 14px 28px, 15px, $rad-12;
+
+// 4. Icon sizes — 버튼 사이즈와 1:1 매칭
+$icon-sm: 14px; $icon-md: 16px; $icon-lg: 18px; $icon-fab: 20px;
+$icon-stroke-width: 1.8;      // 기본
+$icon-stroke-width-fab: 2;    // FAB만 예외
+
+// 5. Transition
+$transition-base: all .15s;
+
+// 6. Font
+$font-family: 'Pretendard Variable', 'Pretendard', -apple-system, sans-serif;
+$font-size-9:  9px;   // 메타·범례 (11px 미만 본문 금지)
+$font-size-10: 10px;  // 보조 라벨 (SUB)
+$font-size-11: 11px;  // 패널 타이틀, 이력 행
+$font-size-12: 12px;  // 본문 일반
+$font-size-13: 13px;  // 헤더, 카드 타이틀
+$font-size-14: 14px;  // 강조 본문
+$font-size-16: 16px;  
+$font-size-18: 18px;  
+$font-size-20: 20px;  // KPI 수치, 페이지 타이틀
+$font-size-24: 24px;  // KPI 수치, 페이지 타이틀 (상단 범위)
+
+$text-heading:var(--text-heading);
+$text-tit:var(--text-tit);
+$text-body:var(--text-body);
+$text-sub:var(--text-sub);
+$text-muted:var(--text-muted);
+$text-disabled:var(--text-disabled);
+$text-link:var(--text-link);
+$text-inverse:var(--text-inverse);
+
+// 7. z-index
+$z-index: (
+  "base": 0,
+  "panel": 10,
+  "sidebar": 20,
+  "header": 50,
+  "toast": 200,
+  "legend": 200,
+  "tooltip": 500,
+  "modal": 9999
+);
+
+// 8.icon
+$icon-info: '%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23000\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3E%3Ccircle cx=\'12\' cy=\'12\' r=\'10\'/%3E%3Cpath d=\'M12 16v-4\'/%3E%3Cpath d=\'M12 8h.01\'/%3E%3C/svg%3E';
+$chevron-left: '%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23ffffff\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\' class=\'lucide lucide-chevron-left-icon lucide-chevron-left\'%3E%3Cpath d=\'m15 18-6-6 6-6\'/%3E%3C/svg%3E';
+$chevron-right: '%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23ffffff\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\' class=\'lucide lucide-chevron-right-icon lucide-chevron-right\'%3E%3Cpath d=\'m9 18 6-6-6-6\'/%3E%3C/svg%3E';
+$chevron-up: '%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23ffffff\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\' class=\'lucide lucide-chevron-up-icon lucide-chevron-up\'%3E%3Cpath d=\'m18 15-6-6-6 6\'/%3E%3C/svg%3E';
+$chevron-down: '%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23ffffff\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\' class=\'lucide lucide-chevron-down-icon lucide-chevron-down\'%3E%3Cpath d=\'m6 9 6 6 6-6\'/%3E%3C/svg%3E';

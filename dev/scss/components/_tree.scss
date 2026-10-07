@@ -1,0 +1,19 @@
+@use '../abstracts/' as *;
+@layer components {
+  // ══════════════════════════════════════════
+  // TREE LIST — 좌측 카테고리 네비
+  // ══════════════════════════════════════════
+  .tree-list { list-style:none; padding:0; margin:0; }  
+  .tree-item {
+    display:flex; align-items:center; gap:8px;
+    padding:8px 12px; font-size:12px; color:var(--text-muted);
+    border-radius:6px; cursor:pointer; transition:all .12s;
+    font-variation-settings:'wght' 600;
+  
+    &:hover { background:var(--bg-input-hover); color:var(--text-primary); }
+    &.active {
+      background:var(--color-primary-dim); color:var(--color-primary-strong);
+      font-variation-settings:'wght' 700;
+    }
+  }
+}

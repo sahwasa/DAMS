@@ -1,0 +1,16 @@
+@use '../abstracts/' as *;
+@layer components {
+  /* dialog */
+  ::backdrop{position:fixed;z-index:9999;top:0;left:0;width:100%;height:100%;background-color:var(--bg-scrim);backdrop-filter: blur(8px);}
+  .modal{max-width:1200px;min-width:450px;position:fixed;top:50%;left:50%;transform:translateX(-50%) translateY(-50%); border:1px solid var(--border-subtle);box-shadow:var(--shadow-panel);border-radius:14px;z-index:z(modal);padding:20px;
+    &__heading{display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+    &__title{font-size:18px;letter-spacing:-.9px;@include fw(750);}
+    &__close{margin-left:auto;font-size:0;gap:0;}
+    &__body{max-height:95vh;margin:1px;overflow-y:auto;background-color:#fff;
+      .tit:has(h2){border-bottom:1px solid #005aab;margin-bottom:10px;padding-bottom:5px;
+        h2{font-size:16px;color:#005aab;}
+      }
+    }
+    &__footer{@include flex($justify:flex-end);gap:4px;margin-top:20px;} 
+  } 
+}

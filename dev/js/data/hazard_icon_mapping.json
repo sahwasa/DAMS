@@ -1,0 +1,1472 @@
+[
+  {
+    "event_cd": "ASD",
+    "event": "인공우주물체 사고",
+    "category": "soc",
+    "level": "alert",
+    "iconFile": "soc_AS.png"
+  },
+  {
+    "event_cd": "ASS",
+    "event": "인공우주물체 추락/충돌 안내정보",
+    "category": "soc",
+    "level": "info",
+    "iconFile": "soc_AS.png"
+  },
+  {
+    "event_cd": "ASV",
+    "event": "인공우주물체 추락/충돌 대피",
+    "category": "soc",
+    "level": "alert",
+    "iconFile": "soc_AS.png"
+  },
+  {
+    "event_cd": "ASW",
+    "event": "인공우주물체 경보(경계, 심각)",
+    "category": "soc",
+    "level": "danger",
+    "iconFile": "soc_AS.png"
+  },
+  {
+    "event_cd": "AVA",
+    "event": "산사태 위기경보(주의)",
+    "category": "nat",
+    "level": "alert",
+    "iconFile": "nat_AV.png"
+  },
+  {
+    "event_cd": "AVS",
+    "event": "산사태 안내정보",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_AV.png"
+  },
+  {
+    "event_cd": "AVW",
+    "event": "산사태 위기경보(심각)",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_AV.png"
+  },
+  {
+    "event_cd": "BCS",
+    "event": "시설물 붕괴 안내정보",
+    "category": "soc",
+    "level": "info",
+    "iconFile": "soc_BC.png"
+  },
+  {
+    "event_cd": "BCW",
+    "event": "다중밀집 건축물 붕괴",
+    "category": "soc",
+    "level": "danger",
+    "iconFile": "soc_BC.png"
+  },
+  {
+    "event_cd": "CAC",
+    "event": "아동 유괴 경보 해제",
+    "category": "soc",
+    "level": "info",
+    "iconFile": "soc_CA.png"
+  },
+  {
+    "event_cd": "CAE",
+    "event": "아동 유괴 경보",
+    "category": "soc",
+    "level": "danger",
+    "iconFile": "soc_CA.png"
+  },
+  {
+    "event_cd": "CAW",
+    "event": "민방위 공습경보",
+    "category": "soc",
+    "level": "danger",
+    "iconFile": "soc_CACD.png"
+  },
+  {
+    "event_cd": "CCW",
+    "event": "민방위 화생방 경보",
+    "category": "soc",
+    "level": "danger",
+    "iconFile": "soc_CACD.png"
+  },
+  {
+    "event_cd": "CDC",
+    "event": "민방위 경보 해제",
+    "category": "soc",
+    "level": "info",
+    "iconFile": "soc_CACD.png"
+  },
+  {
+    "event_cd": "CHC",
+    "event": "유해화학물질 유출 사고 상황종료",
+    "category": "soc",
+    "level": "info",
+    "iconFile": "soc_CH.png"
+  },
+  {
+    "event_cd": "CHD",
+    "event": "유해화학물질 유출 사고",
+    "category": "soc",
+    "level": "danger",
+    "iconFile": "soc_CH.png"
+  },
+  {
+    "event_cd": "CHS",
+    "event": "유해화학물질 안내정보",
+    "category": "soc",
+    "level": "info",
+    "iconFile": "soc_CH.png"
+  },
+  {
+    "event_cd": "CMC",
+    "event": "아동 실종 경보 해제",
+    "category": "soc",
+    "level": "info",
+    "iconFile": "soc_CA.png"
+  },
+  {
+    "event_cd": "CME",
+    "event": "아동 실종 경보",
+    "category": "soc",
+    "level": "danger",
+    "iconFile": "soc_CA.png"
+  },
+  {
+    "event_cd": "COD",
+    "event": "원유수급 사고",
+    "category": "soc",
+    "level": "alert",
+    "iconFile": "soc_CO.png"
+  },
+  {
+    "event_cd": "CPW",
+    "event": "민방위 경계경보",
+    "category": "soc",
+    "level": "danger",
+    "iconFile": "soc_CACD.png"
+  },
+  {
+    "event_cd": "CWA",
+    "event": "한파 주의보",
+    "category": "nat",
+    "level": "alert",
+    "iconFile": "nat_CW.png"
+  },
+  {
+    "event_cd": "CWC",
+    "event": "한파 경보 해제",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_CW.png"
+  },
+  {
+    "event_cd": "CWD",
+    "event": "대규모 수질오염 사고",
+    "category": "soc",
+    "level": "danger",
+    "iconFile": "soc_CW.png"
+  },
+  {
+    "event_cd": "CWE",
+    "event": "한파 긴급정보",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_CW.png"
+  },
+  {
+    "event_cd": "CWG",
+    "event": "한파 주의보 변경",
+    "category": "nat",
+    "level": "alert",
+    "iconFile": "nat_CW.png"
+  },
+  {
+    "event_cd": "CWI",
+    "event": "대규모 수질오염 안내정보",
+    "category": "soc",
+    "level": "info",
+    "iconFile": "soc_CW.png"
+  },
+  {
+    "event_cd": "CWL",
+    "event": "한파 주의보 해제",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_CW.png"
+  },
+  {
+    "event_cd": "CWN",
+    "event": "한파 경보 변경",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_CW.png"
+  },
+  {
+    "event_cd": "CWS",
+    "event": "한파 안내정보",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_CW.png"
+  },
+  {
+    "event_cd": "CWW",
+    "event": "한파 경보",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_CW.png"
+  },
+  {
+    "event_cd": "DBA",
+    "event": "댐 붕괴 주의",
+    "category": "soc",
+    "level": "alert",
+    "iconFile": "soc_DB.png"
+  },
+  {
+    "event_cd": "DBS",
+    "event": "댐 붕괴 안내정보",
+    "category": "soc",
+    "level": "info",
+    "iconFile": "soc_DB.png"
+  },
+  {
+    "event_cd": "DBW",
+    "event": "댐 붕괴 경보",
+    "category": "soc",
+    "level": "danger",
+    "iconFile": "soc_DB.png"
+  },
+  {
+    "event_cd": "DEC",
+    "event": "감염병 경보 해제",
+    "category": "soc",
+    "level": "info",
+    "iconFile": "soc_DE.png"
+  },
+  {
+    "event_cd": "DES",
+    "event": "감염병 안내",
+    "category": "soc",
+    "level": "info",
+    "iconFile": "soc_DE.png"
+  },
+  {
+    "event_cd": "DEW",
+    "event": "감염병 경보",
+    "category": "soc",
+    "level": "danger",
+    "iconFile": "soc_DW.png"
+  },
+  {
+    "event_cd": "DFD",
+    "event": "식용수 시설 사고",
+    "category": "soc",
+    "level": "alert",
+    "iconFile": "soc_DF.png"
+  },
+  {
+    "event_cd": "DFS",
+    "event": "식용수 사고 안내정보",
+    "category": "soc",
+    "level": "info",
+    "iconFile": "soc_DF.png"
+  },
+  {
+    "event_cd": "DIM",
+    "event": "재난정보 처리결과",
+    "category": "etc",
+    "level": "info",
+    "iconFile": "etc_DI.png"
+  },
+  {
+    "event_cd": "DIS",
+    "event": "재난정보서비스",
+    "category": "etc",
+    "level": "info",
+    "iconFile": "etc_DI.png"
+  },
+  {
+    "event_cd": "DOE",
+    "event": "댐 월류 발생",
+    "category": "soc",
+    "level": "danger",
+    "iconFile": "soc_DB.png"
+  },
+  {
+    "event_cd": "DOS",
+    "event": "댐 월류 안내정보",
+    "category": "soc",
+    "level": "info",
+    "iconFile": "soc_DB.png"
+  },
+  {
+    "event_cd": "DOW",
+    "event": "댐 월류 경보",
+    "category": "soc",
+    "level": "danger",
+    "iconFile": "soc_DB.png"
+  },
+  {
+    "event_cd": "DRS",
+    "event": "가뭄 안내정보",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_DR.png"
+  },
+  {
+    "event_cd": "DRW",
+    "event": "가뭄 경보(심각)",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_DR.png"
+  },
+  {
+    "event_cd": "DWW",
+    "event": "식용수 수질악화",
+    "category": "soc",
+    "level": "danger",
+    "iconFile": "soc_DF.png"
+  },
+  {
+    "event_cd": "EQI",
+    "event": "지진정보",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_EQ.png"
+  },
+  {
+    "event_cd": "FDA",
+    "event": "미세먼지 주의보",
+    "category": "nat",
+    "level": "alert",
+    "iconFile": "nat_FD.png"
+  },
+  {
+    "event_cd": "FDE",
+    "event": "미세먼지 비상저감조치 시행",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_FD.png"
+  },
+  {
+    "event_cd": "FDS",
+    "event": "미세먼지 안내정보",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_FD.png"
+  },
+  {
+    "event_cd": "FDW",
+    "event": "미세먼지 경보",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_FD.png"
+  },
+  {
+    "event_cd": "FHD",
+    "event": "위험물 사고",
+    "category": "soc",
+    "level": "alert",
+    "iconFile": "soc_FH.png"
+  },
+  {
+    "event_cd": "FHS",
+    "event": "위험물 사고 안내정보",
+    "category": "soc",
+    "level": "info",
+    "iconFile": "soc_FH.png"
+  },
+  {
+    "event_cd": "FHV",
+    "event": "위험물 사고 대피",
+    "category": "soc",
+    "level": "alert",
+    "iconFile": "soc_FH.png"
+  },
+  {
+    "event_cd": "FLA",
+    "event": "홍수 주의보",
+    "category": "nat",
+    "level": "alert",
+    "iconFile": "nat_FL.png"
+  },
+  {
+    "event_cd": "FLC",
+    "event": "홍수 경보 해제",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_FL.png"
+  },
+  {
+    "event_cd": "FLG",
+    "event": "홍수 주의보 변경",
+    "category": "nat",
+    "level": "alert",
+    "iconFile": "nat_FL.png"
+  },
+  {
+    "event_cd": "FLL",
+    "event": "홍수 주의보 해제",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_FL.png"
+  },
+  {
+    "event_cd": "FLN",
+    "event": "홍수 경보 변경",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_FL.png"
+  },
+  {
+    "event_cd": "FLS",
+    "event": "홍수 안내정보",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_FL.png"
+  },
+  {
+    "event_cd": "FLW",
+    "event": "홍수 경보",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_FL.png"
+  },
+  {
+    "event_cd": "FND",
+    "event": "금융 전산 및 시설사고",
+    "category": "soc",
+    "level": "danger",
+    "iconFile": "soc_FN.png"
+  },
+  {
+    "event_cd": "FNE",
+    "event": "금융 전산 사이버 공격",
+    "category": "soc",
+    "level": "danger",
+    "iconFile": "soc_FN.png"
+  },
+  {
+    "event_cd": "FNS",
+    "event": "금융 기반 시설 사고 안내정보",
+    "category": "soc",
+    "level": "info",
+    "iconFile": "soc_FN.png"
+  },
+  {
+    "event_cd": "FRS",
+    "event": "화재폭발 안내정보",
+    "category": "soc",
+    "level": "info",
+    "iconFile": "soc_FH.png"
+  },
+  {
+    "event_cd": "FRV",
+    "event": "다중밀집시설 대형화재 대피",
+    "category": "soc",
+    "level": "alert",
+    "iconFile": "soc_FH.png"
+  },
+  {
+    "event_cd": "FRW",
+    "event": "다중밀집시설 대형화재",
+    "category": "soc",
+    "level": "danger",
+    "iconFile": "soc_FH.png"
+  },
+  {
+    "event_cd": "GAD",
+    "event": "가스 수급 및 누출사고",
+    "category": "soc",
+    "level": "danger",
+    "iconFile": "soc_GA.png"
+  },
+  {
+    "event_cd": "GFD",
+    "event": "정부 중요시설 사고",
+    "category": "soc",
+    "level": "alert",
+    "iconFile": "soc_GOV.png"
+  },
+  {
+    "event_cd": "GFS",
+    "event": "정부 중요시설 사고 안내정보",
+    "category": "soc",
+    "level": "info",
+    "iconFile": "soc_GOV.png"
+  },
+  {
+    "event_cd": "GRS",
+    "event": "GPS 전파혼신 안내",
+    "category": "soc",
+    "level": "info",
+    "iconFile": "soc_GR.png"
+  },
+  {
+    "event_cd": "GRW",
+    "event": "위성항법장치(GPS) 전파혼신 경보",
+    "category": "soc",
+    "level": "danger",
+    "iconFile": "soc_GR.png"
+  },
+  {
+    "event_cd": "HAA",
+    "event": "건조 주의보",
+    "category": "nat",
+    "level": "alert",
+    "iconFile": "nat_HA.png"
+  },
+  {
+    "event_cd": "HAC",
+    "event": "건조 경보 해제",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_HA.png"
+  },
+  {
+    "event_cd": "HAE",
+    "event": "건조 긴급정보",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_HA.png"
+  },
+  {
+    "event_cd": "HAG",
+    "event": "건조 주의보 변경",
+    "category": "nat",
+    "level": "alert",
+    "iconFile": "nat_HA.png"
+  },
+  {
+    "event_cd": "HAL",
+    "event": "건조 주의보 해제",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_HA.png"
+  },
+  {
+    "event_cd": "HAN",
+    "event": "건조 경보 변경",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_HA.png"
+  },
+  {
+    "event_cd": "HAS",
+    "event": "건조 안내정보",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_HA.png"
+  },
+  {
+    "event_cd": "HAW",
+    "event": "건조 경보",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_HA.png"
+  },
+  {
+    "event_cd": "HFA",
+    "event": "안개 주의보",
+    "category": "nat",
+    "level": "alert",
+    "iconFile": "nat_HF.png"
+  },
+  {
+    "event_cd": "HFC",
+    "event": "안개 경보 해제",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_HF.png"
+  },
+  {
+    "event_cd": "HFE",
+    "event": "안개 긴급정보",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_HF.png"
+  },
+  {
+    "event_cd": "HFG",
+    "event": "안개 주의보 변경",
+    "category": "nat",
+    "level": "alert",
+    "iconFile": "nat_HF.png"
+  },
+  {
+    "event_cd": "HFL",
+    "event": "안개 주의보 해제",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_HF.png"
+  },
+  {
+    "event_cd": "HFN",
+    "event": "안개 경보 변경",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_HF.png"
+  },
+  {
+    "event_cd": "HFS",
+    "event": "안개 안내정보",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_HF.png"
+  },
+  {
+    "event_cd": "HFW",
+    "event": "안개 경보",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_HF.png"
+  },
+  {
+    "event_cd": "HRA",
+    "event": "호우 주의보",
+    "category": "nat",
+    "level": "alert",
+    "iconFile": "nat_HR.png"
+  },
+  {
+    "event_cd": "HRC",
+    "event": "호우 경보 해제",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_HR.png"
+  },
+  {
+    "event_cd": "HRE",
+    "event": "호우 긴급정보",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_HR.png"
+  },
+  {
+    "event_cd": "HRG",
+    "event": "호우 주의보 변경",
+    "category": "nat",
+    "level": "alert",
+    "iconFile": "nat_HR.png"
+  },
+  {
+    "event_cd": "HRL",
+    "event": "호우 주의보 해제",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_HR.png"
+  },
+  {
+    "event_cd": "HRN",
+    "event": "호우 경보 변경",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_HR.png"
+  },
+  {
+    "event_cd": "HRS",
+    "event": "호우 안내정보",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_HR.png"
+  },
+  {
+    "event_cd": "HRW",
+    "event": "호우 경보",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_HR.png"
+  },
+  {
+    "event_cd": "HSA",
+    "event": "대설 주의보",
+    "category": "nat",
+    "level": "alert",
+    "iconFile": "nat_HS.png"
+  },
+  {
+    "event_cd": "HSC",
+    "event": "대설 경보 해제",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_HS.png"
+  },
+  {
+    "event_cd": "HSE",
+    "event": "대설 긴급정보",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_HS.png"
+  },
+  {
+    "event_cd": "HSG",
+    "event": "대설 주의보 변경",
+    "category": "nat",
+    "level": "alert",
+    "iconFile": "nat_HS.png"
+  },
+  {
+    "event_cd": "HSL",
+    "event": "대설 주의보 해제",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_HS.png"
+  },
+  {
+    "event_cd": "HSN",
+    "event": "대설 경보 변경",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_HS.png"
+  },
+  {
+    "event_cd": "HSS",
+    "event": "대설 안내정보",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_HS.png"
+  },
+  {
+    "event_cd": "HSW",
+    "event": "대설 경보",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_HS.png"
+  },
+  {
+    "event_cd": "HTA",
+    "event": "폭염 주의보",
+    "category": "nat",
+    "level": "alert",
+    "iconFile": "nat_HT.png"
+  },
+  {
+    "event_cd": "HTC",
+    "event": "폭염 경보 해제",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_HT.png"
+  },
+  {
+    "event_cd": "HTE",
+    "event": "폭염 긴급정보",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_HT.png"
+  },
+  {
+    "event_cd": "HTG",
+    "event": "폭염 주의보 변경",
+    "category": "nat",
+    "level": "alert",
+    "iconFile": "nat_HT.png"
+  },
+  {
+    "event_cd": "HTL",
+    "event": "폭염 주의보 해제",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_HT.png"
+  },
+  {
+    "event_cd": "HTN",
+    "event": "폭염 경보 변경",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_HT.png"
+  },
+  {
+    "event_cd": "HTS",
+    "event": "폭염 안내정보",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_HT.png"
+  },
+  {
+    "event_cd": "HTW",
+    "event": "폭염 경보",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_HT.png"
+  },
+  {
+    "event_cd": "HWA",
+    "event": "강풍 주의보",
+    "category": "nat",
+    "level": "alert",
+    "iconFile": "nat_HW.png"
+  },
+  {
+    "event_cd": "HWC",
+    "event": "강풍 경보 해제",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_HW.png"
+  },
+  {
+    "event_cd": "HWE",
+    "event": "강풍 긴급정보",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_HW.png"
+  },
+  {
+    "event_cd": "HWG",
+    "event": "강풍 주의보 변경",
+    "category": "nat",
+    "level": "alert",
+    "iconFile": "nat_HW.png"
+  },
+  {
+    "event_cd": "HWL",
+    "event": "강풍 주의보 해제",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_HW.png"
+  },
+  {
+    "event_cd": "HWN",
+    "event": "강풍 경보 변경",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_HW.png"
+  },
+  {
+    "event_cd": "HWS",
+    "event": "강풍 안내정보",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_HW.png"
+  },
+  {
+    "event_cd": "HWW",
+    "event": "강풍 경보",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_HW.png"
+  },
+  {
+    "event_cd": "ISD",
+    "event": "내수면 유·도선사고",
+    "category": "soc",
+    "level": "danger",
+    "iconFile": "soc_IS.png"
+  },
+  {
+    "event_cd": "LAW",
+    "event": "지역재난",
+    "category": "etc",
+    "level": "danger",
+    "iconFile": "etc_LAW.png"
+  },
+  {
+    "event_cd": "LDA",
+    "event": "가축질병 주의단계",
+    "category": "soc",
+    "level": "alert",
+    "iconFile": "soc_LD.png"
+  },
+  {
+    "event_cd": "LDW",
+    "event": "가축질병 경계/심각단계",
+    "category": "soc",
+    "level": "danger",
+    "iconFile": "soc_LD.png"
+  },
+  {
+    "event_cd": "MFA",
+    "event": "산불 주의보",
+    "category": "nat",
+    "level": "alert",
+    "iconFile": "nat_MF.png"
+  },
+  {
+    "event_cd": "MFS",
+    "event": "산불 안내정보",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_MF.png"
+  },
+  {
+    "event_cd": "MFV",
+    "event": "산불 대피",
+    "category": "nat",
+    "level": "alert",
+    "iconFile": "nat_MF.png"
+  },
+  {
+    "event_cd": "MFW",
+    "event": "산불 경보(경계,심각)",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_MF.png"
+  },
+  {
+    "event_cd": "MPD",
+    "event": "대규모 해양 오염",
+    "category": "soc",
+    "level": "danger",
+    "iconFile": "soc_MP.png"
+  },
+  {
+    "event_cd": "MPS",
+    "event": "해양 오염 안내정보",
+    "category": "soc",
+    "level": "info",
+    "iconFile": "soc_MP.png"
+  },
+  {
+    "event_cd": "MSD",
+    "event": "해양 선박 사고",
+    "category": "soc",
+    "level": "danger",
+    "iconFile": "soc_IS.png"
+  },
+  {
+    "event_cd": "MSS",
+    "event": "해양 선박 사고 안내정보",
+    "category": "soc",
+    "level": "info",
+    "iconFile": "soc_IS.png"
+  },
+  {
+    "event_cd": "NDA",
+    "event": "통신재난 주의(관심,주의)",
+    "category": "soc",
+    "level": "alert",
+    "iconFile": "soc_ND.png"
+  },
+  {
+    "event_cd": "NDS",
+    "event": "통신재난 안내정보",
+    "category": "soc",
+    "level": "info",
+    "iconFile": "soc_ND.png"
+  },
+  {
+    "event_cd": "NDW",
+    "event": "통신재난 경보(경계,심각)",
+    "category": "soc",
+    "level": "danger",
+    "iconFile": "soc_ND.png"
+  },
+  {
+    "event_cd": "NHS",
+    "event": "기타 자연재난 안내정보",
+    "category": "etc",
+    "level": "info",
+    "iconFile": "etc_NAT.png"
+  },
+  {
+    "event_cd": "NHW",
+    "event": "기타 자연재난",
+    "category": "etc",
+    "level": "danger",
+    "iconFile": "etc_NAT.png"
+  },
+  {
+    "event_cd": "NPT",
+    "event": "정기시험",
+    "category": "etc",
+    "level": "info",
+    "iconFile": "etc_NPT.png"
+  },
+  {
+    "event_cd": "NRD",
+    "event": "인접국가 방사능 누출사고",
+    "category": "soc",
+    "level": "danger",
+    "iconFile": "soc_NR.png"
+  },
+  {
+    "event_cd": "NRS",
+    "event": "인접국가 방사능 누출사고 안내정보",
+    "category": "soc",
+    "level": "info",
+    "iconFile": "soc_NR.png"
+  },
+  {
+    "event_cd": "NSD",
+    "event": "자연우주물체 사고",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_NS.png"
+  },
+  {
+    "event_cd": "NSS",
+    "event": "자연우주물체 추락/충돌 안내정보",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_NS.png"
+  },
+  {
+    "event_cd": "NSV",
+    "event": "자연우주물체 추락/충돌 대피",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_NS.png"
+  },
+  {
+    "event_cd": "NSW",
+    "event": "자연우주물체 경보(경계, 심각)",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_NS.png"
+  },
+  {
+    "event_cd": "POA",
+    "event": "전력부족 경계단계",
+    "category": "soc",
+    "level": "alert",
+    "iconFile": "soc_GA.png"
+  },
+  {
+    "event_cd": "POD",
+    "event": "전력 사고",
+    "category": "soc",
+    "level": "alert",
+    "iconFile": "soc_GA.png"
+  },
+  {
+    "event_cd": "POS",
+    "event": "전력부족 안내정보",
+    "category": "soc",
+    "level": "info",
+    "iconFile": "soc_GA.png"
+  },
+  {
+    "event_cd": "POW",
+    "event": "전력부족 심각단계",
+    "category": "soc",
+    "level": "danger",
+    "iconFile": "soc_GA.png"
+  },
+  {
+    "event_cd": "RHS",
+    "event": "원자력 시설사고 안내정보",
+    "category": "soc",
+    "level": "info",
+    "iconFile": "soc_RH.png"
+  },
+  {
+    "event_cd": "RHW",
+    "event": "방사선 위험경보",
+    "category": "soc",
+    "level": "danger",
+    "iconFile": "soc_RH.png"
+  },
+  {
+    "event_cd": "RLD",
+    "event": "방사능 누출사고",
+    "category": "soc",
+    "level": "danger",
+    "iconFile": "soc_RL.png"
+  },
+  {
+    "event_cd": "RLS",
+    "event": "방사능 누출 안내정보",
+    "category": "soc",
+    "level": "info",
+    "iconFile": "soc_RL.png"
+  },
+  {
+    "event_cd": "RVD",
+    "event": "저수지 사고",
+    "category": "soc",
+    "level": "alert",
+    "iconFile": "soc_DB.png"
+  },
+  {
+    "event_cd": "RWC",
+    "event": "고속철도 사고 복구 완료",
+    "category": "soc",
+    "level": "info",
+    "iconFile": "soc_SW.png"
+  },
+  {
+    "event_cd": "RWD",
+    "event": "고속철도 대형사고",
+    "category": "soc",
+    "level": "danger",
+    "iconFile": "soc_SW.png"
+  },
+  {
+    "event_cd": "RWI",
+    "event": "철도 사고 안내정보",
+    "category": "soc",
+    "level": "info",
+    "iconFile": "soc_SW.png"
+  },
+  {
+    "event_cd": "RWS",
+    "event": "고속철도 사고 수습에 따른 차량 우회 협조",
+    "category": "soc",
+    "level": "info",
+    "iconFile": "soc_SW.png"
+  },
+  {
+    "event_cd": "SHS",
+    "event": "기타 사회재난 안내정보",
+    "category": "etc",
+    "level": "info",
+    "iconFile": "etc_SH.png"
+  },
+  {
+    "event_cd": "SHW",
+    "event": "기타 사회재난",
+    "category": "etc",
+    "level": "danger",
+    "iconFile": "etc_SH.png"
+  },
+  {
+    "event_cd": "SSA",
+    "event": "폭풍해일 주의보",
+    "category": "nat",
+    "level": "alert",
+    "iconFile": "nat_SS.png"
+  },
+  {
+    "event_cd": "SSC",
+    "event": "폭풍해일 경보 해제",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_SS.png"
+  },
+  {
+    "event_cd": "SSE",
+    "event": "폭풍해일 긴급정보",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_SS.png"
+  },
+  {
+    "event_cd": "SSG",
+    "event": "폭풍해일 주의보 변경",
+    "category": "nat",
+    "level": "alert",
+    "iconFile": "nat_SS.png"
+  },
+  {
+    "event_cd": "SSL",
+    "event": "폭풍해일 주의보 해제",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_SS.png"
+  },
+  {
+    "event_cd": "SSN",
+    "event": "폭풍해일 경보 변경",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_SS.png"
+  },
+  {
+    "event_cd": "SSS",
+    "event": "폭풍해일 안내정보",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_SS.png"
+  },
+  {
+    "event_cd": "SSW",
+    "event": "폭풍해일 경보",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_SS.png"
+  },
+  {
+    "event_cd": "SWC",
+    "event": "지하철 사고 복구 완료",
+    "category": "soc",
+    "level": "info",
+    "iconFile": "soc_SW.png"
+  },
+  {
+    "event_cd": "SWD",
+    "event": "지하철 대형사고",
+    "category": "soc",
+    "level": "danger",
+    "iconFile": "soc_SW.png"
+  },
+  {
+    "event_cd": "SWS",
+    "event": "지하철 사고 수습에 따른 차량 우회 협조",
+    "category": "soc",
+    "level": "info",
+    "iconFile": "soc_SW.png"
+  },
+  {
+    "event_cd": "TES",
+    "event": "테러 안내정보",
+    "category": "soc",
+    "level": "info",
+    "iconFile": "soc_TE.png"
+  },
+  {
+    "event_cd": "TEW",
+    "event": "테러 경보",
+    "category": "soc",
+    "level": "danger",
+    "iconFile": "soc_TE.png"
+  },
+  {
+    "event_cd": "THS",
+    "event": "낙뢰 안내정보",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_TH.png"
+  },
+  {
+    "event_cd": "THW",
+    "event": "낙뢰 경보(심각)",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_TH.png"
+  },
+  {
+    "event_cd": "TPA",
+    "event": "태풍 주의보",
+    "category": "nat",
+    "level": "alert",
+    "iconFile": "nat_TP.png"
+  },
+  {
+    "event_cd": "TPC",
+    "event": "태풍 경보 해제",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_TP.png"
+  },
+  {
+    "event_cd": "TPE",
+    "event": "태풍 긴급정보",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_TP.png"
+  },
+  {
+    "event_cd": "TPG",
+    "event": "태풍 주의보 변경",
+    "category": "nat",
+    "level": "alert",
+    "iconFile": "nat_TP.png"
+  },
+  {
+    "event_cd": "TPL",
+    "event": "태풍 주의보 해제",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_TP.png"
+  },
+  {
+    "event_cd": "TPN",
+    "event": "태풍 경보 변경",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_TP.png"
+  },
+  {
+    "event_cd": "TPS",
+    "event": "태풍 안내정보",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_TP.png"
+  },
+  {
+    "event_cd": "TPW",
+    "event": "태풍 경보",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_TP.png"
+  },
+  {
+    "event_cd": "TSA",
+    "event": "지진해일 주의보",
+    "category": "nat",
+    "level": "alert",
+    "iconFile": "nat_TS.png"
+  },
+  {
+    "event_cd": "TSC",
+    "event": "지진해일 경보 해제",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_TS.png"
+  },
+  {
+    "event_cd": "TSI",
+    "event": "지진해일 정보",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_TS.png"
+  },
+  {
+    "event_cd": "TSL",
+    "event": "지진해일 주의보 해제",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_TS.png"
+  },
+  {
+    "event_cd": "TSO",
+    "event": "지진해일 경보/주의보",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_TS.png"
+  },
+  {
+    "event_cd": "TSR",
+    "event": "지진해일 경보/주의보 해제",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_TS.png"
+  },
+  {
+    "event_cd": "TSW",
+    "event": "지진해일 경보",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_TS.png"
+  },
+  {
+    "event_cd": "VOA",
+    "event": "화산재 주의보",
+    "category": "nat",
+    "level": "alert",
+    "iconFile": "nat_VO.png"
+  },
+  {
+    "event_cd": "VOC",
+    "event": "화산재 경보 해제",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_VO.png"
+  },
+  {
+    "event_cd": "VOI",
+    "event": "화산정보",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_VO.png"
+  },
+  {
+    "event_cd": "VOL",
+    "event": "화산재 주의보 해제",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_VO.png"
+  },
+  {
+    "event_cd": "VOO",
+    "event": "화산재 주의보/경보",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_VO.png"
+  },
+  {
+    "event_cd": "VOR",
+    "event": "화산재 주의보/경보 해제",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_VO.png"
+  },
+  {
+    "event_cd": "VOW",
+    "event": "화산재 경보",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_VO.png"
+  },
+  {
+    "event_cd": "WHD",
+    "event": "사업장 대규모 인적사고",
+    "category": "soc",
+    "level": "danger",
+    "iconFile": "soc_FH.png"
+  },
+  {
+    "event_cd": "WWA",
+    "event": "풍랑 주의보",
+    "category": "nat",
+    "level": "alert",
+    "iconFile": "nat_WW.png"
+  },
+  {
+    "event_cd": "WWC",
+    "event": "풍랑 경보 해제",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_WW.png"
+  },
+  {
+    "event_cd": "WWE",
+    "event": "풍랑 긴급정보",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_WW.png"
+  },
+  {
+    "event_cd": "WWG",
+    "event": "풍랑 주의보 변경",
+    "category": "nat",
+    "level": "alert",
+    "iconFile": "nat_WW.png"
+  },
+  {
+    "event_cd": "WWL",
+    "event": "풍랑 주의보 해제",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_WW.png"
+  },
+  {
+    "event_cd": "WWN",
+    "event": "풍랑 경보 변경",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_WW.png"
+  },
+  {
+    "event_cd": "WWS",
+    "event": "풍랑 안내정보",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_WW.png"
+  },
+  {
+    "event_cd": "WWW",
+    "event": "풍랑 경보",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_WW.png"
+  },
+  {
+    "event_cd": "YSC",
+    "event": "황사 경보 해제",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_YS.png"
+  },
+  {
+    "event_cd": "YSE",
+    "event": "황사 긴급정보",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_YS.png"
+  },
+  {
+    "event_cd": "YSS",
+    "event": "황사 안내정보",
+    "category": "nat",
+    "level": "info",
+    "iconFile": "nat_YS.png"
+  },
+  {
+    "event_cd": "YSW",
+    "event": "황사 경보",
+    "category": "nat",
+    "level": "danger",
+    "iconFile": "nat_YS.png"
+  }
+]

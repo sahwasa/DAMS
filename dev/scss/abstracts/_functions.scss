@@ -1,0 +1,15 @@
+@use "var" as *;
+@use 'sass:map';
+
+@function z($key) {
+  @if not map.has-key($z-index, $key) {
+    @error "z-index 키 없음: #{$key}";
+  }
+  @return map.get($z-index, $key);
+}
+
+@function icon-mask($svg) {
+  @return url("data:image/svg+xml,#{$svg}");
+}
+
+@function st($k,$p:color){@return map.get(map.get($status,$k),$p)}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko" data-thema="light">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+  <title>재난 예경보 통합관리시스템</title>
+  <link rel="stylesheet" href="css/main.css">  
+</head>
+<body>
+
+<div id="wrap" class="wrap">
+  <div class="visual_login">
+    <img src="images/loing_bg.png" width="100%" height="100%" alt="배경이미지">
+  </div>  
+  <main id="content" class="login">
+    <header>       
+      <h1 class="main_logo"><b>재난 예경보 통합관리시스템</b> 로그인</h1>
+    </header>
+    <div class="login_ipt">
+      <input type="text" name="" title="아이디" placeholder="아이디">
+      <input type="password" name="" title="비밀번호" placeholder="비밀번호">
+      <label for="remember" class="login--remember"><input type="checkbox" id="remember">ID 기억하기</label>
+      <a href="main.html" class="btn_login">로그인</a>
+    </div>
+  </main>
+</div>
+<script src="js/hazard_icon.js"></script>
+<script src="js/vendor/lucide.js"></script>
+<script src="js/dialog.js"></script>
+<script src="js/tab.js"></script>
+<script>
+lucide.createIcons({
+  attrs: {
+    'stroke-width': 2,
+    class: 'icon'
+  }
+});
+  initTabAll();
+</script>
+</body>
+</html>

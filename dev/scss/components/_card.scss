@@ -1,0 +1,43 @@
+@use '../abstracts/' as *;
+@layer components {
+  .card {
+      background:var(--bg-panel); border:1px solid var(--border-subtle);
+      border-radius:var(--radius-lg); padding:14px; box-shadow:var(--shadow-panel);
+      min-width:200px; max-width:260px;
+    
+      &.hover { background:#fdfdfd; transform:translateY(-1px); box-shadow:0 6px 20px rgba(15,23,42,.1); }
+      &.active { border-color:rgba(29,78,216,.4); box-shadow:0 0 0 1px rgba(29,78,216,.15), var(--shadow-panel); }
+    }
+    .card-title {
+      font-size:$font-size-13; font-variation-settings:'wght' 750; letter-spacing:.06em;
+      text-transform:uppercase; color:var(--text-primary);
+      display:flex; align-items:center; gap:6px;
+    }
+    .card-body { font-size:12px; color:var(--text-muted); line-height:1.6; }
+
+    // ══════════════════════════════════════════
+    // STAT CARDS — 4열 요약 카드
+    // ══════════════════════════════════════════
+    .stat-row { display:grid; grid-template-columns:repeat(4, 1fr); gap:14px; }
+    
+  .stat-card {
+    background:var(--bg-panel); border:1px solid var(--border-subtle);
+    border-radius:var(--radius-lg); padding:18px 20px;
+    box-shadow:var(--shadow-panel);
+
+    .stat-label {
+      font-size:11px; color:var(--text-faint); margin-bottom:6px;
+      font-variation-settings:'wght' 600; letter-spacing:0.04em;
+      text-transform:uppercase;
+    }
+    .stat-val {
+      font-size:24px; color:var(--text-strong);
+      font-family:'JetBrains Mono','Consolas',monospace;
+      font-variation-settings:'wght' 800;
+    }
+    .stat-sub {
+      font-size:11px; color:var(--status-done); margin-top:4px; font-variation-settings:'wght' 600;
+      &.down { color:var(--status-live); }
+    }
+  }
+}

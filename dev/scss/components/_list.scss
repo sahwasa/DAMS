@@ -1,0 +1,25 @@
+@use '../abstracts/' as *;
+@layer components {
+  .grid-list{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;margin-bottom:8px;font-size:$font-size-12;
+    dt{color:$text-sub}dd{color:$text-body}
+  }
+  .chip-list{position:relative;z-index: z(tooltip);
+    display:inline-flex; align-items:center; gap:4px;font-size:$font-size-12;
+    color:$text-muted;@include fw(500);
+    span{padding:0 6px;border-radius:10px;line-height:16px;}
+    button {
+      background:none; border:0; cursor:pointer; color:$text-muted;
+      width:20px; height:16px; display:inline-flex; align-items:center; justify-content:center;
+      border-radius:3px; padding:0; font-size:inherit;
+      &:hover { background:$muted; color:$accent; }
+    }
+    &--more{width:30px;:hover{text-decoration:underline}}
+    &-popover{@include popover;}
+    &--area{
+      span{border:1px solid $text-muted;background-color:#fff;color:$text-muted;}
+    }
+    &--divice{
+      span{border:1px solid $border;background-color:$muted;color:$text-sub;}
+    }
+  }
+}

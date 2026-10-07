@@ -1,0 +1,144 @@
+@use '../abstracts/' as *;
+@layer components {
+  /* BUTTON */
+  .btn {
+    display:inline-flex; align-items:center; justify-content:center; gap:6px;
+    padding:7px 16px; font-size:13px; font-variation-settings:'wght' 650;
+    border-radius:$rad-4; border:1px solid transparent; background:none; color:$primary;
+    cursor:pointer; transition:all .15s; font-family:inherit; line-height:14px; white-space: nowrap;
+
+    svg{display:block;}
+    
+    &.primary { background:$primary; color:#fff; border-color:$primary;
+      &:hover { background:#1e3a8a; }
+      &:focus { background:$accent; outline:2px solid $primary; outline-offset:2px; }
+      &:active { background:#172554; transform:translateY(1px); }
+      &:disabled { background:$accent; opacity:.5; cursor:not-allowed; }
+    }   
+    &.secondary { background:var(--bg-input); border-color:$border; color:$primary;
+      &:hover { background:var(--bg-input-hover); }
+      &:focus { outline:2px solid $primary; outline-offset:2px; z-index: 1;}
+      &:active { background:rgba(15,23,42,.1); }
+      &:disabled { opacity:.4; cursor:not-allowed; }
+    }
+    &.ghost { background:transparent; color:$text-muted;
+      &:hover { background:var(--bg-input); }
+      &:focus { outline:2px solid $primary; outline-offset:2px; }
+      &:active { background:var(--bg-input-hover); }
+      &:disabled { opacity:.4; cursor:not-allowed; }
+    }
+    &.danger { background:var(--status-live); color:#fff;
+      &:hover { background:#b91c1c; }
+      &:focus { outline:2px solid $primary; outline-offset:2px; }
+      &:active { background:#991b1b; }
+      &:disabled { opacity:.5; cursor:not-allowed; }
+    }
+    &.neutral { background:$neutral; color:#fff; border-color:$neutral;
+      &:hover { background:#4a4d50; border-color:#4a4d50; }
+      &:focus { outline:2px solid $primary; outline-offset:2px; }
+      &:active { background:#3d4043; transform:translateY(1px); }
+      &:disabled { opacity:.5; cursor:not-allowed; }
+    }
+
+    // ── 아웃라인 / 링크 ──
+    &.outline {
+      background:transparent; color:$primary; border-color:$primary;
+      &:hover { background:rgba(29,78,216,.06); }
+    }
+    &.outline-danger {
+      background:transparent; color:var(--status-live); border-color:var(--status-live);
+      &:hover { background:rgba(220,38,38,.06); }
+    }
+    &.link {
+      background:none; color:$primary; padding:4px 6px; text-decoration:none;
+      &:hover { text-decoration:underline; }
+    }
+    // ── 사이즈 ──
+    &.sm { padding:5px 11px; font-size:12px; border-radius:6px; gap:5px;
+      .icon{width:15px;height:15px;}
+    }
+    &.lg { padding:11px 22px; font-size:14px; border-radius:10px; }
+    &.xl { padding:14px 28px; font-size:15px; border-radius:12px; }
+  
+    // ── 아이콘 전용 ──
+    &.icon-only {
+      padding:0; width:32px; height:32px;
+      &.sm { width:24px; height:24px; }
+      &.lg { width:40px; height:40px; }
+    }
+  
+    // ── Pill / FAB ──
+    &.pill { border-radius:9999px; }
+    &.fab {
+      width:48px; height:48px; padding:0; border-radius:50%;
+      background:$primary; color:#fff;
+      box-shadow:var(--shadow-elevation);
+      &:hover { background:#1e3a8a; transform:translateY(-1px); }
+    }
+  }
+  // ── 버튼 그룹 (단일 선택) ──
+  .btn-group {
+    display:inline-flex;
+    .btn {border:1px solid var(--border-subtle);color:var(--text-muted);background-color:var(--bg-input);
+      border-radius:0;
+      &:first-child { border-radius:8px 0 0 8px; }
+      &:last-child { border-radius:0 8px 8px 0; }
+      &:not(:first-child) { margin-left:-1px; }
+      &.on {
+        background-color:#fff; color:$primary; border-color:$primary;
+        font-variation-settings:'wght' 700; box-shadow:0 1px 3px rgba(15,23,42,.1);
+        z-index:1; position:relative;
+      }
+    }
+  }
+  // ── Split 버튼 ──
+  .split {
+    display:inline-flex;
+    .btn:first-child { border-radius:8px 0 0 8px; border-right:0; }
+    .btn:last-child { border-radius:0 8px 8px 0; padding-left:8px; padding-right:8px; }
+  }
+
+  // ── 로딩 스피너 ──
+  .spinner {
+    width:13px; height:13px; border:2px solid currentColor; border-right-color:transparent;
+    border-radius:50%; animation:spin .8s linear infinite;
+  }
+  @keyframes spin { to { transform:rotate(360deg); } }
+  // ══════════════════════════════════════════
+  // TOGGLE — 사용여부 스위치
+  // ══════════════════════════════════════════
+  .toggle {
+    $offColor:var(--bg-input);$hoverColor:#868686;$onColor:$accent;
+    position:relative;display:inline-block; vertical-align:middle;
+    width:36px; height:20px; border-radius:9999px;
+    background:$offColor; border:1px solid var(--border-subtle);
+    transition:background .18s, border-color .18s; font-size:0;
+    &::after {
+      @include shape(16px,16px);position:absolute; top:1px; left:1px;
+      border-radius:50%; background:#fff;
+      transition:transform .18s; box-shadow:0 1px 3px rgba(15,23,42,.2);
+    }
+    &.on,&:has(:checked) {
+      background:$onColor; border-color:$onColor;
+      &::after { transform:translateX(16px); }
+    }
+
+    &:has(label){display:inline-flex;flex-shrink:0;justify-content:center;}
+    &:not(:has(input)){cursor:not-allowed;}
+    input{position:absolute;left:0;right:0;top:0;bottom:0; width:100%;height:100%;appearance:none;outline:none;box-shadow:none;vertical-align:middle;background-color:transparent;z-index:z(tooltip);cursor:pointer;}
+    label{position:relative;left:0;width:100%;height:100%;cursor:pointer;font-size:0;z-index:z(tooltip);}
+    [data-label]{margin-left:30px;
+      &::after{position:absolute;right:calc(100% + 5px);content:attr(data-label);font-size:11px;line-height:24px;color:$offColor;}
+    }
+  }
+  .switch{text-align:center;position:relative;
+    & > label{position:relative;display:inline-flex;align-items:center;width:100%;gap:5px;color:$text-muted;
+      &:has(input[type=checkbox]:checked){background-color:red;color:#fff;}
+    }
+    input{-webkit-appearance:none;-moz-appearance:none;-o-appearance:none;appearance:none;outline:none;box-shadow:none;vertical-align:middle;overflow:hidden;}
+    input[type=checkbox]{position:absolute;width:0px;height:0px;overflow:hidden;opacity:0;
+      & + button{width:100%;margin-top:5px;}
+    }
+    &-row { display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 13px; color: $primary; }
+  }   
+}

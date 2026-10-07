@@ -1,0 +1,301 @@
+@@include('../inc/top.html')
+<div id="wrap" class="wrap">
+  @@include('../inc/header.html')
+  <main id="content" class="main-container">
+    @@include('../inc/lnb-warn_issue.html')
+    <section class="sub__container history">
+        <header class="sub__heading">
+          <h2 class="sub__title">재난발령현황</h2>
+        </header>
+        <div class="sub__cont">
+          <div class="toolbar-card">           
+            <div class="input-group">
+              <label for="">기간설정</label>
+              <input type="date" id="date_timepicker_start" class="input" placeholder="시작일"
+                title="기간 시작일 선택">
+              <span>~</span>
+              <input type="date" id="date_timepicker_end" class="input" placeholder="종료일"
+                title="기간 종료일 선택">
+            </div>
+
+            <div class="input-group">
+              <label for="">재난유형</label>
+              <select title="대분류" id="code1" onchange="setCode2()" class="select">
+                <option value="">전체</option>
+                <option value="T1">자연재난</option>
+                <option value="T2">사회재난</option>
+                <option value="T3">기타재난</option>
+              </select>
+              <i data-lucide="chevron-right"></i>
+              <select title="중분류" id="code2" class="select">
+                <option value="">전체</option>
+                <option value="T10101">강풍</option>
+                <option value="T10102">낙뢰</option>
+              </select>
+            </div>
+
+            <div class="input-group">
+              <label for="">통합플랫폼</label>
+              <select title="" id="" class="select">
+                <option value="">전체</option>
+              </select>
+            </div>
+
+            <div class="input-group">
+              <label for="">발령매체</label>
+              <select title="" id="" class="select">
+                <option value="">전체</option>
+              </select>
+            </div>
+
+            <div class="input-group">
+              <label class="input-search input">
+                <i data-lucide="search"></i>
+                <input type="search" placeholder="발령지역, 통합플랫폼" title="검색어">
+              </label>
+            </div>
+
+            <button type="button" class="btn primary" onclick="search();">검색</button>
+          </div>
+          <div class="tbl-area">
+            <div class="tbl-top">
+              <div class="tbl-top__count">                
+                <span class="stat-text stat-text--lg stat-text--all">전체 <em id="count_all">133</em></span>
+                <span class="stat-text stat-text--lg stat-text--ok">자동 <em id="count_0">120</em></span>
+                <span class="stat-text stat-text--lg stat-text--ng">수동 <em id="count_9">13</em></span>
+              </div>
+              <div class="tool">
+                <button type="button" class="btn neutral" onclick="excelDown(1)">엑셀다운로드</button>
+              </div>
+            </div>
+            <div class="tbl-wrap tbl-history">
+              <table>
+                <caption>발령이력</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">통합플랫폼</th>
+                    <th scope="col">재난정보</th>
+                    <th scope="col">발령지역</th>
+                    <th scope="col">수신시각</th>
+                    <th scope="col">전송상태</th>
+                    <th scope="col">발령매체</th>
+                    <th scope="col">다운로드</th>
+                  </tr>
+                </thead>
+                <tbody id="history_table">
+                  <tr class="row-empty" hidden>
+                    <td colspan="7">데이터 없음</td>
+                  </tr>
+                  <tr onclick="selectRow(this, 'KR.ULSAN_T10101-2026000077_HWA_1')">                   
+                    <td>울산 예경보 통합플랫폼</td>
+                    <td>강풍주의보</td>
+                    <td>
+                      <div class="chip-list chip-list--area">
+                        <span>울산 남구</span><span>울산 중구</span>
+                        <button type="button" class="chip-list--more" popovertarget="--more1" style="anchor-name:--more1">+2</button>
+                        <div id="--more1" class="chip-list-popover" popover style="position-anchor:--more1">
+                          <span>울산 동구</span>
+                          <span>울산 북구</span>
+                          <span>울산 울주군</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>2026-06-15 19:03:33</td>
+                    <td><span class="stat-text stat-text--lg stat-text--ok">성공</span></td>
+                    <td>
+                      <div class="chip-list chip-list--divice">
+                        <span>재해문자전광판(행안부)</span><span>재난방송(TV)</span>
+                        <button type="button" class="chip-list--more" popovertarget="--more2" style="anchor-name:--more2">+2</button>
+                        <div id="--more2" class="chip-list-popover" popover style="position-anchor:--more2">
+                          <span>마을방송</span><span>문자방송(SMS)</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <button type="button" class="btn link sm" onclick="capDownload('KR.ULSAN_T10101-2026000077_HWA_1')">CAP 파일<i data-lucide="arrow-down-to-line"></i> </button>
+                      <button type="button" class="btn link sm" onclick="capDownload('KR.ULSAN_T10101-2026000077_HWA_1')">발령보고서<i data-lucide="arrow-down-to-line"></i> </button>
+                    </td>
+                  </tr>                  
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="link-indicator">
+            <i data-lucide="chevron-down" aria-hidden="true"></i>
+            <span class="sr-only">선택한 발령이력의 전송결과</span>
+          </div>
+
+          <div class="tab__wrap tab__card result-tab">
+            <div class="tab__btn btn-group">
+              <button class="btn on" data-tab="tab-recv">수신처별</button>
+              <button class="btn" data-tab="tab-term">단말기별</button>
+            </div>
+
+            <section id="tab-recv" class="tab__cont">
+              <div class="tbl-area">
+                <div class="tbl-top">
+                  <div class="tbl-top__count">전체 <em id="result_all">0</em>건 /
+                    성공 <em id="result_s">0</em>건 /
+                    실패 <em id="result_f">0</em>건</div>
+                  <div class="tool">
+                    <button type="button" class="btn outline-green sm" onclick="excelDown(2)">엑셀다운</button>
+                  </div>
+                </div>
+                <div class="tbl-wrap tbl-recv">
+                  <table class="tbl--fixed tbl--checkbox tbl--action-1">
+                    <caption>수신처별 전송결과</caption>
+                    <thead>
+                      <tr>
+                        <th scope="col">순번</th>
+                        <th scope="col">수신유형</th>
+                        <th scope="col">수신처명</th>
+                        <th scope="col">수신자ID</th>
+                        <th scope="col">전송시각</th>
+                        <th scope="col">응답시각</th>
+                        <th scope="col">응답결과</th>
+                      </tr>
+                    </thead>
+                    <tbody id="result_table">
+                      <tr class="row-empty" hidden>
+                        <td colspan="7">데이터 없음</td>
+                      </tr>
+                      <tr>
+                        <td>1</td>
+                        <td>
+                          <div class="tag-group">
+                            <span class="tag">재난방송(TV)</span>
+                            <span class="tag">재해문자전광판(행안부)</span>
+                            <span class="tag">문자방송(SMS)</span>
+                            <button type="button" class="tag tag--more" popovertarget="--more2" style="anchor-name:--more2">+2</button>
+                            <div id="--more2" class="tag-popover" popover style="position-anchor:--more2">
+                              <span class="tag">재해문자전광판(지자체)</span>
+                              <span class="tag">교통전광판</span>
+                              <span class="tag">마을방송</span>
+                            </div>
+                          </div>
+                        </td>
+                        <td>예경보 장치관리시스템 수신 클라이언트</td>
+                        <td class="td-mono">gateway1</td>
+                        <td>2026-04-21 11:01:46</td>
+                        <td>2026-04-21 11:01:46</td>
+                        <td><span class="badge-stat badge-stat--normal">성공</span></td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>
+                          <div class="tag-group">
+                            <span class="tag">재난방송(TV)</span>
+                            <span class="tag">재해문자전광판(행안부)</span>
+                            <span class="tag">문자방송(SMS)</span>
+                            <button type="button" class="tag tag--more" popovertarget="--more3" style="anchor-name:--more3">+2</button>
+                            <div id="--more3" class="tag-popover" popover style="position-anchor:--more3">
+                              <span class="tag">재해문자전광판(지자체)</span>
+                              <span class="tag">교통전광판</span>
+                            </div>
+                          </div>
+                        </td>
+                        <td>gatewayPC</td>
+                        <td class="td-mono">gatewayclient2</td>
+                        <td>2026-04-21 11:01:46</td>
+                        <td>-</td>
+                        <td><span class="badge-stat badge-stat--fail">실패</span></td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>
+                          <div class="tag-group">
+                            <span class="tag">마을방송</span>
+                            <span class="tag">자동음성통보</span>
+                          </div>
+                        </td>
+                        <td>gatewayPC</td>
+                        <td class="td-mono">gatewayclient2</td>
+                        <td>2026-04-21 11:01:46</td>
+                        <td>-</td>
+                        <td><span class="badge-stat badge-stat--fail">실패</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
+
+            <section id="tab-term" class="tab__cont">
+              <div class="tbl-area">
+                <div class="tbl-top">
+                  <div class="tbl-top__count">전체 <em id="count_term_all">0</em>건 /
+                    성공 <em class="text-success" id="count_term_s">0</em>건 /
+                    실패 <em class="text-danger" id="count_term_f">0</em>건</div>
+                  <div class="tool">
+                    <button button type="button" class="btn outline-green sm" onclick="excelDown(1)">엑셀다운</button>
+                  </div>
+                </div>
+                <div class="tbl-wrap tbl-term">
+                  <table class="tbl--fixed tbl--checkbox">
+                    <caption>단말기별 전송결과</caption>
+                    <thead>
+                      <tr>
+                        <th scope="col">순번</th>
+                        <th scope="col">단말기 유형</th>
+                        <th scope="col">예경보서버</th>
+                        <th scope="col">단말기 고유번호</th>
+                        <th scope="col">단말기명</th>
+                        <th scope="col">설치지역</th>
+                        <th scope="col">발송시각</th>
+                        <th scope="col">결과</th>
+                        <th scope="col">메모</th>
+                      </tr>
+                    </thead>
+                    <tbody id="table_list">
+                      <tr class="row-empty">
+                        <td colspan="9">데이터없음</td>
+                      </tr>
+                      <tr>
+                        <td>1</td>
+                        <td class="td-mono">자동음성통보</td>
+                        <td>울산 자동음성통보시스템</td>
+                        <td>울산-V199</td>
+                        <td class="td-bold">사갑</td>
+                        <td>동선동</td>
+                        <td>2026-04-21 12:34:56</td>
+                        <td><span class="badge-stat badge-stat--normal">성공</span></td>
+                        <td>-</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td class="td-mono">자동음성통보</td>
+                        <td>울산 자동음성통보시스템</td>
+                        <td>울산-V199</td>
+                        <td class="td-bold">(강서구)동선방파제</td>
+                        <td>동선동</td>
+                        <td>2026-04-21 12:34:56</td>
+                        <td><span class="badge-stat badge-stat--fail">실패</span></td>
+                        <td>실패사유?</td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td class="td-mono">자동음성통보</td>
+                        <td>울산 자동음성통보시스템</td>
+                        <td>울산-V199</td>
+                        <td class="td-bold">(강서구)두문방파제</td>
+                        <td>동선동</td>
+                        <td>2026-04-21 12:34:56</td>
+                        <td><span class="badge-stat badge-stat--notuse">정지</span></td>
+                        <td>사용안함</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
+          </div>
+
+        </div>
+      </section>
+  </main>
+</div>
+<!-- 필터 팝업(add_disaster)은 기존 dialog 마크업 그대로 사용 -->
+@@include('../inc/script.html')
+</body>
+</html>

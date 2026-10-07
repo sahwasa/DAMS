@@ -1,0 +1,122 @@
+// ─────────────────────────────────────────────
+// 색상 — 다크/라이트 전환 대응 CSS 커스텀 프로퍼티
+// CSS 변수(런타임)로 선언 — [data-theme] 전환 시 재계산 없이 즉시 반영
+// :root = 라이트 테마 기본값, [data-theme=dark] = 다크 오버라이드
+// ─────────────────────────────────────────────
+:root {
+  --bg-app:#f1f5f9;
+  --bg-app-grad:linear-gradient(180deg,#f8fafc 0%,#eef2f7 100%);
+  --bg-header:#fffffff7;
+  --bg-sidebar:#fff;
+  --bg-map:#e2e8f0;
+  --bg-map-grad:radial-gradient(ellipse at 60% 40%,#3b82f60f 0%,transparent 60%),radial-gradient(ellipse at 30% 70%,#ef44440d 0%,transparent 50%),linear-gradient(135deg,#e2e8f0,#cbd5e1);
+  --bg-cctv:linear-gradient(135deg,#334155,#1e293b);
+  --bg-cctv-label:linear-gradient(180deg,transparent,#0009);
+  --bg-timeline:#fffffff7;
+  --bg-toast:#0f172af0;
+  --bg-panel:linear-gradient(180deg,#fff 0%,#f8fafc 100%);
+  --bg-panel-soft:#f8fafcf2;
+  --bg-overlay:#fffffff2;
+  --bg-input:#0f172a0a;--bg-input-hover:#0f172a0f;
+  --bg-cta:#0f172a0d;--bg-cta-hover:#0f172a17;
+  --bg-scrim:#0f172a8c;//모달 백드롭
+  --bg-on-image:#0f172ab3;--bg-on-image-strong:#0f172ad1;
+
+  --border-subtle:#0f172a1a;
+  --border-strong:#0f172a14;
+  --border-divider:#0f172a1f;
+  --grid-line:#0f172a14;
+  --radius:8px;--radius-lg:14px;
+
+  --text-heading:var(--color-secondary);  // 페이지 제목, 질문 제목, 카드 타이틀  
+  --text-tit:#0f172a;   // 이 CSS의 제목색 (네이비 아님)
+  --text-body:#222;                       // 본문, 답변, 입력값
+  --text-primary:#505050;      // 이 CSS의 본문색
+  --text-sub:#808080;                        // 보조 설명, 날짜, 라벨
+  --text-muted:#748ab1;                      // 비활성 안내
+  --text-disabled:#b4b4b4;                 // disabled 상태
+  --text-link:var(--color-primary);       // 링크, 강조 마커(▼)
+  --text-inverse:#fff;   
+  --text-placeholder:#a4a4a4;
+
+  --status-all:#808080;//진행중
+  --status-all-dim:rgba(194,65,12,.1);
+  --status-ok:#21ae06;//완료,정상
+  --status-ok-dim:rgba(21,128,61,.1);
+  --status-off:#c2c4d3;//대기
+  --status-off-dim:rgba(100,116,139,.1);
+  --status-ng:#ee0303;
+  --status-ng-dim:rgba(220,38,38,.1);
+  --status-ng-soft:#dc26261f;
+  --info:#0369a1;--info-dim:rgba(3,105,161,.08);
+
+  --color-primary:#3e55e1;
+  --color-primary-hover:#4c63ec;   // 로그인 버튼 hover
+  --color-primary-light:#f5f6fd;   // 연한 배경(로그인 카드, 선택 영역)
+  --color-primary-line:#d8ddf9;    // 연한 테두리
+  --color-secondary:#002060;  // 헤더, 제목, 구조적 배경
+  --color-accent:#246beb;       // .button.secondary
+  --color-info:#3382e9;            // info 버튼, 탭 active, 달력 선택일
+  --color-info-text:#1f53cc;       // 링크 hover, 정보 텍스트
+
+  --shadow-panel:0 4px 16px #0f172a14;
+  --shadow-elevation:0 8px 28px #2563eb26;//강조 카드
+  --shadow-toast:0 6px 24px #0f172a2e;
+  --pulse-ring-color:#dc2626;// 지도 pulse
+  --pulse-ring-soft:#dc262659;
+  --map-label-shadow:0 1px 4px #ffffffd9;// 지도 라벨 가독성
+
+  // 등급(badge/icon 공용) — danger > alert > caution > safe > gray
+  --grade-danger:#dc2626;
+  --grade-danger-bg:rgba(220,38,38,.1);
+  --grade-danger-border:rgba(220,38,38,.32);
+  --grade-danger-text:#991b1b;
+  --grade-danger-dot:#ef4444;
+
+  --grade-caution:#1e40af;
+  --grade-caution-bg:rgba(59,130,246,.1);
+  --grade-caution-border:rgba(59,130,246,.32);
+  --grade-caution-text:#1e40af;
+  --grade-caution-dot:#3b82f6;
+
+  --grade-alert:#92400e;
+  --grade-alert-bg:rgba(245,158,11,.15);
+  --grade-alert-border:rgba(245,158,11,.4);
+  --grade-alert-text:#92400e;
+  --grade-alert-dot:#f5930b;
+
+  --grade-safe:#14532d;
+  --grade-safe-bg:rgba(34,197,94,.12);
+  --grade-safe-border:rgba(34,197,94,.35);
+  --grade-safe-text:#14532d;
+  --grade-safe-dot:#22c55e;
+
+  --tl-critical:#dc2626;
+  --tl-sensor-color:#2563eb;--tl-sensor-text:#2563ebcc;
+  --tl-predict-color:#9333ea;--tl-predict-text:#9333eacc;
+  --color-danger-text:#991b1b;
+  --legend-bottom:128px;
+
+  // border
+  --border-default:#c5c6ca; // 입력창, select
+  --border-strong:#c5c5c5;  // 버튼 hover
+  --border-table:#e4e4e4;   // 표 셀 구분선
+  --border-board:#dadada;   // 목록 헤더, 페이징
+  --border-light:#ebebeb;   // 카드, 가는 구분선
+
+  // background
+  --bg-page:#f5f7f9;        // 로그인/서브 페이지 배경
+  --bg-subtle:#f8f8f8;      // 표 th, 연한 회색
+  --bg-muted:#f5f5f5;       // readonly, 목록 헤더
+  --bg-selected:#f2f5f9;    // 선택된 행
+  --bg-disabled:#eee;       // disabled 입력
+}
+
+// 위험도 그라데이션
+// linear-gradient(to top,
+// #3b82f6 0%,    /* blue   매우 낮음 */
+// #06b6d4 25%,   /* cyan   낮음 */
+// #22c55e 45%,   /* green  보통 */
+// #f59e0b 70%,   /* amber  높음 */
+// #ef4444 100%   /* red    매우 높음 */
+// );

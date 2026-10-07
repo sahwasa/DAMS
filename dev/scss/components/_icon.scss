@@ -1,0 +1,52 @@
+@use '../abstracts/' as *;
+@layer components {
+  // ─────────────────────────────────────────────
+  // 기본 아이콘 — data-lucide 변환 후 삽입되는 svg를 감싸는 클래스
+  // <i class="icon" data-lucide="bar-chart"></i>
+  // ─────────────────────────────────────────────
+  .icon {
+    @include icon-base($icon-md);
+  }
+  .icon--sm { @include icon-base($icon-sm); }
+  .icon--lg { @include icon-base($icon-lg); }
+  .icon--fab { @include icon-base($icon-fab, $icon-stroke-width-fab); }
+
+  // ─────────────────────────────────────────────
+  // 상태 기반 색상 상속 — nav/버튼 등 부모 상태에 따라 자동 변경
+  // ─────────────────────────────────────────────
+  // .icon { color: var(--text-faint); }
+  .icon { color: var(--icon-color, currentColor); }
+  .nav-itenav-active .icon,
+  .btn.primary .icon { color: currentColor; } // 부모 color 그대로 상속
+
+  // ─────────────────────────────────────────────
+  // 재해 등급별 의미 아이콘 — 08-icon-catalog.md 기존 클래스명 유지
+  // (색상만 SCSS 쪽에서 관리, data-lucide 이름은 HTML에서 지정)
+  // ─────────────────────────────────────────────
+  .icon-rain     { color: #22d3ee; }
+  .icon-overflow { color: #f87171; }
+  .icon-flood    { color: #60a5fa; }
+  .icon-risk     { color: #c084fc; }
+  .icon-scenario { color: #fb923c; }
+
+  // ─────────────────────────────────────────────
+  // 등급(grade) 아이콘 — badge와 동일한 4단계 색상 재사용
+  // ─────────────────────────────────────────────
+  .icon-grade {
+    &--danger  { color: var(--grade-danger); }
+    &--alert   { color: var(--grade-alert); }
+    &--caution { color: var(--grade-caution); }
+    &--safe    { color: var(--grade-safe); }
+  }
+
+  .hazard-icon{position:relative;width:26px;height:24px;flex-shrink:0;    
+    &__triangle{ position:absolute;inset:0;z-index:1;}
+    &__glyph{ position:absolute;inset:0;}
+    &--info,
+    &--safe    { color: var(--grade-safe-dot);   --hz-shadow: var(--grade-safe-dot); }
+    &--caution { color: var(--grade-caution-dot);--hz-shadow: var(--grade-caution-dot); }
+    &--alert   { color: var(--grade-alert-dot);  --hz-shadow: var(--grade-alert-dot); }
+    &--danger  { color: var(--grade-danger-dot); --hz-shadow: var(--grade-danger-dot); }
+    @at-root .selected .hazard-icon__glyph{overflow:visible;filter:drop-shadow(2px 2px 5px  var(--hz-shadow)) drop-shadow(2px 2px 3px var(--hz-shadow));}
+  }
+}

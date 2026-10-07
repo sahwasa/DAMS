@@ -1,0 +1,330 @@
+@@include('../inc/top.html')
+<div id="wrap" class="wrap">
+  @@include('../inc/header.html')
+  <main id="content" class="main-container">
+    <aside class="aside aside--slide">
+      <section class="panel disaster-panel">
+        <div class="panel-wrap">
+          <header class="panel-head">
+            <h2>GIS 상황판</h2>
+          </header>
+          <div class="panel-cont">
+            <details class="panel-filter" open>
+              <summary class="panel-filter__top">
+                <span class="btn outline">필터<i data-lucide="filter" class="icon--sm"></i></span>
+                <p class="panel-filter__count"><strong>4</strong>건</p>
+              </summary>
+              <form action="#" class="panel-filter__form">              
+                <select class="select" title="발령구분">
+                  <option value="">발령구분</option>
+                  <option value="1">기상특보</option>
+                  <option value="2">홍수예보</option>
+                  <option value="3">지진/지진해일</option>
+                  <option value="4">자체발령</option>
+                </select>
+                <div class="input-group">
+                  <input class="input" type="date" title="시작일" value="2026-08-12">
+                  <span aria-hidden="true">~</span>
+                  <input class="input" type="date" title="종료일" value="2026-08-12">
+                </div>
+                <div class="input-group">
+                  <label class="input-search input">
+                    <i data-lucide="search"></i>
+                    <input type="search" placeholder="발령지역, 통합플랫폼" title="검색어">
+                  </label>
+                  <button type="submit" class="btn primary">적용</button>
+                </div>
+              </form>
+            </details>
+            <ul class="disaster-list">
+              <li class="disaster-card" data-empty="데이터 없음"></li>
+              <li class="disaster-card">
+                <div class="disaster-card__cnt"><b>16</b>건</div>
+                <div class="disaster-card__head">
+                  <span class="badge-cat badge-gray">기상특보</span>
+                  <time datetime="2024-02-13T15:35">2024-02-13 15:35</time>
+                </div>
+                <a class="disaster-card__link" href="main_dtl.html">
+                  <i class="hazard-icon" data-event-cd="FLN"></i>
+                  <strong>강풍주의보</strong>
+                </a>
+                <ul class="chip-list"><li>전국</li></ul>
+              </li>
+              <li class="disaster-card">
+                <div class="disaster-card__cnt"><b>3</b>건</div>
+                <div class="disaster-card__head">
+                  <span class="badge-cat badge-gray">홍수예보</span>
+                  <time datetime="2024-02-13T15:35">2024-02-13 15:35</time>
+                </div>
+                <a class="disaster-card__link" href="main_dtl.html">
+                  <i class="hazard-icon" data-event-cd="FLN"></i>
+                  <strong>홍수주의보</strong>
+                </a>
+                <ul class="chip-list"><li>서울</li><li>인천</li><li>경기</li></ul>
+              </li>
+              <li class="disaster-card is-active">
+                  <div class="disaster-card__cnt"><b>5</b>건</div>
+                <div class="disaster-card__head">
+                  <span class="badge-cat badge-gray">지진/지진해일</span>
+                  <time datetime="2024-02-13T15:35">2024-02-13 15:35</time>
+                </div>
+                <a class="disaster-card__link" href="main_dtl.html">
+                  <i class="hazard-icon" data-event-cd="FLN"></i>
+                  <strong>전남 광주 신안군 흑산도 북북서쪽 해역 지진</strong>
+                </a>
+                <ul class="chip-list"><li>전국</li></ul>
+              </li>
+              <li class="disaster-card">
+                <div class="disaster-card__cnt"><b>1</b>건</div>
+                <div class="disaster-card__head">
+                  <span class="badge-cat badge-gray">자체발령 - 울산플랫폼</span>
+                  <time datetime="2024-02-13T15:35">2024-02-13 15:35</time>
+                </div>
+                <a class="disaster-card__link" href="main_dtl.html">
+                  <i class="hazard-icon" data-event-cd="AVA"></i>
+                  <strong>산사태주의보</strong>
+                </a>
+                <ul class="chip-list"><li>울산</li></ul>
+              </li>
+            </ul>
+          </div>
+        </div>      
+      </section>
+      <section class="panel panel-detail" aria-label="발령 상세" id="asideDetail">
+        <div class="panel-wrap">
+          <!-- 상세패널 토글버튼. 다시 열때는 el.hidden=false -->
+          <div class="panel-head panel-detail__close">
+            <button type="button" class="btn ghost icon-only" aria-label="닫기" onclick="document.getElementById('asideDetail').hidden=true"><i data-lucide="x"></i></button>
+          </div>
+          <div class="panel-cont">          
+            <form action="#" class="panel-filter panel-filter__form">
+              <select class="select" title="통합플랫폼">
+                <option value="">통합플랫폼</option>
+                <option value="1">울산 플랫폼</option>
+              </select>
+              <div class="input-group">
+                <label class="input-search input">
+                  <i data-lucide="search"></i>
+                  <input type="search" placeholder="발령지역" title="검색어">
+                </label>
+                <button type="submit" class="btn primary">적용</button>
+              </div>
+            </form>
+      
+            <p class="panel-detail__total">전체 <strong>16</strong>건</p>
+      
+            <ul class="result-list">
+              <!-- 선택(펼침) 카드 -->
+              <li class="result-card is-active">
+                <p class="result-card__head">울산 플랫폼 · <time datetime="2024-02-13T15:35">2024-02-13 15:35</time></p>
+                <a class="result-card__link" href="main_dtl.html">
+                  <strong>강풍주의보</strong>
+                </a>
+                <div class="chip-list chip-list--area">
+                  <span>울산 남구</span><span>울산 중구</span>
+                  <button type="button" class="chip-list--more" popovertarget="--more1" style="anchor-name:--more1">+2</button>
+                  <div id="--more1" class="chip-list-popover" popover style="position-anchor:--more1">
+                    <span>울산 동구</span>
+                    <span>울산 북구</span>
+                    <span>울산 울주군</span>
+                  </div>
+                </div>
+                <div class="result-card__foot">
+                  <span>전체 133</span>
+                  <span class="stat-text stat-text--ok">성공 131</span>
+                  <span class="stat-text stat-text--ng">실패 2</span>
+                </div>
+                <div class="result-card__detail">
+                  <dl class="grid-list">
+                    <dt>발생시각</dt><dd>2025-11-05 15:00:30</dd>
+                    <dt>종료시각</dt><dd>2025-11-05 15:00:30</dd>
+                    <dt>수신시각</dt><dd>2025-11-05 15:00:30</dd>
+                  </dl>
+                  <div class="chip-list chip-list--divice"><span>재해문자전광판(행안부)</span><span>재난방송(TV)</span><span>마을방송</span><span>문자방송(SMS)</span></div>
+                </div>
+              </li>
+              <!-- 일반 카드 (반복) -->
+              <li class="result-card">
+                <p class="result-card__head">울산 플랫폼 · <time datetime="2024-02-13T15:35">2024-02-13 15:35</time></p>
+                <a class="result-card__link" href="main_dtl.html">
+                  <strong>강풍주의보</strong>
+                </a>
+                <ul class="chip-list  chip-list--area"><li>울산 남구</li></ul>
+                <div class="result-card__foot">
+                  <span>전체 133</span>
+                  <span class="stat-text stat-text--ok">성공 131</span>
+                  <span class="stat-text stat-text--ng">실패 2</span>
+                </div>
+                <div class="result-card__detail">
+                  <dl class="grid-list">
+                    <dt>발생시각</dt><dd>2025-11-05 15:00:30</dd>
+                    <dt>종료시각</dt><dd>2025-11-05 15:00:30</dd>
+                    <dt>수신시각</dt><dd>2025-11-05 15:00:30</dd>
+                  </dl>
+                  <ul class="chip-list"><li>재해문자전광판(행안부)</li><li>재난방송(TV)</li><li>마을방송</li><li>문자방송(SMS)</li></ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <span class="switch aside__toggle">
+        <input type="checkbox" id="aside__toggle">
+        <label for="aside__toggle">패널 여닫기 버튼</label>
+      </span>
+    </aside>
+
+    <section class="main-cont map-wrap">
+      <div class="map__canvas">
+        <div class="map-ctrl">
+          <div class="btn_wrap map-mode">
+            <button type="button" class="map-mode__btn is-active" id="mapmode_1" onclick="mapMode(1)"><span>기본</span></button>
+            <button type="button" class="map-mode__btn" id="mapmode_2" onclick="mapMode(2)"><span>2D</span></button>
+            <button type="button" class="map-mode__btn" id="mapmode_3" onclick="mapMode(3)"><span>위성</span></button>
+          </div>
+          @@include('../inc/divice-legend.html')
+        </div>
+
+        <!-- 자체발령일경우 detail패널 대신 대체 -->
+        <div class="result-card nothover">
+          <p class="result-card__head">울산 플랫폼 · <time datetime="2024-02-13T15:35">2024-02-13 15:35</time></p>
+          <a class="result-card__link" href="main_dtl.html">
+            <strong>강풍주의보</strong>
+          </a>
+          <div class="chip-list chip-list--area">
+            <span>울산 남구</span><span>울산 중구</span>
+            <button type="button" class="chip-list--more" popovertarget="--more3" style="anchor-name:--more3">+2</button>
+            <div id="--more3" class="chip-list-popover" popover style="position-anchor:--more3">
+              <span>울산 동구</span>
+              <span>울산 북구</span>
+              <span>울산 울주군</span>
+            </div>
+          </div>
+          <div class="result-card__foot">
+            <span>전체 133</span>
+            <span class="stat-text stat-text--ok">성공 131</span>
+            <span class="stat-text stat-text--ng">실패 2</span>
+          </div>
+          <div class="result-card__detail">
+            <dl class="grid-list">
+              <dt>발생시각</dt><dd>2025-11-05 15:00:30</dd>
+              <dt>종료시각</dt><dd>2025-11-05 15:00:30</dd>
+              <dt>수신시각</dt><dd>2025-11-05 15:00:30</dd>
+            </dl>
+            <div class="chip-list chip-list--divice"><span>재해문자전광판(행안부)</span><span>재난방송(TV)</span><span>마을방송</span><span>문자방송(SMS)</span></div>
+          </div>
+        </div>
+        <!-- 자체발령__e -->
+
+        <!-- 재난발령 -->
+         <div class="symbol symbol--hazard" style="--left:700px;--top:50px">
+          <button type="button" class="selected">
+            <i class="hazard-icon" data-event-cd="AVA"></i>
+            <strong>산사태주의보</strong>
+          </button>
+          <div class="layer" style="display: block;">
+            <header class="layer__heading">
+              <strong class="layer__title">산사태주의보</strong>
+              <button type="button" class="layer__close" area-label="닫기" onclick="document.activeElement.blur();"><i data-lucide="x">닫기</i></button>
+            </header>
+            <div class="layer__body">
+              <dl class="grid-list">
+                <dt>통합플랫폼</dt><dd>울산예경보 통합플렛폼</dd>
+                <dt>발생시각</dt><dd>2025-11-05 15:00:30</dd>
+                <dt>종료시각</dt><dd>2025-11-05 15:00:30</dd>
+                <dt>수신시각</dt><dd>2025-11-05 15:00:30</dd>
+                <dt>발령지역</dt>
+                <dd>
+                  <div class="chip-list chip-list--area">
+                    <span>울산 남구</span><span>울산 중구</span>
+                    <button type="button" class="chip-list--more" popovertarget="--more2" style="anchor-name:--more2">+2</button>
+                    <div id="--more2" class="chip-list-popover" popover style="position-anchor:--more2">
+                      <span>울산 동구</span>
+                      <span>울산 북구</span>
+                      <span>울산 울주군</span>
+                    </div>
+                  </div>
+                </dd>
+                <dt>발령매체</dt>
+                <dd>
+                  <div class="chip-list chip-list--divice"><span>재해문자전광판(행안부)</span><span>재난방송(TV)</span><span>마을방송</span><span>문자방송(SMS)</span></div>
+                </dd>         
+              </dl>
+            </div>
+          </div>
+        </div>
+
+        <div class="symbol symbol--hazard" style="--left:1100px;--top:50px">
+          <button type="button">
+            <i class="hazard-icon" data-event-cd="FLN"></i>
+            <strong>홍수주의보</strong>
+          </button>
+        </div>
+
+        <div class="map-cluster" style="left:1105px;top:127px;">
+          <button type="button" class="map-cluster__btn" aria-expanded="true" aria-controls="cluster_1">
+            <span class="map-cluster__cnt">+2</span>
+            <span class="sr-only">발령 2건 더보기</span>
+          </button>
+          <ul class="cluster-tooltip" id="cluster_1">
+            <li class="cluster-tooltip__item">
+              <i class="hazard-icon" data-event-cd="MSS"></i>
+              <p class="cluster-tooltip__text">해양 선박 사고 안내정보</p>
+            </li>
+            <li class="cluster-tooltip__item">
+              <i class="hazard-icon" data-event-cd="FLN"></i>
+              <p class="cluster-tooltip__text">호우주의보</p>
+            </li>
+          </ul>
+        </div>
+        <!-- 재난발령__e -->
+
+
+        <!-- 예경보통합플랫폼 단말기 전송 상태 -->
+
+        <!-- 도넛 클러스터 (--ok/--ng 는 성공/실패 비율, 나머지는 회색) -->
+        <button type="button" class="map-donut" style="--left:1320px;--top:275px;--ok:12%;--ng:30%" aria-label="단말기 118개">
+          <b class="map-donut__cnt">118</b>
+        </button>
+        <button type="button" class="map-donut map-donut--sm" style="--left:1230px;--top:270px;--ok:100%;--ng:0%" aria-label="단말기 12개">
+          <b class="map-donut__cnt">12</b>
+        </button>
+
+        <div class="symbol symbol--divice" style="--left:700px;--top:500px">
+          <button type="button" class="BIS selected">사간 (안성-V198)</button>
+          <div class="layer" style="display: block;">
+            <header class="layer__heading">
+              <strong class="layer__title">사간 (안성-V198)</strong>
+              <button type="button" class="layer__close" area-label="닫기" onclick="document.activeElement.blur();"><i data-lucide="x">닫기</i></button>
+            </header>
+            <div class="layer__body">
+              <ul class="grid-list">
+                <dt>유형</dt><dd>버스정보시스템</dd>
+                <dt>예경보 서버</dt><dd>안성 버스정보시스템</dd>
+                <dt>상태</dt>
+                <dd>
+                  <span class="stat-text stat-text--ok">성공</span>
+                  <!-- <span class="stat-text stat-text--ng">실패</span>      -->
+                </dd>
+                <dt>메모</dt>
+                <dd>비정상 사유</dd>
+                <dt>가청범위</dt>
+                <dd>300m ~ 500m</dd>
+              </ul>
+            </div>
+          </div>
+        </div>
+        @@include('../inc/divice-symbol.html')
+
+        <!-- 예경보통합플랫폼 단말기 전송 상태__e -->
+
+
+        
+      </div>
+    </section>
+  </main>
+</div>
+<!-- 필터 팝업(add_disaster)은 기존 dialog 마크업 그대로 사용 -->
+@@include('../inc/script.html')
+</body>
+</html>

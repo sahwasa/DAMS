@@ -1,0 +1,87 @@
+@use '../abstracts/' as *;
+@use 'sass:list';
+@use 'sass:color';
+@use 'sass:map';
+
+@layer components {
+  // ══════════════════════════════════════════
+  // BADGE — 상태 표시 알약
+  // ══════════════════════════════════════════
+  .badge {
+    display:inline-block; padding:2px 8px; border-radius:9999px;
+    font-size:10px; border:1px solid transparent;
+    letter-spacing:0.02em; font-variation-settings:'wght' 700;
+    white-space:nowrap; line-height:1.5;
+    &-cat{border-radius:$rad-4;padding:2px 3px;line-height:1;font-size:12px;letter-spacing:-.12px;}
+
+    &-green  { background:var(--status-done-dim);    color:var(--status-done);         border-color:rgba(21,128,61,.2); }
+    &-red    { background:var(--status-live-dim);     color:var(--status-live);          border-color:rgba(220,38,38,.2); }
+    &-blue   { background:var(--color-primary-dim);   color:var(--color-primary-strong); border-color:rgba(29,78,216,.2); }
+    &-orange { background:var(--status-running-dim);  color:var(--status-running);       border-color:rgba(194,65,12,.2); }
+    &-gray   { background:#e9edf8;         color:var(--text-primary);           border-color:rgba(15,23,42,.12); }
+    &-cyan   { background:var(--info-dim);            color:var(--info);                 border-color:rgba(3,105,161,.2); }
+  }
+  // ─────────────────────────────────────────────
+  // Badge — 01-state-matrix.html 기준 등급 5종
+  // ─────────────────────────────────────────────
+  .badge-grade {
+    display: inline-flex; align-items: center; gap: $sp-4;
+    padding: 2px $sp-8; line-height:1;
+    font-size: $font-size-12; font-variation-settings: 'wght' 700;
+    border-radius: $rad-pill; letter-spacing: .04em; white-space: nowrap;
+
+    .dot { width: 6px; height: 6px; border-radius: 50%; }
+
+    &.danger  { @include grade-color('danger');  .dot { background: var(--grade-danger); } }
+    &.alert   { @include grade-color('alert');   .dot { background: var(--grade-alert); } }
+    &.caution { @include grade-color('caution'); .dot { background: var(--grade-caution); } }
+    &.safe    { @include grade-color('safe');    .dot { background: var(--grade-safe); } }
+    &.gray {
+      background: var(--bg-input); color: var(--text-muted);
+      border: 1px solid var(--border-subtle);
+    }
+  }
+  @mixin status($state) {
+    $color: map.get(map.get($status, $state), color);
+    $bg: map.get(map.get($status, $state), bg);    
+    
+    color: $color;
+    background:$bg;
+    border-color:color-mix(in srgb, $color 28%, white);
+    // &::before { @include fontello($icon); margin-right: 5px; }
+  }
+  .stat{display:inline-flex;align-items:center;gap:2px;@include fw(500);
+    @each $state, $value in $status {
+      &--#{$state} {
+        @include status($state);
+      }
+    }
+  }
+  .stat-text {@include flex($align: center, $inline: true);gap: 2px;
+    @each $state, $data in $status {
+      $index: list.index(map.keys($status), $state);
+      $state-color: map.get($data, color);
+
+      &--#{$state} {
+        color: $state-color;
+        &::before {
+          @include shape(12px, 12px);
+          background: url('../images/ico_status.png') no-repeat;
+          background-size: 12px auto;
+          background-position-y: ($index - 1) * -27px;
+        }
+      }
+    }
+    &--lg {gap: 6px;
+
+      @each $state, $data in $status {
+        $index: list.index(map.keys($status), $state);        
+        &.stat-text--#{$state}::before {
+          @include shape(16px, 16px);
+          background-size: 16px auto;
+          background-position-y: ($index - 1) * -36px;
+        }
+      }
+    }
+  }
+}

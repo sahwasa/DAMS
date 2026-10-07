@@ -1,0 +1,21 @@
+@use '../abstracts/' as *;
+@layer components {
+  .layer{display:none;position:absolute;left:100%;top:0px;width:292px;background:#fff;border-radius:$rad-4;border:1px solid $border;box-shadow:0.9px 2.9px 8px 0 rgba(0, 0, 0, 0.16);margin:-8px 0 0 13px;padding:15px;z-index:z(tooltip);
+    &__heading{@include title;}
+		&__title{@include fw(650);font-size:$font-size-13;color:$text-tit;}
+		&__close{margin-left:auto;color:$text-muted;
+      &:hover{color:$text-body}
+    }    
+    & > strong{display:block;width: calc(100% - 20px); color:#2287f3;font-size:16px;margin-bottom:5px;}
+    .lst{
+      li{display:flex;align-items:flex-start;margin-top:10px;color:#555;}
+      &::before{position:absolute;display:inline-block; content: "";overflow:hidden;font-size:0;width:10px;height:10px;transform:scaleX(1.2) rotate(45deg);background-color: #fff;border:1px solid #b4b4b4;border-width:0 0 1px 1px;left:-6px;top:17px;}
+      em{flex-shrink:0;width:80px;font-weight:bold;color:#333;
+        &::before{content:"·";margin-right:5px;}
+      }
+      .btn_del{position:absolute;right:17px;top:17px;
+        &::before{color:#555;font-size:14px;}
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+@use '../abstracts/' as *;
+@layer components { 
+  // ══════════════════════════════════════════
+  // PAGINATION — 3분할 그리드 (좌:라벨 / 중:버튼 / 우:여분)
+  // ══════════════════════════════════════════
+  .pagination {
+    display:grid; grid-template-columns:1fr auto 1fr;
+    align-items:center; padding:12px 16px;
+    border-top:1px solid var(--border-subtle);
+    font-size:12px; color:var(--text-muted);
+
+    .pg-label { justify-self:start; }
+    .pg-btns { justify-self:center; display:flex; gap:4px; align-items:center; }
+    .pg-right { justify-self:end; }
+  }
+
+  .pg-btn {
+    min-width:30px; height:30px; padding:0 8px;
+    border-radius:var(--radius);
+    border:1px solid var(--border-subtle);
+    background:var(--bg-panel); color:var(--text-muted);
+    font-size:12px;
+    display:inline-flex; align-items:center; justify-content:center;
+    cursor:pointer; user-select:none;
+    transition:background .12s, color .12s, border-color .12s;
+    font-variation-settings:'wght' 600; font-family:inherit;
+
+    &:hover:not(.disabled):not(.ellipsis) {
+      background:var(--bg-input-hover);
+      border-color:rgba(15,23,42,.16); color:var(--text-primary);
+    }
+    &.active {
+      background:var(--color-primary-strong);
+      border-color:var(--color-primary-strong);
+      color:#fff; cursor:default;
+      font-variation-settings:'wght' 700;
+    }
+    &.disabled { opacity:.4; cursor:not-allowed; }
+    &.ellipsis { border:none; background:none; cursor:default; }
+  }
+}
