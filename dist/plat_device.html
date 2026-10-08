@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="ko" data-thema="light">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+  <title>재난 예경보 통합관리시스템</title>
+  <link rel="stylesheet" href="css/main.css">  
+</head>
+<body>
+
+<div id="wrap" class="wrap">
+  <header class="header">
+  <h1 class="main_logo">
+    <a href="main.html" class="hdr-brand-title">재난 예경보 통합관리시스템</a>
+  </h1>
+    <nav aria-label="주메뉴">
+    <ul>
+      <li><a href="gis.html" class="is-active" aria-current="page">GIS 상황판</a></li>
+      <li><a href="warn_issue.html">재난 예경보 현황</a></li>
+      <li><a href="plat_org.html">통합플랫폼관리</a></li>
+      <li><a href="stat_event.html">통계</a></li>
+      <li><a href="guide_intro.html">이용안내</a></li>
+      <li><a href="sys_user.html">시스템관리</a></li>
+      <li><a href="log_sms.html">시스템이력</a></li>
+    </ul>
+  </nav>
+  
+  <div class="hdr-util">
+    <button type="button" class="hdr-user" title="내정보" aria-label="내정보" onclick="document.querySelector('.p_userInfo').showModal();">
+      <span class="hdr-user__name">홍길동 님 <small>(재난정보통신과)</small></span>
+      <span class="hdr-user__ico"><i data-lucide="user-round"></i></span>
+    </button>
+    <ul>
+      <li><button type="button" class="hdr-btn" onclick="location.href='login.html';" title="로그아웃" aria-label="로그아웃"><i data-lucide="log-out"></i></button></li>
+      <li><button type="button" class="hdr-btn" title="알림" aria-label="알림"><i data-lucide="bell"></i><span class="alert_num">82</span></button></li>
+      <li><button type="button" class="hdr-btn" title="전체메뉴" aria-label="전체메뉴"><i data-lucide="menu"></i></button></li>
+    </ul>
+  </div>
+</header>
+<div id="toast_alarm" class="toast-alarm">
+  <div class="toast info">
+    <p>신규 재난정보 승인요청이 접수되었습니다.</p>
+  </div>
+  <div class="toast success">
+    <p>[이재민 구조] 프로세스가 완료처리 되었습니다.</p>
+  </div>
+  <div class="toast warning">
+    <p>아직 발령하지 않은 재난정보가 있습니다.</p>
+  </div>
+  <div class="toast error">
+    <p>메세시 전송에 실패하였습니다.</p>
+  </div>
+</div>
+
+<dialog id="p_userInfo" class="modal p_userInfo" aria-labelledby="p_userInfo_title">
+  <header class="modal__heading">
+    <h2 id="p_userInfo_title" class="modal__title">내정보</h2>
+    <button type="button" class="modal__close btn ghost icon-only"><i data-lucide="x"></i>팝업 닫기</button>
+  </header>
+
+  <section class="modal__body">
+    <div class="form-grid view-mode">
+      <div class="field">
+        <label for="my_user_id">사용자ID</label>
+        <input id="my_user_id" class="input" value="admin" readonly />
+      </div>
+      <div class="field">
+        <label for="my_user_nm">사용자명 <span class="req">*</span></label>
+        <input id="my_user_nm" class="input" value="홍길동" readonly />
+      </div>
+      <div class="field">
+        <label for="my_blng_inst_cd">소속기관</label>
+        <select id="my_blng_inst_cd" class="select">
+          <option value="">소속기관</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="my_dept_cd">소속부서</label>
+        <select id="my_dept_cd" class="select">
+          <option value="">소속부서</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="my_pstn_nm">직급</label>
+        <input id="my_pstn_nm" class="input" value="주무관" readonly />
+      </div>
+      <!-- <div class="field">
+        <label>담당업무</label>
+        <input class="input" value="재난안전" readonly />
+      </div> -->
+      <div class="field">
+        <label for="my_mbtl_no">핸드폰</label>
+        <input id="my_mbtl_no" class="input" value="010-1234-5678" readonly />
+      </div>
+      <div class="field">
+        <label for="my_email_addr">이메일</label>
+        <input id="my_email_addr" class="input" value="abcdefg@korea.go.kr" readonly />
+      </div>
+      <div class="field">
+        <label for="my_auth_nm">권한</label>
+        <input id="my_auth_nm" class="input" value="시스템운영자" readonly />
+      </div>
+    </div>    
+  </section>
+  <div class="modal__footer">
+    <button type="button" class="btn primary">저장 / 수정</button>
+    <button type="button" class="btn outline" onclick="document.querySelector('.p_change_pw').showModal();" >비밀번호 변경</button>
+    <button type="button" class="btn neutral btn__cancel">닫기</button>
+  </div>
+</dialog>
+
+<dialog id="change_password_popup" class="modal p_change_pw"  aria-labelledby="change_password_title">
+  <header class="modal__heading">
+    <h2 id="change_password_title" class="modal__title">비밀번호 변경</h2>
+    <button type="button" class="modal__close btn ghost icon-only"><i data-lucide="x"></i>팝업 닫기</button>
+  </header>
+
+  <section class="modal__body">
+    <div class="form-grid">
+      <div class="field full">
+        <label for="current_pswd">현재 비밀번호 <span class="req">*</span></label>
+        <input class="input" type="password" id="current_pswd">
+      </div>
+
+      <div class="field full">
+        <label for="new_pswd">새 비밀번호 <span class="req">*</span></label>
+        <input class="input" type="password" id="new_pswd">
+      </div>
+
+      <div class="field full">
+        <label for="confirm_new_pswd">새 비밀번호 확인 <span class="req">*</span></label>
+        <input class="input" type="password" id="confirm_new_pswd">
+        <div class="err" hidden>비밀번호가 일치하지 않습니다.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="modal__footer">
+    <button type="button" class="btn secondary btn__cancel" onclick="remindMeLater()">나중에</button>
+    <button type="button" class="btn primary" onclick="saveNewPassword()">저장</button>
+  </div>
+</dialog>
+  <main id="content" class="main-container">
+    <nav class="nav lnb">
+  <div class="lnb-wrap">
+    <h1>통합플랫폼관리</h1>
+    <ul class="lnb-list">
+      <li><a class="nav-item nav-active" href="plat_org.html">연계기관 관리</a></li>       
+      <li><a class="nav-item" href="plat_account.html">통합플랫폼 계정관리</a></li>
+      <li><a class="nav-item" href="plat_device.html">단말기 관리</a></li>
+      <li><a class="nav-item" href="plat_collect.html">데이터 수집 현황</a></li>
+    </ul>
+  </div>
+  <span class="switch aside__toggle">
+    <input type="checkbox" id="aside__toggle">
+    <label for="aside__toggle">패널 여닫기 버튼</label>
+  </span>
+</nav>
+    <section class="sub__container device-mgmt">
+      <header class="sub__heading">
+        <h2 class="sub__title">단말기 관리</h2>
+        <nav class="breadcrumb" aria-label="현재 위치">
+  <ul>
+    <li><a href="/" aria-label="홈"><i data-lucide="house" aria-hidden="true"></i></a></li>
+    <li><a href="#">Category</a></li>
+    <li><a href="#">Subcategory</a></li>
+    <li aria-current="page">Item</li>
+  </ul>
+</nav>
+      </header>
+
+      <div class="sub__cont flex-wrap">
+        <!-- 좌측: 예경보 통합플랫폼 트리 -->
+        <div class="tree-panel" aria-label="예경보 통합플랫폼 선택">
+          <strong class="tree-panel__title" id="tree_title">예경보 통합플랫폼</strong>
+          <ul class="tree" id="platformTree" aria-labelledby="tree_title">
+            <li class="tree__item">
+              <label class="tree__check"><input type="checkbox" checked><span>전체</span></label>
+              <ul class="tree__sub">
+
+                <!-- 시도 (펼침 상태) -->
+                <li class="tree__item">
+                  <button type="button" class="tree__toggle" aria-expanded="true" aria-controls="tree_seoul" aria-label="서울특별시 하위 목록"></button>
+                  <label class="tree__check"><input type="checkbox"><span>서울특별시 (25)</span></label>
+                  <ul class="tree__sub tree__sub--leaf" id="tree_seoul">
+                    <li><label class="tree__check"><input type="checkbox" value="seoul_jongno"><span>서울시 연계플랫폼</span></label></li>
+                    <li><label class="tree__check"><input type="checkbox" value="seoul_jongno"><span>종로구 연계플랫폼</span></label></li>
+                    <li><label class="tree__check"><input type="checkbox" value="seoul_jung"><span>중구 연계플랫폼</span></label></li>
+                    <li><label class="tree__check"><input type="checkbox" value="seoul_yongsan"><span>용산구 연계플랫폼</span></label></li>
+                    <li><label class="tree__check"><input type="checkbox" value="seoul_seongdong"><span>성동구 연계플랫폼</span></label></li>
+                    <!-- ... -->
+                  </ul>
+                </li>
+
+                <!-- 시도 (접힘 상태) -->
+                <li class="tree__item">
+                  <button type="button" class="tree__toggle" aria-expanded="false" aria-controls="tree_busan" aria-label="부산광역시 하위 목록"></button>
+                  <label class="tree__check"><input type="checkbox"><span>부산광역시 (16)</span></label>
+                  <ul class="tree__sub tree__sub--leaf" id="tree_busan">
+                    <li><label class="tree__check"><input type="checkbox" value="busan_jung"><span>중구 연계플랫폼</span></label></li>
+                    <li><label class="tree__check"><input type="checkbox" value="busan_seo"><span>서구 연계플랫폼</span></label></li>
+                  </ul>
+                </li>
+
+                <li class="tree__item">
+                  <button type="button" class="tree__toggle" aria-expanded="false" aria-controls="tree_daegu" aria-label="대구광역시 하위 목록"></button>
+                  <label class="tree__check"><input type="checkbox"><span>대구광역시 (9)</span></label>
+                  <ul class="tree__sub tree__sub--leaf" id="tree_daegu">
+                    <li><label class="tree__check"><input type="checkbox" value="daegu_jung"><span>중구 연계플랫폼</span></label></li>
+                  </ul>
+                </li>
+                <!-- 이하 시도 동일 패턴 -->
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 우측: 지도 + 목록 -->
+        <div class="device-main">
+          <section class="map-wrap" aria-label="단말기 지도">
+            <div class="map__canvas">
+              <!-- 지도 타입 / 범례 -->
+              <div class="map-ctrl">                
+                <div class="btn_wrap map-mode">
+  <button type="button" class="map-mode__btn is-active" id="mapmode_1" onclick="mapMode(1)"><span>기본</span></button>
+  <button type="button" class="map-mode__btn" id="mapmode_2" onclick="mapMode(2)"><span>2D</span></button>
+  <button type="button" class="map-mode__btn" id="mapmode_3" onclick="mapMode(3)"><span>위성</span></button>
+</div>
+<details class="symbol-legend">
+  <summary class="symbol-legend__title">범례(단말기)</summary>
+  <div class="symbol-legend__body">
+    <ul class="symbol-legend__status">
+      <li><i class="stat stat--normal" area-hidden="true"></i>성공</li>
+      <li><i class="stat stat--fail" area-hidden="true"></i>실패</li>
+      <li><i class="stat stat--notuse" area-hidden="true"></i>정지</li>
+    </ul>
+    <ul class="symbol-legend__list">
+      <li><label for="BIS" class="BIS"><input type="checkbox" id="BIS" name=""> 버스정보시스템</label></li>
+      <li><label for="CDB" class="CDB"><input type="checkbox" id="CDB" name=""> 재해문자전광판(행정안전부)</label></li>
+      <li><label for="LDB" class="LDB"><input type="checkbox" checked id="LDB" name=""> 재해문자전광판(지자체)</label></li>
+      <li><label for="TDB" class="TDB"><input type="checkbox" checked id="TDB" name=""> 교통전광판</label></li>
+      <li><label for="PDB" class="PDB"><input type="checkbox" checked id="PDB" name=""> 전광판(민간)</label></li>
+      <li><label for="ADD" class="ADD"><input type="checkbox" checked id="ADD" name=""> 자율주행표시장치(C-ITS)</label></li>
+      <li><label for="VBS" class="VBS"><input type="checkbox" checked id="VBS" name=""> 마을방송시스템</label></li>
+      <li><label for="VNS" class="VNS"><input type="checkbox" checked id="VNS" name=""> 자동음성통보시스템</label></li>
+      <li><label for="VNI" class="VNI"><input type="checkbox" checked id="VNI" name=""> 자동음성통보시스템(실내)</label></li>
+      <li><label for="VNO" class="VNO"><input type="checkbox" checked id="VNO" name=""> 자동음성통보시스템(실외)</label></li>
+      <li><label for="RAS" class="RAS"><input type="checkbox" checked id="RAS" name=""> 자동우량경보시스템</label></li>
+      <li><label for="DSB" class="DSB"><input type="checkbox" checked id="DSB" name=""> 디지털사이니지</label></li>
+    </ul>       
+    <ul class="symbol-legend__etc">
+      <li>
+        <div class="toggle">
+          <input type="checkbox" id="audible-range" checked>
+        </div>
+        <label for="audible-range">가청범위</label>
+      </li>
+    </ul>    
+  </div>
+</details>
+              </div>
+              <div class="symbol symbol--device" style="--left:700px;--top:100px">
+                <button type="button" class="BIS selected">사간 (안성-V198)</button>
+                <div class="layer" style="display: block;">
+                  <header class="layer__heading">
+                    <strong class="layer__title">사간 (안성-V198)</strong>
+                    <button type="button" class="layer__close" area-label="닫기" onclick="document.activeElement.blur();"><i data-lucide="x">닫기</i></button>
+                  </header>
+                  <div class="layer__body">
+                    <ul class="grid-list">
+                      <dt>유형</dt><dd>버스정보시스템</dd>
+                      <dt>예경보 서버</dt><dd>안성 버스정보시스템</dd>
+                      <dt>상태</dt>
+                      <dd>
+                        <span class="stat-text stat-text--normal">정상</span>
+                        <!-- <span class="stat-text stat-text--err">오류</span>      -->
+                        <!-- <span class="stat-text stat-text--stop">정지</span>      -->
+                      </dd>
+                      <dt>메모</dt>
+                      <dd>비정상 사유</dd>
+                      <dt>가청범위</dt>
+                      <dd>300m ~ 500m</dd>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="symbol symbol--device" style="--left:100px;--top:50px">
+                <button type="button" class="LDB">00지구 00회관(단말기명)_성공</button>
+              </div>
+              <div class="symbol symbol--device" style="--left:100px;--top:90px">
+                <button type="button" class="LDB notuse">00지구 00회관(단말기명)_정지</button>
+              </div>
+            </div>
+          </section>
+
+          <section class="tbl-card">
+            <div class="toolbar-card">
+              <div class="input-group">
+                <label for="dev_type" class="sr-only">단말기 유형</label>
+                <select id="dev_type" class="select" title="단말기 유형">
+                  <option value="">단말기 유형</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label for="addr1" class="sr-only">설치주소</label>
+                <select id="addr1" class="select" title="시도">
+                  <option value="">시도</option>
+                </select>
+                <select id="addr2" class="select" title="시군구">
+                  <option value="">시군구</option>
+                </select>
+                <select id="addr3" class="select" title="읍면동">
+                  <option value="">읍면동</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label class="input-search input">
+                  <i data-lucide="search" aria-hidden="true"></i>
+                  <input type="search" placeholder="장비명,단말기명" title="검색어">
+                </label>
+              </div>
+              <div class="tool">
+                <button type="button" class="btn primary" onclick="search();">
+                  <i data-lucide="search" aria-hidden="true"></i>검색</button>
+              </div>
+            </div>
+
+            <div class="tbl-area">
+              <div class="tbl-top">
+                <div class="tbl-top__count">                
+                  <span class="stat-text stat-text--lg stat-text--all">전체 <em id="count_all">133</em></span>
+                  <span class="stat-text stat-text--lg stat-text--normal">정상 <em id="count_0">120</em></span>
+                  <span class="stat-text stat-text--lg stat-text--err">오류 <em id="count_9">13</em></span>
+                  <span class="stat-text stat-text--lg stat-text--stop">정지 <em id="count_9">13</em></span>
+                </div>
+                <div class="tool">
+                  <button button type="button" class="btn neutral" onclick="excelDown(1)">엑셀다운로드</button>
+                </div>
+              </div>
+              <div class="tbl-wrap tbl-device-list">
+                <table class="tbl--fixed">
+                  <caption>단말기 목록</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">상태</th>
+                      <th scope="col">예경보 통합플랫폼</th>
+                      <th scope="col">예경보서버</th>
+                      <th scope="col">단말기 유형</th>
+                      <th scope="col">단말기명</th>
+                      <th scope="col">설치주소</th>
+                      <th scope="col">상세</th>
+                    </tr>
+                  </thead>
+                  <tbody id="table_list">
+                    <tr class="row-empty" hidden>
+                      <td colspan="7">데이터 없음</td>
+                    </tr>
+                    <tr>
+                      <td><span class="stat-text stat-text--normal">정상</span></td>
+                      <td>예경보 통합플랫폼</td>
+                      <td>울산 자동음성통보</td>
+                      <td class="td-mono">재해문자전광판(행안부)</td>
+                      <td>00지구 00회관</td>
+                      <td>울산광역시 울주군</td>
+                      <td><button type="button" class="btn link sm" onclick="document.querySelector('.p_deviceInfo').showModal();">+ 상세</button></td>
+                    </tr>
+                    <tr>
+                      <td><span class="stat-text stat-text--err">오류</span></td>
+                      <td>예경보 통합플랫폼</td>
+                      <td>울산 자동음성통보</td>
+                      <td class="td-mono">재해문자전광판(행안부)</td>
+                      <td>00지구 00회관</td>
+                      <td>울산광역시 울주군</td>
+                      <td><button type="button" class="btn link sm" onclick="document.querySelector('.p_deviceInfo').showModal();">+ 상세</button></td>
+                    </tr>
+                    <tr>
+                      <td><span class="stat-text stat-text--stop">정지</span></td>
+                      <td>예경보 통합플랫폼</td>
+                      <td>울산 자동음성통보</td>
+                      <td class="td-mono">재해문자전광판(행안부)</td>
+                      <td>00지구 00회관</td>
+                      <td>울산광역시 울주군</td>
+                      <td><button type="button" class="btn link sm" onclick="document.querySelector('.p_deviceInfo').showModal();">+ 상세</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- 팝업 : 단말기 상세정보 -->
+<dialog id="p_deviceInfo" class="modal p_deviceInfo" aria-labelledby="p_deviceInfo_title">
+  <header class="modal__heading">
+    <h2 id="p_deviceInfo_title" class="modal__title">단말기 상세정보</h2>
+    <button type="button" class="modal__close btn ghost icon-only"><i data-lucide="x"></i>팝업 닫기</button>
+  </header>
+
+  <section class="modal__body">
+    <!-- 기본정보 -->
+    <fieldset class="form-group">
+      <legend class="tit"><h2>기본정보</h2></legend>
+      <div class="form-grid">
+        <div class="field">
+          <label for="dv_server">예경보 송출서버</label>
+          <input id="dv_server" class="input" value="청주시 마을 방송 시스템" readonly />
+        </div>
+        <div class="field">
+          <label for="dv_type">단말기 유형</label>
+          <input id="dv_type" class="input" value="청주시 마을 방송 시스템" readonly />
+        </div>
+        <div class="field">
+          <label for="dv_id">고유번호</label>
+          <input id="dv_id" class="input" value="CB-VS-0421" readonly />
+        </div>
+        <div class="field">
+          <label for="dv_name">단말기명</label>
+          <input id="dv_name" class="input" value="청주 흥덕구 1호기" readonly />
+        </div>
+        <div class="field full">
+          <label for="dv_addr">단말기 실지지역 / 주소</label>
+          <input id="dv_addr" class="input" value="부산시 · 청주시 흥덕구 산업로 123" readonly />
+        </div>
+        <div class="field">
+          <label for="dv_lat">위도</label>
+          <input id="dv_lat" class="input" value="36.6357" readonly />
+        </div>
+        <div class="field">
+          <label for="dv_lng">경도</label>
+          <input id="dv_lng" class="input" value="127.4917" readonly />
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- 사양정보 -->
+    <fieldset class="form-group">
+      <legend class="tit"><h2>사양정보</h2></legend>
+      <div class="form-grid view-mode">
+        <div class="field">
+          <label for="dv_model">모델명</label>
+          <input id="dv_model" class="input" value="SP-2000A" readonly />
+        </div>
+        <div class="field">
+          <label for="dv_maker">제조사</label>
+          <input id="dv_maker" class="input" value="한국음향" readonly />
+        </div>
+        <div class="field">
+          <label for="dv_output">단말기표출형식</label>
+          <input id="dv_output" class="input" value="음성송출" readonly />
+        </div>
+        <div class="field">
+          <label for="dv_height">높이(m)</label>
+          <input id="dv_height" class="input" value="12.5" readonly />
+        </div>
+        <div class="field">
+          <label for="dv_allow_min">허용 범위(m)</label>
+          <div class="input-group">
+            <input id="dv_allow_min" class="input" value="87" title="허용 범위 최소" readonly />
+            <span aria-hidden="true">~</span>
+            <input id="dv_allow_max" class="input" value="87" title="허용 범위 최대" readonly />
+          </div>
+        </div>
+        <div class="field">
+          <label for="dv_assume_min">가정범위(m)</label>
+          <div class="input-group">
+            <input id="dv_assume_min" class="input" value="80" title="가정범위 최소" readonly />
+            <span aria-hidden="true">~</span>
+            <input id="dv_assume_max" class="input" value="120" title="가정범위 최대" readonly />
+          </div>
+        </div>
+        <div class="field">
+          <label for="dv_db">음압(dB)</label>
+          <input id="dv_db" class="input" value="95" readonly />
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- 연계정보 -->
+    <fieldset class="form-group">
+      <legend class="tit"><h2>연계정보</h2></legend>
+      <div class="form-grid form-grid--3 view-mode">
+        <div class="field">
+          <span class="field__label" id="dv_status_lb">연계상태</span>
+          <div class="input" aria-labelledby="dv_status_lb">
+            <span class="stat-text stat-text--normal">정상</span>
+          </div>
+        </div>
+        <div class="field">
+          <label for="dv_polling">최근 접속시각(폴링)</label>
+          <input id="dv_polling" class="input" value="2026-09-17 09:42:10" readonly />
+        </div>
+        <div class="field">
+          <label for="dv_end">연결종료일시</label>
+          <input id="dv_end" class="input" value="-" readonly />
+        </div>
+        <div class="field">
+          <label for="dv_start">연계시작일</label>
+          <input id="dv_start" class="input" value="2023-04-11" readonly />
+        </div>
+        <div class="field">
+          <label for="dv_reg">등록일</label>
+          <input id="dv_reg" class="input" value="2023-04-11" readonly />
+        </div>
+        <div class="field">
+          <label for="dv_mod">수정일</label>
+          <input id="dv_mod" class="input" value="-" readonly />
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset class="form-group form-group--divide">
+      <div class="form-grid">
+        <div class="field full">
+          <label class="field__label" for="dv_status_lb">비고</label>
+          <textarea name="" id="" class="input"></textarea>          
+        </div>
+        <div class="field field-row">
+          <label for="useYN">사용여부</label>
+          <div class="toggle">
+            <input type="checkbox" id="useYN" checked="">
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </section>
+
+  <div class="modal__footer">
+    <p class="modal__updated">( 갱신시각 : <time datetime="2024-07-01T10:10:10">2024-07-01 10:10:10</time> )</p>
+    <button type="button" class="btn neutral btn__cancel">취소</button>
+    <button type="button" class="btn primary">저장</button>
+  </div>
+</dialog>
+
+
+<script src="js/hazard_icon.js"></script>
+<script src="js/vendor/lucide.js"></script>
+<script src="js/dialog.js"></script>
+<script src="js/tab.js"></script>
+<script>
+lucide.createIcons({
+  attrs: {
+    'stroke-width': 2,
+    class: 'icon'
+  }
+});
+  initTabAll();
+</script>
+<script src="../js/tree.js"></script>
+</body>
+</html>

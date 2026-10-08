@@ -3,17 +3,24 @@
   // ══════════════════════════════════════════
   // TREE LIST — 좌측 카테고리 네비
   // ══════════════════════════════════════════
-  .tree-list { list-style:none; padding:0; margin:0; }  
-  .tree-item {
-    display:flex; align-items:center; gap:8px;
-    padding:8px 12px; font-size:12px; color:var(--text-muted);
-    border-radius:6px; cursor:pointer; transition:all .12s;
-    font-variation-settings:'wght' 600;
-  
-    &:hover { background:var(--bg-input-hover); color:var(--text-primary); }
-    &.active {
-      background:var(--color-primary-dim); color:var(--color-primary-strong);
-      font-variation-settings:'wght' 700;
-    }
-  }
+  .tree-panel{flex:0 0 240px;padding:12px;border:1px solid #e5e7eb;border-radius:4px;background:#fff;
+    &__title{margin-bottom:8px;font-size:14px;color:$primary}}
+  // 전역 .check 스타일과 충돌해서 폭이 0으로 눌리던 문제 → 트리 전용 클래스(tree__check)로 분리
+  .tree{font-size:12px;line-height:1.4;color:#333;
+    >.tree__item{padding-left:0}
+    &__item{position:relative;padding:3px 0 3px 20px}
+    &__toggle{position:absolute;left:0;top:5px;width:12px;height:12px;border-radius:2px;background:$primary;cursor:pointer;
+      &::before,&::after{@include shape(8px,2px);position:absolute;left:50%;top:50%;background:#fff;transform:translate(-50%,-50%);}
+      &::after{width:2px;height:8px}
+      &[aria-expanded=true]::after{display:none}
+      &[aria-expanded=false]~.tree__sub{display:none}}
+    &__sub{padding:3px 0 0 1px;
+      &--leaf{margin-left:-14px;padding-left:13px;border-left:1px dotted $neutral;
+        li{position:relative; padding-block:3px;
+          &::before{@include shape(7px,0);border-top:1px dotted $neutral;position: absolute;left:-14px;top:10px;}
+          &:last-child::before{background-color:#fff;height:13px;}
+        }}}
+    &__check{display:flex;align-items:center;gap:4px;width:100%;min-width:0;margin:0;padding:0;cursor:pointer;
+      span{flex:1;min-width:0;white-space:nowrap;word-break:keep-all}
+      input{flex:none;margin:0}}}
 }

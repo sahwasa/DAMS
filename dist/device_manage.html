@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ko" data-thema="light">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+  <title>재난 예경보 통합관리시스템</title>
+  <link rel="stylesheet" href="css/main.css">  
+</head>
+<body>
+
+<div id="wrap" class="wrap">
+  <header class="header">
+  <h1 class="main_logo">
+    <a href="main.html" class="hdr-brand-title">재난 예경보 통합관리시스템</a>
+  </h1>
+    <nav aria-label="주메뉴">
+    <ul>
+      <li><a href="gis.html" class="is-active" aria-current="page">GIS 상황판</a></li>
+      <li><a href="warn_issue.html">재난 예경보 현황</a></li>
+      <li><a href="plat_org.html">통합플랫폼관리</a></li>
+      <li><a href="stat_event.html">통계</a></li>
+      <li><a href="guide_intro.html">이용안내</a></li>
+      <li><a href="sys_user.html">시스템관리</a></li>
+      <li><a href="log_sms.html">시스템이력</a></li>
+    </ul>
+  </nav>
+  
+  <div class="hdr-util">
+    <button type="button" class="hdr-user" popovertarget="p_userInfo" title="내정보" aria-label="내정보">
+      <span class="hdr-user__name">홍길동 님 <small>(재난정보통신과)</small></span>
+      <span class="hdr-user__ico"><i data-lucide="user-round"></i></span>
+    </button>
+    <ul>
+      <li><button type="button" class="hdr-btn" onclick="location.href='login.html';" title="로그아웃" aria-label="로그아웃"><i data-lucide="log-out"></i></button></li>
+      <li><button type="button" class="hdr-btn" title="알림" aria-label="알림"><i data-lucide="bell"></i><span class="alert_num">82</span></button></li>
+      <li><button type="button" class="hdr-btn" title="전체메뉴" aria-label="전체메뉴"><i data-lucide="menu"></i></button></li>
+    </ul>
+  </div>
+</header>
+<div id="toast_alarm" class="toast-alarm">
+  <div class="toast info">
+    <p>신규 재난정보 승인요청이 접수되었습니다.</p>
+  </div>
+  <div class="toast success">
+    <p>[이재민 구조] 프로세스가 완료처리 되었습니다.</p>
+  </div>
+  <div class="toast warning">
+    <p>아직 발령하지 않은 재난정보가 있습니다.</p>
+  </div>
+  <div class="toast error">
+    <p>메세시 전송에 실패하였습니다.</p>
+  </div>
+</div>
+
+<dialog id="p_userInfo" class="modal" popover="manual" aria-labelledby="p_userInfo_title">
+  <header class="modal__heading">
+    <h2 id="p_userInfo_title" class="modal__title">내정보</h2>
+    <button type="button" class="modal__close btn ghost icon-only" popovertarget="p_userInfo" popovertargetaction="hide"><i data-lucide="x"></i>팝업 닫기</button>
+  </header>
+
+  <section class="modal__body">
+    <div class="form-grid view-mode">
+      <div class="field">
+        <label for="my_user_id">사용자ID</label>
+        <input id="my_user_id" class="input" value="admin" readonly />
+      </div>
+      <div class="field">
+        <label for="my_user_nm">사용자명 <span class="req">*</span></label>
+        <input id="my_user_nm" class="input" value="홍길동" readonly />
+      </div>
+      <div class="field">
+        <label for="my_blng_inst_cd">소속기관</label>
+        <select id="my_blng_inst_cd" class="select">
+          <option value="">소속기관</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="my_dept_cd">소속부서</label>
+        <select id="my_dept_cd" class="select">
+          <option value="">소속부서</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="my_pstn_nm">직급</label>
+        <input id="my_pstn_nm" class="input" value="주무관" readonly />
+      </div>
+      <!-- <div class="field">
+        <label>담당업무</label>
+        <input class="input" value="재난안전" readonly />
+      </div> -->
+      <div class="field">
+        <label for="my_mbtl_no">핸드폰</label>
+        <input id="my_mbtl_no" class="input" value="010-1234-5678" readonly />
+      </div>
+      <div class="field">
+        <label for="my_email_addr">이메일</label>
+        <input id="my_email_addr" class="input" value="abcdefg@korea.go.kr" readonly />
+      </div>
+      <div class="field">
+        <label for="my_auth_nm">권한</label>
+        <input id="my_auth_nm" class="input" value="시스템운영자" readonly />
+      </div>
+    </div>    
+  </section>
+  <div class="modal__footer">
+    <button type="button" class="btn primary">저장 / 수정</button>
+    <button type="button" class="btn outline" popovertarget="change_password_popup">비밀번호 변경</button>
+    <button type="button" class="btn neutral" popovertarget="p_userInfo" popovertargetaction="hide">닫기</button>
+  </div>
+</dialog>
+
+<dialog id="change_password_popup" class="modal" popover="manual" aria-labelledby="change_password_title">
+  <header class="modal__heading">
+    <h2 id="change_password_title" class="modal__title">비밀번호 변경</h2>
+    <button type="button" class="modal__close btn ghost icon-only" popovertargetaction="close" popovertarget="change_password_popup"><i data-lucide="x"></i>팝업 닫기</button>
+  </header>
+
+  <section class="modal__body">
+    <div class="form-grid">
+      <div class="field full">
+        <label for="current_pswd">현재 비밀번호 <span class="req">*</span></label>
+        <input class="input" type="password" id="current_pswd">
+      </div>
+
+      <div class="field full">
+        <label for="new_pswd">새 비밀번호 <span class="req">*</span></label>
+        <input class="input" type="password" id="new_pswd">
+      </div>
+
+      <div class="field full">
+        <label for="confirm_new_pswd">새 비밀번호 확인 <span class="req">*</span></label>
+        <input class="input" type="password" id="confirm_new_pswd">
+        <div class="err" hidden>비밀번호가 일치하지 않습니다.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="modal__footer">
+    <button type="button" class="btn secondary" onclick="remindMeLater()">나중에</button>
+    <button type="button" class="btn primary" onclick="saveNewPassword()">저장</button>
+  </div>
+</dialog>
+  <main id="content" class="main-container">
+    <section class="sub__container device-mgmt">
+      <header class="sub__heading">
+        <h2 class="sub__title">단말기 관리</h2>
+        <nav class="breadcrumb" aria-label="현재 위치">
+          <ol>
+            <li><a href="/" aria-label="홈"><i data-lucide="house" aria-hidden="true"></i></a></li>
+            <li><a href="#">Category</a></li>
+            <li><a href="#">Subcategory</a></li>
+            <li aria-current="page">Item</li>
+          </ol>
+        </nav>
+      </header>
+
+      <div class="sub__cont">
+        <!-- 좌측: 예경보 통합플랫폼 트리 -->
+        <aside class="tree-panel" aria-label="예경보 통합플랫폼 선택">
+          <strong class="tree-panel__title">예경보 통합플랫폼</strong>
+          <!-- 전체 체크박스: 일부 선택 시 JS에서 .indeterminate = true -->
+          <ul class="tree">
+            <li class="tree__item">
+              <label class="check"><input type="checkbox" id="tree_all"><span>전체</span></label>
+              <ul class="tree__sub">
+                <li class="tree__item is-open">
+                  <button type="button" class="tree__toggle" aria-expanded="true" aria-label="서울특별시 접기">
+                    <i data-lucide="minus" aria-hidden="true"></i>
+                  </button>
+                  <label class="check"><input type="checkbox"><span>서울특별시 (25)</span></label>
+                  <ul class="tree__sub tree__sub--leaf">
+                    <li><label class="check"><input type="checkbox"><span>종로구 연계플랫폼</span></label></li>
+                    <li><label class="check"><input type="checkbox"><span>중구 연계플랫폼</span></label></li>
+                    <li><label class="check"><input type="checkbox"><span>용산구 연계플랫폼</span></label></li>
+                    <li><label class="check"><input type="checkbox"><span>성동구 연계플랫폼</span></label></li>
+                    <li><label class="check"><input type="checkbox"><span>광진구 연계플랫폼</span></label></li>
+                    <li><label class="check"><input type="checkbox"><span>동대문구 연계플랫폼</span></label></li>
+                    <li><label class="check"><input type="checkbox"><span>중랑구 연계플랫폼</span></label></li>
+                    <li><label class="check"><input type="checkbox"><span>성북구 연계플랫폼</span></label></li>
+                    <li><label class="check"><input type="checkbox"><span>강북구 연계플랫폼</span></label></li>
+                    <li><label class="check"><input type="checkbox"><span>도봉구 연계플랫폼</span></label></li>
+                    <li><label class="check"><input type="checkbox"><span>노원구 연계플랫폼</span></label></li>
+                    <li><label class="check"><input type="checkbox"><span>은평구 연계플랫폼</span></label></li>
+                  </ul>
+                </li>
+                <li class="tree__item">
+                  <button type="button" class="tree__toggle" aria-expanded="false" aria-label="부산광역시 펼치기">
+                    <i data-lucide="plus" aria-hidden="true"></i>
+                  </button>
+                  <label class="check"><input type="checkbox"><span>부산광역시 (16)</span></label>
+                </li>
+                <li class="tree__item">
+                  <button type="button" class="tree__toggle" aria-expanded="false" aria-label="대구광역시 펼치기">
+                    <i data-lucide="plus" aria-hidden="true"></i>
+                  </button>
+                  <label class="check"><input type="checkbox"><span>대구광역시 (9)</span></label>
+                </li>
+                <!-- 이하 시도 동일 패턴 반복 -->
+              </ul>
+            </li>
+          </ul>
+        </aside>
+
+        <!-- 우측: 지도 + 목록 -->
+        <div class="device-main">
+          <section class="map-wrap" aria-label="단말기 지도">
+            <div class="map__canvas">
+              <!-- 지도 타입 / 범례 -->
+              <div class="map-ctrl">
+                <div class="map-type" role="radiogroup" aria-label="지도 유형">
+                  <label class="map-type__item"><input type="radio" name="mapType" value="base" checked><span class="map-type__thumb map-type__thumb--base"></span>기본</label>
+                  <label class="map-type__item"><input type="radio" name="mapType" value="2d"><span class="map-type__thumb map-type__thumb--2d"></span>2D</label>
+                  <label class="map-type__item"><input type="radio" name="mapType" value="sat"><span class="map-type__thumb map-type__thumb--sat"></span>위성</label>
+                </div>
+                <button type="button" class="map-legend__btn" aria-expanded="false" aria-controls="map_legend">
+                  범례(단말기)<i data-lucide="chevron-up" aria-hidden="true"></i>
+                </button>
+              </div>
+
+              <!-- 도넛 클러스터 -->
+              <div class="map-cluster" style="left:150px;top:90px;">
+                <button type="button" class="map-cluster__btn map-donut" style="--ok:70%;--ng:15%" aria-expanded="false" aria-label="단말기 118개" aria-controls="d_cluster_1">
+                  <b class="map-donut__cnt">118</b>
+                </button>
+                <div class="cluster-tooltip cluster-tooltip--device" id="d_cluster_1">
+                  <span class="stat-text stat-text--all">전체 118</span>
+                  <span class="stat-text stat-text--ok">성공 100</span>
+                  <span class="stat-text stat-text--ng">실패 10</span>
+                  <span class="stat-text stat-text--off">정지 8</span>
+                </div>
+              </div>
+              <div class="map-cluster" style="left:250px;top:80px;">
+                <button type="button" class="map-cluster__btn map-donut map-donut--sm" style="--ok:100%;--ng:0%" aria-expanded="false" aria-label="단말기 12개" aria-controls="d_cluster_2">
+                  <b class="map-donut__cnt">12</b>
+                </button>
+                <div class="cluster-tooltip cluster-tooltip--device" id="d_cluster_2">
+                  <span class="stat-text stat-text--all">전체 12</span>
+                  <span class="stat-text stat-text--ok">성공 12</span>
+                </div>
+              </div>
+
+              <!-- 개별 단말기 심볼 + 팝업 -->
+              <div class="symbol symbol--device" style="--left:210px;--top:230px">
+                <button type="button" class="TDB selected" aria-describedby="d_pop_1">사간(안성-V198)_성공</button>
+              </div>
+              <div class="map-popup" id="d_pop_1" role="tooltip" style="--left:210px;--top:240px">
+                <strong class="map-popup__title"><i class="dot dot--ok" aria-hidden="true"></i>사간 (안성-V198)</strong>
+                <dl class="map-popup__list">
+                  <dt>유형</dt><dd>자동음성통보</dd>
+                  <dt>예경보서버</dt><dd>안성 자동음성통보시스템</dd>
+                  <dt>상태</dt><dd><span class="stat-text stat-text--ok"><i data-lucide="circle-check" aria-hidden="true"></i>성공</span></dd>
+                  <dt>가청범위</dt><dd>300m ~ 500m</dd>
+                </dl>
+              </div>
+            </div>
+          </section>
+
+          <section class="tbl-card">
+            <div class="toolbar-card">
+              <div class="input-group">
+                <label for="dev_type" class="sr-only">단말기 유형</label>
+                <select id="dev_type" class="select" title="단말기 유형">
+                  <option value="">단말기 유형</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label for="addr1" class="sr-only">설치주소</label>
+                <select id="addr1" class="select" title="시도">
+                  <option value="">시도</option>
+                </select>
+                <select id="addr2" class="select" title="시군구">
+                  <option value="">시군구</option>
+                </select>
+                <select id="addr3" class="select" title="읍면동">
+                  <option value="">읍면동</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label class="input-search input">
+                  <i data-lucide="search" aria-hidden="true"></i>
+                  <input type="search" placeholder="장비명,단말기명" title="검색어">
+                </label>
+              </div>
+              <div class="tool">
+                <button type="button" class="btn primary" onclick="search();">
+                  <i data-lucide="search" aria-hidden="true"></i>검색</button>
+              </div>
+            </div>
+
+            <div class="tbl-area">
+              <div class="tbl-top">
+                <div class="tbl-top__count">
+                  <span class="stat-text stat-text--all"><i data-lucide="circle-dot" aria-hidden="true"></i>전체 <em id="count_all">133</em></span>
+                  <span class="stat-text stat-text--ok"><i data-lucide="circle-check" aria-hidden="true"></i>성공 <em id="count_0">131</em></span>
+                  <span class="stat-text stat-text--ng"><i data-lucide="circle-alert" aria-hidden="true"></i>실패 <em id="count_9">1</em></span>
+                  <span class="stat-text stat-text--off"><i data-lucide="circle-x" aria-hidden="true"></i>정지 <em id="count_off">1</em></span>
+                </div>
+              </div>
+              <div class="tbl-wrap tbl-device-list">
+                <table class="tbl--fixed">
+                  <caption>단말기 목록</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">상태</th>
+                      <th scope="col">예경보 통합플랫폼</th>
+                      <th scope="col">예경보서버</th>
+                      <th scope="col">단말기 유형</th>
+                      <th scope="col">단말기명</th>
+                      <th scope="col">설치주소</th>
+                      <th scope="col">상세</th>
+                    </tr>
+                  </thead>
+                  <tbody id="table_list">
+                    <tr class="row-empty" hidden>
+                      <td colspan="7">데이터 없음</td>
+                    </tr>
+                    <tr>
+                      <td><span class="stat-text stat-text--ok"><i data-lucide="circle-check" aria-hidden="true"></i>성공</span></td>
+                      <td>예경보 통합플랫폼</td>
+                      <td>울산 자동음성통보</td>
+                      <td><div class="chip-list chip-list--device"><span>재해문자전광판(행안부)</span></div></td>
+                      <td>00지구 00회관</td>
+                      <td>울산광역시 울주군</td>
+                      <td><button type="button" class="btn link sm">상세</button></td>
+                    </tr>
+                    <tr>
+                      <td><span class="stat-text stat-text--ng"><i data-lucide="circle-alert" aria-hidden="true"></i>실패</span></td>
+                      <td>예경보 통합플랫폼</td>
+                      <td>울산 자동음성통보</td>
+                      <td><div class="chip-list chip-list--device"><span>재해문자전광판(행안부)</span></div></td>
+                      <td>00지구 00회관</td>
+                      <td>울산광역시 울주군</td>
+                      <td><button type="button" class="btn link sm">상세</button></td>
+                    </tr>
+                    <tr>
+                      <td><span class="stat-text stat-text--off"><i data-lucide="circle-x" aria-hidden="true"></i>정지</span></td>
+                      <td>예경보 통합플랫폼</td>
+                      <td>울산 자동음성통보</td>
+                      <td><div class="chip-list chip-list--device"><span>재해문자전광판(행안부)</span></div></td>
+                      <td>00지구 00회관</td>
+                      <td>울산광역시 울주군</td>
+                      <td><button type="button" class="btn link sm">상세</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+<script src="js/hazard_icon.js"></script>
+<script src="js/vendor/lucide.js"></script>
+<script src="js/dialog.js"></script>
+<script src="js/tab.js"></script>
+<script>
+lucide.createIcons({
+  attrs: {
+    'stroke-width': 2,
+    class: 'icon'
+  }
+});
+  initTabAll();
+</script>
+</body>
+</html>

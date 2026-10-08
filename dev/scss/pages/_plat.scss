@@ -1,0 +1,11 @@
+@use '../abstracts/' as *;
+@use 'sass:list';
+@use 'sass:color';
+@use 'sass:map';
+
+@layer pages {
+  .device-main{@include flex($align:stretch,$direction:column);gap:12px;min-height:0;
+    .map-wrap{flex:1;}
+    .tbl-device-list{max-height:245px;}
+  }
+}

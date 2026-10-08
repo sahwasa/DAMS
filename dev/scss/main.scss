@@ -11,10 +11,6 @@
 @use "./base/reset";
 @use "./base/utilities";
 
-// Layout
-@use "./layout/layout";
-@use "./layout/header";
-
 // Components
 @use "./components/forms";
 @use "./components/buttons";
@@ -28,8 +24,13 @@
 @use "./components/badge";
 @use "./components/icon";
 @use "./components/list";
+@use "./components/tree";
+
+// Layout
+@use "./layout/layout";
+@use "./layout/header";
 
 // Pages
 @use "./pages/gis";
 @use "./pages/warn";
-// @use "./pages/pages";
+@use "./pages/plat";

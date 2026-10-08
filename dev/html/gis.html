@@ -94,7 +94,8 @@
         <div class="panel-wrap">
           <!-- 상세패널 토글버튼. 다시 열때는 el.hidden=false -->
           <div class="panel-head panel-detail__close">
-            <button type="button" class="btn ghost icon-only" aria-label="닫기" onclick="document.getElementById('asideDetail').hidden=true"><i data-lucide="x"></i></button>
+            <h3 class="sr-only">상세패널</h3>
+            <button type="button" class="btn ghost icon-only" aria-label="닫기" onclick="document.getElementById('asideDetail').hidden=true"><i data-lucide="x"></i></button>   
           </div>
           <div class="panel-cont">          
             <form action="#" class="panel-filter panel-filter__form">
@@ -175,13 +176,7 @@
     </aside>
 
     <section class="main-cont map-wrap">
-      <div class="map__canvas">
-        <div class="map-ctrl">
-          <div class="btn_wrap map-mode">
-            <button type="button" class="map-mode__btn is-active" id="mapmode_1" onclick="mapMode(1)"><span>기본</span></button>
-            <button type="button" class="map-mode__btn" id="mapmode_2" onclick="mapMode(2)"><span>2D</span></button>
-            <button type="button" class="map-mode__btn" id="mapmode_3" onclick="mapMode(3)"><span>위성</span></button>
-          </div>
+      <div class="map__canvas">        
           @@include('../inc/device-legend.html')
         </div>
 

@@ -50,7 +50,7 @@
       &:hover { background:rgba(220,38,38,.06); }
     }
     &.link {
-      background:none; color:$primary; padding:4px 6px; text-decoration:none;
+      background:none; color:$text-body; padding:4px 6px; text-decoration:none;
       &:hover { text-decoration:underline; }
     }
     // ── 사이즈 ──

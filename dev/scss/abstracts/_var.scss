@@ -47,6 +47,9 @@ $status: (
   ok: (color: var(--status-ok), bg: var(--status-ok-dim)),
   ng: (color: var(--status-ng),    bg: var(--status-ng-dim)),
   off:(color: var(--status-off), bg: var(--status-off-dim)),
+  normal: (color: var(--status-ok), bg: var(--status-ok-dim)),
+  err:    (color: var(--status-ng),    bg: var(--status-ng-dim)),
+  stop:(color: var(--status-off), bg: var(--status-off-dim)),
 );
 $conneciton:( connection:#25A849,disconnection:#DE3146 );
 

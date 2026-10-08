@@ -4,10 +4,7 @@
   /* tab */
   .tab{
     @at-root .full-content .tab__btn .btn{min-width:150px;}
-    &__card{overflow:hidden;
-      &:not(:has(.tab__list)){
-        padding-top:$sp-14;
-      }
+    &__card{overflow:hidden;      
       & > .tab__cont{padding:$sp-20;}
   }
     &__wrap{height:100%;min-height:0;}

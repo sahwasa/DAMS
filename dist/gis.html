@@ -28,7 +28,7 @@
   </nav>
   
   <div class="hdr-util">
-    <button type="button" class="hdr-user" popovertarget="p_userInfo" title="내정보" aria-label="내정보">
+    <button type="button" class="hdr-user" title="내정보" aria-label="내정보" onclick="document.querySelector('.p_userInfo').showModal();">
       <span class="hdr-user__name">홍길동 님 <small>(재난정보통신과)</small></span>
       <span class="hdr-user__ico"><i data-lucide="user-round"></i></span>
     </button>
@@ -54,10 +54,10 @@
   </div>
 </div>
 
-<dialog id="p_userInfo" class="modal" popover="manual" aria-labelledby="p_userInfo_title">
+<dialog id="p_userInfo" class="modal p_userInfo" aria-labelledby="p_userInfo_title">
   <header class="modal__heading">
     <h2 id="p_userInfo_title" class="modal__title">내정보</h2>
-    <button type="button" class="modal__close btn ghost icon-only" popovertarget="p_userInfo" popovertargetaction="hide"><i data-lucide="x"></i>팝업 닫기</button>
+    <button type="button" class="modal__close btn ghost icon-only"><i data-lucide="x"></i>팝업 닫기</button>
   </header>
 
   <section class="modal__body">
@@ -106,15 +106,15 @@
   </section>
   <div class="modal__footer">
     <button type="button" class="btn primary">저장 / 수정</button>
-    <button type="button" class="btn outline" popovertarget="change_password_popup">비밀번호 변경</button>
-    <button type="button" class="btn neutral" popovertarget="p_userInfo" popovertargetaction="hide">닫기</button>
+    <button type="button" class="btn outline" onclick="document.querySelector('.p_change_pw').showModal();" >비밀번호 변경</button>
+    <button type="button" class="btn neutral btn__cancel">닫기</button>
   </div>
 </dialog>
 
-<dialog id="change_password_popup" class="modal" popover="manual" aria-labelledby="change_password_title">
+<dialog id="change_password_popup" class="modal p_change_pw"  aria-labelledby="change_password_title">
   <header class="modal__heading">
     <h2 id="change_password_title" class="modal__title">비밀번호 변경</h2>
-    <button type="button" class="modal__close btn ghost icon-only" popovertargetaction="close" popovertarget="change_password_popup"><i data-lucide="x"></i>팝업 닫기</button>
+    <button type="button" class="modal__close btn ghost icon-only"><i data-lucide="x"></i>팝업 닫기</button>
   </header>
 
   <section class="modal__body">
@@ -138,7 +138,7 @@
   </section>
 
   <div class="modal__footer">
-    <button type="button" class="btn secondary" onclick="remindMeLater()">나중에</button>
+    <button type="button" class="btn secondary btn__cancel" onclick="remindMeLater()">나중에</button>
     <button type="button" class="btn primary" onclick="saveNewPassword()">저장</button>
   </div>
 </dialog>
@@ -235,7 +235,8 @@
         <div class="panel-wrap">
           <!-- 상세패널 토글버튼. 다시 열때는 el.hidden=false -->
           <div class="panel-head panel-detail__close">
-            <button type="button" class="btn ghost icon-only" aria-label="닫기" onclick="document.getElementById('asideDetail').hidden=true"><i data-lucide="x"></i></button>
+            <h3 class="sr-only">상세패널</h3>
+            <button type="button" class="btn ghost icon-only" aria-label="닫기" onclick="document.getElementById('asideDetail').hidden=true"><i data-lucide="x"></i></button>   
           </div>
           <div class="panel-cont">          
             <form action="#" class="panel-filter panel-filter__form">
@@ -316,14 +317,13 @@
     </aside>
 
     <section class="main-cont map-wrap">
-      <div class="map__canvas">
-        <div class="map-ctrl">
+      <div class="map__canvas">        
           <div class="btn_wrap map-mode">
-            <button type="button" class="map-mode__btn is-active" id="mapmode_1" onclick="mapMode(1)"><span>기본</span></button>
-            <button type="button" class="map-mode__btn" id="mapmode_2" onclick="mapMode(2)"><span>2D</span></button>
-            <button type="button" class="map-mode__btn" id="mapmode_3" onclick="mapMode(3)"><span>위성</span></button>
-          </div>
-          <details class="symbol-legend">
+  <button type="button" class="map-mode__btn is-active" id="mapmode_1" onclick="mapMode(1)"><span>기본</span></button>
+  <button type="button" class="map-mode__btn" id="mapmode_2" onclick="mapMode(2)"><span>2D</span></button>
+  <button type="button" class="map-mode__btn" id="mapmode_3" onclick="mapMode(3)"><span>위성</span></button>
+</div>
+<details class="symbol-legend">
   <summary class="symbol-legend__title">범례(단말기)</summary>
   <div class="symbol-legend__body">
     <ul class="symbol-legend__status">

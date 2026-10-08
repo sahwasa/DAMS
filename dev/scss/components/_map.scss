@@ -55,13 +55,12 @@
         &.selected,
         &:has(:checked){background-image:url(../images/device_ico_on_GR.png);width:24px;height:35px;transform:translate(2px, -18px);}	
         &.fail{background-image:url(../images/device_ico_RE.png);
-        &.selected{background-image:url(../images/device_ico_on_RE.png);}
-        &.notuse{background-image:url(../images/device_ico_GY.png);
-        &.selected{background-image:url(../images/device_ico_on_GY.png);}
+          &.selected{background-image:url(../images/device_ico_on_RE.png);}
         }
-      }}
-      .layer{width:222px;}
-    }
+        &.notuse{background-image:url(../images/device_ico_GY.png);
+          &.selected{background-image:url(../images/device_ico_on_GY.png);}}
+    }}
+    .layer{width:222px;}
     &--hazard{
       > button{display:flex;justify-content:center;width:26px;height:24px;white-space:pre;background-repeat:no-repeat;font-size:0;cursor:pointer;}
     }
@@ -79,7 +78,7 @@
     &__body{overflow:hidden;background-color:#fff;border:1px solid $border;text-align:left;border-radius:0 0 $rad-8 $rad-8;    
       & > ul{border-bottom:1px solid $border;}
     }
-    &__status{@include flex;padding:$sp-8 $sp-10;
+    &__status{@include flex;padding:$sp-4 $sp-10;
       li{flex:1; @include flex($align:center);gap:$sp-6;padding-block:3px;}
       .stat{@include shape(18px, 18px);border:2px solid #fff;box-shadow:0 2px 1px 0px rgba(0,0,0,.3); border-radius:50%;
         &--normal {background-color:#10b803;}
@@ -87,8 +86,8 @@
         &--notuse {background-color:#a7a7a7;}
       }
     }
-    &__list{padding:$sp-10;
-      label,i{display:flex;gap:$sp-6;font-size:13px;padding-block:3px;line-height:20px;@include fw(500);
+    &__list{padding:$sp-8 $sp-10;
+      label,i{display:flex;gap:$sp-6;font-size:12px;line-height:22px;@include fw(500);
         &::before{@include shape(20px,20px);background-image:url(../images/device_ico_GR.png);background-size:45px;}
       }
       label{cursor:pointer;
@@ -98,7 +97,7 @@
         }
       }
     }
-    &__etc{@include flex;padding:$sp-8 $sp-10;
+    &__etc{@include flex;padding:$sp-4 $sp-10;
       li{flex:1; @include flex($align:center);gap:$sp-6;padding-block:3px;}
     }
     // &:not(:has(.folding :checked)) .symbol-legend__body{max-height:0;}

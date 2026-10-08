@@ -1,0 +1,115 @@
+@@include('../inc/top.html')
+<div id="wrap" class="wrap">
+  @@include('../inc/header.html')
+  <main id="content" class="main-container">
+    @@include('../inc/lnb-warn.html')
+    <section class="sub__container">
+      <header class="sub__heading">
+        <h2 class="sub__title">재난발생현황</h2>
+        @@include('../inc/breadcrumb.html')
+      </header>
+
+      <div class="sub__cont">
+        <div class="toolbar-card">
+          <div class="input-group">
+            <label for="dev_type" class="sr-only">단말기 유형</label>
+            <select id="dev_type" class="select" title="단말기 유형">
+              <option value="">단말기 유형</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="addr1" class="sr-only">설치주소</label>
+            <select id="addr1" class="select" title="시도">
+              <option value="">시도</option>
+            </select>
+            <select id="addr2" class="select" title="시군구">
+              <option value="">시군구</option>
+            </select>
+            <select id="addr3" class="select" title="읍면동">
+              <option value="">읍면동</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label class="input-search input">
+              <i data-lucide="search" aria-hidden="true"></i>
+              <input type="search" placeholder="장비명,단말기명" title="검색어">
+            </label>
+          </div>
+          <div class="tool">
+            <button type="button" class="btn primary" onclick="search();">
+              <i data-lucide="search" aria-hidden="true"></i>검색</button>
+          </div>
+        </div>
+        <div class="tbl-area">
+          <div class="tbl-top">            
+            <div class="tool">
+              <button button type="button" class="btn neutral" onclick="excelDown(1)">엑셀다운로드</button>
+            </div>
+          </div>
+          <div class="tbl-wrap">
+          <table class="tbl--fixed tbl--checkbox">
+            <caption>통보문 목록</caption>
+            <thead>
+              <tr>
+                <th scope="col">번호</th>
+                <th scope="col">구분</th>
+                <th scope="col">통보기관명</th>
+                <th scope="col">통보문 제목 내용</th>
+                <th scope="col">지역</th>
+                <th scope="col">발표일시</th>
+                <th scope="col">발효/발생일시</th>
+              </tr>
+            </thead>
+            <tbody id="table_list">
+              <tr class="row-empty" hidden>
+                <td colspan="7">데이터 없음</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>기상특보</td>
+                <td>기상청</td>
+                <td></td>
+                <td></td>
+                <td>2026-06-15 19:03:33</td>
+                <td>2026-06-15 19:03:33</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>홍수예보</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>2026-06-15 19:03:33</td>
+                <td>2026-06-15 19:03:33</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>지진.지진해일</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>2026-06-15 19:03:33</td>
+                <td>2026-06-15 19:03:33</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>소방긴급구호</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>2026-06-15 19:03:33</td>
+                <td>2026-06-15 19:03:33</td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+          @@include('../inc/paginate.html')
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+@@include('../inc/script.html')
+</body>
+</html>

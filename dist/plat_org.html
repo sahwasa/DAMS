@@ -1,8 +1,31 @@
-<header class="header">
+<!DOCTYPE html>
+<html lang="ko" data-thema="light">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+  <title>재난 예경보 통합관리시스템</title>
+  <link rel="stylesheet" href="css/main.css">  
+</head>
+<body>
+
+<div id="wrap" class="wrap">
+  <header class="header">
   <h1 class="main_logo">
     <a href="main.html" class="hdr-brand-title">재난 예경보 통합관리시스템</a>
   </h1>
-  @@include('../inc/nav.html')
+    <nav aria-label="주메뉴">
+    <ul>
+      <li><a href="gis.html" class="is-active" aria-current="page">GIS 상황판</a></li>
+      <li><a href="warn_issue.html">재난 예경보 현황</a></li>
+      <li><a href="plat_org.html">통합플랫폼관리</a></li>
+      <li><a href="stat_event.html">통계</a></li>
+      <li><a href="guide_intro.html">이용안내</a></li>
+      <li><a href="sys_user.html">시스템관리</a></li>
+      <li><a href="log_sms.html">시스템이력</a></li>
+    </ul>
+  </nav>
   
   <div class="hdr-util">
     <button type="button" class="hdr-user" title="내정보" aria-label="내정보" onclick="document.querySelector('.p_userInfo').showModal();">
@@ -119,3 +142,53 @@
     <button type="button" class="btn primary" onclick="saveNewPassword()">저장</button>
   </div>
 </dialog>
+  <main id="content" class="main-container">
+    <nav class="nav lnb">
+  <div class="lnb-wrap">
+    <h1>통합플랫폼관리</h1>
+    <ul class="lnb-list">
+      <li><a class="nav-item nav-active" href="plat_org.html">연계기관 관리</a></li>       
+      <li><a class="nav-item" href="plat_account.html">통합플랫폼 계정관리</a></li>
+      <li><a class="nav-item" href="plat_device.html">단말기 관리</a></li>
+      <li><a class="nav-item" href="plat_collect.html">데이터 수집 현황</a></li>
+    </ul>
+  </div>
+  <span class="switch aside__toggle">
+    <input type="checkbox" id="aside__toggle">
+    <label for="aside__toggle">패널 여닫기 버튼</label>
+  </span>
+</nav>
+    <section class="sub__container">
+      <header class="sub__heading">
+        <h2 class="sub__title">연계기관 관리</h2>
+        <nav class="breadcrumb" aria-label="현재 위치">
+  <ul>
+    <li><a href="/" aria-label="홈"><i data-lucide="house" aria-hidden="true"></i></a></li>
+    <li><a href="#">Category</a></li>
+    <li><a href="#">Subcategory</a></li>
+    <li aria-current="page">Item</li>
+  </ul>
+</nav>        
+      </header>
+
+      <div class="sub__cont">
+       
+      </div>
+    </section>
+  </main>
+</div>
+<script src="js/hazard_icon.js"></script>
+<script src="js/vendor/lucide.js"></script>
+<script src="js/dialog.js"></script>
+<script src="js/tab.js"></script>
+<script>
+lucide.createIcons({
+  attrs: {
+    'stroke-width': 2,
+    class: 'icon'
+  }
+});
+  initTabAll();
+</script>
+</body>
+</html>

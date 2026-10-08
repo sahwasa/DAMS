@@ -34,8 +34,8 @@
     &:not(:first-child) { margin-left:-1px; }
     &:hover { background:var(--bg-input-hover); color:var(--text-primary); z-index:1; }
     &.active {
-      background:var(--bg-panel); color:var(--color-primary-strong);
-      border-color:var(--color-primary-strong);
+      background:var(--bg-panel); color:$primary;
+      border-color:$primary;
       font-variation-settings:'wght' 700;
       box-shadow:0 1px 3px rgba(15,23,42,.1);
       z-index:2; position:relative;
@@ -57,14 +57,22 @@
   // ══════════════════════════════════════════
   // FORM GRID / FIELD (06-form-components)
   // ══════════════════════════════════════════
+  .form-group{border:none;
+    &+.form-group{margin-top:30px;}
+    &--divide{border-top:1px solid $border;padding-top:15px;}
+  }
   .form-grid {
-    display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:14px;
+    display:grid; grid-template-columns:1fr 1fr; gap:20px;
+    &--3{grid-template-columns:repeat(3,minmax(0,1fr));
+      .full{grid-column:1/-1}
+    }
   }
   .field {
     display:flex; flex-direction:column; gap:6px;
     &.full { grid-column:1/-1; }
-    label { font-size:11px; font-variation-settings:'wght' 700; color:$text-sub; letter-spacing:.04em; display:flex; align-items:center; gap:4px; }
+    label,&__label { font-size:11px;@include fw(700);color:$text-sub; letter-spacing:.04em; display:flex; align-items:center; gap:4px; }
     .toggle{margin-block:auto;}
+     &-row{flex-direction:row;align-items:center;gap:$sp-10;}
   }
   .req { color:var(--status-live); }
   .help { font-size:10px; color:var(--text-faint); margin-top:2px; }
@@ -77,9 +85,10 @@
   // ══════════════════════════════════════════
   // TEXT INPUT / SELECT / TEXTAREA
   // ══════════════════════════════════════════
+  input{accent-color:$primary;}
   .input, .select, .textarea {width: var(--width, 100%);
     height:30px; padding:5px 8px; font-size:13px; line-height:1.5; 
-    background:#fff; border:1px solid $border;ouline:none;
+    background:#fff; border:1px solid $border;outline:none;
     font-family:inherit; outline:none; transition:border-color .15s, box-shadow .15s, background-color .15s;
 
     &::placeholder { color:$text-muted; }
@@ -113,54 +122,7 @@
     appearance:none; padding-right:32px;
     background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='m6 9 6 6 6-6'/></svg>") right 10px center / 14px no-repeat #fff;   
   }
-
-  // ══════════════════════════════════════════
-  // CHECKBOX / RADIO
-  // ══════════════════════════════════════════
-  .check-row, .radio-row { display:flex; align-items:center; gap:8px; padding:6px 0; font-size:13px; color:var(--text-primary); cursor:pointer; }
-  .check, .radio {
-    width:16px; height:16px; flex-shrink:0;
-    background:#fff; border:1px solid var(--border-subtle);
-    display:inline-flex; align-items:center; justify-content:center;
-    transition:all .15s;
-  }
-  .check { border-radius:4px; }
-  .radio { border-radius:50%; }
-  .check.on {
-    background:var(--color-primary-strong); border-color:var(--color-primary-strong);
-    &::after {
-      content:''; width:10px; height:10px;
-      background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><path d='M5 13l4 4L19 7'/></svg>");
-      background-size:contain; background-repeat:no-repeat;
-    }
-  }
-  .radio.on {
-    border-color:var(--color-primary-strong);
-    &::after { content:''; width:8px; height:8px; background:var(--color-primary-strong); border-radius:50%; }
-  }
-  .check.disabled, .radio.disabled { opacity:.4; cursor:not-allowed; }
  
-  // ══════════════════════════════════════════
-  // STEPPER (숫자 증감)
-  // ══════════════════════════════════════════
-  .stepper {
-    display:flex; align-items:center;
-    border:1px solid var(--border-subtle); border-radius:var(--radius);
-    background:var(--bg-input); overflow:hidden; height:32px;
-
-    button {
-      background:none; border:0; width:28px; height:100%;
-      color:var(--text-muted); cursor:pointer; font-size:14px;
-      display:flex; align-items:center; justify-content:center;
-      &:hover { background:var(--bg-input-hover); color:var(--text-primary); }
-    }
-    input {
-      flex:1; border:0; background:transparent; text-align:center;
-      font-size:13px; color:var(--text-primary); font-family:inherit;
-      outline:none; font-feature-settings:'tnum';
-    }
-    &:focus-within { border-color:var(--color-primary-strong); box-shadow:0 0 0 3px rgba(29,78,216,.15); background:#fff; }
-  }
 
   // ══════════════════════════════════════════
   // SLIDER (range)
@@ -172,7 +134,7 @@
     &::-webkit-slider-thumb {
       appearance:none;
       width:16px; height:16px; border-radius:50%; background:var(--text-strong);
-      box-shadow:0 0 0 3px var(--color-primary-strong), 0 2px 6px rgba(15,23,42,.2);
+      box-shadow:0 0 0 3px $primary, 0 2px 6px rgba(15,23,42,.2);
       cursor:pointer;
     }
   }
@@ -189,7 +151,7 @@
     padding:20px; text-align:center; cursor:pointer; transition:all .15s;
     background:var(--bg-input);
 
-    &:hover { border-color:var(--color-primary-strong); background:rgba(29,78,216,.04); }
+    &:hover { border-color:$primary; background:rgba(29,78,216,.04); }
     .ic { width:32px; height:32px; color:var(--text-faint); margin:0 auto 6px; display:block; }
     .t { font-size:13px; color:var(--text-primary); font-variation-settings:'wght' 650; }
     .s { font-size:10px; color:var(--text-faint); margin-top:4px; }
@@ -231,7 +193,7 @@
       border-radius:5px; cursor:pointer; font-family:inherit;
       font-variation-settings:'wght' 600; transition:all .15s;
       &:hover { color:var(--text-primary); }
-      &.on { background:#fff; color:var(--color-primary-strong); font-variation-settings:'wght' 700; box-shadow:0 1px 3px rgba(15,23,42,.1); }
+      &.on { background:#fff; color:$primary; font-variation-settings:'wght' 700; box-shadow:0 1px 3px rgba(15,23,42,.1); }
     }
   }
 
@@ -239,6 +201,6 @@
     padding:10px 12px; background:rgba(29,78,216,.04);
     border:1px solid rgba(29,78,216,.15); border-radius:var(--radius);
     font-size:11px; color:var(--text-muted); line-height:1.6; margin-bottom:14px;
-    b { color:var(--color-primary-strong); font-variation-settings:'wght' 700; }
+    b { color:$primary; font-variation-settings:'wght' 700; }
   }
 }

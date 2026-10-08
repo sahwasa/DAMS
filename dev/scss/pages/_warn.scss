@@ -17,7 +17,37 @@
       }
     }
     .tab-issue{
-      .issue-summary{flex:0 0 320px;border-right:1px solid $border;}
+      .issue-summary{flex:0 0 320px;border-right:1px solid $border;
+        &__title{@include fw(700);font-size:$font-size-14;color:$text-tit;margin-bottom:10px;}
+      }
+    }
+    .msg-list{display:flex;flex-direction:column;gap:$sp-4;
+      dt{display:flex;align-items:center;color:$text-sub;font-size:$font-size-12;
+        &:not(:first-of-type){margin-top:$sp-4;}
+        .size{color:$text-muted;
+          span{color:$primary;vertical-align:initial;@include fw(600);}
+        }
+      }
+      textarea{width:100%;min-height:auto;padding:5px;}
+    }
+    .issue-message__tool{text-align:right;margin-bottom:10px;font-size:$font-size-13;}
+    .lang-select{display:inline-flex;align-items:center;gap:6px;padding:0 8px;color:var(--text-body);
+      select{@include flex($align:center);appearance:none;border:0;background:none;cursor:pointer;outline:0}
+      &:has(select:focus-visible){outline:2px solid var(--color-primary);outline-offset:2px}
+    }
+    @supports (appearance:base-select){
+      .lang-select select,.lang-select ::picker(select){appearance:base-select}
+      .lang-select select{
+        &::picker-icon{@include lucideIcon($icon :$chevron-down, $size:16px, $color:$text-muted);
+        margin-left:4px;transition:rotate .15s}
+        &:open::picker-icon{rotate:180deg}
+        &::picker(select){min-width:120px;padding:4px;border:1px solid $border;border-radius:$rad-4;background:#fff;box-shadow:0 4px 16px rgba(0,0,0,.12);margin-top:4px;}
+        option{padding:8px 12px;border-radius:$rad-4;cursor:pointer;
+          &:hover{background:var(--bg-hover)}
+          &:checked{color:$primary;@include fw(600);}
+          &::checkmark{display:none}
+        }
+      }
     }
 
     .tab-device{      

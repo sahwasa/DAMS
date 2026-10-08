@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ko" data-thema="light">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+  <title>재난 예경보 통합관리시스템</title>
+  <link rel="stylesheet" href="css/main.css">  
+</head>
+<body>
+
+<div id="wrap" class="wrap">
+  <header class="header">
+  <h1 class="main_logo">
+    <a href="main.html" class="hdr-brand-title">재난 예경보 통합관리시스템</a>
+  </h1>
+    <nav aria-label="주메뉴">
+    <ul>
+      <li><a href="gis.html" class="is-active" aria-current="page">GIS 상황판</a></li>
+      <li><a href="warn_issue.html">재난 예경보 현황</a></li>
+      <li><a href="plat_org.html">통합플랫폼관리</a></li>
+      <li><a href="stat_event.html">통계</a></li>
+      <li><a href="guide_intro.html">이용안내</a></li>
+      <li><a href="sys_user.html">시스템관리</a></li>
+      <li><a href="log_sms.html">시스템이력</a></li>
+    </ul>
+  </nav>
+  
+  <div class="hdr-util">
+    <button type="button" class="hdr-user" title="내정보" aria-label="내정보" onclick="document.querySelector('.p_userInfo').showModal();">
+      <span class="hdr-user__name">홍길동 님 <small>(재난정보통신과)</small></span>
+      <span class="hdr-user__ico"><i data-lucide="user-round"></i></span>
+    </button>
+    <ul>
+      <li><button type="button" class="hdr-btn" onclick="location.href='login.html';" title="로그아웃" aria-label="로그아웃"><i data-lucide="log-out"></i></button></li>
+      <li><button type="button" class="hdr-btn" title="알림" aria-label="알림"><i data-lucide="bell"></i><span class="alert_num">82</span></button></li>
+      <li><button type="button" class="hdr-btn" title="전체메뉴" aria-label="전체메뉴"><i data-lucide="menu"></i></button></li>
+    </ul>
+  </div>
+</header>
+<div id="toast_alarm" class="toast-alarm">
+  <div class="toast info">
+    <p>신규 재난정보 승인요청이 접수되었습니다.</p>
+  </div>
+  <div class="toast success">
+    <p>[이재민 구조] 프로세스가 완료처리 되었습니다.</p>
+  </div>
+  <div class="toast warning">
+    <p>아직 발령하지 않은 재난정보가 있습니다.</p>
+  </div>
+  <div class="toast error">
+    <p>메세시 전송에 실패하였습니다.</p>
+  </div>
+</div>
+
+<dialog id="p_userInfo" class="modal p_userInfo" aria-labelledby="p_userInfo_title">
+  <header class="modal__heading">
+    <h2 id="p_userInfo_title" class="modal__title">내정보</h2>
+    <button type="button" class="modal__close btn ghost icon-only"><i data-lucide="x"></i>팝업 닫기</button>
+  </header>
+
+  <section class="modal__body">
+    <div class="form-grid view-mode">
+      <div class="field">
+        <label for="my_user_id">사용자ID</label>
+        <input id="my_user_id" class="input" value="admin" readonly />
+      </div>
+      <div class="field">
+        <label for="my_user_nm">사용자명 <span class="req">*</span></label>
+        <input id="my_user_nm" class="input" value="홍길동" readonly />
+      </div>
+      <div class="field">
+        <label for="my_blng_inst_cd">소속기관</label>
+        <select id="my_blng_inst_cd" class="select">
+          <option value="">소속기관</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="my_dept_cd">소속부서</label>
+        <select id="my_dept_cd" class="select">
+          <option value="">소속부서</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="my_pstn_nm">직급</label>
+        <input id="my_pstn_nm" class="input" value="주무관" readonly />
+      </div>
+      <!-- <div class="field">
+        <label>담당업무</label>
+        <input class="input" value="재난안전" readonly />
+      </div> -->
+      <div class="field">
+        <label for="my_mbtl_no">핸드폰</label>
+        <input id="my_mbtl_no" class="input" value="010-1234-5678" readonly />
+      </div>
+      <div class="field">
+        <label for="my_email_addr">이메일</label>
+        <input id="my_email_addr" class="input" value="abcdefg@korea.go.kr" readonly />
+      </div>
+      <div class="field">
+        <label for="my_auth_nm">권한</label>
+        <input id="my_auth_nm" class="input" value="시스템운영자" readonly />
+      </div>
+    </div>    
+  </section>
+  <div class="modal__footer">
+    <button type="button" class="btn primary">저장 / 수정</button>
+    <button type="button" class="btn outline" onclick="document.querySelector('.p_change_pw').showModal();" >비밀번호 변경</button>
+    <button type="button" class="btn neutral btn__cancel">닫기</button>
+  </div>
+</dialog>
+
+<dialog id="change_password_popup" class="modal p_change_pw"  aria-labelledby="change_password_title">
+  <header class="modal__heading">
+    <h2 id="change_password_title" class="modal__title">비밀번호 변경</h2>
+    <button type="button" class="modal__close btn ghost icon-only"><i data-lucide="x"></i>팝업 닫기</button>
+  </header>
+
+  <section class="modal__body">
+    <div class="form-grid">
+      <div class="field full">
+        <label for="current_pswd">현재 비밀번호 <span class="req">*</span></label>
+        <input class="input" type="password" id="current_pswd">
+      </div>
+
+      <div class="field full">
+        <label for="new_pswd">새 비밀번호 <span class="req">*</span></label>
+        <input class="input" type="password" id="new_pswd">
+      </div>
+
+      <div class="field full">
+        <label for="confirm_new_pswd">새 비밀번호 확인 <span class="req">*</span></label>
+        <input class="input" type="password" id="confirm_new_pswd">
+        <div class="err" hidden>비밀번호가 일치하지 않습니다.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="modal__footer">
+    <button type="button" class="btn secondary btn__cancel" onclick="remindMeLater()">나중에</button>
+    <button type="button" class="btn primary" onclick="saveNewPassword()">저장</button>
+  </div>
+</dialog>
+  <main id="content" class="main-container">
+    <nav class="nav lnb">
+  <div class="lnb-wrap">
+    <h1>재난 예경보 현황</h1>
+    <ul class="lnb-list">
+      <li><a class="nav-item nav-active" href="warn_issue.html">재난발령현황</a></li>       
+      <li><a class="nav-item" href="warn_occur.html">재난발생현황</a></li>
+    </ul>
+  </div>
+  <span class="switch aside__toggle">
+    <input type="checkbox" id="aside__toggle">
+    <label for="aside__toggle">패널 여닫기 버튼</label>
+  </span>
+</nav>
+    <section class="sub__container">
+      <header class="sub__heading">
+        <h2 class="sub__title">재난발생현황</h2>
+        <nav class="breadcrumb" aria-label="현재 위치">
+  <ul>
+    <li><a href="/" aria-label="홈"><i data-lucide="house" aria-hidden="true"></i></a></li>
+    <li><a href="#">Category</a></li>
+    <li><a href="#">Subcategory</a></li>
+    <li aria-current="page">Item</li>
+  </ul>
+</nav>
+      </header>
+
+      <div class="sub__cont">
+        <div class="toolbar-card">
+          <div class="input-group">
+            <label for="dev_type" class="sr-only">단말기 유형</label>
+            <select id="dev_type" class="select" title="단말기 유형">
+              <option value="">단말기 유형</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="addr1" class="sr-only">설치주소</label>
+            <select id="addr1" class="select" title="시도">
+              <option value="">시도</option>
+            </select>
+            <select id="addr2" class="select" title="시군구">
+              <option value="">시군구</option>
+            </select>
+            <select id="addr3" class="select" title="읍면동">
+              <option value="">읍면동</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label class="input-search input">
+              <i data-lucide="search" aria-hidden="true"></i>
+              <input type="search" placeholder="장비명,단말기명" title="검색어">
+            </label>
+          </div>
+          <div class="tool">
+            <button type="button" class="btn primary" onclick="search();">
+              <i data-lucide="search" aria-hidden="true"></i>검색</button>
+          </div>
+        </div>
+        <div class="tbl-area">
+          <div class="tbl-top">            
+            <div class="tool">
+              <button button type="button" class="btn neutral" onclick="excelDown(1)">엑셀다운로드</button>
+            </div>
+          </div>
+          <div class="tbl-wrap">
+          <table class="tbl--fixed tbl--checkbox">
+            <caption>통보문 목록</caption>
+            <thead>
+              <tr>
+                <th scope="col">번호</th>
+                <th scope="col">구분</th>
+                <th scope="col">통보기관명</th>
+                <th scope="col">통보문 제목 내용</th>
+                <th scope="col">지역</th>
+                <th scope="col">발표일시</th>
+                <th scope="col">발효/발생일시</th>
+              </tr>
+            </thead>
+            <tbody id="table_list">
+              <tr class="row-empty" hidden>
+                <td colspan="7">데이터 없음</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>기상특보</td>
+                <td>기상청</td>
+                <td></td>
+                <td></td>
+                <td>2026-06-15 19:03:33</td>
+                <td>2026-06-15 19:03:33</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>홍수예보</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>2026-06-15 19:03:33</td>
+                <td>2026-06-15 19:03:33</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>지진.지진해일</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>2026-06-15 19:03:33</td>
+                <td>2026-06-15 19:03:33</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>소방긴급구호</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>2026-06-15 19:03:33</td>
+                <td>2026-06-15 19:03:33</td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+          <div class="pagination">
+  <div class="pg-label">전체 <b style="color:var(--text-strong)">248</b>건 · 1–10</div>
+  <div class="pg-btns">
+    <button class="pg-btn disabled">‹</button>
+    <button class="pg-btn active">1</button>
+    <button class="pg-btn">2</button>
+    <button class="pg-btn">3</button>
+    <button class="pg-btn">4</button>
+    <button class="pg-btn">5</button>
+    <span class="pg-btn ellipsis">…</span>
+    <button class="pg-btn">25</button>
+    <button class="pg-btn">›</button>
+  </div>
+  <div class="pg-right"></div>
+</div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="js/hazard_icon.js"></script>
+<script src="js/vendor/lucide.js"></script>
+<script src="js/dialog.js"></script>
+<script src="js/tab.js"></script>
+<script>
+lucide.createIcons({
+  attrs: {
+    'stroke-width': 2,
+    class: 'icon'
+  }
+});
+  initTabAll();
+</script>
+</body>
+</html>

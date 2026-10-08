@@ -1,0 +1,218 @@
+@@include('../inc/top.html')
+<div id="wrap" class="wrap">
+  @@include('../inc/header.html')
+  <main id="content" class="main-container">
+    @@include('../inc/lnb-plat.html')
+    <section class="sub__container device-mgmt">
+      <header class="sub__heading">
+        <h2 class="sub__title">단말기 관리</h2>
+        <nav class="breadcrumb" aria-label="현재 위치">
+          <ol>
+            <li><a href="/" aria-label="홈"><i data-lucide="house" aria-hidden="true"></i></a></li>
+            <li><a href="#">Category</a></li>
+            <li><a href="#">Subcategory</a></li>
+            <li aria-current="page">Item</li>
+          </ol>
+        </nav>
+      </header>
+
+      <div class="sub__cont">
+        <!-- 좌측: 예경보 통합플랫폼 트리 -->
+        <aside class="tree-panel" aria-label="예경보 통합플랫폼 선택">
+          <strong class="tree-panel__title">예경보 통합플랫폼</strong>
+          <!-- 전체 체크박스: 일부 선택 시 JS에서 .indeterminate = true -->
+          <ul class="tree">
+            <li class="tree__item">
+              <label class="check"><input type="checkbox" id="tree_all"><span>전체</span></label>
+              <ul class="tree__sub">
+                <li class="tree__item is-open">
+                  <button type="button" class="tree__toggle" aria-expanded="true" aria-label="서울특별시 접기">
+                    <i data-lucide="minus" aria-hidden="true"></i>
+                  </button>
+                  <label class="check"><input type="checkbox"><span>서울특별시 (25)</span></label>
+                  <ul class="tree__sub tree__sub--leaf">
+                    <li><label class="check"><input type="checkbox"><span>종로구 연계플랫폼</span></label></li>
+                    <li><label class="check"><input type="checkbox"><span>중구 연계플랫폼</span></label></li>
+                    <li><label class="check"><input type="checkbox"><span>용산구 연계플랫폼</span></label></li>
+                    <li><label class="check"><input type="checkbox"><span>성동구 연계플랫폼</span></label></li>
+                    <li><label class="check"><input type="checkbox"><span>광진구 연계플랫폼</span></label></li>
+                    <li><label class="check"><input type="checkbox"><span>동대문구 연계플랫폼</span></label></li>
+                    <li><label class="check"><input type="checkbox"><span>중랑구 연계플랫폼</span></label></li>
+                    <li><label class="check"><input type="checkbox"><span>성북구 연계플랫폼</span></label></li>
+                    <li><label class="check"><input type="checkbox"><span>강북구 연계플랫폼</span></label></li>
+                    <li><label class="check"><input type="checkbox"><span>도봉구 연계플랫폼</span></label></li>
+                    <li><label class="check"><input type="checkbox"><span>노원구 연계플랫폼</span></label></li>
+                    <li><label class="check"><input type="checkbox"><span>은평구 연계플랫폼</span></label></li>
+                  </ul>
+                </li>
+                <li class="tree__item">
+                  <button type="button" class="tree__toggle" aria-expanded="false" aria-label="부산광역시 펼치기">
+                    <i data-lucide="plus" aria-hidden="true"></i>
+                  </button>
+                  <label class="check"><input type="checkbox"><span>부산광역시 (16)</span></label>
+                </li>
+                <li class="tree__item">
+                  <button type="button" class="tree__toggle" aria-expanded="false" aria-label="대구광역시 펼치기">
+                    <i data-lucide="plus" aria-hidden="true"></i>
+                  </button>
+                  <label class="check"><input type="checkbox"><span>대구광역시 (9)</span></label>
+                </li>
+                <!-- 이하 시도 동일 패턴 반복 -->
+              </ul>
+            </li>
+          </ul>
+        </aside>
+
+        <!-- 우측: 지도 + 목록 -->
+        <div class="device-main">
+          <section class="map-wrap" aria-label="단말기 지도">
+            <div class="map__canvas">
+              <!-- 지도 타입 / 범례 -->
+              <div class="map-ctrl">
+                <div class="map-type" role="radiogroup" aria-label="지도 유형">
+                  <label class="map-type__item"><input type="radio" name="mapType" value="base" checked><span class="map-type__thumb map-type__thumb--base"></span>기본</label>
+                  <label class="map-type__item"><input type="radio" name="mapType" value="2d"><span class="map-type__thumb map-type__thumb--2d"></span>2D</label>
+                  <label class="map-type__item"><input type="radio" name="mapType" value="sat"><span class="map-type__thumb map-type__thumb--sat"></span>위성</label>
+                </div>
+                <button type="button" class="map-legend__btn" aria-expanded="false" aria-controls="map_legend">
+                  범례(단말기)<i data-lucide="chevron-up" aria-hidden="true"></i>
+                </button>
+              </div>
+
+              <!-- 도넛 클러스터 -->
+              <div class="map-cluster" style="left:150px;top:90px;">
+                <button type="button" class="map-cluster__btn map-donut" style="--ok:70%;--ng:15%" aria-expanded="false" aria-label="단말기 118개" aria-controls="d_cluster_1">
+                  <b class="map-donut__cnt">118</b>
+                </button>
+                <div class="cluster-tooltip cluster-tooltip--device" id="d_cluster_1">
+                  <span class="stat-text stat-text--all">전체 118</span>
+                  <span class="stat-text stat-text--ok">성공 100</span>
+                  <span class="stat-text stat-text--ng">실패 10</span>
+                  <span class="stat-text stat-text--off">정지 8</span>
+                </div>
+              </div>
+              <div class="map-cluster" style="left:250px;top:80px;">
+                <button type="button" class="map-cluster__btn map-donut map-donut--sm" style="--ok:100%;--ng:0%" aria-expanded="false" aria-label="단말기 12개" aria-controls="d_cluster_2">
+                  <b class="map-donut__cnt">12</b>
+                </button>
+                <div class="cluster-tooltip cluster-tooltip--device" id="d_cluster_2">
+                  <span class="stat-text stat-text--all">전체 12</span>
+                  <span class="stat-text stat-text--ok">성공 12</span>
+                </div>
+              </div>
+
+              <!-- 개별 단말기 심볼 + 팝업 -->
+              <div class="symbol symbol--device" style="--left:210px;--top:230px">
+                <button type="button" class="TDB selected" aria-describedby="d_pop_1">사간(안성-V198)_성공</button>
+              </div>
+              <div class="map-popup" id="d_pop_1" role="tooltip" style="--left:210px;--top:240px">
+                <strong class="map-popup__title"><i class="dot dot--ok" aria-hidden="true"></i>사간 (안성-V198)</strong>
+                <dl class="map-popup__list">
+                  <dt>유형</dt><dd>자동음성통보</dd>
+                  <dt>예경보서버</dt><dd>안성 자동음성통보시스템</dd>
+                  <dt>상태</dt><dd><span class="stat-text stat-text--ok"><i data-lucide="circle-check" aria-hidden="true"></i>성공</span></dd>
+                  <dt>가청범위</dt><dd>300m ~ 500m</dd>
+                </dl>
+              </div>
+            </div>
+          </section>
+
+          <section class="tbl-card">
+            <div class="toolbar-card">
+              <div class="input-group">
+                <label for="dev_type" class="sr-only">단말기 유형</label>
+                <select id="dev_type" class="select" title="단말기 유형">
+                  <option value="">단말기 유형</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label for="addr1" class="sr-only">설치주소</label>
+                <select id="addr1" class="select" title="시도">
+                  <option value="">시도</option>
+                </select>
+                <select id="addr2" class="select" title="시군구">
+                  <option value="">시군구</option>
+                </select>
+                <select id="addr3" class="select" title="읍면동">
+                  <option value="">읍면동</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label class="input-search input">
+                  <i data-lucide="search" aria-hidden="true"></i>
+                  <input type="search" placeholder="장비명,단말기명" title="검색어">
+                </label>
+              </div>
+              <div class="tool">
+                <button type="button" class="btn primary" onclick="search();">
+                  <i data-lucide="search" aria-hidden="true"></i>검색</button>
+              </div>
+            </div>
+
+            <div class="tbl-area">
+              <div class="tbl-top">
+                <div class="tbl-top__count">
+                  <span class="stat-text stat-text--all"><i data-lucide="circle-dot" aria-hidden="true"></i>전체 <em id="count_all">133</em></span>
+                  <span class="stat-text stat-text--ok"><i data-lucide="circle-check" aria-hidden="true"></i>성공 <em id="count_0">131</em></span>
+                  <span class="stat-text stat-text--ng"><i data-lucide="circle-alert" aria-hidden="true"></i>실패 <em id="count_9">1</em></span>
+                  <span class="stat-text stat-text--off"><i data-lucide="circle-x" aria-hidden="true"></i>정지 <em id="count_off">1</em></span>
+                </div>
+              </div>
+              <div class="tbl-wrap tbl-device-list">
+                <table class="tbl--fixed">
+                  <caption>단말기 목록</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">상태</th>
+                      <th scope="col">예경보 통합플랫폼</th>
+                      <th scope="col">예경보서버</th>
+                      <th scope="col">단말기 유형</th>
+                      <th scope="col">단말기명</th>
+                      <th scope="col">설치주소</th>
+                      <th scope="col">상세</th>
+                    </tr>
+                  </thead>
+                  <tbody id="table_list">
+                    <tr class="row-empty" hidden>
+                      <td colspan="7">데이터 없음</td>
+                    </tr>
+                    <tr>
+                      <td><span class="stat-text stat-text--ok"><i data-lucide="circle-check" aria-hidden="true"></i>성공</span></td>
+                      <td>예경보 통합플랫폼</td>
+                      <td>울산 자동음성통보</td>
+                      <td><div class="chip-list chip-list--device"><span>재해문자전광판(행안부)</span></div></td>
+                      <td>00지구 00회관</td>
+                      <td>울산광역시 울주군</td>
+                      <td><button type="button" class="btn link sm">상세</button></td>
+                    </tr>
+                    <tr>
+                      <td><span class="stat-text stat-text--ng"><i data-lucide="circle-alert" aria-hidden="true"></i>실패</span></td>
+                      <td>예경보 통합플랫폼</td>
+                      <td>울산 자동음성통보</td>
+                      <td><div class="chip-list chip-list--device"><span>재해문자전광판(행안부)</span></div></td>
+                      <td>00지구 00회관</td>
+                      <td>울산광역시 울주군</td>
+                      <td><button type="button" class="btn link sm">상세</button></td>
+                    </tr>
+                    <tr>
+                      <td><span class="stat-text stat-text--off"><i data-lucide="circle-x" aria-hidden="true"></i>정지</span></td>
+                      <td>예경보 통합플랫폼</td>
+                      <td>울산 자동음성통보</td>
+                      <td><div class="chip-list chip-list--device"><span>재해문자전광판(행안부)</span></div></td>
+                      <td>00지구 00회관</td>
+                      <td>울산광역시 울주군</td>
+                      <td><button type="button" class="btn link sm">상세</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+@@include('../inc/script.html')
+</body>
+</html>
