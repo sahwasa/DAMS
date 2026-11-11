@@ -1,0 +1,22 @@
+<!-- UI-DA08-006-P01 CAP 전문보기 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-UI-DA08-006-P01" data-w="760">
+<div class="pop w760" role="dialog" aria-modal="true" aria-labelledby="popTit">
+  <div class="pop-head"><h2 id="popTit">CAP 전문보기</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
+  <div class="pop-body">
+    <table class="tbl">
+      <caption class="blind">송수신 정보</caption>
+      <colgroup><col style="width:120px"><col><col style="width:120px"><col></colgroup>
+      <tbody>
+        <tr><th>연계기관</th><td id="v_org">울산광역시 남구</td><th>송수신구분</th><td id="v_io">수신</td></tr>
+        <tr><th>메시지구분</th><td id="v_se">통보문</td><th>처리일시</th><td id="v_dt">2026-10-30 14:15:31</td></tr>
+        <tr><th>메시지아이디</th><td id="v_id">KR.ULSAN-NAM-20261030141531.118</td><th>처리결과</th><td id="v_rs"></td></tr>
+      </tbody>
+    </table>
+    <div class="sub-head"><h4>전문 내용</h4><div class="btns"><button type="button" class="btn s btn-line" onclick="copyCap()"><i class="ri-file-copy-line"></i>복사</button></div></div>
+    <textarea class="txa cap-view" id="capCn" readonly title="CAP 전문" rows="16"></textarea>
+  </div>
+  <div class="pop-foot">
+    <button type="button" class="btn btn-line" onclick="closePop()">닫기</button>
+  </div>
+</div>
+</template>

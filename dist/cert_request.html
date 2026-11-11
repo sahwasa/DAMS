@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>연계확인서 발급-발급대상기관 | 재난 예경보 통합관리시스템</title>
+<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="font/pretendard-gov/pretendardvariable-gov.css">
+<link rel="stylesheet" href="font/remixicon/remixicon.css">
+<link rel="stylesheet" href="css/main.css">
+
+<link rel="stylesheet" href="css/pages/cert_request.css">
+
+</head>
+
+
+<body class="win-body">
+<div class="wrap win">
+  <header class="win-head"><img src="images/gov_logo_w.png" alt="정부 상징" class="gov-logo"><h1>연계확인서 발급</h1><span class="sub">발급대상기관</span><button type="button" class="close" title="창 닫기" onclick="window.close()"><i class="ri-close-line"></i></button></header>
+  <main class="work" id="content">
+    <div class="help-box"><i class="ri-information-line"></i><span>지자체로부터 <b>연계확인서 발급요청 공문</b>을 받으면, 해당 기관을 선택하고 요청한 점검 기간으로 연계 점검을 수행합니다.</span></div>
+
+    <form class="sch-box" id="schForm">
+      <div class="rows">
+        <div class="it c2"><span class="lb">연계기관</span>
+          <div class="flex w100"><select class="sel" style="flex:1" id="selCertSido" name="selCertSido" title="시도" onchange="fillSgg()"><option value="">시도 전체</option><option>서울특별시</option><option>전남광주통합특별시</option><option>부산광역시</option><option>대구광역시</option><option>인천광역시</option><option>대전광역시</option><option>울산광역시</option><option>세종특별자치시</option><option>경기도</option><option>강원특별자치도</option><option>충청북도</option><option>충청남도</option><option>전북특별자치도</option><option>경상북도</option><option>경상남도</option><option>제주특별자치도</option></select><select class="sel" style="flex:1" id="selCertSgg" name="selCertSgg" title="시군구"><option value="">시군구 전체</option></select></div>
+        </div>
+        <div class="it"><label for="selCertStat">상태</label><select class="sel" id="selCertStat" name="selCertStat"><option value="">전체</option><option>발급대기</option><option>부적합</option><option>발급완료</option></select></div>
+        <div class="it"><label for="keywordCert">기관명</label><input class="inp" id="keywordCert" name="keywordCert" maxlength="100" placeholder="기관명 입력"></div>
+      </div>
+      <div class="ctrl">
+        <button type="reset" class="btn btn-rst"><i class="ri-refresh-line"></i>초기화</button>
+        <button type="submit" class="btn btn-sch"><i class="ri-search-line"></i>검색</button>
+      </div>
+    </form>
+
+    <div class="st-sum" id="stSum">
+      <button type="button" class="on" data-st="" onclick="pickSt(this)">전체<b>245</b></button>
+      <button type="button" data-st="발급대기" onclick="pickSt(this)"><span><span class="badge">발급대기</span></span><b>54</b></button>
+      <button type="button" data-st="부적합" onclick="pickSt(this)"><span><span class="badge dg">부적합</span></span><b class="c-dg">19</b></button>
+      <button type="button" data-st="발급완료" onclick="pickSt(this)"><span><span class="badge sc">발급완료</span></span><b class="c-sc">172</b></button>
+    </div>
+
+    <div class="sub-head mt0">
+      <h3>발급대상기관 목록</h3><span class="cnt">전체<b id="cnt">245</b>건</span>
+      <div class="btns"><button type="button" class="btn s btn-dark" id="btnExcel" onclick="doExcel('연계확인서_발급대상기관')" title="조회 조건(연계기관·상태·기관명)의 발급대상기관 목록 전체"><i class="ri-file-excel-2-line"></i>엑셀다운로드</button></div>
+    </div>
+    <div class="grid-wrap" id="certGrid">
+      <table class="grid fix-head">
+        <caption class="blind">연계확인서 발급대상기관 목록</caption>
+        <colgroup><col style="width:46px"><col style="width:72px"><col style="width:60px"><col><col style="width:60px"><col style="width:70px"><col style="width:68px"><col style="width:136px"><col style="width:136px"><col style="width:98px"><col style="width:98px"><col style="width:100px"><col style="width:140px"></colgroup>
+        <thead><tr><th rowspan="2">번호</th><th rowspan="2" class="sort">상태</th><th rowspan="2">구분</th><th rowspan="2" class="sort">연계기관</th><th colspan="3" data-tip="금일 기준 최근 2주간(14일) 수신 건수">최근 2주 수신 건수</th><th rowspan="2" data-tip="NDMS 직접 연계 시도만 해당(시군구는 대상 아님)">최근 접속<br>시작 시각</th><th rowspan="2" class="sort">최종수신시각</th><th rowspan="2" class="sort" data-tip="마지막 점검(점검시작·재점검)을 수행한 일자 — 부적합 기관은 이후 수신된 통보문이 3건 이상이어야 재점검 가능">최종 점검일</th><th rowspan="2">발급일자</th><th rowspan="2" data-tip="시도: 연계확인서로 함께 발급한 시군구 수(통합 n) · 시군구: 시도 통합 발급(시도 통합) · 연계기관현황에서 연계확인서 발급 취소(발급취소) 또는 시도 통합 해제(통합 해제 — 자체 플랫폼 전환)">통합 발급</th><th rowspan="2">관리</th></tr><tr><th>통보문</th><th>상태정보</th><th>제원정보</th></tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </main>
+</div>
+<!-- UI-DA04-001-P02 연계확인서 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-UI-DA04-001-P02" data-w="900">
+<div class="pop w900" role="dialog" aria-modal="true" aria-labelledby="popTit">
+  <div class="pop-head"><h2 id="popTit">연계확인서</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
+  <div class="pop-body">
+    <p class="cert-info"><i class="ri-information-line"></i>연계확인서 발급 승인 시 자동 생성·등록된 문서입니다. <span id="issInfo"></span></p>
+    <div class="doc-wrap"><div class="doc" id="docArea"></div></div>
+  </div>
+  <div class="pop-foot">
+    <button type="button" class="btn btn-line" onclick="closePop()">닫기</button>
+    <button type="button" class="btn btn-crud" onclick="msg('연계확인서 인쇄를 시작합니다.');window.print()"><i class="ri-printer-line"></i>인쇄</button>
+  </div>
+</div>
+</template>
+
+<!-- UI-DA09-001-P01 연계확인서 발급 이력 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-UI-DA09-001-P01" data-w="760">
+<div class="pop w760" role="dialog" aria-modal="true" aria-labelledby="popTit">
+  <div class="pop-head"><h2 id="popTit">연계확인서 발급 이력</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
+  <div class="pop-body">
+    <table class="tbl">
+      <caption class="blind">연계확인서 발급 정보</caption>
+      <colgroup><col style="width:130px"><col><col style="width:130px"><col></colgroup>
+      <tbody>
+        <tr><th>지자체</th><td id="hOrg">대전광역시 (광역)</td><th>발급 상태</th><td><span class="badge sc">발급완료</span></td></tr>
+        <tr><th>최초 발급일</th><td id="hFirst">2026-09-02</td><th>현재 서식 버전</th><td id="hVer">v1.1</td></tr>
+        <tr id="hIgRow" hidden><th>통합 발급<br>시군구</th><td colspan="3" id="hIg"></td></tr>
+        <tr><th>마지막 점검기간</th><td colspan="3" id="hPeriod">2026-08-26 ~ 2026-09-08 (14일, 재점검)</td></tr>
+        <tr><th>점검 결과</th><td colspan="3" id="hRes"><span class="badge sc">연결상태 적합</span> <span class="badge sc">통보문 적합</span> <span class="badge sc">단말 제원정보 적합</span> <span class="badge sc">단말 상태정보 적합</span></td></tr>
+      </tbody>
+    </table>
+    <div class="sub-head"><h3>발급·게시 이력</h3><span class="cnt">전체<b id="hCnt">3</b>건</span></div>
+    <div class="grid-wrap">
+      <table class="grid">
+        <caption class="blind">연계확인서 발급 이력</caption>
+        <colgroup><col style="width:50px"><col style="width:64px"><col style="width:150px"><col style="width:80px"><col><col style="width:100px"><col style="width:94px"></colgroup>
+        <thead><tr><th>No</th><th>버전</th><th class="sort desc">처리일시</th><th>구분</th><th>내용</th><th>처리자</th><th>연계확인서</th></tr></thead>
+        <tbody id="hBody"></tbody>
+      </table>
+    </div>
+    <p class="f-msg">· 연계확인서는 점검 결과로 자동 생성되며, 공문 별첨용 PDF로 다운로드합니다.</p>
+  </div>
+  <div class="pop-foot">
+    <button type="button" class="btn btn-line" onclick="closePop()">닫기</button>
+    <button type="button" class="btn btn-dark" onclick="doDown(org+' 연계확인서(최신, PDF)')"><i class="ri-download-2-line"></i>연계확인서 다운로드</button>
+  </div>
+</div>
+</template>
+
+<!-- UI-DA09-002-P02 연계 점검 부적합 결과서 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-UI-DA09-002-P02" data-w="900">
+<div class="pop w900" role="dialog" aria-modal="true" aria-labelledby="popTit">
+  <div class="pop-head"><h2 id="popTit">부적합 결과서</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
+  <div class="pop-body">
+    <div class="rpt" id="report">
+      <h1 id="rH1">연계 점검 결과서(부적합)</h1>
+      <p class="meta"><span>문서번호 : <b id="rNo"></b></span><span>작성일 : <b id="rDate"></b></span><span>작성 : 행정안전부 재난정보통신과</span></p>
+
+      <h2>점검 개요</h2>
+      <table class="tbl"><caption class="blind">점검 개요</caption><colgroup><col style="width:130px"><col><col style="width:130px"><col></colgroup>
+        <tbody>
+          <tr><th>연계기관</th><td id="rOrg"></td><th>구분</th><td id="rLv"></td></tr>
+          <tr><th>점검기간</th><td id="rPer"></td><th>점검일자</th><td id="rChkDt"></td></tr>
+          <tr><th>점검자</th><td colspan="3" id="rChk"></td></tr>
+        </tbody></table>
+
+      <h2>총괄 판정</h2>
+      <div class="verdict" id="rVer"><i class="ri-close-circle-line" style="font-size:20px"></i><span>총괄판정 <b>부적합</b> — 아래 부적합 항목을 조치한 후 재점검을 요청해 주시기 바랍니다.</span></div>
+
+      <h2>항목별 점검 결과</h2>
+      <div class="grid-wrap"><table class="grid"><caption class="blind">항목별 점검 결과</caption><colgroup><col style="width:150px"><col style="width:110px"><col></colgroup>
+        <thead><tr><th>점검 항목</th><th>판정</th><th>결과</th></tr></thead><tbody id="rItems"></tbody></table></div>
+
+      <div id="ngArea">
+      <h2>부적합 상세 내역</h2>
+      <div class="grid-wrap"><table class="grid"><caption class="blind">부적합 상세 내역</caption><colgroup><col style="width:48px"><col style="width:110px"><col><col style="width:150px"><col style="width:180px"></colgroup>
+        <thead><tr><th>No</th><th>점검 항목</th><th>내용</th><th>발생 시각</th><th>부적합 사유</th></tr></thead><tbody id="rNg"></tbody></table></div>
+
+      <h2>조치 요청 사항</h2>
+      <ol class="req" id="rReq"></ol>
+      <textarea class="txa mt8" id="m_ng_opinion" name="m_ng_opinion" maxlength="1000" title="추가 의견" placeholder="추가 의견(선택) — 결과서에 함께 표시·인쇄됩니다."></textarea>
+      </div>
+
+      <p class="from">행정안전부 재난정보통신과</p>
+      <p class="note" id="rNote">※ 본 결과서는 연계 점검 결과로 자동 생성됩니다. 조치 완료 후 연계확인서 발급요청 공문을 다시 보내면 요청한 점검기간으로 재점검합니다.</p>
+    </div>
+  </div>
+  <div class="pop-foot">
+    <button type="button" class="btn btn-line" onclick="closePop()">닫기</button>
+    <button type="button" class="btn btn-dark" onclick="doDown(OK?'연계점검_결과서.pdf':'연계점검_부적합결과서.pdf')"><i class="ri-download-2-line"></i>PDF 다운로드</button>
+    <button type="button" class="btn btn-dark" onclick="printReport()"><i class="ri-printer-line"></i>인쇄</button>
+  </div>
+</div>
+</template>
+
+<script src="js/common.js"></script>
+
+<script src="js/pop/UI-DA04-001-P02.js"></script>
+<script src="js/pop/UI-DA09-001-P01.js"></script>
+<script src="js/pop/UI-DA09-002-P02.js"></script>
+<script src="js/pages/cert_request.js"></script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>연계확인서 점검실행 | 재난 예경보 통합관리시스템</title>
+<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="font/pretendard-gov/pretendardvariable-gov.css">
+<link rel="stylesheet" href="font/remixicon/remixicon.css">
+<link rel="stylesheet" href="css/main.css">
+
+<link rel="stylesheet" href="css/pages/cert_check.css">
+
+</head>
+
+
+<body class="win-body">
+<div class="wrap win">
+  <header class="win-head"><img src="images/gov_logo_w.png" alt="정부 상징" class="gov-logo"><h1>연계확인서 발급</h1><span class="sub" id="pgSub">점검실행</span><button type="button" class="close" title="창 닫기" onclick="window.close()"><i class="ri-close-line"></i></button></header>
+  <main class="work" id="content">
+    <ol class="steps" id="steps"><li class="done">① 점검 시작</li><li class="on">② 점검완료</li><li>③ 발급완료</li></ol>
+
+    <table class="tbl" id="orgInfo">
+      <caption class="blind">기관·점검 정보</caption>
+      <colgroup><col style="width:110px"><col><col style="width:110px"><col><col style="width:110px"><col><col style="width:110px"><col></colgroup>
+      <tbody>
+        <tr><th>지자체</th><td id="iOrg">-</td><th>점검일자</th><td id="iDate">-</td><th>점검자</th><td id="iChecker">-</td><th>발급 상태</th><td><span class="badge" id="iStat">발급대기</span></td></tr>
+      </tbody>
+    </table>
+
+    <form class="sch-box mt16" id="periodBox">
+      <div class="rows">
+        <div class="it c4"><span class="lb req">점검기간</span>
+          <div class="range"><span class="inp-ico inp-date"><input type="date" class="inp" id="dfrom" name="dfrom" value="2026-10-01" title="점검 시작일" required data-label="점검 시작일"></span><span>~</span><span class="inp-ico inp-date"><input type="date" class="inp" id="dto" name="dto" value="2026-10-14" title="점검 종료일" required data-label="점검 종료일"></span></div>
+          <span class="f-msg" id="periodNote">기본 2주 (협의 필요, 최대 31일) · 달력 아이콘 또는 직접 입력(YYYY-MM-DD)으로 기간을 바꾸면 바로 다시 점검해 결과가 갱신됩니다.</span>
+        </div>
+      </div>
+      <div class="ctrl">
+        <button type="submit" class="btn btn-sch" id="btnSearch"><i class="ri-search-line"></i>검색</button>
+        <button type="button" class="btn btn-line" id="btnList" onclick="goList()"><i class="ri-list-check"></i>목록</button>
+      </div>
+    </form>
+
+    <div class="result-box mt16" id="judge" hidden></div>
+
+    <div id="tabArea" class="mt16">
+      <ul class="tab">
+        <li class="on"><button type="button" data-tab="tab-conn">연결상태<span class="badge" id="tbC" hidden></span></button></li>
+        <li><button type="button" data-tab="tab-noti">통보문<span class="badge" id="tbN" hidden></span></button></li>
+        <li><button type="button" data-tab="tab-src">단말 제원정보<span class="badge" id="tbS" hidden></span></button></li>
+        <li><button type="button" data-tab="tab-st">단말 상태정보<span class="badge" id="tbT" hidden></span></button></li>
+      </ul>
+      <div id="tab-conn">
+        <div class="sub-head mt0"><h3 id="ttlConn"></h3></div>
+        <div class="help-box" id="connNA" hidden><i class="ri-information-line"></i><span>시군구는 행안부 접속 시작·종료 시간을 알 수 없으므로 <b>해당없음</b>으로 표기합니다.</span></div>
+        <div class="grid-wrap" id="connTbl"><table class="grid fix-head"><caption class="blind">연결상태 목록</caption><colgroup><col style="width:60px"><col style="width:200px"><col style="width:200px"><col style="width:150px"><col><col style="width:140px"></colgroup>
+          <thead><tr><th>No</th><th>접속 시작 시각</th><th>접속 종료 시각</th><th>접속 유지 시간</th><th>비고</th><th>판정</th></tr></thead><tbody id="tbodyConn"></tbody></table></div>
+      </div>
+      <div id="tab-noti" hidden>
+        <div class="sub-head mt0"><h3 id="ttlNoti"></h3></div>
+        <div class="grid-wrap"><table class="grid fix-head"><caption class="blind">통보문 목록</caption><colgroup><col style="width:60px"><col style="width:180px"><col><col style="width:170px"><col style="width:160px"><col style="width:110px"><col style="width:200px"></colgroup>
+          <thead><tr><th>No</th><th>재난분류명</th><th>제목</th><th class="sort asc">발령시각</th><th>발령지역</th><th>발령결과</th><th>판정</th></tr></thead><tbody id="tbodyNoti"></tbody></table></div>
+      </div>
+      <div id="tab-src" hidden>
+        <div class="sub-head mt0"><h3 id="ttlSrc"></h3></div>
+        <div class="grid-wrap"><table class="grid fix-head"><caption class="blind">단말 제원정보 목록</caption><colgroup><col style="width:60px"><col style="width:160px"><col><col style="width:120px"><col style="width:120px"><col style="width:140px"><col style="width:140px"></colgroup>
+          <thead><tr><th>No</th><th>단말 ID</th><th>설치 위치</th><th>필수 필드</th><th>코드 검사</th><th>수신 일자</th><th>판정</th></tr></thead><tbody id="tbodySrc"></tbody></table></div>
+      </div>
+      <div id="tab-st" hidden>
+        <div class="sub-head mt0"><h3 id="ttlSt"></h3></div>
+        <div class="grid-wrap"><table class="grid fix-head"><caption class="blind">단말 상태정보 목록</caption><colgroup><col style="width:60px"><col><col style="width:140px"><col style="width:140px"><col style="width:140px"><col style="width:140px"><col style="width:160px"></colgroup>
+          <thead><tr><th>No</th><th>일자</th><th>기대(24)</th><th>수신</th><th>결손</th><th>수신율</th><th>판정</th></tr></thead><tbody id="tbodySt"></tbody></table></div>
+      </div>
+    </div>
+
+    <div id="docSec" hidden>
+      <div class="sub-head"><h3>연계확인서 서식(자동생성)</h3><div class="btns"><button type="button" class="btn btn-dark" onclick="doDown('연계확인서(PDF)')"><i class="ri-download-2-line"></i>다운로드</button></div></div>
+      <div class="doc-wrap"><div class="doc" id="docArea"></div></div>
+    </div>
+
+    <p class="f-msg mt16">※ 목업 샘플 — 점검 기준 수치는 제안값. 예시 기관: <a class="c-pri" href="cert_check.html?org=bucheon">부천시(적합)</a> · <a class="c-pri" href="cert_check.html?org=cheongju">청주시(부적합)</a> · <a class="c-pri" href="cert_check.html?org=gyeonggi">경기도(시도·연결상태)</a></p>
+  </main>
+</div>
+<!-- UI-DA09-002-P01 연계확인서 발급 승인 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-UI-DA09-002-P01" data-w="760">
+<div class="pop w760" role="dialog" aria-modal="true" aria-labelledby="popTit">
+  <div class="pop-head"><h2 id="popTit">연계확인서 발급 승인</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
+  <div class="pop-body">
+    <div class="result-box sc"><i class="ri-checkbox-circle-line"></i><div><b>총괄판정 적합 — 발급 가능</b><span>아래 내용으로 연계확인서를 발급합니다.</span></div></div>
+    <table class="tbl">
+      <caption class="blind">발급 승인 내용</caption>
+      <colgroup><col style="width:130px"><col></colgroup>
+      <tbody>
+        <tr><th>지자체</th><td id="pOrg">부천시 (경기도)</td></tr>
+        <tr><th>점검기간</th><td id="pPeriod">2026-10-01 ~ 2026-10-14 (14일)</td></tr>
+        <tr><th>점검자</th><td id="pChecker">이점검(Admin) · 2026-10-22</td></tr>
+        <tr><th>점검결과</th><td id="pResult"></td></tr>
+        <tr id="sggRow" hidden><th>통합 발급<br>시군구</th><td>
+          <div class="sgg-hd"><label class="chk"><input type="checkbox" id="sggAll" onchange="sggAll(this.checked)"><span>전체 선택</span></label><span class="f-msg" id="sggCnt"></span></div>
+          <ul class="sgg-chk" id="sggList"></ul>
+          <p class="f-msg">자체 플랫폼 없이 시도 플랫폼으로 연계하는 시군구를 선택하면 시도와 함께 연계확인서를 발급합니다. <b>자체 플랫폼이 있는 시군구</b>는 선택할 수 없으며 별도로 점검·발급을 받아야 합니다.</p>
+        </td></tr>
+      </tbody>
+    </table>
+    <div class="help-box wn mt16" style="margin-bottom:0"><i class="ri-error-warning-line"></i><span>승인 즉시 연계확인서가 발급되며 해당 기관은 <b>운영 상태로 전환</b>됩니다. 발급 이후 점검기간은 변경할 수 없습니다.</span></div>
+  </div>
+  <div class="pop-foot">
+    <button type="button" class="btn btn-line" onclick="closePop()">취소</button>
+    <button type="button" class="btn btn-crud" onclick="approve()"><i class="ri-award-line"></i>발급 승인</button>
+  </div>
+</div>
+</template>
+
+<!-- UI-DA09-002-P02 연계 점검 부적합 결과서 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-UI-DA09-002-P02" data-w="900">
+<div class="pop w900" role="dialog" aria-modal="true" aria-labelledby="popTit">
+  <div class="pop-head"><h2 id="popTit">부적합 결과서</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
+  <div class="pop-body">
+    <div class="rpt" id="report">
+      <h1 id="rH1">연계 점검 결과서(부적합)</h1>
+      <p class="meta"><span>문서번호 : <b id="rNo"></b></span><span>작성일 : <b id="rDate"></b></span><span>작성 : 행정안전부 재난정보통신과</span></p>
+
+      <h2>점검 개요</h2>
+      <table class="tbl"><caption class="blind">점검 개요</caption><colgroup><col style="width:130px"><col><col style="width:130px"><col></colgroup>
+        <tbody>
+          <tr><th>연계기관</th><td id="rOrg"></td><th>구분</th><td id="rLv"></td></tr>
+          <tr><th>점검기간</th><td id="rPer"></td><th>점검일자</th><td id="rChkDt"></td></tr>
+          <tr><th>점검자</th><td colspan="3" id="rChk"></td></tr>
+        </tbody></table>
+
+      <h2>총괄 판정</h2>
+      <div class="verdict" id="rVer"><i class="ri-close-circle-line" style="font-size:20px"></i><span>총괄판정 <b>부적합</b> — 아래 부적합 항목을 조치한 후 재점검을 요청해 주시기 바랍니다.</span></div>
+
+      <h2>항목별 점검 결과</h2>
+      <div class="grid-wrap"><table class="grid"><caption class="blind">항목별 점검 결과</caption><colgroup><col style="width:150px"><col style="width:110px"><col></colgroup>
+        <thead><tr><th>점검 항목</th><th>판정</th><th>결과</th></tr></thead><tbody id="rItems"></tbody></table></div>
+
+      <div id="ngArea">
+      <h2>부적합 상세 내역</h2>
+      <div class="grid-wrap"><table class="grid"><caption class="blind">부적합 상세 내역</caption><colgroup><col style="width:48px"><col style="width:110px"><col><col style="width:150px"><col style="width:180px"></colgroup>
+        <thead><tr><th>No</th><th>점검 항목</th><th>내용</th><th>발생 시각</th><th>부적합 사유</th></tr></thead><tbody id="rNg"></tbody></table></div>
+
+      <h2>조치 요청 사항</h2>
+      <ol class="req" id="rReq"></ol>
+      <textarea class="txa mt8" id="m_ng_opinion" name="m_ng_opinion" maxlength="1000" title="추가 의견" placeholder="추가 의견(선택) — 결과서에 함께 표시·인쇄됩니다."></textarea>
+      </div>
+
+      <p class="from">행정안전부 재난정보통신과</p>
+      <p class="note" id="rNote">※ 본 결과서는 연계 점검 결과로 자동 생성됩니다. 조치 완료 후 연계확인서 발급요청 공문을 다시 보내면 요청한 점검기간으로 재점검합니다.</p>
+    </div>
+  </div>
+  <div class="pop-foot">
+    <button type="button" class="btn btn-line" onclick="closePop()">닫기</button>
+    <button type="button" class="btn btn-dark" onclick="doDown(OK?'연계점검_결과서.pdf':'연계점검_부적합결과서.pdf')"><i class="ri-download-2-line"></i>PDF 다운로드</button>
+    <button type="button" class="btn btn-dark" onclick="printReport()"><i class="ri-printer-line"></i>인쇄</button>
+  </div>
+</div>
+</template>
+
+<script src="js/common.js"></script>
+
+<script src="js/pop/UI-DA09-002-P01.js"></script>
+<script src="js/pop/UI-DA09-002-P02.js"></script>
+<script src="js/pages/cert_check.js"></script>
+</body>
+</html>

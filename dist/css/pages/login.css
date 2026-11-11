@@ -1,0 +1,480 @@
+@charset "UTF-8";
+/* ==========================================================
+   common.scss — 재난·안전정보시스템 UI 표준정의서(NDMS-DE33 v1.1) 기준
+   ========================================================== */
+/* ---------- 1. Tokens ---------- */
+body {
+  background: #f5f7f9;
+}
+
+.lg {
+  max-width: 1144px;
+  margin: 0 auto;
+  padding: 28px 0 0;
+}
+
+.lg-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #202020;
+}
+
+.lg-logo img {
+  width: 36px;
+  height: 36px;
+}
+
+.lg-row {
+  display: grid;
+  grid-template-columns: 343px 371px 371px;
+  gap: 29px;
+  margin-top: 14px;
+}
+
+.lg-id {
+  position: relative;
+  padding: 28px 28px 22px;
+  border-radius: 8px;
+  background: #172e55 linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0 40%, transparent 40%);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.lg-id h2, .lg-gw h2, .lg-msg h2 {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.lg-id .sub {
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+.lg-fld {
+  margin-top: 16px;
+  background: #e8f0fe;
+  border-radius: 2px;
+}
+
+.lg-fld label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 48px;
+  padding: 0 14px;
+}
+
+.lg-fld label + label {
+  border-top: 1px solid #d5def0;
+}
+
+.lg-fld i {
+  font-size: 18px;
+  color: #748299;
+}
+
+.lg-fld input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  background: none;
+  font-size: 15px;
+  color: #101010;
+  outline: 0;
+}
+
+.lg-fld input::placeholder {
+  color: #8e8e8e;
+}
+
+.lg-fld .eye {
+  color: #748299;
+  font-size: 18px;
+}
+
+.lg-fld.err {
+  box-shadow: 0 0 0 2px #eb003b;
+}
+
+.lg-opt {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0 12px;
+  font-size: 13px;
+}
+
+.lg-opt .chk {
+  font-size: 13px;
+  color: #fff;
+}
+
+.lg-opt .chk input {
+  border-color: #748299;
+  background-color: transparent;
+}
+
+#failInfo {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+#failInfo b {
+  color: #ff8fa8;
+  opacity: 1;
+}
+
+.lg-id .btn-login {
+  width: 100%;
+  height: 42px;
+  border-radius: 2px;
+  background: #3e55e1;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.lg-id .btn-login:hover {
+  background: #3347c9;
+}
+
+.lg-lock {
+  display: flex;
+  gap: 6px;
+  margin-top: 10px;
+  padding: 8px 10px;
+  border-radius: 2px;
+  background: rgba(235, 0, 59, 0.18);
+  font-size: 12px;
+  color: #ffd0dc;
+}
+
+.lg-tip {
+  margin-top: 8px;
+  font-size: 11px;
+  opacity: 0.65;
+  line-height: 1.5;
+}
+
+.lg-guide {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-top: auto;
+  padding: 12px 32px 12px 18px;
+  border: 2px solid #fff;
+  border-radius: 6px;
+  text-align: left;
+  color: #fff;
+}
+
+.lg-guide b {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.lg-guide span {
+  font-size: 13px;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+.lg-guide i {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  font-size: 18px;
+}
+
+.lg-gw {
+  display: flex;
+  flex-direction: column;
+  padding: 28px 28px 22px;
+  border: 1px solid #e1e5f5;
+  border-radius: 8px;
+  background: #f5f6fd;
+}
+
+.lg-gw h2 {
+  color: #3e55e1;
+}
+
+.lg-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 16px;
+  padding: 20px 20px 18px;
+  border: 1px solid #e1e5f5;
+  border-radius: 6px;
+  background: #fff;
+  text-align: center;
+}
+
+.lg-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 17px;
+  font-weight: 700;
+  color: #101010;
+  text-align: left;
+}
+
+.lg-card h3 i {
+  font-size: 24px;
+  color: #505050;
+}
+
+.lg-card p {
+  margin: 14px 0 0;
+  font-size: 13px;
+  color: #707070;
+  word-break: keep-all;
+}
+
+.lg-card .btn-cert {
+  margin: 20px auto 0;
+  width: 190px;
+  height: 54px;
+  border-radius: 2px;
+  background: #7b8089;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.lg-card .btn-cert:hover {
+  background: #5d6063;
+}
+
+.lg-links {
+  margin-top: 24px;
+  font-size: 13px;
+  color: #707070;
+}
+
+.lg-links button {
+  color: #707070;
+}
+
+.lg-links button:hover {
+  color: #3e55e1;
+  text-decoration: underline;
+}
+
+.lg-links span {
+  margin: 0 8px;
+  color: #c6c6c6;
+}
+
+.lg-msg {
+  display: flex;
+  flex-direction: column;
+  padding: 28px 28px 22px;
+  border: 1px solid #d8ecf3;
+  border-radius: 8px;
+  background: #eef6f9;
+}
+
+.lg-msg h2 {
+  display: flex;
+  align-items: center;
+  color: #0085b7;
+}
+
+.lg-msg .nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #505050;
+}
+
+.lg-msg .nav button {
+  width: 22px;
+  height: 22px;
+  color: #707070;
+  font-size: 18px;
+}
+
+.lg-msg .nav b {
+  color: #0085b7;
+}
+
+.lg-when {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  font-size: 14px;
+  color: #202020;
+}
+
+.lg-when em {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  height: 24px;
+  padding: 0 9px;
+  border-radius: 12px;
+  background: #0085b7;
+  color: #fff;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.lg-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  min-height: 50px;
+  padding: 8px 16px;
+  border-radius: 2px;
+  background: #0085b7;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.lg-bar i {
+  font-size: 20px;
+}
+
+.lg-body {
+  flex: 1;
+  min-height: 200px;
+  max-height: 248px;
+  margin-top: 6px;
+  padding: 14px 18px;
+  overflow-y: auto;
+  border: 1px dashed #b6dcea;
+  background: #fff;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #505050;
+  white-space: pre-line;
+}
+
+.lg-body b {
+  display: block;
+  margin-top: 8px;
+  font-weight: 400;
+  color: #202020;
+}
+
+.lg-body b:first-child {
+  margin-top: 0;
+}
+
+.lg-desk {
+  margin-top: 18px;
+  padding: 12px 18px;
+  border-radius: 2px;
+  background: #0085b7;
+  color: #fff;
+}
+
+.lg-desk b {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+}
+
+.lg-desk b i {
+  font-size: 20px;
+}
+
+.lg-desk p {
+  margin-top: 4px;
+  font-size: 14px;
+}
+
+.lg-foot {
+  display: flex;
+  align-items: center;
+  max-width: 1144px;
+  margin: 28px auto 0;
+  padding: 0 0 24px;
+  font-size: 13px;
+  color: #707070;
+}
+
+.lg-foot a {
+  color: #3e55e1;
+  font-weight: 500;
+}
+
+.lg-foot .cp {
+  margin-left: auto;
+}
+
+.lg-foot .dk {
+  margin-left: 24px;
+}
+
+@media (max-width: 1200px) {
+  .lg {
+    padding: 20px 20px 0;
+  }
+  .lg-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .lg-foot {
+    padding: 0 20px 20px;
+  }
+}
+@media (max-width: 1023px) {
+  .lg-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .lg-foot {
+    flex-wrap: wrap;
+    gap: 4px 16px;
+  }
+  .lg-foot .cp {
+    margin-left: 0;
+    width: 100%;
+    order: 3;
+  }
+  .lg-foot .dk {
+    margin-left: auto;
+  }
+}
+@media (max-width: 767px) {
+  .lg {
+    padding: 16px 16px 0;
+  }
+  .lg-logo {
+    font-size: 17px;
+  }
+  .lg-id, .lg-gw, .lg-msg {
+    padding: 22px 18px 18px;
+  }
+  .lg-guide {
+    margin-top: 16px;
+  }
+  .lg-fld input {
+    font-size: 16px;
+  }
+  .lg-foot {
+    padding: 0 16px 20px;
+  }
+}
+/*# sourceMappingURL=../maps/pages/login.css.map */

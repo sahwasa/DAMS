@@ -1,0 +1,36 @@
+<!-- UI-DA08-004-P01 장애 접수 및 조치 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-UI-DA08-004-P01" data-w="760">
+<div class="pop w760" role="dialog" aria-modal="true" aria-labelledby="popTit">
+  <div class="pop-head"><h2 id="popTit">장애 접수 및 조치</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
+  <div class="pop-body">
+    <div class="sub-head mt0"><h4>장애 접수</h4></div>
+    <table class="tbl" id="frm">
+      <caption class="blind">장애 접수 및 조치 입력</caption>
+      <colgroup><col style="width:120px"><col><col style="width:120px"><col></colgroup>
+      <tbody>
+        <tr><th><span class="req">대상서버</span></th><td><select class="sel" id="m_srvr_cd" name="m_srvr_cd" required data-label="대상서버"><option value="">선택</option><option>연계서버 1호</option><option>연계서버 2호</option><option>WEB서버</option><option>WAS서버 1호</option><option>WAS서버 2호</option><option>DB서버</option><option>통합플랫폼 GW</option><option>충남 아산시 연계서버</option><option>울산 남구 예경보서버</option><option>강원 철원군 연계서버</option></select></td>
+            <th><span class="req">장애구분</span></th><td><select class="sel" id="m_dsblty_se_cd" name="m_dsblty_se_cd" required data-label="장애구분"><option value="">선택</option><option>네트워크</option><option>프로세스</option><option>데이터베이스</option><option>서버자원</option><option>단말기통신</option></select></td></tr>
+        <tr><th>연계기관</th><td><select class="sel" id="m_inst_cd" name="m_inst_cd" title="연계기관"><option>중앙(DAMS)</option><option>전남광주 여수시</option><option>울산 남구</option><option>강원 철원군</option><option>충남 아산시</option><option>경북 포항시</option></select></td>
+            <th>데이터 종류</th><td><select class="sel" id="m_data_se_cd" name="m_data_se_cd" title="데이터 종류"><option value="-">해당없음</option><option>통보문</option><option>단말기 상태정보</option><option>단말기 제원정보</option><option>연계상태</option><option>통계</option></select></td></tr>
+        <tr><th><span class="req">장애 발생시각</span></th><td colspan="3"><div class="range"><span class="inp-ico inp-date"><input type="date" class="inp" id="m_ocrn_dt" name="m_ocrn_dt" value="2026-10-30" title="장애 발생시각 일자" required data-label="장애 발생시각"></span><input type="time" class="inp inp-time" id="m_ocrn_dt_tm" name="m_ocrn_dt_tm" value="14:30" title="장애 발생시각 시각"></div></td></tr>
+        <tr><th><span class="req">장애내용</span></th><td colspan="3"><textarea class="txa" id="m_dsblty_cn" name="m_dsblty_cn" maxlength="4000" rows="3" required data-label="장애내용" placeholder="장애 현상·영향 범위를 입력하세요."></textarea></td></tr>
+      </tbody>
+    </table>
+    <div class="sub-head"><h4>조치 결과</h4><span class="cnt" id="stat"></span></div>
+    <table class="tbl">
+      <caption class="blind">조치 결과 입력</caption>
+      <colgroup><col style="width:120px"><col><col style="width:120px"><col></colgroup>
+      <tbody>
+        <tr><th>조치내용</th><td colspan="3"><textarea class="txa" id="m_prcs_rslt_cn" name="m_prcs_rslt_cn" maxlength="4000" rows="3" placeholder="원인 및 조치내용을 입력하세요."></textarea></td></tr>
+        <tr><th>복구시각</th><td colspan="3"><div class="range"><span class="inp-ico inp-date"><input type="date" class="inp" id="m_rstr_dt" name="m_rstr_dt" value="" title="복구시각 일자" data-label="복구시각"></span><input type="time" class="inp inp-time" id="m_rstr_dt_tm" name="m_rstr_dt_tm" value="" title="복구시각 시각"></div></td></tr>
+        <tr><th><span class="req">처리자</span></th><td colspan="3"><input class="inp" style="width:240px" id="m_prcr_nm" name="m_prcr_nm" maxlength="100" value="홍길동" required data-label="처리자"></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pop-foot">
+    <button type="button" class="btn btn-crud" id="btnDel" onclick="remove()" hidden><i class="ri-delete-bin-line"></i>삭제</button>
+    <button type="button" class="btn btn-line" onclick="closePop()">취소</button>
+    <button type="button" class="btn btn-crud" id="btnSave" onclick="save()"><i class="ri-save-line"></i>저장</button>
+  </div>
+</div>
+</template>

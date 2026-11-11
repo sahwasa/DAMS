@@ -1,40 +1,92 @@
 <!DOCTYPE html>
-<html lang="ko" data-thema="light">
+<html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
-  <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
-  <title>재난 예경보 통합관리시스템</title>
-  <link rel="stylesheet" href="css/main.css">  
-</head>
-<body>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>로그인 | 재난 예경보 통합관리시스템</title>
+<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="font/pretendard-gov/pretendardvariable-gov.css">
+<link rel="stylesheet" href="font/remixicon/remixicon.css">
+<link rel="stylesheet" href="css/main.css">
 
-<div id="wrap" class="wrap">  
-  <main id="content" class="login">
-    <header>       
-      <h1 class="main_logo"><b>재난 예경보 통합관리시스템</b> 로그인</h1>
-    </header>
-    <div class="login_ipt">
-      <input type="text" name="" title="아이디" placeholder="아이디">
-      <input type="password" name="" title="비밀번호" placeholder="비밀번호">
-      <label for="remember" class="login--remember"><input type="checkbox" id="remember">ID 기억하기</label>
-      <a href="main.html" class="btn_login">로그인</a>
-    </div>
-  </main>
+<link rel="stylesheet" href="css/pages/login.css">
+
+</head>
+
+
+<body>
+<div class="lg">
+  <h1 class="lg-logo"><img src="images/gov_logo_w.png" alt="정부 상징">재난 예경보 통합관리시스템</h1>
+  <div class="lg-row">
+    <!-- 아이디 로그인(DAMS 자체 계정, 비상/유지보수용) -->
+    <section class="lg-id">
+      <h2>아이디 로그인</h2><p class="sub">(DAMS 자체 계정 · 비상/유지보수용)</p>
+      <form id="loginForm" onsubmit="login();return false">
+        <div class="lg-fld" id="fldBox">
+          <label><i class="ri-user-3-line"></i><input id="userId" name="userId" maxlength="20" placeholder="아이디" required data-label="아이디" autocomplete="username"></label>
+          <label><i class="ri-lock-unlock-line"></i><input type="password" id="password" name="password" placeholder="비밀번호" required data-label="비밀번호" autocomplete="current-password"><button type="button" class="eye" title="비밀번호 보기" onclick="togglePw(this)"><i class="ri-eye-line"></i></button></label>
+        </div>
+        <div class="lg-opt"><label class="chk"><input type="checkbox" id="remember" name="remember" value="Y"><span>아이디 저장</span></label><span id="failInfo">5회 실패 시 계정 잠금</span></div>
+        <button type="submit" class="btn-login" id="btnLogin">로그인</button>
+        <div class="lg-lock" id="lockNotice" hidden><i class="ri-lock-line"></i><span>비밀번호 5회 연속 오류로 계정이 잠겼습니다. 시스템 관리자에게 잠금 해제를 요청하세요.</span></div>
+        <p class="lg-tip">※ 목업: 비밀번호를 <b>fail</b>로 입력하면 오류 횟수가 증가하고, 아이디 <b>dup</b>은 중복로그인 안내를 표시합니다.</p>
+      </form>
+      <button type="button" class="lg-guide" id="lnkAuthGuide" onclick="openPop('pop/UI-DA01-001-P01.html',540)"><b>NDMS 권한신청 안내</b><span>계정이 없거나 권한 승인이 필요한 경우<br>NDMS에서 권한을 신청하세요.</span><i class="ri-arrow-right-up-line"></i></button>
+    </section>
+    <!-- 공무원 로그인: 인증서 로그인 -->
+    <section class="lg-gw">
+      <h2>공무원 로그인</h2>
+      <div class="lg-card">
+        <h3><i class="ri-file-shield-2-line"></i>인증서 로그인</h3>
+        <p>국가재난관리정보시스템(NDMS)에서 등록한<br>GPKI 인증서로 로그인할 수 있습니다.</p>
+        <button type="button" class="btn-cert" id="btnGpkiLogin" onclick="gpkiLogin()">GPKI 인증서 로그인</button>
+        <div class="lg-links"><button type="button" onclick="msg('인증서 내보내기 프로그램을 실행합니다.')">인증서 내보내기</button><span>|</span><button type="button" onclick="doDown('인증서 SW')">인증서 SW다운로드</button></div>
+      </div>
+    </section>
+    <!-- 재난발생현황(NDMS 특보메시지 영역) -->
+    <section class="lg-msg">
+      <h2>재난발생현황<span class="nav"><button type="button" title="이전" onclick="evNav(-1)"><i class="ri-arrow-left-s-line"></i></button><b id="evIdx">1</b>/<span id="evCnt">4</span><button type="button" title="다음" onclick="evNav(1)"><i class="ri-arrow-right-s-line"></i></button></span></h2>
+      <div class="lg-when"><em><i class="ri-time-line"></i>발생일시</em><span id="evTm"></span></div>
+      <div class="lg-bar"><i class="ri-volume-up-line"></i><span id="evTit"></span></div>
+      <div class="lg-body" id="evBody"></div>
+      <div class="lg-desk"><b><i class="ri-customer-service-2-line"></i>SERVICE DESK</b><p>전화번호&nbsp; 000-0000-0000</p></div>
+    </section>
+  </div>
 </div>
-<script src="js/hazard_icon.js"></script>
-<script src="js/vendor/lucide.js"></script>
-<script src="js/dialog.js"></script>
-<script src="js/tab.js"></script>
-<script>
-lucide.createIcons({
-  attrs: {
-    'stroke-width': 2,
-    class: 'icon'
-  }
-});
-  initTabAll();
-</script>
+<footer class="lg-foot"><a href="privacy.html">개인정보처리방침</a><span class="cp">© Ministry of the Interior and Safety. All rights reserved.</span><span class="dk">SERVICE DESK : 000-0000-0000</span></footer>
+<!-- UI-DA01-001-P01 NDMS 권한신청 안내 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-UI-DA01-001-P01" data-w="540">
+<div class="pop w540" role="dialog" aria-modal="true" aria-labelledby="popTit">
+  <div class="pop-head"><h2 id="popTit">NDMS 권한신청 안내</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
+  <div class="pop-body">
+    <div class="help-box"><i class="ri-information-line"></i><span>DAMS는 <b>NDMS에 등록한 GPKI 인증서</b>로 로그인합니다. 계정이 없거나 DAMS 업무권한이 없으면 아래 절차로 권한을 신청하세요.</span></div>
+    <div class="sub-head mt0"><h4>NDMS 권한신청 절차</h4></div>
+    <ol class="step-list">
+      <li>행정안전부 국가재난관리정보시스템(NDMS) 포털에 접속합니다.</li>
+      <li>[사용자 지원] &gt; [업무권한 신청] 메뉴로 이동합니다.</li>
+      <li>업무분야에서 <b>재난예경보 통합관리시스템(DAMS)</b>을 선택합니다.</li>
+      <li>신청 권한(사용자 / 운영자 / 관리자)을 선택하고 결재선을 지정하여 상신합니다.</li>
+      <li>행정안전부 관리자 승인 후 인증서 로그인이 가능합니다.</li>
+    </ol>
+    <table class="tbl mt16">
+      <caption class="blind">권한신청 문의처</caption>
+      <colgroup><col style="width:120px"><col></colgroup>
+      <tbody>
+        <tr><th>문의 부서</th><td>행정안전부 재난정보통신과</td></tr>
+        <tr><th>운영 지원</th><td>DAMS 운영지원센터 044-205-0000 (평일 09:00~18:00)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pop-foot">
+    <button type="button" class="btn btn-line" onclick="goNdms()"><i class="ri-external-link-line"></i>NDMS 포털 바로가기</button>
+    <button type="button" class="btn btn-crud" onclick="closePop()">확인</button>
+  </div>
+</div>
+</template>
+
+<script src="js/common.js"></script>
+
+<script src="js/pop/UI-DA01-001-P01.js"></script>
+<script src="js/pages/login.js"></script>
 </body>
 </html>

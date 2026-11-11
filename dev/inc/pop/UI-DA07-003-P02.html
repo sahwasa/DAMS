@@ -1,0 +1,23 @@
+<!-- UI-DA07-003-P02 상세코드 등록 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-UI-DA07-003-P02" data-w="540">
+<form class="pop w540" role="dialog" aria-modal="true" aria-labelledby="popTit" id="codeForm" onsubmit="return false">
+  <div class="pop-head"><h2 id="popTit">상세코드 등록</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
+  <div class="pop-body">
+    <table class="tbl">
+      <caption class="blind">상세코드 정보 입력</caption>
+      <colgroup><col style="width:120px"><col></colgroup>
+      <tbody>
+        <tr><th><span class="req">그룹코드</span></th><td class="ro" id="m_code_group">user_authrt_cd (사용자 권한 그룹)</td></tr>
+        <tr><th><label for="m_code_cd" class="req">코드</label></th><td><input class="inp" id="m_code_cd" name="m_code_cd" maxlength="50" required data-label="코드"><span class="f-msg" id="cdMsg">50자 이내, 그룹 내 중복 불가</span></td></tr>
+        <tr><th><label for="m_code_nm" class="req">코드명</label></th><td><input class="inp" id="m_code_nm" name="m_code_nm" maxlength="100" required data-label="코드명"></td></tr>
+        <tr><th><label for="m_code_expln">설명</label></th><td><textarea class="txa" id="m_code_expln" name="m_code_expln" rows="3" maxlength="1000" style="width:100%"></textarea></td></tr>
+        <tr><th>사용여부</th><td><label class="tgl"><input type="checkbox" id="m_code_use" name="m_code_use" checked onchange="this.nextElementSibling.textContent=this.checked?'사용':'미사용'"><span>사용</span></label></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pop-foot">
+    <button type="button" class="btn btn-line" onclick="closePop()">취소</button>
+    <button type="button" class="btn btn-crud" onclick="saveCode()">저장</button>
+  </div>
+</form>
+</template>

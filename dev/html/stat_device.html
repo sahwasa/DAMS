@@ -1,0 +1,183 @@
+@@include('../inc/top.html',{"title": "단말기통계 | 재난 예경보 통합관리시스템", "css": "stat_device"})
+
+<body>
+<div class="wrap">
+  <!-- GNB -->
+  @@include('../inc/header.html')
+
+  <div class="body">
+    <!-- LNB -->
+    @@include('../inc/lnb-stat.html')
+
+    <!-- MAIN -->
+    <div class="main">
+      @@include('../inc/mdi.html',{"file": "stat_device.html", "name": "단말기통계"})
+
+      <main class="work" id="content">
+        <div class="page-head">
+          <div>
+            <h2 class="tit">단말기통계<button type="button" class="star" title="즐겨찾기" data-star><i class="ri-star-line"></i></button></h2>
+            @@include('../inc/breadcrumb.html',{"d1": "통계", "d1h": "stat_event.html", "d2": "단말기통계", "d2h": "stat_device.html"})
+          </div>
+        </div>
+
+        <!-- ===== 업무영역 (화면별 교체) ===== -->
+<ul class="tab">
+  <li class="on"><button type="button" data-tab="tabType">매체별 통계</button></li>
+  <li><button type="button" data-tab="tabRegion">지역별 통계</button></li>
+  <li><button type="button" data-tab="tabStatus">상태별 통계</button></li>
+</ul>
+
+<form class="sch-box" id="schForm">
+  <div class="rows r1">
+    <div class="it c2" id="periodCond"><label for="selPeriodType">기간 유형</label>
+      <div class="flex w100">
+        <select class="sel" id="selPeriodType" name="selPeriodType" style="width:120px" onchange="changePeriodType(this.value)"><option value="year" selected>연도</option><option value="month">월</option><option value="quarter">분기</option><option value="custom">사용자선택</option></select>
+        <select class="sel" id="selYear" name="selYear" style="width:110px" title="연도"><option>2026년</option><option>2025년</option><option>2024년</option></select>
+        <select class="sel" id="selMonth" name="selMonth" style="width:90px" title="월" hidden><option>1월</option><option>2월</option><option>3월</option><option>4월</option><option>5월</option><option>6월</option><option>7월</option><option>8월</option><option>9월</option><option selected>10월</option><option>11월</option><option>12월</option></select>
+        <select class="sel" id="selQuarter" name="selQuarter" style="width:100px" title="분기" hidden><option>1분기</option><option>2분기</option><option>3분기</option><option selected>4분기</option></select>
+        <div class="range" id="periodRange" hidden><span class="inp-ico inp-date"><input type="date" class="inp" id="startDate" name="startDate" value="2026-01-01" title="시작일"></span><span>~</span><span class="inp-ico inp-date"><input type="date" class="inp" id="endDate" name="endDate" value="2026-10-30" title="종료일"></span><span class="f-msg mt0">최대 1년</span></div>
+      </div>
+    </div>
+    <div class="it c2" id="regionCond"><span class="lb">지역 레벨</span>
+      <label class="rdo"><input type="radio" name="regionUnit" value="sido" checked onchange="setUnit(this.value)"><span>시도별</span></label>
+      <label class="rdo"><input type="radio" name="regionUnit" value="sgg" onchange="setUnit(this.value)"><span>시군구별</span></label><select class="sel" id="rgSido" name="rgSido" title="시도" style="width:170px;margin-left:8px" hidden onchange="setUnit('sgg')"><option value="">시도 전체</option><option>전남광주통합특별시</option><option>대전광역시</option><option>울산광역시</option><option>경기도</option><option>강원특별자치도</option><option>충청남도</option><option>경상북도</option></select>
+    </div>
+    <div class="it"><label for="selDevice">매체구분</label><select class="sel" id="selDevice" name="selDevice"><option value="">전체</option><option value="01">자동음성통보</option><option value="02">재해문자전광판</option><option value="03">마을방송</option><option value="04">자동우량경보</option></select></div>
+  </div>
+  <div class="ctrl">
+    <button type="reset" class="btn btn-rst"><i class="ri-refresh-line"></i>초기화</button>
+    <button type="submit" class="btn btn-sch"><i class="ri-search-line"></i>검색</button>
+  </div>
+</form>
+<p class="st-note st-calc"><i class="ri-information-line"></i><span><b>산정기준</b> 설치 대수 = 조회 종료일 기준 운영중인 단말기 수(사용중지 제외) · 전체(기대 수신) = 운영 단말기 수 × 운영 시간(1시간 1회 상태 수신) · 수신율 = 연결 ÷ 전체 × 100</span></p>
+
+
+<!-- [탭1] 매체별 -->
+<div id="tabType">
+  <div class="col-lr" style="grid-template-columns:minmax(0,5fr) minmax(0,5fr)">
+    <div class="card"><div class="card-h" title="기대 수신 건수 대비 연결·끊김">매체구분별 단말기 상태<span class="sub">(%)</span><span class="st-cond" data-cond></span>
+      <div class="btns" id="dmMode" role="group" aria-label="차트 종류"><button type="button" class="btn s ico btn-pri" title="가로 막대" aria-label="가로 막대" onclick="dmMode(this,'h')"><i class="ri-bar-chart-horizontal-line"></i></button><button type="button" class="btn s ico btn-line" title="세로 막대" aria-label="세로 막대" onclick="dmMode(this,'v')"><i class="ri-bar-chart-line"></i></button><button type="button" class="btn s ico btn-line" title="비율" aria-label="비율" onclick="dmMode(this,'d')"><i class="ri-donut-chart-line"></i></button></div><button type="button" class="btn s btn-line ico img-dn" title="차트 이미지 다운로드(PNG)" onclick="chartPng('매체구분별 단말기 상태',this)"><i class="ri-image-line"></i></button></div>
+      <div class="card-b"><div class="dm-cat" id="deviceTypeChart"></div></div></div>
+    <div class="card"><div class="card-h"><span id="dmTrTit">월별 매체별 수신율 추이</span><span class="sub">(%)</span><span class="st-cond" data-cond></span><div class="btns" role="group" aria-label="차트 종류"><button type="button" class="btn s ico btn-pri" title="꺾은선" aria-label="꺾은선" onclick="chMode(this,'DTM','l','drawDmTrend')"><i class="ri-line-chart-line"></i></button><button type="button" class="btn s ico btn-line" title="묶음 막대" aria-label="묶음 막대" onclick="chMode(this,'DTM','b','drawDmTrend')"><i class="ri-bar-chart-grouped-line"></i></button></div><button type="button" class="btn s btn-line ico img-dn" title="차트 이미지 다운로드(PNG)" onclick="chartPng('매체별 수신율 추이',this)"><i class="ri-image-line"></i></button></div>
+      <div class="card-b"><div class="md-tr" id="dmTrend"></div></div></div>
+  </div>
+  <div class="tbl-acc" id="dvTblWrapAcc">
+  <div class="sub-head" onclick="tglTbl(event,'dvTblWrap')" title="표 펼치기/접기"><i class="ri-arrow-right-s-line acc-ico"></i><h3>매체별 통계</h3><span class="cnt">전체<b>4</b>건</span>
+    <div class="grid-top"><span class="acc-lb">표 펼치기</span><button type="button" class="btn s btn-dark" onclick="doExcel('단말기 매체별 통계')"><i class="ri-file-excel-2-line"></i>엑셀다운로드</button></div>
+  </div>
+  <div class="grid-wrap" id="dvTblWrap" hidden>
+    <table class="grid"><caption class="blind">매체별 통계</caption>
+      <colgroup><col><col style="width:100px"><col style="width:140px"><col style="width:130px"><col style="width:100px"><col style="width:84px"></colgroup>
+      <thead><tr><th>매체구분</th><th class="sort">설치(대)</th><th class="sort" data-tip="운영 단말기 수 × 운영 시간">전체(기대 수신)</th><th class="sort">연결(건)</th><th class="sort">끊김(건)</th><th class="sort">수신율</th></tr></thead>
+      <tbody id="deviceStatTbody">
+<tr><td class="t-l">자동음성통보</td><td class="t-r">580</td><td class="t-r">4,217,760</td><td class="t-r">4,141,885</td><td class="t-r">75,875</td><td class="t-r">98.2%</td></tr>
+<tr><td class="t-l">재해문자전광판</td><td class="t-r">360</td><td class="t-r">2,617,920</td><td class="t-r">2,581,402</td><td class="t-r">36,518</td><td class="t-r">98.6%</td></tr>
+<tr><td class="t-l">마을방송</td><td class="t-r">412</td><td class="t-r">2,996,064</td><td class="t-r">2,921,993</td><td class="t-r">74,071</td><td class="t-r">97.5%</td></tr>
+<tr><td class="t-l">자동우량경보</td><td class="t-r">100</td><td class="t-r">727,200</td><td class="t-r">710,072</td><td class="t-r">17,128</td><td class="t-r">97.6%</td></tr>
+<tr class="tot"><td>합계</td><td class="t-r">1,452</td><td class="t-r">10,558,944</td><td class="t-r">10,355,352</td><td class="t-r">203,592</td><td class="t-r">98.1%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+</div>
+
+<!-- [탭2] 지역별 -->
+<div id="tabRegion" hidden>
+  <div class="col-lr st-lr">
+    <div class="card"><div class="card-h">지역별 단말기 상태<span class="sub" id="unitSub">(시도 단위)</span><span class="st-cond" data-cond></span><div class="btns" role="group" aria-label="차트 종류"><button type="button" class="btn s ico btn-pri" title="가로 막대" aria-label="가로 막대" onclick="chMode(this,'RGM','h','drawRg')"><i class="ri-bar-chart-horizontal-line"></i></button><button type="button" class="btn s ico btn-line" title="세로 막대" aria-label="세로 막대" onclick="chMode(this,'RGM','v','drawRg')"><i class="ri-bar-chart-line"></i></button><button type="button" class="btn s ico btn-line" title="비율" aria-label="비율" onclick="chMode(this,'RGM','d','drawRg')"><i class="ri-donut-chart-line"></i></button></div><button type="button" class="btn s btn-line ico img-dn" title="차트 이미지 다운로드(PNG)" onclick="chartPng('지역별 단말기 상태',this)"><i class="ri-image-line"></i></button></div>
+      <div class="card-b"><div id="rgChart" style="height:300px"></div><ul class="hbar hv" id="deviceRegionChart" hidden><li title="전남광주통합특별시 — 연결 1,293,904 · 끊김 29,600"><span class="lb">전남광주통합특별시</span><span class="bar"><span class="cl-sc" style="width:97.76%"></span><span class="cl-dg" style="width:2.24%"></span></span><span class="v">연결 <b class="c-sc">97.8%</b> · 끊김 <b class="c-dg">2.2%</b></span></li><li title="대전광역시 — 연결 602,650 · 끊김 8,198"><span class="lb">대전광역시</span><span class="bar"><span class="cl-sc" style="width:98.66%"></span><span class="cl-dg" style="width:1.34%"></span></span><span class="v">연결 <b class="c-sc">98.7%</b> · 끊김 <b class="c-dg">1.3%</b></span></li><li title="울산광역시 — 연결 845,966 · 끊김 12,130"><span class="lb">울산광역시</span><span class="bar"><span class="cl-sc" style="width:98.59%"></span><span class="cl-dg" style="width:1.41%"></span></span><span class="v">연결 <b class="c-sc">98.6%</b> · 끊김 <b class="c-dg">1.4%</b></span></li><li title="경기도 — 연결 2,100,513 · 끊김 37,455"><span class="lb">경기도</span><span class="bar"><span class="cl-sc" style="width:98.25%"></span><span class="cl-dg" style="width:1.75%"></span></span><span class="v">연결 <b class="c-sc">98.2%</b> · 끊김 <b class="c-dg">1.8%</b></span></li><li title="강원특별자치도 — 연결 1,587,563 · 끊김 41,365"><span class="lb">강원특별자치도</span><span class="bar"><span class="cl-sc" style="width:97.46%"></span><span class="cl-dg" style="width:2.54%"></span></span><span class="v">연결 <b class="c-sc">97.5%</b> · 끊김 <b class="c-dg">2.5%</b></span></li><li title="충청남도 — 연결 1,738,677 · 끊김 35,691"><span class="lb">충청남도</span><span class="bar"><span class="cl-sc" style="width:97.99%"></span><span class="cl-dg" style="width:2.01%"></span></span><span class="v">연결 <b class="c-sc">98.0%</b> · 끊김 <b class="c-dg">2.0%</b></span></li><li title="경상북도 — 연결 1,470,674 · 끊김 27,358"><span class="lb">경상북도</span><span class="bar"><span class="cl-sc" style="width:98.17%"></span><span class="cl-dg" style="width:1.83%"></span></span><span class="v">연결 <b class="c-sc">98.2%</b> · 끊김 <b class="c-dg">1.8%</b></span></li><li title="기타 시도 — 연결 715,405 · 끊김 11,795"><span class="lb">기타 시도</span><span class="bar"><span class="cl-sc" style="width:98.38%"></span><span class="cl-dg" style="width:1.62%"></span></span><span class="v">연결 <b class="c-sc">98.4%</b> · 끊김 <b class="c-dg">1.6%</b></span></li></ul></div></div>
+    <div class="rg-right">
+      <div class="sub-head mt0">
+        <ul class="rg-sw"><li class="on"><button type="button" id="regTit" onclick="swRg(this,0)">시도별 통계</button></li><li><button type="button" id="heatTit" onclick="swRg(this,1)">시도 × 매체구분 수신율</button></li></ul>
+        <div class="grid-top"><button type="button" class="btn s btn-dark" onclick="doExcel('단말기 지역별 통계')"><i class="ri-file-excel-2-line"></i>엑셀다운로드</button></div>
+      </div>
+      <div id="rgTbl">
+      <div class="grid-wrap">
+        <table class="grid fix-head"><caption class="blind">지역별 통계</caption>
+          <colgroup><col><col style="width:90px"><col style="width:120px"><col style="width:110px"><col style="width:100px"><col style="width:76px"></colgroup>
+          <thead><tr><th id="regionColTh">시도</th><th class="sort">설치(대)</th><th class="sort">전체(기대 수신)</th><th class="sort">연결(건)</th><th class="sort">끊김(건)</th><th class="sort asc">수신율</th></tr></thead>
+          <tbody id="deviceRegionTbody">
+<tr class="clk" onclick="showRegionDetail(this)"><td class="t-l">전남광주통합특별시</td><td class="t-r">182</td><td class="t-r">1,323,504</td><td class="t-r">1,293,904</td><td class="t-r">29,600</td><td class="t-r">97.8%</td></tr>
+<tr class="clk" onclick="showRegionDetail(this)"><td class="t-l">대전광역시</td><td class="t-r">84</td><td class="t-r">610,848</td><td class="t-r">602,650</td><td class="t-r">8,198</td><td class="t-r">98.7%</td></tr>
+<tr class="clk" onclick="showRegionDetail(this)"><td class="t-l">울산광역시</td><td class="t-r">118</td><td class="t-r">858,096</td><td class="t-r">845,966</td><td class="t-r">12,130</td><td class="t-r">98.6%</td></tr>
+<tr class="clk" onclick="showRegionDetail(this)"><td class="t-l">경기도</td><td class="t-r">294</td><td class="t-r">2,137,968</td><td class="t-r">2,100,513</td><td class="t-r">37,455</td><td class="t-r">98.2%</td></tr>
+<tr class="clk" onclick="showRegionDetail(this)"><td class="t-l">강원특별자치도</td><td class="t-r">224</td><td class="t-r">1,628,928</td><td class="t-r">1,587,563</td><td class="t-r">41,365</td><td class="t-r">97.5%</td></tr>
+<tr class="clk" onclick="showRegionDetail(this)"><td class="t-l">충청남도</td><td class="t-r">244</td><td class="t-r">1,774,368</td><td class="t-r">1,738,677</td><td class="t-r">35,691</td><td class="t-r">98.0%</td></tr>
+<tr class="clk" onclick="showRegionDetail(this)"><td class="t-l">경상북도</td><td class="t-r">206</td><td class="t-r">1,498,032</td><td class="t-r">1,470,674</td><td class="t-r">27,358</td><td class="t-r">98.2%</td></tr>
+<tr class="clk" onclick="showRegionDetail(this)"><td class="t-l">기타 시도</td><td class="t-r">100</td><td class="t-r">727,200</td><td class="t-r">715,405</td><td class="t-r">11,795</td><td class="t-r">98.4%</td></tr>
+<tr class="tot"><td>합계</td><td class="t-r">1,452</td><td class="t-r">10,558,944</td><td class="t-r">10,355,352</td><td class="t-r">203,592</td><td class="t-r">98.1%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+      <div id="rgHeat" hidden>
+        <div class="rg-lgd2"><ul class="legend ml-auto"><li><i class="heat h1"></i>98.4% 이상</li><li><i class="heat h2"></i>97.8~98.4%</li><li><i class="heat h3"></i>97.2~97.8%</li><li><i class="heat h4"></i>97.2% 미만</li></ul></div>
+  <div class="grid-wrap">
+    <table class="grid fix-head" id="deviceRegionHeatmap"><caption class="blind">지역 × 매체구분 수신율</caption>
+      <thead><tr><th id="unitTh2">시도</th><th>자동음성통보</th><th>재해문자전광판</th><th>마을방송</th><th>자동우량경보</th><th>전체</th></tr></thead>
+      <tbody>
+<tr><td class="t-l">전남광주통합특별시</td><td class="heat h2" title="전남광주통합특별시 자동음성통보 — 설치 70대 · 수신율 97.9%">97.9%</td><td class="heat h1" title="전남광주통합특별시 재해문자전광판 — 설치 44대 · 수신율 98.5%">98.5%</td><td class="heat h4" title="전남광주통합특별시 마을방송 — 설치 56대 · 수신율 97.1%">97.1%</td><td class="heat h3" title="전남광주통합특별시 자동우량경보 — 설치 12대 · 수신율 97.3%">97.3%</td><td class="t-r"><b>97.8%</b></td></tr>
+<tr><td class="t-l">대전광역시</td><td class="heat h1" title="대전광역시 자동음성통보 — 설치 34대 · 수신율 98.7%">98.7%</td><td class="heat h1" title="대전광역시 재해문자전광판 — 설치 24대 · 수신율 99.0%">99.0%</td><td class="heat h2" title="대전광역시 마을방송 — 설치 20대 · 수신율 98.3%">98.3%</td><td class="heat h1" title="대전광역시 자동우량경보 — 설치 6대 · 수신율 98.4%">98.4%</td><td class="t-r"><b>98.7%</b></td></tr>
+<tr><td class="t-l">울산광역시</td><td class="heat h1" title="울산광역시 자동음성통보 — 설치 50대 · 수신율 98.7%">98.7%</td><td class="heat h1" title="울산광역시 재해문자전광판 — 설치 32대 · 수신율 98.9%">98.9%</td><td class="heat h2" title="울산광역시 마을방송 — 설치 28대 · 수신율 98.2%">98.2%</td><td class="heat h2" title="울산광역시 자동우량경보 — 설치 8대 · 수신율 98.2%">98.2%</td><td class="t-r"><b>98.6%</b></td></tr>
+<tr><td class="t-l">경기도</td><td class="heat h2" title="경기도 자동음성통보 — 설치 120대 · 수신율 98.4%">98.4%</td><td class="heat h1" title="경기도 재해문자전광판 — 설치 74대 · 수신율 98.7%">98.7%</td><td class="heat h3" title="경기도 마을방송 — 설치 82대 · 수신율 97.8%">97.8%</td><td class="heat h2" title="경기도 자동우량경보 — 설치 18대 · 수신율 97.9%">97.9%</td><td class="t-r"><b>98.2%</b></td></tr>
+<tr><td class="t-l">강원특별자치도</td><td class="heat h3" title="강원특별자치도 자동음성통보 — 설치 88대 · 수신율 97.6%">97.6%</td><td class="heat h2" title="강원특별자치도 재해문자전광판 — 설치 52대 · 수신율 98.2%">98.2%</td><td class="heat h4" title="강원특별자치도 마을방송 — 설치 66대 · 수신율 96.9%">96.9%</td><td class="heat h4" title="강원특별자치도 자동우량경보 — 설치 18대 · 수신율 97.0%">97.0%</td><td class="t-r"><b>97.5%</b></td></tr>
+<tr><td class="t-l">충청남도</td><td class="heat h2" title="충청남도 자동음성통보 — 설치 96대 · 수신율 98.1%">98.1%</td><td class="heat h1" title="충청남도 재해문자전광판 — 설치 58대 · 수신율 98.6%">98.6%</td><td class="heat h3" title="충청남도 마을방송 — 설치 74대 · 수신율 97.4%">97.4%</td><td class="heat h3" title="충청남도 자동우량경보 — 설치 16대 · 수신율 97.6%">97.6%</td><td class="t-r"><b>98.0%</b></td></tr>
+<tr><td class="t-l">경상북도</td><td class="heat h2" title="경상북도 자동음성통보 — 설치 82대 · 수신율 98.3%">98.3%</td><td class="heat h1" title="경상북도 재해문자전광판 — 설치 50대 · 수신율 98.6%">98.6%</td><td class="heat h3" title="경상북도 마을방송 — 설치 60대 · 수신율 97.7%">97.7%</td><td class="heat h3" title="경상북도 자동우량경보 — 설치 14대 · 수신율 97.7%">97.7%</td><td class="t-r"><b>98.2%</b></td></tr>
+<tr><td class="t-l">기타 시도</td><td class="heat h1" title="기타 시도 자동음성통보 — 설치 40대 · 수신율 98.5%">98.5%</td><td class="heat h1" title="기타 시도 재해문자전광판 — 설치 26대 · 수신율 98.8%">98.8%</td><td class="heat h2" title="기타 시도 마을방송 — 설치 26대 · 수신율 97.9%">97.9%</td><td class="heat h2" title="기타 시도 자동우량경보 — 설치 8대 · 수신율 98.0%">98.0%</td><td class="t-r"><b>98.4%</b></td></tr>
+<tr class="tot"><td>전체</td><td class="t-r">98.2%</td><td class="t-r">98.6%</td><td class="t-r">97.5%</td><td class="t-r">97.6%</td><td class="t-r">98.1%</td></tr>
+      </tbody>
+    </table>
+  </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- [탭3] 상태별 -->
+<div id="tabStatus" hidden>
+  <div class="card"><div class="card-h">일자별 연결·끊김 추이<span class="sub" id="dsSub">(건, 연결=왼쪽 축·끊김=오른쪽 축)</span><span class="st-cond" data-cond></span><div class="btns" role="group" aria-label="차트 종류"><button type="button" class="btn s ico btn-pri" title="막대+선" aria-label="막대+선" onclick="chMode(this,'DSM','c','drawStatus')"><i class="ri-bar-chart-2-line"></i></button><button type="button" class="btn s ico btn-line" title="누적 막대" aria-label="누적 막대" onclick="chMode(this,'DSM','s','drawStatus')"><i class="ri-bar-chart-box-line"></i></button><button type="button" class="btn s ico btn-line" title="수신율 꺾은선" aria-label="수신율 꺾은선" onclick="chMode(this,'DSM','l','drawStatus')"><i class="ri-line-chart-line"></i></button></div><button type="button" class="btn s btn-line ico img-dn" title="차트 이미지 다운로드(PNG)" onclick="chartPng('일자별 연결·끊김 추이',this)"><i class="ri-image-line"></i></button></div>
+    <div class="card-b"><div class="ds-tr" id="deviceStatusChart"></div></div></div>
+  <div class="tbl-acc" id="dsTblWrapAcc">
+  <div class="sub-head" onclick="tglTbl(event,'dsTblWrap')" title="표 펼치기/접기"><i class="ri-arrow-right-s-line acc-ico"></i><h3>상태별 통계</h3><span class="cnt">전체<b>14</b>건</span>
+    <div class="grid-top"><span class="acc-lb">표 펼치기</span><button type="button" class="btn s btn-dark" onclick="doExcel('단말기 상태별 통계')"><i class="ri-file-excel-2-line"></i>엑셀다운로드</button></div>
+  </div>
+  <div class="grid-wrap" id="dsTblWrap" hidden>
+    <table class="grid"><caption class="blind">상태별 통계</caption>
+      <colgroup><col style="width:120px"><col><col><col><col style="width:90px"></colgroup>
+      <thead><tr><th class="sort desc">일자</th><th>전체(기대 수신 건수)</th><th>연결(건)</th><th>끊김(건)</th><th>수신율(%)</th></tr></thead>
+      <tbody id="deviceStatusTbody">
+<tr><td>2026-10-16</td><td class="t-r">34,848</td><td class="t-r">34,206</td><td class="t-r">642</td><td class="t-r">98.2%</td></tr>
+<tr><td>2026-10-17</td><td class="t-r">34,848</td><td class="t-r">34,111</td><td class="t-r">737</td><td class="t-r">97.9%</td></tr>
+<tr><td>2026-10-18</td><td class="t-r">34,848</td><td class="t-r">34,196</td><td class="t-r">652</td><td class="t-r">98.1%</td></tr>
+<tr><td>2026-10-19</td><td class="t-r">34,848</td><td class="t-r">34,248</td><td class="t-r">600</td><td class="t-r">98.3%</td></tr>
+<tr><td>2026-10-20</td><td class="t-r">34,848</td><td class="t-r">34,132</td><td class="t-r">716</td><td class="t-r">97.9%</td></tr>
+<tr><td>2026-10-21</td><td class="t-r">34,848</td><td class="t-r">34,193</td><td class="t-r">655</td><td class="t-r">98.1%</td></tr>
+<tr><td>2026-10-22</td><td class="t-r">34,848</td><td class="t-r">33,897</td><td class="t-r">951</td><td class="t-r">97.3%</td></tr>
+<tr><td>2026-10-23</td><td class="t-r">34,848</td><td class="t-r">34,283</td><td class="t-r">565</td><td class="t-r">98.4%</td></tr>
+<tr><td>2026-10-24</td><td class="t-r">34,848</td><td class="t-r">34,305</td><td class="t-r">543</td><td class="t-r">98.4%</td></tr>
+<tr><td>2026-10-25</td><td class="t-r">34,848</td><td class="t-r">34,241</td><td class="t-r">607</td><td class="t-r">98.3%</td></tr>
+<tr><td>2026-10-26</td><td class="t-r">34,848</td><td class="t-r">34,295</td><td class="t-r">553</td><td class="t-r">98.4%</td></tr>
+<tr><td>2026-10-27</td><td class="t-r">34,848</td><td class="t-r">34,181</td><td class="t-r">667</td><td class="t-r">98.1%</td></tr>
+<tr><td>2026-10-28</td><td class="t-r">34,848</td><td class="t-r">34,277</td><td class="t-r">571</td><td class="t-r">98.4%</td></tr>
+<tr><td>2026-10-29</td><td class="t-r">34,848</td><td class="t-r">34,158</td><td class="t-r">690</td><td class="t-r">98.0%</td></tr>
+<tr class="tot"><td>합계</td><td class="t-r">487,872</td><td class="t-r">478,723</td><td class="t-r">9,149</td><td class="t-r">98.1%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+</div>
+        <!-- ===== 업무영역 끝 ===== -->
+      </main>
+    </div>
+  </div>
+@@include('../inc/footer.html')
+</div>
+@@include('../inc/pop-common.html')
+@@include('../inc/script.html')
+@@include('../inc/script-common.html')
+<script src="js/vendor/echarts.min.js"></script>
+<script src="js/stchart.js"></script>
+<script src="js/pages/stat_device.js"></script>
+</body>
+</html>

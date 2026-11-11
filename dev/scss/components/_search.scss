@@ -1,0 +1,15 @@
+@use "../abstracts" as *;
+/* ---------- 7. Search box ---------- */
+.sch-box{position:relative;display:flex;align-items:flex-start;gap:16px;padding:14px 20px;background:$sch-bg;border:1px solid $sch-bd;border-radius:$r;margin-bottom:16px}
+.sch-box .rows{flex:1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px 24px}
+.sch-box .it{display:flex;align-items:center;gap:8px;min-width:0}
+.sch-box .it.c2{grid-column:span 2}.sch-box .it.c3{grid-column:span 3}.sch-box .it.c4{grid-column:span 4}
+.sch-box .it>label:not(.rdo):not(.chk),.sch-box .it>.lb{flex:0 0 80px;font-size:$fs-s;font-weight:600;color:$c-title;white-space:nowrap}
+.sch-box .it>.inp,.sch-box .it>.sel,.sch-box .it>.inp-ico{flex:1;min-width:0}
+.sch-box .ctrl{display:flex;gap:4px;align-self:flex-end}
+/* PC 검색영역(2026-11-10): 항목은 내용 폭(컨트롤 고정 폭 — 선택상자 160·입력 200, 임의로 늘리지 않음, 사용자 요청), 줄이 차면 다음 줄 */
+@media (min-width:1280px){.sch-box .rows:not(.r1){display:flex;flex-wrap:wrap;gap:8px 32px}.sch-box .rows:not(.r1)>.it{flex:0 0 auto}.sch-box .rows:not(.r1)>.it.c4{flex-basis:100%}.sch-box .rows:not(.r1) .flex.w100{width:auto}.sch-box .rows:not(.r1)>.it>.sel{flex:0 0 160px}.sch-box .rows:not(.r1)>.it>.inp{flex:0 0 200px}.sch-box .rows:not(.r1) .flex>.sel[style*="flex"]{flex:0 0 160px!important}.sch-box .rows:not(.r1) .range{width:auto}}
+/* 한 줄 검색(.rows.r1, PC): 항목 수가 적은 검색영역은 항목을 내용 폭으로 한 줄 배치 */
+@media (min-width:1280px){.sch-box .rows.r1{display:flex;flex-wrap:wrap;gap:8px 28px}.sch-box .rows.r1>.it{flex:0 1 auto}.sch-box .rows.r1>.it>.lb,.sch-box .rows.r1>.it>label:not(.rdo):not(.chk){flex:0 0 auto;margin-right:4px}.sch-box .rows.r1 .flex.w100{width:auto}.sch-box .rows.r1 .flex>.sel[style*="flex"]{flex:0 0 140px!important}.sch-box .rows.r1>.it>.sel{flex:0 0 160px}.sch-box .rows.r1 .range{width:auto}}
+.sch-more{display:none}.sch-box.open .sch-more{display:flex}
+.sch-toggle{position:absolute;left:50%;bottom:-14px;transform:translateX(-50%);width:30px;height:14px;display:flex;align-items:center;justify-content:center;background:$g60;color:#fff;font-size:14px;border-radius:0 0 $r-s $r-s}.sch-toggle:hover{background:$g70}

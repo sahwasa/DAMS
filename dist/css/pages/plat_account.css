@@ -1,0 +1,30 @@
+@charset "UTF-8";
+/* ==========================================================
+   common.scss — 재난·안전정보시스템 UI 표준정의서(NDMS-DE33 v1.1) 기준
+   ========================================================== */
+/* ---------- 1. Tokens ---------- */
+/* 목록: 페이징 없이 목록 안 스크롤 — PC는 화면 남은 높이에 맞춤(페이지 스크롤 없음) */
+@media (min-width: 1280px) {
+  #content {
+    display: flex;
+    flex-direction: column;
+  }
+  #content > * {
+    flex: 0 0 auto;
+  }
+  #content > .sub-head {
+    margin-top: 0;
+  }
+  #content > #acntWrap {
+    flex: 0 1 auto;
+    min-height: 200px;
+    overflow: auto;
+  }
+}
+@media (max-width: 1279px) {
+  #acntWrap {
+    max-height: calc(100vh - 120px);
+    overflow: auto;
+  }
+}
+/*# sourceMappingURL=../maps/pages/plat_account.css.map */

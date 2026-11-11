@@ -1,0 +1,102 @@
+@@include('../inc/top.html',{"title": "시스템 자원 모니터링 | 재난 예경보 통합관리시스템", "css": "sys_resource"})
+
+<body>
+<div class="wrap">
+  <!-- GNB -->
+  @@include('../inc/header.html')
+
+  <div class="body">
+    <!-- LNB -->
+    @@include('../inc/lnb-sys.html')
+
+    <!-- MAIN -->
+    <div class="main">
+      @@include('../inc/mdi.html',{"file": "sys_resource.html", "name": "시스템 자원 모니터링"})
+
+      <main class="work" id="content">
+        <div class="page-head">
+          <div>
+            <h2 class="tit">시스템 자원 모니터링<button type="button" class="star" title="즐겨찾기" data-star><i class="ri-star-line"></i></button></h2>
+            @@include('../inc/breadcrumb.html',{"d1": "시스템관리", "d1h": "sys_user.html", "d2": "시스템 자원 모니터링", "d2h": "sys_resource.html"})
+          </div>
+        </div>
+
+        <!-- ===== 업무영역 (화면별 교체) ===== -->
+<div class="col-lr" style="grid-template-columns:minmax(0,60fr) minmax(0,40fr)">
+  <div>
+    <div class="sub-head mt0"><h3>서버 상태 요약</h3><span class="cnt" id="baseTm">2026-10-30 14:25:00 기준</span>
+      <ul class="legend ml-auto"><li><i class="cl-sc"></i>정상 0~50%</li><li><i class="cl-wn"></i>주의 50~80%</li><li><i class="cl-dg"></i>위험 80~100%</li></ul>
+      <div class="btns" style="margin-left:12px"><button type="button" class="btn s btn-line" data-tip="임계치는 공통코드(rsrc_thrhld_cd)에서 관리하며 CPU·MEM·DISK에 동일하게 적용합니다. 상태는 CPU·MEM 사용률 중 큰 값으로 판정합니다."><i class="ri-question-line"></i>판정 기준</button><button type="button" class="btn s btn-line" onclick="reload()"><i class="ri-refresh-line"></i>새로고침</button></div>
+    </div>
+    <div class="mon-kpi c4 lg" id="rsrcSummary">
+      <div><dl><dt>대상 서버</dt><dd>6<small>대</small></dd><dd class="s">WEB·WAS·DB·GIS·GW</dd></dl></div>
+      <div class="sc"><dl><dt>정상</dt><dd>4<small>대</small></dd><dd class="s">사용률 50% 미만</dd></dl></div>
+      <div class="wn"><dl><dt>주의</dt><dd>1<small>대</small></dd><dd class="s">DB-01</dd></dl></div>
+      <div class="dg"><dl><dt>위험</dt><dd>1<small>대</small></dd><dd class="s">WAS-02</dd></dl></div>
+    </div>
+    <div class="sub-head"><h4>서버별 자원 체크 현황</h4><span class="cnt">CPU·MEM 사용률 / DISK·MEM 사용량 / 네트워크(In/Out) · 수집 2026-10-30 14:25:00</span></div>
+    <div class="col3" id="rsrcCards" style="gap:12px">
+      <div class="card srv "><div class="card-h" title="웹 서버 (10.10.10.11)">WEB-01<small>10.10.10.11</small><span class="badge sc">정상</span></div>
+        <div class="card-b"><div class="gauges"><div class="gauge"><div class="donut" style="background:conic-gradient(#008a1e 0 22%,#f0f0f0 0)" title="CPU 사용률 22%"><div><b>22%</b><small>CPU</small></div></div></div><div class="gauge"><div class="donut" style="background:conic-gradient(#008a1e 0 38%,#f0f0f0 0)" title="MEM 사용률 38%"><div><b>38%</b><small>MEM</small></div></div></div></div>
+          <ul class="hbar"><li title="DISK 사용 142 GB / 1.0 TB"><span class="lb">DISK</span><span class="bar"><span class="cl-sc" style="width:14%"></span></span><span class="v">142 GB / 1.0 TB</span></li><li title="MEM 사용량 12.2 / 32 GB"><span class="lb">MEM</span><span></span><span class="v">12.2 / 32 GB</span></li><li title="네트워크 In/Out 42 / 118 Mbps"><span class="lb">NETWORK</span><span></span><span class="v">In 42 / Out 118 Mbps</span></li></ul></div></div>
+      <div class="card srv "><div class="card-h" title="WAS 서버 #1 (10.10.10.21)">WAS-01<small>10.10.10.21</small><span class="badge sc">정상</span></div>
+        <div class="card-b"><div class="gauges"><div class="gauge"><div class="donut" style="background:conic-gradient(#008a1e 0 34%,#f0f0f0 0)" title="CPU 사용률 34%"><div><b>34%</b><small>CPU</small></div></div></div><div class="gauge"><div class="donut" style="background:conic-gradient(#008a1e 0 45%,#f0f0f0 0)" title="MEM 사용률 45%"><div><b>45%</b><small>MEM</small></div></div></div></div>
+          <ul class="hbar"><li title="DISK 사용 210 GB / 1.0 TB"><span class="lb">DISK</span><span class="bar"><span class="cl-sc" style="width:21%"></span></span><span class="v">210 GB / 1.0 TB</span></li><li title="MEM 사용량 28.8 / 64 GB"><span class="lb">MEM</span><span></span><span class="v">28.8 / 64 GB</span></li><li title="네트워크 In/Out 36 / 54 Mbps"><span class="lb">NETWORK</span><span></span><span class="v">In 36 / Out 54 Mbps</span></li></ul></div></div>
+      <div class="card srv dg"><div class="card-h" title="WAS 서버 #2 (10.10.10.22)">WAS-02<small>10.10.10.22</small><span class="badge dg">위험</span></div>
+        <div class="card-b"><div class="gauges"><div class="gauge"><div class="donut" style="background:conic-gradient(#eb003b 0 86%,#f0f0f0 0)" title="CPU 사용률 86%"><div><b>86%</b><small>CPU</small></div></div></div><div class="gauge"><div class="donut" style="background:conic-gradient(#ffb724 0 71%,#f0f0f0 0)" title="MEM 사용률 71%"><div><b>71%</b><small>MEM</small></div></div></div></div>
+          <ul class="hbar"><li title="DISK 사용 198 GB / 1.0 TB"><span class="lb">DISK</span><span class="bar"><span class="cl-sc" style="width:20%"></span></span><span class="v">198 GB / 1.0 TB</span></li><li title="MEM 사용량 45.4 / 64 GB"><span class="lb">MEM</span><span></span><span class="v">45.4 / 64 GB</span></li><li title="네트워크 In/Out 61 / 88 Mbps"><span class="lb">NETWORK</span><span></span><span class="v">In 61 / Out 88 Mbps</span></li></ul></div></div>
+      <div class="card srv wn"><div class="card-h" title="DB 서버 (10.10.10.31)">DB-01<small>10.10.10.31</small><span class="badge wn">주의</span></div>
+        <div class="card-b"><div class="gauges"><div class="gauge"><div class="donut" style="background:conic-gradient(#008a1e 0 48%,#f0f0f0 0)" title="CPU 사용률 48%"><div><b>48%</b><small>CPU</small></div></div></div><div class="gauge"><div class="donut" style="background:conic-gradient(#ffb724 0 68%,#f0f0f0 0)" title="MEM 사용률 68%"><div><b>68%</b><small>MEM</small></div></div></div></div>
+          <ul class="hbar"><li title="DISK 사용 1.4 TB / 4.0 TB"><span class="lb">DISK</span><span class="bar"><span class="cl-sc" style="width:35%"></span></span><span class="v">1.4 TB / 4.0 TB</span></li><li title="MEM 사용량 87.0 / 128 GB"><span class="lb">MEM</span><span></span><span class="v">87.0 / 128 GB</span></li><li title="네트워크 In/Out 95 / 72 Mbps"><span class="lb">NETWORK</span><span></span><span class="v">In 95 / Out 72 Mbps</span></li></ul></div></div>
+      <div class="card srv "><div class="card-h" title="GIS 맵 서버 (10.10.10.41)">GIS-01<small>10.10.10.41</small><span class="badge sc">정상</span></div>
+        <div class="card-b"><div class="gauges"><div class="gauge"><div class="donut" style="background:conic-gradient(#008a1e 0 18%,#f0f0f0 0)" title="CPU 사용률 18%"><div><b>18%</b><small>CPU</small></div></div></div><div class="gauge"><div class="donut" style="background:conic-gradient(#008a1e 0 32%,#f0f0f0 0)" title="MEM 사용률 32%"><div><b>32%</b><small>MEM</small></div></div></div></div>
+          <ul class="hbar"><li title="DISK 사용 480 GB / 2.0 TB"><span class="lb">DISK</span><span class="bar"><span class="cl-sc" style="width:24%"></span></span><span class="v">480 GB / 2.0 TB</span></li><li title="MEM 사용량 20.5 / 64 GB"><span class="lb">MEM</span><span></span><span class="v">20.5 / 64 GB</span></li><li title="네트워크 In/Out 28 / 140 Mbps"><span class="lb">NETWORK</span><span></span><span class="v">In 28 / Out 140 Mbps</span></li></ul></div></div>
+      <div class="card srv "><div class="card-h" title="연계 GW 서버 (10.10.10.51)">GW-01<small>10.10.10.51</small><span class="badge sc">정상</span></div>
+        <div class="card-b"><div class="gauges"><div class="gauge"><div class="donut" style="background:conic-gradient(#008a1e 0 28%,#f0f0f0 0)" title="CPU 사용률 28%"><div><b>28%</b><small>CPU</small></div></div></div><div class="gauge"><div class="donut" style="background:conic-gradient(#008a1e 0 41%,#f0f0f0 0)" title="MEM 사용률 41%"><div><b>41%</b><small>MEM</small></div></div></div></div>
+          <ul class="hbar"><li title="DISK 사용 85 GB / 500 GB"><span class="lb">DISK</span><span class="bar"><span class="cl-sc" style="width:17%"></span></span><span class="v">85 GB / 500 GB</span></li><li title="MEM 사용량 13.1 / 32 GB"><span class="lb">MEM</span><span></span><span class="v">13.1 / 32 GB</span></li><li title="네트워크 In/Out 210 / 64 Mbps"><span class="lb">NETWORK</span><span></span><span class="v">In 210 / Out 64 Mbps</span></li></ul></div></div>
+    </div>
+  </div>
+  <div class="rs-r">
+    <div class="sub-head mt0"><h3>연계 프로세스</h3><span class="cnt">전체<b>12</b>건 / 정상 <b class="c-sc">10</b>건 / 지연 <b class="c-wn">1</b>건 / 중지 <b>1</b>건</span></div>
+    <div class="grid-wrap rs-prcs">
+      <table class="grid fix-head"><caption class="blind">연계 프로세스 목록</caption>
+        <colgroup><col style="width:58px"><col><col style="width:78px"><col style="width:158px"></colgroup>
+        <thead><tr><th class="sort">상태</th><th class="sort">프로세스구분</th><th class="sort">서버</th><th class="sort desc">감시일시</th></tr></thead>
+        <tbody id="prcsTableBody">
+          <tr class="ng"><td><span class="badge dg">중지</span></td><td class="t-l" title="LOG_ARCH">로그 아카이브</td><td>WEB-01</td><td>2026-10-30 14:05:10</td></tr>
+          <tr class="notice"><td><span class="badge wn">지연</span></td><td class="t-l" title="TRM_POLL">단말기 상태 수집</td><td>WAS-02</td><td>2026-10-30 14:19:42</td></tr>
+          <tr class=""><td><span class="badge sc">정상</span></td><td class="t-l" title="NDMS_RCV">NDMS 통보문 수신</td><td>GW-01</td><td>2026-10-30 14:25:00</td></tr>
+          <tr class=""><td><span class="badge sc">정상</span></td><td class="t-l" title="WTHR_PARSE">기상특보 수신·파싱</td><td>GW-01</td><td>2026-10-30 14:25:00</td></tr>
+          <tr class=""><td><span class="badge sc">정상</span></td><td class="t-l" title="CAP_CONV">CAP 전문 변환</td><td>GW-01</td><td>2026-10-30 14:24:58</td></tr>
+          <tr class=""><td><span class="badge sc">정상</span></td><td class="t-l" title="ALERT_DISP">재난발령 송출</td><td>WAS-01</td><td>2026-10-30 14:24:58</td></tr>
+          <tr class=""><td><span class="badge sc">정상</span></td><td class="t-l" title="SMS_SEND">문자 발송(NURI2)</td><td>WAS-01</td><td>2026-10-30 14:24:57</td></tr>
+          <tr class=""><td><span class="badge sc">정상</span></td><td class="t-l" title="DATA_SYNC">연계기관 데이터 동기화</td><td>WAS-02</td><td>2026-10-30 14:24:55</td></tr>
+          <tr class=""><td><span class="badge sc">정상</span></td><td class="t-l" title="GIS_TILE">GIS 타일 갱신</td><td>GIS-01</td><td>2026-10-30 14:24:50</td></tr>
+          <tr class=""><td><span class="badge sc">정상</span></td><td class="t-l" title="RSRC_MNTR">자원 수집 에이전트</td><td>WEB-01</td><td>2026-10-30 14:25:00</td></tr>
+          <tr class=""><td><span class="badge sc">정상</span></td><td class="t-l" title="CERT_CHK">연계확인서 자동점검</td><td>WAS-01</td><td>2026-10-30 14:24:30</td></tr>
+          <tr class=""><td><span class="badge sc">정상</span></td><td class="t-l" title="DB_BACKUP">DB 백업</td><td>DB-01</td><td>2026-10-30 14:20:00</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-head"><h3>이중화 서비스 상태</h3><span class="cnt">전체<b>3</b>건</span><div class="btns ml-auto"><button type="button" class="btn s btn-line" data-tip="상태점검·재기동·Standby 전환은 자동 수행 / 정상: Active·Standby 모두 응답 정상, 자원 정상 범위 / 주의: Standby 응답 없음 또는 자원 주의·위험(전환 대기 불안정), 자동 전환·재기동 발생 후 미확인 / 장애: Active·Standby 모두 응답 없음(서비스 중단)"><i class="ri-question-line"></i>상태 기준</button></div></div>
+    <div class="grid-wrap">
+      <table class="grid" id="haTable"><caption class="blind">이중화 서비스 상태</caption>
+        <colgroup><col><col style="width:84px"><col style="width:84px"><col style="width:60px"><col style="width:82px"></colgroup>
+        <thead><tr><th>서비스</th><th>Active</th><th>Standby</th><th>상태</th><th>최근 점검</th></tr></thead>
+        <tbody><tr><td class="t-l">NURI2 문자발송</td><td title="10.10.10.61">NURI-01</td><td title="10.10.10.62">NURI-02</td><td><span class="badge sc" title="Active·Standby 모두 응답·자원 정상">정상</span></td><td title="2026-10-30 14:20:00">14:20:00</td></tr><tr><td class="t-l">통합 게이트웨이</td><td title="10.10.10.51">GW-01</td><td title="10.10.10.52">GW-02</td><td><span class="badge sc" title="Active·Standby 모두 응답·자원 정상">정상</span></td><td title="2026-10-30 14:20:00">14:20:00</td></tr><tr><td class="t-l">WAS(재난 예경보)</td><td title="10.10.10.21">WAS-01</td><td title="10.10.10.22">WAS-02</td><td><span class="badge wn" title="Standby(WAS-02) 자원 위험 — CPU 86%, 장애 시 전환 불가 우려">주의</span></td><td title="2026-10-30 14:20:00">14:20:00</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+        <!-- ===== 업무영역 끝 ===== -->
+      </main>
+    </div>
+  </div>
+@@include('../inc/footer.html')
+</div>
+@@include('../inc/pop-common.html')
+@@include('../inc/script.html')
+@@include('../inc/script-common.html')
+<script src="js/pages/sys_resource.js"></script>
+</body>
+</html>

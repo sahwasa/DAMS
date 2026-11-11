@@ -1,0 +1,64 @@
+@charset "UTF-8";
+/* ==========================================================
+   common.scss — 재난·안전정보시스템 UI 표준정의서(NDMS-DE33 v1.1) 기준
+   ========================================================== */
+/* ---------- 1. Tokens ---------- */
+.faq .faq-q, .faq .faq-a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: #3e55e1;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  vertical-align: middle;
+}
+
+.faq .faq-a {
+  background: #ffb724;
+  color: #66490e;
+  float: left;
+}
+
+.faq tr.ans td {
+  white-space: normal;
+  background: #f8f8f8 !important;
+  padding: 14px 16px;
+  line-height: 1.7;
+  color: #202020;
+}
+
+.faq tr.ans td > div {
+  overflow: hidden;
+}
+
+.faq td.arr i {
+  font-size: 18px;
+  color: #8e8e8e;
+  display: inline-block;
+  transition: 0.15s;
+}
+
+.faq tr.on td.arr i {
+  transform: rotate(180deg);
+  color: #3e55e1;
+}
+
+.faq tr.on td {
+  font-weight: 600;
+  color: #101010;
+}
+
+@media (max-width: 767px) {
+  .faq td.arr::before {
+    display: none;
+  }
+  .faq td.arr {
+    justify-content: flex-end !important;
+  }
+}
+/*# sourceMappingURL=../maps/pages/guide_faq.css.map */

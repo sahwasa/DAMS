@@ -1,27 +1,13 @@
-@use '../abstracts/' as *;
-@layer components{
-
-  /* tab */
-  .tab{
-    @at-root .full-content .tab__btn .btn{min-width:150px;}
-    &__card{overflow:hidden;      
-      & > .tab__cont{padding:$sp-20;}
-  }
-    &__wrap{height:100%;min-height:0;}
-    &__btn{margin-bottom:$sp-6;align-self:flex-start;
-      .btn{flex:1;min-width:110px;}
-    }
-    &__cont{border:1px solid $border;flex:1;min-height:0;@include flex($direction:column,
-    $align:stretch);gap:$sp-12;overflow-y:auto;
-      &:has(.flex-wrap){padding:0;border:none;}
-      & > .flex-wrap{min-height:0;gap:12px;border:1px solid $border;}
-      .section{min-height:0;@include flex($direction:column,$align:stretch);padding:$sp-20;overflow-y:auto;}
-    }
-    &__list{@include flex();width:100%;border-bottom:1px solid #e5e6e8;
-      .btn{flex:1 0;white-space:nowrap; border-radius:0;color:var(--text-muted);
-        &:not(:first-of-type){border-left: 1px solid #e5e6e8;}
-      }
-      .on{color:var(--color-primary-strong);background-color:var(--color-primary-dim);}
-    }
-  }
-}
+@use "../abstracts" as *;
+/* ---------- 10. Tab ---------- */
+.tab{display:flex;border-bottom:2px solid $pri;margin-bottom:16px}
+.tab li a,.tab li button{display:flex;align-items:center;height:38px;padding:0 24px;margin-right:-1px;border:1px solid $c-line2;border-bottom:0;background:$g5;font-size:$fs-b;color:$g60}
+.tab li a:hover,.tab li button:hover{color:$c-title;background:#fff}
+.tab li.on a,.tab li.on button{background:$pri;border-color:$pri;color:#fff;font-weight:600}
+.tab li.dis a,.tab li.dis button{color:$g40;pointer-events:none}
+.tab-s{display:flex;gap:16px;border-bottom:1px solid $c-line2;margin-bottom:12px}
+.tab-s li a,.tab-s li button{display:block;padding:6px 2px;font-size:$fs-s;color:$g60;margin-bottom:-1px}
+.tab-s li.on a,.tab-s li.on button{color:$pri;font-weight:600;border-bottom:2px solid $pri}
+.tab-v{display:flex;gap:16px}.tab-v>ul{flex:0 0 180px;border-top:2px solid $c-title}
+.tab-v>ul li a{display:block;padding:10px 14px;border-bottom:1px solid $c-line2;font-size:$fs-s}
+.tab-v>ul li.on a{background:$in-s;color:$pri;font-weight:600}.tab-v>div{flex:1;min-width:0}

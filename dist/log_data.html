@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>데이터송수신이력 | 재난 예경보 통합관리시스템</title>
+<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="font/pretendard-gov/pretendardvariable-gov.css">
+<link rel="stylesheet" href="font/remixicon/remixicon.css">
+<link rel="stylesheet" href="css/main.css">
+
+</head>
+
+
+<body>
+<div class="wrap">
+  <!-- GNB -->
+  <!-- GNB: 현재 1Depth .on은 common.js markOn()이 파일명으로 표시 -->
+  <header class="gnb">
+    <h1 class="logo"><a href="index.html" class="flex"><img src="images/gov_logo_w.png" alt="정부 상징" class="gov-logo">재난 예경보 통합관리시스템</a></h1>
+    <ul class="menu">
+      <li><a href="gis.html">GIS상황판</a></li>
+      <li><a href="warn_monitor.html">재난 예경보 현황</a></li>
+      <li><a href="plat_org.html">통합플랫폼관리</a></li>
+      <li><a href="stat_event.html">통계</a></li>
+      <li><a href="guide_intro.html">이용안내</a></li>
+      <li><a href="sys_user.html">시스템관리</a></li>
+      <li><a href="log_sms.html">시스템 이력</a></li>
+    </ul>
+    <div class="util">
+      <div class="sess" title="세션 남은시간"><b>59:10</b><button type="button" data-sess>시간연장</button></div>
+      <a href="#pop-UI-CO-P01" class="user" onclick="openPop('UI-CO-P01',540);return false;">홍길동 님<em>(재난정보통신과)</em><i class="ri-user-3-line"></i></a>
+      <a href="index.html" class="ico" title="전체메뉴" data-layer="all"><i class="ri-menu-line"></i></a>
+      <a href="log_dsblty.html" class="ico" title="알림" data-layer="noti"><i class="ri-notification-3-line"></i><span class="badge"></span></a>
+      <a href="login.html" class="ico" title="로그아웃" data-logout><i class="ri-logout-box-r-line"></i></a>
+      <div class="fsz" title="글자크기"><span>글자크기</span><button type="button" data-fsz="down" title="작게">−</button><span class="fsz-v">100%</span><button type="button" data-fsz="up" title="크게">+</button></div>
+      <a href="cert_request.html" onclick="return !window.open(this.href,'damsCert','width=1280,height=860');" class="btn s btn-pri-o">연계확인서 발급</a>
+    </div>
+  </header>
+
+
+  <div class="body">
+    <!-- LNB -->
+    <!-- LNB 시스템 이력: 현재 메뉴 .on은 common.js markOn()이 표시 -->
+    <nav class="lnb">
+      <div class="lnb-tab"><button type="button" class="on" data-lnb="menu">메뉴</button><button type="button" data-lnb="fav">즐겨찾기</button><button type="button" data-lnb="recent">최근접속</button></div>
+      <div class="lnb-tit">시스템 이력</div>
+      <div class="lnb-menu">
+        <ul class="d2">
+          <li><a href="log_sms.html">문자전송이력</a></li>
+          <li><a href="log_access.html">시스템 사용이력</a></li>
+          <li><a href="log_job.html">작업이력</a></li>
+          <li><a href="log_dsblty.html">장애이력</a></li>
+          <li><a href="log_syslog.html">시스템 로그</a></li>
+          <li><a href="log_data.html">데이터송수신이력</a></li>
+          <li><a href="log_privacy.html">개인정보 접근이력</a></li>
+        </ul>
+      </div>
+      <button type="button" class="lnb-fold" data-fold title="메뉴 접기/펼치기"><i class="ri-arrow-left-s-line"></i></button>
+    </nav>
+
+
+    <!-- MAIN -->
+    <div class="main">
+      
+      <div class="mdi">
+        <ul class="mdi-tabs">
+          <li><a href="gis.html">GIS상황판</a><button type="button" title="닫기" data-mdi="close"><i class="ri-close-line"></i></button></li>
+          <li class="on"><a href="log_data.html">데이터송수신이력</a><button type="button" title="닫기" data-mdi="close"><i class="ri-close-line"></i></button></li>
+        </ul>
+        <div class="mdi-ctrl">
+          <button type="button" title="이전" data-mdi="prev"><i class="ri-arrow-left-s-line"></i></button>
+          <button type="button" title="다음" data-mdi="next"><i class="ri-arrow-right-s-line"></i></button>
+          <button type="button" title="전체닫기" data-mdi="all"><i class="ri-close-line"></i></button>
+        </div>
+      </div>
+
+
+      <main class="work" id="content">
+        <div class="page-head">
+          <div>
+            <h2 class="tit">데이터송수신이력<button type="button" class="star" title="즐겨찾기" data-star><i class="ri-star-line"></i></button></h2>
+            <ul class="bread"><li><a href="gis.html" title="홈"><i class="ri-home-4-line home"></i></a></li><li><a href="log_sms.html">시스템 이력</a></li><li><a href="log_data.html">데이터송수신이력</a></li></ul>
+          </div>
+        </div>
+
+        <!-- ===== 업무영역 (화면별 교체) ===== -->
+<form class="sch-box" id="schForm">
+          <div class="rows r1">
+            <div class="it c2"><span class="lb req">처리일시</span>
+              <div class="range"><span class="inp-ico inp-date"><input type="date" class="inp" id="dtFr" name="dtFr" value="2026-09-30" title="시작일" required data-label="처리일시 시작일"></span><span>~</span><span class="inp-ico inp-date"><input type="date" class="inp" id="dtTo" name="dtTo" value="2026-10-30" title="종료일" required data-label="처리일시 종료일"></span></div>
+            </div>
+            <div class="it c2"><span class="lb">연계기관</span><div class="flex w100"><select class="sel" style="flex:1" id="sido_select" name="sido_select" title="시도" data-f="1" data-m="has" onchange="setSgg(this.value)"><option value="">시도 전체</option><option>서울특별시</option><option>울산광역시</option><option>경기도</option><option>강원특별자치도</option><option>충청남도</option><option>경상북도</option></select><select class="sel" style="flex:1" id="sgg_select" name="sgg_select" title="시군구" data-f="1" data-m="has"><option value="">시군구 전체</option></select></div></div>
+            <div class="it"><label for="msgSe">메시지구분</label><select class="sel" id="msgSe" name="msgSe" data-f="3"><option value="">전체</option><option>통보문</option><option>단말기제원</option><option>단말기통보결과</option></select></div>
+          </div>
+          <div class="ctrl">
+            <button type="reset" class="btn btn-rst"><i class="ri-refresh-line"></i>초기화</button>
+            <button type="submit" class="btn btn-sch"><i class="ri-search-line"></i>검색</button>
+          </div>
+        </form>
+
+        <div class="sub-head">
+          <h3>데이터 송수신 이력 목록</h3><span class="cnt">전체<b id="totCnt">19,524</b>건</span>
+          <div class="grid-top">
+            <select class="sel" id="pageSize" name="pageSize" title="목록노출건수"><option value="15">15개</option><option value="30">30개</option><option value="50">50개</option><option value="100">100개</option></select>
+            <button type="button" class="btn s btn-line" id="btnApply" onclick="applySize()">적용</button>
+          </div>
+        </div>
+        <div class="grid-wrap">
+          <table class="grid" id="dataLogTbl">
+            <caption class="blind">데이터 송수신 이력 목록</caption>
+            <colgroup><col style="width:80px"><col style="width:190px"><col style="width:100px"><col style="width:130px"><col><col style="width:90px"><col style="width:170px"><col style="width:90px"></colgroup>
+            <thead><tr><th>번호</th><th class="sort">연계기관</th><th class="sort">송수신구분</th><th class="sort">메시지구분</th><th>메시지아이디</th><th class="sort">처리결과</th><th class="sort desc">처리일시</th><th>내용</th></tr></thead>
+            <tbody>
+              <tr><td>19,524</td><td class="t-l">울산광역시 남구</td><td>송신</td><td>단말기통보결과</td><td>KR.ULSAN-NAM-20261030141542.118</td><td><span class="badge sc">성공</span></td><td>2026-10-30 14:15:42</td><td><button type="button" class="btn s btn-line" onclick="openCap(0)"><i class="ri-file-code-line"></i>CAP</button></td></tr>
+              <tr><td>19,523</td><td class="t-l">울산광역시 남구</td><td>수신</td><td>통보문</td><td>KR.ULSAN-NAM-20261030141531.118</td><td><span class="badge sc">성공</span></td><td>2026-10-30 14:15:31</td><td><button type="button" class="btn s btn-line" onclick="openCap(1)"><i class="ri-file-code-line"></i>CAP</button></td></tr>
+              <tr><td>19,522</td><td class="t-l">충청남도 천안시</td><td>수신</td><td>단말기제원</td><td>KR.CHEONAN-20261030130012.2201</td><td><span class="badge sc">성공</span></td><td>2026-10-30 13:00:12</td><td><button type="button" class="btn s btn-line" onclick="openCap(2)"><i class="ri-file-code-line"></i>CAP</button></td></tr>
+              <tr class="ng"><td>19,521</td><td class="t-l">충청남도 아산시</td><td>수신</td><td>단말기제원</td><td>KR.ASAN-20261030130009.2200</td><td><span class="badge dg">실패</span></td><td>2026-10-30 13:00:09</td><td><button type="button" class="btn s btn-line" onclick="openCap(3)"><i class="ri-file-code-line"></i>CAP</button></td></tr>
+              <tr><td>19,520</td><td class="t-l">경기도 부천시</td><td>수신</td><td>단말기제원</td><td>KR.BUCHEON-20261030130005.2199</td><td><span class="badge sc">성공</span></td><td>2026-10-30 13:00:05</td><td><button type="button" class="btn s btn-line" onclick="openCap(4)"><i class="ri-file-code-line"></i>CAP</button></td></tr>
+              <tr class="ng"><td>19,519</td><td class="t-l">충청남도 천안시</td><td>수신</td><td>통보문</td><td>KR.CHEONAN-20261030083002.87</td><td><span class="badge dg">실패</span></td><td>2026-10-30 08:30:02</td><td><button type="button" class="btn s btn-line" onclick="openCap(5)"><i class="ri-file-code-line"></i>CAP</button></td></tr>
+              <tr><td>19,518</td><td class="t-l">충청남도 공주시</td><td>송신</td><td>단말기통보결과</td><td>KR.GONGJU-20261030075524.86</td><td><span class="badge sc">성공</span></td><td>2026-10-30 07:55:24</td><td><button type="button" class="btn s btn-line" onclick="openCap(6)"><i class="ri-file-code-line"></i>CAP</button></td></tr>
+              <tr><td>19,517</td><td class="t-l">충청남도 공주시</td><td>수신</td><td>통보문</td><td>KR.GONGJU-20261030075510.86</td><td><span class="badge sc">성공</span></td><td>2026-10-30 07:55:10</td><td><button type="button" class="btn s btn-line" onclick="openCap(7)"><i class="ri-file-code-line"></i>CAP</button></td></tr>
+              <tr><td>19,516</td><td class="t-l">강원특별자치도 철원군</td><td>수신</td><td>단말기제원</td><td>KR.CHEORWON-20261030070008.2150</td><td><span class="badge sc">성공</span></td><td>2026-10-30 07:00:08</td><td><button type="button" class="btn s btn-line" onclick="openCap(8)"><i class="ri-file-code-line"></i>CAP</button></td></tr>
+              <tr><td>19,515</td><td class="t-l">경상북도 포항시</td><td>송신</td><td>단말기통보결과</td><td>KR.POHANG-20261029224120.85</td><td><span class="badge sc">성공</span></td><td>2026-10-29 22:41:20</td><td><button type="button" class="btn s btn-line" onclick="openCap(9)"><i class="ri-file-code-line"></i>CAP</button></td></tr>
+              <tr><td>19,514</td><td class="t-l">경상북도 포항시</td><td>수신</td><td>통보문</td><td>KR.POHANG-20261029224109.85</td><td><span class="badge sc">성공</span></td><td>2026-10-29 22:41:09</td><td><button type="button" class="btn s btn-line" onclick="openCap(10)"><i class="ri-file-code-line"></i>CAP</button></td></tr>
+              <tr><td>19,513</td><td class="t-l">경상북도 김천시</td><td>수신</td><td>단말기제원</td><td>KR.GIMCHEON-20261029190003.2101</td><td><span class="badge sc">성공</span></td><td>2026-10-29 19:00:03</td><td><button type="button" class="btn s btn-line" onclick="openCap(11)"><i class="ri-file-code-line"></i>CAP</button></td></tr>
+              <tr class="ng"><td>19,512</td><td class="t-l">서울특별시 마포구</td><td>송신</td><td>단말기통보결과</td><td>KR.MAPO-20261029175549.84</td><td><span class="badge dg">실패</span></td><td>2026-10-29 17:55:49</td><td><button type="button" class="btn s btn-line" onclick="openCap(12)"><i class="ri-file-code-line"></i>CAP</button></td></tr>
+              <tr><td>19,511</td><td class="t-l">서울특별시 마포구</td><td>수신</td><td>통보문</td><td>KR.MAPO-20261029175518.84</td><td><span class="badge sc">성공</span></td><td>2026-10-29 17:55:18</td><td><button type="button" class="btn s btn-line" onclick="openCap(13)"><i class="ri-file-code-line"></i>CAP</button></td></tr>
+              <tr><td>19,510</td><td class="t-l">경기도 수원시</td><td>수신</td><td>단말기제원</td><td>KR.SUWON-20261029130011.2054</td><td><span class="badge sc">성공</span></td><td>2026-10-29 13:00:11</td><td><button type="button" class="btn s btn-line" onclick="openCap(14)"><i class="ri-file-code-line"></i>CAP</button></td></tr>
+              <tr class="nodata" hidden><td colspan="8">검색된 결과가 없습니다.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="paging" id="pgBtns" data-total="1302" data-page="1"></div>
+        <!-- ===== 업무영역 끝 ===== -->
+      </main>
+    </div>
+  </div>
+<footer class="ft">
+  <p class="copy">&copy; Ministry of the Interior and Safety. All rights reserved.</p>
+  <span class="desk">SERVICE DESK : 000-0000-0000</span>
+  <a href="privacy.html" class="pp">개인정보처리방침</a>
+  <button type="button" class="btn s btn-line ft-go" onclick="goBoardSystem()">재해문자전광판 시스템 이동<i class="ri-arrow-right-s-line"></i></button>
+</footer>
+
+</div>
+<!-- 모든 프레임 화면 공통 팝업(GNB 내정보 등) -->
+<!-- UI-CO-P01 내정보 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-UI-CO-P01" data-w="540">
+<div class="pop w540" role="dialog" aria-modal="true" aria-labelledby="popTit">
+  <div class="pop-head"><h2 id="popTit">내정보</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
+  <div class="pop-body">
+    <table class="tbl">
+      <caption class="blind">내정보</caption>
+      <colgroup><col style="width:130px"><col></colgroup>
+      <tbody>
+        <tr><th>사용자 ID</th><td>hong.gd</td></tr>
+        <tr><th>사용자명</th><td>홍길동</td></tr>
+        <tr><th>소속기관</th><td>행정안전부</td></tr>
+        <tr><th>부서 / 직급</th><td>재난정보통신과 / 주무관</td></tr>
+        <tr><th>권한</th><td><span class="badge pri">운영자</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pop-foot">
+    <button type="button" class="btn btn-crud" onclick="closePop()">닫기</button>
+  </div>
+</div>
+</template>
+
+<!-- UI-CO-P02 비밀번호 변경 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-UI-CO-P02" data-w="540">
+<div class="pop w540" role="dialog" aria-modal="true" aria-labelledby="popTit">
+  <div class="pop-head"><h2 id="popTit">비밀번호 변경</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
+  <form class="pop-body" id="pwForm" onsubmit="save();return false">
+    <div class="help-box"><i class="ri-shield-keyhole-line"></i><span>비밀번호는 <b>영문·숫자·특수문자를 조합하여 9자 이상</b>으로 설정합니다. 아이디·연속된 문자(3자 이상)·직전 비밀번호는 사용할 수 없으며, 변경 후 다시 로그인해야 합니다.</span></div>
+    <table class="tbl">
+      <caption class="blind">비밀번호 변경</caption>
+      <colgroup><col style="width:150px"><col></colgroup>
+      <tbody>
+        <tr><th><label for="curPassword" class="req">현재 비밀번호</label></th><td><input type="password" class="inp" id="curPassword" name="curPassword" required data-label="현재 비밀번호" autocomplete="current-password"></td></tr>
+        <tr><th><label for="newPassword" class="req">새 비밀번호</label></th><td><input type="password" class="inp" id="newPassword" name="newPassword" required data-label="새 비밀번호" maxlength="20" autocomplete="new-password" oninput="rule()">
+          <ul class="rule" id="ruleList"><li data-r="len">9~20자</li><li data-r="mix">영문·숫자·특수문자 조합</li><li data-r="seq">연속 문자 3자 미만</li><li data-r="id">아이디 미포함</li></ul></td></tr>
+        <tr><th><label for="newPasswordCfm" class="req">새 비밀번호 확인</label></th><td><input type="password" class="inp" id="newPasswordCfm" name="newPasswordCfm" required data-label="새 비밀번호 확인" maxlength="20" autocomplete="new-password" oninput="same()"><span class="f-msg" id="cfmMsg">새 비밀번호를 한 번 더 입력하세요.</span></td></tr>
+      </tbody>
+    </table>
+  </form>
+  <div class="pop-foot">
+    <button type="button" class="btn btn-line" onclick="closePop()">취소</button>
+    <button type="button" class="btn btn-crud" onclick="save()"><i class="ri-save-line"></i>변경</button>
+  </div>
+</div>
+</template>
+
+<!-- UI-CO-P03 메시지창 샘플 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-UI-CO-P03" data-w="540">
+<div class="pop w540" role="dialog" aria-modal="true" aria-labelledby="popTit">
+  <div class="pop-head"><h2 id="popTit">메시지창 샘플</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
+  <div class="pop-body">
+    <div class="help-box"><i class="ri-information-line"></i><span>공통 메시지창(폭 360) 유형입니다. 버튼을 누르면 해당 메시지창이 열립니다. 질의형은 [취소][확인], 데이터 손실이 있는 확인창은 <b>[취소]</b>가 기본 포커스입니다.</span></div>
+    <div class="grid-wrap">
+      <table class="grid">
+        <caption class="blind">메시지창 유형</caption>
+        <colgroup><col style="width:90px"><col><col style="width:110px"></colgroup>
+        <thead><tr><th>구분</th><th>사용 예</th><th>미리보기</th></tr></thead>
+        <tbody>
+          <tr><td><span class="badge in">안내</span></td><td class="t-l">처리 결과·일반 안내</td><td><button type="button" class="btn s btn-line" onclick="alertMsg('조회 조건에 해당하는 데이터가 없습니다.',{ico:'in'})">alert 안내</button></td></tr>
+          <tr><td><span class="badge wn">경고</span></td><td class="t-l">필수값 누락·입력 오류</td><td><button type="button" class="btn s btn-line" onclick="alertMsg('발령일 기간은(는) 필수 입력 항목입니다.',{ico:'wn'})">alert 경고</button></td></tr>
+          <tr><td><span class="badge dg">오류</span></td><td class="t-l">시스템 오류(코드·상세)</td><td><button type="button" class="btn s btn-line" onclick="errSample()">alert 오류</button></td></tr>
+          <tr><td><span class="badge sc">완료</span></td><td class="t-l">저장·발급 완료</td><td><button type="button" class="btn s btn-line" onclick="alertMsg('저장이 완료되었습니다.',{ico:'sc'})">alert 완료</button></td></tr>
+          <tr><td><span class="badge pri">질의</span></td><td class="t-l">저장·등록 확인</td><td><button type="button" class="btn s btn-line" onclick="confirmMsg('입력한 내용을 저장하시겠습니까?',function(){alertMsg('저장이 완료되었습니다.',{ico:'sc'})})">confirm</button></td></tr>
+          <tr><td><span class="badge dg">질의(위험)</span></td><td class="t-l">삭제 등 데이터 손실</td><td><button type="button" class="btn s btn-line" onclick="confirmMsg('선택한 항목을 삭제하시겠습니까?\n삭제된 데이터는 복구할 수 없습니다.',function(){alertMsg('삭제가 완료되었습니다.',{ico:'sc'})},{ico:'wn',danger:true})">confirm 위험</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="pop-foot"><button type="button" class="btn btn-crud" onclick="closePop()">닫기</button></div>
+</div>
+</template>
+
+
+<!-- UI-DA08-006-P01 CAP 전문보기 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-UI-DA08-006-P01" data-w="760">
+<div class="pop w760" role="dialog" aria-modal="true" aria-labelledby="popTit">
+  <div class="pop-head"><h2 id="popTit">CAP 전문보기</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
+  <div class="pop-body">
+    <table class="tbl">
+      <caption class="blind">송수신 정보</caption>
+      <colgroup><col style="width:120px"><col><col style="width:120px"><col></colgroup>
+      <tbody>
+        <tr><th>연계기관</th><td id="v_org">울산광역시 남구</td><th>송수신구분</th><td id="v_io">수신</td></tr>
+        <tr><th>메시지구분</th><td id="v_se">통보문</td><th>처리일시</th><td id="v_dt">2026-10-30 14:15:31</td></tr>
+        <tr><th>메시지아이디</th><td id="v_id">KR.ULSAN-NAM-20261030141531.118</td><th>처리결과</th><td id="v_rs"></td></tr>
+      </tbody>
+    </table>
+    <div class="sub-head"><h4>전문 내용</h4><div class="btns"><button type="button" class="btn s btn-line" onclick="copyCap()"><i class="ri-file-copy-line"></i>복사</button></div></div>
+    <textarea class="txa cap-view" id="capCn" readonly title="CAP 전문" rows="16"></textarea>
+  </div>
+  <div class="pop-foot">
+    <button type="button" class="btn btn-line" onclick="closePop()">닫기</button>
+  </div>
+</div>
+</template>
+
+<script src="js/common.js"></script>
+
+<script src="js/pop/UI-CO-P01.js"></script>
+<script src="js/pop/UI-CO-P02.js"></script>
+<script src="js/pop/UI-CO-P03.js"></script>
+
+<script src="js/pop/UI-DA08-006-P01.js"></script>
+<script src="js/pages/log_data.js"></script>
+</body>
+</html>

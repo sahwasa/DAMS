@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>시스템 자원 모니터링 | 재난 예경보 통합관리시스템</title>
+<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="font/pretendard-gov/pretendardvariable-gov.css">
+<link rel="stylesheet" href="font/remixicon/remixicon.css">
+<link rel="stylesheet" href="css/main.css">
+
+<link rel="stylesheet" href="css/pages/sys_resource.css">
+
+</head>
+
+
+<body>
+<div class="wrap">
+  <!-- GNB -->
+  <!-- GNB: 현재 1Depth .on은 common.js markOn()이 파일명으로 표시 -->
+  <header class="gnb">
+    <h1 class="logo"><a href="index.html" class="flex"><img src="images/gov_logo_w.png" alt="정부 상징" class="gov-logo">재난 예경보 통합관리시스템</a></h1>
+    <ul class="menu">
+      <li><a href="gis.html">GIS상황판</a></li>
+      <li><a href="warn_monitor.html">재난 예경보 현황</a></li>
+      <li><a href="plat_org.html">통합플랫폼관리</a></li>
+      <li><a href="stat_event.html">통계</a></li>
+      <li><a href="guide_intro.html">이용안내</a></li>
+      <li><a href="sys_user.html">시스템관리</a></li>
+      <li><a href="log_sms.html">시스템 이력</a></li>
+    </ul>
+    <div class="util">
+      <div class="sess" title="세션 남은시간"><b>59:10</b><button type="button" data-sess>시간연장</button></div>
+      <a href="#pop-UI-CO-P01" class="user" onclick="openPop('UI-CO-P01',540);return false;">홍길동 님<em>(재난정보통신과)</em><i class="ri-user-3-line"></i></a>
+      <a href="index.html" class="ico" title="전체메뉴" data-layer="all"><i class="ri-menu-line"></i></a>
+      <a href="log_dsblty.html" class="ico" title="알림" data-layer="noti"><i class="ri-notification-3-line"></i><span class="badge"></span></a>
+      <a href="login.html" class="ico" title="로그아웃" data-logout><i class="ri-logout-box-r-line"></i></a>
+      <div class="fsz" title="글자크기"><span>글자크기</span><button type="button" data-fsz="down" title="작게">−</button><span class="fsz-v">100%</span><button type="button" data-fsz="up" title="크게">+</button></div>
+      <a href="cert_request.html" onclick="return !window.open(this.href,'damsCert','width=1280,height=860');" class="btn s btn-pri-o">연계확인서 발급</a>
+    </div>
+  </header>
+
+
+  <div class="body">
+    <!-- LNB -->
+    <!-- LNB 시스템관리: 현재 메뉴 .on은 common.js markOn()이 표시 -->
+    <nav class="lnb">
+      <div class="lnb-tab"><button type="button" class="on" data-lnb="menu">메뉴</button><button type="button" data-lnb="fav">즐겨찾기</button><button type="button" data-lnb="recent">최근접속</button></div>
+      <div class="lnb-tit">시스템관리</div>
+      <div class="lnb-menu">
+        <ul class="d2">
+          <li><a href="sys_user.html">사용자관리</a></li>
+          <li><a href="sys_menu.html">메뉴관리</a></li>
+          <li><a href="sys_code.html">공통코드관리</a></li>
+          <li><a href="sys_disaster.html">재난코드관리</a></li>
+          <li><a href="sys_auth.html">사용자 권한관리</a></li>
+          <li><a href="sys_resource.html">시스템 자원 모니터링</a></li>
+        </ul>
+      </div>
+      <button type="button" class="lnb-fold" data-fold title="메뉴 접기/펼치기"><i class="ri-arrow-left-s-line"></i></button>
+    </nav>
+
+
+    <!-- MAIN -->
+    <div class="main">
+      
+      <div class="mdi">
+        <ul class="mdi-tabs">
+          <li><a href="gis.html">GIS상황판</a><button type="button" title="닫기" data-mdi="close"><i class="ri-close-line"></i></button></li>
+          <li class="on"><a href="sys_resource.html">시스템 자원 모니터링</a><button type="button" title="닫기" data-mdi="close"><i class="ri-close-line"></i></button></li>
+        </ul>
+        <div class="mdi-ctrl">
+          <button type="button" title="이전" data-mdi="prev"><i class="ri-arrow-left-s-line"></i></button>
+          <button type="button" title="다음" data-mdi="next"><i class="ri-arrow-right-s-line"></i></button>
+          <button type="button" title="전체닫기" data-mdi="all"><i class="ri-close-line"></i></button>
+        </div>
+      </div>
+
+
+      <main class="work" id="content">
+        <div class="page-head">
+          <div>
+            <h2 class="tit">시스템 자원 모니터링<button type="button" class="star" title="즐겨찾기" data-star><i class="ri-star-line"></i></button></h2>
+            <ul class="bread"><li><a href="gis.html" title="홈"><i class="ri-home-4-line home"></i></a></li><li><a href="sys_user.html">시스템관리</a></li><li><a href="sys_resource.html">시스템 자원 모니터링</a></li></ul>
+          </div>
+        </div>
+
+        <!-- ===== 업무영역 (화면별 교체) ===== -->
+<div class="col-lr" style="grid-template-columns:minmax(0,60fr) minmax(0,40fr)">
+  <div>
+    <div class="sub-head mt0"><h3>서버 상태 요약</h3><span class="cnt" id="baseTm">2026-10-30 14:25:00 기준</span>
+      <ul class="legend ml-auto"><li><i class="cl-sc"></i>정상 0~50%</li><li><i class="cl-wn"></i>주의 50~80%</li><li><i class="cl-dg"></i>위험 80~100%</li></ul>
+      <div class="btns" style="margin-left:12px"><button type="button" class="btn s btn-line" data-tip="임계치는 공통코드(rsrc_thrhld_cd)에서 관리하며 CPU·MEM·DISK에 동일하게 적용합니다. 상태는 CPU·MEM 사용률 중 큰 값으로 판정합니다."><i class="ri-question-line"></i>판정 기준</button><button type="button" class="btn s btn-line" onclick="reload()"><i class="ri-refresh-line"></i>새로고침</button></div>
+    </div>
+    <div class="mon-kpi c4 lg" id="rsrcSummary">
+      <div><dl><dt>대상 서버</dt><dd>6<small>대</small></dd><dd class="s">WEB·WAS·DB·GIS·GW</dd></dl></div>
+      <div class="sc"><dl><dt>정상</dt><dd>4<small>대</small></dd><dd class="s">사용률 50% 미만</dd></dl></div>
+      <div class="wn"><dl><dt>주의</dt><dd>1<small>대</small></dd><dd class="s">DB-01</dd></dl></div>
+      <div class="dg"><dl><dt>위험</dt><dd>1<small>대</small></dd><dd class="s">WAS-02</dd></dl></div>
+    </div>
+    <div class="sub-head"><h4>서버별 자원 체크 현황</h4><span class="cnt">CPU·MEM 사용률 / DISK·MEM 사용량 / 네트워크(In/Out) · 수집 2026-10-30 14:25:00</span></div>
+    <div class="col3" id="rsrcCards" style="gap:12px">
+      <div class="card srv "><div class="card-h" title="웹 서버 (10.10.10.11)">WEB-01<small>10.10.10.11</small><span class="badge sc">정상</span></div>
+        <div class="card-b"><div class="gauges"><div class="gauge"><div class="donut" style="background:conic-gradient(#008a1e 0 22%,#f0f0f0 0)" title="CPU 사용률 22%"><div><b>22%</b><small>CPU</small></div></div></div><div class="gauge"><div class="donut" style="background:conic-gradient(#008a1e 0 38%,#f0f0f0 0)" title="MEM 사용률 38%"><div><b>38%</b><small>MEM</small></div></div></div></div>
+          <ul class="hbar"><li title="DISK 사용 142 GB / 1.0 TB"><span class="lb">DISK</span><span class="bar"><span class="cl-sc" style="width:14%"></span></span><span class="v">142 GB / 1.0 TB</span></li><li title="MEM 사용량 12.2 / 32 GB"><span class="lb">MEM</span><span></span><span class="v">12.2 / 32 GB</span></li><li title="네트워크 In/Out 42 / 118 Mbps"><span class="lb">NETWORK</span><span></span><span class="v">In 42 / Out 118 Mbps</span></li></ul></div></div>
+      <div class="card srv "><div class="card-h" title="WAS 서버 #1 (10.10.10.21)">WAS-01<small>10.10.10.21</small><span class="badge sc">정상</span></div>
+        <div class="card-b"><div class="gauges"><div class="gauge"><div class="donut" style="background:conic-gradient(#008a1e 0 34%,#f0f0f0 0)" title="CPU 사용률 34%"><div><b>34%</b><small>CPU</small></div></div></div><div class="gauge"><div class="donut" style="background:conic-gradient(#008a1e 0 45%,#f0f0f0 0)" title="MEM 사용률 45%"><div><b>45%</b><small>MEM</small></div></div></div></div>
+          <ul class="hbar"><li title="DISK 사용 210 GB / 1.0 TB"><span class="lb">DISK</span><span class="bar"><span class="cl-sc" style="width:21%"></span></span><span class="v">210 GB / 1.0 TB</span></li><li title="MEM 사용량 28.8 / 64 GB"><span class="lb">MEM</span><span></span><span class="v">28.8 / 64 GB</span></li><li title="네트워크 In/Out 36 / 54 Mbps"><span class="lb">NETWORK</span><span></span><span class="v">In 36 / Out 54 Mbps</span></li></ul></div></div>
+      <div class="card srv dg"><div class="card-h" title="WAS 서버 #2 (10.10.10.22)">WAS-02<small>10.10.10.22</small><span class="badge dg">위험</span></div>
+        <div class="card-b"><div class="gauges"><div class="gauge"><div class="donut" style="background:conic-gradient(#eb003b 0 86%,#f0f0f0 0)" title="CPU 사용률 86%"><div><b>86%</b><small>CPU</small></div></div></div><div class="gauge"><div class="donut" style="background:conic-gradient(#ffb724 0 71%,#f0f0f0 0)" title="MEM 사용률 71%"><div><b>71%</b><small>MEM</small></div></div></div></div>
+          <ul class="hbar"><li title="DISK 사용 198 GB / 1.0 TB"><span class="lb">DISK</span><span class="bar"><span class="cl-sc" style="width:20%"></span></span><span class="v">198 GB / 1.0 TB</span></li><li title="MEM 사용량 45.4 / 64 GB"><span class="lb">MEM</span><span></span><span class="v">45.4 / 64 GB</span></li><li title="네트워크 In/Out 61 / 88 Mbps"><span class="lb">NETWORK</span><span></span><span class="v">In 61 / Out 88 Mbps</span></li></ul></div></div>
+      <div class="card srv wn"><div class="card-h" title="DB 서버 (10.10.10.31)">DB-01<small>10.10.10.31</small><span class="badge wn">주의</span></div>
+        <div class="card-b"><div class="gauges"><div class="gauge"><div class="donut" style="background:conic-gradient(#008a1e 0 48%,#f0f0f0 0)" title="CPU 사용률 48%"><div><b>48%</b><small>CPU</small></div></div></div><div class="gauge"><div class="donut" style="background:conic-gradient(#ffb724 0 68%,#f0f0f0 0)" title="MEM 사용률 68%"><div><b>68%</b><small>MEM</small></div></div></div></div>
+          <ul class="hbar"><li title="DISK 사용 1.4 TB / 4.0 TB"><span class="lb">DISK</span><span class="bar"><span class="cl-sc" style="width:35%"></span></span><span class="v">1.4 TB / 4.0 TB</span></li><li title="MEM 사용량 87.0 / 128 GB"><span class="lb">MEM</span><span></span><span class="v">87.0 / 128 GB</span></li><li title="네트워크 In/Out 95 / 72 Mbps"><span class="lb">NETWORK</span><span></span><span class="v">In 95 / Out 72 Mbps</span></li></ul></div></div>
+      <div class="card srv "><div class="card-h" title="GIS 맵 서버 (10.10.10.41)">GIS-01<small>10.10.10.41</small><span class="badge sc">정상</span></div>
+        <div class="card-b"><div class="gauges"><div class="gauge"><div class="donut" style="background:conic-gradient(#008a1e 0 18%,#f0f0f0 0)" title="CPU 사용률 18%"><div><b>18%</b><small>CPU</small></div></div></div><div class="gauge"><div class="donut" style="background:conic-gradient(#008a1e 0 32%,#f0f0f0 0)" title="MEM 사용률 32%"><div><b>32%</b><small>MEM</small></div></div></div></div>
+          <ul class="hbar"><li title="DISK 사용 480 GB / 2.0 TB"><span class="lb">DISK</span><span class="bar"><span class="cl-sc" style="width:24%"></span></span><span class="v">480 GB / 2.0 TB</span></li><li title="MEM 사용량 20.5 / 64 GB"><span class="lb">MEM</span><span></span><span class="v">20.5 / 64 GB</span></li><li title="네트워크 In/Out 28 / 140 Mbps"><span class="lb">NETWORK</span><span></span><span class="v">In 28 / Out 140 Mbps</span></li></ul></div></div>
+      <div class="card srv "><div class="card-h" title="연계 GW 서버 (10.10.10.51)">GW-01<small>10.10.10.51</small><span class="badge sc">정상</span></div>
+        <div class="card-b"><div class="gauges"><div class="gauge"><div class="donut" style="background:conic-gradient(#008a1e 0 28%,#f0f0f0 0)" title="CPU 사용률 28%"><div><b>28%</b><small>CPU</small></div></div></div><div class="gauge"><div class="donut" style="background:conic-gradient(#008a1e 0 41%,#f0f0f0 0)" title="MEM 사용률 41%"><div><b>41%</b><small>MEM</small></div></div></div></div>
+          <ul class="hbar"><li title="DISK 사용 85 GB / 500 GB"><span class="lb">DISK</span><span class="bar"><span class="cl-sc" style="width:17%"></span></span><span class="v">85 GB / 500 GB</span></li><li title="MEM 사용량 13.1 / 32 GB"><span class="lb">MEM</span><span></span><span class="v">13.1 / 32 GB</span></li><li title="네트워크 In/Out 210 / 64 Mbps"><span class="lb">NETWORK</span><span></span><span class="v">In 210 / Out 64 Mbps</span></li></ul></div></div>
+    </div>
+  </div>
+  <div class="rs-r">
+    <div class="sub-head mt0"><h3>연계 프로세스</h3><span class="cnt">전체<b>12</b>건 / 정상 <b class="c-sc">10</b>건 / 지연 <b class="c-wn">1</b>건 / 중지 <b>1</b>건</span></div>
+    <div class="grid-wrap rs-prcs">
+      <table class="grid fix-head"><caption class="blind">연계 프로세스 목록</caption>
+        <colgroup><col style="width:58px"><col><col style="width:78px"><col style="width:158px"></colgroup>
+        <thead><tr><th class="sort">상태</th><th class="sort">프로세스구분</th><th class="sort">서버</th><th class="sort desc">감시일시</th></tr></thead>
+        <tbody id="prcsTableBody">
+          <tr class="ng"><td><span class="badge dg">중지</span></td><td class="t-l" title="LOG_ARCH">로그 아카이브</td><td>WEB-01</td><td>2026-10-30 14:05:10</td></tr>
+          <tr class="notice"><td><span class="badge wn">지연</span></td><td class="t-l" title="TRM_POLL">단말기 상태 수집</td><td>WAS-02</td><td>2026-10-30 14:19:42</td></tr>
+          <tr class=""><td><span class="badge sc">정상</span></td><td class="t-l" title="NDMS_RCV">NDMS 통보문 수신</td><td>GW-01</td><td>2026-10-30 14:25:00</td></tr>
+          <tr class=""><td><span class="badge sc">정상</span></td><td class="t-l" title="WTHR_PARSE">기상특보 수신·파싱</td><td>GW-01</td><td>2026-10-30 14:25:00</td></tr>
+          <tr class=""><td><span class="badge sc">정상</span></td><td class="t-l" title="CAP_CONV">CAP 전문 변환</td><td>GW-01</td><td>2026-10-30 14:24:58</td></tr>
+          <tr class=""><td><span class="badge sc">정상</span></td><td class="t-l" title="ALERT_DISP">재난발령 송출</td><td>WAS-01</td><td>2026-10-30 14:24:58</td></tr>
+          <tr class=""><td><span class="badge sc">정상</span></td><td class="t-l" title="SMS_SEND">문자 발송(NURI2)</td><td>WAS-01</td><td>2026-10-30 14:24:57</td></tr>
+          <tr class=""><td><span class="badge sc">정상</span></td><td class="t-l" title="DATA_SYNC">연계기관 데이터 동기화</td><td>WAS-02</td><td>2026-10-30 14:24:55</td></tr>
+          <tr class=""><td><span class="badge sc">정상</span></td><td class="t-l" title="GIS_TILE">GIS 타일 갱신</td><td>GIS-01</td><td>2026-10-30 14:24:50</td></tr>
+          <tr class=""><td><span class="badge sc">정상</span></td><td class="t-l" title="RSRC_MNTR">자원 수집 에이전트</td><td>WEB-01</td><td>2026-10-30 14:25:00</td></tr>
+          <tr class=""><td><span class="badge sc">정상</span></td><td class="t-l" title="CERT_CHK">연계확인서 자동점검</td><td>WAS-01</td><td>2026-10-30 14:24:30</td></tr>
+          <tr class=""><td><span class="badge sc">정상</span></td><td class="t-l" title="DB_BACKUP">DB 백업</td><td>DB-01</td><td>2026-10-30 14:20:00</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub-head"><h3>이중화 서비스 상태</h3><span class="cnt">전체<b>3</b>건</span><div class="btns ml-auto"><button type="button" class="btn s btn-line" data-tip="상태점검·재기동·Standby 전환은 자동 수행 / 정상: Active·Standby 모두 응답 정상, 자원 정상 범위 / 주의: Standby 응답 없음 또는 자원 주의·위험(전환 대기 불안정), 자동 전환·재기동 발생 후 미확인 / 장애: Active·Standby 모두 응답 없음(서비스 중단)"><i class="ri-question-line"></i>상태 기준</button></div></div>
+    <div class="grid-wrap">
+      <table class="grid" id="haTable"><caption class="blind">이중화 서비스 상태</caption>
+        <colgroup><col><col style="width:84px"><col style="width:84px"><col style="width:60px"><col style="width:82px"></colgroup>
+        <thead><tr><th>서비스</th><th>Active</th><th>Standby</th><th>상태</th><th>최근 점검</th></tr></thead>
+        <tbody><tr><td class="t-l">NURI2 문자발송</td><td title="10.10.10.61">NURI-01</td><td title="10.10.10.62">NURI-02</td><td><span class="badge sc" title="Active·Standby 모두 응답·자원 정상">정상</span></td><td title="2026-10-30 14:20:00">14:20:00</td></tr><tr><td class="t-l">통합 게이트웨이</td><td title="10.10.10.51">GW-01</td><td title="10.10.10.52">GW-02</td><td><span class="badge sc" title="Active·Standby 모두 응답·자원 정상">정상</span></td><td title="2026-10-30 14:20:00">14:20:00</td></tr><tr><td class="t-l">WAS(재난 예경보)</td><td title="10.10.10.21">WAS-01</td><td title="10.10.10.22">WAS-02</td><td><span class="badge wn" title="Standby(WAS-02) 자원 위험 — CPU 86%, 장애 시 전환 불가 우려">주의</span></td><td title="2026-10-30 14:20:00">14:20:00</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+        <!-- ===== 업무영역 끝 ===== -->
+      </main>
+    </div>
+  </div>
+<footer class="ft">
+  <p class="copy">&copy; Ministry of the Interior and Safety. All rights reserved.</p>
+  <span class="desk">SERVICE DESK : 000-0000-0000</span>
+  <a href="privacy.html" class="pp">개인정보처리방침</a>
+  <button type="button" class="btn s btn-line ft-go" onclick="goBoardSystem()">재해문자전광판 시스템 이동<i class="ri-arrow-right-s-line"></i></button>
+</footer>
+
+</div>
+<!-- 모든 프레임 화면 공통 팝업(GNB 내정보 등) -->
+<!-- UI-CO-P01 내정보 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-UI-CO-P01" data-w="540">
+<div class="pop w540" role="dialog" aria-modal="true" aria-labelledby="popTit">
+  <div class="pop-head"><h2 id="popTit">내정보</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
+  <div class="pop-body">
+    <table class="tbl">
+      <caption class="blind">내정보</caption>
+      <colgroup><col style="width:130px"><col></colgroup>
+      <tbody>
+        <tr><th>사용자 ID</th><td>hong.gd</td></tr>
+        <tr><th>사용자명</th><td>홍길동</td></tr>
+        <tr><th>소속기관</th><td>행정안전부</td></tr>
+        <tr><th>부서 / 직급</th><td>재난정보통신과 / 주무관</td></tr>
+        <tr><th>권한</th><td><span class="badge pri">운영자</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pop-foot">
+    <button type="button" class="btn btn-crud" onclick="closePop()">닫기</button>
+  </div>
+</div>
+</template>
+
+<!-- UI-CO-P02 비밀번호 변경 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-UI-CO-P02" data-w="540">
+<div class="pop w540" role="dialog" aria-modal="true" aria-labelledby="popTit">
+  <div class="pop-head"><h2 id="popTit">비밀번호 변경</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
+  <form class="pop-body" id="pwForm" onsubmit="save();return false">
+    <div class="help-box"><i class="ri-shield-keyhole-line"></i><span>비밀번호는 <b>영문·숫자·특수문자를 조합하여 9자 이상</b>으로 설정합니다. 아이디·연속된 문자(3자 이상)·직전 비밀번호는 사용할 수 없으며, 변경 후 다시 로그인해야 합니다.</span></div>
+    <table class="tbl">
+      <caption class="blind">비밀번호 변경</caption>
+      <colgroup><col style="width:150px"><col></colgroup>
+      <tbody>
+        <tr><th><label for="curPassword" class="req">현재 비밀번호</label></th><td><input type="password" class="inp" id="curPassword" name="curPassword" required data-label="현재 비밀번호" autocomplete="current-password"></td></tr>
+        <tr><th><label for="newPassword" class="req">새 비밀번호</label></th><td><input type="password" class="inp" id="newPassword" name="newPassword" required data-label="새 비밀번호" maxlength="20" autocomplete="new-password" oninput="rule()">
+          <ul class="rule" id="ruleList"><li data-r="len">9~20자</li><li data-r="mix">영문·숫자·특수문자 조합</li><li data-r="seq">연속 문자 3자 미만</li><li data-r="id">아이디 미포함</li></ul></td></tr>
+        <tr><th><label for="newPasswordCfm" class="req">새 비밀번호 확인</label></th><td><input type="password" class="inp" id="newPasswordCfm" name="newPasswordCfm" required data-label="새 비밀번호 확인" maxlength="20" autocomplete="new-password" oninput="same()"><span class="f-msg" id="cfmMsg">새 비밀번호를 한 번 더 입력하세요.</span></td></tr>
+      </tbody>
+    </table>
+  </form>
+  <div class="pop-foot">
+    <button type="button" class="btn btn-line" onclick="closePop()">취소</button>
+    <button type="button" class="btn btn-crud" onclick="save()"><i class="ri-save-line"></i>변경</button>
+  </div>
+</div>
+</template>
+
+<!-- UI-CO-P03 메시지창 샘플 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-UI-CO-P03" data-w="540">
+<div class="pop w540" role="dialog" aria-modal="true" aria-labelledby="popTit">
+  <div class="pop-head"><h2 id="popTit">메시지창 샘플</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
+  <div class="pop-body">
+    <div class="help-box"><i class="ri-information-line"></i><span>공통 메시지창(폭 360) 유형입니다. 버튼을 누르면 해당 메시지창이 열립니다. 질의형은 [취소][확인], 데이터 손실이 있는 확인창은 <b>[취소]</b>가 기본 포커스입니다.</span></div>
+    <div class="grid-wrap">
+      <table class="grid">
+        <caption class="blind">메시지창 유형</caption>
+        <colgroup><col style="width:90px"><col><col style="width:110px"></colgroup>
+        <thead><tr><th>구분</th><th>사용 예</th><th>미리보기</th></tr></thead>
+        <tbody>
+          <tr><td><span class="badge in">안내</span></td><td class="t-l">처리 결과·일반 안내</td><td><button type="button" class="btn s btn-line" onclick="alertMsg('조회 조건에 해당하는 데이터가 없습니다.',{ico:'in'})">alert 안내</button></td></tr>
+          <tr><td><span class="badge wn">경고</span></td><td class="t-l">필수값 누락·입력 오류</td><td><button type="button" class="btn s btn-line" onclick="alertMsg('발령일 기간은(는) 필수 입력 항목입니다.',{ico:'wn'})">alert 경고</button></td></tr>
+          <tr><td><span class="badge dg">오류</span></td><td class="t-l">시스템 오류(코드·상세)</td><td><button type="button" class="btn s btn-line" onclick="errSample()">alert 오류</button></td></tr>
+          <tr><td><span class="badge sc">완료</span></td><td class="t-l">저장·발급 완료</td><td><button type="button" class="btn s btn-line" onclick="alertMsg('저장이 완료되었습니다.',{ico:'sc'})">alert 완료</button></td></tr>
+          <tr><td><span class="badge pri">질의</span></td><td class="t-l">저장·등록 확인</td><td><button type="button" class="btn s btn-line" onclick="confirmMsg('입력한 내용을 저장하시겠습니까?',function(){alertMsg('저장이 완료되었습니다.',{ico:'sc'})})">confirm</button></td></tr>
+          <tr><td><span class="badge dg">질의(위험)</span></td><td class="t-l">삭제 등 데이터 손실</td><td><button type="button" class="btn s btn-line" onclick="confirmMsg('선택한 항목을 삭제하시겠습니까?\n삭제된 데이터는 복구할 수 없습니다.',function(){alertMsg('삭제가 완료되었습니다.',{ico:'sc'})},{ico:'wn',danger:true})">confirm 위험</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="pop-foot"><button type="button" class="btn btn-crud" onclick="closePop()">닫기</button></div>
+</div>
+</template>
+
+
+<script src="js/common.js"></script>
+
+<script src="js/pop/UI-CO-P01.js"></script>
+<script src="js/pop/UI-CO-P02.js"></script>
+<script src="js/pop/UI-CO-P03.js"></script>
+
+<script src="js/pages/sys_resource.js"></script>
+</body>
+</html>

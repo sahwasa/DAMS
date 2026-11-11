@@ -1,0 +1,13 @@
+@use "../abstracts" as *;
+/* ---------- 17. Grid ext / Result ---------- */
+.grid tbody tr.grp td{background:$g10;font-weight:600;color:$c-title;text-align:left}
+.grid tbody tr.grp td em{font-style:normal;font-weight:400;font-size:12px;color:$g60;margin-left:8px}
+.grid tbody tr.ng td{background:$dg-s}
+.grid tbody tr.clk{cursor:pointer}
+.result-box{display:flex;align-items:center;gap:14px;padding:12px 18px;margin-bottom:16px;border:1px solid;border-radius:$r}
+.result-box>i{font-size:30px}.result-box b{display:block;font-size:$fs-b}.result-box span{font-size:$fs-xs;color:$c-body}.result-box .btn{margin-left:auto}
+.result-box.sc{background:$sc-s;border-color:$sc-b;color:$sc-t}.result-box.dg{background:$dg-s;border-color:$dg-b;color:$dg-t}
+.log-box{margin-top:12px;padding:8px 14px;max-height:120px;overflow-y:auto;background:$g5;border:1px solid $c-line2;border-radius:$r;font:12px/1.75 Consolas,Menlo,monospace;color:$c-title}
+.log-box .fin{color:$sc-t;font-weight:700}
+.tab li .badge{margin-left:6px;height:20px;padding-top:1px;font-size:11px;line-height:1}
+.tab li.on .badge{background:#fff}

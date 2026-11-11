@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>재난코드관리 | 재난 예경보 통합관리시스템</title>
+<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="font/pretendard-gov/pretendardvariable-gov.css">
+<link rel="stylesheet" href="font/remixicon/remixicon.css">
+<link rel="stylesheet" href="css/main.css">
+
+<link rel="stylesheet" href="css/pages/sys_disaster.css">
+
+</head>
+
+
+<body>
+<div class="wrap">
+  <!-- GNB -->
+  <!-- GNB: 현재 1Depth .on은 common.js markOn()이 파일명으로 표시 -->
+  <header class="gnb">
+    <h1 class="logo"><a href="index.html" class="flex"><img src="images/gov_logo_w.png" alt="정부 상징" class="gov-logo">재난 예경보 통합관리시스템</a></h1>
+    <ul class="menu">
+      <li><a href="gis.html">GIS상황판</a></li>
+      <li><a href="warn_monitor.html">재난 예경보 현황</a></li>
+      <li><a href="plat_org.html">통합플랫폼관리</a></li>
+      <li><a href="stat_event.html">통계</a></li>
+      <li><a href="guide_intro.html">이용안내</a></li>
+      <li><a href="sys_user.html">시스템관리</a></li>
+      <li><a href="log_sms.html">시스템 이력</a></li>
+    </ul>
+    <div class="util">
+      <div class="sess" title="세션 남은시간"><b>59:10</b><button type="button" data-sess>시간연장</button></div>
+      <a href="#pop-UI-CO-P01" class="user" onclick="openPop('UI-CO-P01',540);return false;">홍길동 님<em>(재난정보통신과)</em><i class="ri-user-3-line"></i></a>
+      <a href="index.html" class="ico" title="전체메뉴" data-layer="all"><i class="ri-menu-line"></i></a>
+      <a href="log_dsblty.html" class="ico" title="알림" data-layer="noti"><i class="ri-notification-3-line"></i><span class="badge"></span></a>
+      <a href="login.html" class="ico" title="로그아웃" data-logout><i class="ri-logout-box-r-line"></i></a>
+      <div class="fsz" title="글자크기"><span>글자크기</span><button type="button" data-fsz="down" title="작게">−</button><span class="fsz-v">100%</span><button type="button" data-fsz="up" title="크게">+</button></div>
+      <a href="cert_request.html" onclick="return !window.open(this.href,'damsCert','width=1280,height=860');" class="btn s btn-pri-o">연계확인서 발급</a>
+    </div>
+  </header>
+
+
+  <div class="body">
+    <!-- LNB -->
+    <!-- LNB 시스템관리: 현재 메뉴 .on은 common.js markOn()이 표시 -->
+    <nav class="lnb">
+      <div class="lnb-tab"><button type="button" class="on" data-lnb="menu">메뉴</button><button type="button" data-lnb="fav">즐겨찾기</button><button type="button" data-lnb="recent">최근접속</button></div>
+      <div class="lnb-tit">시스템관리</div>
+      <div class="lnb-menu">
+        <ul class="d2">
+          <li><a href="sys_user.html">사용자관리</a></li>
+          <li><a href="sys_menu.html">메뉴관리</a></li>
+          <li><a href="sys_code.html">공통코드관리</a></li>
+          <li><a href="sys_disaster.html">재난코드관리</a></li>
+          <li><a href="sys_auth.html">사용자 권한관리</a></li>
+          <li><a href="sys_resource.html">시스템 자원 모니터링</a></li>
+        </ul>
+      </div>
+      <button type="button" class="lnb-fold" data-fold title="메뉴 접기/펼치기"><i class="ri-arrow-left-s-line"></i></button>
+    </nav>
+
+
+    <!-- MAIN -->
+    <div class="main">
+      
+      <div class="mdi">
+        <ul class="mdi-tabs">
+          <li><a href="gis.html">GIS상황판</a><button type="button" title="닫기" data-mdi="close"><i class="ri-close-line"></i></button></li>
+          <li class="on"><a href="sys_disaster.html">재난코드관리</a><button type="button" title="닫기" data-mdi="close"><i class="ri-close-line"></i></button></li>
+        </ul>
+        <div class="mdi-ctrl">
+          <button type="button" title="이전" data-mdi="prev"><i class="ri-arrow-left-s-line"></i></button>
+          <button type="button" title="다음" data-mdi="next"><i class="ri-arrow-right-s-line"></i></button>
+          <button type="button" title="전체닫기" data-mdi="all"><i class="ri-close-line"></i></button>
+        </div>
+      </div>
+
+
+      <main class="work" id="content">
+        <div class="page-head">
+          <div>
+            <h2 class="tit">재난코드관리<button type="button" class="star" title="즐겨찾기" data-star><i class="ri-star-line"></i></button></h2>
+            <ul class="bread"><li><a href="gis.html" title="홈"><i class="ri-home-4-line home"></i></a></li><li><a href="sys_user.html">시스템관리</a></li><li><a href="sys_disaster.html">재난코드관리</a></li></ul>
+          </div>
+        </div>
+
+        <!-- ===== 업무영역 (화면별 교체) ===== -->
+<div class="help-box"><i class="ri-information-line"></i><span>대분류·중분류는 공통코드(NDMS 표준)로 <b>사용여부만</b> 변경할 수 있습니다.</span></div>
+<div class="col3" style="grid-template-columns:minmax(0,30fr) minmax(0,34fr) minmax(0,36fr)">
+  <div>
+    <div class="sub-head mt0"><h3>재난코드 대분류</h3><span class="cnt">전체<b id="lclasCnt">0</b>건</span></div>
+    <div class="grid-wrap" style="height:544px">
+      <table class="grid fix-head"><caption class="blind">재난코드 대분류 그룹</caption>
+        <colgroup><col style="width:62px"><col style="width:96px"><col><col style="width:76px"></colgroup>
+        <thead><tr><th>코드</th><th>코드명</th><th>설명</th><th>사용여부</th></tr></thead>
+        <tbody id="lclasTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+  <div>
+    <div class="sub-head mt0"><h3 id="mclasTit">재난코드 중분류</h3><span class="cnt">전체<b id="mclasCnt">0</b>건</span></div>
+    <div class="grid-wrap" style="height:544px">
+      <table class="grid fix-head"><caption class="blind">재난코드 중분류 그룹</caption>
+        <colgroup><col style="width:80px"><col style="width:110px"><col><col style="width:76px"></colgroup>
+        <thead><tr><th>코드</th><th>코드명</th><th>설명</th><th>사용여부</th></tr></thead>
+        <tbody id="mclasTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+  <div>
+    <div class="sub-head mt0"><h3 id="dsstrTit">상세 재난코드</h3><span class="cnt">전체<b id="dsstrCnt">0</b>건</span>
+      <div class="btns"><button type="button" class="btn s btn-crud" id="btnOpenDisasterAdd" onclick="openModal()"><i class="ri-add-line"></i>추가</button></div>
+    </div>
+    <div class="grid-wrap" style="height:544px">
+      <table class="grid fix-head"><caption class="blind">상세 재난코드 목록</caption>
+        <colgroup><col style="width:70px"><col><col style="width:76px"><col style="width:76px"></colgroup>
+        <thead><tr><th class="sort asc">코드</th><th class="sort">코드명</th><th>사용여부</th><th>관리</th></tr></thead>
+        <tbody id="disasterTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+        <!-- ===== 업무영역 끝 ===== -->
+      </main>
+    </div>
+  </div>
+<footer class="ft">
+  <p class="copy">&copy; Ministry of the Interior and Safety. All rights reserved.</p>
+  <span class="desk">SERVICE DESK : 000-0000-0000</span>
+  <a href="privacy.html" class="pp">개인정보처리방침</a>
+  <button type="button" class="btn s btn-line ft-go" onclick="goBoardSystem()">재해문자전광판 시스템 이동<i class="ri-arrow-right-s-line"></i></button>
+</footer>
+
+</div>
+<!-- 모든 프레임 화면 공통 팝업(GNB 내정보 등) -->
+<!-- UI-CO-P01 내정보 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-UI-CO-P01" data-w="540">
+<div class="pop w540" role="dialog" aria-modal="true" aria-labelledby="popTit">
+  <div class="pop-head"><h2 id="popTit">내정보</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
+  <div class="pop-body">
+    <table class="tbl">
+      <caption class="blind">내정보</caption>
+      <colgroup><col style="width:130px"><col></colgroup>
+      <tbody>
+        <tr><th>사용자 ID</th><td>hong.gd</td></tr>
+        <tr><th>사용자명</th><td>홍길동</td></tr>
+        <tr><th>소속기관</th><td>행정안전부</td></tr>
+        <tr><th>부서 / 직급</th><td>재난정보통신과 / 주무관</td></tr>
+        <tr><th>권한</th><td><span class="badge pri">운영자</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pop-foot">
+    <button type="button" class="btn btn-crud" onclick="closePop()">닫기</button>
+  </div>
+</div>
+</template>
+
+<!-- UI-CO-P02 비밀번호 변경 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-UI-CO-P02" data-w="540">
+<div class="pop w540" role="dialog" aria-modal="true" aria-labelledby="popTit">
+  <div class="pop-head"><h2 id="popTit">비밀번호 변경</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
+  <form class="pop-body" id="pwForm" onsubmit="save();return false">
+    <div class="help-box"><i class="ri-shield-keyhole-line"></i><span>비밀번호는 <b>영문·숫자·특수문자를 조합하여 9자 이상</b>으로 설정합니다. 아이디·연속된 문자(3자 이상)·직전 비밀번호는 사용할 수 없으며, 변경 후 다시 로그인해야 합니다.</span></div>
+    <table class="tbl">
+      <caption class="blind">비밀번호 변경</caption>
+      <colgroup><col style="width:150px"><col></colgroup>
+      <tbody>
+        <tr><th><label for="curPassword" class="req">현재 비밀번호</label></th><td><input type="password" class="inp" id="curPassword" name="curPassword" required data-label="현재 비밀번호" autocomplete="current-password"></td></tr>
+        <tr><th><label for="newPassword" class="req">새 비밀번호</label></th><td><input type="password" class="inp" id="newPassword" name="newPassword" required data-label="새 비밀번호" maxlength="20" autocomplete="new-password" oninput="rule()">
+          <ul class="rule" id="ruleList"><li data-r="len">9~20자</li><li data-r="mix">영문·숫자·특수문자 조합</li><li data-r="seq">연속 문자 3자 미만</li><li data-r="id">아이디 미포함</li></ul></td></tr>
+        <tr><th><label for="newPasswordCfm" class="req">새 비밀번호 확인</label></th><td><input type="password" class="inp" id="newPasswordCfm" name="newPasswordCfm" required data-label="새 비밀번호 확인" maxlength="20" autocomplete="new-password" oninput="same()"><span class="f-msg" id="cfmMsg">새 비밀번호를 한 번 더 입력하세요.</span></td></tr>
+      </tbody>
+    </table>
+  </form>
+  <div class="pop-foot">
+    <button type="button" class="btn btn-line" onclick="closePop()">취소</button>
+    <button type="button" class="btn btn-crud" onclick="save()"><i class="ri-save-line"></i>변경</button>
+  </div>
+</div>
+</template>
+
+<!-- UI-CO-P03 메시지창 샘플 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-UI-CO-P03" data-w="540">
+<div class="pop w540" role="dialog" aria-modal="true" aria-labelledby="popTit">
+  <div class="pop-head"><h2 id="popTit">메시지창 샘플</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
+  <div class="pop-body">
+    <div class="help-box"><i class="ri-information-line"></i><span>공통 메시지창(폭 360) 유형입니다. 버튼을 누르면 해당 메시지창이 열립니다. 질의형은 [취소][확인], 데이터 손실이 있는 확인창은 <b>[취소]</b>가 기본 포커스입니다.</span></div>
+    <div class="grid-wrap">
+      <table class="grid">
+        <caption class="blind">메시지창 유형</caption>
+        <colgroup><col style="width:90px"><col><col style="width:110px"></colgroup>
+        <thead><tr><th>구분</th><th>사용 예</th><th>미리보기</th></tr></thead>
+        <tbody>
+          <tr><td><span class="badge in">안내</span></td><td class="t-l">처리 결과·일반 안내</td><td><button type="button" class="btn s btn-line" onclick="alertMsg('조회 조건에 해당하는 데이터가 없습니다.',{ico:'in'})">alert 안내</button></td></tr>
+          <tr><td><span class="badge wn">경고</span></td><td class="t-l">필수값 누락·입력 오류</td><td><button type="button" class="btn s btn-line" onclick="alertMsg('발령일 기간은(는) 필수 입력 항목입니다.',{ico:'wn'})">alert 경고</button></td></tr>
+          <tr><td><span class="badge dg">오류</span></td><td class="t-l">시스템 오류(코드·상세)</td><td><button type="button" class="btn s btn-line" onclick="errSample()">alert 오류</button></td></tr>
+          <tr><td><span class="badge sc">완료</span></td><td class="t-l">저장·발급 완료</td><td><button type="button" class="btn s btn-line" onclick="alertMsg('저장이 완료되었습니다.',{ico:'sc'})">alert 완료</button></td></tr>
+          <tr><td><span class="badge pri">질의</span></td><td class="t-l">저장·등록 확인</td><td><button type="button" class="btn s btn-line" onclick="confirmMsg('입력한 내용을 저장하시겠습니까?',function(){alertMsg('저장이 완료되었습니다.',{ico:'sc'})})">confirm</button></td></tr>
+          <tr><td><span class="badge dg">질의(위험)</span></td><td class="t-l">삭제 등 데이터 손실</td><td><button type="button" class="btn s btn-line" onclick="confirmMsg('선택한 항목을 삭제하시겠습니까?\n삭제된 데이터는 복구할 수 없습니다.',function(){alertMsg('삭제가 완료되었습니다.',{ico:'sc'})},{ico:'wn',danger:true})">confirm 위험</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="pop-foot"><button type="button" class="btn btn-crud" onclick="closePop()">닫기</button></div>
+</div>
+</template>
+
+
+<!-- UI-DA07-004-P01 상세 재난코드 등록 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-UI-DA07-004-P01" data-w="540">
+<form class="pop w540" role="dialog" aria-modal="true" aria-labelledby="popTit" id="dsstrForm" onsubmit="return false">
+  <div class="pop-head"><h2 id="popTit">상세 재난코드 등록</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
+  <div class="pop-body">
+    <table class="tbl">
+      <caption class="blind">상세 재난코드 정보 입력</caption>
+      <colgroup><col style="width:120px"><col></colgroup>
+      <tbody>
+        <tr><th><span class="req">대분류코드</span></th><td class="ro" id="m_dsstr_lclas">T1 (자연재난)</td></tr>
+        <tr><th><span class="req">중분류코드</span></th><td class="ro" id="m_dsstr_mclas">T10102 (호우)</td></tr>
+        <tr><th><label for="m_dsstr_code" class="req">코드</label></th><td><input class="inp" id="m_dsstr_code" name="m_dsstr_code" maxlength="15" placeholder="예: RAA" required data-label="코드" style="text-transform:uppercase"><span class="f-msg" id="cdMsg">영문 대문자·숫자 15자 이내, 중복 불가</span></td></tr>
+        <tr><th><label for="m_dsstr_name" class="req">코드명</label></th><td><input class="inp" id="m_dsstr_name" name="m_dsstr_name" maxlength="100" placeholder="예: 호우주의보" required data-label="코드명"></td></tr>
+        <tr><th><span class="req">사용여부</span></th><td><label class="tgl"><input type="checkbox" id="m_dsstr_use" name="m_dsstr_use" checked onchange="this.nextElementSibling.textContent=this.checked?'사용':'미사용'"><span>사용</span></label></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pop-foot">
+    <button type="button" class="btn btn-line" onclick="closePop()">취소</button>
+    <button type="button" class="btn btn-crud" onclick="save()">저장</button>
+  </div>
+</form>
+</template>
+
+<script src="js/common.js"></script>
+
+<script src="js/pop/UI-CO-P01.js"></script>
+<script src="js/pop/UI-CO-P02.js"></script>
+<script src="js/pop/UI-CO-P03.js"></script>
+
+<script src="js/pop/UI-DA07-004-P01.js"></script>
+<script src="js/pages/sys_disaster.js"></script>
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>작업이력 | 재난 예경보 통합관리시스템</title>
+<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="font/pretendard-gov/pretendardvariable-gov.css">
+<link rel="stylesheet" href="font/remixicon/remixicon.css">
+<link rel="stylesheet" href="css/main.css">
+
+</head>
+
+
+<body>
+<div class="wrap">
+  <!-- GNB -->
+  <!-- GNB: 현재 1Depth .on은 common.js markOn()이 파일명으로 표시 -->
+  <header class="gnb">
+    <h1 class="logo"><a href="index.html" class="flex"><img src="images/gov_logo_w.png" alt="정부 상징" class="gov-logo">재난 예경보 통합관리시스템</a></h1>
+    <ul class="menu">
+      <li><a href="gis.html">GIS상황판</a></li>
+      <li><a href="warn_monitor.html">재난 예경보 현황</a></li>
+      <li><a href="plat_org.html">통합플랫폼관리</a></li>
+      <li><a href="stat_event.html">통계</a></li>
+      <li><a href="guide_intro.html">이용안내</a></li>
+      <li><a href="sys_user.html">시스템관리</a></li>
+      <li><a href="log_sms.html">시스템 이력</a></li>
+    </ul>
+    <div class="util">
+      <div class="sess" title="세션 남은시간"><b>59:10</b><button type="button" data-sess>시간연장</button></div>
+      <a href="#pop-UI-CO-P01" class="user" onclick="openPop('UI-CO-P01',540);return false;">홍길동 님<em>(재난정보통신과)</em><i class="ri-user-3-line"></i></a>
+      <a href="index.html" class="ico" title="전체메뉴" data-layer="all"><i class="ri-menu-line"></i></a>
+      <a href="log_dsblty.html" class="ico" title="알림" data-layer="noti"><i class="ri-notification-3-line"></i><span class="badge"></span></a>
+      <a href="login.html" class="ico" title="로그아웃" data-logout><i class="ri-logout-box-r-line"></i></a>
+      <div class="fsz" title="글자크기"><span>글자크기</span><button type="button" data-fsz="down" title="작게">−</button><span class="fsz-v">100%</span><button type="button" data-fsz="up" title="크게">+</button></div>
+      <a href="cert_request.html" onclick="return !window.open(this.href,'damsCert','width=1280,height=860');" class="btn s btn-pri-o">연계확인서 발급</a>
+    </div>
+  </header>
+
+
+  <div class="body">
+    <!-- LNB -->
+    <!-- LNB 시스템 이력: 현재 메뉴 .on은 common.js markOn()이 표시 -->
+    <nav class="lnb">
+      <div class="lnb-tab"><button type="button" class="on" data-lnb="menu">메뉴</button><button type="button" data-lnb="fav">즐겨찾기</button><button type="button" data-lnb="recent">최근접속</button></div>
+      <div class="lnb-tit">시스템 이력</div>
+      <div class="lnb-menu">
+        <ul class="d2">
+          <li><a href="log_sms.html">문자전송이력</a></li>
+          <li><a href="log_access.html">시스템 사용이력</a></li>
+          <li><a href="log_job.html">작업이력</a></li>
+          <li><a href="log_dsblty.html">장애이력</a></li>
+          <li><a href="log_syslog.html">시스템 로그</a></li>
+          <li><a href="log_data.html">데이터송수신이력</a></li>
+          <li><a href="log_privacy.html">개인정보 접근이력</a></li>
+        </ul>
+      </div>
+      <button type="button" class="lnb-fold" data-fold title="메뉴 접기/펼치기"><i class="ri-arrow-left-s-line"></i></button>
+    </nav>
+
+
+    <!-- MAIN -->
+    <div class="main">
+      
+      <div class="mdi">
+        <ul class="mdi-tabs">
+          <li><a href="gis.html">GIS상황판</a><button type="button" title="닫기" data-mdi="close"><i class="ri-close-line"></i></button></li>
+          <li class="on"><a href="log_job.html">작업이력</a><button type="button" title="닫기" data-mdi="close"><i class="ri-close-line"></i></button></li>
+        </ul>
+        <div class="mdi-ctrl">
+          <button type="button" title="이전" data-mdi="prev"><i class="ri-arrow-left-s-line"></i></button>
+          <button type="button" title="다음" data-mdi="next"><i class="ri-arrow-right-s-line"></i></button>
+          <button type="button" title="전체닫기" data-mdi="all"><i class="ri-close-line"></i></button>
+        </div>
+      </div>
+
+
+      <main class="work" id="content">
+        <div class="page-head">
+          <div>
+            <h2 class="tit">작업이력<button type="button" class="star" title="즐겨찾기" data-star><i class="ri-star-line"></i></button></h2>
+            <ul class="bread"><li><a href="gis.html" title="홈"><i class="ri-home-4-line home"></i></a></li><li><a href="log_sms.html">시스템 이력</a></li><li><a href="log_job.html">작업이력</a></li></ul>
+          </div>
+        </div>
+
+        <!-- ===== 업무영역 (화면별 교체) ===== -->
+<form class="sch-box" id="schForm">
+          <div class="rows">
+            <div class="it c2"><span class="lb req">작업기간</span>
+              <div class="range"><span class="inp-ico inp-date"><input type="date" class="inp" id="dtFr" name="dtFr" value="2026-09-30" title="시작일" required data-label="작업기간 시작일"></span><span>~</span><span class="inp-ico inp-date"><input type="date" class="inp" id="dtTo" name="dtTo" value="2026-10-30" title="종료일" required data-label="작업기간 종료일"></span></div>
+            </div>
+            <div class="it"><label for="jobSe">구분</label><select class="sel" id="jobSe" name="jobSe" data-f="1"><option value="">전체</option><option>정기점검</option><option>긴급점검</option><option>공통코드 변경</option><option>배치작업</option><option>데이터 동기화</option><option>마이그레이션</option><option>기타</option></select></div>
+            <div class="it"><label for="searchKeyword">검색어</label><input class="inp" id="searchKeyword" name="searchKeyword" maxlength="100" placeholder="작업내용, 이슈, 작업자 입력"></div>
+          </div>
+          <div class="ctrl">
+            <button type="reset" class="btn btn-rst"><i class="ri-refresh-line"></i>초기화</button>
+            <button type="submit" class="btn btn-sch"><i class="ri-search-line"></i>검색</button>
+          </div>
+        </form>
+
+        <div class="sub-head">
+          <h3>작업이력 목록</h3><span class="cnt">전체<b id="totCnt">47</b>건</span>
+          <div class="grid-top">
+            <button type="button" class="btn s btn-crud" id="btnJobAdd" onclick="openEdit()"><i class="ri-add-line"></i>등록</button>
+            <select class="sel" id="pageSize" name="pageSize" title="목록노출건수"><option value="15">15개</option><option value="30">30개</option><option value="50">50개</option><option value="100">100개</option></select>
+            <button type="button" class="btn s btn-line" id="btnApply" onclick="applySize()">적용</button>
+          </div>
+        </div>
+        <div class="grid-wrap">
+          <table class="grid" id="histBody">
+            <caption class="blind">작업이력 목록</caption>
+            <colgroup><col style="width:80px"><col style="width:130px"><col><col><col style="width:110px"><col style="width:170px"></colgroup>
+            <thead><tr><th>번호</th><th class="sort">구분</th><th>내용</th><th>이슈</th><th class="sort">작업자</th><th class="sort desc">작업시각</th></tr></thead>
+            <tbody>
+              <tr class="clk" onclick="openEdit(0)"><td>47</td><td><span class="badge pri">공통코드 변경</span></td><td class="t-l">[공통코드] job_se_cd 그룹코드 &#x27;작업이력 구분&#x27; 추가 (상세코드 7건)</td><td class="t-l">없음</td><td>홍*동</td><td>2026-10-30 10:15</td></tr>
+              <tr class="clk" onclick="openEdit(1)"><td>46</td><td><span class="badge in">정기점검</span></td><td class="t-l">정기점검 및 보안패치 적용 (WEB·WAS 서버)</td><td class="t-l">없음</td><td>이*영</td><td>2026-10-29 22:00</td></tr>
+              <tr class="clk" onclick="openEdit(2)"><td>45</td><td><span class="badge pri">공통코드 변경</span></td><td class="t-l">[공통코드] media_se_cd 상세코드 &#x27;VMS&#x27; 추가</td><td class="t-l">없음</td><td>홍*동</td><td>2026-10-29 16:40</td></tr>
+              <tr class="clk" onclick="openEdit(3)"><td>44</td><td><span class="badge dg">긴급점검</span></td><td class="t-l">DB 정기 백업 결과 확인</td><td class="t-l">디스크 여유공간 부족 경고 (잔여 12%)</td><td>이*영</td><td>2026-10-28 09:30</td></tr>
+              <tr class="clk" onclick="openEdit(4)"><td>43</td><td><span class="badge dg">긴급점검</span></td><td class="t-l">충남 아산시 연계서버 응답지연 긴급점검</td><td class="t-l">GW 세션 재기동 후에도 간헐 지연 지속 (기관 회선 점검 요청)</td><td>김*호</td><td>2026-10-27 17:05</td></tr>
+              <tr class="clk" onclick="openEdit(5)"><td>42</td><td><span class="badge pri">공통코드 변경</span></td><td class="t-l">[공통코드] dsblty_se_cd 상세코드 &#x27;단말기통신&#x27; 추가</td><td class="t-l">없음</td><td>박*수</td><td>2026-10-27 14:10</td></tr>
+              <tr class="clk" onclick="openEdit(6)"><td>41</td><td><span class="badge">데이터 동기화</span></td><td class="t-l">재난코드 동기화 배치 수동 실행</td><td class="t-l">신규 재난코드 3건 반영</td><td>박*수</td><td>2026-10-26 10:20</td></tr>
+              <tr class="clk" onclick="openEdit(7)"><td>40</td><td><span class="badge">마이그레이션</span></td><td class="t-l">단말기 제원정보 일괄 마이그레이션 (울산 남구)</td><td class="t-l">좌표 누락 4건 수기 보정</td><td>최*진</td><td>2026-10-24 15:40</td></tr>
+              <tr class="clk" onclick="openEdit(8)"><td>39</td><td><span class="badge">배치작업</span></td><td class="t-l">3분기 재난발령·수신이력 인덱스 재구성</td><td class="t-l">없음 (야간 무중단 처리)</td><td>강*수</td><td>2026-10-22 02:30</td></tr>
+              <tr class="clk" onclick="openEdit(9)"><td>38</td><td><span class="badge in">정기점검</span></td><td class="t-l">세종특별자치시 연계 인터페이스 2차 점검</td><td class="t-l">통신 패킷 암호화 검증 완료</td><td>이*영</td><td>2026-10-21 11:00</td></tr>
+              <tr class="clk" onclick="openEdit(10)"><td>37</td><td><span class="badge">기타</span></td><td class="t-l">WAS서버 1호 힙 메모리 설정 변경 (4GB → 6GB)</td><td class="t-l">재기동 중 3분간 서비스 지연</td><td>김*호</td><td>2026-10-20 13:30</td></tr>
+              <tr class="clk" onclick="openEdit(11)"><td>36</td><td><span class="badge">데이터 동기화</span></td><td class="t-l">연계기관 담당자 정보 일괄 현행화</td><td class="t-l">반송 메일 7건 담당자 재확인 필요</td><td>최*진</td><td>2026-10-17 09:00</td></tr>
+              <tr class="clk" onclick="openEdit(12)"><td>35</td><td><span class="badge pri">공통코드 변경</span></td><td class="t-l">[공통코드] user_authrt_cd 코드명 변경 (&#x27;운영자(과)&#x27; → &#x27;운영자&#x27;)</td><td class="t-l">없음</td><td>홍*동</td><td>2026-10-16 11:20</td></tr>
+              <tr class="clk" onclick="openEdit(13)"><td>34</td><td><span class="badge in">정기점검</span></td><td class="t-l">정기점검 및 OS 보안패치 적용 (DB 서버)</td><td class="t-l">없음</td><td>이*영</td><td>2026-10-15 22:00</td></tr>
+              <tr class="clk" onclick="openEdit(14)"><td>33</td><td><span class="badge">배치작업</span></td><td class="t-l">통계 집계 배치 재처리 (10/13분)</td><td class="t-l">배치 지연으로 누락된 312건 재집계</td><td>박*수</td><td>2026-10-14 16:20</td></tr>
+              <tr class="nodata" hidden><td colspan="6">검색된 결과가 없습니다.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="paging" id="pgBtns" data-total="4" data-page="1"></div>
+        <!-- ===== 업무영역 끝 ===== -->
+      </main>
+    </div>
+  </div>
+<footer class="ft">
+  <p class="copy">&copy; Ministry of the Interior and Safety. All rights reserved.</p>
+  <span class="desk">SERVICE DESK : 000-0000-0000</span>
+  <a href="privacy.html" class="pp">개인정보처리방침</a>
+  <button type="button" class="btn s btn-line ft-go" onclick="goBoardSystem()">재해문자전광판 시스템 이동<i class="ri-arrow-right-s-line"></i></button>
+</footer>
+
+</div>
+<!-- 모든 프레임 화면 공통 팝업(GNB 내정보 등) -->
+<!-- UI-CO-P01 내정보 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-UI-CO-P01" data-w="540">
+<div class="pop w540" role="dialog" aria-modal="true" aria-labelledby="popTit">
+  <div class="pop-head"><h2 id="popTit">내정보</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
+  <div class="pop-body">
+    <table class="tbl">
+      <caption class="blind">내정보</caption>
+      <colgroup><col style="width:130px"><col></colgroup>
+      <tbody>
+        <tr><th>사용자 ID</th><td>hong.gd</td></tr>
+        <tr><th>사용자명</th><td>홍길동</td></tr>
+        <tr><th>소속기관</th><td>행정안전부</td></tr>
+        <tr><th>부서 / 직급</th><td>재난정보통신과 / 주무관</td></tr>
+        <tr><th>권한</th><td><span class="badge pri">운영자</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pop-foot">
+    <button type="button" class="btn btn-crud" onclick="closePop()">닫기</button>
+  </div>
+</div>
+</template>
+
+<!-- UI-CO-P02 비밀번호 변경 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-UI-CO-P02" data-w="540">
+<div class="pop w540" role="dialog" aria-modal="true" aria-labelledby="popTit">
+  <div class="pop-head"><h2 id="popTit">비밀번호 변경</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
+  <form class="pop-body" id="pwForm" onsubmit="save();return false">
+    <div class="help-box"><i class="ri-shield-keyhole-line"></i><span>비밀번호는 <b>영문·숫자·특수문자를 조합하여 9자 이상</b>으로 설정합니다. 아이디·연속된 문자(3자 이상)·직전 비밀번호는 사용할 수 없으며, 변경 후 다시 로그인해야 합니다.</span></div>
+    <table class="tbl">
+      <caption class="blind">비밀번호 변경</caption>
+      <colgroup><col style="width:150px"><col></colgroup>
+      <tbody>
+        <tr><th><label for="curPassword" class="req">현재 비밀번호</label></th><td><input type="password" class="inp" id="curPassword" name="curPassword" required data-label="현재 비밀번호" autocomplete="current-password"></td></tr>
+        <tr><th><label for="newPassword" class="req">새 비밀번호</label></th><td><input type="password" class="inp" id="newPassword" name="newPassword" required data-label="새 비밀번호" maxlength="20" autocomplete="new-password" oninput="rule()">
+          <ul class="rule" id="ruleList"><li data-r="len">9~20자</li><li data-r="mix">영문·숫자·특수문자 조합</li><li data-r="seq">연속 문자 3자 미만</li><li data-r="id">아이디 미포함</li></ul></td></tr>
+        <tr><th><label for="newPasswordCfm" class="req">새 비밀번호 확인</label></th><td><input type="password" class="inp" id="newPasswordCfm" name="newPasswordCfm" required data-label="새 비밀번호 확인" maxlength="20" autocomplete="new-password" oninput="same()"><span class="f-msg" id="cfmMsg">새 비밀번호를 한 번 더 입력하세요.</span></td></tr>
+      </tbody>
+    </table>
+  </form>
+  <div class="pop-foot">
+    <button type="button" class="btn btn-line" onclick="closePop()">취소</button>
+    <button type="button" class="btn btn-crud" onclick="save()"><i class="ri-save-line"></i>변경</button>
+  </div>
+</div>
+</template>
+
+<!-- UI-CO-P03 메시지창 샘플 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-UI-CO-P03" data-w="540">
+<div class="pop w540" role="dialog" aria-modal="true" aria-labelledby="popTit">
+  <div class="pop-head"><h2 id="popTit">메시지창 샘플</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
+  <div class="pop-body">
+    <div class="help-box"><i class="ri-information-line"></i><span>공통 메시지창(폭 360) 유형입니다. 버튼을 누르면 해당 메시지창이 열립니다. 질의형은 [취소][확인], 데이터 손실이 있는 확인창은 <b>[취소]</b>가 기본 포커스입니다.</span></div>
+    <div class="grid-wrap">
+      <table class="grid">
+        <caption class="blind">메시지창 유형</caption>
+        <colgroup><col style="width:90px"><col><col style="width:110px"></colgroup>
+        <thead><tr><th>구분</th><th>사용 예</th><th>미리보기</th></tr></thead>
+        <tbody>
+          <tr><td><span class="badge in">안내</span></td><td class="t-l">처리 결과·일반 안내</td><td><button type="button" class="btn s btn-line" onclick="alertMsg('조회 조건에 해당하는 데이터가 없습니다.',{ico:'in'})">alert 안내</button></td></tr>
+          <tr><td><span class="badge wn">경고</span></td><td class="t-l">필수값 누락·입력 오류</td><td><button type="button" class="btn s btn-line" onclick="alertMsg('발령일 기간은(는) 필수 입력 항목입니다.',{ico:'wn'})">alert 경고</button></td></tr>
+          <tr><td><span class="badge dg">오류</span></td><td class="t-l">시스템 오류(코드·상세)</td><td><button type="button" class="btn s btn-line" onclick="errSample()">alert 오류</button></td></tr>
+          <tr><td><span class="badge sc">완료</span></td><td class="t-l">저장·발급 완료</td><td><button type="button" class="btn s btn-line" onclick="alertMsg('저장이 완료되었습니다.',{ico:'sc'})">alert 완료</button></td></tr>
+          <tr><td><span class="badge pri">질의</span></td><td class="t-l">저장·등록 확인</td><td><button type="button" class="btn s btn-line" onclick="confirmMsg('입력한 내용을 저장하시겠습니까?',function(){alertMsg('저장이 완료되었습니다.',{ico:'sc'})})">confirm</button></td></tr>
+          <tr><td><span class="badge dg">질의(위험)</span></td><td class="t-l">삭제 등 데이터 손실</td><td><button type="button" class="btn s btn-line" onclick="confirmMsg('선택한 항목을 삭제하시겠습니까?\n삭제된 데이터는 복구할 수 없습니다.',function(){alertMsg('삭제가 완료되었습니다.',{ico:'sc'})},{ico:'wn',danger:true})">confirm 위험</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="pop-foot"><button type="button" class="btn btn-crud" onclick="closePop()">닫기</button></div>
+</div>
+</template>
+
+
+<!-- UI-DA08-003-P01 작업이력 등록 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-UI-DA08-003-P01" data-w="540">
+<div class="pop w540" role="dialog" aria-modal="true" aria-labelledby="popTit">
+  <div class="pop-head"><h2 id="popTit">작업이력 등록</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
+  <div class="pop-body">
+    <table class="tbl" id="frm">
+      <caption class="blind">작업이력 입력</caption>
+      <colgroup><col style="width:110px"><col></colgroup>
+      <tbody>
+        <tr><th><span class="req">구분</span></th><td><select class="sel" id="m_job_se_cd" name="m_job_se_cd" required data-label="구분"><option value="">선택</option><option>정기점검</option><option>긴급점검</option><option>공통코드 변경</option><option>배치작업</option><option>데이터 동기화</option><option>마이그레이션</option><option>기타</option></select></td></tr>
+        <tr><th><span class="req">작업시각</span></th><td><div class="range"><span class="inp-ico inp-date"><input type="date" class="inp" id="m_prcs_dt" name="m_prcs_dt" value="2026-10-30" title="작업시각 일자" required data-label="작업시각"></span><input type="time" class="inp inp-time" id="m_prcs_dt_tm" name="m_prcs_dt_tm" value="14:30" title="작업시각 시각"></div></td></tr>
+        <tr><th><span class="req">작업내용</span></th><td><textarea class="txa" id="m_job_cn" name="m_job_cn" maxlength="4000" rows="4" required data-label="작업내용" placeholder="작업내용을 입력하세요."></textarea></td></tr>
+        <tr><th>이슈</th><td><textarea class="txa" id="m_issue_cn" name="m_issue_cn" maxlength="4000" rows="3" placeholder="작업 중 발생한 이슈·특이사항을 입력하세요."></textarea></td></tr>
+        <tr><th><span class="req">작업자</span></th><td><input class="inp" id="m_prcr_nm" name="m_prcr_nm" maxlength="100" value="홍길동" required data-label="작업자"></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pop-foot">
+    <button type="button" class="btn btn-crud" id="btnDel" onclick="remove()" hidden><i class="ri-delete-bin-line"></i>삭제</button>
+    <button type="button" class="btn btn-line" onclick="closePop()">취소</button>
+    <button type="button" class="btn btn-crud" id="btnSave" onclick="save()"><i class="ri-save-line"></i>저장</button>
+  </div>
+</div>
+</template>
+
+<script src="js/common.js"></script>
+
+<script src="js/pop/UI-CO-P01.js"></script>
+<script src="js/pop/UI-CO-P02.js"></script>
+<script src="js/pop/UI-CO-P03.js"></script>
+
+<script src="js/pop/UI-DA08-003-P01.js"></script>
+<script src="js/pages/log_job.js"></script>
+</body>
+</html>

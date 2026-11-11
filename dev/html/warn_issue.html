@@ -1,398 +1,141 @@
-@@include('../inc/top.html')
-<div id="wrap" class="wrap">
+@@include('../inc/top.html',{"title": "재난발령현황 | 재난 예경보 통합관리시스템", "css": "warn_issue"})
+
+<body>
+<div class="wrap">
+  <!-- GNB -->
   @@include('../inc/header.html')
-  <main id="content" class="main-container">
+
+  <div class="body">
+    <!-- LNB -->
     @@include('../inc/lnb-warn.html')
-    <section class="sub__container history">
-      <header class="sub__heading">
-        <h2 class="sub__title">재난발령현황</h2>
-        @@include('../inc/breadcrumb.html')
-      </header>
-      <div class="sub__cont">
-        <div class="toolbar-card">           
-          <div class="input-group">
-            <label for="" class="sr-only">기간설정</label>
-            <input type="date" id="date_timepicker_start" class="input" placeholder="시작일"
-              title="기간 시작일 선택">
-            <span>~</span>
-            <input type="date" id="date_timepicker_end" class="input" placeholder="종료일"
-              title="기간 종료일 선택">
-          </div>
 
-          <div class="input-group">
-            <label for="" class="sr-only">재난유형</label>
-            <select title="대분류" id="code1" onchange="setCode2()" class="select">
-              <option value="">전체</option>
-              <option value="T1">자연재난</option>
-              <option value="T2">사회재난</option>
-              <option value="T3">기타재난</option>
-            </select>
-            <i data-lucide="chevron-right"></i>
-            <select title="중분류" id="code2" class="select">
-              <option value="">전체</option>
-              <option value="T10101">강풍</option>
-              <option value="T10102">낙뢰</option>
-            </select>
-          </div>
+    <!-- MAIN -->
+    <div class="main">
+      @@include('../inc/mdi.html',{"file": "warn_issue.html", "name": "재난발령현황"})
 
-          <div class="input-group">
-            <label for="" class="sr-only">통합플랫폼</label>
-            <select title="" id="" class="select">
-              <option value="">전체</option>
-            </select>
-          </div>
-
-          <div class="input-group">
-            <label for="" class="sr-only">발령매체</label>
-            <select title="" id="" class="select">
-              <option value="">전체</option>
-            </select>
-          </div>
-
-          <div class="input-group">
-            <label class="input-search input">
-              <i data-lucide="search"></i>
-              <input type="search" placeholder="발령지역, 통합플랫폼" title="검색어">
-            </label>
-          </div>
-
-          <div class="tool">            
-            <button type="button" class="btn primary" onclick="search();">
-            <i data-lucide="search"></i>검색</button>
+      <main class="work" id="content">
+        <div class="page-head">
+          <div>
+            <h2 class="tit">재난발령현황<button type="button" class="star" title="즐겨찾기" data-star><i class="ri-star-line"></i></button></h2>
+            @@include('../inc/breadcrumb.html',{"d1": "재난 예경보 현황", "d1h": "warn_monitor.html", "d2": "재난발령현황", "d2h": "warn_issue.html"})
           </div>
         </div>
-        <div class="tbl-area">
-          <div class="tbl-top">
-            <div class="tbl-top__count">                
-              <span class="stat-text stat-text--lg stat-text--all">전체 <em id="count_all">133</em></span>
-              <span class="stat-text stat-text--lg stat-text--ok">성공 <em id="count_0">120</em></span>
-              <span class="stat-text stat-text--lg stat-text--ng">실패 <em id="count_9">13</em></span>
+
+        <!-- ===== 업무영역 (화면별 교체) ===== -->
+        <form class="sch-box">
+          <div class="rows" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto">
+            <div class="it"><span class="lb">연계기관</span>
+              <div class="flex w100"><select class="sel" style="flex:1" id="sido_select" name="sido_select" title="시도"><option value="">시도 전체</option><option value="31" selected>울산광역시</option><option value="41">경기도</option><option value="44">충청남도</option></select><select class="sel" style="flex:1" id="sgg_select" name="sgg_select" title="시군구"><option value="">시군구 전체</option><option>중구</option><option>동구</option><option>울주군</option></select></div>
             </div>
-            <div class="tool">
-              <button type="button" class="btn neutral" onclick="excelDown(1)">엑셀다운로드</button>
+            <div class="it"><span class="lb">재난분류</span>
+              <div class="flex w100"><select class="sel" style="flex:1" id="code1" name="code1" title="대분류"><option value="">대분류 전체</option><option>자연재난</option><option>사회재난</option><option>기타</option></select><select class="sel" style="flex:1" id="code2" name="code2" title="중분류"><option value="">중분류 전체</option><option>호우</option><option>강풍</option><option>지진</option></select></div>
+            </div>
+            <div class="it"><span class="lb req">발생기간</span>
+              <div class="range"><span class="inp-ico inp-date"><input type="date" class="inp" id="date_timepicker_start" name="date_timepicker_start" value="2026-09-30" title="시작일" required data-label="발생기간 시작일"></span><span>~</span><span class="inp-ico inp-date"><input type="date" class="inp" id="date_timepicker_end" name="date_timepicker_end" value="2026-10-30" title="종료일" required data-label="발생기간 종료일"></span></div>
             </div>
           </div>
-          <div class="tbl-wrap tbl-history">
-            <table>
-              <caption>발령이력</caption>
-              <thead>
-                <tr>
-                  <th scope="col">통합플랫폼</th>
-                  <th scope="col">재난정보</th>
-                  <th scope="col">발령지역</th>
-                  <th scope="col">수신시각</th>
-                  <th scope="col">전송상태</th>
-                  <th scope="col">발령매체</th>
-                  <th scope="col">다운로드</th>
-                </tr>
-              </thead>
-              <tbody id="history_table">
-                <tr class="row-empty" hidden>
-                  <td colspan="7">데이터 없음</td>
-                </tr>
-                <tr onclick="selectRow(this, 'KR.ULSAN_T10101-2026000077_HWA_1')">                   
-                  <td>울산 예경보 통합플랫폼</td>
-                  <td>강풍주의보</td>
-                  <td>
-                    <div class="chip-list chip-list--area">
-                      <span>울산 남구</span><span>울산 중구</span>
-                      <button type="button" class="chip-list--more" popovertarget="--more1" style="anchor-name:--more1">+2</button>
-                      <div id="--more1" class="chip-list-popover" popover style="position-anchor:--more1">
-                        <span>울산 동구</span>
-                        <span>울산 북구</span>
-                        <span>울산 울주군</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>2026-06-15 19:03:33</td>
-                  <td><span class="stat-text stat-text--lg stat-text--ok">성공</span></td>
-                  <td>
-                    <div class="chip-list chip-list--device">
-                      <span>재해문자전광판(행안부)</span><span>재난방송(TV)</span>
-                      <button type="button" class="chip-list--more" popovertarget="--more2" style="anchor-name:--more2">+2</button>
-                      <div id="--more2" class="chip-list-popover" popover style="position-anchor:--more2">
-                        <span>마을방송</span><span>문자방송(SMS)</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <button type="button" class="btn link sm" onclick="capDownload('KR.ULSAN_T10101-2026000077_HWA_1')"><i data-lucide="circle-arrow-down"></i> CAP 파일</button>
-                    <button type="button" class="btn link sm" onclick="capDownload('KR.ULSAN_T10101-2026000077_HWA_1')"><i data-lucide="circle-arrow-down"></i>발령보고서</button>
-                  </td>
-                </tr>                  
-              </tbody>
-            </table>
+          <div class="ctrl">
+            <button type="reset" class="btn btn-rst"><i class="ri-refresh-line"></i>초기화</button>
+            <button type="submit" class="btn btn-sch"><i class="ri-search-line"></i>검색</button>
+          </div>
+        </form>
+
+        <div class="sub-head">
+          <h3>재난발령 목록</h3><span class="cnt">전체<b>133</b>건</span>
+          <div class="grid-top">
+            <select class="sel" title="목록노출건수"><option value="5" selected>5개</option><option value="15">15개</option><option value="30">30개</option><option value="50">50개</option><option value="100">100개</option></select>
           </div>
         </div>
+        <div class="grid-wrap">
+          <table class="grid" id="history_table">
+            <caption class="blind">재난발령 목록</caption>
+            <colgroup><col style="width:56px"><col style="width:170px"><col style="width:210px"><col><col style="width:160px"><col style="width:170px"><col style="width:110px"></colgroup>
+            <thead><tr><th>No</th><th class="sort">연계기관</th><th class="sort">재난분류명</th><th>제목</th><th class="sort desc">발령시각</th><th>발령지역</th><th>다운로드</th></tr></thead>
+            <tbody>
+              <tr class="clk on" onclick="selectRow(this,0)"><td>133</td><td class="t-l">울산광역시</td><td class="t-l">자연재난 &gt; 강풍 &gt; 강풍주의보</td><td class="t-l">강풍주의보 발표에 따른 시설물 안전 유의</td><td>2026-10-30 15:00:30</td><td class="t-l">울산 동구</td><td><button type="button" class="btn s btn-line" onclick="event.stopPropagation();doDown('CAP파일')"><i class="ri-download-2-line"></i>CAP파일</button></td></tr>
+              <tr class="clk" onclick="selectRow(this,1)"><td>132</td><td class="t-l">울산광역시</td><td class="t-l">자연재난 &gt; 호우 &gt; 호우경보</td><td class="t-l">태화강 수위 상승 하천변 출입 통제 안내</td><td>2026-10-29 21:12:05</td><td class="t-l">울산 중구</td><td><button type="button" class="btn s btn-line" onclick="event.stopPropagation();doDown('CAP파일')"><i class="ri-download-2-line"></i>CAP파일</button></td></tr>
+              <tr class="clk" onclick="selectRow(this,2)"><td>131</td><td class="t-l">충청남도 천안시</td><td class="t-l">자연재난 &gt; 호우 &gt; 호우경보</td><td class="t-l">원성천 하천범람 대피 긴급방송</td><td>2026-10-27 16:42:10</td><td class="t-l">충남 천안시 동남구</td><td><button type="button" class="btn s btn-line" onclick="event.stopPropagation();doDown('CAP파일')"><i class="ri-download-2-line"></i>CAP파일</button></td></tr>
+              <tr class="clk" onclick="selectRow(this,3)"><td>130</td><td class="t-l">충청남도 아산시</td><td class="t-l">자연재난 &gt; 호우 &gt; 호우주의보</td><td class="t-l">온천천 범람위험 도로통제 안내</td><td>2026-10-27 15:10:44</td><td class="t-l">충남 아산시</td><td><button type="button" class="btn s btn-line" onclick="event.stopPropagation();doDown('CAP파일')"><i class="ri-download-2-line"></i>CAP파일</button></td></tr>
+              <tr class="clk" onclick="selectRow(this,4)"><td>129</td><td class="t-l">대전광역시 유성구</td><td class="t-l">자연재난 &gt; 지진 &gt; 지진속보</td><td class="t-l">하반기 지진대피 민관합동 훈련방송</td><td>2026-10-24 14:00:00</td><td class="t-l">대전 유성구</td><td><button type="button" class="btn s btn-line" onclick="event.stopPropagation();doDown('CAP파일')"><i class="ri-download-2-line"></i>CAP파일</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="paging" data-total="27" data-page="1"></div>
 
-        <div class="link-indicator">
-          <i data-lucide="chevron-down" aria-hidden="true"></i>
-          <span class="sr-only">선택한 발령이력의 전송결과</span>
+        <!-- 하단 상세 (목록 행 클릭) -->
+        <ul class="tab" id="tab-issue" style="margin-top:8px">
+          <li class="on"><button type="button" data-tab="pnlIssue">발령내용</button></li>
+          <li><button type="button" data-tab="pnlDevice" id="tab-device">단말기 발령이력</button></li>
+          <li class="tab-info"><span class="c-dis">재난발령 상세</span><b id="dtlTitle">강풍주의보 발표에 따른 시설물 안전 유의</b><button type="button" class="btn s btn-dark" id="btnReport" onclick="openReport()"><i class="ri-file-text-line"></i>발령보고서</button></li>
+        </ul>
+
+        <!-- [탭1] 발령내용 -->
+        <div id="pnlIssue">
+        <table class="tbl" id="issue-summary">
+          <caption class="blind">발령정보 상세</caption>
+          <colgroup><col style="width:100px"><col style="width:22%"><col style="width:100px"><col style="width:24%"><col style="width:100px"><col></colgroup>
+          <tbody>
+            <tr><th>연계시스템</th><td data-k="sys"></td><th>재난분류</th><td data-k="cat">자연재난 &gt; 강풍 &gt; 강풍주의보</td><th>발령매체</th><td data-k="med"></td></tr>
+            <tr><th>발령시각</th><td data-k="tm">2026-10-30 15:00:30</td><th>종료시각</th><td data-k="end"></td><th>발령지역</th><td data-k="rgn">울산 동구</td></tr>
+          </tbody>
+        </table>
+        <div class="col3 mt16" id="issue-message">
+          <div class="card"><div class="card-h"><i class="ri-tv-2-line"></i>재해문자전광판</div><div class="card-b pre" id="msgBoard"></div></div>
+          <div class="card"><div class="card-h" title="마을방송 / 자동음성 통보 / 자동 우량경보"><i class="ri-volume-up-line"></i>마을방송·자동음성·우량경보<button type="button" class="btn s btn-line ico ml-auto" id="btnVoice" title="음성파일 재생" onclick="playVoiceFile()"><i class="ri-play-line"></i></button></div><div class="card-b pre" id="msgVoice"></div></div>
+          <div class="card"><div class="card-h"><i class="ri-message-2-line"></i>문자방송</div><div class="card-b pre" id="msgSms"></div></div>
+        </div>
         </div>
 
-        <div class="tab__wrap tab__card result-tab">
-          <div class="tab__btn btn-group">
-            <button class="btn on" data-tab="tab-issue">발령내용</button>
-            <button class="btn" data-tab="tab-device">단말기 발령이력</button>
-          </div>
-
-          <section id="tab-issue" class="tab__cont tab-issue">
-            <div class="flex-wrap">
-              <section class="section issue-summary">                
-                <strong class="issue-summary__title">강풍주의보</strong>
-                <dl class="grid-list">
-                  <dt>통합플랫폼</dt><dd>울산 예경보 통합플랫폼</dd>
-                  <dt>발생시각</dt><dd>2025-11-05 15:00:30</dd>
-                  <dt>종료시각</dt><dd>2025-11-05 15:00:30</dd>
-                  <dt>수신시각</dt><dd>2025-11-05 15:00:30</dd>
-                  <dt>발령지역</dt>
-                  <dd>
-                    <div class="chip-list chip-list--area">
-                      <span>울산 남구</span><span>울산 중구</span>
-                      <button type="button" class="chip-list--more" popovertarget="--more3" style="anchor-name:--more3">+2</button>
-                      <div id="--more3" class="chip-list-popover" popover style="position-anchor:--more3">
-                        <span>울산 동구</span>
-                        <span>울산 북구</span>
-                        <span>울산 울주군</span>
-                      </div>
-                    </div>
-                  </dd>
-                  <dt>발령매체</dt>
-                  <dd>
-                    <div class="chip-list chip-list--device">
-                      <span>재해문자전광판(행안부)</span><span>재난방송(TV)</span><span>마을방송</span><span>문자방송(SMS)</span></div>
-                  </dd>
-                </dl>
-              </section>
-              <section class="section issue-message">
-                <div class="issue-message__tool">
-                  <label for="lang" class="lang-select">
-                    <i data-lucide="globe" class="icon--sm"></i>
-                    <span class="sr-only">언어 선택</span>
-                    <select id="lang" title="언어">
-                      <option value="kr">한국어</option>
-                      <option value="en">English</option>
-                    </select>
-                  </label>
-                </div>
-                <dl class="msg-list">
-                  <dt>
-                    <label for="text_40_kr">재해문자전광판</label>
-                    <div class="tool">
-                      <span class="size"><span id="nowByte40_kr">0</span> / 40 bytes</span>
-                    </div>
-                  </dt>
-                  <dd>
-                    <textarea id="text_40_kr" onkeyup="fn_checkByte(this, 80, 'nowByte80_kr')" maxlength="80" rows="1" class="textarea"></textarea>                   
-                  </dd>
-                  <dt>
-                    <label for="text_80_kr">재해문자전광판</label>
-                    <div class="tool">
-                      <span class="size"><span id="nowByte80_kr">0</span> / 80 bytes</span>
-                    </div>
-                  </dt>
-                  <dd>
-                    <textarea id="text_80_kr" onkeyup="fn_checkByte(this, 80, 'nowByte80_kr')" maxlength="80" rows="1" class="textarea"></textarea>                   
-                  </dd>
-                  <dt>
-                    <label for="text_180_kr">버스정보시스템/포털</label>
-                    <div class="tool">
-                      <span class="size"><span id="nowByte180_kr">0</span> / 180 bytes</span>
-                    </div>
-                  </dt>
-                  <dd><textarea id="text_180_kr" onkeyup="fn_checkByte(this, 180, 'nowByte180_kr')" rows="2" class="textarea"></textarea></dd>
-                  <dt>
-                    <label for="text_voice_kr">마을방송/자동음성통보/자동우량경보</label>
-                    <div class="tool">
-                      <button type="button" class="btn outline sm ">
-                        <i data-lucide="audio-lines"></i>음성파일
-                      </button>
-                      <span class="size"><span id="nowByte40_kr">0</span> / 40 bytes</span>
-                    </div>
-                  </dt>
-                  <dd>
-                    <textarea id="text_voice_kr" rows="2" class="textarea"></textarea>
-                  </dd>
-                  <dt>
-                    <label for="">문자방송</label>
-                    <div class="tool">
-                      <span class="size"><span id="nowByte315_kr">0</span> / 315 bytes</span>
-                    </div>
-                  </dt>
-                  <dd>
-                    <textarea id="" rows="2" class="textarea"></textarea>
-                  </dd>            
-                </dl>
-              </section>
-            </div>              
-          </section>
-
-          <section id="tab-device" class="tab__cont tab-device">
-            <div class="flex-wrap">
-              <section class="section">
-                <div class="toolbar-card">           
-                  <div class="input-group">
-                    <label for="" class="sr-only">매체유형</label>
-                    <select title="" id="" class="select">
-                      <option value="">전체</option>
-                    </select>
-                  </div>
-
-                  <div class="input-group">
-                    <label for="" class="sr-only">예경보시스템</label>
-                    <select title="" id="" class="select">
-                      <option value="">전체</option>
-                    </select>
-                  </div>
-
-                  <div class="input-group">
-                    <label for="" class="sr-only">설치주소</label>
-                    <select title="시도" id="code1" onchange="setCode2()" class="select">
-                      <option value="">전체</option>
-                    </select>
-                    <i data-lucide="chevron-right"></i>
-                    <select title="시군구" id="code2" class="select">
-                      <option value="">전체</option>
-                    </select>
-                  </div>
-                  <div class="input-group">
-                    <label class="input-search input">
-                      <i data-lucide="search"></i>
-                      <input type="search" placeholder="장비명, 단말기명" title="검색어">
-                    </label>
-                  </div>
-                  <div class="tool">
-                    <button type="button" class="btn primary" onclick="search();">
-                    <i data-lucide="search"></i>검색</button>            
-                  </div>
-                </div>              
-                <div class="tbl-area">
-                  <div class="tbl-top">
-                    <div class="tbl-top__count">                
-                      <span class="stat-text stat-text--lg stat-text--all">전체 <em id="count_all">133</em></span>
-                      <span class="stat-text stat-text--lg stat-text--ok">성공 <em id="count_0">120</em></span>
-                      <span class="stat-text stat-text--lg stat-text--ng">실패 <em id="count_9">13</em></span>
-                      <span class="stat-text stat-text--lg stat-text--off">정지 <em id="count_9">13</em></span>
-                    </div>
-                    <div class="tool">
-                      <button button type="button" class="btn neutral" onclick="excelDown(1)">엑셀다운로드</button>
-                    </div>
-                  </div>
-                  <div class="tbl-wrap tbl-device">
-                    <table class="tbl--fixed">
-                      <caption>단말기별 전송결과</caption>
-                      <thead>
-                        <tr>
-                          <th scope="col">매체유형</th>
-                          <th scope="col">예경보시스템</th>
-                          <th scope="col">단말기 고유번호</th>
-                          <th scope="col">단말기명</th>
-                          <th scope="col">설치주소</th>
-                          <th scope="col">발송시각</th>
-                          <th scope="col">결과</th>
-                          <th scope="col">메모</th>
-                        </tr>
-                      </thead>
-                      <tbody id="table_list">
-                        <tr class="row-empty">
-                          <td colspan="8">데이터없음</td>
-                        </tr>
-                        <tr>
-                          <td class="td-mono">재해문자전광판(행안부)</td>
-                          <td>울산 자동음성통보시스템</td>
-                          <td>울산-V199</td>
-                          <td>나사등대</td>
-                          <td>울산광역시 울주군</td>
-                          <td>2026-04-21 12:34:56</td>
-                          <td><span class="stat-text stat-text--lg stat-text--ok">성공</span></td>
-                          <td>-</td>
-                        </tr>
-                        <tr>
-                          <td class="td-mono">재해문자전광판(행안부)</td>
-                          <td>울산 자동음성통보시스템</td>
-                          <td>울산-V199</td>
-                          <td>나사등대</td>
-                          <td>울산광역시 울주군</td>
-                          <td>2026-04-21 12:34:56</td>
-                          <td><span class="stat-text stat-text--lg stat-text--ng">실패</span></td>
-                          <td>-</td>
-                        </tr>
-                        <tr>
-                          <td class="td-mono">재해문자전광판(행안부)</td>
-                          <td>울산 자동음성통보시스템</td>
-                          <td>울산-V199</td>
-                          <td>나사등대</td>
-                          <td>울산광역시 울주군</td>
-                          <td>2026-04-21 12:34:56</td>
-                          <td><span class="stat-text stat-text--lg stat-text--off">정지</span></td>
-                          <td>-</td>
-                        </tr>
-                        <tr>
-                          <td class="td-mono">재해문자전광판(행안부)</td>
-                          <td>울산 자동음성통보시스템</td>
-                          <td>울산-V199</td>
-                          <td>나사등대</td>
-                          <td>울산광역시 울주군</td>
-                          <td>2026-04-21 12:34:56</td>
-                          <td><span class="stat-text stat-text--lg stat-text--off">정지</span></td>
-                          <td>-</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </section>
-              <section class="map-wrap">
-                <div class="map__canvas">
-                  <!-- 도넛 클러스터 (--ok/--ng 는 성공/실패 비율, 나머지는 회색) -->
-                  <!-- aria-expanded="false" 일 때 툴팁 없어짐 -->
-                  <div class="map-cluster" style="left:320px;top:275px;">
-                    <button type="button" class="map-cluster__btn map-donut" style="--ok:12%;--ng:30%" aria-expanded="true" aria-label="단말기 118개" aria-controls="d_cluster_1">
-                      <b class="map-donut__cnt">118</b>
-                    </button>
-                    <div class="cluster-tooltip cluster-tooltip--device" id="d_cluster_1">
-                      <span class="stat-text stat-text--all">전체 133</span>
-                      <span class="stat-text stat-text--ok">성공 131</span>
-                      <span class="stat-text stat-text--ng">실패 2</span>
-                      <span class="stat-text stat-text--off">정지 2</span>
-                    </div>
-                  </div>
-                  <div class="map-cluster" style="left:230px;top:170px;">
-                    <button type="button" class="map-cluster__btn map-donut map-donut--sm" style="--ok:100%;--ng:0%" aria-expanded="false" aria-label="단말기 12개" aria-controls="d_cluster_2">
-                      <b class="map-donut__cnt">12</b>
-                    </button>
-                    <div class="cluster-tooltip cluster-tooltip--device" id="d_cluster_2">
-                      <span class="stat-text stat-text--all">전체 133</span>
-                      <span class="stat-text stat-text--ok">성공 131</span>
-                      <span class="stat-text stat-text--ng">실패 2</span>
-                      <span class="stat-text stat-text--off">정지 2</span>
-                    </div>
-                  </div>
-
-                  <div class="symbol  symbol--device" style="--left:100px;--top:30px">
-                    <button type="button" class="LDB selected">00지구 00회관(단말기명)_성공</button>
-                  </div>
-                  <div class="symbol  symbol--device" style="--left:300px;--top:50px">
-                    <button type="button" class="TDB">00지구 00회관(단말기명)_성공</button>
-                  </div>
-                  <div class="symbol  symbol--device" style="--left:400px;--top:100px">
-                    <button type="button" class="PDB">00지구 00회관(단말기명)_성공</button>
-                  </div>
-                  <div class="symbol  symbol--device" style="--left:350px;--top:150px">
-                    <button type="button" class="ADD">00지구 00회관(단말기명)_성공</button>
-                  </div>
-
-                </div>
-              </section>
+        <!-- [탭2] 단말기 발령이력 -->
+        <div id="pnlDevice" hidden>
+        <div class="col-lr" style="grid-template-columns:minmax(0,6fr) minmax(0,4fr)">
+          <div>
+            <form class="sch-box dev-sch">
+              <div class="rows">
+                <div class="it"><label for="device_media_type">매체구분</label><select class="sel" id="device_media_type" name="device_media_type"><option value="">전체</option><option>자동음성통보</option><option>재해문자전광판</option><option>마을방송</option></select></div>
+                <div class="it"><label for="device_keyword">단말기명</label><input class="inp" id="device_keyword" name="device_keyword" maxlength="100" placeholder="단말기명 입력"></div>
+                <div class="it c2"><label for="device_addr2">설치지역</label><div class="flex w100"><select class="sel" style="flex:1" id="device_addr2" name="device_addr2" title="시군구" onchange="msg('선택한 시군구의 읍면동 목록이 설정되었습니다.')"><option value="">시군구 전체</option></select><select class="sel" style="flex:1" id="device_addr3" name="device_addr3" title="읍면동"><option value="">읍면동 전체</option></select></div></div>
+              </div>
+              <div class="ctrl">
+                <button type="reset" class="btn btn-rst"><i class="ri-refresh-line"></i>초기화</button>
+                <button type="submit" class="btn btn-sch"><i class="ri-search-line"></i>검색</button>
+              </div>
+            </form>
+            <div class="sub-head">
+              <h3>재난발령 단말기 목록</h3><span class="cnt" id="devCnt"></span>
+              
             </div>
-          </section>
-          
+            <div class="grid-wrap" id="devWrap">
+              <table class="grid fix-head" id="device_table">
+                <caption class="blind">재난발령 단말기 목록</caption>
+                <colgroup><col style="width:50px"><col style="width:120px"><col style="width:140px"><col><col style="width:160px"><col style="width:80px"></colgroup>
+                <thead><tr><th>No</th><th>매체구분</th><th class="sort">단말기명</th><th>설치지역</th><th class="sort">수신시각</th><th>발송결과</th></tr></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+          <div>
+            <div class="sub-head mt0"><h3>단말기 위치</h3><div class="btns"><button type="button" class="btn s btn-line" id="btnDevMapFull" onclick="openDevFull()"><i class="ri-fullscreen-line"></i>전체화면 보기</button></div></div>
+            <div class="map-box" id="devMap" style="height:calc(100% - 38px)">
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
-  </main>
+        </div>
+        <!-- ===== 업무영역 끝 ===== -->
+      </main>
+    </div>
+  </div>
+@@include('../inc/footer.html')
 </div>
-<!-- 필터 팝업(add_disaster)은 기존 dialog 마크업 그대로 사용 -->
+@@include('../inc/pop-common.html')
+@@include('../inc/pop/UI-DA03-003-P01.html')
+@@include('../inc/pop/UI-DA03-003-P02.html')
 @@include('../inc/script.html')
+@@include('../inc/script-common.html')
+<script src="js/geo/kr-geo.js"></script>
+<script src="js/gismap.js"></script>
+<script src="js/pop/UI-DA03-003-P01.js"></script>
+<script src="js/pop/UI-DA03-003-P02.js"></script>
+<script src="js/pages/warn_issue.js"></script>
 </body>
 </html>

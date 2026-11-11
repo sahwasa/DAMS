@@ -1,0 +1,170 @@
+@charset "UTF-8";
+/* ==========================================================
+   common.scss — 재난·안전정보시스템 UI 표준정의서(NDMS-DE33 v1.1) 기준
+   ========================================================== */
+/* ---------- 1. Tokens ---------- */
+.mtree {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  align-items: start;
+}
+
+.mtree > li {
+  border: 1px solid #d8d8d8;
+  border-radius: 4px;
+  min-width: 0;
+}
+
+.mtree > li > .chk {
+  display: flex;
+  margin: 0;
+  padding: 0 12px;
+  line-height: 38px;
+  background: #f8f8f8;
+  border-bottom: 1px solid #d8d8d8;
+  font-weight: 600;
+  color: #101010;
+}
+
+.mtree > li > .chk:only-child {
+  border-bottom: 0;
+}
+
+.mtree ul {
+  padding: 6px 8px 8px 14px;
+}
+
+.mtree ul .chk {
+  display: flex;
+  margin: 0;
+  line-height: 28px;
+}
+
+.chk input:indeterminate {
+  border-color: #3e55e1;
+  background: linear-gradient(#fff, #fff) center/8px 2px no-repeat #3e55e1;
+}
+
+.mtree ul > li {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2px 4px;
+}
+
+.mtree ul > li > .chk {
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+.mtree .fns {
+  display: flex;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.mtree .fns .chk {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 3px;
+  height: 22px;
+  line-height: 20px !important;
+  padding: 0 5px 0 3px;
+  border: 1px solid #c9d2f5;
+  border-radius: 11px;
+  background: #f3f5ff;
+  font-size: 12px;
+  color: #1f3fae;
+  white-space: nowrap;
+}
+
+.mtree .fns .chk input {
+  width: 14px;
+  height: 14px;
+  margin: 0;
+}
+
+.mtree .fns .chk:has(input:disabled) {
+  border-color: #e4e4e4;
+  background: #f8f8f8;
+  color: #b0b0b0;
+}
+
+.fn-guide {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 0 0 12px;
+  font-size: 13px;
+  color: #505050;
+}
+
+.fn-guide i {
+  color: #3e55e1;
+}
+
+.fn-tag {
+  padding: 0 7px;
+  border: 1px solid #c9d2f5;
+  border-radius: 10px;
+  font-size: 12px;
+  line-height: 18px;
+  color: #1f3fae;
+  background: #f3f5ff;
+}
+
+.sms-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  border: 1px solid #d8d8d8;
+  border-radius: 4px;
+  background: #f8f8f8;
+  font-size: 14px;
+}
+
+.sms-row b {
+  flex: 0 0 110px;
+  color: #101010;
+}
+
+.sms-row > span:not(.f-msg) {
+  display: flex;
+  flex: 0 0 auto;
+}
+
+.sms-row .f-msg {
+  flex: 1;
+  min-width: 0;
+}
+
+.sms-row .f-msg {
+  margin: 0;
+}
+
+@media (max-width: 1279px) {
+  .mtree {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 767px) {
+  .mtree {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .sms-row {
+    flex-wrap: wrap;
+  }
+  .sms-row > span:not(.f-msg) {
+    flex: 1 1 100%;
+    flex-wrap: wrap;
+    row-gap: 4px;
+  }
+  .sms-row b {
+    flex-basis: 100%;
+  }
+}
+/*# sourceMappingURL=../maps/pages/sys_auth.css.map */

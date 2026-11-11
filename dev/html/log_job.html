@@ -1,0 +1,86 @@
+@@include('../inc/top.html',{"title": "작업이력 | 재난 예경보 통합관리시스템"})
+
+<body>
+<div class="wrap">
+  <!-- GNB -->
+  @@include('../inc/header.html')
+
+  <div class="body">
+    <!-- LNB -->
+    @@include('../inc/lnb-log.html')
+
+    <!-- MAIN -->
+    <div class="main">
+      @@include('../inc/mdi.html',{"file": "log_job.html", "name": "작업이력"})
+
+      <main class="work" id="content">
+        <div class="page-head">
+          <div>
+            <h2 class="tit">작업이력<button type="button" class="star" title="즐겨찾기" data-star><i class="ri-star-line"></i></button></h2>
+            @@include('../inc/breadcrumb.html',{"d1": "시스템 이력", "d1h": "log_sms.html", "d2": "작업이력", "d2h": "log_job.html"})
+          </div>
+        </div>
+
+        <!-- ===== 업무영역 (화면별 교체) ===== -->
+<form class="sch-box" id="schForm">
+          <div class="rows">
+            <div class="it c2"><span class="lb req">작업기간</span>
+              <div class="range"><span class="inp-ico inp-date"><input type="date" class="inp" id="dtFr" name="dtFr" value="2026-09-30" title="시작일" required data-label="작업기간 시작일"></span><span>~</span><span class="inp-ico inp-date"><input type="date" class="inp" id="dtTo" name="dtTo" value="2026-10-30" title="종료일" required data-label="작업기간 종료일"></span></div>
+            </div>
+            <div class="it"><label for="jobSe">구분</label><select class="sel" id="jobSe" name="jobSe" data-f="1"><option value="">전체</option><option>정기점검</option><option>긴급점검</option><option>공통코드 변경</option><option>배치작업</option><option>데이터 동기화</option><option>마이그레이션</option><option>기타</option></select></div>
+            <div class="it"><label for="searchKeyword">검색어</label><input class="inp" id="searchKeyword" name="searchKeyword" maxlength="100" placeholder="작업내용, 이슈, 작업자 입력"></div>
+          </div>
+          <div class="ctrl">
+            <button type="reset" class="btn btn-rst"><i class="ri-refresh-line"></i>초기화</button>
+            <button type="submit" class="btn btn-sch"><i class="ri-search-line"></i>검색</button>
+          </div>
+        </form>
+
+        <div class="sub-head">
+          <h3>작업이력 목록</h3><span class="cnt">전체<b id="totCnt">47</b>건</span>
+          <div class="grid-top">
+            <button type="button" class="btn s btn-crud" id="btnJobAdd" onclick="openEdit()"><i class="ri-add-line"></i>등록</button>
+            <select class="sel" id="pageSize" name="pageSize" title="목록노출건수"><option value="15">15개</option><option value="30">30개</option><option value="50">50개</option><option value="100">100개</option></select>
+            <button type="button" class="btn s btn-line" id="btnApply" onclick="applySize()">적용</button>
+          </div>
+        </div>
+        <div class="grid-wrap">
+          <table class="grid" id="histBody">
+            <caption class="blind">작업이력 목록</caption>
+            <colgroup><col style="width:80px"><col style="width:130px"><col><col><col style="width:110px"><col style="width:170px"></colgroup>
+            <thead><tr><th>번호</th><th class="sort">구분</th><th>내용</th><th>이슈</th><th class="sort">작업자</th><th class="sort desc">작업시각</th></tr></thead>
+            <tbody>
+              <tr class="clk" onclick="openEdit(0)"><td>47</td><td><span class="badge pri">공통코드 변경</span></td><td class="t-l">[공통코드] job_se_cd 그룹코드 &#x27;작업이력 구분&#x27; 추가 (상세코드 7건)</td><td class="t-l">없음</td><td>홍*동</td><td>2026-10-30 10:15</td></tr>
+              <tr class="clk" onclick="openEdit(1)"><td>46</td><td><span class="badge in">정기점검</span></td><td class="t-l">정기점검 및 보안패치 적용 (WEB·WAS 서버)</td><td class="t-l">없음</td><td>이*영</td><td>2026-10-29 22:00</td></tr>
+              <tr class="clk" onclick="openEdit(2)"><td>45</td><td><span class="badge pri">공통코드 변경</span></td><td class="t-l">[공통코드] media_se_cd 상세코드 &#x27;VMS&#x27; 추가</td><td class="t-l">없음</td><td>홍*동</td><td>2026-10-29 16:40</td></tr>
+              <tr class="clk" onclick="openEdit(3)"><td>44</td><td><span class="badge dg">긴급점검</span></td><td class="t-l">DB 정기 백업 결과 확인</td><td class="t-l">디스크 여유공간 부족 경고 (잔여 12%)</td><td>이*영</td><td>2026-10-28 09:30</td></tr>
+              <tr class="clk" onclick="openEdit(4)"><td>43</td><td><span class="badge dg">긴급점검</span></td><td class="t-l">충남 아산시 연계서버 응답지연 긴급점검</td><td class="t-l">GW 세션 재기동 후에도 간헐 지연 지속 (기관 회선 점검 요청)</td><td>김*호</td><td>2026-10-27 17:05</td></tr>
+              <tr class="clk" onclick="openEdit(5)"><td>42</td><td><span class="badge pri">공통코드 변경</span></td><td class="t-l">[공통코드] dsblty_se_cd 상세코드 &#x27;단말기통신&#x27; 추가</td><td class="t-l">없음</td><td>박*수</td><td>2026-10-27 14:10</td></tr>
+              <tr class="clk" onclick="openEdit(6)"><td>41</td><td><span class="badge">데이터 동기화</span></td><td class="t-l">재난코드 동기화 배치 수동 실행</td><td class="t-l">신규 재난코드 3건 반영</td><td>박*수</td><td>2026-10-26 10:20</td></tr>
+              <tr class="clk" onclick="openEdit(7)"><td>40</td><td><span class="badge">마이그레이션</span></td><td class="t-l">단말기 제원정보 일괄 마이그레이션 (울산 남구)</td><td class="t-l">좌표 누락 4건 수기 보정</td><td>최*진</td><td>2026-10-24 15:40</td></tr>
+              <tr class="clk" onclick="openEdit(8)"><td>39</td><td><span class="badge">배치작업</span></td><td class="t-l">3분기 재난발령·수신이력 인덱스 재구성</td><td class="t-l">없음 (야간 무중단 처리)</td><td>강*수</td><td>2026-10-22 02:30</td></tr>
+              <tr class="clk" onclick="openEdit(9)"><td>38</td><td><span class="badge in">정기점검</span></td><td class="t-l">세종특별자치시 연계 인터페이스 2차 점검</td><td class="t-l">통신 패킷 암호화 검증 완료</td><td>이*영</td><td>2026-10-21 11:00</td></tr>
+              <tr class="clk" onclick="openEdit(10)"><td>37</td><td><span class="badge">기타</span></td><td class="t-l">WAS서버 1호 힙 메모리 설정 변경 (4GB → 6GB)</td><td class="t-l">재기동 중 3분간 서비스 지연</td><td>김*호</td><td>2026-10-20 13:30</td></tr>
+              <tr class="clk" onclick="openEdit(11)"><td>36</td><td><span class="badge">데이터 동기화</span></td><td class="t-l">연계기관 담당자 정보 일괄 현행화</td><td class="t-l">반송 메일 7건 담당자 재확인 필요</td><td>최*진</td><td>2026-10-17 09:00</td></tr>
+              <tr class="clk" onclick="openEdit(12)"><td>35</td><td><span class="badge pri">공통코드 변경</span></td><td class="t-l">[공통코드] user_authrt_cd 코드명 변경 (&#x27;운영자(과)&#x27; → &#x27;운영자&#x27;)</td><td class="t-l">없음</td><td>홍*동</td><td>2026-10-16 11:20</td></tr>
+              <tr class="clk" onclick="openEdit(13)"><td>34</td><td><span class="badge in">정기점검</span></td><td class="t-l">정기점검 및 OS 보안패치 적용 (DB 서버)</td><td class="t-l">없음</td><td>이*영</td><td>2026-10-15 22:00</td></tr>
+              <tr class="clk" onclick="openEdit(14)"><td>33</td><td><span class="badge">배치작업</span></td><td class="t-l">통계 집계 배치 재처리 (10/13분)</td><td class="t-l">배치 지연으로 누락된 312건 재집계</td><td>박*수</td><td>2026-10-14 16:20</td></tr>
+              <tr class="nodata" hidden><td colspan="6">검색된 결과가 없습니다.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="paging" id="pgBtns" data-total="4" data-page="1"></div>
+        <!-- ===== 업무영역 끝 ===== -->
+      </main>
+    </div>
+  </div>
+@@include('../inc/footer.html')
+</div>
+@@include('../inc/pop-common.html')
+@@include('../inc/pop/UI-DA08-003-P01.html')
+@@include('../inc/script.html')
+@@include('../inc/script-common.html')
+<script src="js/pop/UI-DA08-003-P01.js"></script>
+<script src="js/pages/log_job.js"></script>
+</body>
+</html>

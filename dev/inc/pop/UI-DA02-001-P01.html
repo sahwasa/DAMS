@@ -1,0 +1,57 @@
+<!-- UI-DA02-001-P01 재난발령 상세 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-UI-DA02-001-P01" data-w="900">
+<div class="pop w900" role="dialog" aria-modal="true" aria-labelledby="popTit">
+  <div class="pop-head"><h2 id="popTit">재난발령 상세</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
+  <div class="pop-body">
+    <p class="is-tit"><span class="badge wn" id="pOrg">울산 동구</span><span id="pTit">강풍주의보 발표에 따른 시설물 안전 유의</span></p>
+    <ul class="tab">
+      <li class="on"><button type="button" data-tab="pnlIssue">발령내용</button></li>
+      <li><button type="button" data-tab="pnlDevice">단말기 발령이력</button></li>
+    </ul>
+
+    <!-- [탭1] 발령내용 (재난발령현황 하단 상세와 동일, 발령이미지 제외) -->
+    <div id="pnlIssue">
+      <table class="tbl" id="issue-summary">
+        <caption class="blind">발령정보 상세</caption>
+        <colgroup><col style="width:100px"><col><col style="width:100px"><col><col style="width:100px"><col></colgroup>
+        <tbody>
+          <tr><th>연계시스템</th><td data-k="sys"></td><th>재난분류</th><td data-k="cat"></td><th>발령매체</th><td data-k="med"></td></tr>
+          <tr><th>발령시각</th><td data-k="tm"></td><th>종료시각</th><td data-k="end"></td><th>발령지역</th><td data-k="rgn"></td></tr>
+        </tbody>
+      </table>
+      <div class="col3 mt16" id="issue-message">
+        <div class="card"><div class="card-h"><i class="ri-tv-2-line"></i>재해문자전광판</div><div class="card-b pre" id="msgBoard"></div></div>
+        <div class="card"><div class="card-h" title="마을방송 / 자동음성 통보 / 자동 우량경보"><i class="ri-volume-up-line"></i>마을방송·자동음성·우량경보<button type="button" class="btn s btn-line ico ml-auto" id="btnVoice" title="음성파일 재생" onclick="msg('음성파일을 재생합니다.')"><i class="ri-play-line"></i></button></div><div class="card-b pre" id="msgVoice"></div></div>
+        <div class="card"><div class="card-h"><i class="ri-message-2-line"></i>문자방송</div><div class="card-b pre" id="msgSms"></div></div>
+      </div>
+    </div>
+
+    <!-- [탭2] 단말기 발령이력 (GIS 제외) -->
+    <div id="pnlDevice" hidden>
+      <form class="sch-box" id="devSch">
+        <div class="rows">
+          <div class="it"><label for="device_media_type">매체구분</label><select class="sel" id="device_media_type" name="device_media_type"><option value="">전체</option></select></div>
+          <div class="it"><label for="device_rslt">발송결과</label><select class="sel" id="device_rslt" name="device_rslt"><option value="">전체</option><option>성공</option><option>실패</option><option>미수신</option></select></div>
+        </div>
+        <div class="ctrl">
+          <button type="reset" class="btn btn-rst"><i class="ri-refresh-line"></i>초기화</button>
+          <button type="submit" class="btn btn-sch"><i class="ri-search-line"></i>검색</button>
+        </div>
+      </form>
+      <div class="sub-head mt0"><h3>재난발령 단말기 목록</h3><span class="cnt" id="devCnt"></span>
+        </div>
+      <div class="grid-wrap">
+        <table class="grid fix-head" id="device_table">
+          <caption class="blind">재난발령 단말기 목록</caption>
+          <colgroup><col style="width:50px"><col style="width:150px"><col style="width:190px"><col><col style="width:160px"><col style="width:80px"></colgroup>
+          <thead><tr><th>No</th><th>매체구분</th><th class="sort">단말기명</th><th>설치지역</th><th class="sort">수신시각</th><th>발송결과</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="pop-foot">
+    <button type="button" class="btn btn-line" onclick="closePop()">닫기</button>
+  </div>
+</div>
+</template>

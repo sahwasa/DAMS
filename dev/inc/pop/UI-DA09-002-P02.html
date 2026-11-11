@@ -1,0 +1,45 @@
+<!-- UI-DA09-002-P02 연계 점검 부적합 결과서 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-UI-DA09-002-P02" data-w="900">
+<div class="pop w900" role="dialog" aria-modal="true" aria-labelledby="popTit">
+  <div class="pop-head"><h2 id="popTit">부적합 결과서</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
+  <div class="pop-body">
+    <div class="rpt" id="report">
+      <h1 id="rH1">연계 점검 결과서(부적합)</h1>
+      <p class="meta"><span>문서번호 : <b id="rNo"></b></span><span>작성일 : <b id="rDate"></b></span><span>작성 : 행정안전부 재난정보통신과</span></p>
+
+      <h2>점검 개요</h2>
+      <table class="tbl"><caption class="blind">점검 개요</caption><colgroup><col style="width:130px"><col><col style="width:130px"><col></colgroup>
+        <tbody>
+          <tr><th>연계기관</th><td id="rOrg"></td><th>구분</th><td id="rLv"></td></tr>
+          <tr><th>점검기간</th><td id="rPer"></td><th>점검일자</th><td id="rChkDt"></td></tr>
+          <tr><th>점검자</th><td colspan="3" id="rChk"></td></tr>
+        </tbody></table>
+
+      <h2>총괄 판정</h2>
+      <div class="verdict" id="rVer"><i class="ri-close-circle-line" style="font-size:20px"></i><span>총괄판정 <b>부적합</b> — 아래 부적합 항목을 조치한 후 재점검을 요청해 주시기 바랍니다.</span></div>
+
+      <h2>항목별 점검 결과</h2>
+      <div class="grid-wrap"><table class="grid"><caption class="blind">항목별 점검 결과</caption><colgroup><col style="width:150px"><col style="width:110px"><col></colgroup>
+        <thead><tr><th>점검 항목</th><th>판정</th><th>결과</th></tr></thead><tbody id="rItems"></tbody></table></div>
+
+      <div id="ngArea">
+      <h2>부적합 상세 내역</h2>
+      <div class="grid-wrap"><table class="grid"><caption class="blind">부적합 상세 내역</caption><colgroup><col style="width:48px"><col style="width:110px"><col><col style="width:150px"><col style="width:180px"></colgroup>
+        <thead><tr><th>No</th><th>점검 항목</th><th>내용</th><th>발생 시각</th><th>부적합 사유</th></tr></thead><tbody id="rNg"></tbody></table></div>
+
+      <h2>조치 요청 사항</h2>
+      <ol class="req" id="rReq"></ol>
+      <textarea class="txa mt8" id="m_ng_opinion" name="m_ng_opinion" maxlength="1000" title="추가 의견" placeholder="추가 의견(선택) — 결과서에 함께 표시·인쇄됩니다."></textarea>
+      </div>
+
+      <p class="from">행정안전부 재난정보통신과</p>
+      <p class="note" id="rNote">※ 본 결과서는 연계 점검 결과로 자동 생성됩니다. 조치 완료 후 연계확인서 발급요청 공문을 다시 보내면 요청한 점검기간으로 재점검합니다.</p>
+    </div>
+  </div>
+  <div class="pop-foot">
+    <button type="button" class="btn btn-line" onclick="closePop()">닫기</button>
+    <button type="button" class="btn btn-dark" onclick="doDown(OK?'연계점검_결과서.pdf':'연계점검_부적합결과서.pdf')"><i class="ri-download-2-line"></i>PDF 다운로드</button>
+    <button type="button" class="btn btn-dark" onclick="printReport()"><i class="ri-printer-line"></i>인쇄</button>
+  </div>
+</div>
+</template>

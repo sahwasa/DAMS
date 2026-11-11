@@ -1,0 +1,14 @@
+@charset "UTF-8";
+/* ==========================================================
+   common.scss — 재난·안전정보시스템 UI 표준정의서(NDMS-DE33 v1.1) 기준
+   ========================================================== */
+/* ---------- 1. Tokens ---------- */
+@media (min-width: 768px) and (max-width: 1279px) {
+  html:not(.pc-pop) .col3[style] {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  html:not(.pc-pop) .col3[style] > :nth-child(3) {
+    grid-column: 1/-1;
+  }
+}
+/*# sourceMappingURL=../maps/pages/sys_disaster.css.map */

@@ -1,0 +1,45 @@
+<!-- UI-DA03-003-P02 재난발령 보고서 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-UI-DA03-003-P02" data-w="900">
+<div class="pop w900" role="dialog" aria-modal="true" aria-labelledby="popTit">
+  <div class="pop-head"><h2 id="popTit">발령보고서</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
+  <div class="pop-body">
+    <div class="rpt" id="report">
+      <h1>재난발령 보고서</h1>
+      <p class="meta"><span>보고일시 : <b id="rDate"></b></span><span>작성 : 재난정보통신과 홍길동</span></p>
+
+      <h2>발령 개요</h2>
+      <table class="tbl"><caption class="blind">발령 개요</caption><colgroup><col style="width:130px"><col><col style="width:130px"><col></colgroup>
+        <tbody>
+          <tr><th>발령기관</th><td id="rOrg"></td><th>연계시스템</th><td id="rSys"></td></tr>
+          <tr><th>재난분류</th><td id="rCat"></td><th>발령지역</th><td id="rRgn"></td></tr>
+          <tr><th>발령시각</th><td id="rTm"></td><th>종료시각</th><td id="rEnd"></td></tr>
+          <tr><th>발령제목</th><td colspan="3" id="rTit"></td></tr>
+          <tr><th>발령매체</th><td colspan="3" id="rMed"></td></tr>
+        </tbody></table>
+
+      <h2>발령 문안</h2>
+      <table class="tbl"><caption class="blind">발령 문안</caption><colgroup><col style="width:130px"><col></colgroup>
+        <tbody>
+          <tr><th>재해문자전광판</th><td class="msg" id="rBoard"></td></tr>
+          <tr><th>마을방송·자동음성<br>·우량경보</th><td class="msg" id="rVoice"></td></tr>
+          <tr><th>문자방송</th><td class="msg" id="rSms"></td></tr>
+        </tbody></table>
+
+      <h2>단말기 발령 결과</h2>
+      <table class="grid"><caption class="blind">매체별 단말기 발령 결과</caption>
+        <colgroup><col><col style="width:90px"><col style="width:90px"><col style="width:90px"><col style="width:90px"><col style="width:100px"></colgroup>
+        <thead><tr><th>매체</th><th>전체</th><th>성공</th><th>실패</th><th>미수신</th><th>성공률</th></tr></thead><tbody id="rSum"></tbody></table>
+
+      <h2>실패·미수신 단말기</h2>
+      <table class="grid"><caption class="blind">실패·미수신 단말기 목록</caption>
+        <colgroup><col style="width:130px"><col><col><col style="width:80px"><col></colgroup>
+        <thead><tr><th>매체</th><th>단말기명</th><th>설치지역</th><th>결과</th><th>사유</th></tr></thead><tbody id="rFail"></tbody></table>
+
+    </div>
+  </div>
+  <div class="pop-foot">
+    <button type="button" class="btn btn-line" onclick="closePop()">닫기</button>
+    <button type="button" class="btn btn-crud" onclick="printReport()"><i class="ri-printer-line"></i>인쇄</button>
+  </div>
+</div>
+</template>

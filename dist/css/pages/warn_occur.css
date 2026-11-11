@@ -1,0 +1,12 @@
+@charset "UTF-8";
+/* ==========================================================
+   common.scss — 재난·안전정보시스템 UI 표준정의서(NDMS-DE33 v1.1) 기준
+   ========================================================== */
+/* ---------- 1. Tokens ---------- */
+.src-t {
+  margin-left: 6px;
+  font-size: 12px;
+  color: #8e8e8e;
+  white-space: nowrap;
+}
+/*# sourceMappingURL=../maps/pages/warn_occur.css.map */

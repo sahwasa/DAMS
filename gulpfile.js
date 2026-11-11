@@ -39,7 +39,7 @@ var mergefileName = {
 };
 
 // browser-sync index file
-const browserSyncFileName = "login.html";
+const browserSyncFileName = "index.html";
 
 // 배포 시 삭제할 폴더
 const cleanPaths = [
@@ -144,7 +144,7 @@ function clean(cd){
 
 
 module.exports = {
-  default:series(clean, inc, parallel(js,scss,imgMin,fonts,copyVendor), parallel(watchs, setBs)),
+  default:series(clean, inc, parallel(js,scss,imgMin,fonts), parallel(watchs, setBs)),
   watch:parallel(watchs, setBs),
   build:series(clean, parallel(inc,js,scss,imgMin,fonts)),
   deploy: series(clean, parallel(inc, js, scss, imgMin,fonts), deploy),

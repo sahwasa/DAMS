@@ -1,0 +1,176 @@
+@charset "UTF-8";
+/* ==========================================================
+   common.scss — 재난·안전정보시스템 UI 표준정의서(NDMS-DE33 v1.1) 기준
+   ========================================================== */
+/* ---------- 1. Tokens ---------- */
+.bbs-v {
+  border-top: 2px solid #202020;
+}
+
+.bbs-v .v-head {
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.bbs-v .v-head h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 19px;
+  font-weight: 700;
+  color: #101010;
+  line-height: 1.4;
+}
+
+.bbs-v .v-meta {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  font-size: 13px;
+  color: #707070;
+}
+
+.bbs-v .v-meta li + li::before {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 11px;
+  margin: 0 12px;
+  background: #c6c6c6;
+  vertical-align: -1px;
+}
+
+.bbs-v .v-meta b {
+  margin-left: 6px;
+  font-weight: 500;
+  color: #505050;
+}
+
+.bbs-v .v-body {
+  min-height: 240px;
+  padding: 24px 20px;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #202020;
+  white-space: pre-wrap;
+}
+
+.bbs-v .v-file {
+  display: flex;
+  gap: 16px;
+  padding: 12px 20px;
+  border-top: 1px solid #d8d8d8;
+  background: #f8f8f8;
+}
+
+.bbs-v .v-file > strong {
+  flex: 0 0 70px;
+  font-size: 14px;
+  line-height: 30px;
+  color: #202020;
+}
+
+.bbs-v .v-file .file-list {
+  flex: 1;
+  background: #fff;
+}
+
+.bbs-v .v-file .file-list em {
+  font-style: normal;
+  color: #8e8e8e;
+}
+
+.v-nav {
+  margin-top: 24px;
+  border-top: 1px solid #505050;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.v-nav li {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  padding: 0 20px;
+  font-size: 14px;
+}
+
+.v-nav li + li {
+  border-top: 1px solid #f0f0f0;
+}
+
+.v-nav li > span {
+  flex: 0 0 96px;
+  font-weight: 600;
+  color: #505050;
+}
+
+.v-nav li > span i {
+  margin-right: 4px;
+  color: #8e8e8e;
+}
+
+.v-nav li > span.none {
+  flex: 1;
+  font-weight: 400;
+  color: #8e8e8e;
+}
+
+.v-nav a {
+  color: #202020;
+}
+
+.v-nav a:hover {
+  color: #3e55e1;
+  text-decoration: underline;
+}
+
+.v-nav .none {
+  color: #8e8e8e;
+}
+
+.v-nav li > em {
+  margin-left: auto;
+  font-style: normal;
+  font-size: 13px;
+  color: #8e8e8e;
+}
+
+@media (max-width: 767px) {
+  .bbs-v .v-head {
+    padding: 14px 4px 12px;
+  }
+  .bbs-v .v-head h3 {
+    flex-wrap: wrap;
+    font-size: 18px;
+  }
+  .bbs-v .v-body {
+    padding: 16px 4px;
+    min-height: 160px;
+  }
+  .bbs-v .v-file {
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px;
+  }
+  .v-nav li {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 10px 4px;
+    gap: 2px 0;
+  }
+  .v-nav li > span {
+    flex: 0 0 72px;
+  }
+  .v-nav li > a, .v-nav li > .none {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .v-nav li > em {
+    width: 100%;
+    margin-left: 72px;
+  }
+}
+/*# sourceMappingURL=../maps/pages/guide_notice_view.css.map */

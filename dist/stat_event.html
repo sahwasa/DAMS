@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>재난발령통계 | 재난 예경보 통합관리시스템</title>
+<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="font/pretendard-gov/pretendardvariable-gov.css">
+<link rel="stylesheet" href="font/remixicon/remixicon.css">
+<link rel="stylesheet" href="css/main.css">
+
+<link rel="stylesheet" href="css/pages/stat_event.css">
+
+</head>
+
+
+<body>
+<div class="wrap">
+  <!-- GNB -->
+  <!-- GNB: 현재 1Depth .on은 common.js markOn()이 파일명으로 표시 -->
+  <header class="gnb">
+    <h1 class="logo"><a href="index.html" class="flex"><img src="images/gov_logo_w.png" alt="정부 상징" class="gov-logo">재난 예경보 통합관리시스템</a></h1>
+    <ul class="menu">
+      <li><a href="gis.html">GIS상황판</a></li>
+      <li><a href="warn_monitor.html">재난 예경보 현황</a></li>
+      <li><a href="plat_org.html">통합플랫폼관리</a></li>
+      <li><a href="stat_event.html">통계</a></li>
+      <li><a href="guide_intro.html">이용안내</a></li>
+      <li><a href="sys_user.html">시스템관리</a></li>
+      <li><a href="log_sms.html">시스템 이력</a></li>
+    </ul>
+    <div class="util">
+      <div class="sess" title="세션 남은시간"><b>59:10</b><button type="button" data-sess>시간연장</button></div>
+      <a href="#pop-UI-CO-P01" class="user" onclick="openPop('UI-CO-P01',540);return false;">홍길동 님<em>(재난정보통신과)</em><i class="ri-user-3-line"></i></a>
+      <a href="index.html" class="ico" title="전체메뉴" data-layer="all"><i class="ri-menu-line"></i></a>
+      <a href="log_dsblty.html" class="ico" title="알림" data-layer="noti"><i class="ri-notification-3-line"></i><span class="badge"></span></a>
+      <a href="login.html" class="ico" title="로그아웃" data-logout><i class="ri-logout-box-r-line"></i></a>
+      <div class="fsz" title="글자크기"><span>글자크기</span><button type="button" data-fsz="down" title="작게">−</button><span class="fsz-v">100%</span><button type="button" data-fsz="up" title="크게">+</button></div>
+      <a href="cert_request.html" onclick="return !window.open(this.href,'damsCert','width=1280,height=860');" class="btn s btn-pri-o">연계확인서 발급</a>
+    </div>
+  </header>
+
+
+  <div class="body">
+    <!-- LNB -->
+    <!-- LNB 통계: 현재 메뉴 .on은 common.js markOn()이 표시 -->
+    <nav class="lnb">
+      <div class="lnb-tab"><button type="button" class="on" data-lnb="menu">메뉴</button><button type="button" data-lnb="fav">즐겨찾기</button><button type="button" data-lnb="recent">최근접속</button></div>
+      <div class="lnb-tit">통계</div>
+      <div class="lnb-menu">
+        <ul class="d2">
+          <li><a href="stat_event.html">재난발령통계</a></li>
+          <li><a href="stat_device.html">단말기통계</a></li>
+        </ul>
+      </div>
+      <button type="button" class="lnb-fold" data-fold title="메뉴 접기/펼치기"><i class="ri-arrow-left-s-line"></i></button>
+    </nav>
+
+
+    <!-- MAIN -->
+    <div class="main">
+      
+      <div class="mdi">
+        <ul class="mdi-tabs">
+          <li><a href="gis.html">GIS상황판</a><button type="button" title="닫기" data-mdi="close"><i class="ri-close-line"></i></button></li>
+          <li class="on"><a href="stat_event.html">재난발령통계</a><button type="button" title="닫기" data-mdi="close"><i class="ri-close-line"></i></button></li>
+        </ul>
+        <div class="mdi-ctrl">
+          <button type="button" title="이전" data-mdi="prev"><i class="ri-arrow-left-s-line"></i></button>
+          <button type="button" title="다음" data-mdi="next"><i class="ri-arrow-right-s-line"></i></button>
+          <button type="button" title="전체닫기" data-mdi="all"><i class="ri-close-line"></i></button>
+        </div>
+      </div>
+
+
+      <main class="work" id="content">
+        <div class="page-head">
+          <div>
+            <h2 class="tit">재난발령통계<button type="button" class="star" title="즐겨찾기" data-star><i class="ri-star-line"></i></button></h2>
+            <ul class="bread"><li><a href="gis.html" title="홈"><i class="ri-home-4-line home"></i></a></li><li><a href="stat_event.html">통계</a></li><li><a href="stat_event.html">재난발령통계</a></li></ul>
+          </div>
+        </div>
+
+        <!-- ===== 업무영역 (화면별 교체) ===== -->
+        <ul class="tab">
+          <li class="on"><button type="button" data-tab="tabEvent">재난별 통계</button></li>
+          <li><button type="button" data-tab="tabMedia">매체별 통계</button></li>
+          <li><button type="button" data-tab="tabRegion">지역별 통계</button></li>
+        </ul>
+
+        <form class="sch-box">
+          <div class="rows r1">
+            <div class="it c2"><label for="selPeriodType">기간 유형</label>
+              <div class="flex w100">
+                <select class="sel" id="selPeriodType" name="selPeriodType" style="width:120px" onchange="changePeriodType(this.value)"><option value="year" selected>연도</option><option value="month">월</option><option value="quarter">분기</option><option value="custom">사용자선택</option></select>
+                <select class="sel" id="selYear" name="selYear" style="width:110px" title="연도"><option>2026년</option><option>2025년</option><option>2024년</option></select>
+                <select class="sel" id="selMonth" name="selMonth" style="width:90px" title="월" hidden><option>1월</option><option>2월</option><option>3월</option><option>4월</option><option>5월</option><option>6월</option><option>7월</option><option>8월</option><option>9월</option><option selected>10월</option><option>11월</option><option>12월</option></select>
+                <select class="sel" id="selQuarter" name="selQuarter" style="width:100px" title="분기" hidden><option>1분기</option><option>2분기</option><option>3분기</option><option selected>4분기</option></select>
+                <div class="range" id="periodRange" hidden><span class="inp-ico inp-date"><input type="date" class="inp" id="startDate" name="startDate" value="2026-01-01" title="시작일"></span><span>~</span><span class="inp-ico inp-date"><input type="date" class="inp" id="endDate" name="endDate" value="2026-10-30" title="종료일"></span></div>
+              </div>
+            </div>
+            <div class="it c2"><span class="lb">재난분류</span>
+              <div class="flex w100"><select class="sel" style="flex:1" id="selLclsf" name="selLclsf" title="대분류" onchange="msg('선택한 대분류의 중분류 목록이 설정되었습니다.')"><option value="">대분류 전체</option><option>자연재난</option><option>사회재난</option><option>기타</option></select><select class="sel" style="flex:1" id="selCategory" name="selCategory" title="중분류"><option value="">중분류 전체</option><option>호우</option><option>강풍</option><option>산불</option></select></div>
+            </div>
+            <div class="it"><label for="selSituation">재난상황</label><select class="sel" id="selSituation" name="selSituation"><option value="">전체</option><option value="R">실제</option><option value="T">훈련</option><option value="E">시험</option></select></div>
+            <div class="it c2" id="regionCond"><span class="lb">지역 레벨</span>
+              <label class="rdo"><input type="radio" name="regionUnit" value="sido" checked onchange="setUnit(this.value)"><span>시도별</span></label>
+              <label class="rdo"><input type="radio" name="regionUnit" value="sgg" onchange="setUnit(this.value)"><span>시군구별</span></label><select class="sel" id="rgSido" name="rgSido" title="시도" style="width:170px;margin-left:8px" hidden onchange="setUnit(UNIT)"><option value="">시도 전체</option><option>전남광주통합특별시</option><option>대전광역시</option><option>울산광역시</option><option>경기도</option><option>강원특별자치도</option><option>충청남도</option><option>경상북도</option></select>
+            </div>
+          </div>
+          <div class="ctrl">
+            <button type="reset" class="btn btn-rst"><i class="ri-refresh-line"></i>초기화</button>
+            <button type="submit" class="btn btn-sch"><i class="ri-search-line"></i>검색</button>
+          </div>
+        </form>
+
+
+        <!-- [탭1] 재난별 -->
+        <div id="tabEvent">
+          <div class="col-lr" style="grid-template-columns:minmax(0,5fr) minmax(0,5fr)">
+            <div class="card"><div class="card-h">재난유형별 발령 현황<span class="sub">(건)</span><span class="st-cond" data-cond></span>
+                <div class="btns" id="evMode" role="group" aria-label="차트 종류"><button type="button" class="btn s ico btn-pri" title="세로 막대" aria-label="세로 막대" onclick="evMode(this,'v')"><i class="ri-bar-chart-line"></i></button><button type="button" class="btn s ico btn-line" title="가로 막대" aria-label="가로 막대" onclick="evMode(this,'h')"><i class="ri-bar-chart-horizontal-line"></i></button><button type="button" class="btn s ico btn-line" title="비율" aria-label="비율" onclick="evMode(this,'d')"><i class="ri-donut-chart-line"></i></button></div><button type="button" class="btn s btn-line ico img-dn" title="차트 이미지 다운로드(PNG)" onclick="chartPng('재난유형별 발령 현황',this)"><i class="ri-image-line"></i></button></div>
+              <div class="card-b"><div class="ev-cat" id="evCat"></div><p class="st-note ev-note"><i class="ri-information-line"></i> 발령 건수 상위 14개 재난유형만 표시하고, 나머지 재난유형은 '기타'로 묶어 표시합니다.</p></div></div>
+            <div class="card"><div class="card-h"><span id="evTrTit">월별 재난 발령 추이</span><span class="sub">(건)</span><span class="st-cond" data-cond></span><button type="button" class="btn s btn-line ico img-dn" style="margin-left:auto" title="차트 이미지 다운로드(PNG)" onclick="chartPng('재난 발령 추이',this)"><i class="ri-image-line"></i></button></div>
+              <div class="card-b"><div class="ev-tr" id="evTrend"></div></div></div>
+          </div>
+          <div class="tbl-acc" id="evTblWrapAcc">
+          <div class="sub-head" onclick="tglTbl(event,'evTblWrap')" title="표 펼치기/접기">
+            <i class="ri-arrow-right-s-line acc-ico"></i><h3>재난별 통계</h3><span class="cnt">전체<b>20</b>건</span>
+            <div class="grid-top"><span class="acc-lb">표 펼치기</span><button type="button" class="btn s btn-dark" id="btnExcel" onclick="doExcel('재난별 통계')"><i class="ri-file-excel-2-line"></i>엑셀다운로드</button></div>
+          </div>
+          <div class="grid-wrap" id="evTblWrap" hidden>
+            <table class="grid"><caption class="blind">재난별 통계</caption><colgroup><col><col style="width:110px"><col style="width:100px"><col style="width:100px"><col style="width:100px"><col style="width:120px"><col style="width:120px"><col style="width:100px"><col style="width:100px"><col style="width:100px"></colgroup><thead><tr><th rowspan="2">재난유형</th><th rowspan="2">발령 건수</th><th colspan="3">발령 구분</th><th colspan="4">단말기 전송 결과</th><th rowspan="2">성공률</th></tr><tr><th>실제</th><th>훈련</th><th>시험</th><th>전체</th><th>성공</th><th>실패</th><th>미수신</th></tr></thead>
+              <tbody id="eventStatTbody">
+                <tr><td class="t-l">자연재난 &gt; 호우</td><td class="t-r">98</td><td class="t-r">80</td><td class="t-r">14</td><td class="t-r">4</td><td class="t-r">1,960</td><td class="t-r">1,898</td><td class="t-r">45</td><td class="t-r">17</td><td class="t-r">96.8%</td></tr><tr><td class="t-l">자연재난 &gt; 강풍</td><td class="t-r">42</td><td class="t-r">34</td><td class="t-r">6</td><td class="t-r">2</td><td class="t-r">840</td><td class="t-r">818</td><td class="t-r">15</td><td class="t-r">7</td><td class="t-r">97.4%</td></tr><tr><td class="t-l">자연재난 &gt; 대설</td><td class="t-r">30</td><td class="t-r">25</td><td class="t-r">4</td><td class="t-r">1</td><td class="t-r">600</td><td class="t-r">584</td><td class="t-r">11</td><td class="t-r">5</td><td class="t-r">97.3%</td></tr><tr><td class="t-l">사회재난 &gt; 산불</td><td class="t-r">26</td><td class="t-r">21</td><td class="t-r">4</td><td class="t-r">1</td><td class="t-r">520</td><td class="t-r">506</td><td class="t-r">9</td><td class="t-r">5</td><td class="t-r">97.3%</td></tr><tr><td class="t-l">자연재난 &gt; 한파</td><td class="t-r">24</td><td class="t-r">20</td><td class="t-r">3</td><td class="t-r">1</td><td class="t-r">480</td><td class="t-r">467</td><td class="t-r">9</td><td class="t-r">4</td><td class="t-r">97.3%</td></tr><tr><td class="t-l">자연재난 &gt; 폭염</td><td class="t-r">20</td><td class="t-r">16</td><td class="t-r">3</td><td class="t-r">1</td><td class="t-r">400</td><td class="t-r">390</td><td class="t-r">7</td><td class="t-r">3</td><td class="t-r">97.5%</td></tr><tr><td class="t-l">자연재난 &gt; 태풍</td><td class="t-r">16</td><td class="t-r">13</td><td class="t-r">2</td><td class="t-r">1</td><td class="t-r">320</td><td class="t-r">310</td><td class="t-r">7</td><td class="t-r">3</td><td class="t-r">96.9%</td></tr><tr><td class="t-l">자연재난 &gt; 풍랑</td><td class="t-r">13</td><td class="t-r">10</td><td class="t-r">2</td><td class="t-r">1</td><td class="t-r">260</td><td class="t-r">253</td><td class="t-r">5</td><td class="t-r">2</td><td class="t-r">97.3%</td></tr><tr><td class="t-l">사회재난 &gt; 화재</td><td class="t-r">12</td><td class="t-r">8</td><td class="t-r">3</td><td class="t-r">1</td><td class="t-r">240</td><td class="t-r">234</td><td class="t-r">4</td><td class="t-r">2</td><td class="t-r">97.5%</td></tr><tr><td class="t-l">자연재난 &gt; 지진</td><td class="t-r">11</td><td class="t-r">8</td><td class="t-r">2</td><td class="t-r">1</td><td class="t-r">220</td><td class="t-r">214</td><td class="t-r">4</td><td class="t-r">2</td><td class="t-r">97.3%</td></tr><tr><td class="t-l">자연재난 &gt; 홍수</td><td class="t-r">9</td><td class="t-r">8</td><td class="t-r">1</td><td class="t-r">0</td><td class="t-r">180</td><td class="t-r">175</td><td class="t-r">3</td><td class="t-r">2</td><td class="t-r">97.2%</td></tr><tr><td class="t-l">자연재난 &gt; 산사태</td><td class="t-r">6</td><td class="t-r">5</td><td class="t-r">1</td><td class="t-r">0</td><td class="t-r">120</td><td class="t-r">116</td><td class="t-r">3</td><td class="t-r">1</td><td class="t-r">96.7%</td></tr><tr><td class="t-l">사회재난 &gt; 미세먼지</td><td class="t-r">5</td><td class="t-r">4</td><td class="t-r">1</td><td class="t-r">0</td><td class="t-r">100</td><td class="t-r">97</td><td class="t-r">2</td><td class="t-r">1</td><td class="t-r">97.0%</td></tr><tr><td class="t-l">자연재난 &gt; 황사</td><td class="t-r">4</td><td class="t-r">4</td><td class="t-r">0</td><td class="t-r">0</td><td class="t-r">80</td><td class="t-r">78</td><td class="t-r">1</td><td class="t-r">1</td><td class="t-r">97.5%</td></tr><tr><td class="t-l">자연재난 &gt; 건조</td><td class="t-r">3</td><td class="t-r">2</td><td class="t-r">1</td><td class="t-r">0</td><td class="t-r">60</td><td class="t-r">58</td><td class="t-r">1</td><td class="t-r">1</td><td class="t-r">96.7%</td></tr><tr><td class="t-l">자연재난 &gt; 안개</td><td class="t-r">2</td><td class="t-r">2</td><td class="t-r">0</td><td class="t-r">0</td><td class="t-r">40</td><td class="t-r">38</td><td class="t-r">1</td><td class="t-r">1</td><td class="t-r">95.0%</td></tr><tr><td class="t-l">사회재난 &gt; 감염병</td><td class="t-r">2</td><td class="t-r">2</td><td class="t-r">0</td><td class="t-r">0</td><td class="t-r">40</td><td class="t-r">39</td><td class="t-r">1</td><td class="t-r">0</td><td class="t-r">97.5%</td></tr><tr><td class="t-l">사회재난 &gt; 가축질병</td><td class="t-r">1</td><td class="t-r">1</td><td class="t-r">0</td><td class="t-r">0</td><td class="t-r">20</td><td class="t-r">19</td><td class="t-r">1</td><td class="t-r">0</td><td class="t-r">95.0%</td></tr><tr><td class="t-l">자연재난 &gt; 폭풍해일</td><td class="t-r">1</td><td class="t-r">1</td><td class="t-r">0</td><td class="t-r">0</td><td class="t-r">20</td><td class="t-r">20</td><td class="t-r">0</td><td class="t-r">0</td><td class="t-r">100.0%</td></tr><tr><td class="t-l">자연재난 &gt; 지진해일</td><td class="t-r">1</td><td class="t-r">1</td><td class="t-r">0</td><td class="t-r">0</td><td class="t-r">20</td><td class="t-r">20</td><td class="t-r">0</td><td class="t-r">0</td><td class="t-r">100.0%</td></tr><tr class="tot"><td>합계</td><td class="t-r">326</td><td class="t-r">265</td><td class="t-r">47</td><td class="t-r">14</td><td class="t-r">6,520</td><td class="t-r">6,334</td><td class="t-r">129</td><td class="t-r">57</td><td class="t-r">97.1%</td></tr>
+              </tbody>
+            </table>
+          </div>
+          </div>
+        </div>
+
+        <!-- [탭2] 매체별 -->
+        <div id="tabMedia" hidden>
+          <div class="col-lr" style="grid-template-columns:minmax(0,5fr) minmax(0,5fr)">
+          <div class="card"><div class="card-h">매체별 전송 결과<span class="sub">(건)</span><span class="st-cond" data-cond></span>
+              <div class="btns" id="mdMode" role="group" aria-label="차트 종류"><button type="button" class="btn s ico btn-pri" title="가로 막대" aria-label="가로 막대" onclick="mdMode(this,'h')"><i class="ri-bar-chart-horizontal-line"></i></button><button type="button" class="btn s ico btn-line" title="세로 막대" aria-label="세로 막대" onclick="mdMode(this,'v')"><i class="ri-bar-chart-line"></i></button><button type="button" class="btn s ico btn-line" title="비율" aria-label="비율" onclick="mdMode(this,'d')"><i class="ri-donut-chart-line"></i></button></div><button type="button" class="btn s btn-line ico img-dn" title="차트 이미지 다운로드(PNG)" onclick="chartPng('매체별 전송 결과',this)"><i class="ri-image-line"></i></button></div>
+            <div class="card-b"><div class="md-cat" id="mediaResultChart"></div></div></div>
+            <div class="card"><div class="card-h"><span id="mdTrTit">매체별 성공률 추이</span><span class="sub">(%)</span><span class="st-cond" data-cond></span><span style="margin-left:auto"></span><button type="button" class="btn s btn-line ico img-dn" title="차트 이미지 다운로드(PNG)" onclick="chartPng('매체별 성공률 추이',this)"><i class="ri-image-line"></i></button></div>
+              <div class="card-b"><div class="md-tr" id="mdTrend"></div></div></div>
+          </div>
+          <div class="tbl-acc" id="mdTblWrapAcc">
+          <div class="sub-head" onclick="tglTbl(event,'mdTblWrap')" title="표 펼치기/접기">
+            <i class="ri-arrow-right-s-line acc-ico"></i><h3>매체별 통계</h3><span class="cnt">전체<b>5</b>건</span>
+            <div class="grid-top"><span class="acc-lb">표 펼치기</span><button type="button" class="btn s btn-dark" onclick="doExcel('매체별 통계')"><i class="ri-file-excel-2-line"></i>엑셀다운로드</button></div>
+          </div>
+          <div class="grid-wrap" id="mdTblWrap" hidden>
+            <table class="grid"><caption class="blind">매체별 통계</caption><colgroup><col><col style="width:110px"><col style="width:100px"><col style="width:100px"><col style="width:100px"><col style="width:120px"><col style="width:120px"><col style="width:100px"><col style="width:100px"><col style="width:100px"></colgroup><thead><tr><th rowspan="2">매체구분</th><th rowspan="2">발령 건수</th><th colspan="3">발령 구분</th><th colspan="4">단말기 전송 결과</th><th rowspan="2">성공률</th></tr><tr><th>실제</th><th>훈련</th><th>시험</th><th>전체</th><th>성공</th><th>실패</th><th>미수신</th></tr></thead>
+              <tbody id="mediaStatTbody">
+                <tr><td class="t-l">재해문자전광판</td><td class="t-r">112</td><td class="t-r">92</td><td class="t-r">14</td><td class="t-r">6</td><td class="t-r">1,420</td><td class="t-r">1,392</td><td class="t-r">20</td><td class="t-r">8</td><td class="t-r">98.0%</td></tr>
+                <tr><td class="t-l">마을방송</td><td class="t-r">126</td><td class="t-r">110</td><td class="t-r">12</td><td class="t-r">4</td><td class="t-r">1,560</td><td class="t-r">1,505</td><td class="t-r">38</td><td class="t-r">17</td><td class="t-r">96.5%</td></tr>
+                <tr><td class="t-l">자동음성통보</td><td class="t-r">101</td><td class="t-r">88</td><td class="t-r">10</td><td class="t-r">3</td><td class="t-r">2,240</td><td class="t-r">2,180</td><td class="t-r">42</td><td class="t-r">18</td><td class="t-r">97.3%</td></tr>
+                <tr><td class="t-l">자동우량경보</td><td class="t-r">49</td><td class="t-r">41</td><td class="t-r">6</td><td class="t-r">2</td><td class="t-r">460</td><td class="t-r">440</td><td class="t-r">14</td><td class="t-r">6</td><td class="t-r">95.7%</td></tr>
+                <tr><td class="t-l">버스정보시스템</td><td class="t-r">107</td><td class="t-r">96</td><td class="t-r">9</td><td class="t-r">2</td><td class="t-r">2,040</td><td class="t-r">2,001</td><td class="t-r">25</td><td class="t-r">14</td><td class="t-r">98.1%</td></tr>
+                <tr class="tot"><td>합계</td><td class="t-r">495</td><td class="t-r">427</td><td class="t-r">51</td><td class="t-r">17</td><td class="t-r">7,720</td><td class="t-r">7,518</td><td class="t-r">139</td><td class="t-r">63</td><td class="t-r">97.4%</td></tr>
+              </tbody>
+            </table>
+          </div>
+          </div>
+        </div>
+
+        <!-- [탭3] 지역별 -->
+        <div id="tabRegion" hidden>
+          <div class="col-lr st-lr" style="grid-template-columns:minmax(0,5fr) minmax(0,5fr)">
+            <div class="card"><div class="card-h">GIS 지역별 발령 빈도<span class="st-cond" data-cond></span>
+                <div class="btns" id="mapMode" role="group" aria-label="지도 표현 방식"><button type="button" class="btn s ico btn-pri" title="버블" aria-label="버블" onclick="changeMapMode(this)"><i class="ri-bubble-chart-line"></i></button><button type="button" class="btn s ico btn-line" title="단계구분도" aria-label="단계구분도" onclick="changeMapMode(this)"><i class="ri-map-2-line"></i></button><button type="button" class="btn s ico btn-line" title="히트맵" aria-label="히트맵" onclick="changeMapMode(this)"><i class="ri-fire-line"></i></button></div><button type="button" class="btn s btn-line ico img-dn" title="차트 이미지 다운로드(PNG)" onclick="chartPng('GIS 지역별 발령 빈도',this)"><i class="ri-image-line"></i></button></div>
+              <div class="card-b"><div class="map-box" id="regionMap" style="height:400px;min-height:0"></div></div></div>
+            <div class="rg-right">
+              <div class="sub-head mt0">
+                <ul class="rg-sw"><li class="on"><button type="button" id="regTit" onclick="swRg(this,0)">시도별 발령·전송 결과</button></li><li><button type="button" id="heatTit" onclick="swRg(this,1)">시도 × 재난유형 발령 건수</button></li></ul>
+                <div class="grid-top"><button type="button" class="btn s btn-dark" onclick="doExcel('지역별 통계')"><i class="ri-file-excel-2-line"></i>엑셀다운로드</button></div>
+              </div>
+              <div id="rgTbl"><div class="grid-wrap">
+                <table class="grid fix-head"><caption class="blind">지역별 발령·전송 결과</caption>
+                  <colgroup><col><col style="width:90px"><col style="width:100px"><col style="width:100px"><col style="width:80px"><col style="width:80px"></colgroup>
+                  <thead><tr><th id="unitTh">시도</th><th class="sort desc">발령 건수</th><th>전체(전송)</th><th>성공</th><th>실패</th><th class="sort">성공률</th></tr></thead>
+                  <tbody id="regionStatTbody">
+                    <tr class="clk" onclick="showRegionDetail(this)"><td class="t-l">전남광주통합특별시</td><td class="t-r">38</td><td class="t-r">760</td><td class="t-r">732</td><td class="t-r">19</td><td class="t-r">96.3%</td></tr>
+                    <tr class="clk" onclick="showRegionDetail(this)"><td class="t-l">대전광역시</td><td class="t-r">24</td><td class="t-r">480</td><td class="t-r">469</td><td class="t-r">8</td><td class="t-r">97.7%</td></tr>
+                    <tr class="clk" onclick="showRegionDetail(this)"><td class="t-l">울산광역시</td><td class="t-r">35</td><td class="t-r">700</td><td class="t-r">682</td><td class="t-r">12</td><td class="t-r">97.4%</td></tr>
+                    <tr class="clk" onclick="showRegionDetail(this)"><td class="t-l">경기도</td><td class="t-r">49</td><td class="t-r">980</td><td class="t-r">953</td><td class="t-r">18</td><td class="t-r">97.2%</td></tr>
+                    <tr class="clk" onclick="showRegionDetail(this)"><td class="t-l">강원특별자치도</td><td class="t-r">47</td><td class="t-r">940</td><td class="t-r">910</td><td class="t-r">22</td><td class="t-r">96.8%</td></tr>
+                    <tr class="clk" onclick="showRegionDetail(this)"><td class="t-l">충청남도</td><td class="t-r">57</td><td class="t-r">1,140</td><td class="t-r">1,106</td><td class="t-r">24</td><td class="t-r">97.0%</td></tr>
+                    <tr class="clk" onclick="showRegionDetail(this)"><td class="t-l">경상북도</td><td class="t-r">44</td><td class="t-r">880</td><td class="t-r">856</td><td class="t-r">17</td><td class="t-r">97.3%</td></tr>
+                    <tr class="clk" onclick="showRegionDetail(this)"><td class="t-l">기타 시도</td><td class="t-r">32</td><td class="t-r">640</td><td class="t-r">626</td><td class="t-r">9</td><td class="t-r">97.8%</td></tr>
+                    <tr class="tot"><td>합계</td><td class="t-r">326</td><td class="t-r">6,520</td><td class="t-r">6,334</td><td class="t-r">129</td><td class="t-r">97.1%</td></tr>
+                  </tbody>
+                </table>
+              </div></div>
+              <div id="rgHeat" hidden>
+                <div class="rg-lgd2"><ul class="legend ml-auto"><li><i class="heat h1"></i>1~5</li><li><i class="heat h2"></i>6~10</li><li><i class="heat h3"></i>11~20</li><li><i class="heat h4"></i>21 이상</li></ul></div>
+          <div class="grid-wrap">
+            <table class="grid fix-head" id="regionHeatmap"><caption class="blind">지역 × 재난유형 히트맵</caption>
+              <thead><tr><th id="unitTh2">시도</th><th>호우</th><th>강풍</th><th>대설</th><th>산불</th><th>한파</th><th title="폭염·태풍·풍랑·화재·지진·홍수·산사태·미세먼지·황사·건조·안개·감염병·가축질병·폭풍해일·지진해일">기타 재난</th><th>합계</th></tr></thead>
+              <tbody>
+                <tr><td class="t-l">전남광주통합특별시</td><td class="heat h3">13</td><td class="heat h1">5</td><td class="heat h1">2</td><td class="heat h1">2</td><td class="heat h1">2</td><td class="heat h3">14</td><td class="t-r"><b>38</b></td></tr><tr><td class="t-l">대전광역시</td><td class="heat h2">7</td><td class="heat h1">2</td><td class="heat h1">1</td><td class="heat h1">1</td><td class="heat h1">1</td><td class="heat h3">12</td><td class="t-r"><b>24</b></td></tr><tr><td class="t-l">울산광역시</td><td class="heat h2">8</td><td class="heat h2">8</td><td class="heat h1">1</td><td class="heat h1">2</td><td class="heat h1">2</td><td class="heat h3">14</td><td class="t-r"><b>35</b></td></tr><tr><td class="t-l">경기도</td><td class="heat h3">19</td><td class="heat h1">5</td><td class="heat h1">4</td><td class="heat h1">2</td><td class="heat h1">4</td><td class="heat h3">15</td><td class="t-r"><b>49</b></td></tr><tr><td class="t-l">강원특별자치도</td><td class="heat h2">8</td><td class="heat h2">6</td><td class="heat h3">11</td><td class="heat h2">8</td><td class="heat h2">6</td><td class="heat h2">8</td><td class="t-r"><b>47</b></td></tr><tr><td class="t-l">충청남도</td><td class="heat h4">23</td><td class="heat h2">6</td><td class="heat h1">5</td><td class="heat h1">3</td><td class="heat h1">4</td><td class="heat h3">16</td><td class="t-r"><b>57</b></td></tr><tr><td class="t-l">경상북도</td><td class="heat h2">10</td><td class="heat h2">6</td><td class="heat h1">4</td><td class="heat h2">6</td><td class="heat h1">3</td><td class="heat h3">15</td><td class="t-r"><b>44</b></td></tr><tr><td class="t-l">기타 시도</td><td class="heat h2">10</td><td class="heat h1">4</td><td class="heat h1">2</td><td class="heat h1">2</td><td class="heat h1">2</td><td class="heat h3">12</td><td class="t-r"><b>32</b></td></tr><tr class="tot"><td>합계</td><td class="t-r">98</td><td class="t-r">42</td><td class="t-r">30</td><td class="t-r">26</td><td class="t-r">24</td><td class="t-r">106</td><td class="t-r">326</td></tr>
+              </tbody>
+            </table>
+          </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ===== 업무영역 끝 ===== -->
+      </main>
+    </div>
+  </div>
+<footer class="ft">
+  <p class="copy">&copy; Ministry of the Interior and Safety. All rights reserved.</p>
+  <span class="desk">SERVICE DESK : 000-0000-0000</span>
+  <a href="privacy.html" class="pp">개인정보처리방침</a>
+  <button type="button" class="btn s btn-line ft-go" onclick="goBoardSystem()">재해문자전광판 시스템 이동<i class="ri-arrow-right-s-line"></i></button>
+</footer>
+
+</div>
+<!-- 모든 프레임 화면 공통 팝업(GNB 내정보 등) -->
+<!-- UI-CO-P01 내정보 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-UI-CO-P01" data-w="540">
+<div class="pop w540" role="dialog" aria-modal="true" aria-labelledby="popTit">
+  <div class="pop-head"><h2 id="popTit">내정보</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
+  <div class="pop-body">
+    <table class="tbl">
+      <caption class="blind">내정보</caption>
+      <colgroup><col style="width:130px"><col></colgroup>
+      <tbody>
+        <tr><th>사용자 ID</th><td>hong.gd</td></tr>
+        <tr><th>사용자명</th><td>홍길동</td></tr>
+        <tr><th>소속기관</th><td>행정안전부</td></tr>
+        <tr><th>부서 / 직급</th><td>재난정보통신과 / 주무관</td></tr>
+        <tr><th>권한</th><td><span class="badge pri">운영자</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pop-foot">
+    <button type="button" class="btn btn-crud" onclick="closePop()">닫기</button>
+  </div>
+</div>
+</template>
+
+<!-- UI-CO-P02 비밀번호 변경 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-UI-CO-P02" data-w="540">
+<div class="pop w540" role="dialog" aria-modal="true" aria-labelledby="popTit">
+  <div class="pop-head"><h2 id="popTit">비밀번호 변경</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
+  <form class="pop-body" id="pwForm" onsubmit="save();return false">
+    <div class="help-box"><i class="ri-shield-keyhole-line"></i><span>비밀번호는 <b>영문·숫자·특수문자를 조합하여 9자 이상</b>으로 설정합니다. 아이디·연속된 문자(3자 이상)·직전 비밀번호는 사용할 수 없으며, 변경 후 다시 로그인해야 합니다.</span></div>
+    <table class="tbl">
+      <caption class="blind">비밀번호 변경</caption>
+      <colgroup><col style="width:150px"><col></colgroup>
+      <tbody>
+        <tr><th><label for="curPassword" class="req">현재 비밀번호</label></th><td><input type="password" class="inp" id="curPassword" name="curPassword" required data-label="현재 비밀번호" autocomplete="current-password"></td></tr>
+        <tr><th><label for="newPassword" class="req">새 비밀번호</label></th><td><input type="password" class="inp" id="newPassword" name="newPassword" required data-label="새 비밀번호" maxlength="20" autocomplete="new-password" oninput="rule()">
+          <ul class="rule" id="ruleList"><li data-r="len">9~20자</li><li data-r="mix">영문·숫자·특수문자 조합</li><li data-r="seq">연속 문자 3자 미만</li><li data-r="id">아이디 미포함</li></ul></td></tr>
+        <tr><th><label for="newPasswordCfm" class="req">새 비밀번호 확인</label></th><td><input type="password" class="inp" id="newPasswordCfm" name="newPasswordCfm" required data-label="새 비밀번호 확인" maxlength="20" autocomplete="new-password" oninput="same()"><span class="f-msg" id="cfmMsg">새 비밀번호를 한 번 더 입력하세요.</span></td></tr>
+      </tbody>
+    </table>
+  </form>
+  <div class="pop-foot">
+    <button type="button" class="btn btn-line" onclick="closePop()">취소</button>
+    <button type="button" class="btn btn-crud" onclick="save()"><i class="ri-save-line"></i>변경</button>
+  </div>
+</div>
+</template>
+
+<!-- UI-CO-P03 메시지창 샘플 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-UI-CO-P03" data-w="540">
+<div class="pop w540" role="dialog" aria-modal="true" aria-labelledby="popTit">
+  <div class="pop-head"><h2 id="popTit">메시지창 샘플</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
+  <div class="pop-body">
+    <div class="help-box"><i class="ri-information-line"></i><span>공통 메시지창(폭 360) 유형입니다. 버튼을 누르면 해당 메시지창이 열립니다. 질의형은 [취소][확인], 데이터 손실이 있는 확인창은 <b>[취소]</b>가 기본 포커스입니다.</span></div>
+    <div class="grid-wrap">
+      <table class="grid">
+        <caption class="blind">메시지창 유형</caption>
+        <colgroup><col style="width:90px"><col><col style="width:110px"></colgroup>
+        <thead><tr><th>구분</th><th>사용 예</th><th>미리보기</th></tr></thead>
+        <tbody>
+          <tr><td><span class="badge in">안내</span></td><td class="t-l">처리 결과·일반 안내</td><td><button type="button" class="btn s btn-line" onclick="alertMsg('조회 조건에 해당하는 데이터가 없습니다.',{ico:'in'})">alert 안내</button></td></tr>
+          <tr><td><span class="badge wn">경고</span></td><td class="t-l">필수값 누락·입력 오류</td><td><button type="button" class="btn s btn-line" onclick="alertMsg('발령일 기간은(는) 필수 입력 항목입니다.',{ico:'wn'})">alert 경고</button></td></tr>
+          <tr><td><span class="badge dg">오류</span></td><td class="t-l">시스템 오류(코드·상세)</td><td><button type="button" class="btn s btn-line" onclick="errSample()">alert 오류</button></td></tr>
+          <tr><td><span class="badge sc">완료</span></td><td class="t-l">저장·발급 완료</td><td><button type="button" class="btn s btn-line" onclick="alertMsg('저장이 완료되었습니다.',{ico:'sc'})">alert 완료</button></td></tr>
+          <tr><td><span class="badge pri">질의</span></td><td class="t-l">저장·등록 확인</td><td><button type="button" class="btn s btn-line" onclick="confirmMsg('입력한 내용을 저장하시겠습니까?',function(){alertMsg('저장이 완료되었습니다.',{ico:'sc'})})">confirm</button></td></tr>
+          <tr><td><span class="badge dg">질의(위험)</span></td><td class="t-l">삭제 등 데이터 손실</td><td><button type="button" class="btn s btn-line" onclick="confirmMsg('선택한 항목을 삭제하시겠습니까?\n삭제된 데이터는 복구할 수 없습니다.',function(){alertMsg('삭제가 완료되었습니다.',{ico:'sc'})},{ico:'wn',danger:true})">confirm 위험</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="pop-foot"><button type="button" class="btn btn-crud" onclick="closePop()">닫기</button></div>
+</div>
+</template>
+
+
+<script src="js/common.js"></script>
+
+<script src="js/pop/UI-CO-P01.js"></script>
+<script src="js/pop/UI-CO-P02.js"></script>
+<script src="js/pop/UI-CO-P03.js"></script>
+
+<script src="js/geo/kr-geo.js"></script>
+<script src="js/gismap.js"></script>
+<script src="js/vendor/echarts.min.js"></script>
+<script src="js/stchart.js"></script>
+<script src="js/pages/stat_event.js"></script>
+</body>
+</html>

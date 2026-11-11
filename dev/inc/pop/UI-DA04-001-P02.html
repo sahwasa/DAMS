@@ -1,0 +1,14 @@
+<!-- UI-DA04-001-P02 연계확인서 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-UI-DA04-001-P02" data-w="900">
+<div class="pop w900" role="dialog" aria-modal="true" aria-labelledby="popTit">
+  <div class="pop-head"><h2 id="popTit">연계확인서</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
+  <div class="pop-body">
+    <p class="cert-info"><i class="ri-information-line"></i>연계확인서 발급 승인 시 자동 생성·등록된 문서입니다. <span id="issInfo"></span></p>
+    <div class="doc-wrap"><div class="doc" id="docArea"></div></div>
+  </div>
+  <div class="pop-foot">
+    <button type="button" class="btn btn-line" onclick="closePop()">닫기</button>
+    <button type="button" class="btn btn-crud" onclick="msg('연계확인서 인쇄를 시작합니다.');window.print()"><i class="ri-printer-line"></i>인쇄</button>
+  </div>
+</div>
+</template>
