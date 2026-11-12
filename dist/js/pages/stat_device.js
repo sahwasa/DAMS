@@ -54,7 +54,7 @@ function showRegionDetail(tr){
   tr.parentNode.querySelectorAll('tr').forEach(function(x){x.classList.toggle('on',x===tr)});
   msg(tr.cells[0].textContent+' 단말기 상태 통계를 표출합니다.');
 }
-/* 매체구분별 단말기 상태 [매체, 설치, 전체(기대 수신), 연결, 끊김] — 매체별 표와 같은 값. DMM: h 가로 막대(연결·끊김 비율) · v 세로 막대(수신율) · d 비율(설치 대수 비중 도넛) */
+/* 매체구분별 단말기 상태 [매체, 설치, 전체(기대 수신), 연결, 끊김] — 매체별 표와 같은 값. DMM: h 가로 막대(연결·끊김 비율, 매체명 아래 설치 대수) · v 세로 막대(수신율, 매체명 아래 설치 대수) · d 비율(설치 대수 비중 도넛) */
 /* 차트 종류 전환(공통): 버튼 그룹 선택 표시 → 모드 변수 저장 → 다시 그림 */
 var DTM='l',RGM='h',DSM='c';
 function chMode(b,v,m,f){b.parentNode.querySelectorAll('button').forEach(function(x){x.className='btn s ico '+(x===b?'btn-pri':'btn-line')});window[v]=m;window[f]();msg(b.closest('.card-h').firstChild.textContent.trim()+' 차트를 '+b.title+'(으)로 표시합니다.')}
@@ -66,11 +66,11 @@ function drawDm(){var el=document.getElementById('deviceTypeChart');var D=DM.map
    title:{text:ins.toLocaleString(),subtext:'설치 대수',left:'26%',top:'40%',textAlign:'center',textStyle:{fontSize:22,fontWeight:700,color:STC.tt},subtextStyle:{fontSize:12,color:STC.gray},itemGap:2},
    legend:ecLegend({orient:'vertical',top:'middle',right:'4%',icon:'circle',itemGap:12,formatter:function(n){var d=D.filter(function(x){return x.n===n})[0];return n+'  '+(d.ins/ins*100).toFixed(1)+'%  (수신율 '+d.rr+'%)'}}),
    series:[{type:'pie',radius:['46%','76%'],center:['26%','52%'],label:{show:false},itemStyle:{borderColor:'#fff',borderWidth:2},data:D.map(function(d,i){return {name:d.n,value:d.ins,itemStyle:{color:MPAL[i]}}})}]});
- if(DMM==='v')return EC(el,{tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(ps){return tt(D[ps[0].dataIndex])}},legend:ecLegend({data:['수신율']}),grid:{left:44,right:8,top:34,bottom:26},
-   xAxis:ecCat(N),yAxis:ecVal({min:95,max:100,interval:1,axisLabel:{color:STC.gray,fontSize:11,formatter:'{value}%'}}),
+ if(DMM==='v')return EC(el,{tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(ps){return tt(D[ps[0].dataIndex])}},legend:ecLegend({data:['수신율']}),grid:{left:44,right:8,top:34,bottom:42},
+   /* 보조 지표: 매체명 아래 설치 대수 */xAxis:ecCat(N,{axisLabel:{interval:0,lineHeight:16,formatter:function(n,i){return '{n|'+n+'}\n{s|설치 '+D[i].ins.toLocaleString()+'대}'},rich:{n:{color:STC.tx,fontSize:12},s:{color:STC.gray,fontSize:11}}}}),yAxis:ecVal({min:95,max:100,interval:1,axisLabel:{color:STC.gray,fontSize:11,formatter:'{value}%'}}),
    series:[{name:'수신율',type:'bar',barMaxWidth:56,itemStyle:{color:STC.sc,borderRadius:[3,3,0,0]},label:{show:true,position:'top',fontSize:12,fontWeight:600,color:STC.tt,formatter:'{c}%'},data:D.map(function(d){return +d.rr})}]});
- var nar=ecNar(el);EC(el,{tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(ps){return tt(D[ps[0].dataIndex])}},legend:ecLegend(),grid:{left:nar?92:100,right:nar?96:150,top:34,bottom:8},
-  xAxis:ecVal({max:100,splitLine:{show:false},axisLabel:{show:false}}),yAxis:ecCat(N,{inverse:true,axisLabel:{color:STC.tt,fontSize:12,fontWeight:600,interval:0}}),
+ var nar=ecNar(el);EC(el,{tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(ps){return tt(D[ps[0].dataIndex])}},legend:ecLegend(),grid:{left:nar?92:104,right:nar?96:150,top:34,bottom:8},
+  xAxis:ecVal({max:100,splitLine:{show:false},axisLabel:{show:false}}),/* 보조 지표: 매체명 아래 설치 대수 */yAxis:ecCat(N,{inverse:true,axisLabel:{interval:0,lineHeight:16,formatter:function(n,i){return '{n|'+n+'}\n{s|설치 '+D[i].ins.toLocaleString()+'대}'},rich:{n:{color:STC.tt,fontSize:12,fontWeight:600,align:'right'},s:{color:STC.gray,fontSize:11,align:'right'}}}}),
   series:[{name:'연결',type:'bar',stack:'t',barMaxWidth:18,itemStyle:{color:STC.sc},data:D.map(function(d){return +d.rr})},
    {name:'끊김',type:'bar',stack:'t',barMaxWidth:18,itemStyle:{color:STC.dg},data:D.map(function(d){return +d.rt}),
     label:{show:true,position:'right',fontSize:12,formatter:function(p){var d=D[p.dataIndex];return nar?'{b|'+d.rr+'%}{a| · }{c|'+d.rt+'%}':'{a|연결 }{b|'+d.rr+'%}{a| · 끊김 }{c|'+d.rt+'%}'},rich:{a:{color:STC.tx,fontSize:12},b:{color:STC.sc,fontWeight:700,fontSize:12},c:{color:STC.dg,fontWeight:700,fontSize:12}}}}]})}
