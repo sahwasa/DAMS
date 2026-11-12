@@ -1,3 +1,8 @@
 // 재난발생현황 | 재난 예경보 통합관리시스템 화면 전용
 @use "../abstracts" as *;
-.src-t{margin-left:6px;font-size:12px;color:#707070;white-space:nowrap}
+.src-t {
+  margin-left: 6px;
+  font-size: 12px;
+  color: $g60;
+  white-space: nowrap;
+}

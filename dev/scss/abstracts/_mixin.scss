@@ -1,2 +1,21 @@
 // 버튼 색 세트 믹스인
-@mixin btn($bg,$c,$bd,$h-bg,$h-bd,$a-bg,$a-bd,$d-bg,$d-c,$d-bd){background:$bg;color:$c;border-color:$bd;&:hover{background:$h-bg;border-color:$h-bd}&:active,&.on{background:$a-bg;border-color:$a-bd}&:disabled,&.dis{background:$d-bg;color:$d-c;border-color:$d-bd}}
+@mixin btn($bg, $c, $bd, $h-bg, $h-bd, $a-bg, $a-bd, $d-bg, $d-c, $d-bd) {
+  background: $bg;
+  color: $c;
+  border-color: $bd;
+  &:hover {
+    background: $h-bg;
+    border-color: $h-bd;
+  }
+  &:active,
+  &.on {
+    background: $a-bg;
+    border-color: $a-bd;
+  }
+  &:disabled,
+  &.dis {
+    background: $d-bg;
+    color: $d-c;
+    border-color: $d-bd;
+  }
+}

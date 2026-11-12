@@ -1,17 +1,91 @@
 /* 장애이력 | 재난 예경보 통합관리시스템 */
-var TOTAL=23;
-function setCnt(n,pages){document.getElementById('totCnt').textContent=n.toLocaleString();var p=document.getElementById('pgBtns');p.dataset.total=pages;p.dataset.page=1;initPaging(p.parentNode)}
-window.onSearch=function(f){
-  var k=f.searchKeyword?f.searchKeyword.value.trim():'',ss=[].slice.call(f.querySelectorAll('[data-f]')),tb=document.querySelector('.grid tbody'),n=0;
-  var on=k||ss.some(function(s){return s.value.trim()});
-  tb.querySelectorAll('tr:not(.nodata)').forEach(function(tr){var ok=(!k||tr.textContent.indexOf(k)>-1)&&ss.every(function(s){var v=tr.cells[+s.dataset.f].textContent.trim();if(s.dataset.m==='st')v=v.indexOf('미복구')>-1?'미복구':'복구완료';var w=s.value.trim();return !w||(s.tagName==='INPUT'||s.dataset.m==='has'?v.indexOf(w)>-1:v===w)});tr.hidden=!ok;if(ok)n++});
-  tb.querySelector('.nodata').hidden=n>0;
-  if(on)setCnt(n,1);else setCnt(TOTAL,Math.ceil(TOTAL/+document.getElementById('pageSize').value));
-  msg(n?'조회가 완료되었습니다.':'검색된 결과가 없습니다.');return false;
+var TOTAL = 23;
+function setCnt(n, pages) {
+  document.getElementById('totCnt').textContent = n.toLocaleString();
+  var p = document.getElementById('pgBtns');
+  p.dataset.total = pages;
+  p.dataset.page = 1;
+  initPaging(p.parentNode);
+}
+/* TODO(API): 검색 조건(form)으로 목록 조회 API 호출 후 목록·건수·페이징 갱신 */
+window.onSearch = function (f) {
+  var k = f.searchKeyword ? f.searchKeyword.value.trim() : '',
+    ss = [].slice.call(f.querySelectorAll('[data-f]')),
+    tb = document.querySelector('.grid tbody'),
+    n = 0;
+  var on =
+    k ||
+    ss.some(function (s) {
+      return s.value.trim();
+    });
+  tb.querySelectorAll('tr:not(.nodata)').forEach(function (tr) {
+    var ok =
+      (!k || tr.textContent.indexOf(k) > -1) &&
+      ss.every(function (s) {
+        var v = tr.cells[+s.dataset.f].textContent.trim();
+        if (s.dataset.m === 'st') v = v.indexOf('미복구') > -1 ? '미복구' : '복구완료';
+        var w = s.value.trim();
+        return !w || (s.tagName === 'INPUT' || s.dataset.m === 'has' ? v.indexOf(w) > -1 : v === w);
+      });
+    tr.hidden = !ok;
+    if (ok) n++;
+  });
+  tb.querySelector('.nodata').hidden = n > 0;
+  if (on) setCnt(n, 1);
+  else setCnt(TOTAL, Math.ceil(TOTAL / +document.getElementById('pageSize').value));
+  msg(n ? '조회가 완료되었습니다.' : '검색된 결과가 없습니다.');
+  return false;
 };
-document.getElementById('schForm').addEventListener('reset',function(){setTimeout(function(){document.querySelectorAll('.grid tbody tr').forEach(function(tr){tr.hidden=tr.classList.contains('nodata')});setCnt(TOTAL,Math.ceil(TOTAL/+document.getElementById('pageSize').value))})});
-function applySize(){var s=+document.getElementById('pageSize').value,c=+document.getElementById('totCnt').textContent.replace(/,/g,'');setCnt(c,Math.max(1,Math.ceil(c/s)));msg('페이지당 '+s+'건으로 목록을 조회하였습니다.')}
-function popUrl(u,o){return u+'?'+new URLSearchParams(o).toString()}
-var ROWS=[["서버자원", "DB서버", "디스크 사용률 85% 초과 (/data 파티션)", "2026-10-30 09:12", "2026-10-30 10:40", "이*영", "90일 경과 임시 백업파일 정리, 여유공간 31% 확보"], ["데이터베이스", "DB서버", "통보문 수신 테이블 잠금 대기 증가 (Lock wait 40초)", "2026-10-29 21:05", "2026-10-29 21:30", "박*수", "장기 실행 통계 쿼리 세션 종료 및 인덱스 추가"], ["네트워크", "강원 철원군 연계서버", "연계 통신 타임아웃 3회 연속 발생으로 인한 일시 단절", "2026-10-28 03:41", "2026-10-28 03:58", "이*호", "기관 측 방화벽 세션 초기화 요청 후 정상화 확인"], ["네트워크", "충남 아산시 연계서버", "연계서버 응답 지연 (평균 응답 12초)", "2026-10-27 16:50", "", "김*호", ""], ["프로세스", "울산 남구 예경보서버", "송출 프로세스 비정상 종료", "2026-10-26 11:05", "2026-10-26 11:06", "박*수", "감시 스크립트에 의한 자동 재기동, 원인 로그 분석 중"], ["네트워크", "통합플랫폼 GW", "경북 포항시 연계 GW 세션 끊김", "2026-10-24 07:20", "2026-10-24 07:52", "이*호", "GW 세션 재연결 및 keep-alive 주기 30초로 조정"], ["단말기통신", "울산 남구 예경보서버", "재해문자전광판 4개소 상태보고 미수신", "2026-10-22 14:30", "2026-10-22 18:10", "정*민", "통신 모듈 전원 재인가 (현장 출동)"], ["서버자원", "WAS서버 1호", "힙 메모리 사용률 90% 초과로 응답 지연", "2026-10-20 13:02", "2026-10-20 13:35", "김*호", "힙 메모리 4GB → 6GB 상향 후 재기동"], ["프로세스", "연계서버 2호", "단말기 상태수집 배치 비정상 종료", "2026-10-18 02:00", "2026-10-18 02:20", "박*수", "배치 재실행, 누락 구간 재수집 완료"], ["네트워크", "연계서버 1호", "전남광주 여수시 연계 통신 타임아웃", "2026-10-15 19:47", "2026-10-15 20:05", "이*호", "기관 회선 장애 (통신사 복구)"], ["데이터베이스", "DB서버", "통계 집계 배치 지연 (10/13분 누락)", "2026-10-14 01:00", "2026-10-14 16:20", "박*수", "배치 재처리로 312건 재집계"], ["서버자원", "연계서버 2호", "CPU 사용률 92% 초과", "2026-10-13 10:15", "2026-10-13 10:28", "김*호", "중복 실행된 수집 스레드 정리"], ["단말기통신", "충남 아산시 연계서버", "자동음성통보 단말 2개소 응답 없음", "2026-10-11 08:40", "2026-10-11 15:00", "최*진", "현장 점검 결과 정전, 한전 복구 후 정상"], ["네트워크", "WEB서버", "외부 접속 일시 불가 (L4 헬스체크 실패)", "2026-10-09 17:22", "2026-10-09 17:31", "강*수", "L4 헬스체크 URL 변경 후 정상화"], ["프로세스", "WAS서버 2호", "세션 클러스터링 동기화 오류", "2026-10-07 10:05", "2026-10-07 10:40", "강*수", "클러스터 노드 순차 재기동"]];
-function openEdit(i){document.querySelectorAll('#histBody tbody tr').forEach(function(x,k){x.classList.toggle('on',k===i)});if(i==null){openPop('pop/UI-DA08-004-P01.html',760);return}var r=ROWS[i];var tds=document.querySelectorAll('#histBody tbody tr')[i].cells;openPop(popUrl('pop/UI-DA08-004-P01.html',{mode:'edit',se:r[0],srv:r[1],org:tds[3].textContent,ds:tds[4].textContent,cn:r[2],oc:r[3],rs:r[4],nm:r[5],act:r[6]}),760)}
-window.onPopOk=function(k){msg(k==='delete'?'장애이력이 삭제되었습니다.':k==='edit'?'장애 조치내용이 수정되었습니다.':'장애가 접수되었습니다.')};
+document.getElementById('schForm').addEventListener('reset', function () {
+  setTimeout(function () {
+    document.querySelectorAll('.grid tbody tr').forEach(function (tr) {
+      tr.hidden = tr.classList.contains('nodata');
+    });
+    setCnt(TOTAL, Math.ceil(TOTAL / +document.getElementById('pageSize').value));
+  });
+});
+function applySize() {
+  var s = +document.getElementById('pageSize').value,
+    c = +document.getElementById('totCnt').textContent.replace(/,/g, '');
+  setCnt(c, Math.max(1, Math.ceil(c / s)));
+  msg('페이지당 ' + s + '건으로 목록을 조회하였습니다.');
+}
+function popUrl(u, o) {
+  return u + '?' + new URLSearchParams(o).toString();
+}
+/* 샘플 데이터 ROWS → log_dsblty.data.js */
+function openEdit(i) {
+  document.querySelectorAll('#histBody tbody tr').forEach(function (x, k) {
+    x.classList.toggle('on', k === i);
+  });
+  if (i == null) {
+    openPop('pop/UI-DA08-004-P01.html', 760);
+    return;
+  }
+  var r = ROWS[i];
+  var tds = document.querySelectorAll('#histBody tbody tr')[i].cells;
+  openPop(
+    popUrl('pop/UI-DA08-004-P01.html', {
+      mode: 'edit',
+      se: r[0],
+      srv: r[1],
+      org: tds[3].textContent,
+      ds: tds[4].textContent,
+      cn: r[2],
+      oc: r[3],
+      rs: r[4],
+      nm: r[5],
+      act: r[6]
+    }),
+    760
+  );
+}
+window.onPopOk = function (k) {
+  msg(
+    k === 'delete'
+      ? '장애이력이 삭제되었습니다.'
+      : k === 'edit'
+        ? '장애 조치내용이 수정되었습니다.'
+        : '장애가 접수되었습니다.'
+  );
+};

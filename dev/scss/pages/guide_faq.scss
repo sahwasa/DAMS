@@ -1,28 +1,68 @@
 // FAQ | 재난 예경보 통합관리시스템 화면 전용
 @use "../abstracts" as *;
-.faq{
-  .faq-q, .faq-a{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;margin-right:8px;border-radius:50%;background:#3e55e1;color:#fff;font-size:12px;font-weight:700;vertical-align:middle}
-  .faq-a{background:#ffb724;color:#66490e;float:left}
-  tr{
-    &.ans{
-      td{white-space:normal;background:#f8f8f8!important;padding:14px 16px;line-height:1.7;color:#202020;
-        >div{overflow:hidden}
+.faq {
+  .faq-q,
+  .faq-a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    margin-right: 8px;
+    border-radius: 50%;
+    background: $pri;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    vertical-align: middle;
+  }
+  .faq-a {
+    background: $wn;
+    color: $wn-t2;
+    float: left;
+  }
+  tr {
+    &.ans {
+      td {
+        white-space: normal;
+        background: $g5 !important;
+        padding: 14px 16px;
+        line-height: 1.7;
+        color: $g80;
+        > div {
+          overflow: hidden;
+        }
       }
     }
   }
-  td.arr i{font-size:18px;color:#8e8e8e;display:inline-block;transition:.15s}
-  tr{
-    &.on{
-      td.arr i{transform:rotate(180deg);color:#3e55e1}
-      td{font-weight:600;color:#101010}
+  td.arr i {
+    font-size: 18px;
+    color: $g50;
+    display: inline-block;
+    transition: 0.15s;
+  }
+  tr {
+    &.on {
+      td.arr i {
+        transform: rotate(180deg);
+        color: $pri;
+      }
+      td {
+        font-weight: 600;
+        color: $g90;
+      }
     }
   }
 }
-@media (max-width:767px){
-  .faq{
-    td{
-      &.arr::before{display:none}
-      &.arr{justify-content:flex-end!important}
+@media (max-width: 767px) {
+  .faq {
+    td {
+      &.arr::before {
+        display: none;
+      }
+      &.arr {
+        justify-content: flex-end !important;
+      }
     }
   }
 }

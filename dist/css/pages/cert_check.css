@@ -39,7 +39,8 @@
 
 /* 새 창(1280×860)에서 창 전체 스크롤 없이 탭 목록·서식만 스크롤 */
 @media (min-width: 768px) {
-  html, body.win-body {
+  html,
+  body.win-body {
     height: 100% !important;
     overflow: hidden !important;
   }
@@ -57,7 +58,8 @@
     flex-direction: column;
     overflow: hidden !important;
   }
-  #tabArea:not([hidden]), #docSec:not([hidden]) {
+  #tabArea:not([hidden]),
+  #docSec:not([hidden]) {
     flex: 1 1 auto;
     min-height: 0;
     display: flex;

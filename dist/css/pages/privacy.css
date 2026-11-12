@@ -118,7 +118,8 @@ body {
   font-weight: 700;
   color: #101010;
 }
-.pp section p, .pp section li {
+.pp section p,
+.pp section li {
   font-size: 15px;
   line-height: 1.8;
   color: #303030;
@@ -140,7 +141,8 @@ body {
   border-radius: 50%;
   background: #707070;
 }
-.pp .tbl, .pp .grid-wrap {
+.pp .tbl,
+.pp .grid-wrap {
   margin-top: 10px;
 }
 
@@ -173,7 +175,8 @@ body {
   .pp-head .btns .btn i {
     font-size: 18px;
   }
-  .pp-head .btns .btn span, .pp-head h1 .gov-logo + span {
+  .pp-head .btns .btn span,
+  .pp-head h1 .gov-logo + span {
     white-space: nowrap;
   }
   .pp {

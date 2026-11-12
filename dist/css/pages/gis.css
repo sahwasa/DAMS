@@ -15,7 +15,8 @@
   min-height: 600px;
 }
 
-.gis-side, .gis-dtl {
+.gis-side,
+.gis-dtl {
   flex: 0 0 360px;
   display: flex;
   flex-direction: column;
@@ -85,7 +86,8 @@
   display: none;
 }
 
-.gis-flt-b .flex > .sel, .gis-flt-b .flex > .inp {
+.gis-flt-b .flex > .sel,
+.gis-flt-b .flex > .inp {
   flex: 1 1 0;
   min-width: 0;
   width: 0;
@@ -202,7 +204,8 @@
   flex-wrap: wrap;
   gap: 4px;
 }
-.chips span, .chips button {
+.chips span,
+.chips button {
   display: inline-flex;
   align-items: center;
   height: 20px;
@@ -523,7 +526,8 @@
     flex-direction: column;
     min-height: 0;
   }
-  .gis-side, .gis-dtl {
+  .gis-side,
+  .gis-dtl {
     flex: none;
     width: 100%;
   }
@@ -548,7 +552,8 @@
 }
 /* 넓은 화면: 화면명·브레드크럼 숨기고 지도 영역 최대 */
 @media (max-width: 767px) {
-  .gis.dtl-on .gis-side, .gis:not(.dtl-on) .gis-dtl {
+  .gis.dtl-on .gis-side,
+  .gis:not(.dtl-on) .gis-dtl {
     display: none;
   }
   .gis-dtl .gis-h .back.m-only {

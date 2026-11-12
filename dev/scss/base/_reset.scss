@@ -1,46 +1,173 @@
 @use "../abstracts" as *;
 /* ---------- 2. Reset ---------- */
-*,*::before,*::after{box-sizing:border-box}
-html,body{margin:0;padding:0;height:100%}
-body{font:400 #{$fs-b}/1.5 $ff;color:$c-body;background:#fff;letter-spacing:-.01em;min-width:$lnb-w + $work-min}
-.m-only{display:none!important}
-h1,h2,h3,h4,p,ul,ol,dl,dd,figure{margin:0;padding:0}
-ul,ol{list-style:none}
-a{color:inherit;text-decoration:none}
-button,input,select,textarea{font:inherit;color:inherit;letter-spacing:inherit}
-button{cursor:pointer;background:none;border:0;padding:0}
-table{border-collapse:collapse;border-spacing:0;width:100%}
-img{border:0;vertical-align:middle}
-[hidden]{display:none!important}
-.blind{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+body {
+  font: 400 #{$fs-b}/ 1.5 $ff;
+  color: $c-body;
+  background: #fff;
+  letter-spacing: -0.01em;
+  min-width: $lnb-w + $work-min;
+}
+.m-only {
+  display: none !important;
+}
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+dl,
+dd,
+figure {
+  margin: 0;
+  padding: 0;
+}
+ul,
+ol {
+  list-style: none;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+}
+button {
+  cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 0;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+img {
+  border: 0;
+  vertical-align: middle;
+}
+[hidden] {
+  display: none !important;
+}
+.blind {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
 // 건너뛰기 링크(KWCAG 6.4.1 반복 영역 건너뛰기): 평소 화면 밖, 키보드 포커스 시 왼쪽 위에 표시
-.skip{
-  a{position:absolute;left:-9999px;top:0;z-index:1000;padding:10px 16px;background:$sec;color:#fff;font-size:$fs-b;font-weight:700;white-space:nowrap;
-    &:focus{left:0;outline:2px solid $pri;outline-offset:-2px}
+.skip {
+  a {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 1000;
+    padding: 10px 16px;
+    background: $sec;
+    color: #fff;
+    font-size: $fs-b;
+    font-weight: 700;
+    white-space: nowrap;
+    &:focus {
+      left: 0;
+      outline: 2px solid $pri;
+      outline-offset: -2px;
+    }
   }
 }
-#content:focus,#gnbMenu:focus,#lnbMenu:focus{outline:0}
+#content:focus,
+#gnbMenu:focus,
+#lnbMenu:focus {
+  outline: 0;
+}
 // 스크롤 영역 키보드 포커스(common.js scrollFocus — 안에 포커스 요소가 없는 스크롤 영역에 tabindex=0)
-[data-sf]:focus-visible{outline:2px solid $pri;outline-offset:-2px}
+[data-sf]:focus-visible {
+  outline: 2px solid $pri;
+  outline-offset: -2px;
+}
 // 팝업 form 래퍼(role=dialog는 div에, form은 상자 없이 — axe aria-allowed-role)
-.pop-frm{display:contents}
+.pop-frm {
+  display: contents;
+}
 // 본문 속 링크는 색만으로 구분하지 않음(밑줄)
-.lk-u{text-decoration:underline}
-.req::after{content:"*";color:$dg;margin-left:2px}
-.t-l{text-align:left!important}
-.t-c{text-align:center!important}
-.t-r{text-align:right!important}
-.c-pri{color:$pri}
-.c-dg{color:$dg-t}
-.c-sc{color:$sc-t}
-.c-wn{color:$wn-t}
-.c-in{color:$in-t}
-.mt0{margin-top:0!important}
-.mt8{margin-top:8px!important}
-.mt16{margin-top:16px!important}
-.mt24{margin-top:24px!important}
-.w100{width:100%!important}
-.w150{width:150px!important}
-.w200{width:200px!important}
-.flex{display:flex;align-items:center;gap:6px}
-.ml-auto{margin-left:auto}
+.lk-u {
+  text-decoration: underline;
+}
+.req::after {
+  content: "*";
+  color: $dg;
+  margin-left: 2px;
+}
+.t-l {
+  text-align: left !important;
+}
+.t-c {
+  text-align: center !important;
+}
+.t-r {
+  text-align: right !important;
+}
+.c-pri {
+  color: $pri;
+}
+.c-dg {
+  color: $dg-t;
+}
+.c-sc {
+  color: $sc-t;
+}
+.c-wn {
+  color: $wn-t;
+}
+.c-in {
+  color: $in-t;
+}
+.mt0 {
+  margin-top: 0 !important;
+}
+.mt8 {
+  margin-top: 8px !important;
+}
+.mt16 {
+  margin-top: 16px !important;
+}
+.mt24 {
+  margin-top: 24px !important;
+}
+.w100 {
+  width: 100% !important;
+}
+.w150 {
+  width: 150px !important;
+}
+.w200 {
+  width: 200px !important;
+}
+.flex {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.ml-auto {
+  margin-left: auto;
+}

@@ -1,32 +1,94 @@
 @use "../abstracts" as *;
 /* ---------- 17. Grid ext / Result ---------- */
-.grid{
-  tbody{
-    tr{
-      &.grp{
-        td{background:$g10;font-weight:600;color:$c-title;text-align:left;
-          em{font-style:normal;font-weight:400;font-size:12px;color:$g70;margin-left:8px}
+.grid {
+  tbody {
+    tr {
+      &.grp {
+        td {
+          background: $g10;
+          font-weight: 600;
+          color: $c-title;
+          text-align: left;
+          em {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            color: $g70;
+            margin-left: 8px;
+          }
         }
       }
-      &.ng td{background:$dg-s}
-      &.clk{cursor:pointer}
+      &.ng td {
+        background: $dg-s;
+      }
+      &.clk {
+        cursor: pointer;
+      }
     }
   }
 }
-.result-box{display:flex;align-items:center;gap:14px;padding:12px 18px;margin-bottom:16px;border:1px solid;border-radius:$r;
-  >i{font-size:30px}
-  b{display:block;font-size:$fs-b}
-  span{font-size:$fs-xs;color:$c-body}
-  .btn{margin-left:auto}
-  &.sc{background:$sc-s;border-color:$sc-b;color:$sc-t}
-  &.dg{background:$dg-s;border-color:$dg-b;color:$dg-t}
+.result-box {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 18px;
+  margin-bottom: 16px;
+  border: 1px solid;
+  border-radius: $r;
+  > i {
+    font-size: 30px;
+  }
+  b {
+    display: block;
+    font-size: $fs-b;
+  }
+  span {
+    font-size: $fs-xs;
+    color: $c-body;
+  }
+  .btn {
+    margin-left: auto;
+  }
+  &.sc {
+    background: $sc-s;
+    border-color: $sc-b;
+    color: $sc-t;
+  }
+  &.dg {
+    background: $dg-s;
+    border-color: $dg-b;
+    color: $dg-t;
+  }
 }
-.log-box{margin-top:12px;padding:8px 14px;max-height:120px;overflow-y:auto;background:$g5;border:1px solid $c-line2;border-radius:$r;font:12px/1.75 Consolas,Menlo,monospace;color:$c-title;
-  .fin{color:$sc-t;font-weight:700}
+.log-box {
+  margin-top: 12px;
+  padding: 8px 14px;
+  max-height: 120px;
+  overflow-y: auto;
+  background: $g5;
+  border: 1px solid $c-line2;
+  border-radius: $r;
+  font:
+    12px/1.75 Consolas,
+    Menlo,
+    monospace;
+  color: $c-title;
+  .fin {
+    color: $sc-t;
+    font-weight: 700;
+  }
 }
-.tab{
-  li{
-    .badge{margin-left:6px;height:20px;padding-top:1px;font-size:11px;line-height:1}
-    &.on .badge{background:#fff}
+.tab {
+  li {
+    .badge {
+      margin-left: 6px;
+      height: 20px;
+      padding-top: 1px;
+      font-size: 11px;
+      line-height: 1;
+    }
+    &.on .badge {
+      background: #fff;
+    }
   }
 }

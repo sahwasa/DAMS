@@ -1,75 +1,196 @@
 /* 재난코드관리 | 재난 예경보 통합관리시스템 */
 /* 대분류 [코드,명,설명,사용] / 중분류 {대분류:[[코드,명,설명,사용],..]} / 상세 {중분류:[[코드,명,사용,통보서식사용]]} */
 /* 사건분류코드: 재난 예경보 통합플랫폼 연동 가이드라인 v1.5.3 별첨6(재난 사건코드 정의표) 222종 — 대분류=구분, 중분류=재난명(코드 가칭), 상세=eventCode */
-var L=[["T1", "자연재난", "재난코드 대분류(자연)", "Y"], ["T2", "사회재난", "재난코드 대분류(사회)", "Y"], ["T3", "기타재난", "지역재난·시험·재난정보", "Y"]];
+var L = [
+  ['T1', '자연재난', '재난코드 대분류(자연)', 'Y'],
+  ['T2', '사회재난', '재난코드 대분류(사회)', 'Y'],
+  ['T3', '기타재난', '지역재난·시험·재난정보', 'Y']
+];
 /* 대분류 [코드,명,설명,사용] / 중분류 {대분류:[[코드,명,설명,사용],..]} / 상세 {중분류:[[코드,명,사용,통보서식사용]]} */
-var M={"T1": [["T10101", "지진", "지진", "Y"], ["T10102", "지진해일", "지진해일", "Y"], ["T10103", "화산", "화산", "Y"], ["T10104", "홍수", "홍수", "Y"], ["T10105", "강풍", "강풍", "Y"], ["T10106", "호우", "호우", "Y"], ["T10107", "한파", "한파", "Y"], ["T10108", "건조", "건조", "Y"], ["T10109", "폭풍해일", "폭풍해일", "Y"], ["T10110", "풍랑", "풍랑", "Y"], ["T10111", "태풍", "태풍", "Y"], ["T10112", "대설", "대설", "Y"], ["T10113", "황사", "황사", "Y"], ["T10114", "폭염", "폭염", "Y"], ["T10115", "안개", "안개", "Y"], ["T10116", "낙뢰", "낙뢰", "Y"], ["T10117", "가뭄", "가뭄", "Y"], ["T10118", "자연우주물체 추락/충돌", "자연우주물체 추락/충돌", "Y"], ["T10119", "산사태", "산사태", "Y"], ["T10120", "기타", "기타 자연재난", "Y"]], "T2": [["T20101", "산불", "산불", "Y"], ["T20102", "민방위", "민방위", "Y"], ["T20103", "정부 중요시설", "정부 중요시설", "Y"], ["T20104", "통신", "통신", "Y"], ["T20105", "인공우주물체 추락/충돌", "인공우주물체 추락/충돌", "Y"], ["T20106", "GPS 전파 혼신", "GPS 전파 혼신", "Y"], ["T20107", "미세먼지", "미세먼지", "Y"], ["T20108", "수질오염", "수질오염", "Y"], ["T20109", "유해화학물질", "유해화학물질", "Y"], ["T20110", "감염병", "감염병", "Y"], ["T20111", "가축질병", "가축질병", "Y"], ["T20112", "에너지", "에너지", "Y"], ["T20113", "철도 사고", "철도 사고", "Y"], ["T20114", "시설물 붕괴", "시설물 붕괴", "Y"], ["T20115", "해양 선박사고", "해양 선박사고", "Y"], ["T20116", "해양 오염", "해양 오염", "Y"], ["T20117", "금융 기반 시설 사고", "금융 기반 시설 사고", "Y"], ["T20118", "댐 붕괴 사고", "댐 붕괴 사고", "Y"], ["T20119", "식용수", "식용수", "Y"], ["T20120", "테러", "테러", "Y"], ["T20121", "화재폭발", "화재폭발", "Y"], ["T20122", "방사능 누출사고", "방사능 누출사고", "Y"], ["T20123", "원자력 시설사고", "원자력 시설사고", "Y"], ["T20124", "인접국가 방사능 누출사고", "인접국가 방사능 누출사고", "Y"], ["T20125", "가정 안전사고", "가정 안전사고", "Y"], ["T20126", "기타", "기타 사회재난", "Y"]], "T3": [["T30101", "지역재난", "지역재난", "Y"], ["T30102", "시험", "시험", "Y"], ["T30103", "재난정보", "재난정보", "Y"]]};
-var D={"T10101": [["EQI", "지진정보", "Y", 1], ["EQW", "지진속보", "Y", 1], ["EEW", "지진조기경보", "Y", 1], ["FEI", "국외지진정보", "Y", 1]],
- "T10102": [["TSA", "지진해일 주의보", "Y", 1], ["TSL", "지진해일 주의보 해제", "Y", 1], ["TSW", "지진해일 경보", "Y", 1], ["TSC", "지진해일 경보 해제", "Y", 1], ["TSO", "지진해일 경보/주의보", "Y", 1], ["TSR", "지진해일 경보/주의보 해제", "Y", 1], ["TSI", "지진해일 정보", "Y", 1]],
- "T10103": [["VOI", "화산정보", "Y", 1], ["VOA", "화산재 주의보", "Y", 1], ["VOL", "화산재 주의보 해제", "Y", 1], ["VOW", "화산재 경보", "Y", 1], ["VOC", "화산재 경보 해제", "Y", 1], ["VOO", "화산재 주의보/경보", "Y", 1], ["VOR", "화산재 주의보/경보 해제", "Y", 1]],
- "T10104": [["FLA", "홍수 주의보", "Y", 1], ["FLL", "홍수 주의보 해제", "Y", 1], ["FLG", "홍수 주의보 변경", "Y", 1], ["FLW", "홍수 경보", "Y", 1], ["FLC", "홍수 경보 해제", "Y", 1], ["FLN", "홍수 경보 변경", "Y", 1], ["FLS", "홍수 안내정보", "Y", 1]],
- "T10105": [["HWA", "강풍 주의보", "Y", 1], ["HWG", "강풍 주의보 변경", "Y", 1], ["HWL", "강풍 주의보 해제", "Y", 1], ["HWW", "강풍 경보", "Y", 1], ["HWN", "강풍 경보 변경", "Y", 1], ["HWC", "강풍 경보 해제", "Y", 1], ["HWE", "강풍 긴급정보", "Y", 1], ["HWS", "강풍 안내정보", "Y", 1]],
- "T10106": [["HRA", "호우 주의보", "Y", 1], ["HRG", "호우 주의보 변경", "Y", 1], ["HRL", "호우 주의보 해제", "Y", 1], ["HRW", "호우 경보", "Y", 1], ["HRN", "호우 경보 변경", "Y", 1], ["HRC", "호우 경보 해제", "Y", 1], ["HRE", "호우 긴급정보", "Y", 1], ["HRS", "호우 안내정보", "Y", 1]],
- "T10107": [["CWA", "한파 주의보", "Y", 1], ["CWG", "한파 주의보 변경", "Y", 1], ["CWL", "한파 주의보 해제", "Y", 1], ["CWW", "한파 경보", "Y", 1], ["CWN", "한파 경보 변경", "Y", 1], ["CWC", "한파 경보 해제", "Y", 1], ["CWE", "한파 긴급정보", "Y", 1], ["CWS", "한파 안내정보", "Y", 1]],
- "T10108": [["HAA", "건조 주의보", "Y", 1], ["HAG", "건조 주의보 변경", "Y", 1], ["HAL", "건조 주의보 해제", "Y", 1], ["HAW", "건조 경보", "Y", 1], ["HAN", "건조 경보 변경", "Y", 1], ["HAC", "건조 경보 해제", "Y", 1], ["HAE", "건조 긴급정보", "Y", 1], ["HAS", "건조 안내정보", "Y", 1]],
- "T10109": [["SSA", "폭풍해일 주의보", "Y", 1], ["SSG", "폭풍해일 주의보 변경", "Y", 1], ["SSL", "폭풍해일 주의보 해제", "Y", 1], ["SSW", "폭풍해일 경보", "Y", 1], ["SSN", "폭풍해일 경보 변경", "Y", 1], ["SSC", "폭풍해일 경보 해제", "Y", 1], ["SSE", "폭풍해일 긴급정보", "Y", 1], ["SSS", "폭풍해일 안내정보", "Y", 1]],
- "T10110": [["WWA", "풍랑 주의보", "Y", 1], ["WWG", "풍랑 주의보 변경", "Y", 1], ["WWL", "풍랑 주의보 해제", "Y", 1], ["WWW", "풍랑 경보", "Y", 1], ["WWN", "풍랑 경보 변경", "Y", 1], ["WWC", "풍랑 경보 해제", "Y", 1], ["WWE", "풍랑 긴급정보", "Y", 1], ["WWS", "풍랑 안내정보", "Y", 1]],
- "T10111": [["TPA", "태풍 주의보", "Y", 1], ["TPG", "태풍 주의보 변경", "Y", 1], ["TPL", "태풍 주의보 해제", "Y", 1], ["TPW", "태풍 경보", "Y", 1], ["TPN", "태풍 경보 변경", "Y", 1], ["TPC", "태풍 경보 해제", "Y", 1], ["TPE", "태풍 긴급정보", "Y", 1], ["TPS", "태풍 안내정보", "Y", 1]],
- "T10112": [["HSA", "대설 주의보", "Y", 1], ["HSG", "대설 주의보 변경", "Y", 1], ["HSL", "대설 주의보 해제", "Y", 1], ["HSW", "대설 경보", "Y", 1], ["HSN", "대설 경보 변경", "Y", 1], ["HSC", "대설 경보 해제", "Y", 1], ["HSE", "대설 긴급정보", "Y", 1], ["HSS", "대설 안내정보", "Y", 1]],
- "T10113": [["YSW", "황사 경보", "Y", 1], ["YSN", "황사 경보 변경", "Y", 1], ["YSC", "황사 경보 해제", "Y", 1], ["YSE", "황사 긴급정보", "Y", 1], ["YSS", "황사 안내정보", "Y", 1]],
- "T10114": [["HTA", "폭염 주의보", "Y", 1], ["HTG", "폭염 주의보 변경", "Y", 1], ["HTL", "폭염 주의보 해제", "Y", 1], ["HTW", "폭염 경보", "Y", 1], ["HTN", "폭염 경보 변경", "Y", 1], ["HTC", "폭염 경보 해제", "Y", 1], ["HTE", "폭염 긴급정보", "Y", 1], ["HTS", "폭염 안내정보", "Y", 1]],
- "T10115": [["HFA", "안개 주의보", "Y", 1], ["HFG", "안개 주의보 변경", "Y", 1], ["HFL", "안개 주의보 해제", "Y", 1], ["HFW", "안개 경보", "Y", 1], ["HFN", "안개 경보 변경", "Y", 1], ["HFC", "안개 경보 해제", "Y", 1], ["HFE", "안개 긴급정보", "Y", 1], ["HFS", "안개 안내정보", "Y", 1]],
- "T10116": [["THW", "낙뢰 경보(심각)", "Y", 1], ["THS", "낙뢰 안내정보", "Y", 1]],
- "T10117": [["DRW", "가뭄 경보(심각)", "Y", 1], ["DRS", "가뭄 안내정보", "Y", 1]],
- "T10118": [["NSD", "자연우주물체 사고", "Y", 1], ["NSW", "자연우주물체 경보(경계, 심각)", "Y", 1], ["NSV", "자연우주물체 추락/충돌 대피", "Y", 1], ["NSS", "자연우주물체 추락/충돌 안내정보", "Y", 1]],
- "T10119": [["AVA", "산사태 주의보", "Y", 1], ["AVW", "산사태 경보", "Y", 1], ["AVC", "산사태 경보 해제", "Y", 1], ["AVS", "산사태 안내정보", "Y", 1]],
- "T10120": [["NHW", "기타 자연재난", "Y", 1], ["NHS", "기타 자연재난 안내정보", "Y", 1]],
- "T20101": [["MFA", "산불 주의보", "Y", 1], ["MFW", "산불 경보(경계,심각)", "Y", 1], ["MFV", "산불 대피", "Y", 1], ["MFC", "산불 경보 해제", "Y", 1], ["MFE", "산불 긴급정보", "Y", 1], ["MFS", "산불 안내정보", "Y", 1]],
- "T20102": [["CPW", "민방위 경계경보", "Y", 1], ["CAW", "민방위 공습경보", "Y", 1], ["CCW", "민방위 화생방 경보", "Y", 1], ["CNW", "민방위 핵 경보", "Y", 1], ["CDC", "민방위 경보 해제", "Y", 1]],
- "T20103": [["GFD", "정부 중요시설 사고", "Y", 1], ["GFS", "정부 중요시설 사고 안내정보", "Y", 1]],
- "T20104": [["NDA", "통신재난 주의(관심,주의)", "Y", 1], ["NDW", "통신재난 경보(경계,심각)", "Y", 1], ["NDS", "통신재난 안내정보", "Y", 1]],
- "T20105": [["ASD", "인공우주물체 사고", "Y", 1], ["ASW", "인공우주물체 경보(경계, 심각)", "Y", 1], ["ASV", "인공우주물체 추락/충돌 대피", "Y", 1], ["ASS", "인공우주물체 추락/충돌 안내정보", "Y", 1]],
- "T20106": [["GRW", "GPS 전파혼신 경보", "Y", 1], ["GRS", "GPS 전파혼신 안내", "Y", 1]],
- "T20107": [["FDA", "미세먼지 주의보", "Y", 1], ["FDW", "미세먼지 경보", "Y", 1], ["FDE", "미세먼지 비상저감조치 시행", "Y", 1], ["FDS", "미세먼지 안내정보", "Y", 1]],
- "T20108": [["CWD", "대규모 수질오염 사고", "Y", 1], ["CWI", "대규모 수질오염 안내정보", "Y", 1]],
- "T20109": [["CHD", "유해화학물질 유출 사고", "Y", 1], ["CHC", "유해화학물질 유출 사고 상황종료", "Y", 1], ["CHE", "유해화학물질 유출 긴급정보", "Y", 1], ["CHS", "유해화학물질 안내정보", "Y", 1]],
- "T20110": [["DEW", "감염병 경보", "Y", 1], ["DES", "감염병 안내", "Y", 1], ["DEC", "감염병 경보 해제", "Y", 1]],
- "T20111": [["LDW", "가축질병 경계/심각단계", "Y", 1], ["LDA", "가축질병 주의단계", "Y", 1]],
- "T20112": [["POA", "전력부족 경계단계", "Y", 1], ["POW", "전력부족 심각단계", "Y", 1], ["POS", "전력부족 안내정보", "Y", 1], ["POD", "전력 사고", "Y", 1], ["GAD", "가스 수급 및 누출사고", "Y", 1], ["COD", "원유수급 사고", "Y", 1]],
- "T20113": [["RWD", "고속철도 대형사고", "Y", 1], ["RWS", "고속철도 사고 수습에 따른 차량 우회 협조", "Y", 1], ["RWC", "고속철도 사고 복구 완료", "Y", 1], ["RWI", "철도 사고 안내정보", "Y", 1], ["SWD", "지하철 대형사고", "Y", 1], ["SWS", "지하철 사고 수습에 따른 차량 우회 협조", "Y", 1], ["SWC", "지하철 사고 복구 완료", "Y", 1]],
- "T20114": [["BCW", "다중밀집 건축물 붕괴", "Y", 1], ["BCS", "시설물 붕괴 안내정보", "Y", 1]],
- "T20115": [["ISD", "내수면 유·도선사고", "Y", 1], ["MSD", "해양 선박 사고", "Y", 1], ["MSS", "해양 선박 사고 안내정보", "Y", 1], ["MAE", "해양 사고 긴급정보", "Y", 1]],
- "T20116": [["MPD", "대규모 해양 오염", "Y", 1], ["MPS", "해양 오염 안내정보", "Y", 1]],
- "T20117": [["FND", "금융 전산 및 시설사고", "Y", 1], ["FNE", "금융 전산 사이버 공격", "Y", 1], ["FNS", "금융 기반 시설 사고 안내정보", "Y", 1]],
- "T20118": [["DOW", "댐 월류 경보", "Y", 1], ["DOE", "댐 월류 발생", "Y", 1], ["DOS", "댐 월류 안내정보", "Y", 1], ["DBA", "댐 붕괴 주의", "Y", 1], ["DBW", "댐 붕괴 경보", "Y", 1], ["DBS", "댐 붕괴 안내정보", "Y", 1], ["RVD", "저수지 사고", "Y", 1]],
- "T20119": [["DWW", "식용수 수질악화", "Y", 1], ["DFD", "식용수 시설 사고", "Y", 1], ["DFS", "식용수 사고 안내정보", "Y", 1]],
- "T20120": [["TEW", "테러 경보", "Y", 1], ["TES", "테러 안내정보", "Y", 1]],
- "T20121": [["FHD", "위험물 사고", "Y", 1], ["FHV", "위험물 사고 대피", "Y", 1], ["FHS", "위험물 사고 안내정보", "Y", 1], ["FRW", "다중밀집시설 대형화재", "Y", 1], ["FRV", "다중밀집시설 대형화재 대피", "Y", 1], ["FRC", "다중밀집시설 대형화재 해제", "Y", 1], ["FRS", "화재폭발 안내정보", "Y", 1], ["WHD", "사업장 대규모 인적사고", "Y", 1]],
- "T20122": [["RLD", "방사능 누출사고", "Y", 1], ["RLE", "방사능 누출 긴급정보", "Y", 1], ["RLS", "방사능 누출 안내정보", "Y", 1]],
- "T20123": [["RHW", "방사선 위험경보", "Y", 1], ["RHS", "원자력 시설사고 안내정보", "Y", 1]],
- "T20124": [["NRD", "인접국가 방사능 누출사고", "Y", 1], ["NRS", "인접국가 방사능 누출사고 안내정보", "Y", 1]],
- "T20125": [["CME", "아동 실종 경보", "Y", 1], ["CMC", "아동 실종 경보 해제", "Y", 1], ["CAE", "아동 유괴 경보", "Y", 1], ["CAC", "아동 유괴 경보 해제", "Y", 1]],
- "T20126": [["SHW", "기타 사회재난 경보", "Y", 1], ["SHS", "기타 사회재난 안내정보", "Y", 1]],
- "T30101": [["LAW", "지역재난", "Y", 1]],
- "T30102": [["NPT", "정기시험", "Y", 1]],
- "T30103": [["DIS", "재난정보서비스", "Y", 1], ["DIM", "재난정보 처리결과", "Y", 1]]};
-var $=function(s){return document.querySelector(s)},cl='T1',cm='T10106';
-function tgl(v,fn){return '<label class="tgl" onclick="event.stopPropagation()"><input type="checkbox" title="사용여부"'+(v==='Y'?' checked':'')+' onchange="'+fn+'"></label>'}
-function row(on,cells,fn){return '<tr class="clk'+(on?' on':'')+'" onclick="'+fn+'">'+cells+'</tr>'}
-function loadLclas(){$('#lclasTableBody').innerHTML=L.map(function(r,i){return row(r[0]===cl,'<td>'+r[0]+'</td><td class="t-l">'+r[1]+'</td><td class="t-l">'+r[2]+'</td><td>'+tgl(r[3],'updateUseYn(this,L['+i+'],\'대분류\')')+'</td>','selectLclas(\''+r[0]+'\')')}).join('');$('#lclasCnt').textContent=L.length}
-function drawMclas(){var a=M[cl]||[],l=L.filter(function(x){return x[0]===cl})[0];$('#mclasTit').textContent=l?'중분류 ('+l[1]+')':'재난코드 중분류';$('#mclasCnt').textContent=a.length;
- $('#mclasTableBody').innerHTML=a.length?a.map(function(r,i){return row(r[0]===cm,'<td>'+r[0]+'</td><td class="t-l">'+r[1]+'</td><td class="t-l">'+r[2]+'</td><td>'+tgl(r[3],'updateUseYn(this,M[cl]['+i+'],\'중분류\')')+'</td>','selectMclas(\''+r[0]+'\')')}).join(''):'<tr class="nodata"><td colspan="4">대분류를 선택하세요.</td></tr>'}
-function mName(){var m=(M[cl]||[]).filter(function(x){return x[0]===cm})[0];return m?m[1]:''}
-function drawDsstr(){var a=cm?(D[cm]=D[cm]||[]):null;$('#dsstrTit').textContent=cm?'상세 재난코드 ('+mName()+')':'상세 재난코드';$('#dsstrCnt').textContent=a?a.length:0;
- $('#disasterTableBody').innerHTML=!a?'<tr class="nodata"><td colspan="4">중분류를 선택하세요.</td></tr>':a.length?a.map(function(r,i){return '<tr><td>'+r[0]+'</td><td class="t-l">'+r[1]+'</td><td>'+tgl(r[2],'updateUseYn(this,D[cm]['+i+'],\'상세코드\',2)')+'</td><td><button type="button" class="btn s ico btn-line" name="btnEdit" title="수정" onclick="openModal('+i+')"><i class="ri-edit-line"></i></button> <button type="button" class="btn s ico btn-line" name="btnDelete" title="삭제" onclick="deleteDisaster('+i+')"><i class="ri-delete-bin-line"></i></button></td></tr>'}).join(''):'<tr class="nodata"><td colspan="4">등록된 상세 재난코드가 없습니다.</td></tr>'}
-function selectLclas(c){cl=c;cm=null;loadLclas();drawMclas();drawDsstr();msg('['+c+'] 중분류 목록을 조회하였습니다.')}
-function selectMclas(c){cm=c;drawMclas();drawDsstr();msg('['+c+' '+mName()+'] 상세 재난코드 목록을 조회하였습니다.')}
-function updateUseYn(el,r,lb,k){k=k||3;var v=el.checked;el.checked=!v;
- confirmMsg('['+r[0]+' '+r[1]+'] '+lb+' 사용여부를 ['+(v?'사용':'미사용')+']으로 변경하시겠습니까?',function(){el.checked=v;r[k]=v?'Y':'N';msg('['+r[0]+'] 사용여부가 '+(v?'사용':'미사용')+'으로 변경되었습니다.')},v?{}:{ico:'wn'})}
-function q(o){return Object.keys(o).map(function(k){return k+'='+encodeURIComponent(o[k])}).join('&')}
-function openModal(i){if(!cm){alertMsg('중분류를 먼저 선택하세요.',{ico:'wn'});return}
- var l=L.filter(function(x){return x[0]===cl})[0],o={lclas:cl+' ('+l[1]+')',mclas:cm+' ('+mName()+')',codes:D[cm].map(function(x){return x[0]}).join(',')};
- if(i!=null){var r=D[cm][i];o.mode='edit';o.cd=r[0];o.nm=r[1];o.use=r[2]}openPop('pop/UI-DA07-004-P01.html?'+q(o),540)}
-function deleteDisaster(i){var r=D[cm][i];confirmMsg('['+r[0]+' '+r[1]+'] 코드를 삭제하시겠습니까?\n삭제된 데이터는 복구할 수 없습니다.',function(){D[cm].splice(i,1);drawDsstr();msg('삭제가 완료되었습니다.')},{ico:'wn',danger:true})}
-window.onPopOk=function(k,d){if(k!=='disaster'||!d)return;var a=D[cm],j=a.map(function(x){return x[0]}).indexOf(d.cd);if(j>-1){a[j][1]=d.nm;a[j][2]=d.use}else a.push([d.cd,d.nm,d.use,0]);drawDsstr();msg('['+d.cd+' '+d.nm+'] 상세 재난코드가 '+(j>-1?'수정':'등록')+'되었습니다.')};
-loadLclas();drawMclas();drawDsstr();
+/* 샘플 데이터 M → sys_disaster.data.js */
+/* 샘플 데이터 D → sys_disaster.data.js */
+var $ = function (s) {
+    return document.querySelector(s);
+  },
+  cl = 'T1',
+  cm = 'T10106';
+function tgl(v, fn) {
+  return (
+    '<label class="tgl" onclick="event.stopPropagation()"><input type="checkbox" title="사용여부"' +
+    (v === 'Y' ? ' checked' : '') +
+    ' onchange="' +
+    fn +
+    '"></label>'
+  );
+}
+function row(on, cells, fn) {
+  return '<tr class="clk' + (on ? ' on' : '') + '" onclick="' + fn + '">' + cells + '</tr>';
+}
+function loadLclas() {
+  $('#lclasTableBody').innerHTML = L.map(function (r, i) {
+    return row(
+      r[0] === cl,
+      '<td>' +
+        r[0] +
+        '</td><td class="t-l">' +
+        r[1] +
+        '</td><td class="t-l">' +
+        r[2] +
+        '</td><td>' +
+        tgl(r[3], 'updateUseYn(this,L[' + i + "],'대분류')") +
+        '</td>',
+      "selectLclas('" + r[0] + "')"
+    );
+  }).join('');
+  $('#lclasCnt').textContent = L.length;
+}
+function drawMclas() {
+  var a = M[cl] || [],
+    l = L.filter(function (x) {
+      return x[0] === cl;
+    })[0];
+  $('#mclasTit').textContent = l ? '중분류 (' + l[1] + ')' : '재난코드 중분류';
+  $('#mclasCnt').textContent = a.length;
+  $('#mclasTableBody').innerHTML = a.length
+    ? a
+        .map(function (r, i) {
+          return row(
+            r[0] === cm,
+            '<td>' +
+              r[0] +
+              '</td><td class="t-l">' +
+              r[1] +
+              '</td><td class="t-l">' +
+              r[2] +
+              '</td><td>' +
+              tgl(r[3], 'updateUseYn(this,M[cl][' + i + "],'중분류')") +
+              '</td>',
+            "selectMclas('" + r[0] + "')"
+          );
+        })
+        .join('')
+    : '<tr class="nodata"><td colspan="4">대분류를 선택하세요.</td></tr>';
+}
+function mName() {
+  var m = (M[cl] || []).filter(function (x) {
+    return x[0] === cm;
+  })[0];
+  return m ? m[1] : '';
+}
+function drawDsstr() {
+  var a = cm ? (D[cm] = D[cm] || []) : null;
+  $('#dsstrTit').textContent = cm ? '상세 재난코드 (' + mName() + ')' : '상세 재난코드';
+  $('#dsstrCnt').textContent = a ? a.length : 0;
+  $('#disasterTableBody').innerHTML = !a
+    ? '<tr class="nodata"><td colspan="4">중분류를 선택하세요.</td></tr>'
+    : a.length
+      ? a
+          .map(function (r, i) {
+            return (
+              '<tr><td>' +
+              r[0] +
+              '</td><td class="t-l">' +
+              r[1] +
+              '</td><td>' +
+              tgl(r[2], 'updateUseYn(this,D[cm][' + i + "],'상세코드',2)") +
+              '</td><td><button type="button" class="btn s ico btn-line" name="btnEdit" title="수정" onclick="openModal(' +
+              i +
+              ')"><i class="ri-edit-line"></i></button> <button type="button" class="btn s ico btn-line" name="btnDelete" title="삭제" onclick="deleteDisaster(' +
+              i +
+              ')"><i class="ri-delete-bin-line"></i></button></td></tr>'
+            );
+          })
+          .join('')
+      : '<tr class="nodata"><td colspan="4">등록된 상세 재난코드가 없습니다.</td></tr>';
+}
+function selectLclas(c) {
+  cl = c;
+  cm = null;
+  loadLclas();
+  drawMclas();
+  drawDsstr();
+  msg('[' + c + '] 중분류 목록을 조회하였습니다.');
+}
+function selectMclas(c) {
+  cm = c;
+  drawMclas();
+  drawDsstr();
+  msg('[' + c + ' ' + mName() + '] 상세 재난코드 목록을 조회하였습니다.');
+}
+function updateUseYn(el, r, lb, k) {
+  k = k || 3;
+  var v = el.checked;
+  el.checked = !v;
+  confirmMsg(
+    '[' + r[0] + ' ' + r[1] + '] ' + lb + ' 사용여부를 [' + (v ? '사용' : '미사용') + ']으로 변경하시겠습니까?',
+    function () {
+      el.checked = v;
+      r[k] = v ? 'Y' : 'N';
+      msg('[' + r[0] + '] 사용여부가 ' + (v ? '사용' : '미사용') + '으로 변경되었습니다.');
+    },
+    v ? {} : { ico: 'wn' }
+  );
+}
+function q(o) {
+  return Object.keys(o)
+    .map(function (k) {
+      return k + '=' + encodeURIComponent(o[k]);
+    })
+    .join('&');
+}
+function openModal(i) {
+  if (!cm) {
+    alertMsg('중분류를 먼저 선택하세요.', { ico: 'wn' });
+    return;
+  }
+  var l = L.filter(function (x) {
+      return x[0] === cl;
+    })[0],
+    o = {
+      lclas: cl + ' (' + l[1] + ')',
+      mclas: cm + ' (' + mName() + ')',
+      codes: D[cm]
+        .map(function (x) {
+          return x[0];
+        })
+        .join(',')
+    };
+  if (i != null) {
+    var r = D[cm][i];
+    o.mode = 'edit';
+    o.cd = r[0];
+    o.nm = r[1];
+    o.use = r[2];
+  }
+  openPop('pop/UI-DA07-004-P01.html?' + q(o), 540);
+}
+function deleteDisaster(i) {
+  var r = D[cm][i];
+  confirmMsg(
+    '[' + r[0] + ' ' + r[1] + '] 코드를 삭제하시겠습니까?\n삭제된 데이터는 복구할 수 없습니다.',
+    function () {
+      D[cm].splice(i, 1);
+      drawDsstr();
+      msg('삭제가 완료되었습니다.');
+    },
+    { ico: 'wn', danger: true }
+  );
+}
+window.onPopOk = function (k, d) {
+  if (k !== 'disaster' || !d) return;
+  var a = D[cm],
+    j = a
+      .map(function (x) {
+        return x[0];
+      })
+      .indexOf(d.cd);
+  if (j > -1) {
+    a[j][1] = d.nm;
+    a[j][2] = d.use;
+  } else a.push([d.cd, d.nm, d.use, 0]);
+  drawDsstr();
+  msg('[' + d.cd + ' ' + d.nm + '] 상세 재난코드가 ' + (j > -1 ? '수정' : '등록') + '되었습니다.');
+};
+loadLclas();
+drawMclas();
+drawDsstr();

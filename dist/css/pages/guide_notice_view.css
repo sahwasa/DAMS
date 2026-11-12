@@ -142,7 +142,8 @@
   .v-nav li > span {
     flex: 0 0 72px;
   }
-  .v-nav li > a, .v-nav li > .none {
+  .v-nav li > a,
+  .v-nav li > .none {
     flex: 1;
     min-width: 0;
     overflow: hidden;

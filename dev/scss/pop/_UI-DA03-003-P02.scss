@@ -1,32 +1,123 @@
+@use "../abstracts" as *;
 // UI-DA03-003-P02 재난발령 보고서 — dialog 안으로 한정
-.pop-dlg[data-pop="UI-DA03-003-P02"]{
-  .rpt{padding:28px 32px 24px;border:1px solid #d8d8d8;background:#fff;color:#202020;
-    h1{margin-bottom:6px;font-size:22px;font-weight:800;text-align:center;letter-spacing:.2em;color:#101010}
-    .meta{display:flex;justify-content:space-between;margin-bottom:18px;padding-bottom:8px;border-bottom:2px solid #101010;font-size:13px;color:#505050}
-    h2{display:flex;align-items:center;gap:6px;margin:18px 0 8px;font-size:15px;font-weight:700;color:#101010;
-      &::before{content:"";width:4px;height:14px;background:#182146}
+.pop-dlg[data-pop="UI-DA03-003-P02"] {
+  .rpt {
+    padding: 28px 32px 24px;
+    border: 1px solid $g30;
+    background: #fff;
+    color: $g80;
+    h1 {
+      margin-bottom: 6px;
+      font-size: 22px;
+      font-weight: 800;
+      text-align: center;
+      letter-spacing: 0.2em;
+      color: $g90;
     }
-    .tbl th{width:130px}
-    .grid td{white-space:normal;overflow:visible;text-overflow:clip}
-    .msg{white-space:pre-line;line-height:1.6}
-    .grid td, .grid th{height:28px}
-    .sum td{font-weight:700;background:#f5f7fb}
-    .sign{display:flex;justify-content:flex-end;gap:0;margin-top:22px;
-      table{width:auto!important;table-layout:auto!important;border-collapse:collapse;font-size:12px;text-align:center}
-      th, td{width:72px;border:1px solid #c6c6c6}
-      th{height:24px;background:#f5f7fb;font-weight:600}
-      td{height:48px}
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid $g90;
+      font-size: 13px;
+      color: $g70;
+    }
+    h2 {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin: 18px 0 8px;
+      font-size: 15px;
+      font-weight: 700;
+      color: $g90;
+      &::before {
+        content: "";
+        width: 4px;
+        height: 14px;
+        background: $sec;
+      }
+    }
+    .tbl th {
+      width: 130px;
+    }
+    .grid td {
+      white-space: normal;
+      overflow: visible;
+      text-overflow: clip;
+    }
+    .msg {
+      white-space: pre-line;
+      line-height: 1.6;
+    }
+    .grid td,
+    .grid th {
+      height: 28px;
+    }
+    .sum td {
+      font-weight: 700;
+      background: #f5f7fb;
+    }
+    .sign {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0;
+      margin-top: 22px;
+      table {
+        width: auto !important;
+        table-layout: auto !important;
+        border-collapse: collapse;
+        font-size: 12px;
+        text-align: center;
+      }
+      th,
+      td {
+        width: 72px;
+        border: 1px solid $g40;
+      }
+      th {
+        height: 24px;
+        background: #f5f7fb;
+        font-weight: 600;
+      }
+      td {
+        height: 48px;
+      }
     }
   }
 }
-@media print{
-  @page{size:A4;margin:14mm}
-  .pop-dlg[data-pop="UI-DA03-003-P02"]{background:#fff!important;padding:0!important;
-    .pop{width:auto!important;box-shadow:none!important;border:0!important}
-    .pop-head, .pop-foot{display:none!important}
-    .pop-body{padding:0!important;max-height:none!important;overflow:visible!important}
-    .rpt{border:0;padding:0;
-      .grid th, .tbl th, .sum td, .sign th{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+  .pop-dlg[data-pop="UI-DA03-003-P02"] {
+    background: #fff !important;
+    padding: 0 !important;
+    .pop {
+      width: auto !important;
+      box-shadow: none !important;
+      border: 0 !important;
+    }
+    .pop-head,
+    .pop-foot {
+      display: none !important;
+    }
+    .pop-body {
+      padding: 0 !important;
+      max-height: none !important;
+      overflow: visible !important;
+    }
+    .rpt {
+      border: 0;
+      padding: 0;
+      .grid th,
+      .tbl th,
+      .sum td,
+      .sign th {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
     }
   }
 }

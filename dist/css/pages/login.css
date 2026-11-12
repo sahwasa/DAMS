@@ -44,7 +44,9 @@ body {
   flex-direction: column;
 }
 
-.lg-id h2, .lg-gw h2, .lg-msg h2 {
+.lg-id h2,
+.lg-gw h2,
+.lg-msg h2 {
   font-size: 20px;
   font-weight: 800;
   letter-spacing: -0.03em;
@@ -426,7 +428,9 @@ body {
   .lg-logo {
     font-size: 17px;
   }
-  .lg-id, .lg-gw, .lg-msg {
+  .lg-id,
+  .lg-gw,
+  .lg-msg {
     padding: 22px 18px 18px;
   }
   .lg-guide {

@@ -163,7 +163,8 @@
   border-collapse: collapse;
   font-size: 13px;
 }
-.org-tip .ot-t th, .org-tip .ot-t td {
+.org-tip .ot-t th,
+.org-tip .ot-t td {
   height: 26px;
   border-bottom: 1px solid #f0f0f0;
   font-weight: 400;
@@ -179,7 +180,8 @@
   margin-right: 3px;
   color: #8e8e8e;
 }
-.org-tip .ot-t tr.p th, .org-tip .ot-t tr.p td {
+.org-tip .ot-t tr.p th,
+.org-tip .ot-t tr.p td {
   font-weight: 700;
   color: #101010;
   background: #f5f7fb;

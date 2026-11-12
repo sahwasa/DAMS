@@ -1,31 +1,129 @@
 @use "../abstracts" as *;
 /* ---------- 14. Layer / Tooltip ---------- */
-.gnb .fsz-v{min-width:34px;text-align:center}
-.layer{position:absolute;z-index:90;background:#fff;border:1px solid $c-line;border-radius:$r;box-shadow:$sh;color:$c-body;font-size:$fs-s;white-space:normal}
-.layer-h{display:flex;align-items:center;gap:8px;height:42px;padding:0 12px 0 16px;border-bottom:1px solid $c-line2;font-weight:700;color:$c-title;
-  .close{margin-left:auto;font-size:18px;color:$g60}
+.gnb .fsz-v {
+  min-width: 34px;
+  text-align: center;
 }
-.layer-b{max-height:520px;overflow-y:auto;padding:12px 16px}
-.mlayer{top:56px;right:16px;width:720px;
-  .layer-b{display:grid;grid-template-columns:repeat(4,1fr);gap:12px 20px}
-  dt{font-weight:700;color:$c-title;padding-bottom:4px;margin-bottom:4px;border-bottom:1px solid $c-line2}
-  dd{
-    a{display:block;padding:3px 0;font-size:$fs-xs;
-      &:hover, mark{color:$pri;background:none}
+.layer {
+  position: absolute;
+  z-index: 90;
+  background: #fff;
+  border: 1px solid $c-line;
+  border-radius: $r;
+  box-shadow: $sh;
+  color: $c-body;
+  font-size: $fs-s;
+  white-space: normal;
+}
+.layer-h {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 42px;
+  padding: 0 12px 0 16px;
+  border-bottom: 1px solid $c-line2;
+  font-weight: 700;
+  color: $c-title;
+  .close {
+    margin-left: auto;
+    font-size: 18px;
+    color: $g60;
+  }
+}
+.layer-b {
+  max-height: 520px;
+  overflow-y: auto;
+  padding: 12px 16px;
+}
+.mlayer {
+  top: 56px;
+  right: 16px;
+  width: 720px;
+  .layer-b {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px 20px;
+  }
+  dt {
+    font-weight: 700;
+    color: $c-title;
+    padding-bottom: 4px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid $c-line2;
+  }
+  dd {
+    a {
+      display: block;
+      padding: 3px 0;
+      font-size: $fs-xs;
+      &:hover,
+      mark {
+        color: $pri;
+        background: none;
+      }
     }
   }
-  .nodata{grid-column:span 4;padding:20px 0;text-align:center;color:$g60}
-}
-.nlayer{top:56px;right:120px;width:340px;
-  li{padding:8px 0;border-bottom:1px solid $g10;font-size:$fs-xs;
-    &:last-child{border-bottom:0}
-    em{display:block;font-style:normal;color:$g60;font-size:12px}
+  .nodata {
+    grid-column: span 4;
+    padding: 20px 0;
+    text-align: center;
+    color: $g60;
   }
 }
-.tip-layer{position:absolute;z-index:95;max-width:280px;padding:6px 10px;border-radius:$r;background:$sec;color:#fff;font-size:12px;line-height:1.5;box-shadow:$sh-s;pointer-events:none;
-  &::before{content:"";position:absolute;left:10px;top:-5px;border:5px solid transparent;border-top:0;border-bottom-color:$sec}
-  &.pri{background:$pri}
-  &.pri::before{border-bottom-color:$pri}
+.nlayer {
+  top: 56px;
+  right: 120px;
+  width: 340px;
+  li {
+    padding: 8px 0;
+    border-bottom: 1px solid $g10;
+    font-size: $fs-xs;
+    &:last-child {
+      border-bottom: 0;
+    }
+    em {
+      display: block;
+      font-style: normal;
+      color: $g60;
+      font-size: 12px;
+    }
+  }
 }
-.tip{cursor:pointer;text-decoration:underline dotted}
-.lnb-empty{padding:30px 16px;text-align:center;color:$g60;font-size:$fs-xs}
+.tip-layer {
+  position: absolute;
+  z-index: 95;
+  max-width: 280px;
+  padding: 6px 10px;
+  border-radius: $r;
+  background: $sec;
+  color: #fff;
+  font-size: 12px;
+  line-height: 1.5;
+  box-shadow: $sh-s;
+  pointer-events: none;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: -5px;
+    border: 5px solid transparent;
+    border-top: 0;
+    border-bottom-color: $sec;
+  }
+  &.pri {
+    background: $pri;
+  }
+  &.pri::before {
+    border-bottom-color: $pri;
+  }
+}
+.tip {
+  cursor: pointer;
+  text-decoration: underline dotted;
+}
+.lnb-empty {
+  padding: 30px 16px;
+  text-align: center;
+  color: $g60;
+  font-size: $fs-xs;
+}

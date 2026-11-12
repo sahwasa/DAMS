@@ -1,17 +1,52 @@
 @use "../abstracts" as *;
 /* ---------- 9. Table form (상세/입력) ---------- */
-.tbl{table-layout:fixed;border-top:1px solid $c-line;font-size:$fs-s;
-  th, td{height:40px;padding:5px 12px;border:1px solid $c-line2;text-align:left;vertical-align:middle}
-  tr{
-    >*:first-child{border-left:0}
-    >*:last-child{border-right:0}
+.tbl {
+  table-layout: fixed;
+  border-top: 1px solid $c-line;
+  font-size: $fs-s;
+  th,
+  td {
+    height: 40px;
+    padding: 5px 12px;
+    border: 1px solid $c-line2;
+    text-align: left;
+    vertical-align: middle;
   }
-  th{background:$g5;font-weight:600;color:$c-title}
-  td{color:$c-title;background:#fff;
-    .inp, .sel{width:100%}
-    .inp.auto, .sel.auto{width:auto}
-    .flex>.inp, .flex>.sel{flex:1;width:auto}
+  tr {
+    > *:first-child {
+      border-left: 0;
+    }
+    > *:last-child {
+      border-right: 0;
+    }
   }
-  thead th{text-align:center;background:$grid-th}
-  td.ro{background:$bg-ro}
+  th {
+    background: $g5;
+    font-weight: 600;
+    color: $c-title;
+  }
+  td {
+    color: $c-title;
+    background: #fff;
+    .inp,
+    .sel {
+      width: 100%;
+    }
+    .inp.auto,
+    .sel.auto {
+      width: auto;
+    }
+    .flex > .inp,
+    .flex > .sel {
+      flex: 1;
+      width: auto;
+    }
+  }
+  thead th {
+    text-align: center;
+    background: $grid-th;
+  }
+  td.ro {
+    background: $bg-ro;
+  }
 }

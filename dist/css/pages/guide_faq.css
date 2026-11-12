@@ -3,7 +3,8 @@
    common.scss — 재난·안전정보시스템 UI 표준정의서(NDMS-DE33 v1.1) 기준
    ========================================================== */
 /* ---------- 1. Tokens ---------- */
-.faq .faq-q, .faq .faq-a {
+.faq .faq-q,
+.faq .faq-a {
   display: inline-flex;
   align-items: center;
   justify-content: center;

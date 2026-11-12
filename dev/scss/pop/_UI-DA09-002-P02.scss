@@ -1,39 +1,145 @@
+@use "../abstracts" as *;
 // UI-DA09-002-P02 연계 점검 부적합 결과서 — dialog 안으로 한정
-.pop-dlg[data-pop="UI-DA09-002-P02"]{
-  .rpt{padding:28px 32px 24px;border:1px solid #d8d8d8;background:#fff;color:#202020;
-    h1{margin-bottom:6px;font-size:22px;font-weight:800;text-align:center;letter-spacing:.12em;color:#101010}
-    .meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;margin-bottom:18px;padding-bottom:8px;border-bottom:2px solid #101010;font-size:13px;color:#505050}
-    h2{display:flex;align-items:center;gap:6px;margin:18px 0 8px;font-size:15px;font-weight:700;color:#101010;
-      &::before{content:"";width:4px;height:14px;background:#182146}
+.pop-dlg[data-pop="UI-DA09-002-P02"] {
+  .rpt {
+    padding: 28px 32px 24px;
+    border: 1px solid $g30;
+    background: #fff;
+    color: $g80;
+    h1 {
+      margin-bottom: 6px;
+      font-size: 22px;
+      font-weight: 800;
+      text-align: center;
+      letter-spacing: 0.12em;
+      color: $g90;
     }
-    .grid{
-      td{white-space:normal;overflow:visible;text-overflow:clip;height:28px}
-      th{height:28px}
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 4px 16px;
+      margin-bottom: 18px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid $g90;
+      font-size: 13px;
+      color: $g70;
     }
-    .verdict{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid #fcd4de;background:#feecf0;border-radius:4px;font-size:14px;color:#8d0023;
-      b{font-size:16px;color:#d50136}
+    h2 {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin: 18px 0 8px;
+      font-size: 15px;
+      font-weight: 700;
+      color: $g90;
+      &::before {
+        content: "";
+        width: 4px;
+        height: 14px;
+        background: $sec;
+      }
     }
-    .req{margin:0;padding-left:18px;font-size:14px;line-height:1.7;
-      li{list-style:decimal}
+    .grid {
+      td {
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
+        height: 28px;
+      }
+      th {
+        height: 28px;
+      }
     }
-    .txa{width:100%;min-height:72px}
-    .from{margin-top:22px;text-align:center;font-size:16px;font-weight:700;letter-spacing:.1em;color:#101010}
-    .verdict{
-      &.ok{border-color:#cee9d4;background:#eef7f0;color:#005312}
-      &.ok b{color:#008a1e}
+    .verdict {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid $dg-b;
+      background: $dg-s;
+      border-radius: 4px;
+      font-size: 14px;
+      color: $dg-t2;
+      b {
+        font-size: 16px;
+        color: $dg-t;
+      }
     }
-    .note{margin-top:8px;font-size:12px;color:#707070}
+    .req {
+      margin: 0;
+      padding-left: 18px;
+      font-size: 14px;
+      line-height: 1.7;
+      li {
+        list-style: decimal;
+      }
+    }
+    .txa {
+      width: 100%;
+      min-height: 72px;
+    }
+    .from {
+      margin-top: 22px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: $g90;
+    }
+    .verdict {
+      &.ok {
+        border-color: $sc-b;
+        background: $sc-s;
+        color: $sc-t2;
+      }
+      &.ok b {
+        color: $sc;
+      }
+    }
+    .note {
+      margin-top: 8px;
+      font-size: 12px;
+      color: $g60;
+    }
   }
 }
-@media print{
-  @page{size:A4;margin:14mm}
-  .pop-dlg[data-pop="UI-DA09-002-P02"]{background:#fff!important;padding:0!important;
-    .pop{width:auto!important;box-shadow:none!important;border:0!important}
-    .pop-head, .pop-foot{display:none!important}
-    .pop-body{padding:0!important;max-height:none!important;overflow:visible!important}
-    .rpt{border:0;padding:0;
-      .txa{border:0;resize:none;padding:0}
-      .grid th, .tbl th, .verdict{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+  .pop-dlg[data-pop="UI-DA09-002-P02"] {
+    background: #fff !important;
+    padding: 0 !important;
+    .pop {
+      width: auto !important;
+      box-shadow: none !important;
+      border: 0 !important;
+    }
+    .pop-head,
+    .pop-foot {
+      display: none !important;
+    }
+    .pop-body {
+      padding: 0 !important;
+      max-height: none !important;
+      overflow: visible !important;
+    }
+    .rpt {
+      border: 0;
+      padding: 0;
+      .txa {
+        border: 0;
+        resize: none;
+        padding: 0;
+      }
+      .grid th,
+      .tbl th,
+      .verdict {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
     }
   }
 }

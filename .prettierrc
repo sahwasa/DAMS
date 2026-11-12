@@ -1,0 +1,8 @@
+{
+  "printWidth": 120,
+  "tabWidth": 2,
+  "singleQuote": true,
+  "trailingComma": "none",
+  "endOfLine": "lf",
+  "overrides": [{ "files": "*.scss", "options": { "singleQuote": false } }]
+}

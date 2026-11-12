@@ -152,7 +152,8 @@
   text-align: right;
 }
 
-.md-tr, .ds-tr {
+.md-tr,
+.ds-tr {
   position: relative;
   height: 320px;
 }
@@ -161,18 +162,21 @@
   height: 340px;
 }
 
-.md-tr svg, .ds-tr svg {
+.md-tr svg,
+.ds-tr svg {
   display: block;
   width: 100%;
   height: 100%;
   overflow: visible;
 }
 
-.md-tr .gl, .ds-tr .gl {
+.md-tr .gl,
+.ds-tr .gl {
   stroke: #f0f0f0;
 }
 
-.md-tr text, .ds-tr text {
+.md-tr text,
+.ds-tr text {
   font-size: 11px;
   fill: #707070;
 }
@@ -210,7 +214,8 @@
   opacity: 0.8;
 }
 
-#tabType > .tbl-acc, #tabStatus > .tbl-acc {
+#tabType > .tbl-acc,
+#tabStatus > .tbl-acc {
   margin-top: 16px;
 }
 

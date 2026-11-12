@@ -1,9 +1,27 @@
+@use "../abstracts" as *;
 // UI-DA03-003-P01 단말기 위치 — dialog 안으로 한정
-.pop-dlg[data-pop="UI-DA03-003-P01"]{
-  .pop.wfull{width:100%}
-  .dv-sum{display:flex;align-items:center;gap:14px;margin-bottom:10px;font-size:14px;color:#202020;
-    b{margin:0 2px}
-    .r{margin-left:auto;font-size:13px;color:#707070}
+.pop-dlg[data-pop="UI-DA03-003-P01"] {
+  .pop.wfull {
+    width: 100%;
   }
-  #devMapFull{height:560px;min-height:300px}
+  .dv-sum {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: $g80;
+    b {
+      margin: 0 2px;
+    }
+    .r {
+      margin-left: auto;
+      font-size: 13px;
+      color: $g60;
+    }
+  }
+  #devMapFull {
+    height: 560px;
+    min-height: 300px;
+  }
 }

@@ -127,10 +127,12 @@
 }
 
 @media (min-width: 1280px) {
-  #tabEvent > .col-lr .card-h, #tabMedia > .card .card-h {
+  #tabEvent > .col-lr .card-h,
+  #tabMedia > .card .card-h {
     height: 34px;
   }
-  #tabEvent > .sub-head, #tabMedia > .sub-head {
+  #tabEvent > .sub-head,
+  #tabMedia > .sub-head {
     margin-top: 16px;
   }
 }
@@ -354,7 +356,8 @@
     position: relative;
     min-width: 0;
   }
-  .rg-right > #rgTbl, .rg-right > #rgHeat {
+  .rg-right > #rgTbl,
+  .rg-right > #rgHeat {
     position: absolute;
     left: 0;
     right: 0;
@@ -363,7 +366,8 @@
     display: flex;
     flex-direction: column;
   }
-  .rg-right > #rgTbl[hidden], .rg-right > #rgHeat[hidden] {
+  .rg-right > #rgTbl[hidden],
+  .rg-right > #rgHeat[hidden] {
     display: none;
   }
   .rg-right .grid-wrap {

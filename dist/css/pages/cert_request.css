@@ -54,7 +54,8 @@
 }
 /* 새 창(1280×860)에서 창 전체 스크롤 없이 목록만 스크롤 */
 @media (min-width: 768px) {
-  html, body.win-body {
+  html,
+  body.win-body {
     height: 100% !important;
     overflow: hidden !important;
   }

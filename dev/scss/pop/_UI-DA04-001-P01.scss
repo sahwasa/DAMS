@@ -1,2 +1,8 @@
+@use "../abstracts" as *;
 // UI-DA04-001-P01 연계기관 등록/수정 — dialog 안으로 한정
-.pop-dlg[data-pop="UI-DA04-001-P01"] .nm-v{margin-left:6px;font-size:14px;color:#3e55e1;white-space:nowrap}
+.pop-dlg[data-pop="UI-DA04-001-P01"] .nm-v {
+  margin-left: 6px;
+  font-size: 14px;
+  color: $pri;
+  white-space: nowrap;
+}

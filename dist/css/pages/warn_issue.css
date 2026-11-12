@@ -7,7 +7,8 @@
   .dev-sch .rows {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .dev-sch .it > .lb, .dev-sch .it > label {
+  .dev-sch .it > .lb,
+  .dev-sch .it > label {
     flex: 0 0 64px !important;
     width: 64px;
   }
@@ -117,7 +118,8 @@
   margin-bottom: 12px;
 }
 
-#issue-summary th, #issue-summary td {
+#issue-summary th,
+#issue-summary td {
   height: 36px;
   padding: 4px 10px;
 }
