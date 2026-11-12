@@ -19,7 +19,9 @@ img{border:0;vertical-align:middle}
     &:focus{left:0;outline:2px solid $pri;outline-offset:-2px}
   }
 }
-#content:focus,#gnbMenu:focus{outline:0}
+#content:focus,#gnbMenu:focus,#lnbMenu:focus{outline:0}
+// 스크롤 영역 키보드 포커스(common.js scrollFocus — 안에 포커스 요소가 없는 스크롤 영역에 tabindex=0)
+[data-sf]:focus-visible{outline:2px solid $pri;outline-offset:-2px}
 .req::after{content:"*";color:$dg;margin-left:2px}
 .t-l{text-align:left!important}
 .t-c{text-align:center!important}

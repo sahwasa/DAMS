@@ -247,6 +247,23 @@ function sortCol(th){var d=th.classList.contains('asc')?'desc':'asc',k=th.datase
 window.sortCol=sortCol;
 document.addEventListener('keydown',function(e){var th=e.target.closest&&e.target.closest('.grid thead th.sort');if(th&&(e.key==='Enter'||e.key===' ')){e.preventDefault();sortCol(th)}});
 
+/* ---------- 웹접근성: 건너뛰기 링크·스크롤 영역 포커스 ----------
+ 건너뛰기 링크 대상이 숨겨져 있으면(LNB 접힘·태블릿/모바일 햄버거 메뉴) 햄버거 버튼 → 없으면 본문으로.
+ 스크롤 영역(overflow auto/scroll이고 실제로 넘치는 요소) 중 안에 포커스 가능한 요소가 없으면 tabindex=0(+aria-label)을 붙여
+ 키보드로 선택해 방향키로 스크롤할 수 있게 함(KWCAG 키보드 사용 보장, axe scrollable-region-focusable). 넘치지 않게 되면 다시 뺌. */
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('.skip a');if(!a)return;var t=document.querySelector(a.getAttribute('href'));
+ if(t&&t.getClientRects().length&&getComputedStyle(t).visibility!=='hidden')return;e.preventDefault();var h=document.querySelector('.m-ham')||document.getElementById('content');if(h){h.focus();if(h.scrollIntoView)h.scrollIntoView({block:'nearest'})}});
+var FOC='a[href],button:not([disabled]),input:not([disabled]):not([type=hidden]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"]),summary,iframe';
+function sfLabel(el){var h=el.getAttribute('aria-label');if(h)return h;var c=el.closest('section,.card,.mon-box,.pop')||el.parentNode,t=c&&c.querySelector('h2,h3,h4,.card-h,caption');return t?t.textContent.replace(/\s+/g,' ').trim().slice(0,40)+' 영역':'스크롤 영역'}
+function scrollFocus(){$$('body *').forEach(function(el){if(el.closest('.skip,svg'))return;var cs=getComputedStyle(el),oy=/auto|scroll/.test(cs.overflowY),ox=/auto|scroll/.test(cs.overflowX);
+  var sc=(oy&&el.scrollHeight>el.clientHeight+1)||(ox&&el.scrollWidth>el.clientWidth+1);
+  if(sc&&!el.hasAttribute('tabindex')&&!el.querySelector(FOC)&&el.getClientRects().length){el.setAttribute('tabindex','0');el.setAttribute('data-sf','');if(!el.hasAttribute('aria-label')){el.setAttribute('aria-label',sfLabel(el));el.setAttribute('data-sf-l','')}}
+  else if(!sc&&el.hasAttribute('data-sf')){el.removeAttribute('tabindex');el.removeAttribute('data-sf');if(el.hasAttribute('data-sf-l')){el.removeAttribute('aria-label');el.removeAttribute('data-sf-l')}}})}
+window.scrollFocus=scrollFocus;
+var sfT;function sfLater(){clearTimeout(sfT);sfT=setTimeout(scrollFocus,250)}
+window.addEventListener('resize',sfLater);window.addEventListener('load',sfLater);
+document.addEventListener('DOMContentLoaded',function(){if(window.MutationObserver)new MutationObserver(function(ms){for(var i=0;i<ms.length;i++){var t=ms[i].target;if(ms[i].type==='childList'||!(t.hasAttribute&&t.hasAttribute('data-sf'))){sfLater();return}}}).observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['hidden','class','style','open']})});
+
 /* ---------- 이벤트 위임 ---------- */
 document.addEventListener('click',function(e){
  var t=e.target,c;

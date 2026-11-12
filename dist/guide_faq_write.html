@@ -13,7 +13,7 @@
 
 
 <body>
-<div class="skip"><a href="#content">본문 바로가기</a><a href="#gnbMenu">주메뉴 바로가기</a></div>
+<div class="skip"><a href="#content">본문 바로가기</a><a href="#gnbMenu">주메뉴 바로가기</a><a href="#lnbMenu">서브메뉴 바로가기</a></div>
 <div class="wrap">
   <!-- GNB -->
   <!-- GNB: 현재 1Depth .on은 common.js markOn()이 파일명으로 표시 -->
@@ -46,7 +46,7 @@
     <nav class="lnb">
       <div class="lnb-tab"><button type="button" class="on" data-lnb="menu">메뉴</button><button type="button" data-lnb="fav">즐겨찾기</button><button type="button" data-lnb="recent">최근접속</button></div>
       <div class="lnb-tit">이용안내</div>
-      <div class="lnb-menu">
+      <div class="lnb-menu" id="lnbMenu" tabindex="-1">
         <ul class="d2">
           <li><a href="guide_intro.html">시스템 소개</a></li>
           <li><a href="guide_manual.html">시스템 매뉴얼</a></li>
