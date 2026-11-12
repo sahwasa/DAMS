@@ -1,0 +1,24 @@
+<!-- UI-DA08-003-P01 작업이력 등록 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-UI-DA08-003-P01" data-w="540">
+<div class="pop w540" role="dialog" aria-modal="true" aria-labelledby="popTit">
+  <div class="pop-head"><h2 id="popTit">작업이력 등록</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
+  <div class="pop-body">
+    <table class="tbl" id="frm">
+      <caption class="blind">작업이력 입력</caption>
+      <colgroup><col style="width:110px"><col></colgroup>
+      <tbody>
+        <tr><th><span class="req">구분</span></th><td><select class="sel" id="m_job_se_cd" name="m_job_se_cd" required data-label="구분"><option value="">선택</option><option>정기점검</option><option>긴급점검</option><option>공통코드 변경</option><option>배치작업</option><option>데이터 동기화</option><option>마이그레이션</option><option>기타</option></select></td></tr>
+        <tr><th><span class="req">작업시각</span></th><td><div class="range"><span class="inp-ico inp-date"><input type="date" class="inp" id="m_prcs_dt" name="m_prcs_dt" value="2026-10-30" title="작업시각 일자" required data-label="작업시각"></span><input type="time" class="inp inp-time" id="m_prcs_dt_tm" name="m_prcs_dt_tm" value="14:30" title="작업시각 시각"></div></td></tr>
+        <tr><th><span class="req">작업내용</span></th><td><textarea class="txa" id="m_job_cn" name="m_job_cn" maxlength="4000" rows="4" required data-label="작업내용" placeholder="작업내용을 입력하세요."></textarea></td></tr>
+        <tr><th>이슈</th><td><textarea class="txa" id="m_issue_cn" name="m_issue_cn" maxlength="4000" rows="3" placeholder="작업 중 발생한 이슈·특이사항을 입력하세요."></textarea></td></tr>
+        <tr><th><span class="req">작업자</span></th><td><input class="inp" id="m_prcr_nm" name="m_prcr_nm" maxlength="100" value="홍길동" required data-label="작업자"></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pop-foot">
+    <button type="button" class="btn btn-crud" id="btnDel" onclick="remove()" hidden><i class="ri-delete-bin-line"></i>삭제</button>
+    <button type="button" class="btn btn-line" onclick="closePop()">취소</button>
+    <button type="button" class="btn btn-crud" id="btnSave" onclick="save()"><i class="ri-save-line"></i>저장</button>
+  </div>
+</div>
+</template>

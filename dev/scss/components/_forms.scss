@@ -1,0 +1,40 @@
+@use "../abstracts" as *;
+/* ---------- 6. Form control ---------- */
+.inp,.sel,.txa{height:$h-inp;padding:0 10px;border:1px solid $c-line;border-radius:$r-s;background:#fff;font-size:$fs-s;color:$c-title;vertical-align:middle;outline:0}
+.inp::placeholder,.txa::placeholder{color:$g50}
+.inp:hover,.sel:hover,.txa:hover{border-color:$g60}
+.inp:focus,.sel:focus,.txa:focus,.sel.open{border-color:$pri;box-shadow:0 0 0 1px $pri inset}
+.inp:disabled,.sel:disabled,.txa:disabled{background:$bg-dis;border-color:$c-line2;color:$c-dis;cursor:not-allowed}
+.inp[readonly],.txa[readonly],.inp.ro{background:$bg-ro;border-color:$wn-b;color:$c-title}
+.inp.err,.sel.err,.txa.err,.err>.inp{border-color:$dg;box-shadow:none}
+.inp.num{text-align:right}
+.sel{padding-right:28px;appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5'%3E%3Cpath d='M0 0h8L4 5z' fill='%23505050'/%3E%3C/svg%3E") no-repeat right 10px center;cursor:pointer}
+.sel:disabled{background-color:$bg-dis}
+.txa{display:block;width:100%;height:auto;min-height:90px;padding:8px 10px;resize:vertical;line-height:1.5}
+.f-msg{display:block;margin-top:4px;font-size:12px;color:$g60}.f-msg.err{color:$dg-t}
+.f-cnt{float:right;font-size:12px;color:$g60}.f-cnt b{color:$c-title;font-weight:500}.f-cnt em{font-style:normal;color:$pri}
+.f-cnt.auto{float:none;display:block;text-align:right;margin-top:2px}
+// input + icon (search/date)
+.inp-ico{display:inline-flex;position:relative;vertical-align:middle}
+.inp-ico .inp{padding-right:30px;width:100%}
+.inp-date .inp{padding-right:6px}.inp-date input[type=date]::-webkit-calendar-picker-indicator{cursor:pointer;opacity:.65}.inp-date input[type=date][readonly]::-webkit-calendar-picker-indicator,.inp-date input[type=date]:disabled::-webkit-calendar-picker-indicator{cursor:default;opacity:.3}
+.inp-ico>button,.inp-ico>i{position:absolute;right:1px;top:1px;width:28px;height:$h-inp - 2px;display:flex;align-items:center;justify-content:center;color:$g60;font-size:15px}
+.inp-date{width:140px}.inp-time{width:120px}.inp-time::-webkit-calendar-picker-indicator{cursor:pointer;opacity:.65}
+.range{display:inline-flex;align-items:center;gap:4px}.range>span{color:$g60}
+.inp-file{display:flex;gap:4px;align-items:center}.inp-file .inp{flex:1}
+// check / radio
+.chk,.rdo{display:inline-flex;align-items:center;gap:6px;margin-right:16px;font-size:$fs-s;cursor:pointer;vertical-align:middle;line-height:$h-inp}
+.chk:last-child,.rdo:last-child{margin-right:0}
+.chk input,.rdo input{appearance:none;margin:0;width:16px;height:16px;border:1px solid $c-line;background:#fff;flex:0 0 16px;cursor:pointer}
+.chk input{border-radius:$r-s}.rdo input{border-radius:50%}
+.chk input:hover,.rdo input:hover{border-color:$pri}
+.chk input:checked{background:$pri url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='8'%3E%3Cpath d='M1 4l3 3 5-6' stroke='%23fff' stroke-width='1.6' fill='none'/%3E%3C/svg%3E") no-repeat center;border-color:$pri}
+.rdo input:checked{border:5px solid $pri}
+.chk input:disabled,.rdo input:disabled{background-color:$bg-dis;border-color:$c-line2;cursor:not-allowed}
+.chk input:disabled+span,.rdo input:disabled+span{color:$c-dis}
+.chk.only{margin:0;gap:0}
+// toggle
+.tgl{display:inline-flex;align-items:center;gap:6px;cursor:pointer;font-size:$fs-s}
+.tgl input{appearance:none;margin:0;width:34px;height:18px;border-radius:9px;background:$g40;position:relative;transition:.15s;cursor:pointer}
+.tgl input::after{content:"";position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:#fff;transition:.15s}
+.tgl input:checked{background:$pri}.tgl input:checked::after{left:18px}

@@ -1,0 +1,17 @@
+/* 데이터송수신이력 | 재난 예경보 통합관리시스템 */
+var TOTAL=19524;
+function setCnt(n,pages){document.getElementById('totCnt').textContent=n.toLocaleString();var p=document.getElementById('pgBtns');p.dataset.total=pages;p.dataset.page=1;initPaging(p.parentNode)}
+window.onSearch=function(f){
+  var k=f.searchKeyword?f.searchKeyword.value.trim():'',ss=[].slice.call(f.querySelectorAll('select[data-f]')),tb=document.querySelector('.grid tbody'),n=0;
+  var on=k||ss.some(function(s){return s.value});
+  tb.querySelectorAll('tr:not(.nodata)').forEach(function(tr){var ok=(!k||tr.textContent.indexOf(k)>-1)&&ss.every(function(s){var v=tr.cells[+s.dataset.f].textContent.trim();return !s.value||(s.dataset.m==='has'?v.indexOf(s.value)>-1:v===s.value)});tr.hidden=!ok;if(ok)n++});
+  tb.querySelector('.nodata').hidden=n>0;
+  if(on)setCnt(n,1);else setCnt(TOTAL,Math.ceil(TOTAL/+document.getElementById('pageSize').value));
+  msg(n?'조회가 완료되었습니다.':'검색된 결과가 없습니다.');return false;
+};
+document.getElementById('schForm').addEventListener('reset',function(){setTimeout(function(){document.querySelectorAll('.grid tbody tr').forEach(function(tr){tr.hidden=tr.classList.contains('nodata')});setCnt(TOTAL,Math.ceil(TOTAL/+document.getElementById('pageSize').value))})});
+function applySize(){var s=+document.getElementById('pageSize').value,c=+document.getElementById('totCnt').textContent.replace(/,/g,'');setCnt(c,Math.max(1,Math.ceil(c/s)));msg('페이지당 '+s+'건으로 목록을 조회하였습니다.')}
+function popUrl(u,o){return u+'?'+new URLSearchParams(o).toString()}
+var ROWS=[["울산광역시 남구", "송신", "단말기통보결과", "성공", "2026-10-30 14:15:42", 118, "KR.ULSAN-NAM-20261030141542.118"], ["울산광역시 남구", "수신", "통보문", "성공", "2026-10-30 14:15:31", 118, "KR.ULSAN-NAM-20261030141531.118"], ["충청남도 천안시", "수신", "단말기제원", "성공", "2026-10-30 13:00:12", 2201, "KR.CHEONAN-20261030130012.2201"], ["충청남도 아산시", "수신", "단말기제원", "실패", "2026-10-30 13:00:09", 2200, "KR.ASAN-20261030130009.2200"], ["경기도 부천시", "수신", "단말기제원", "성공", "2026-10-30 13:00:05", 2199, "KR.BUCHEON-20261030130005.2199"], ["충청남도 천안시", "수신", "통보문", "실패", "2026-10-30 08:30:02", 87, "KR.CHEONAN-20261030083002.87"], ["충청남도 공주시", "송신", "단말기통보결과", "성공", "2026-10-30 07:55:24", 86, "KR.GONGJU-20261030075524.86"], ["충청남도 공주시", "수신", "통보문", "성공", "2026-10-30 07:55:10", 86, "KR.GONGJU-20261030075510.86"], ["강원특별자치도 철원군", "수신", "단말기제원", "성공", "2026-10-30 07:00:08", 2150, "KR.CHEORWON-20261030070008.2150"], ["경상북도 포항시", "송신", "단말기통보결과", "성공", "2026-10-29 22:41:20", 85, "KR.POHANG-20261029224120.85"], ["경상북도 포항시", "수신", "통보문", "성공", "2026-10-29 22:41:09", 85, "KR.POHANG-20261029224109.85"], ["경상북도 김천시", "수신", "단말기제원", "성공", "2026-10-29 19:00:03", 2101, "KR.GIMCHEON-20261029190003.2101"], ["서울특별시 마포구", "송신", "단말기통보결과", "실패", "2026-10-29 17:55:49", 84, "KR.MAPO-20261029175549.84"], ["서울특별시 마포구", "수신", "통보문", "성공", "2026-10-29 17:55:18", 84, "KR.MAPO-20261029175518.84"], ["경기도 수원시", "수신", "단말기제원", "성공", "2026-10-29 13:00:11", 2054, "KR.SUWON-20261029130011.2054"]],SGG={"울산광역시": ["남구", "동구", "중구"], "충청남도": ["천안시", "아산시", "공주시"], "경기도": ["부천시", "수원시"], "강원특별자치도": ["철원군", "강릉시"], "경상북도": ["포항시", "김천시"], "서울특별시": ["마포구"]};
+function setSgg(v){document.getElementById('sgg_select').innerHTML='<option value="">시군구 전체</option>'+(SGG[v]||[]).map(function(s){return '<option>'+s+'</option>'}).join('')}
+function openCap(i){var r=ROWS[i];document.querySelectorAll('#dataLogTbl tbody tr').forEach(function(x,k){x.classList.toggle('on',k===i)});openPop(popUrl('pop/UI-DA08-006-P01.html',{org:r[0],io:r[1],se:r[2],rs:r[3],dt:r[4],id:r[6]}),760)}

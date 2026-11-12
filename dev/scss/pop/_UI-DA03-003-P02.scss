@@ -1,0 +1,24 @@
+// UI-DA03-003-P02 재난발령 보고서 — dialog 안으로 한정
+.pop-dlg[data-pop="UI-DA03-003-P02"] .rpt{padding:28px 32px 24px;border:1px solid #d8d8d8;background:#fff;color:#202020}
+.pop-dlg[data-pop="UI-DA03-003-P02"] .rpt h1{margin-bottom:6px;font-size:22px;font-weight:800;text-align:center;letter-spacing:.2em;color:#101010}
+.pop-dlg[data-pop="UI-DA03-003-P02"] .rpt .meta{display:flex;justify-content:space-between;margin-bottom:18px;padding-bottom:8px;border-bottom:2px solid #101010;font-size:13px;color:#505050}
+.pop-dlg[data-pop="UI-DA03-003-P02"] .rpt h2{display:flex;align-items:center;gap:6px;margin:18px 0 8px;font-size:15px;font-weight:700;color:#101010}
+.pop-dlg[data-pop="UI-DA03-003-P02"] .rpt h2::before{content:"";width:4px;height:14px;background:#182146}
+.pop-dlg[data-pop="UI-DA03-003-P02"] .rpt .tbl th{width:130px}
+.pop-dlg[data-pop="UI-DA03-003-P02"] .rpt .grid td{white-space:normal;overflow:visible;text-overflow:clip}
+.pop-dlg[data-pop="UI-DA03-003-P02"] .rpt .msg{white-space:pre-line;line-height:1.6}
+.pop-dlg[data-pop="UI-DA03-003-P02"] .rpt .grid td,.pop-dlg[data-pop="UI-DA03-003-P02"] .rpt .grid th{height:28px}
+.pop-dlg[data-pop="UI-DA03-003-P02"] .rpt .sum td{font-weight:700;background:#f5f7fb}
+.pop-dlg[data-pop="UI-DA03-003-P02"] .rpt .sign{display:flex;justify-content:flex-end;gap:0;margin-top:22px}
+.pop-dlg[data-pop="UI-DA03-003-P02"] .rpt .sign table{width:auto!important;table-layout:auto!important;border-collapse:collapse;font-size:12px;text-align:center}
+.pop-dlg[data-pop="UI-DA03-003-P02"] .rpt .sign th,.pop-dlg[data-pop="UI-DA03-003-P02"] .rpt .sign td{width:72px;border:1px solid #c6c6c6}
+.pop-dlg[data-pop="UI-DA03-003-P02"] .rpt .sign th{height:24px;background:#f5f7fb;font-weight:600}
+.pop-dlg[data-pop="UI-DA03-003-P02"] .rpt .sign td{height:48px}
+@media print{@page{size:A4;margin:14mm}
+.pop-dlg[data-pop="UI-DA03-003-P02"]{background:#fff!important;padding:0!important}
+.pop-dlg[data-pop="UI-DA03-003-P02"] .pop{width:auto!important;box-shadow:none!important;border:0!important}
+.pop-dlg[data-pop="UI-DA03-003-P02"] .pop-head,.pop-dlg[data-pop="UI-DA03-003-P02"] .pop-foot{display:none!important}
+.pop-dlg[data-pop="UI-DA03-003-P02"] .pop-body{padding:0!important;max-height:none!important;overflow:visible!important}
+.pop-dlg[data-pop="UI-DA03-003-P02"] .rpt{border:0;padding:0}
+.pop-dlg[data-pop="UI-DA03-003-P02"] .rpt .grid th,.pop-dlg[data-pop="UI-DA03-003-P02"] .rpt .tbl th,.pop-dlg[data-pop="UI-DA03-003-P02"] .rpt .sum td,.pop-dlg[data-pop="UI-DA03-003-P02"] .rpt .sign th{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}

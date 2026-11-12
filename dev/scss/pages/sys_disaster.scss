@@ -1,0 +1,3 @@
+// 재난코드관리 | 재난 예경보 통합관리시스템 화면 전용
+@use "../abstracts" as *;
+@media (min-width:768px) and (max-width:1279px){html:not(.pc-pop) .col3[style]{grid-template-columns:repeat(2,minmax(0,1fr))!important}html:not(.pc-pop) .col3[style]>:nth-child(3){grid-column:1/-1}}

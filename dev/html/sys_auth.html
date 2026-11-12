@@ -1,0 +1,61 @@
+@@include('../inc/top.html',{"title": "사용자 권한관리 | 재난 예경보 통합관리시스템", "css": "sys_auth"})
+
+<body>
+<div class="wrap">
+  <!-- GNB -->
+  @@include('../inc/header.html')
+
+  <div class="body">
+    <!-- LNB -->
+    @@include('../inc/lnb-sys.html')
+
+    <!-- MAIN -->
+    <div class="main">
+      @@include('../inc/mdi.html',{"file": "sys_auth.html", "name": "사용자 권한관리"})
+
+      <main class="work" id="content">
+        <div class="page-head">
+          <div>
+            <h2 class="tit">사용자 권한관리<button type="button" class="star" title="즐겨찾기" data-star><i class="ri-star-line"></i></button></h2>
+            @@include('../inc/breadcrumb.html',{"d1": "시스템관리", "d1h": "sys_user.html", "d2": "사용자 권한관리", "d2h": "sys_auth.html"})
+          </div>
+        </div>
+
+        <!-- ===== 업무영역 (화면별 교체) ===== -->
+<div class="col-lr" style="grid-template-columns:minmax(0,36fr) minmax(0,64fr)">
+  <div>
+    <div class="sub-head mt0"><h3>사용자 권한 그룹</h3><span class="cnt">전체<b>6</b>건</span></div>
+    <div class="grid-wrap" style="max-height:420px">
+      <table class="grid fix-head">
+        <caption class="blind">사용자 권한 그룹</caption>
+        <colgroup><col style="width:116px"><col style="width:112px"><col><col style="width:76px"></colgroup>
+        <thead><tr><th>그룹</th><th>권한코드</th><th>설명</th><th>사용자 수</th></tr></thead>
+        <tbody id="authTableBody"></tbody>
+      </table>
+    </div>
+    <div class="help-box mt16" style="margin-bottom:0"><i class="ri-information-line"></i><span>권한코드는 NDMS에서 연계하며, 그룹(관리자·운영자·사용자)은 공통코드 <b>user_authrt_cd</b>에서 관리합니다. <b>연계확인서</b>는 새 창 화면으로, 권한이 있는 사용자에게만 GNB [연계확인서 발급] 버튼이 표시됩니다.</span></div>
+  </div>
+  <div>
+    <div class="sub-head mt0"><h3>메뉴접근 권한</h3><span class="badge pri" id="authTit">관리자 · DAMS_ADM</span><span class="cnt">접근 메뉴<b id="menuCnt">0</b>/ <span id="menuTot">28</span>개</span>
+      <div class="btns">
+        <button type="button" class="btn s btn-line" onclick="checkAllMenu(true)"><i class="ri-checkbox-multiple-line"></i>전체 선택</button>
+        <button type="button" class="btn s btn-line" onclick="checkAllMenu(false)"><i class="ri-checkbox-blank-line"></i>전체 해제</button>
+        <button type="button" class="btn s btn-crud" id="btnSaveAuth" onclick="save()"><i class="ri-save-line"></i>저장</button>
+      </div>
+    </div>
+    <p class="fn-guide"><i class="ri-information-line"></i>메뉴를 선택하면 그 페이지에 있는 기능만 권한을 줄 수 있습니다 — <span class="fn-tag">편집</span> 등록·수정·삭제 <span class="fn-tag">다운</span> 파일 다운로드(엑셀·PDF·CAP) <span class="fn-tag">점검</span> <span class="fn-tag">발급·승인</span></p>
+    <ul class="mtree" id="menuAuthTree"></ul>
+  </div>
+</div>
+        <!-- ===== 업무영역 끝 ===== -->
+      </main>
+    </div>
+  </div>
+@@include('../inc/footer.html')
+</div>
+@@include('../inc/pop-common.html')
+@@include('../inc/script.html')
+@@include('../inc/script-common.html')
+<script src="js/pages/sys_auth.js"></script>
+</body>
+</html>

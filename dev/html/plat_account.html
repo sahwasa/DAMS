@@ -1,0 +1,80 @@
+@@include('../inc/top.html',{"title": "계정관리 | 재난 예경보 통합관리시스템", "css": "plat_account"})
+
+<body>
+<div class="wrap">
+  <!-- GNB -->
+  @@include('../inc/header.html')
+
+  <div class="body">
+    <!-- LNB -->
+    @@include('../inc/lnb-plat.html')
+
+    <!-- MAIN -->
+    <div class="main">
+      @@include('../inc/mdi.html',{"file": "plat_account.html", "name": "계정관리"})
+
+      <main class="work" id="content">
+        <div class="page-head">
+          <div>
+            <h2 class="tit">계정관리<button type="button" class="star" title="즐겨찾기" data-star><i class="ri-star-line"></i></button></h2>
+            @@include('../inc/breadcrumb.html',{"d1": "통합플랫폼관리", "d1h": "plat_org.html", "d2": "계정관리", "d2h": "plat_account.html"})
+          </div>
+        </div>
+
+        <!-- ===== 업무영역 (화면별 교체) ===== -->
+        <form class="sch-box">
+          <div class="rows">
+            <div class="it c2"><span class="lb">연계기관</span>
+              <div class="flex w100"><select class="sel" style="flex:1" id="acnt_sido" name="acnt_sido" title="시도" onchange="fillSgg(this.value)"><option value="">시도 전체</option><option value="11">서울특별시</option><option value="46">전남광주통합특별시</option><option value="27">대구광역시</option><option value="31">울산광역시</option><option value="41">경기도</option><option value="42">강원특별자치도</option><option value="43">충청북도</option><option value="44">충청남도</option></select><select class="sel" style="flex:1" id="acnt_sgg" name="acnt_sgg" title="시군구"><option value="">시군구 전체</option></select></div>
+            </div>
+          </div>
+          <div class="ctrl">
+            <button type="reset" class="btn btn-rst"><i class="ri-refresh-line"></i>초기화</button>
+            <button type="submit" class="btn btn-sch"><i class="ri-search-line"></i>검색</button>
+          </div>
+        </form>
+
+        <div class="sub-head">
+          <h3>계정 목록</h3><span class="cnt">전체<b id="cntAll">10</b>건</span>
+          <div class="grid-top">
+            <button type="button" class="btn btn-crud" id="btnAcntAdd" onclick="openPop('pop/UI-DA04-002-P01.html',540)"><i class="ri-user-add-line"></i>등록</button>
+          </div>
+        </div>
+        <div class="grid-wrap" id="acntWrap">
+          <table class="grid fix-head" id="table_list">
+            <caption class="blind">계정 목록</caption>
+            <colgroup><col style="width:64px"><col style="width:160px"><col><col style="width:200px"><col style="width:120px"><col style="width:180px"></colgroup>
+            <thead><tr><th>No</th><th class="sort asc">기관코드</th><th class="sort">연계기관</th><th>서버IP</th><th>사용여부</th><th>관리</th></tr></thead>
+            <tbody id="acntTbody">
+              <tr><td>10</td><td>1100000</td><td class="t-l">서울특별시</td><td>10.111.10.21</td><td><span class="badge sc">Y</span></td><td><span class="flex" style="justify-content:center"><button type="button" class="btn s btn-line" name="btnAcntEdit" onclick="editAcnt('sd=11&amp;sg=&amp;cd=1100000&amp;nm=서울특별시&amp;ip=10.111.10.21&amp;op=Y&amp;use=Y')"><i class="ri-edit-line"></i>수정</button><button type="button" class="btn s btn-dg-o" name="btnAcntDelete" onclick="delAcnt(this)"><i class="ri-delete-bin-line"></i>삭제</button></span></td></tr>
+              <tr><td>9</td><td>4673000</td><td class="t-l">전남광주통합특별시 구례군</td><td>10.146.73.10</td><td><span class="badge sc">Y</span></td><td><span class="flex" style="justify-content:center"><button type="button" class="btn s btn-line" name="btnAcntEdit" onclick="editAcnt('sd=46&amp;sg=구례군&amp;cd=4673000&amp;nm=전남광주통합특별시 구례군&amp;ip=10.146.73.10&amp;op=Y&amp;use=Y')"><i class="ri-edit-line"></i>수정</button><button type="button" class="btn s btn-dg-o" name="btnAcntDelete" onclick="delAcnt(this)"><i class="ri-delete-bin-line"></i>삭제</button></span></td></tr>
+              <tr><td>8</td><td>4678000</td><td class="t-l">전남광주통합특별시 보성군</td><td>10.146.78.13</td><td><span class="badge sc">Y</span></td><td><span class="flex" style="justify-content:center"><button type="button" class="btn s btn-line" name="btnAcntEdit" onclick="editAcnt('sd=46&amp;sg=보성군&amp;cd=4678000&amp;nm=전남광주통합특별시 보성군&amp;ip=10.146.78.13&amp;op=Y&amp;use=Y')"><i class="ri-edit-line"></i>수정</button><button type="button" class="btn s btn-dg-o" name="btnAcntDelete" onclick="delAcnt(this)"><i class="ri-delete-bin-line"></i>삭제</button></span></td></tr>
+              <tr><td>7</td><td>4686000</td><td class="t-l">전남광주통합특별시 함평군</td><td>10.146.86.16</td><td><span class="badge sc">Y</span></td><td><span class="flex" style="justify-content:center"><button type="button" class="btn s btn-line" name="btnAcntEdit" onclick="editAcnt('sd=46&amp;sg=함평군&amp;cd=4686000&amp;nm=전남광주통합특별시 함평군&amp;ip=10.146.86.16&amp;op=Y&amp;use=Y')"><i class="ri-edit-line"></i>수정</button><button type="button" class="btn s btn-dg-o" name="btnAcntDelete" onclick="delAcnt(this)"><i class="ri-delete-bin-line"></i>삭제</button></span></td></tr>
+              <tr><td>6</td><td>2772000</td><td class="t-l">대구광역시 군위군</td><td>10.127.72.11</td><td><span class="badge sc">Y</span></td><td><span class="flex" style="justify-content:center"><button type="button" class="btn s btn-line" name="btnAcntEdit" onclick="editAcnt('sd=27&amp;sg=군위군&amp;cd=2772000&amp;nm=대구광역시 군위군&amp;ip=10.127.72.11&amp;op=Y&amp;use=Y')"><i class="ri-edit-line"></i>수정</button><button type="button" class="btn s btn-dg-o" name="btnAcntDelete" onclick="delAcnt(this)"><i class="ri-delete-bin-line"></i>삭제</button></span></td></tr>
+              <tr><td>5</td><td>3100000</td><td class="t-l">울산광역시</td><td>10.131.10.21</td><td><span class="badge sc">Y</span></td><td><span class="flex" style="justify-content:center"><button type="button" class="btn s btn-line" name="btnAcntEdit" onclick="editAcnt('sd=31&amp;sg=&amp;cd=3100000&amp;nm=울산광역시&amp;ip=10.131.10.21&amp;op=Y&amp;use=Y')"><i class="ri-edit-line"></i>수정</button><button type="button" class="btn s btn-dg-o" name="btnAcntDelete" onclick="delAcnt(this)"><i class="ri-delete-bin-line"></i>삭제</button></span></td></tr>
+              <tr><td>4</td><td>4155000</td><td class="t-l">경기도 안성시</td><td>10.141.55.14</td><td><span class="badge sc">Y</span></td><td><span class="flex" style="justify-content:center"><button type="button" class="btn s btn-line" name="btnAcntEdit" onclick="editAcnt('sd=41&amp;sg=안성시&amp;cd=4155000&amp;nm=경기도 안성시&amp;ip=10.141.55.14&amp;op=Y&amp;use=Y')"><i class="ri-edit-line"></i>수정</button><button type="button" class="btn s btn-dg-o" name="btnAcntDelete" onclick="delAcnt(this)"><i class="ri-delete-bin-line"></i>삭제</button></span></td></tr>
+              <tr><td>3</td><td>4278000</td><td class="t-l">강원특별자치도 철원군</td><td>10.142.78.12</td><td><span class="badge sc">Y</span></td><td><span class="flex" style="justify-content:center"><button type="button" class="btn s btn-line" name="btnAcntEdit" onclick="editAcnt('sd=42&amp;sg=철원군&amp;cd=4278000&amp;nm=강원특별자치도 철원군&amp;ip=10.142.78.12&amp;op=Y&amp;use=Y')"><i class="ri-edit-line"></i>수정</button><button type="button" class="btn s btn-dg-o" name="btnAcntDelete" onclick="delAcnt(this)"><i class="ri-delete-bin-line"></i>삭제</button></span></td></tr>
+              <tr><td>2</td><td>4311000</td><td class="t-l">충청북도 청주시</td><td>10.143.11.20</td><td><span class="badge sc">Y</span></td><td><span class="flex" style="justify-content:center"><button type="button" class="btn s btn-line" name="btnAcntEdit" onclick="editAcnt('sd=43&amp;sg=청주시&amp;cd=4311000&amp;nm=충청북도 청주시&amp;ip=10.143.11.20&amp;op=Y&amp;use=Y')"><i class="ri-edit-line"></i>수정</button><button type="button" class="btn s btn-dg-o" name="btnAcntDelete" onclick="delAcnt(this)"><i class="ri-delete-bin-line"></i>삭제</button></span></td></tr>
+              <tr><td>1</td><td>4415000</td><td class="t-l">충청남도 공주시</td><td>10.144.15.18</td><td><span class="badge sc">Y</span></td><td><span class="flex" style="justify-content:center"><button type="button" class="btn s btn-line" name="btnAcntEdit" onclick="editAcnt('sd=44&amp;sg=공주시&amp;cd=4415000&amp;nm=충청남도 공주시&amp;ip=10.144.15.18&amp;op=Y&amp;use=Y')"><i class="ri-edit-line"></i>수정</button><button type="button" class="btn s btn-dg-o" name="btnAcntDelete" onclick="delAcnt(this)"><i class="ri-delete-bin-line"></i>삭제</button></span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="help-box mt16"><i class="ri-information-line"></i><span>재난 예·경보 통합관리시스템에 직접 접속하는 연계기관 계정 목록입니다. [수정]은 연계기관 정보 수정 팝업을 열고, [삭제]는 계정관리 대상에서만 제외합니다(연계기관 정보는 유지). [등록]·[수정]·[삭제]는 운영자 권한 이상에 표출됩니다.</span></div>
+        <!-- ===== 업무영역 끝 ===== -->
+      </main>
+    </div>
+  </div>
+@@include('../inc/footer.html')
+</div>
+@@include('../inc/pop-common.html')
+@@include('../inc/pop/UI-DA04-001-P01.html')
+@@include('../inc/pop/UI-DA04-002-P01.html')
+@@include('../inc/pop/UI-DA04-001-P02.html')
+@@include('../inc/script.html')
+@@include('../inc/script-common.html')
+<script src="js/pop/UI-DA04-001-P01.js"></script>
+<script src="js/pop/UI-DA04-002-P01.js"></script>
+<script src="js/pop/UI-DA04-001-P02.js"></script>
+<script src="js/pages/plat_account.js"></script>
+</body>
+</html>

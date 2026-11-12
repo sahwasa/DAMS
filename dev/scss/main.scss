@@ -1,0 +1,41 @@
+// ============================================
+// Main SCSS Entry Point — 원본 목업 common.scss의 절 순서대로(뒤 절이 앞 절을 덮어씀)
+// 화면 전용 CSS는 pages/화면.scss → css/pages/화면.css (해당 화면에서만 읽음)
+// ============================================
+@use "./base/reset";
+@use "./layout/header";
+@use "./layout/layout";
+@use "./layout/title";
+@use "./components/buttons";
+@use "./components/forms";
+@use "./components/search";
+@use "./components/grid";
+@use "./components/table";
+@use "./components/tab";
+@use "./components/paginate";
+@use "./components/popup";
+@use "./components/misc";
+@use "./components/layer";
+@use "./components/window";
+@use "./components/card";
+@use "./components/grid-ext";
+@use "./components/extra";
+@use "./components/hazard";
+@use "./components/map";
+@use "./layout/footer";
+@use "./layout/responsive";
+@use "./base/print";
+@use "./components/stat";
+
+// 팝업(화면 안 dialog) 전용 — .pop-dlg[data-pop="팝업ID"] 안으로 한정
+@use "./pop/UI-CO-P02";
+@use "./pop/UI-CO-P03";
+@use "./pop/UI-DA01-001-P01";
+@use "./pop/UI-DA02-001-P01";
+@use "./pop/UI-DA03-003-P01";
+@use "./pop/UI-DA03-003-P02";
+@use "./pop/UI-DA04-001-P01";
+@use "./pop/UI-DA04-001-P02";
+@use "./pop/UI-DA08-006-P01";
+@use "./pop/UI-DA09-002-P01";
+@use "./pop/UI-DA09-002-P02";

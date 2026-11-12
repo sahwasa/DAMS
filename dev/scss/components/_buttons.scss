@@ -1,0 +1,29 @@
+@use "../abstracts" as *;
+/* ---------- 5. Button ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:4px;height:$h-btn;padding:0 12px;border:1px solid transparent;border-radius:$r-s;font-size:$fs-s;font-weight:500;white-space:nowrap;vertical-align:middle;transition:background .1s,border-color .1s}
+.btn i{font-size:1.1em}
+.btn.s{height:$h-btn-s;padding:0 8px;font-size:12px}.btn.l{height:$h-btn-l;padding:0 16px;font-size:$fs-b}
+.btn.ico{padding:0;width:$h-btn}.btn.s.ico{width:$h-btn-s}.btn.l.ico{width:$h-btn-l}
+.btn:disabled,.btn.dis{cursor:default;pointer-events:none}
+// CRUD(화면 컨트롤): 목록/삭제/취소/저장
+.btn-crud{@include btn($sec,#fff,$sec,$sec-h,$sec-h,$pri,$pri,#9a9fb3,#e9ebf1,#9a9fb3)}
+// Search
+.btn-sch{@include btn($pri,#fff,$pri,$pri-h,$pri-h,$pri-a,$pri-a,$pri-d,#eef0fc,$pri-d)}
+.btn-rst{@include btn($g70,#fff,$g70,#3d3d3d,#3d3d3d,$g80,$g80,$g40,#f0f0f0,$g40)}
+// Grid / Form 기본(라인)
+.btn-line{@include btn(#fff,$c-body,$c-line,#fff,$g60,#fff,$g80,#fff,$g40,$g20)}
+// Form 강조 / Grid 엑셀
+.btn-dark{@include btn($g70,#fff,$g70,#3d3d3d,#3d3d3d,$g80,$g80,$g40,#f0f0f0,$g40)}
+// Color set (fill / outline)
+.btn-pri{@include btn($pri,#fff,$pri,$pri-h,$pri-h,$pri-a,$pri-a,$pri-d,#fff,$pri-d)}
+.btn-pri-o{@include btn(#fff,$pri,$pri,#f3f5fe,$pri,#e6eafc,$pri,#fff,$pri-d,$pri-d)}
+.btn-sec{@include btn($sec,#fff,$sec,$sec-h,$sec-h,$pri,$pri,#9a9fb3,#fff,#9a9fb3)}
+.btn-sec-o{@include btn(#fff,$sec,$sec,#f4f5f8,$sec,#e8eaf0,$sec,#fff,#9a9fb3,#c8cbd6)}
+.btn-dg{@include btn($dg,#fff,$dg,$dg-t,$dg-t,$dg-t2,$dg-t2,$dg-b,#fff,$dg-b)}
+.btn-dg-o{@include btn($dg-s,$dg-t,$dg-b,$dg-b,$dg,$dg-b,$dg-t,$dg-s,$dg-b,$dg-b)}
+.btn-wn{@include btn($wn,$wn-t2,$wn,#f0a810,#f0a810,$wn-t,$wn-t,$wn-b,#fff,$wn-b)}
+.btn-wn-o{@include btn($wn-s,$wn-t,$wn-b,$wn-b,$wn,$wn-b,$wn-t,$wn-s,$wn-b,$wn-b)}
+.btn-sc{@include btn($sc,#fff,$sc,$sc-t,$sc-t,$sc-t2,$sc-t2,$sc-b,#fff,$sc-b)}
+.btn-sc-o{@include btn($sc-s,$sc-t,$sc-b,$sc-b,$sc,$sc-b,$sc-t,$sc-s,$sc-b,$sc-b)}
+.btn-in{@include btn($in,#fff,$in,$in-t,$in-t,$in-t2,$in-t2,$in-b,#fff,$in-b)}
+.btn-in-o{@include btn(#fff,$in,$in-b,$in-s,$in,$in-b,$in-t,#fff,$in-b,$in-b)}

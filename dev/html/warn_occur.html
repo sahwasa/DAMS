@@ -1,0 +1,82 @@
+@@include('../inc/top.html',{"title": "재난발생현황 | 재난 예경보 통합관리시스템", "css": "warn_occur"})
+
+<body>
+<div class="wrap">
+  <!-- GNB -->
+  @@include('../inc/header.html')
+
+  <div class="body">
+    <!-- LNB -->
+    @@include('../inc/lnb-warn.html')
+
+    <!-- MAIN -->
+    <div class="main">
+      @@include('../inc/mdi.html',{"file": "warn_occur.html", "name": "재난발생현황"})
+
+      <main class="work" id="content">
+        <div class="page-head">
+          <div>
+            <h2 class="tit">재난발생현황<button type="button" class="star" title="즐겨찾기" data-star><i class="ri-star-line"></i></button></h2>
+            @@include('../inc/breadcrumb.html',{"d1": "재난 예경보 현황", "d1h": "warn_monitor.html", "d2": "재난발생현황", "d2h": "warn_occur.html"})
+          </div>
+        </div>
+
+        <!-- ===== 업무영역 (화면별 교체) ===== -->
+        <form class="sch-box">
+          <div class="rows">
+            <div class="it c2"><span class="lb">재난 구분</span>
+              <div class="flex w100"><select class="sel" style="flex:1" id="code1" name="code1" title="재난 대분류" onchange="setCode2(this.value)"><option value="">대분류 전체</option><option value="T1">자연재난</option><option value="T2">사회재난</option><option value="T3">기타</option></select><select class="sel" style="flex:1" id="code2" name="code2" title="재난 중분류"><option value="">중분류 전체</option></select></div>
+            </div>
+            <div class="it c2"><span class="lb req">발생기간</span>
+              <div class="range"><span class="inp-ico inp-date"><input type="date" class="inp" id="date_timepicker_start" name="date_timepicker_start" value="2026-09-30" title="시작일" required data-label="발생기간 시작일"></span><span>~</span><span class="inp-ico inp-date"><input type="date" class="inp" id="date_timepicker_end" name="date_timepicker_end" value="2026-10-30" title="종료일" required data-label="발생기간 종료일"></span></div>
+            </div>
+          </div>
+          <div class="ctrl">
+            <button type="reset" class="btn btn-rst"><i class="ri-refresh-line"></i>초기화</button>
+            <button type="submit" class="btn btn-sch"><i class="ri-search-line"></i>검색</button>
+          </div>
+        </form>
+
+        <div class="sub-head">
+          <h3>재난발생 목록</h3><span class="cnt">전체<b id="cntAll">133</b>건</span>
+          <div class="grid-top">
+            <select class="sel" title="목록노출건수"><option value="15">15개</option><option value="30">30개</option><option value="50">50개</option><option value="100">100개</option></select>
+          </div>
+        </div>
+        <div class="grid-wrap">
+          <table class="grid" id="table_list">
+            <caption class="blind">재난발생 목록</caption>
+            <colgroup><col style="width:64px"><col style="width:190px"><col><col style="width:260px"><col style="width:170px"><col style="width:170px"></colgroup>
+            <thead><tr><th>No</th><th class="sort">재난구분</th><th>통보문 제목</th><th>지역</th><th class="sort desc">발표일시</th><th class="sort">발효/발생일시</th></tr></thead>
+            <tbody id="occurTbody">
+              <tr><td>133</td><td class="t-l">자연재난 &gt; 호우</td><td class="t-l">충남 천안·아산 호우경보 발표 <span class="src-t">출처: 기상청</span></td><td class="t-l">충청남도 천안시, 아산시</td><td>2026-10-30 14:40:00</td><td>2026-10-30 15:00:00</td></tr>
+              <tr><td>132</td><td class="t-l">자연재난 &gt; 강풍</td><td class="t-l">울산 동구·북구 강풍주의보 발표 <span class="src-t">출처: 기상청</span></td><td class="t-l">울산광역시 동구, 북구</td><td>2026-10-30 11:10:00</td><td>2026-10-30 14:00:00</td></tr>
+              <tr><td>131</td><td class="t-l">자연재난 &gt; 풍랑</td><td class="t-l">동해남부 앞바다 풍랑주의보 발표 <span class="src-t">출처: 기상청</span></td><td class="t-l">울산·부산 앞바다</td><td>2026-10-29 22:00:00</td><td>2026-10-30 03:00:00</td></tr>
+              <tr><td>130</td><td class="t-l">자연재난 &gt; 홍수</td><td class="t-l">태화강 태화교 지점 홍수주의보 발령 <span class="src-t">출처: 낙동강홍수통제소</span></td><td class="t-l">울산광역시 중구</td><td>2026-10-29 21:30:00</td><td>2026-10-29 21:30:00</td></tr>
+              <tr><td>129</td><td class="t-l">자연재난 &gt; 호우</td><td class="t-l">울산 중구 호우경보 발표 <span class="src-t">출처: 기상청</span></td><td class="t-l">울산광역시 중구</td><td>2026-10-29 20:50:00</td><td>2026-10-29 21:00:00</td></tr>
+              <tr><td>128</td><td class="t-l">사회재난 &gt; 화재</td><td class="t-l">천안 동남구 공장 화재 대응1단계 발령 <span class="src-t">출처: 소방청</span></td><td class="t-l">충청남도 천안시 동남구</td><td>2026-10-28 09:20:00</td><td>2026-10-28 09:20:00</td></tr>
+              <tr><td>127</td><td class="t-l">자연재난 &gt; 산사태</td><td class="t-l">공주시 반포면 산사태주의보 발령 <span class="src-t">출처: 산림청</span></td><td class="t-l">충청남도 공주시</td><td>2026-10-27 16:00:00</td><td>2026-10-27 16:00:00</td></tr>
+              <tr><td>126</td><td class="t-l">자연재난 &gt; 산불</td><td class="t-l">충남 공주시 산불위험 경계 단계 발령 <span class="src-t">출처: 산림청</span></td><td class="t-l">충청남도 공주시</td><td>2026-10-27 11:30:00</td><td>2026-10-27 12:00:00</td></tr>
+              <tr><td>125</td><td class="t-l">자연재난 &gt; 호우</td><td class="t-l">대전·세종 호우주의보 해제 <span class="src-t">출처: 기상청</span></td><td class="t-l">대전광역시, 세종특별자치시</td><td>2026-10-26 18:00:00</td><td>2026-10-26 18:00:00</td></tr>
+              <tr><td>124</td><td class="t-l">사회재난 &gt; 미세먼지</td><td class="t-l">경기 남부권 미세먼지 주의보 발령 <span class="src-t">출처: 환경부</span></td><td class="t-l">경기도 부천시, 수원시</td><td>2026-10-23 09:00:00</td><td>2026-10-23 09:00:00</td></tr>
+              <tr><td>123</td><td class="t-l">자연재난 &gt; 강풍</td><td class="t-l">강원 영동 강풍경보 발표 <span class="src-t">출처: 기상청</span></td><td class="t-l">강원특별자치도 강릉시, 동해시</td><td>2026-10-18 05:50:00</td><td>2026-10-18 06:00:00</td></tr>
+              <tr><td>122</td><td class="t-l">자연재난 &gt; 지진</td><td class="t-l">경북 포항시 북구 북쪽 9km 규모 3.1 지진 <span class="src-t">출처: 기상청</span></td><td class="t-l">경상북도 포항시 북구</td><td>2026-10-16 02:41:00</td><td>2026-10-16 02:40:52</td></tr>
+              <tr><td>121</td><td class="t-l">자연재난 &gt; 태풍</td><td class="t-l">제20호 태풍 남해안 태풍주의보 발표 <span class="src-t">출처: 기상청</span></td><td class="t-l">전남광주통합특별시 여수시, 고흥군</td><td>2026-10-12 17:00:00</td><td>2026-10-12 18:00:00</td></tr>
+              <tr><td>120</td><td class="t-l">자연재난 &gt; 지진해일</td><td class="t-l">일본 서쪽 해역 지진해일 정보(영향 없음) <span class="src-t">출처: 기상청</span></td><td class="t-l">강원·경북 동해안</td><td>2026-10-09 13:22:00</td><td>2026-10-09 13:15:40</td></tr>
+              <tr><td>119</td><td class="t-l">자연재난 &gt; 호우</td><td class="t-l">서울 서남권 호우주의보 발표 <span class="src-t">출처: 기상청</span></td><td class="t-l">서울특별시 마포구, 영등포구</td><td>2026-10-08 07:30:00</td><td>2026-10-08 08:00:00</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="paging" data-total="9" data-page="1"></div>
+        <!-- ===== 업무영역 끝 ===== -->
+      </main>
+    </div>
+  </div>
+@@include('../inc/footer.html')
+</div>
+@@include('../inc/pop-common.html')
+@@include('../inc/script.html')
+@@include('../inc/script-common.html')
+<script src="js/pages/warn_occur.js"></script>
+</body>
+</html>

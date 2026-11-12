@@ -1,0 +1,77 @@
+@@include('../inc/top.html',{"title": "연계확인서 점검실행 | 재난 예경보 통합관리시스템", "css": "cert_check"})
+
+<body class="win-body">
+<div class="wrap win">
+  <header class="win-head"><img src="images/gov_logo_w.png" alt="정부 상징" class="gov-logo"><h1>연계확인서 발급</h1><span class="sub" id="pgSub">점검실행</span><button type="button" class="close" title="창 닫기" onclick="window.close()"><i class="ri-close-line"></i></button></header>
+  <main class="work" id="content">
+    <ol class="steps" id="steps"><li class="done">① 점검 시작</li><li class="on">② 점검완료</li><li>③ 발급완료</li></ol>
+
+    <table class="tbl" id="orgInfo">
+      <caption class="blind">기관·점검 정보</caption>
+      <colgroup><col style="width:110px"><col><col style="width:110px"><col><col style="width:110px"><col><col style="width:110px"><col></colgroup>
+      <tbody>
+        <tr><th>지자체</th><td id="iOrg">-</td><th>점검일자</th><td id="iDate">-</td><th>점검자</th><td id="iChecker">-</td><th>발급 상태</th><td><span class="badge" id="iStat">발급대기</span></td></tr>
+      </tbody>
+    </table>
+
+    <form class="sch-box mt16" id="periodBox">
+      <div class="rows">
+        <div class="it c4"><span class="lb req">점검기간</span>
+          <div class="range"><span class="inp-ico inp-date"><input type="date" class="inp" id="dfrom" name="dfrom" value="2026-10-01" title="점검 시작일" required data-label="점검 시작일"></span><span>~</span><span class="inp-ico inp-date"><input type="date" class="inp" id="dto" name="dto" value="2026-10-14" title="점검 종료일" required data-label="점검 종료일"></span></div>
+          <span class="f-msg" id="periodNote">기본 2주 (협의 필요, 최대 31일) · 달력 아이콘 또는 직접 입력(YYYY-MM-DD)으로 기간을 바꾸면 바로 다시 점검해 결과가 갱신됩니다.</span>
+        </div>
+      </div>
+      <div class="ctrl">
+        <button type="submit" class="btn btn-sch" id="btnSearch"><i class="ri-search-line"></i>검색</button>
+        <button type="button" class="btn btn-line" id="btnList" onclick="goList()"><i class="ri-list-check"></i>목록</button>
+      </div>
+    </form>
+
+    <div class="result-box mt16" id="judge" hidden></div>
+
+    <div id="tabArea" class="mt16">
+      <ul class="tab">
+        <li class="on"><button type="button" data-tab="tab-conn">연결상태<span class="badge" id="tbC" hidden></span></button></li>
+        <li><button type="button" data-tab="tab-noti">통보문<span class="badge" id="tbN" hidden></span></button></li>
+        <li><button type="button" data-tab="tab-src">단말 제원정보<span class="badge" id="tbS" hidden></span></button></li>
+        <li><button type="button" data-tab="tab-st">단말 상태정보<span class="badge" id="tbT" hidden></span></button></li>
+      </ul>
+      <div id="tab-conn">
+        <div class="sub-head mt0"><h3 id="ttlConn"></h3></div>
+        <div class="help-box" id="connNA" hidden><i class="ri-information-line"></i><span>시군구는 행안부 접속 시작·종료 시간을 알 수 없으므로 <b>해당없음</b>으로 표기합니다.</span></div>
+        <div class="grid-wrap" id="connTbl"><table class="grid fix-head"><caption class="blind">연결상태 목록</caption><colgroup><col style="width:60px"><col style="width:200px"><col style="width:200px"><col style="width:150px"><col><col style="width:140px"></colgroup>
+          <thead><tr><th>No</th><th>접속 시작 시각</th><th>접속 종료 시각</th><th>접속 유지 시간</th><th>비고</th><th>판정</th></tr></thead><tbody id="tbodyConn"></tbody></table></div>
+      </div>
+      <div id="tab-noti" hidden>
+        <div class="sub-head mt0"><h3 id="ttlNoti"></h3></div>
+        <div class="grid-wrap"><table class="grid fix-head"><caption class="blind">통보문 목록</caption><colgroup><col style="width:60px"><col style="width:180px"><col><col style="width:170px"><col style="width:160px"><col style="width:110px"><col style="width:200px"></colgroup>
+          <thead><tr><th>No</th><th>재난분류명</th><th>제목</th><th class="sort asc">발령시각</th><th>발령지역</th><th>발령결과</th><th>판정</th></tr></thead><tbody id="tbodyNoti"></tbody></table></div>
+      </div>
+      <div id="tab-src" hidden>
+        <div class="sub-head mt0"><h3 id="ttlSrc"></h3></div>
+        <div class="grid-wrap"><table class="grid fix-head"><caption class="blind">단말 제원정보 목록</caption><colgroup><col style="width:60px"><col style="width:160px"><col><col style="width:120px"><col style="width:120px"><col style="width:140px"><col style="width:140px"></colgroup>
+          <thead><tr><th>No</th><th>단말 ID</th><th>설치 위치</th><th>필수 필드</th><th>코드 검사</th><th>수신 일자</th><th>판정</th></tr></thead><tbody id="tbodySrc"></tbody></table></div>
+      </div>
+      <div id="tab-st" hidden>
+        <div class="sub-head mt0"><h3 id="ttlSt"></h3></div>
+        <div class="grid-wrap"><table class="grid fix-head"><caption class="blind">단말 상태정보 목록</caption><colgroup><col style="width:60px"><col><col style="width:140px"><col style="width:140px"><col style="width:140px"><col style="width:140px"><col style="width:160px"></colgroup>
+          <thead><tr><th>No</th><th>일자</th><th>기대(24)</th><th>수신</th><th>결손</th><th>수신율</th><th>판정</th></tr></thead><tbody id="tbodySt"></tbody></table></div>
+      </div>
+    </div>
+
+    <div id="docSec" hidden>
+      <div class="sub-head"><h3>연계확인서 서식(자동생성)</h3><div class="btns"><button type="button" class="btn btn-dark" onclick="doDown('연계확인서(PDF)')"><i class="ri-download-2-line"></i>다운로드</button></div></div>
+      <div class="doc-wrap"><div class="doc" id="docArea"></div></div>
+    </div>
+
+    <p class="f-msg mt16">※ 목업 샘플 — 점검 기준 수치는 제안값. 예시 기관: <a class="c-pri" href="cert_check.html?org=bucheon">부천시(적합)</a> · <a class="c-pri" href="cert_check.html?org=cheongju">청주시(부적합)</a> · <a class="c-pri" href="cert_check.html?org=gyeonggi">경기도(시도·연결상태)</a></p>
+  </main>
+</div>
+@@include('../inc/pop/UI-DA09-002-P01.html')
+@@include('../inc/pop/UI-DA09-002-P02.html')
+@@include('../inc/script.html')
+<script src="js/pop/UI-DA09-002-P01.js"></script>
+<script src="js/pop/UI-DA09-002-P02.js"></script>
+<script src="js/pages/cert_check.js"></script>
+</body>
+</html>

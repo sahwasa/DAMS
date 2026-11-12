@@ -1,0 +1,19 @@
+// UI-DA04-001-P02 연계확인서 — dialog 안으로 한정
+.pop-dlg[data-pop="UI-DA04-001-P02"] .doc-wrap{padding:20px;background:#eef1f6;border-radius:4px}
+.pop-dlg[data-pop="UI-DA04-001-P02"] .doc{padding:30px 36px;background:#fff;border:1px solid #c6c6c6;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.pop-dlg[data-pop="UI-DA04-001-P02"] .doc h2{text-align:center;font-size:24px;letter-spacing:12px;color:#101010}
+.pop-dlg[data-pop="UI-DA04-001-P02"] .doc .doc-sub{text-align:center;font-size:12px;color:#707070;margin:4px 0 20px}
+.pop-dlg[data-pop="UI-DA04-001-P02"] .doc .tbl{font-size:13px}
+.pop-dlg[data-pop="UI-DA04-001-P02"] .doc .sub-head{margin-top:20px}
+.pop-dlg[data-pop="UI-DA04-001-P02"] .doc .grid td{white-space:normal}
+.pop-dlg[data-pop="UI-DA04-001-P02"] .doc .grid td:nth-child(4){white-space:nowrap}
+.pop-dlg[data-pop="UI-DA04-001-P02"] .cert-info{display:flex;align-items:center;gap:8px;margin-bottom:12px;font-size:13px;color:#505050}
+@media print{@page{size:A4;margin:14mm}
+.pop-dlg[data-pop="UI-DA04-001-P02"]{background:#fff!important;padding:0!important}
+.pop-dlg[data-pop="UI-DA04-001-P02"] .pop{width:auto!important;box-shadow:none!important;border:0!important}
+.pop-dlg[data-pop="UI-DA04-001-P02"] .pop-head,.pop-dlg[data-pop="UI-DA04-001-P02"] .pop-foot,.pop-dlg[data-pop="UI-DA04-001-P02"] .cert-info{display:none!important}
+.pop-dlg[data-pop="UI-DA04-001-P02"] .pop-body{padding:0!important;max-height:none!important;overflow:visible!important}
+.pop-dlg[data-pop="UI-DA04-001-P02"] .doc-wrap{padding:0;background:none}
+.pop-dlg[data-pop="UI-DA04-001-P02"] .doc{border:0;box-shadow:none;padding:0}
+.pop-dlg[data-pop="UI-DA04-001-P02"] .doc .grid th,.pop-dlg[data-pop="UI-DA04-001-P02"] .doc .tbl th{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}

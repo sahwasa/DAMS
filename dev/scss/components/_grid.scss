@@ -1,0 +1,25 @@
+@use "../abstracts" as *;
+/* ---------- 8. Grid (목록) ---------- */
+.grid-wrap{overflow:auto;border-top:1px solid #a9aeb8;border-bottom:1px solid $c-line2}
+.grid{table-layout:fixed;font-size:$fs-s}
+.grid th,.grid td{height:$h-row;padding:3px 8px;border:1px solid #e6ebef;border-left-color:#d3d8dd;border-right-color:#d3d8dd;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.grid tr>*:first-child{border-left:0}.grid tr>*:last-child{border-right:0}
+.grid thead th{height:34px;background:$grid-th;font-weight:500;color:$c-title;border-color:#c9ced8;border-top:0}
+
+.grid thead th.sort{cursor:pointer}.grid thead th.sort:focus-visible{outline:2px solid $pri;outline-offset:-2px}.grid thead th.sort::after{content:"\ea74";font-family:remixicon;margin-left:2px;color:$g50;font-weight:400}
+.grid thead th.asc::after{content:"\ea78";color:$pri}.grid thead th.desc::after{content:"\ea4e";color:$pri}
+.grid tbody td{color:$c-body;background:#fff}
+.grid tbody tr:nth-child(even) td{background:#f9fbfc}
+.grid tbody tr:hover td{background:$g5}
+.grid tbody tr.on td{background:$in-s}
+.grid tbody tr.notice td{background:$wn-s}
+.grid tbody tr.warn td{background:$dg-s}
+.grid tbody td.cell-on{background:#e3f4fb}
+.grid tbody td.wrap{white-space:normal;display:table-cell;height:auto;flex-direction:initial}
+.grid tbody td a.lk{color:$c-title;text-decoration:underline}.grid tbody td a.lk:hover{color:$pri}
+.grid tbody td .inp,.grid tbody td .sel{width:100%;height:26px}
+.grid tr.sum td{background:$grid-sum;font-weight:600}.grid tr.tot td{background:$grid-tot;font-weight:700;color:$c-title}
+.grid .nodata td{height:120px;color:$g60;white-space:normal}
+.grid.fix-head thead th{position:sticky;top:0;z-index:2}.grid.fix-head thead tr+tr th{top:34px}.grid.fix-head{border-collapse:separate;border-spacing:0;border-left:1px solid #d3d8dd}.grid.fix-head th,.grid.fix-head td{border-width:0 1px 1px 0}
+.grid-top{display:flex;align-items:center;gap:6px;margin-left:auto}
+.grid-top .sel{width:90px;height:30px;font-size:14px}.grid-top .btn.s{height:30px;padding:0 12px;font-size:13px}.grid-top #btnApply{padding:0 14px;border-color:#d8d8d8;background:#fff;font-size:14px;color:#707070}.grid-top #btnApply:hover{border-color:#8e8e8e;color:#202020}

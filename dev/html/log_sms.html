@@ -1,0 +1,88 @@
+@@include('../inc/top.html',{"title": "문자전송이력 | 재난 예경보 통합관리시스템"})
+
+<body>
+<div class="wrap">
+  <!-- GNB -->
+  @@include('../inc/header.html')
+
+  <div class="body">
+    <!-- LNB -->
+    @@include('../inc/lnb-log.html')
+
+    <!-- MAIN -->
+    <div class="main">
+      @@include('../inc/mdi.html',{"file": "log_sms.html", "name": "문자전송이력"})
+
+      <main class="work" id="content">
+        <div class="page-head">
+          <div>
+            <h2 class="tit">문자전송이력<button type="button" class="star" title="즐겨찾기" data-star><i class="ri-star-line"></i></button></h2>
+            @@include('../inc/breadcrumb.html',{"d1": "시스템 이력", "d1h": "log_sms.html", "d2": "문자전송이력", "d2h": "log_sms.html"})
+          </div>
+        </div>
+
+        <!-- ===== 업무영역 (화면별 교체) ===== -->
+<form class="sch-box" id="schForm">
+          <div class="rows">
+            <div class="it c2"><span class="lb req">전송기간</span>
+              <div class="range"><span class="inp-ico inp-date"><input type="date" class="inp" id="dtFr" name="dtFr" value="2026-09-30" title="시작일" required data-label="전송기간 시작일"></span><span>~</span><span class="inp-ico inp-date"><input type="date" class="inp" id="dtTo" name="dtTo" value="2026-10-30" title="종료일" required data-label="전송기간 종료일"></span></div>
+            </div>
+            <div class="it"><label for="smsSe">메시지 구분</label><select class="sel" id="smsSe" name="smsSe" data-f="2"><option value="">전체</option><option>자원오류</option><option>통보문수신오류</option><option>연계상태 단절</option><option>프로세스오류</option></select></div>
+            <div class="it"><label for="sndRslt">전송결과</label><select class="sel" id="sndRslt" name="sndRslt" data-f="1"><option value="">전체</option><option>성공</option><option>실패</option></select></div>
+            <div class="it"><label for="rcvrNm">수신자</label><input class="inp" id="rcvrNm" name="rcvrNm" maxlength="100" placeholder="수신자명 입력" data-f="4"></div>
+            <div class="it"><label for="rcvrNo">수신번호</label><input class="inp" id="rcvrNo" name="rcvrNo" maxlength="20" placeholder="번호 뒤 4자리" data-f="5"></div>
+            <div class="it"><label for="sndCn">내용</label><input class="inp" id="sndCn" name="sndCn" maxlength="100" placeholder="문자 내용 입력" data-f="3"></div>
+          </div>
+          <div class="ctrl">
+            <button type="reset" class="btn btn-rst"><i class="ri-refresh-line"></i>초기화</button>
+            <button type="submit" class="btn btn-sch"><i class="ri-search-line"></i>검색</button>
+          </div>
+        </form>
+
+        <div class="sub-head">
+          <h3>문자전송 이력 목록</h3><span class="cnt">전체<b id="totCnt">133</b>건</span>
+          <div class="grid-top">
+            <select class="sel" id="pageSize" name="pageSize" title="목록노출건수"><option value="15">15개</option><option value="30">30개</option><option value="50">50개</option><option value="100">100개</option></select>
+            <button type="button" class="btn s btn-line" id="btnApply" onclick="applySize()">적용</button>
+          </div>
+        </div>
+        <div class="grid-wrap">
+          <table class="grid" id="smsLogTbody">
+            <caption class="blind">문자전송 이력 목록</caption>
+            <colgroup><col style="width:70px"><col style="width:100px"><col style="width:150px"><col><col style="width:110px"><col style="width:150px"><col style="width:180px"></colgroup>
+            <thead><tr><th>번호</th><th class="sort">전송결과</th><th class="sort">구분</th><th>내용</th><th class="sort">수신자</th><th>수신번호</th><th class="sort desc">전송시각</th></tr></thead>
+            <tbody>
+              <tr class="clk" onclick="openDetail(0)"><td>133</td><td><span class="badge sc">성공</span></td><td>자원오류</td><td class="t-l">[자원경고] DB서버 디스크 사용률 85% 초과</td><td>김*리</td><td>010-****-5678</td><td>2026-10-30 09:12:40</td></tr>
+              <tr class="clk" onclick="openDetail(1)"><td>132</td><td><span class="badge sc">성공</span></td><td>자원오류</td><td class="t-l">[자원경고] DB서버 디스크 사용률 85% 초과</td><td>박*영</td><td>010-****-1234</td><td>2026-10-30 09:12:40</td></tr>
+              <tr class="clk" onclick="openDetail(2)"><td>131</td><td><span class="badge dg">실패</span></td><td>통보문수신오류</td><td class="t-l">[통보문오류] 충남 천안시 통보문 XML 파싱 오류(필수항목 누락)</td><td>이*황</td><td>010-****-2345</td><td>2026-10-29 21:12:11</td></tr>
+              <tr class="clk" onclick="openDetail(3)"><td>130</td><td><span class="badge sc">성공</span></td><td>통보문수신오류</td><td class="t-l">[통보문오류] 충남 천안시 통보문 XML 파싱 오류(필수항목 누락)</td><td>김*리</td><td>010-****-5678</td><td>2026-10-29 21:12:10</td></tr>
+              <tr class="clk" onclick="openDetail(4)"><td>129</td><td><span class="badge sc">성공</span></td><td>연계상태 단절</td><td class="t-l">[연계복구] 강원 철원군 연계 통신 정상화(단절 17분)</td><td>박*영</td><td>010-****-1234</td><td>2026-10-28 03:58:22</td></tr>
+              <tr class="clk" onclick="openDetail(5)"><td>128</td><td><span class="badge sc">성공</span></td><td>연계상태 단절</td><td class="t-l">[연계단절] 강원 철원군 연계 통신 타임아웃 3회 연속 발생</td><td>박*영</td><td>010-****-1234</td><td>2026-10-28 03:41:05</td></tr>
+              <tr class="clk" onclick="openDetail(6)"><td>127</td><td><span class="badge sc">성공</span></td><td>자원오류</td><td class="t-l">[시스템 장애] 충남 아산시 연계서버 응답지연(평균 12초)</td><td>김*리</td><td>010-****-5678</td><td>2026-10-27 16:50:31</td></tr>
+              <tr class="clk" onclick="openDetail(7)"><td>126</td><td><span class="badge dg">실패</span></td><td>자원오류</td><td class="t-l">[시스템 장애] 충남 아산시 연계서버 응답지연(평균 12초)</td><td>최*훈</td><td>010-****-3456</td><td>2026-10-27 16:50:31</td></tr>
+              <tr class="clk" onclick="openDetail(8)"><td>125</td><td><span class="badge sc">성공</span></td><td>프로세스오류</td><td class="t-l">[시험] 송출프로세스 비정상 종료 후 자동 재기동</td><td>이*황</td><td>010-****-2345</td><td>2026-10-26 11:05:47</td></tr>
+              <tr class="clk" onclick="openDetail(9)"><td>124</td><td><span class="badge sc">성공</span></td><td>연계상태 단절</td><td class="t-l">[연계단절] 경북 포항시 연계 GW 세션 끊김</td><td>박*영</td><td>010-****-1234</td><td>2026-10-24 07:20:18</td></tr>
+              <tr class="clk" onclick="openDetail(10)"><td>123</td><td><span class="badge dg">실패</span></td><td>통보문수신오류</td><td class="t-l">[통보문오류] 울산 남구 통보문 중복 수신(동일 식별자)</td><td>정*수</td><td>010-****-4567</td><td>2026-10-22 14:33:02</td></tr>
+              <tr class="clk" onclick="openDetail(11)"><td>122</td><td><span class="badge sc">성공</span></td><td>자원오류</td><td class="t-l">[자원경고] WAS서버 1호 메모리 사용률 90% 초과</td><td>김*리</td><td>010-****-5678</td><td>2026-10-20 13:02:59</td></tr>
+              <tr class="clk" onclick="openDetail(12)"><td>121</td><td><span class="badge sc">성공</span></td><td>프로세스오류</td><td class="t-l">[프로세스오류] 단말기 상태수집 배치 비정상 종료</td><td>이*황</td><td>010-****-2345</td><td>2026-10-18 02:00:14</td></tr>
+              <tr class="clk" onclick="openDetail(13)"><td>120</td><td><span class="badge sc">성공</span></td><td>연계상태 단절</td><td class="t-l">[연계단절] 전남광주 여수시 연계 통신 타임아웃</td><td>박*영</td><td>010-****-1234</td><td>2026-10-15 19:47:36</td></tr>
+              <tr class="clk" onclick="openDetail(14)"><td>119</td><td><span class="badge sc">성공</span></td><td>자원오류</td><td class="t-l">[자원경고] 연계서버 2호 CPU 사용률 92% 초과</td><td>김*리</td><td>010-****-5678</td><td>2026-10-13 10:15:08</td></tr>
+              <tr class="nodata" hidden><td colspan="7">검색된 결과가 없습니다.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="paging" id="pgBtns" data-total="9" data-page="1"></div>
+        <!-- ===== 업무영역 끝 ===== -->
+      </main>
+    </div>
+  </div>
+@@include('../inc/footer.html')
+</div>
+@@include('../inc/pop-common.html')
+@@include('../inc/pop/UI-DA08-001-P01.html')
+@@include('../inc/script.html')
+@@include('../inc/script-common.html')
+<script src="js/pop/UI-DA08-001-P01.js"></script>
+<script src="js/pages/log_sms.js"></script>
+</body>
+</html>

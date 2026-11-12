@@ -1,0 +1,48 @@
+@@include('../inc/top.html',{"title": "로그인 | 재난 예경보 통합관리시스템", "css": "login"})
+
+<body>
+<div class="lg">
+  <h1 class="lg-logo"><img src="images/gov_logo_w.png" alt="정부 상징">재난 예경보 통합관리시스템</h1>
+  <div class="lg-row">
+    <!-- 아이디 로그인(DAMS 자체 계정, 비상/유지보수용) -->
+    <section class="lg-id">
+      <h2>아이디 로그인</h2><p class="sub">(DAMS 자체 계정 · 비상/유지보수용)</p>
+      <form id="loginForm" onsubmit="login();return false">
+        <div class="lg-fld" id="fldBox">
+          <label><i class="ri-user-3-line"></i><input id="userId" name="userId" maxlength="20" placeholder="아이디" required data-label="아이디" autocomplete="username"></label>
+          <label><i class="ri-lock-unlock-line"></i><input type="password" id="password" name="password" placeholder="비밀번호" required data-label="비밀번호" autocomplete="current-password"><button type="button" class="eye" title="비밀번호 보기" onclick="togglePw(this)"><i class="ri-eye-line"></i></button></label>
+        </div>
+        <div class="lg-opt"><label class="chk"><input type="checkbox" id="remember" name="remember" value="Y"><span>아이디 저장</span></label><span id="failInfo">5회 실패 시 계정 잠금</span></div>
+        <button type="submit" class="btn-login" id="btnLogin">로그인</button>
+        <div class="lg-lock" id="lockNotice" hidden><i class="ri-lock-line"></i><span>비밀번호 5회 연속 오류로 계정이 잠겼습니다. 시스템 관리자에게 잠금 해제를 요청하세요.</span></div>
+        <p class="lg-tip">※ 목업: 비밀번호를 <b>fail</b>로 입력하면 오류 횟수가 증가하고, 아이디 <b>dup</b>은 중복로그인 안내를 표시합니다.</p>
+      </form>
+      <button type="button" class="lg-guide" id="lnkAuthGuide" onclick="openPop('pop/UI-DA01-001-P01.html',540)"><b>NDMS 권한신청 안내</b><span>계정이 없거나 권한 승인이 필요한 경우<br>NDMS에서 권한을 신청하세요.</span><i class="ri-arrow-right-up-line"></i></button>
+    </section>
+    <!-- 공무원 로그인: 인증서 로그인 -->
+    <section class="lg-gw">
+      <h2>공무원 로그인</h2>
+      <div class="lg-card">
+        <h3><i class="ri-file-shield-2-line"></i>인증서 로그인</h3>
+        <p>국가재난관리정보시스템(NDMS)에서 등록한<br>GPKI 인증서로 로그인할 수 있습니다.</p>
+        <button type="button" class="btn-cert" id="btnGpkiLogin" onclick="gpkiLogin()">GPKI 인증서 로그인</button>
+        <div class="lg-links"><button type="button" onclick="msg('인증서 내보내기 프로그램을 실행합니다.')">인증서 내보내기</button><span>|</span><button type="button" onclick="doDown('인증서 SW')">인증서 SW다운로드</button></div>
+      </div>
+    </section>
+    <!-- 재난발생현황(NDMS 특보메시지 영역) -->
+    <section class="lg-msg">
+      <h2>재난발생현황<span class="nav"><button type="button" title="이전" onclick="evNav(-1)"><i class="ri-arrow-left-s-line"></i></button><b id="evIdx">1</b>/<span id="evCnt">4</span><button type="button" title="다음" onclick="evNav(1)"><i class="ri-arrow-right-s-line"></i></button></span></h2>
+      <div class="lg-when"><em><i class="ri-time-line"></i>발생일시</em><span id="evTm"></span></div>
+      <div class="lg-bar"><i class="ri-volume-up-line"></i><span id="evTit"></span></div>
+      <div class="lg-body" id="evBody"></div>
+      <div class="lg-desk"><b><i class="ri-customer-service-2-line"></i>SERVICE DESK</b><p>전화번호&nbsp; 000-0000-0000</p></div>
+    </section>
+  </div>
+</div>
+<footer class="lg-foot"><a href="privacy.html">개인정보처리방침</a><span class="cp">© Ministry of the Interior and Safety. All rights reserved.</span><span class="dk">SERVICE DESK : 000-0000-0000</span></footer>
+@@include('../inc/pop/UI-DA01-001-P01.html')
+@@include('../inc/script.html')
+<script src="js/pop/UI-DA01-001-P01.js"></script>
+<script src="js/pages/login.js"></script>
+</body>
+</html>

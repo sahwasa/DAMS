@@ -1709,6 +1709,11 @@ img {
   cursor: pointer;
 }
 
+.grid thead th.sort:focus-visible {
+  outline: 2px solid #3e55e1;
+  outline-offset: -2px;
+}
+
 .grid thead th.sort::after {
   content: "\ea74";
   font-family: remixicon;

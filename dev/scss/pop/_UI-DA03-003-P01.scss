@@ -1,0 +1,6 @@
+// UI-DA03-003-P01 단말기 위치 — dialog 안으로 한정
+.pop-dlg[data-pop="UI-DA03-003-P01"] .pop.wfull{width:100%}
+.pop-dlg[data-pop="UI-DA03-003-P01"] .dv-sum{display:flex;align-items:center;gap:14px;margin-bottom:10px;font-size:14px;color:#202020}
+.pop-dlg[data-pop="UI-DA03-003-P01"] .dv-sum b{margin:0 2px}
+.pop-dlg[data-pop="UI-DA03-003-P01"] .dv-sum .r{margin-left:auto;font-size:13px;color:#707070}
+.pop-dlg[data-pop="UI-DA03-003-P01"] #devMapFull{height:560px;min-height:300px}

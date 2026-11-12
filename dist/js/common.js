@@ -154,7 +154,7 @@ window.openPop=function(url,w){
  d.autofocus=true;document.body.appendChild(d);d.showModal();
  var loc={search:q,hash:'',pathname:location.pathname,get href(){return location.href},set href(v){location.href=v},assign:function(v){location.href=v},replace:function(v){location.replace(v)},reload:function(){location.reload()}};
  if(fn){var r=fn(loc,d)||{};Object.keys(r).forEach(function(k){if(r[k])window[k]=r[k]})}
- initPaging(d);txaCnt();mSch();mGridInit(d);$$('form',d).forEach(function(f){f.noValidate=true});
+ initPaging(d);sortInit(d);txaCnt();mSch();mGridInit(d);$$('form',d).forEach(function(f){f.noValidate=true});
  return d;
 };
 /* 닫기: 맨 위 팝업 / 확인: 연 화면(또는 팝업)의 onPopOk(key,data) 호출 후 닫기 */
@@ -231,6 +231,22 @@ window.showTab=function(btn){
  if(window.onTab)window.onTab(btn.dataset.tab);
 };
 
+/* ---------- 목록 정렬 헤더(th.sort) ----------
+ 퍼블 범위: 정렬 상태 표시(.asc/.desc 화살표 + aria-sort)·키보드 조작(Tab 이동, Enter/Space)까지.
+ 실제 데이터 정렬은 개발에서 서버 정렬(ORDER BY, 1페이지부터 다시 조회)로 구현 — window.onSort(키, 방향, th) 연결점 제공.
+ 키 = th의 data-sort(개발 시 DB 컬럼명 지정), 없으면 열 제목. 방향 = 'asc' | 'desc'. */
+function sortInit(sc){$$('.grid thead th.sort',sc).forEach(function(th){if(th._si)return;th._si=1;th.tabIndex=0;
+ th.setAttribute('aria-sort',th.classList.contains('asc')?'ascending':th.classList.contains('desc')?'descending':'none');
+ if(!th.title)th.title=th.textContent.trim()+' 정렬'})}
+window.sortInit=sortInit;
+function sortCol(th){var d=th.classList.contains('asc')?'desc':'asc',k=th.dataset.sort||th.textContent.trim();
+ $$('th.sort',th.closest('thead')).forEach(function(x){x.classList.remove('asc','desc');x.setAttribute('aria-sort','none')});
+ th.classList.add(d);th.setAttribute('aria-sort',d==='asc'?'ascending':'descending');
+ if(window.onSort&&window.onSort(k,d,th)===false)return;
+ msg(th.textContent.trim()+(d==='asc'?' 오름차순':' 내림차순')+'으로 정렬되었습니다. (정렬 키: '+k+')')}
+window.sortCol=sortCol;
+document.addEventListener('keydown',function(e){var th=e.target.closest&&e.target.closest('.grid thead th.sort');if(th&&(e.key==='Enter'||e.key===' ')){e.preventDefault();sortCol(th)}});
+
 /* ---------- 이벤트 위임 ---------- */
 document.addEventListener('click',function(e){
  var t=e.target,c;
@@ -244,7 +260,7 @@ document.addEventListener('click',function(e){
  if((c=t.closest('.lnb-menu .has>a'))){e.preventDefault();c.parentNode.classList.toggle('open');return}
  if((c=t.closest('.lnb-tab button'))){lnbPanel(c.dataset.lnb);return}
  if((c=t.closest('.lnb-fold'))){document.body.classList.toggle('lnb-off');return}
- if((c=t.closest('.grid thead th.sort'))){var d=c.classList.contains('asc')?'desc':'asc';$$('th.sort',c.closest('thead')).forEach(function(x){x.classList.remove('asc','desc')});c.classList.add(d);msg(c.textContent.trim()+(d==='asc'?' 오름차순':' 내림차순')+'으로 정렬되었습니다.');return}
+ if((c=t.closest('.grid thead th.sort'))){sortCol(c);return}
  if((c=t.closest('.paging [data-pg]'))){var p=c.closest('.paging'),tot=+p.dataset.total||1,cur=+p.dataset.page||1,k=c.dataset.pg;p.dataset.page=k==='first'?1:k==='last'?tot:k==='prev'?Math.max(1,cur-1):k==='next'?Math.min(tot,cur+1):k;paging(p);if(window.onPage)window.onPage(+p.dataset.page,p);msg(p.dataset.page+' 페이지를 조회하였습니다.');return}
  if((c=t.closest('.sch-toggle'))){var o=c.closest('.sch-box').classList.toggle('open');c.innerHTML='<i class="ri-arrow-'+(o?'up':'down')+'-s-fill"></i>';c.title=o?'상세조건 닫기':'상세조건 열기';return}
  if((c=t.closest('.box-fold .fold-btn'))){c.closest('.box-fold').classList.toggle('closed');return}
@@ -330,7 +346,7 @@ document.addEventListener('DOMContentLoaded',function(){txaCnt();
    setTimeout(function(){toast('새로운 재난발생 정보가 도착했습니다.',{kind:'occur'})},2500);
    setTimeout(function(){toast('새로운 재난발령 정보가 도착했습니다.',{kind:'issue'})},4000)}}
  /* 시연용 숨은 이벤트: 헤더(GNB) 빈 곳을 2초 안에 5번 클릭 → 재난발생 토스트 */
- var gn=$('.gnb');if(gn){var hc=0,ht=0;gn.addEventListener('click',function(e){if(e.target.closest('a,button,input,select,label'))return;var t=Date.now();hc=t-ht<2000?hc+1:1;ht=t;if(hc>=5){hc=0;toast('새로운 재난발생 정보가 도착했습니다.',{kind:'occur'})}})}markOn();layInit();mHead();mSch();mGridInit();
+ var gn=$('.gnb');if(gn){var hc=0,ht=0;gn.addEventListener('click',function(e){if(e.target.closest('a,button,input,select,label'))return;var t=Date.now();hc=t-ht<2000?hc+1:1;ht=t;if(hc>=5){hc=0;toast('새로운 재난발생 정보가 도착했습니다.',{kind:'occur'})}})}markOn();layInit();sortInit();mHead();mSch();mGridInit();
  initPaging();
  $$('form').forEach(function(f){f.noValidate=true});
  var lt=$('.lnb-tit');lt&&(lt.dataset.t=lt.textContent);

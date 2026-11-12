@@ -1,0 +1,86 @@
+@@include('../inc/top.html',{"title": "개인정보 접근이력 | 재난 예경보 통합관리시스템"})
+
+<body>
+<div class="wrap">
+  <!-- GNB -->
+  @@include('../inc/header.html')
+
+  <div class="body">
+    <!-- LNB -->
+    @@include('../inc/lnb-log.html')
+
+    <!-- MAIN -->
+    <div class="main">
+      @@include('../inc/mdi.html',{"file": "log_privacy.html", "name": "개인정보 접근이력"})
+
+      <main class="work" id="content">
+        <div class="page-head">
+          <div>
+            <h2 class="tit">개인정보 접근이력<button type="button" class="star" title="즐겨찾기" data-star><i class="ri-star-line"></i></button></h2>
+            @@include('../inc/breadcrumb.html',{"d1": "시스템 이력", "d1h": "log_sms.html", "d2": "개인정보 접근이력", "d2h": "log_privacy.html"})
+          </div>
+        </div>
+
+        <!-- ===== 업무영역 (화면별 교체) ===== -->
+<form class="sch-box" id="schForm">
+          <div class="rows">
+            <div class="it c2"><span class="lb req">접속기간</span>
+              <div class="range"><span class="inp-ico inp-date"><input type="date" class="inp" id="dtFr" name="dtFr" value="2026-09-30" title="시작일" required data-label="접속기간 시작일"></span><span>~</span><span class="inp-ico inp-date"><input type="date" class="inp" id="dtTo" name="dtTo" value="2026-10-30" title="종료일" required data-label="접속기간 종료일"></span></div>
+            </div>
+            <div class="it"><label for="prcsSe">수행업무</label><select class="sel" id="prcsSe" name="prcsSe" data-f="4"><option value="">전체</option><option>조회</option><option>입력</option><option>수정</option><option>삭제</option><option>다운로드</option></select></div>
+            <div class="it"><label for="searchKeyword">검색어</label><input class="inp" id="searchKeyword" name="searchKeyword" maxlength="100" placeholder="사용자ID·명, 메뉴명"></div>
+          </div>
+          <div class="ctrl">
+            <button type="reset" class="btn btn-rst"><i class="ri-refresh-line"></i>초기화</button>
+            <button type="submit" class="btn btn-sch"><i class="ri-search-line"></i>검색</button>
+          </div>
+        </form>
+
+        <div class="help-box mt0"><i class="ri-information-line"></i><span>개인정보처리시스템 접속기록(접속일시·사용자·접근메뉴·수행업무·정보주체)을 조회합니다. 사유는 개인정보를 <b>다운로드</b>할 때만 입력받아 기록합니다. 보관기간은 행정안전부 지침에 따릅니다.</span></div>
+        <div class="sub-head">
+          <h3>개인정보 접근이력 목록</h3><span class="cnt">전체<b id="totCnt">312</b>건</span>
+          <div class="grid-top">
+            <select class="sel" id="pageSize" name="pageSize" title="목록노출건수"><option value="15">15개</option><option value="30">30개</option><option value="50">50개</option><option value="100">100개</option></select>
+            <button type="button" class="btn s btn-line" id="btnApply" onclick="applySize()">적용</button>
+          </div>
+        </div>
+        <div class="grid-wrap">
+          <table class="grid" id="privLogTbody">
+            <caption class="blind">개인정보 접근이력 목록</caption>
+            <colgroup><col style="width:160px"><col style="width:100px"><col style="width:190px"><col style="width:120px"><col style="width:92px"><col style="width:160px"><col><col style="width:92px"><col style="width:90px"></colgroup>
+            <thead><tr><th class="sort desc">접속일시</th><th class="sort">사용자ID</th><th>사용자명(소속)</th><th class="sort">접근메뉴</th><th class="sort">수행업무</th><th>정보주체</th><th>사유</th><th class="sort">처리건수</th><th>상세</th></tr></thead>
+            <tbody>
+              <tr><td>2026-10-30 14:22:05</td><td>admin</td><td class="t-l">홍*동(재난정보통신과)</td><td class="t-l" title="시스템관리 &gt; 사용자관리">사용자관리</td><td><span class="badge in">조회</span></td><td class="t-l">김*영</td><td class="c-dis">-</td><td class="t-r">1</td><td><button type="button" class="btn s btn-line" onclick="openDetail(0)">상세보기</button></td></tr>
+              <tr><td>2026-10-30 14:10:41</td><td>admin</td><td class="t-l">홍*동(재난정보통신과)</td><td class="t-l" title="시스템관리 &gt; 사용자관리">사용자관리</td><td><span class="badge wn">수정</span></td><td class="t-l">김*영</td><td class="c-dis">-</td><td class="t-r">1</td><td><button type="button" class="btn s btn-line" onclick="openDetail(1)">상세보기</button></td></tr>
+              <tr><td>2026-10-30 11:47:03</td><td>mois_sit01</td><td class="t-l">이*황(중앙재난안전상황실)</td><td class="t-l" title="통합플랫폼관리 &gt; 계정관리">계정관리</td><td><span class="badge pri">입력</span></td><td class="t-l">홍*동 외 1,249명</td><td class="c-dis">-</td><td class="t-r">1,250</td><td><button type="button" class="btn s btn-line" onclick="openDetail(2)">상세보기</button></td></tr>
+              <tr><td>2026-10-30 09:20:17</td><td>mois_opr01</td><td class="t-l">박*영(재난정보통신과)</td><td class="t-l" title="통합플랫폼관리 &gt; 연계기관현황">연계기관현황</td><td><span class="badge in">조회</span></td><td class="t-l">최*진</td><td class="c-dis">-</td><td class="t-r">1</td><td><button type="button" class="btn s btn-line" onclick="openDetail(3)">상세보기</button></td></tr>
+              <tr><td>2026-10-29 17:30:10</td><td>admin</td><td class="t-l">홍*동(재난정보통신과)</td><td class="t-l" title="통합플랫폼관리 &gt; 계정관리">계정관리</td><td><span class="badge sc">다운로드</span></td><td class="t-l">이*호 외 211명</td><td class="t-l" title="연계기관 담당자 현행화 자료 제출 (행정안전부 요청)">연계기관 담당자 현행화 자료 제출 (행정안전부 요청)</td><td class="t-r">212</td><td><button type="button" class="btn s btn-line" onclick="openDetail(4)">상세보기</button></td></tr>
+              <tr><td>2026-10-29 16:42:05</td><td>mois_dr01</td><td class="t-l">한*은(재난대응정책과)</td><td class="t-l" title="통합플랫폼관리 &gt; 단말기현황">단말기현황</td><td><span class="badge in">조회</span></td><td class="t-l">강*수</td><td class="c-dis">-</td><td class="t-r">1</td><td><button type="button" class="btn s btn-line" onclick="openDetail(5)">상세보기</button></td></tr>
+              <tr><td>2026-10-29 10:05:22</td><td>admin</td><td class="t-l">홍*동(재난정보통신과)</td><td class="t-l" title="시스템관리 &gt; 사용자관리">사용자관리</td><td><span class="badge dg">삭제</span></td><td class="t-l">윤*희</td><td class="c-dis">-</td><td class="t-r">1</td><td><button type="button" class="btn s btn-line" onclick="openDetail(6)">상세보기</button></td></tr>
+              <tr><td>2026-10-28 15:12:48</td><td>mois_opr01</td><td class="t-l">박*영(재난정보통신과)</td><td class="t-l" title="시스템 이력 &gt; 문자전송이력">문자전송이력</td><td><span class="badge in">조회</span></td><td class="t-l">김*영</td><td class="c-dis">-</td><td class="t-r">1</td><td><button type="button" class="btn s btn-line" onclick="openDetail(7)">상세보기</button></td></tr>
+              <tr><td>2026-10-28 11:00:31</td><td>mois_nd01</td><td class="t-l">윤*연(자연재난대응과)</td><td class="t-l" title="통합플랫폼관리 &gt; 계정관리">계정관리</td><td><span class="badge wn">수정</span></td><td class="t-l">성*향</td><td class="c-dis">-</td><td class="t-r">1</td><td><button type="button" class="btn s btn-line" onclick="openDetail(8)">상세보기</button></td></tr>
+              <tr><td>2026-10-27 14:35:09</td><td>admin</td><td class="t-l">홍*동(재난정보통신과)</td><td class="t-l" title="시스템관리 &gt; 사용자관리">사용자관리</td><td><span class="badge sc">다운로드</span></td><td class="t-l">김*영 외 86명</td><td class="t-l" title="분기별 사용자 계정 정기 점검">분기별 사용자 계정 정기 점검</td><td class="t-r">87</td><td><button type="button" class="btn s btn-line" onclick="openDetail(9)">상세보기</button></td></tr>
+              <tr><td>2026-10-27 09:41:56</td><td>mois_sit01</td><td class="t-l">이*황(중앙재난안전상황실)</td><td class="t-l" title="통합플랫폼관리 &gt; 단말기현황">단말기현황</td><td><span class="badge wn">수정</span></td><td class="t-l">오*진</td><td class="c-dis">-</td><td class="t-r">1</td><td><button type="button" class="btn s btn-line" onclick="openDetail(10)">상세보기</button></td></tr>
+              <tr><td>2026-10-24 16:20:14</td><td>admin</td><td class="t-l">홍*동(재난정보통신과)</td><td class="t-l" title="통합플랫폼관리 &gt; 연계기관현황">연계기관현황</td><td><span class="badge in">조회</span></td><td class="t-l">장*우</td><td class="c-dis">-</td><td class="t-r">1</td><td><button type="button" class="btn s btn-line" onclick="openDetail(11)">상세보기</button></td></tr>
+              <tr><td>2026-10-23 13:08:37</td><td>mois_opr01</td><td class="t-l">박*영(재난정보통신과)</td><td class="t-l" title="시스템관리 &gt; 사용자관리">사용자관리</td><td><span class="badge pri">입력</span></td><td class="t-l">한*솔</td><td class="c-dis">-</td><td class="t-r">1</td><td><button type="button" class="btn s btn-line" onclick="openDetail(12)">상세보기</button></td></tr>
+              <tr><td>2026-10-22 10:52:03</td><td>mois_dr01</td><td class="t-l">한*은(재난대응정책과)</td><td class="t-l" title="통합플랫폼관리 &gt; 계정관리">계정관리</td><td><span class="badge in">조회</span></td><td class="t-l">이*룡 외 4명</td><td class="c-dis">-</td><td class="t-r">5</td><td><button type="button" class="btn s btn-line" onclick="openDetail(13)">상세보기</button></td></tr>
+              <tr><td>2026-10-21 15:30:45</td><td>admin</td><td class="t-l">홍*동(재난정보통신과)</td><td class="t-l" title="시스템관리 &gt; 사용자관리">사용자관리</td><td><span class="badge in">조회</span></td><td class="t-l">문*아</td><td class="c-dis">-</td><td class="t-r">1</td><td><button type="button" class="btn s btn-line" onclick="openDetail(14)">상세보기</button></td></tr>
+              <tr class="nodata" hidden><td colspan="9">검색된 결과가 없습니다.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="paging" id="pgBtns" data-total="21" data-page="1"></div>
+        <!-- ===== 업무영역 끝 ===== -->
+      </main>
+    </div>
+  </div>
+@@include('../inc/footer.html')
+</div>
+@@include('../inc/pop-common.html')
+@@include('../inc/pop/UI-DA08-007-P01.html')
+@@include('../inc/script.html')
+@@include('../inc/script-common.html')
+<script src="js/pop/UI-DA08-007-P01.js"></script>
+<script src="js/pages/log_privacy.js"></script>
+</body>
+</html>
