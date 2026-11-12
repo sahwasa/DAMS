@@ -12,7 +12,7 @@ var med=D.md.map(function(m){return (MDN[m[0]]||[m[0]])[0]});
 set('sys',D.sys);set('cat',D.cat);set('med',med.concat('문자방송').join(', '));set('tm',D.tm);set('end',D.end);set('rgn',D.rg);
 var has=function(c){return D.md.some(function(m){return m[0]===c})},none='<span class="c-dis">해당 매체로 발령되지 않았습니다.</span>';
 $('msgBoard').innerHTML=has('LDB')||has('CDB')?esc('['+D.org+'] '+nm+' 발령\n'+D.tit):none;
-var v=has('VNO')||has('VBS')||has('RAS');$('msgVoice').innerHTML=v?esc('주민 여러분께 알려드립니다. '+D.org+' 지역에 '+nm+'이(가) 발령되었습니다. '+D.tit+'. 안전에 유의하여 주시기 바랍니다.'):none;$('btnVoice').disabled=!v;
+var v=has('VNO')||has('VBS')||has('RAS');$('msgVoice').innerHTML=v?esc('주민 여러분께 알려드립니다. '+D.org+' 지역에 '+nm+'이(가) 발령되었습니다. '+D.tit+'. 안전에 유의하여 주시기 바랍니다.'):none;
 $('msgSms').innerHTML=esc('['+D.org+'] '+D.tm.slice(11,16)+' '+nm+' 발령. '+D.tit+'. 행동요령을 확인 바랍니다.');
 /* 단말기 목록: 매체별 [전체,성공,실패,미수신] 건수로 생성 */
 var DEV=[],REASON=['단말기 응답 시간 초과(30초)','통신 모듈 오류','전원 차단 상태'];
