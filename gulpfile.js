@@ -16,6 +16,9 @@ const { src, dest, lastRun, watch, series, parallel } = require("gulp"),
 //const gcmq = require("gulp-group-css-media-queries");   // 중복되는 mediaquery 구문 merge
 //const cleanCSS = require('gulp-clean-css');             // css minify -> gcmq 사용 시 sass outputStyle이 적용이 안되므로 css compressed를 위해 추가
 
+// 소스맵: 저장소에 올리는 dist는 소스맵 없이 빌드(PC마다 경로가 달라 변경으로 잡힘).
+// 디버깅이 필요할 때만 `npx gulp --map` / `npx gulp build --map` → dist/css/maps (저장소 제외)
+const MAP = process.argv.includes('--map');
 const dev = "dev";
 const dist = "dist";
 
@@ -84,9 +87,9 @@ var scssOptions = {
 }
 function scss(){
   return merge(
-    src([path.scss, '!' + dev + "/scss/**/_*.scss"], {sourcemaps: true })
+    src([path.scss, '!' + dev + "/scss/**/_*.scss"], {sourcemaps: MAP })
     .pipe(sass(scssOptions).on('error', sass.logError))
-    .pipe(dest(dist + '/css', { sourcemaps: './maps' }))
+    .pipe(dest(dist + '/css', MAP ? { sourcemaps: './maps' } : {}))
     .pipe(bs.stream())
   )
 }

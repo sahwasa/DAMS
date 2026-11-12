@@ -87,3 +87,9 @@ dev/
 ## 목업에서 다시 옮기기
 목업 저장소의 `bash tools/dams/run.sh [이 저장소 경로]`가 dev/를 목업 기준으로 다시 만든다(dev/html·inc·scss·js·images·font를 지우고 새로 생성 → gulp build → 링크 검사).
 이 저장소에서 직접 고친 내용은 덮어써지므로, 목업과 함께 고치거나 옮긴 뒤에는 이 저장소에서만 고친다.
+
+## dist 커밋 규칙(충돌 방지)
+- dist는 개발자가 gulp 없이 바로 쓰도록 **저장소에 올린다**.
+- 같은 소스면 누가 빌드해도 dist가 같게: `.gitattributes`로 텍스트 파일 **LF 고정**, 소스맵은 **기본 생성 안 함**(`dist/css/maps/`는 저장소 제외 — 필요하면 `npx gulp --map`).
+- 의존성 버전은 `package-lock.json` 기준: 처음 설치는 `npm ci`.
+- pull 전에 로컬 빌드로 바뀐 dist가 있으면 `git restore dist`(소스를 고친 게 아니면 버려도 같은 결과).

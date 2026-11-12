@@ -136,3 +136,8 @@ out
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# 소스맵(빌드한 PC마다 달라짐, gulp --map 으로만 생성)
+dist/css/maps/
+# deploy 결과물
+publish_*.zip

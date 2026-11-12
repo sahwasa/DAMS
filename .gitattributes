@@ -1,0 +1,18 @@
+# 줄바꿈 고정: Windows·Mac·Linux 어디서 받아도 텍스트 파일은 LF
+# (소스가 CRLF로 바뀌면 같은 소스로 빌드해도 dist 결과가 달라져 변경으로 잡힘)
+* text=auto eol=lf
+
+# 바이너리
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.webp binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.eot binary
+*.pdf binary
+*.zip binary
