@@ -28,14 +28,31 @@
 
 #table_list {
   table-layout: auto;
+  width: 100%;
 }
 
-#table_list th:nth-child(3), #table_list td:nth-child(3), #table_list th:nth-child(4), #table_list td:nth-child(4), #table_list th:nth-child(8), #table_list td:nth-child(8) {
-  display: none;
+#table_list th:nth-child(2), #table_list th:nth-child(5) {
+  white-space: nowrap;
+}
+
+#table_list th:nth-child(6), #table_list th:nth-child(7) {
+  width: 50%;
 }
 
 #table_list td:nth-child(6), #table_list td:nth-child(7) {
-  max-width: 200px;
+  max-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#table_list th:nth-child(3), #table_list td:nth-child(3), #table_list th:nth-child(4), #table_list td:nth-child(4) {
+  display: none;
+}
+
+#table_list th:nth-child(8), #table_list td:nth-child(8) {
+  width: 84px;
+  white-space: nowrap;
 }
 
 #table_list th:first-child {

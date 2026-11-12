@@ -127,3 +127,5 @@ function filterStatus(b,s){
 function openDetail(q){var n=new URLSearchParams(q).get('n'),c=PT[ROWS.map(function(tr){return tr.cells[5].textContent}).indexOf(n)];if(c)q+='&lat='+c[1].toFixed(5)+'&lng='+c[0].toFixed(4);openPop('pop/UI-DA04-003-P01.html?'+q,900)}
 window.onSearch=function(){var a1=byId('addr1');if(a1.value){setReg(a1.options[a1.selectedIndex].text+(byId('addr2').value?' '+byId('addr2').value:''));selTree(null)}search(true);msg('단말기 목록을 조회하였습니다.');return false};
 search(true);
+/* 단말기명·설치지역은 열 폭에 맞춰 말줄임 → 전체 글자는 title로 */
+[].forEach.call(document.querySelectorAll('#table_list tbody tr:not(.grp) td:nth-child(6),#table_list tbody tr:not(.grp) td:nth-child(7)'),function(td){td.title=td.textContent.trim()});
