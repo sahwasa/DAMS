@@ -1,3 +1,5 @@
 // UI-CO-P03 메시지창 샘플 — dialog 안으로 한정
-.pop-dlg[data-pop="UI-CO-P03"] .pop-body{min-height:380px}
-.pop-dlg[data-pop="UI-CO-P03"] .grid td .btn{width:100%}
+.pop-dlg[data-pop="UI-CO-P03"]{
+  .pop-body{min-height:380px}
+  .grid td .btn{width:100%}
+}

@@ -33,11 +33,9 @@
   font-weight: 600;
   color: #202020;
 }
-
 .st-sum button b {
   font-size: 20px;
 }
-
 .st-sum button.on {
   border-color: #3e55e1;
   background: #fff;

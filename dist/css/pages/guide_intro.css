@@ -13,43 +13,36 @@
   border-radius: 4px;
   background: linear-gradient(90deg, #e9f0ff, #fff);
 }
-
 .intro-hero .tx {
   flex: 1;
 }
-
 .intro-hero .eyebrow {
   font-size: 13px;
   font-weight: 600;
   color: #3e55e1;
 }
-
 .intro-hero h3 {
   margin: 4px 0 10px;
   font-size: 24px;
   font-weight: 700;
   color: #101010;
 }
-
 .intro-hero h3 small {
   margin-left: 8px;
   font-size: 15px;
   font-weight: 500;
   color: #707070;
 }
-
 .intro-hero p {
   font-size: 15px;
   color: #505050;
   word-break: keep-all;
 }
-
 .intro-hero .kpis {
   display: grid;
   grid-template-columns: repeat(3, 150px);
   gap: 10px;
 }
-
 .intro-hero .kpi {
   background: #fff;
 }
@@ -59,7 +52,6 @@
   gap: 14px;
   align-items: flex-start;
 }
-
 .feat .ic {
   flex: 0 0 44px;
   height: 44px;
@@ -71,14 +63,12 @@
   align-items: center;
   justify-content: center;
 }
-
 .feat b {
   display: block;
   margin-bottom: 4px;
   font-size: 15px;
   color: #101010;
 }
-
 .feat p {
   font-size: 13px;
   word-break: keep-all;
@@ -89,13 +79,11 @@
   align-items: stretch;
   gap: 8px;
 }
-
 .flow > i {
   align-self: center;
   font-size: 22px;
   color: #8e8e8e;
 }
-
 .flow .nd {
   flex: 1;
   padding: 14px 16px;
@@ -104,23 +92,19 @@
   background: #f8f8f8;
   font-size: 13px;
 }
-
 .flow .nd b {
   display: block;
   margin-bottom: 6px;
   font-size: 15px;
   color: #101010;
 }
-
 .flow .nd.on {
   border-color: #3e55e1;
   background: #f3f5fe;
 }
-
 .flow .nd.on b {
   color: #3e55e1;
 }
-
 .flow .nd li::before {
   content: "· ";
 }

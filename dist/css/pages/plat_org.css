@@ -19,11 +19,9 @@
   cursor: pointer;
   transition: background 0.15s, border-color 0.15s;
 }
-
 .cert-chip i {
   font-size: 15px;
 }
-
 .cert-chip em {
   position: relative;
   margin-left: 4px;
@@ -33,7 +31,6 @@
   color: #505050;
   font-variant-numeric: tabular-nums;
 }
-
 .cert-chip em::before {
   content: "";
   position: absolute;
@@ -60,7 +57,6 @@
   vertical-align: 1px;
   cursor: pointer;
 }
-
 .integ-chip:hover {
   background: #f3f5ff;
 }
@@ -84,7 +80,6 @@
   background: #fff;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
 }
-
 .integ-tip .layer-h {
   display: flex;
   align-items: center;
@@ -96,7 +91,6 @@
   font-weight: 700;
   color: #101010;
 }
-
 .integ-tip .layer-h .close {
   margin-left: auto;
   width: 24px;
@@ -104,13 +98,11 @@
   color: #707070;
   font-size: 16px;
 }
-
 .integ-tip p {
   margin: 8px 12px 6px;
   font-size: 12px;
   color: #707070;
 }
-
 .integ-tip ul {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -118,7 +110,6 @@
   margin: 0 12px;
   font-size: 13px;
 }
-
 .integ-tip li::before {
   content: "· ";
   color: #8e8e8e;
@@ -200,7 +191,6 @@ td.lm .integ-chip {
 .acnt-lg {
   margin: 0 0 0 8px;
 }
-
 .acnt-lg b {
   font-weight: 600;
 }

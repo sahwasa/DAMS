@@ -22,7 +22,6 @@ body {
   font-weight: 600;
   color: #202020;
 }
-
 .lg-logo img {
   width: 36px;
   height: 36px;
@@ -61,7 +60,6 @@ body {
   background: #e8f0fe;
   border-radius: 2px;
 }
-
 .lg-fld label {
   display: flex;
   align-items: center;
@@ -69,16 +67,13 @@ body {
   height: 48px;
   padding: 0 14px;
 }
-
 .lg-fld label + label {
   border-top: 1px solid #d5def0;
 }
-
 .lg-fld i {
   font-size: 18px;
   color: #748299;
 }
-
 .lg-fld input {
   flex: 1;
   min-width: 0;
@@ -89,16 +84,13 @@ body {
   color: #101010;
   outline: 0;
 }
-
 .lg-fld input::placeholder {
   color: #8e8e8e;
 }
-
 .lg-fld .eye {
   color: #748299;
   font-size: 18px;
 }
-
 .lg-fld.err {
   box-shadow: 0 0 0 2px #eb003b;
 }
@@ -110,12 +102,10 @@ body {
   margin: 10px 0 12px;
   font-size: 13px;
 }
-
 .lg-opt .chk {
   font-size: 13px;
   color: #fff;
 }
-
 .lg-opt .chk input {
   border-color: #748299;
   background-color: transparent;
@@ -125,7 +115,6 @@ body {
   font-size: 12px;
   opacity: 0.8;
 }
-
 #failInfo b {
   color: #ff8fa8;
   opacity: 1;
@@ -140,7 +129,6 @@ body {
   font-size: 15px;
   font-weight: 700;
 }
-
 .lg-id .btn-login:hover {
   background: #3347c9;
 }
@@ -174,19 +162,16 @@ body {
   text-align: left;
   color: #fff;
 }
-
 .lg-guide b {
   display: block;
   font-size: 14px;
   margin-bottom: 2px;
 }
-
 .lg-guide span {
   font-size: 13px;
   opacity: 0.9;
   line-height: 1.5;
 }
-
 .lg-guide i {
   position: absolute;
   right: 10px;
@@ -202,7 +187,6 @@ body {
   border-radius: 8px;
   background: #f5f6fd;
 }
-
 .lg-gw h2 {
   color: #3e55e1;
 }
@@ -219,7 +203,6 @@ body {
   background: #fff;
   text-align: center;
 }
-
 .lg-card h3 {
   display: flex;
   align-items: center;
@@ -229,19 +212,16 @@ body {
   color: #101010;
   text-align: left;
 }
-
 .lg-card h3 i {
   font-size: 24px;
   color: #505050;
 }
-
 .lg-card p {
   margin: 14px 0 0;
   font-size: 13px;
   color: #707070;
   word-break: keep-all;
 }
-
 .lg-card .btn-cert {
   margin: 20px auto 0;
   width: 190px;
@@ -252,7 +232,6 @@ body {
   font-size: 15px;
   font-weight: 700;
 }
-
 .lg-card .btn-cert:hover {
   background: #5d6063;
 }
@@ -262,16 +241,13 @@ body {
   font-size: 13px;
   color: #707070;
 }
-
 .lg-links button {
   color: #707070;
 }
-
 .lg-links button:hover {
   color: #3e55e1;
   text-decoration: underline;
 }
-
 .lg-links span {
   margin: 0 8px;
   color: #c6c6c6;
@@ -285,13 +261,11 @@ body {
   border-radius: 8px;
   background: #eef6f9;
 }
-
 .lg-msg h2 {
   display: flex;
   align-items: center;
   color: #0085b7;
 }
-
 .lg-msg .nav {
   margin-left: auto;
   display: flex;
@@ -301,14 +275,12 @@ body {
   font-weight: 600;
   color: #505050;
 }
-
 .lg-msg .nav button {
   width: 22px;
   height: 22px;
   color: #707070;
   font-size: 18px;
 }
-
 .lg-msg .nav b {
   color: #0085b7;
 }
@@ -321,7 +293,6 @@ body {
   font-size: 14px;
   color: #202020;
 }
-
 .lg-when em {
   display: inline-flex;
   align-items: center;
@@ -350,7 +321,6 @@ body {
   font-weight: 600;
   line-height: 1.4;
 }
-
 .lg-bar i {
   font-size: 20px;
 }
@@ -369,14 +339,12 @@ body {
   color: #505050;
   white-space: pre-line;
 }
-
 .lg-body b {
   display: block;
   margin-top: 8px;
   font-weight: 400;
   color: #202020;
 }
-
 .lg-body b:first-child {
   margin-top: 0;
 }
@@ -388,18 +356,15 @@ body {
   background: #0085b7;
   color: #fff;
 }
-
 .lg-desk b {
   display: flex;
   align-items: center;
   gap: 6px;
   font-size: 15px;
 }
-
 .lg-desk b i {
   font-size: 20px;
 }
-
 .lg-desk p {
   margin-top: 4px;
   font-size: 14px;
@@ -414,16 +379,13 @@ body {
   font-size: 13px;
   color: #707070;
 }
-
 .lg-foot a {
   color: #3e55e1;
   font-weight: 500;
 }
-
 .lg-foot .cp {
   margin-left: auto;
 }
-
 .lg-foot .dk {
   margin-left: 24px;
 }

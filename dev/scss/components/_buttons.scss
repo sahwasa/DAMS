@@ -1,10 +1,14 @@
 @use "../abstracts" as *;
 /* ---------- 5. Button ---------- */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:4px;height:$h-btn;padding:0 12px;border:1px solid transparent;border-radius:$r-s;font-size:$fs-s;font-weight:500;white-space:nowrap;vertical-align:middle;transition:background .1s,border-color .1s}
-.btn i{font-size:1.1em}
-.btn.s{height:$h-btn-s;padding:0 8px;font-size:12px}.btn.l{height:$h-btn-l;padding:0 16px;font-size:$fs-b}
-.btn.ico{padding:0;width:$h-btn}.btn.s.ico{width:$h-btn-s}.btn.l.ico{width:$h-btn-l}
-.btn:disabled,.btn.dis{cursor:default;pointer-events:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:4px;height:$h-btn;padding:0 12px;border:1px solid transparent;border-radius:$r-s;font-size:$fs-s;font-weight:500;white-space:nowrap;vertical-align:middle;transition:background .1s,border-color .1s;
+  i{font-size:1.1em}
+  &.s{height:$h-btn-s;padding:0 8px;font-size:12px}
+  &.l{height:$h-btn-l;padding:0 16px;font-size:$fs-b}
+  &.ico{padding:0;width:$h-btn}
+  &.s.ico{width:$h-btn-s}
+  &.l.ico{width:$h-btn-l}
+  &:disabled, &.dis{cursor:default;pointer-events:none}
+}
 // CRUD(화면 컨트롤): 목록/삭제/취소/저장
 .btn-crud{@include btn($sec,#fff,$sec,$sec-h,$sec-h,$pri,$pri,#9a9fb3,#e9ebf1,#9a9fb3)}
 // Search

@@ -1,13 +1,22 @@
 @use "../abstracts" as *;
 /* ---------- 10. Tab ---------- */
-.tab{display:flex;border-bottom:2px solid $pri;margin-bottom:16px}
-.tab li a,.tab li button{display:flex;align-items:center;height:38px;padding:0 24px;margin-right:-1px;border:1px solid $c-line2;border-bottom:0;background:$g5;font-size:$fs-b;color:$g60}
-.tab li a:hover,.tab li button:hover{color:$c-title;background:#fff}
-.tab li.on a,.tab li.on button{background:$pri;border-color:$pri;color:#fff;font-weight:600}
-.tab li.dis a,.tab li.dis button{color:$g40;pointer-events:none}
-.tab-s{display:flex;gap:16px;border-bottom:1px solid $c-line2;margin-bottom:12px}
-.tab-s li a,.tab-s li button{display:block;padding:6px 2px;font-size:$fs-s;color:$g60;margin-bottom:-1px}
-.tab-s li.on a,.tab-s li.on button{color:$pri;font-weight:600;border-bottom:2px solid $pri}
-.tab-v{display:flex;gap:16px}.tab-v>ul{flex:0 0 180px;border-top:2px solid $c-title}
-.tab-v>ul li a{display:block;padding:10px 14px;border-bottom:1px solid $c-line2;font-size:$fs-s}
-.tab-v>ul li.on a{background:$in-s;color:$pri;font-weight:600}.tab-v>div{flex:1;min-width:0}
+.tab{display:flex;border-bottom:2px solid $pri;margin-bottom:16px;
+  li{
+    a, button{display:flex;align-items:center;height:38px;padding:0 24px;margin-right:-1px;border:1px solid $c-line2;border-bottom:0;background:$g5;font-size:$fs-b;color:$g60}
+    a:hover, button:hover{color:$c-title;background:#fff}
+    &.on a, &.on button{background:$pri;border-color:$pri;color:#fff;font-weight:600}
+    &.dis a, &.dis button{color:$g40;pointer-events:none}
+  }
+}
+.tab-s{display:flex;gap:16px;border-bottom:1px solid $c-line2;margin-bottom:12px;
+  li{
+    a, button{display:block;padding:6px 2px;font-size:$fs-s;color:$g60;margin-bottom:-1px}
+    &.on a, &.on button{color:$pri;font-weight:600;border-bottom:2px solid $pri}
+  }
+}
+.tab-v{display:flex;gap:16px;
+  >ul{flex:0 0 180px;border-top:2px solid $c-title}
+  >ul li a{display:block;padding:10px 14px;border-bottom:1px solid $c-line2;font-size:$fs-s}
+  >ul li.on a{background:$in-s;color:$pri;font-weight:600}
+  >div{flex:1;min-width:0}
+}

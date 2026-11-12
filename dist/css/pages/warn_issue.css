@@ -42,13 +42,11 @@
   color: #101010;
   min-width: 0;
 }
-
 .tab .tab-info b {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-
 .tab .tab-info .btn {
   flex: 0 0 auto;
   gap: 4px;
@@ -62,7 +60,6 @@
   font-weight: 500;
   color: #fff;
 }
-
 .tab .tab-info .btn:hover {
   background: #2b3667;
   border-color: #2b3667;
@@ -97,11 +94,9 @@
 #issue-message .card-h {
   height: 34px;
 }
-
 #issue-message .card-b {
   padding: 10px 14px;
 }
-
 #issue-message .card-b.pre {
   min-height: 0;
   height: 70px;
@@ -109,7 +104,6 @@
   font-size: 13px;
   line-height: 1.5;
 }
-
 #issue-message .chart-box {
   height: 50px !important;
 }

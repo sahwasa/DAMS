@@ -3,8 +3,23 @@
 .st-sum{display:flex;gap:8px;margin-bottom:12px}
 /* 시도 행 sticky(헤더 아래) */
 #tbody tr.sd-st td{position:sticky;top:var(--th,68px);z-index:1;background:#eef1fd;font-weight:600;border-bottom-color:#c9d1f3}
-.st-sum button{flex:1;display:flex;align-items:center;justify-content:space-between;height:48px;padding:0 16px;border:1px solid #d8d8d8;border-radius:4px;background:#f8f8f8;font-size:14px;font-weight:600;color:#202020}
-.st-sum button b{font-size:20px}.st-sum button.on{border-color:#3e55e1;background:#fff;box-shadow:0 0 0 1px #3e55e1 inset}
-@media (max-width:767px){.st-sum{flex-wrap:wrap}.st-sum button{flex:1 1 calc(50% - 4px);height:44px;padding:0 12px}}
+.st-sum{
+  button{flex:1;display:flex;align-items:center;justify-content:space-between;height:48px;padding:0 16px;border:1px solid #d8d8d8;border-radius:4px;background:#f8f8f8;font-size:14px;font-weight:600;color:#202020;
+    b{font-size:20px}
+    &.on{border-color:#3e55e1;background:#fff;box-shadow:0 0 0 1px #3e55e1 inset}
+  }
+}
+@media (max-width:767px){
+  .st-sum{flex-wrap:wrap;
+    button{flex:1 1 calc(50% - 4px);height:44px;padding:0 12px}
+  }
+}
 /* 새 창(1280×860)에서 창 전체 스크롤 없이 목록만 스크롤 */
-@media (min-width:768px){html,body.win-body{height:100%!important;overflow:hidden!important}.wrap.win{height:100vh!important;min-height:0!important;display:flex!important;flex-direction:column;overflow:hidden!important}.wrap.win>.work{flex:1 1 auto!important;min-height:0!important;display:flex!important;flex-direction:column;overflow:hidden!important}#certGrid{flex:1 1 auto;min-height:120px;overflow:auto!important}}
+@media (min-width:768px){
+  html,body.win-body{height:100%!important;overflow:hidden!important}
+  .wrap{
+    &.win{height:100vh!important;min-height:0!important;display:flex!important;flex-direction:column;overflow:hidden!important}
+    &.win >.work{flex:1 1 auto!important;min-height:0!important;display:flex!important;flex-direction:column;overflow:hidden!important}
+  }
+  #certGrid{flex:1 1 auto;min-height:120px;overflow:auto!important}
+}

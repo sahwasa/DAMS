@@ -14,7 +14,6 @@
   font-size: 13px;
   color: #707070;
 }
-
 #headBtns .upd b {
   color: #101010;
   font-weight: 600;
@@ -39,7 +38,6 @@
   border-radius: 4px;
   background: #fff;
 }
-
 .mon-box > .sub-head {
   margin: 0 0 8px;
 }
@@ -51,7 +49,6 @@
   min-height: 0;
   border-top: 1px solid #a9aeb8;
 }
-
 .mon-orgs li {
   flex: 1 1 0;
   display: flex;
@@ -63,11 +60,9 @@
   font-size: 14px;
   cursor: default;
 }
-
 .mon-orgs li:hover {
   background: #f8f9ff;
 }
-
 .mon-orgs .dot {
   flex: 0 0 auto;
   width: 9px;
@@ -75,16 +70,13 @@
   border-radius: 50%;
   background: #008a1e;
 }
-
 .mon-orgs li.dg {
   background: #fff5f7;
 }
-
 .mon-orgs li.dg .dot {
   background: #eb003b;
   box-shadow: 0 0 0 3px rgba(235, 0, 59, 0.18);
 }
-
 .mon-orgs li > b {
   flex: 1;
   overflow: hidden;
@@ -93,7 +85,6 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-
 .mon-orgs .n {
   width: 62px;
   padding: 2px 4px;
@@ -107,12 +98,10 @@
   cursor: pointer;
   white-space: nowrap;
 }
-
 .mon-orgs .n:hover {
   background: #eef2fb;
   color: #3e55e1;
 }
-
 .mon-orgs .n b {
   color: #3e55e1;
   font-weight: 700;
@@ -130,7 +119,6 @@
   background: #fff;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
 }
-
 .org-tip .layer-h {
   display: flex;
   align-items: center;
@@ -142,7 +130,6 @@
   font-weight: 700;
   color: #101010;
 }
-
 .org-tip .layer-h .close {
   margin-left: auto;
   width: 24px;
@@ -152,37 +139,30 @@
   color: #707070;
   font-size: 16px;
 }
-
 .org-tip.w2 {
   width: 400px;
 }
-
 .org-tip.w2 .ot-t th:nth-child(3) {
   padding-left: 16px;
   border-left: 1px solid #f0f0f0;
 }
-
 .org-tip .ot-t .z {
   color: #8e8e8e;
 }
-
 .org-tip .ot-sd {
   margin: 8px 12px 4px;
   font-size: 12px;
   color: #707070;
 }
-
 .org-tip .ot-sd i {
   margin-right: 3px;
 }
-
 .org-tip .ot-t {
   width: calc(100% - 24px);
   margin: 0 12px;
   border-collapse: collapse;
   font-size: 13px;
 }
-
 .org-tip .ot-t th, .org-tip .ot-t td {
   height: 26px;
   border-bottom: 1px solid #f0f0f0;
@@ -190,32 +170,26 @@
   text-align: left;
   color: #202020;
 }
-
 .org-tip .ot-t td {
   text-align: right;
   font-weight: 700;
   color: #3e55e1;
 }
-
 .org-tip .ot-t th i {
   margin-right: 3px;
   color: #8e8e8e;
 }
-
 .org-tip .ot-t tr.p th, .org-tip .ot-t tr.p td {
   font-weight: 700;
   color: #101010;
   background: #f5f7fb;
 }
-
 .org-tip .ot-t tr.p th {
   padding-left: 6px;
 }
-
 .org-tip .ot-t tr.p td {
   padding-right: 6px;
 }
-
 .org-tip .ot-t tr.z td, .org-tip .ot-t tr.z th {
   color: #8e8e8e;
   font-weight: 400;
@@ -231,7 +205,6 @@
   font-size: 13px;
   color: #505050;
 }
-
 .mon-sum b {
   margin: 0 2px;
   font-weight: 700;
@@ -243,7 +216,6 @@
   gap: 6px;
   margin-bottom: 10px;
 }
-
 .mon-pills button {
   height: 28px;
   padding: 0 14px;
@@ -253,7 +225,6 @@
   font-size: 13px;
   color: #505050;
 }
-
 .mon-pills li.on button {
   border-color: #182146;
   background: #182146;
@@ -267,13 +238,11 @@
   overflow-y: auto;
   padding: 2px 4px 0 2px;
 }
-
 .mon-feed li {
   position: relative;
   padding: 0 0 14px 22px;
   cursor: pointer;
 }
-
 .mon-feed li::before {
   content: "";
   position: absolute;
@@ -282,11 +251,9 @@
   bottom: -2px;
   border-left: 2px solid #e4e7f0;
 }
-
 .mon-feed li:last-child::before {
   display: none;
 }
-
 .mon-feed li::after {
   content: "";
   position: absolute;
@@ -298,11 +265,9 @@
   border-radius: 50%;
   background: #fff;
 }
-
 .mon-feed li.oc::after {
   border-color: #f5930b;
 }
-
 .mon-feed time {
   display: block;
   font-size: 12px;
@@ -310,7 +275,6 @@
   line-height: 16px;
   font-variant-numeric: tabular-nums;
 }
-
 .mon-feed .tl-k {
   display: inline-block;
   margin: 4px 0 3px;
@@ -323,27 +287,23 @@
   color: #3e55e1;
   background: #f3f5ff;
 }
-
 .mon-feed .tl-src {
   margin-left: 6px;
   font-size: 12px;
   color: #8e8e8e;
   white-space: nowrap;
 }
-
 .mon-feed li.oc .tl-k {
   border-color: #f5930b;
   color: #b86a00;
   background: #fff8e9;
 }
-
 .mon-feed p {
   font-size: 14px;
   font-weight: 600;
   color: #202020;
   word-break: keep-all;
 }
-
 .mon-feed em {
   margin-left: 6px;
   font-style: normal;
@@ -351,7 +311,6 @@
   font-weight: 400;
   color: #8e8e8e;
 }
-
 .mon-feed li:hover p {
   color: #3e55e1;
 }

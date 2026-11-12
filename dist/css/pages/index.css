@@ -7,12 +7,10 @@
   cursor: pointer;
   margin: 1px 0;
 }
-
 .grid td .rq:hover, .grid td .rq.on {
   background: #3e55e1;
   color: #fff;
 }
-
 .grid tr.rq-row > td {
   padding: 0;
   background: #f8f9ff !important;
@@ -30,7 +28,6 @@
   padding-top: 14px;
   border-top: 1px dashed #c6c6c6;
 }
-
 .rq-it h4 {
   display: flex;
   align-items: center;
@@ -38,14 +35,12 @@
   font-size: 15px;
   color: #101010;
 }
-
 .rq-it h4 em {
   font-style: normal;
   font-size: 12px;
   font-weight: 400;
   color: #707070;
 }
-
 .rq-it dl {
   display: grid;
   grid-template-columns: 70px 1fr;
@@ -54,22 +49,18 @@
   font-size: 13px;
   line-height: 1.6;
 }
-
 .rq-it dt {
   color: #707070;
   font-weight: 600;
 }
-
 .rq-it dd {
   color: #202020;
   white-space: pre-line;
 }
-
 .rq-it .ap {
   color: #006e18;
   font-weight: 600;
 }
-
 .rq-it .det mark {
   background: #fff3c4;
   color: #101010;
@@ -84,11 +75,9 @@
   white-space: normal;
   overflow: visible;
 }
-
 .grid td .rq.ap {
   position: relative;
 }
-
 .grid td .rq.ap::after {
   content: "";
   position: absolute;

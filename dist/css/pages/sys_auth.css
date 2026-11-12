@@ -9,13 +9,11 @@
   gap: 12px;
   align-items: start;
 }
-
 .mtree > li {
   border: 1px solid #d8d8d8;
   border-radius: 4px;
   min-width: 0;
 }
-
 .mtree > li > .chk {
   display: flex;
   margin: 0;
@@ -26,15 +24,12 @@
   font-weight: 600;
   color: #101010;
 }
-
 .mtree > li > .chk:only-child {
   border-bottom: 0;
 }
-
 .mtree ul {
   padding: 6px 8px 8px 14px;
 }
-
 .mtree ul .chk {
   display: flex;
   margin: 0;
@@ -52,18 +47,15 @@
   flex-wrap: wrap;
   gap: 2px 4px;
 }
-
 .mtree ul > li > .chk {
   flex: 0 1 auto;
   min-width: 0;
 }
-
 .mtree .fns {
   display: flex;
   gap: 4px;
   margin-left: auto;
 }
-
 .mtree .fns .chk {
   display: inline-flex !important;
   align-items: center;
@@ -78,13 +70,11 @@
   color: #1f3fae;
   white-space: nowrap;
 }
-
 .mtree .fns .chk input {
   width: 14px;
   height: 14px;
   margin: 0;
 }
-
 .mtree .fns .chk:has(input:disabled) {
   border-color: #e4e4e4;
   background: #f8f8f8;
@@ -100,7 +90,6 @@
   font-size: 13px;
   color: #505050;
 }
-
 .fn-guide i {
   color: #3e55e1;
 }
@@ -126,22 +115,18 @@
   background: #f8f8f8;
   font-size: 14px;
 }
-
 .sms-row b {
   flex: 0 0 110px;
   color: #101010;
 }
-
 .sms-row > span:not(.f-msg) {
   display: flex;
   flex: 0 0 auto;
 }
-
 .sms-row .f-msg {
   flex: 1;
   min-width: 0;
 }
-
 .sms-row .f-msg {
   margin: 0;
 }

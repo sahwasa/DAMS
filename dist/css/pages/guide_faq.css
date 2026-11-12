@@ -17,13 +17,11 @@
   font-weight: 700;
   vertical-align: middle;
 }
-
 .faq .faq-a {
   background: #ffb724;
   color: #66490e;
   float: left;
 }
-
 .faq tr.ans td {
   white-space: normal;
   background: #f8f8f8 !important;
@@ -31,23 +29,19 @@
   line-height: 1.7;
   color: #202020;
 }
-
 .faq tr.ans td > div {
   overflow: hidden;
 }
-
 .faq td.arr i {
   font-size: 18px;
   color: #8e8e8e;
   display: inline-block;
   transition: 0.15s;
 }
-
 .faq tr.on td.arr i {
   transform: rotate(180deg);
   color: #3e55e1;
 }
-
 .faq tr.on td {
   font-weight: 600;
   color: #101010;

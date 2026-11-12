@@ -1,11 +1,17 @@
 // UI-DA09-002-P01 연계확인서 발급 승인 — dialog 안으로 한정
-.pop-dlg[data-pop="UI-DA09-002-P01"] .sgg-hd{display:flex;align-items:center;gap:12px}
-.pop-dlg[data-pop="UI-DA09-002-P01"] .sgg-hd .f-msg{margin:0}
-.pop-dlg[data-pop="UI-DA09-002-P01"] .sgg-chk{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2px 8px;max-height:190px;overflow:auto;margin:6px 0 4px;padding:6px 10px;border:1px solid #e4e4e4;border-radius:2px}
-.pop-dlg[data-pop="UI-DA09-002-P01"] .sgg-chk li{display:flex;align-items:center;gap:4px;min-width:0;min-height:28px}
-.pop-dlg[data-pop="UI-DA09-002-P01"] .sgg-chk .chk{margin:0;min-width:0}
-.pop-dlg[data-pop="UI-DA09-002-P01"] .sgg-chk .chk span{white-space:nowrap}
-.pop-dlg[data-pop="UI-DA09-002-P01"] .sgg-chk li.own .chk span{color:#8e8e8e}
-.pop-dlg[data-pop="UI-DA09-002-P01"] .sgg-chk .badge{flex:0 0 auto;padding:0 3px;font-size:11px;line-height:16px}
-@media (max-width:767px){html:not(.pc-pop) .pop-dlg[data-pop="UI-DA09-002-P01"] .sgg-chk{grid-template-columns:repeat(2,minmax(0,1fr))}
+.pop-dlg[data-pop="UI-DA09-002-P01"]{
+  .sgg-hd{display:flex;align-items:center;gap:12px;
+    .f-msg{margin:0}
+  }
+  .sgg-chk{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2px 8px;max-height:190px;overflow:auto;margin:6px 0 4px;padding:6px 10px;border:1px solid #e4e4e4;border-radius:2px;
+    li{display:flex;align-items:center;gap:4px;min-width:0;min-height:28px}
+    .chk{margin:0;min-width:0;
+      span{white-space:nowrap}
+    }
+    li.own .chk span{color:#8e8e8e}
+    .badge{flex:0 0 auto;padding:0 3px;font-size:11px;line-height:16px}
+  }
+}
+@media (max-width:767px){
+  html:not(.pc-pop) .pop-dlg[data-pop="UI-DA09-002-P01"] .sgg-chk{grid-template-columns:repeat(2,minmax(0,1fr))}
 }

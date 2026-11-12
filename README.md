@@ -93,3 +93,8 @@ dev/
 - 같은 소스면 누가 빌드해도 dist가 같게: `.gitattributes`로 텍스트 파일 **LF 고정**, 소스맵은 **기본 생성 안 함**(`dist/css/maps/`는 저장소 제외 — 필요하면 `npx gulp --map`).
 - 의존성 버전은 `package-lock.json` 기준: 처음 설치는 `npm ci`.
 - pull 전에 로컬 빌드로 바뀐 dist가 있으면 `git restore dist`(소스를 고친 게 아니면 버려도 같은 결과).
+
+## SCSS 구조(중첩)
+- `dev/scss`는 **중첩 구조**: 같은 부모로 시작하는 연속 규칙을 묶음(`.grid{ thead{ th{ &.sort{..} } } }`). 목업(평평한 SCSS)에서 옮길 때 자동 변환(`tools/dams/nest.py`).
+- CSS 우선순위가 바뀌지 않도록 **연속한 규칙만** 묶고 순서는 그대로 — 그래서 같은 부모가 두 번 나올 수 있음(중간에 다른 규칙이 끼어 있는 경우).
+- 변환할 때마다 평평한 SCSS로 만든 CSS와 중첩 SCSS로 만든 CSS를 비교(주석·공백 제외 동일해야 통과).
