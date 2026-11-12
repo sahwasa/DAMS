@@ -23,6 +23,7 @@ function saveDest(){
 /* 담당자 정보(목록 행 → 쿼리 pic·dept·jbgd·tel), 신규 등록은 빈 칸 */
 [['pic','m_pic_nm'],['dept','m_pic_dept_nm'],['jbgd','m_pic_jbgd_nm'],['tel','m_pic_telno']].forEach(function(a){var el=$(a[1]);if(mode==='new')el.value='';else if(Q.get(a[0])!=null)el.value=Q.get(a[0])});
 if(Q.get('sd')){$('m_dest_sido').value=Q.get('sd');fillDestSigungu(Q.get('sd'));$('m_dest_sgg').value=Q.get('sg')||'';setNm();var nm=$('m_dest_nm').value;$('m_dest_desc').value=nm+' 예경보 통합 연동';$('m_dest_id').value='dams_'+Q.get('cd')}else setNm();
+(function(){var r=$('acntInfo'),e=$('m_dest_acnt');if(acnt){r.hidden=true;return}if(Q.get('ac')==='1'){e.textContent='등록됨';e.className='badge in';e.title='계정관리에 등록된 연계기관 — DAMS 직접 연계(연계 프로그램 설치)'}})();
 if(acnt)document.querySelectorAll('.acnt-only').forEach(function(r){r.hidden=false;r.querySelectorAll('.inp').forEach(function(e){e.required=true})});
 /* 비밀번호 자동생성: 입력란에 채우고 보이게(저장 시 반영) / 초기화: 확인 후 임시 비밀번호 즉시 발급(기존 비밀번호 접속 불가) */
 function genPw(){var p=$('m_dest_pw');p.value=pwGen(12);pwEye(p.nextElementSibling,true);$('pwMsg').textContent='자동생성된 비밀번호입니다. [저장]을 눌러야 반영됩니다.';$('pwMsg').className='f-msg c-pri';msg('비밀번호가 자동생성되었습니다.')}

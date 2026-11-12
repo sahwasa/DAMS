@@ -12,4 +12,4 @@
 /* 목록: 페이징 없이 전체(245건)를 목록 안에서 스크롤 — PC는 화면 남은 높이에 맞춤(페이지 스크롤 없음) */
 @media (min-width:1280px){#content{display:flex;flex-direction:column}#content>*{flex:0 0 auto}#content>.sub-head{margin-top:0}#content>#destWrap{flex:0 1 auto;min-height:200px;overflow:auto}}
 @media (max-width:1279px){#destWrap{max-height:calc(100vh - 120px);overflow:auto}}
-td.lm{white-space:nowrap}.acnt-bd{margin-left:6px;vertical-align:1px}.acnt-lg .badge{margin-right:2px}.lm-via{color:#707070}.lm-dot{margin:0 5px;font-style:normal;color:#c6c6c6}td.lm .integ-chip{margin-left:0;gap:1px;padding:0 4px 0 8px}.acnt-lg{margin:0 0 0 8px}.acnt-lg b{font-weight:600}
+td.lm{white-space:nowrap}.acnt-lg .badge{margin-right:2px}.lm-via{color:#707070}.lm-dot{margin:0 5px;font-style:normal;color:#c6c6c6}td.lm .integ-chip{margin-left:0;gap:1px;padding:0 4px 0 8px}.acnt-lg{margin:0 0 0 8px}.acnt-lg b{font-weight:600}

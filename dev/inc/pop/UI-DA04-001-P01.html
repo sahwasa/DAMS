@@ -12,6 +12,8 @@
           <span class="f-msg">시도만 선택하면 시도 기관(예: 충청남도), 시군구까지 선택하면 시군구 기관(예: 충청남도 천안시)으로 등록됩니다.</span><input type="hidden" id="m_dest_nm" name="m_dest_nm"></td></tr>
         <tr><th><label for="m_dest_cd" class="req">기관코드</label></th><td><input class="inp" id="m_dest_cd" name="m_dest_cd" maxlength="20" value="4492000" required data-label="기관코드"></td>
             <th>최초등록일</th><td class="ro" id="m_dest_reg">2025-02-11 10:20</td></tr>
+        <!-- 연계 계정 안내(읽기 전용): 계정 등록·수정은 계정관리 화면에서 — 계정관리 [수정]으로 열면(acnt=1) 숨기고 아래 IP·ID·Password 표시 -->
+        <tr id="acntInfo"><th>연계 계정</th><td colspan="3"><span class="badge" id="m_dest_acnt">미등록</span><span class="f-msg" style="display:inline;margin-left:8px">연계 계정(IP·ID·Password)은 [통합플랫폼관리 &gt; 계정관리]에서 등록·관리합니다.</span></td></tr>
         <!-- 연계 계정(IP·ID·Password): 계정관리 [수정]에서 열 때만 표시(acnt=1) -->
         <tr class="acnt-only" hidden><th><label for="m_dest_ip" class="req">IP</label></th><td colspan="3"><input class="inp" style="width:240px" id="m_dest_ip" name="m_dest_ip" maxlength="45" value="10.120.40.12" placeholder="예: 10.120.40.12" data-label="IP"></td></tr>
         <tr class="acnt-only" hidden><th><label for="m_dest_id" class="req">ID</label></th><td colspan="3"><input class="inp" style="width:240px" id="m_dest_id" name="m_dest_id" maxlength="100" value="cheonan_dams" data-label="ID"></td></tr>
