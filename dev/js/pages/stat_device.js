@@ -31,6 +31,12 @@ function setUnit(u){UNIT=u;var SL=document.getElementById('rgSido');SL.hidden=u!
 function drawRg(){var el=document.getElementById('rgChart');if(!el)return;var D=[].filter.call(document.querySelectorAll('#deviceRegionTbody tr.clk'),function(tr){return !tr.hidden}).map(function(tr){var c=tr.cells,ok=num(c[3].textContent),ng=num(c[4].textContent),t=ok+ng;return {n:c[0].textContent,ins:num(c[1].textContent),ok:ok,ng:ng,rr:(ok/t*100).toFixed(1),rt:(ng/t*100).toFixed(1)}}),
  N=D.map(function(d){return d.n}),sh=function(n){if(/^기타/.test(n))return n;if(n.indexOf(' ')>0)return n.split(' ').pop();return n.replace(/통합특별시$/,'').replace(/(특별자치도|특별자치시|광역시|특별시|도)$/,'').replace(/^(충청|전라|경상)(남|북)$/,function(m,a,b){return a[0]+b})},
  tt=function(d){return d.n+'<br>설치 '+d.ins.toLocaleString()+'대 · 연결 '+d.ok.toLocaleString()+' · 끊김 '+d.ng.toLocaleString()+'<br>수신율 '+d.rr+'%'};
+ /* 추이: 지역별 설치 대수 월별(일별) 꺾은선 — 표에 보이는 지역 행 기준 */
+ var trd=RGK==='t',S0=stSer();document.getElementById('rgTit2').textContent=(trd?S0.tit+' ':'')+(UNIT==='sgg'?'시군구별':'시도별')+' 설치 '+(trd?'추이':'현황');document.getElementById('rgModeBtns').hidden=trd;
+ if(trd){el.style.height='320px';var ch0=echarts.getInstanceByDom(el);if(ch0){ch0.clear();ch0.resize()}var tot=D.reduce(function(a,d){return a+d.ins},0),PL=['#3e55e1','#2b9bd8','#00a37a','#f5930b','#8e6bd6','#e0587a','#5cb85c','#d8a227','#4b7bec','#20b2aa','#ff7f50','#9aa6ee','#6c8ebf','#c97b63','#7fb069','#b07fc0','#8e8e8e'];
+  return EC(el,{tooltip:{trigger:'axis',formatter:function(ps){return ps[0].axisValue+(ps[0].value==null?'<br>집계 전':'<br>'+ps.map(function(p){return p.marker+p.seriesName+' '+p.value.toLocaleString()+'대'}).join('<br>'))}},legend:ecLegend({type:'scroll',left:44,right:8,icon:'roundRect',itemHeight:3,itemWidth:14,formatter:function(n){return sh(n)}}),grid:{left:44,right:12,top:34,bottom:26},
+   xAxis:ecCat(S0.lb.map(function(x){return x+S0.unit}),{boundaryGap:false,axisLabel:{color:STC.tx,fontSize:11,interval:S0.step?function(i){return i===0||(i+1)%S0.step===0}:0}}),yAxis:ecVal({min:0,axisLabel:{color:STC.gray,fontSize:11}}),
+   series:D.map(function(d,k){return {name:d.n,type:'line',symbolSize:S0.day?3:5,lineStyle:{width:2},itemStyle:{color:/기타/.test(d.n)?'#c6c6c6':PL[k%PL.length]},data:insSer(d.ins,1452,S0)}})})}
  var nar=ecNar(el);el.style.height=(RGM==='h'?Math.max(220,D.length*32+44):Math.max(320,D.length*20+60))+'px';var ch=echarts.getInstanceByDom(el);if(ch){ch.clear();ch.resize()}
  if(RGM==='d'){var ins=D.reduce(function(s,d){return s+d.ins},0),P=['#3e55e1','#2b9bd8','#00a37a','#f5930b','#8e6bd6','#e0587a','#5cb85c','#d8a227','#4b7bec','#20b2aa','#ff7f50','#9aa6ee','#6c8ebf','#c97b63','#7fb069','#b07fc0','#8e8e8e'];
   return EC(el,{tooltip:{trigger:'item',formatter:function(p){return p.marker+tt(D[p.dataIndex])+'<br>설치 비중 '+p.percent+'%'}},
@@ -80,31 +86,54 @@ function drawDm(){var el=document.getElementById('deviceTypeChart');var D=DM.map
 /* 기간 구분: 연도·분기·기간 = 월별(2026년 12월은 집계 전), 월 = 일별 */
 function days(y,m){return new Date(y,m,0).getDate()}
 function stSer(){var f=document.getElementById('schForm'),t=f.selPeriodType.value,yy=parseInt(f.selYear.value),fu=function(m){return yy===2026&&m>=12};
- if(t==='month'){var m=parseInt(f.selMonth.value),d=days(yy,m),lb=[];for(var k=1;k<=d;k++)lb.push(k);return {tit:'일별',lb:lb,mo:lb.map(function(){return m}),unit:'일',step:5,day:1}}
- if(t==='quarter'){var q=parseInt(f.selQuarter.value),a=[1,2,3].map(function(i){return (q-1)*3+i});return {tit:'월별',lb:a,mo:a,unit:'월',fu:a.map(fu)}}
- if(t==='custom'){var A=f.startDate.value.split('-'),B=f.endDate.value.split('-'),lb2=[],mo=[],cy=+A[0],cm=+A[1];while(cy<+B[0]||(cy===+B[0]&&cm<=+B[1])){lb2.push((+A[0]!==+B[0]?String(cy).slice(2)+'.':'')+cm);mo.push(cm);cm++;if(cm>12){cm=1;cy++}if(lb2.length>24)break}return {tit:'월별',lb:lb2,mo:mo,unit:'월'}}
- var a2=[1,2,3,4,5,6,7,8,9,10,11,12];return {tit:'월별',lb:a2,mo:a2,unit:'월',fu:a2.map(fu)}}
+ if(t==='month'){var m=parseInt(f.selMonth.value),d=days(yy,m),lb=[];for(var k=1;k<=d;k++)lb.push(k);return {tit:'일별',lb:lb,mo:lb.map(function(){return m}),yr:lb.map(function(){return yy}),unit:'일',step:5,day:1,dd:d}}
+ if(t==='quarter'){var q=parseInt(f.selQuarter.value),a=[1,2,3].map(function(i){return (q-1)*3+i});return {tit:'월별',lb:a,mo:a,yr:a.map(function(){return yy}),unit:'월',fu:a.map(fu)}}
+ if(t==='custom'){var A=f.startDate.value.split('-'),B=f.endDate.value.split('-'),lb2=[],mo=[],yr=[],cy=+A[0],cm=+A[1];while(cy<+B[0]||(cy===+B[0]&&cm<=+B[1])){lb2.push((+A[0]!==+B[0]?String(cy).slice(2)+'.':'')+cm);mo.push(cm);yr.push(cy);cm++;if(cm>12){cm=1;cy++}if(lb2.length>24)break}return {tit:'월별',lb:lb2,mo:mo,yr:yr,unit:'월'}}
+ var a2=[1,2,3,4,5,6,7,8,9,10,11,12];return {tit:'월별',lb:a2,mo:a2,yr:a2.map(function(){return yy}),unit:'월',fu:a2.map(fu)}}
+/* 설치 대수 추이(2026-11-12): 현재(2026-11 말) 설치 대수에서 이후 월별 신규 설치(TA, 전체)를 비중대로 빼서 과거 값을 만든다 — 매체별·지역별 합계가 같게 */
+var TA=[14,10,16,20,24,18,12,15,22,17,13,9],NOW=[2026,11];
+function insRem(y,m){var s=0,yy=y,mm=m;while(yy<NOW[0]||(yy===NOW[0]&&mm<NOW[1])){mm++;if(mm>12){mm=1;yy++}s+=TA[mm-1]}return s}
+function insSer(fin,tot,S){return S.lb.map(function(lb,i){var y=S.yr[i],m=S.mo[i];if(y>NOW[0]||(y===NOW[0]&&m>NOW[1]))return null;var r=insRem(y,m);if(S.day){var part=TA[m-1]*(1-lb/S.dd);if(y===NOW[0]&&m===NOW[1])part=0;r+=part}return Math.max(0,Math.round(fin-r*fin/tot))})}
+/* 추이 카드 보기 전환(설치 대수 / 수신율, 지역별 현황 / 추이): 텍스트 버튼 그룹 */
+function kind(b,v,k,f){b.parentNode.querySelectorAll('button').forEach(function(x){x.className='btn s '+(x===b?'btn-pri':'btn-line')});window[v]=k;window[f]();msg(b.textContent+'(으)로 표시합니다.')}
+var TRK='i',RGK='s';
 /* 매체별 수신율 추이(꺾은선) — 수신율 = 100 − (매체 기준 끊김률 + 월별 변동: 여름철 장마·태풍기 하락) */
 var DMV=[[-.3,-.3,-.2,-.1,0,.3,.8,.6,.2,-.1,-.2,0],[-.2,-.2,-.1,0,0,.2,.5,.4,.1,0,-.1,0],[-.4,-.3,-.2,0,.2,.6,1.3,1,.3,-.1,-.2,0],[-.6,-.5,-.3,-.1,.3,.9,1.6,1.2,.2,-.2,-.3,0]];
-function drawDmTrend(){var el=document.getElementById('dmTrend');if(!el)return;var S=stSer();document.getElementById('dmTrTit').textContent=S.tit+' 매체별 수신율 추이';var L=S.lb.map(function(x){return x+S.unit}),bar=DTM==='b';
+function drawDmTrend(){var el=document.getElementById('dmTrend');if(!el)return;var S=stSer(),ins=TRK==='i';document.getElementById('dmTrTit').textContent=S.tit+' 매체별 '+(ins?'설치 대수':'수신율')+' 추이';document.getElementById('dmTrSub').textContent=ins?'(대)':'(%)';var L=S.lb.map(function(x){return x+S.unit}),bar=DTM==='b';
  var ch=echarts.getInstanceByDom(el);if(ch)ch.clear();
+ if(ins){var tot=DM.reduce(function(a,r){return a+r[1]},0),SR=DM.map(function(md){return insSer(md[1],tot,S)}),TT=S.lb.map(function(x,i){return SR[0][i]==null?null:SR.reduce(function(a,r){return a+r[i]},0)});
+  return EC(el,{tooltip:{trigger:'axis',axisPointer:{type:bar?'shadow':'line'},formatter:function(ps){var i=ps[0].dataIndex;return ps[0].axisValue+(TT[i]==null?'<br>집계 전':'<br>'+ps.map(function(p){return p.marker+p.seriesName+' '+p.value.toLocaleString()+'대'}).join('<br>')+'<br><b>합계 '+TT[i].toLocaleString()+'대</b>')}},
+   legend:ecLegend({left:44,right:'auto',icon:bar?'rect':'roundRect',itemHeight:bar?10:3,itemWidth:bar?10:14}),grid:{left:44,right:12,top:34,bottom:26},
+   xAxis:ecCat(L,{boundaryGap:bar,axisLabel:{color:STC.tx,fontSize:11,interval:S.step?function(i){return i===0||(i+1)%S.step===0}:0}}),yAxis:ecVal({min:bar?0:'dataMin',axisLabel:{color:STC.gray,fontSize:11}}),
+   series:DM.map(function(md,k){return {name:md[0],type:bar?'bar':'line',stack:bar?'ins':undefined,barMaxWidth:22,symbolSize:S.day?4:6,lineStyle:{width:2},itemStyle:{color:MPAL[k]},data:SR[k]}})})}
  EC(el,{tooltip:{trigger:'axis',axisPointer:{type:bar?'shadow':'line'},valueFormatter:function(v){return v==null?'-':v.toFixed(1)+'%'}},legend:ecLegend({left:44,right:'auto',icon:bar?'rect':'roundRect',itemHeight:bar?10:3,itemWidth:bar?10:14}),grid:{left:44,right:12,top:34,bottom:26},
   xAxis:ecCat(L,{boundaryGap:bar,axisLabel:{color:STC.tx,fontSize:11,interval:S.step?function(i){return i===0||(i+1)%S.step===0}:0}}),yAxis:ecVal({min:95,max:100,interval:1,axisLabel:{color:STC.gray,fontSize:11,formatter:'{value}%'}}),
   series:DM.map(function(md,k){var base=md[4]/md[2]*100;return {name:md[0],type:bar?'bar':'line',barMaxWidth:10,barGap:'10%',symbolSize:S.day?4:6,lineStyle:{width:2},itemStyle:{color:MPAL[k]},
    data:S.lb.map(function(lb,i){if(S.fu&&S.fu[i])return null;var v=base+DMV[k][S.mo[i]-1]+(S.day?Math.sin(i*1.7+k*2.3)*.35+Math.sin(i*.45+k)*.25:0);return Math.min(100,Math.round((100-Math.max(0,v))*10)/10)})}})})}
+/* 상태별 표 데이터(2026-11-12): 기간 유형이 월이면 일자별, 그 밖(연도·분기·기간)은 월별 — 전체(기대 수신) = 설치 대수 × 24시간 × 일수, 수신율은 월별 계절 변동(장마·태풍기 하락) + 일별 변동 */
+function buildStatus(){var S=stSer(),tb=document.getElementById('deviceStatusTbody'),rows=[],T=[0,0,0];
+ S.lb.forEach(function(lb,i){var y=S.yr[i],m=S.mo[i];if(y>NOW[0]||(y===NOW[0]&&m>NOW[1]))return;
+  var ins=insSer(1452,1452,{lb:[lb],yr:[y],mo:[m],day:S.day,dd:S.dd})[0],dv=DMV.reduce(function(a,r){return a+r[m-1]},0)/DMV.length,
+   n=S.day?1:(y===NOW[0]&&m===NOW[1]?11:days(y,m)),rr=98.1-dv+(S.day?Math.sin(lb*1.3+m)*.35+Math.sin(lb*.47)*.2:Math.sin(m*1.9+y)*.08),t=ins*24*n,ng=Math.round(t*(100-rr)/100),ok=t-ng;
+  if(S.day&&y===NOW[0]&&m===NOW[1]&&lb>11)return;
+  T[0]+=t;T[1]+=ok;T[2]+=ng;
+  rows.unshift('<tr><td'+(!S.day&&y===NOW[0]&&m===NOW[1]?' title="집계 중(11일까지)"':'')+'>'+y+'-'+String(m).padStart(2,'0')+(S.day?'-'+String(lb).padStart(2,'0'):'')+'</td><td class="t-r">'+t.toLocaleString()+'</td><td class="t-r">'+ok.toLocaleString()+'</td><td class="t-r">'+ng.toLocaleString()+'</td><td class="t-r">'+(ok/t*100).toFixed(1)+'%</td></tr>')});
+ tb.innerHTML=rows.join('')+'<tr class="tot"><td>합계</td><td class="t-r">'+T[0].toLocaleString()+'</td><td class="t-r">'+T[1].toLocaleString()+'</td><td class="t-r">'+T[2].toLocaleString()+'</td><td class="t-r">'+(T[0]?(T[1]/T[0]*100).toFixed(1):'0.0')+'%</td></tr>';
+ document.getElementById('dsTh').textContent=S.day?'일자':'월';document.getElementById('dsCnt').textContent=rows.length;document.getElementById('dsTit').textContent=(S.day?'일자별':'월별')+' 연결·끊김 추이';
+ if(!document.getElementById('tabStatus').hidden)drawStatus()}
 /* 일자별 연결·끊김 추이: 상태별 표 데이터로 그림(연결=선·왼쪽 축, 끊김=막대·오른쪽 축) */
-function drawStatus(){var el=document.getElementById('deviceStatusChart');if(!el)return;var R=[].filter.call(document.querySelectorAll('#deviceStatusTbody tr'),function(tr){return !tr.classList.contains('tot')}).map(function(tr){return {d:tr.cells[0].textContent.slice(5),ok:num(tr.cells[2].textContent),ng:num(tr.cells[3].textContent)}}).sort(function(a,b){return a.d<b.d?-1:1}),X=ecCat(R.map(function(r){return r.d}));
+function drawStatus(){var el=document.getElementById('deviceStatusChart');if(!el)return;var R=[].filter.call(document.querySelectorAll('#deviceStatusTbody tr'),function(tr){return !tr.classList.contains('tot')}).map(function(tr){var k=tr.cells[0].textContent;return {k:k,d:k.length===7?+k.slice(5)+'월'+(+k.slice(0,4)===NOW[0]&&+k.slice(5)===NOW[1]?'(~11일)':''):k.slice(5),ok:num(tr.cells[2].textContent),ng:num(tr.cells[3].textContent)}}).sort(function(a,b){return a.k<b.k?-1:1}),X=ecCat(R.map(function(r){return r.d}));
  var ch=echarts.getInstanceByDom(el);if(ch)ch.clear();
  document.getElementById('dsSub').textContent=DSM==='c'?'(건, 연결=왼쪽 축·끊김=오른쪽 축)':DSM==='s'?'(%, 연결+끊김=100)':'(%, 수신율 = 연결 ÷ 전체 × 100)';
  if(DSM==='s')return EC(el,{tooltip:{trigger:'axis',axisPointer:{type:'shadow'},formatter:function(ps){var r=R[ps[0].dataIndex];return ps[0].name+'<br>연결 '+r.ok.toLocaleString()+'건 ('+ps[0].value+'%)<br>끊김 '+r.ng.toLocaleString()+'건 ('+ps[1].value+'%)'}},legend:ecLegend(),grid:{left:44,right:12,top:34,bottom:26},
   xAxis:X,yAxis:ecVal({min:90,max:100,interval:2,axisLabel:{color:STC.gray,fontSize:11,formatter:'{value}%'}}),
   series:[{name:'연결',type:'bar',stack:'t',barMaxWidth:28,itemStyle:{color:STC.sc},data:R.map(function(r){return +(r.ok/(r.ok+r.ng)*100).toFixed(1)})},{name:'끊김',type:'bar',stack:'t',barMaxWidth:28,itemStyle:{color:STC.dg},data:R.map(function(r){return +(r.ng/(r.ok+r.ng)*100).toFixed(1)})}]});
  if(DSM==='l')return EC(el,{tooltip:{trigger:'axis',formatter:function(ps){var r=R[ps[0].dataIndex];return ps[0].name+'<br>수신율 '+ps[0].value+'%<br>연결 '+r.ok.toLocaleString()+' · 끊김 '+r.ng.toLocaleString()}},legend:ecLegend({data:['수신율']}),grid:{left:44,right:64,top:34,bottom:26},
-  xAxis:ecCat(R.map(function(r){return r.d}),{boundaryGap:false}),yAxis:ecVal({min:95,max:100,interval:1,axisLabel:{color:STC.gray,fontSize:11,formatter:'{value}%'}}),
+  xAxis:ecCat(R.map(function(r){return r.d}),{boundaryGap:false}),yAxis:ecVal({min:96,max:100,interval:1,axisLabel:{color:STC.gray,fontSize:11,formatter:'{value}%'}}),
   series:[{name:'수신율',type:'line',symbolSize:6,lineStyle:{width:2,color:STC.sc},itemStyle:{color:STC.sc},areaStyle:{color:'rgba(0,138,30,.08)'},label:{show:R.length<=16,position:'top',fontSize:11,color:STC.tt,formatter:'{c}%'},markLine:{silent:true,symbol:'none',lineStyle:{color:STC.dg,type:'dashed'},label:{formatter:'기준 98%',color:STC.dg,fontSize:11},data:[{yAxis:98}]},data:R.map(function(r){return +(r.ok/(r.ok+r.ng)*100).toFixed(1)})}]});
  EC(el,{tooltip:{trigger:'axis',axisPointer:{type:'shadow'},valueFormatter:function(v){return v.toLocaleString()+'건'}},legend:ecLegend(),grid:{left:64,right:52,top:34,bottom:26},
   xAxis:X,
-  yAxis:[ecVal({min:33500,max:34500,interval:250,axisLabel:{color:STC.gray,fontSize:11,formatter:function(v){return v.toLocaleString()}}}),ecVal({min:0,max:1200,interval:300,position:'right',splitLine:{show:false}})],
+  yAxis:[ecVal({scale:true,axisLabel:{color:STC.gray,fontSize:11,formatter:function(v){return v>=1e6?(v/1e6).toFixed(1)+'M':v.toLocaleString()}}}),ecVal({min:0,position:'right',splitLine:{show:false},axisLabel:{color:STC.gray,fontSize:11,formatter:function(v){return v>=1e3?(v/1e3)+'k':v}}})],
   series:[{name:'끊김',type:'bar',yAxisIndex:1,barMaxWidth:28,itemStyle:{color:STC.dg,opacity:.45},emphasis:{itemStyle:{opacity:.85}},data:R.map(function(r){return r.ng})},
    {name:'연결',type:'line',yAxisIndex:0,symbolSize:6,lineStyle:{width:2,color:STC.sc},itemStyle:{color:STC.sc},data:R.map(function(r){return r.ok}),z:3}]})}
 function ymd(s){var p=s.split(/[-\/]/);return new Date(+p[0],p[1]-1,+p[2])}
@@ -121,7 +150,7 @@ window.onSearch=function(f){
   /* 차트 제목 옆 조회조건: 기간 · 지역(전국/시도) · 매체(전체면 '전체 매체') */
   var sd=UNIT==='sgg'&&f.rgSido.value?f.rgSido.value:'',md=f.selDevice.value?f.selDevice.selectedOptions[0].text:'전체 매체',v=p+' · '+(sd||'전국')+' · '+md;
   document.querySelectorAll('[data-cond]').forEach(function(e){e.textContent=v;e.title='조회기간: '+p+' | 지역: '+regionText(f)+' | 매체: '+md});
-  drawDm();drawDmTrend();
+  drawDm();drawDmTrend();buildStatus();if(!document.getElementById('tabRegion').hidden)drawRg();
 };
 window.onSearch(document.getElementById('schForm'));
 document.getElementById('schForm').addEventListener('reset',function(){setTimeout(function(){window.onSearch(document.getElementById('schForm'))})});
