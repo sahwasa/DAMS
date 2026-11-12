@@ -5375,6 +5375,10 @@ body.win-body {
 
 .card-h .img-dn {
   flex: 0 0 auto;
+  margin-left: auto;
+}
+
+.card-h .btns ~ .img-dn {
   margin-left: 6px;
 }
 

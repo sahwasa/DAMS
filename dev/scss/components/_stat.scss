@@ -1,7 +1,7 @@
 @use "../abstracts" as *;
 /* ---------- 통계 화면 공통(재난발령통계·단말기통계, 2026-11-11): 조회조건 알약·차트 이미지 버튼·표 아코디언·차트 안 범례·도넛 ---------- */
 .st-cond{flex:0 0 auto;margin-left:8px;padding:0 8px;height:20px;line-height:20px;border-radius:10px;background:#eceffd;color:#3e55e1;font-size:12px;font-weight:600;white-space:nowrap}
-.card-h{white-space:nowrap}.card-h .img-dn{flex:0 0 auto;margin-left:6px}
+.card-h{white-space:nowrap}.card-h .img-dn{flex:0 0 auto;margin-left:auto}.card-h .btns~.img-dn{margin-left:6px}
 .card-h .btns[role=group]{gap:2px}.card-h .btns[role=group] .btn.ico i{font-size:15px}
 .tbl-acc{margin-top:16px;border:1px solid #d9def0;border-radius:4px;background:#fff}.tbl-acc>.sub-head{margin:0!important;padding:8px 12px 8px 8px;background:#f8f9ff;border-radius:4px;cursor:pointer}.tbl-acc>.sub-head:hover{background:#eef1fd}.tbl-acc.open>.sub-head{border-bottom:1px solid #d9def0;border-radius:4px 4px 0 0}.tbl-acc>.grid-wrap{border-top:0;margin:0}
 .acc-ico{font-size:20px;color:#3e55e1;transition:transform .15s}.tbl-acc.open .acc-ico{transform:rotate(90deg)}.acc-lb{margin-right:8px;font-size:13px;color:#3e55e1;font-weight:600}
