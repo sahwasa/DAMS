@@ -13,9 +13,9 @@ function hli(nm,ok,ng){var T=ok+ng,d=(ng/T*100).toFixed(1);return '<li title="'+
 function hc(v){return v<1.6?'h1':v<2.2?'h2':v<2.8?'h3':'h4'}
 function grpRow(tr){return tr.outerHTML.replace(/^<tr[^>]*>/,'<tr class="grp">').replace(/class="heat h\d"/g,'class="t-r"').replace(/ title="[^"]*"/g,'')}
 function setUnit(u){UNIT=u;var SL=document.getElementById('rgSido');SL.hidden=u!=='sgg';var SEL=u==='sgg'?SL.value:'';var tb=document.getElementById('deviceRegionTbody'),hb=document.querySelector('#deviceRegionHeatmap tbody'),ch=document.getElementById('deviceRegionChart');
- if(!ORIG.tb){ORIG.tb=tb.innerHTML;ORIG.hb=hb.innerHTML;ORIG.ch=ch.innerHTML}
- var sg=u==='sgg',lb=sg?'시군구':'시도';document.getElementById('regionColTh').textContent=lb;document.getElementById('unitTh2').textContent=lb;document.getElementById('unitSub').textContent='('+lb+' 단위)';document.getElementById('regTit').textContent=lb+'별 통계';document.getElementById('heatTit').textContent=lb+' × 매체구분 수신율';
- if(!sg){tb.innerHTML=ORIG.tb;hb.innerHTML=ORIG.hb;ch.innerHTML=ORIG.ch}else{
+ if(!ORIG.tb){ORIG.tb=tb.innerHTML;ORIG.hb=hb?hb.innerHTML:"";ORIG.ch=ch.innerHTML}
+ var sg=u==='sgg',lb=sg?'시군구':'시도';document.getElementById('regionColTh').textContent=lb;document.getElementById('unitSub').textContent='('+lb+' 단위)';document.getElementById('regTit').textContent=lb+'별 통계';
+ if(!sg){tb.innerHTML=ORIG.tb;ch.innerHTML=ORIG.ch}else{
   var t=document.createElement('tbody'),h=document.createElement('tbody');t.innerHTML=ORIG.tb;h.innerHTML=ORIG.hb;var rows=[],hrows=[],etc='',hetc='',tot='',htot='',li=[];
   [].forEach.call(t.rows,function(tr){var c=tr.cells,nm=c[0].textContent,sp=SPLIT[nm];if(tr.classList.contains('tot')){tot=SEL?'':tr.outerHTML;return}if(!sp){if(SEL)return;etc=tr.outerHTML.replace('기타 시도','기타 시군구');li.push({nm:'기타 시군구',ok:num(c[3].textContent),ng:num(c[4].textContent),etc:1});return}if(SEL&&nm!==SEL)return;rows.push({h:grpRow(tr)});
    var v=[1,2,4].map(function(i){return (i===4?splitAdj:split)(num(c[i].textContent))});sp[1].forEach(function(g,j){var tot2=v[1][j],ng=v[2][j],ok=tot2-ng,rt=(ok/tot2*100).toFixed(1)+'%',n=sp[0]+' '+g;
@@ -23,7 +23,7 @@ function setUnit(u){UNIT=u;var SL=document.getElementById('rgSido');SL.hidden=u!
   [].forEach.call(h.rows,function(tr){var c=tr.cells,nm=c[0].textContent,sp=SPLIT[nm];if(tr.classList.contains('tot')){htot=SEL?'':tr.outerHTML;return}if(!sp){hetc=SEL?'':tr.outerHTML.replace(/기타 시도/g,'기타 시군구');return}if(SEL&&nm!==SEL)return;hrows.push(grpRow(tr));
    sp[1].forEach(function(g,j){var n=sp[0]+' '+g,td='';for(var i=1;i<c.length;i++){var b=num(c[i].textContent),ng=Math.max(.5,(100-b)*ADJ[j]),r=(100-ng).toFixed(1),m=/설치 (\d+)대/.exec(c[i].title||''),ins=m?split(+m[1])[j]:0,md=(c[i].title||'').split(' — ')[0].replace(nm+' ','');
      td+=i<c.length-1?'<td class="heat '+hc(ng)+'" title="'+n+' '+md+' — 설치 '+ins+'대 · 수신율 '+r+'%">'+r+'%</td>':'<td class="t-r"><b>'+r+'%</b></td>'}hrows.push(td?'<tr class="sgc"><td class="t-l">'+n+'</td>'+td+'</tr>':'')})});
-  /* 직제순 유지(정렬하지 않음) */tb.innerHTML=rows.map(function(r){return r.h}).join('')+etc+tot;hb.innerHTML=hrows.join('')+hetc+htot;
+  /* 직제순 유지(정렬하지 않음) */tb.innerHTML=rows.map(function(r){return r.h}).join('')+etc+tot;
   li.sort(function(a,b){return a.etc?1:b.etc?-1:0});ch.innerHTML=li.map(function(x){return hli(x.nm,x.ok,x.ng)}).join('')}
  window.onSearch(document.getElementById('schForm'));drawRg();
  msg((sg?'시군구별'+(SEL?'('+SEL+')':''):'시도별')+' 비교로 지역별 단말기 통계를 조회하였습니다.')}
@@ -49,7 +49,6 @@ function drawRg(){var el=document.getElementById('rgChart');if(!el)return;var D=
   xAxis:ecVal({splitLine:{show:false},axisLabel:{show:false}}),yAxis:ecCat(nar?N.map(sh):N,{inverse:true,axisLabel:{color:STC.tt,fontSize:12,fontWeight:600,interval:0,width:nar?56:120,overflow:'truncate'}}),
   series:[{name:'설치 대수',type:'bar',barMaxWidth:16,itemStyle:{color:STC.pri||'#3e55e1',borderRadius:[0,3,3,0]},data:D.map(function(d){return d.ins}),
    label:{show:true,position:'right',formatter:function(p){var d=D[p.dataIndex];return '{b|'+d.ins.toLocaleString()+'대}{a|  수신율 }'+(low(d)?'{c|':'{g|')+d.rr+'%}'},rich:{a:{color:STC.tx,fontSize:12},b:{color:STC.tt,fontWeight:700,fontSize:12},g:{color:STC.sc,fontWeight:700,fontSize:12},c:{color:STC.dg,fontWeight:700,fontSize:12}}}}]})}
-function swRg(b,k){b.closest('ul').querySelectorAll('li').forEach(function(l){l.classList.toggle('on',l===b.parentNode)});document.getElementById('rgTbl').hidden=k===1;document.getElementById('rgHeat').hidden=k!==1;msg(b.textContent+'를 표시합니다.')}
 function showRegionDetail(tr){
   tr.parentNode.querySelectorAll('tr').forEach(function(x){x.classList.toggle('on',x===tr)});
   msg(tr.cells[0].textContent+' 단말기 상태 통계를 표출합니다.');

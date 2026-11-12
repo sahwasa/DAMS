@@ -256,7 +256,7 @@
   color: #8e8e8e;
 }
 
-/* 지역별: 오른쪽 표 영역을 차트 카드 높이에 맞추고 안에서 스크롤(헤더 고정), 히트맵 범례는 고정 영역 안 위쪽 */
+/* 지역별: 오른쪽 표 영역을 차트 카드 높이에 맞추고 안에서 스크롤(헤더 고정), (시도·시군구 × 매체구분 수신율 히트맵은 2026-11-12 사용자 결정으로 삭제) */
 @media (min-width: 1280px) {
   #tabRegion > .col-lr {
     align-items: stretch;
@@ -265,7 +265,7 @@
     position: relative;
     min-width: 0;
   }
-  .rg-right > #rgTbl, .rg-right > #rgHeat {
+  .rg-right > #rgTbl {
     position: absolute;
     left: 0;
     right: 0;
@@ -273,9 +273,6 @@
     bottom: 0;
     display: flex;
     flex-direction: column;
-  }
-  .rg-right > #rgTbl[hidden], .rg-right > #rgHeat[hidden] {
-    display: none;
   }
   .rg-right .grid-wrap {
     flex: 1;
