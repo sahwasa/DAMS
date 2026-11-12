@@ -1,8 +1,0 @@
-// 목업 인덱스 | 재난 예경보 통합관리시스템 화면 전용
-@use "../abstracts" as *;
-.grid td .rq{cursor:pointer;margin:1px 0}.grid td .rq:hover,.grid td .rq.on{background:#3e55e1;color:#fff}
-.grid tr.rq-row>td{padding:0;background:#f8f9ff!important;text-align:left;white-space:normal;height:auto}
-.rq-box{padding:14px 18px}.rq-it+.rq-it{margin-top:14px;padding-top:14px;border-top:1px dashed #c6c6c6}
-.rq-it h4{display:flex;align-items:center;gap:8px;font-size:15px;color:#101010}.rq-it h4 em{font-style:normal;font-size:12px;font-weight:400;color:#707070}
-.rq-it dl{display:grid;grid-template-columns:70px 1fr;gap:6px 12px;margin-top:8px;font-size:13px;line-height:1.6}.rq-it dt{color:#707070;font-weight:600}.rq-it dd{color:#202020;white-space:pre-line}.rq-it .ap{color:#006e18;font-weight:600}.rq-it .det mark{background:#fff3c4;color:#101010;font-weight:600;padding:1px 2px;border-radius:2px;box-decoration-break:clone;-webkit-box-decoration-break:clone}.grid td.rqc{white-space:normal;overflow:visible}.grid td .rq.ap{position:relative}.grid td .rq.ap::after{content:"";position:absolute;top:-3px;right:-3px;width:7px;height:7px;border-radius:50%;background:#008a1e}
-@media (max-width:767px){.win-head .sub{display:none}.rq-box{padding:12px}.grid.mcard tbody tr.rq-row>td::before{display:none}.grid.mcard tbody tr.rq-row>td{display:block}.rq-it h4{flex-wrap:wrap;font-size:14px}.rq-it dl{grid-template-columns:1fr;gap:2px}.rq-it dd{margin-bottom:6px}}

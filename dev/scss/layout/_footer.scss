@@ -1,6 +1,0 @@
-@use "../abstracts" as *;
-/* ---------- 21. 푸터 (화면정의서 "0. 레이아웃 - 웹", 국가재난관리정보시스템 형식: 화면 맨 아래 전체 폭 띠) ---------- */
-.ft{position:relative;display:flex;align-items:center;justify-content:center;gap:12px;flex:0 0 32px;height:32px;padding:0 16px;background:#fff;border-top:1px solid $c-line2;font-size:13px;color:$g60;white-space:nowrap}
-.ft .pp{order:-1}.ft .copy{flex:1;text-align:center}
-.ft .pp{color:$pri;font-weight:500}.ft .pp:hover{text-decoration:underline}
-.ft .ft-go{height:24px}
