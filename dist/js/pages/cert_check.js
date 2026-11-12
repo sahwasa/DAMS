@@ -89,9 +89,9 @@ function doIssue(d){
 }
 function genDoc(){
  var per=S.days[0]+' ~ '+S.days[S.days.length-1]+' ('+S.days.length+'일)',now=ymd(new Date(2026,9,30))+' 10:30';
- var sec=function(n,t,sum,head,rows){return '<div class="sub-head"><h4>'+n+'. '+t+'</h4><span class="cnt">'+sum+'</span></div><div class="grid-wrap"><table class="grid"><thead><tr>'+head.map(function(h){return '<th>'+h+'</th>'}).join('')+'</tr></thead><tbody>'+(rows.length?rows.map(function(r){return '<tr>'+r.map(function(c){return '<td>'+c+'</td>'}).join('')+'</tr>'}).join(''):'<tr><td colspan="'+head.length+'">'+sum+'</td></tr>')+'</tbody></table></div>'};
+ var sec=function(n,t,sum,head,rows){return '<div class="sub-head"><h3 class="h4">'+n+'. '+t+'</h3><span class="cnt">'+sum+'</span></div><div class="grid-wrap"><table class="grid"><caption class="blind">'+t+'</caption><thead><tr>'+head.map(function(h){return '<th>'+h+'</th>'}).join('')+'</tr></thead><tbody>'+(rows.length?rows.map(function(r){return '<tr>'+r.map(function(c){return '<td>'+c+'</td>'}).join('')+'</tr>'}).join(''):'<tr><td colspan="'+head.length+'">'+sum+'</td></tr>')+'</tbody></table></div>'};
  $('docArea').innerHTML='<h2>연계확인서</h2><p class="doc-sub">재난 예·경보 단말 데이터 연계 적합성 확인 · 시스템 자동 생성</p>'+
- '<table class="tbl"><colgroup><col style="width:110px"><col><col style="width:110px"><col></colgroup><tbody>'+
+ '<table class="tbl"><caption class="blind">연계확인서 발급 정보</caption><colgroup><col style="width:110px"><col><col style="width:110px"><col></colgroup><tbody>'+
  '<tr><th>기관명</th><td>'+orgName()+'</td><th>확인 기간</th><td>'+per+'</td></tr>'+
  '<tr><th>0. 연결상태</th><td>'+(D.level==='sido'?'적합 — 접속 이력 '+R.conn.length+'건':'해당없음 (시군구)')+'</td><th>1. 통보문</th><td>적합 — 총 '+R.noti.length+'건</td></tr>'+
  '<tr><th>2. 제원정보</th><td>적합 — 단말 '+D.src.length+'기</td><th>3. 상태정보</th><td>적합 — 수신율 '+rate(R.stRecv,R.stExpect)+'</td></tr>'+

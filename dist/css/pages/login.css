@@ -227,13 +227,13 @@ body {
   width: 190px;
   height: 54px;
   border-radius: 2px;
-  background: #7b8089;
+  background: #5d6063;
   color: #fff;
   font-size: 15px;
   font-weight: 700;
 }
 .lg-card .btn-cert:hover {
-  background: #5d6063;
+  background: #44474a;
 }
 
 .lg-links {
@@ -264,7 +264,7 @@ body {
 .lg-msg h2 {
   display: flex;
   align-items: center;
-  color: #0085b7;
+  color: #0077a4;
 }
 .lg-msg .nav {
   margin-left: auto;
@@ -282,7 +282,7 @@ body {
   font-size: 18px;
 }
 .lg-msg .nav b {
-  color: #0085b7;
+  color: #0077a4;
 }
 
 .lg-when {
@@ -300,7 +300,7 @@ body {
   height: 24px;
   padding: 0 9px;
   border-radius: 12px;
-  background: #0085b7;
+  background: #0077a4;
   color: #fff;
   font-size: 13px;
   font-style: normal;
@@ -315,7 +315,7 @@ body {
   min-height: 50px;
   padding: 8px 16px;
   border-radius: 2px;
-  background: #0085b7;
+  background: #0077a4;
   color: #fff;
   font-size: 15px;
   font-weight: 600;
@@ -353,7 +353,7 @@ body {
   margin-top: 18px;
   padding: 12px 18px;
   border-radius: 2px;
-  background: #0085b7;
+  background: #0077a4;
   color: #fff;
 }
 .lg-desk b {

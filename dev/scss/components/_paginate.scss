@@ -1,8 +1,9 @@
 @use "../abstracts" as *;
 /* ---------- 11. Paging ---------- */
-.paging{display:flex;justify-content:center;align-items:center;gap:4px;margin-top:16px}
-.paging a,.paging button,.paging strong{min-width:26px;height:26px;padding:0 4px;border:1px solid $c-line2;border-radius:$r-s;background:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:$fs-xs;color:$c-body}
-.paging a:hover{border-color:$g60}
-.paging strong{background:$pri;border-color:$pri;color:#fff;font-weight:600}
-.paging .dis{color:$g40;pointer-events:none}
-.paging i{font-size:14px}
+.paging{display:flex;justify-content:center;align-items:center;gap:4px;margin-top:16px;
+  a, button, strong{min-width:26px;height:26px;padding:0 4px;border:1px solid $c-line2;border-radius:$r-s;background:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:$fs-xs;color:$c-body}
+  a:hover{border-color:$g60}
+  strong{background:$pri;border-color:$pri;color:#fff;font-weight:600}
+  .dis{color:$g40;pointer-events:none}
+  i{font-size:14px}
+}

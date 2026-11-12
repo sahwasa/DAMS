@@ -1,0 +1,100 @@
+@@include('../inc/top.html',{"title": "FAQ | 재난 예경보 통합관리시스템", "css": "guide_faq"})
+
+<body>
+<div class="skip"><a href="#content">본문 바로가기</a><a href="#gnbMenu">주메뉴 바로가기</a><a href="#lnbMenu">서브메뉴 바로가기</a></div>
+<div class="wrap">
+  <!-- GNB -->
+  @@include('../inc/header.html')
+
+  <div class="body">
+    <!-- LNB -->
+    @@include('../inc/lnb-guide.html')
+
+    <!-- MAIN -->
+    <div class="main">
+      @@include('../inc/mdi.html',{"file": "guide_faq.html", "name": "FAQ"})
+
+      <main class="work" id="content" tabindex="-1">
+        <div class="page-head">
+          <div>
+            <h2 class="tit">FAQ<button type="button" class="star" title="즐겨찾기" data-star><i class="ri-star-line"></i></button></h2>
+            @@include('../inc/breadcrumb.html',{"d1": "이용안내", "d1h": "guide_intro.html", "d2": "FAQ", "d2h": "guide_faq.html"})
+          </div>
+        </div>
+
+        <!-- ===== 업무영역 (화면별 교체) ===== -->
+<form class="sch-box">
+  <div class="rows">
+    <div class="it c2"><label for="searchType">검색어</label><select class="sel" id="searchType" name="searchType" title="검색 유형" style="flex:0 0 140px"><option value="title">질문</option><option value="titleCn">질문+답변</option><option value="writer">작성자</option></select><input class="inp" id="searchKeyword" name="searchKeyword" maxlength="100" placeholder="검색어를 입력하세요"></div>
+  </div>
+  <div class="ctrl">
+    <button type="reset" class="btn btn-rst"><i class="ri-refresh-line"></i>초기화</button>
+    <button type="submit" class="btn btn-sch"><i class="ri-search-line"></i>검색</button>
+  </div>
+</form>
+<div class="sub-head">
+  <h3>FAQ 목록</h3><span class="cnt">전체<b id="totCnt">27</b>건</span>
+  <div class="grid-top">
+    <button type="button" class="btn s btn-crud" id="btnWrite" title="운영자 권한 이상 표출" onclick="location.href='guide_faq_write.html'"><i class="ri-edit-line"></i>등록</button>
+    <select class="sel" id="pageSize" name="pageSize" title="페이지당 건수"><option value="15">15개</option><option value="30">30개</option><option value="50">50개</option><option value="100">100개</option></select>
+    <button type="button" class="btn s btn-line" id="btnApply" onclick="applySize()">적용</button>
+  </div>
+</div>
+<div class="grid-wrap">
+  <table class="grid faq"><caption class="blind">FAQ 목록</caption>
+    <colgroup><col style="width:70px"><col><col style="width:120px"><col style="width:130px"><col style="width:100px"><col style="width:80px"><col style="width:44px"></colgroup>
+    <thead><tr><th>번호</th><th>질문</th><th>작성자</th><th class="sort desc">등록일</th><th class="sort">조회수</th><th>관리</th><th><span class="blind">펼침</span></th></tr></thead>
+    <tbody id="listBody">
+<tr class="clk" data-sn="27" data-t="인증서 로그인이 되지 않을 때는 어떻게 해야 하나요?" data-cn="공무원 로그인은 국가재난관리정보시스템(NDMS)에 등록한 GPKI 인증서로 합니다.
+1. NDMS에 인증서가 등록되어 있는지, 인증서 유효기간이 지나지 않았는지 확인하십시오.
+2. DAMS 업무 권한이 승인되었는지 확인하십시오(로그인 화면 [NDMS 권한신청 안내]).
+3. 오류가 계속되면 시스템관리자에게 문의하시기 바랍니다." data-w="관리자" onclick="toggleFaq(this)"><td>27</td><td class="t-l"><span class="faq-q">Q</span>인증서 로그인이 되지 않을 때는 어떻게 해야 하나요?</td><td>관리자</td><td>2026-10-21</td><td class="t-r">812</td><td><button type="button" class="btn s btn-line" title="수정" onclick="event.stopPropagation();location.href='guide_faq_write.html?mode=edit&amp;sn=27'">수정</button></td><td class="arr"><i class="ri-arrow-down-s-line"></i></td></tr>
+<tr class="ans" hidden><td></td><td colspan="6" class="t-l"><span class="faq-a">A</span><div>공무원 로그인은 국가재난관리정보시스템(NDMS)에 등록한 GPKI 인증서로 합니다.<br>1. NDMS에 인증서가 등록되어 있는지, 인증서 유효기간이 지나지 않았는지 확인하십시오.<br>2. DAMS 업무 권한이 승인되었는지 확인하십시오(로그인 화면 [NDMS 권한신청 안내]).<br>3. 오류가 계속되면 시스템관리자에게 문의하시기 바랍니다.</div></td></tr>
+<tr class="clk" data-sn="26" data-t="지방정부 예경보 시스템을 신규로 연계하려면 어떤 절차를 거쳐야 하나요?" data-cn="1. [통합플랫폼관리 &gt; 연계기관현황]에 연계기관을 등록합니다(자체 플랫폼으로 직접 연계하면 [계정관리]에 연계 계정도 등록).
+2. 지자체의 연계확인서 발급요청 공문을 받으면 상단 [연계확인서 발급]에서 요청한 점검기간으로 통보문·단말기 상태정보·제원정보·연결상태를 점검합니다(최근 2주 통보문 3건 이상).
+3. 총괄판정이 적합이면 연계확인서를 발급 승인하고, 운영 상태로 전환됩니다. 부적합이면 부적합 결과서를 보내 조치 후 재점검합니다." data-w="관리자" onclick="toggleFaq(this)"><td>26</td><td class="t-l"><span class="faq-q">Q</span>지방정부 예경보 시스템을 신규로 연계하려면 어떤 절차를 거쳐야 하나요?</td><td>관리자</td><td>2026-10-14</td><td class="t-r">655</td><td><button type="button" class="btn s btn-line" title="수정" onclick="event.stopPropagation();location.href='guide_faq_write.html?mode=edit&amp;sn=26'">수정</button></td><td class="arr"><i class="ri-arrow-down-s-line"></i></td></tr>
+<tr class="ans" hidden><td></td><td colspan="6" class="t-l"><span class="faq-a">A</span><div>1. [통합플랫폼관리 &gt; 연계기관현황]에 연계기관을 등록합니다(자체 플랫폼으로 직접 연계하면 [계정관리]에 연계 계정도 등록).<br>2. 지자체의 연계확인서 발급요청 공문을 받으면 상단 [연계확인서 발급]에서 요청한 점검기간으로 통보문·단말기 상태정보·제원정보·연결상태를 점검합니다(최근 2주 통보문 3건 이상).<br>3. 총괄판정이 적합이면 연계확인서를 발급 승인하고, 운영 상태로 전환됩니다. 부적합이면 부적합 결과서를 보내 조치 후 재점검합니다.</div></td></tr>
+<tr class="clk" data-sn="25" data-t="단말기 접속상태가 &#x27;끊김&#x27;으로 표출되는 원인은 무엇인가요?" data-cn="단말기는 1시간 주기로 상태정보를 전송합니다.
+- 끊김: 회선 불안정, 정전으로 인한 배터리 저전압, 통신 타임아웃(30초 초과), 장비 전원 차단 등으로 단말기가 연결되지 않은 경우입니다. 끊김 사유는 [단말기현황] 단말기 상세정보에서 확인할 수 있습니다." data-w="운영팀" onclick="toggleFaq(this)"><td>25</td><td class="t-l"><span class="faq-q">Q</span>단말기 접속상태가 &#x27;끊김&#x27;으로 표출되는 원인은 무엇인가요?</td><td>운영팀</td><td>2026-10-02</td><td class="t-r">590</td><td><button type="button" class="btn s btn-line" title="수정" onclick="event.stopPropagation();location.href='guide_faq_write.html?mode=edit&amp;sn=25'">수정</button></td><td class="arr"><i class="ri-arrow-down-s-line"></i></td></tr>
+<tr class="ans" hidden><td></td><td colspan="6" class="t-l"><span class="faq-a">A</span><div>단말기는 1시간 주기로 상태정보를 전송합니다.<br>- 끊김: 회선 불안정, 정전으로 인한 배터리 저전압, 통신 타임아웃(30초 초과), 장비 전원 차단 등으로 단말기가 연결되지 않은 경우입니다. 끊김 사유는 [단말기현황] 단말기 상세정보에서 확인할 수 있습니다.</div></td></tr>
+<tr class="clk" data-sn="24" data-t="재난발령 취소 및 정정 방송은 어떻게 처리하나요?" data-cn="기 발령된 재난정보의 취소·정정은 원 발령기관에서 취소 전문(Cancel) 또는 정정 전문(Update)을 DAMS로 재송출해야 합니다. DAMS는 수신 즉시 단말기에 이전 방송 중단 및 정정 메시지 송출 명령을 전달합니다." data-w="운영팀" onclick="toggleFaq(this)"><td>24</td><td class="t-l"><span class="faq-q">Q</span>재난발령 취소 및 정정 방송은 어떻게 처리하나요?</td><td>운영팀</td><td>2026-09-24</td><td class="t-r">433</td><td><button type="button" class="btn s btn-line" title="수정" onclick="event.stopPropagation();location.href='guide_faq_write.html?mode=edit&amp;sn=24'">수정</button></td><td class="arr"><i class="ri-arrow-down-s-line"></i></td></tr>
+<tr class="ans" hidden><td></td><td colspan="6" class="t-l"><span class="faq-a">A</span><div>기 발령된 재난정보의 취소·정정은 원 발령기관에서 취소 전문(Cancel) 또는 정정 전문(Update)을 DAMS로 재송출해야 합니다. DAMS는 수신 즉시 단말기에 이전 방송 중단 및 정정 메시지 송출 명령을 전달합니다.</div></td></tr>
+<tr class="clk" data-sn="23" data-t="비밀번호를 잊어버렸습니다." data-cn="공무원 로그인은 NDMS에 등록한 GPKI 인증서로 하므로 비밀번호가 필요하지 않습니다. 아이디 로그인(비상·유지보수용) 비밀번호를 잊은 경우 시스템 관리자에게 초기화를 요청하십시오." data-w="관리자" onclick="toggleFaq(this)"><td>23</td><td class="t-l"><span class="faq-q">Q</span>비밀번호를 잊어버렸습니다.</td><td>관리자</td><td>2026-09-15</td><td class="t-r">1,024</td><td><button type="button" class="btn s btn-line" title="수정" onclick="event.stopPropagation();location.href='guide_faq_write.html?mode=edit&amp;sn=23'">수정</button></td><td class="arr"><i class="ri-arrow-down-s-line"></i></td></tr>
+<tr class="ans" hidden><td></td><td colspan="6" class="t-l"><span class="faq-a">A</span><div>공무원 로그인은 NDMS에 등록한 GPKI 인증서로 하므로 비밀번호가 필요하지 않습니다. 아이디 로그인(비상·유지보수용) 비밀번호를 잊은 경우 시스템 관리자에게 초기화를 요청하십시오.</div></td></tr>
+<tr class="clk" data-sn="22" data-t="단말기통계의 수신율은 어떻게 계산되나요?" data-cn="수신율 = 연결 ÷ 전체(기대 수신 건수) × 100 입니다. 기대 수신 건수는 운영 단말기 수 × 운영 시간(1시간 1회 상태정보 수신)이며, 점검 등으로 사용중지된 단말기는 제외합니다." data-w="관리자" onclick="toggleFaq(this)"><td>22</td><td class="t-l"><span class="faq-q">Q</span>단말기통계의 수신율은 어떻게 계산되나요?</td><td>관리자</td><td>2026-09-03</td><td class="t-r">276</td><td><button type="button" class="btn s btn-line" title="수정" onclick="event.stopPropagation();location.href='guide_faq_write.html?mode=edit&amp;sn=22'">수정</button></td><td class="arr"><i class="ri-arrow-down-s-line"></i></td></tr>
+<tr class="ans" hidden><td></td><td colspan="6" class="t-l"><span class="faq-a">A</span><div>수신율 = 연결 ÷ 전체(기대 수신 건수) × 100 입니다. 기대 수신 건수는 운영 단말기 수 × 운영 시간(1시간 1회 상태정보 수신)이며, 점검 등으로 사용중지된 단말기는 제외합니다.</div></td></tr>
+<tr class="clk" data-sn="21" data-t="재난발령현황에서 CAP 파일은 어디서 받을 수 있나요?" data-cn="[재난 예경보 현황 &gt; 재난발령현황] 목록의 [다운로드] 버튼으로 해당 발령의 CAP 파일을 받을 수 있습니다." data-w="운영팀" onclick="toggleFaq(this)"><td>21</td><td class="t-l"><span class="faq-q">Q</span>재난발령현황에서 CAP 파일은 어디서 받을 수 있나요?</td><td>운영팀</td><td>2026-08-27</td><td class="t-r">318</td><td><button type="button" class="btn s btn-line" title="수정" onclick="event.stopPropagation();location.href='guide_faq_write.html?mode=edit&amp;sn=21'">수정</button></td><td class="arr"><i class="ri-arrow-down-s-line"></i></td></tr>
+<tr class="ans" hidden><td></td><td colspan="6" class="t-l"><span class="faq-a">A</span><div>[재난 예경보 현황 &gt; 재난발령현황] 목록의 [다운로드] 버튼으로 해당 발령의 CAP 파일을 받을 수 있습니다.</div></td></tr>
+<tr class="clk" data-sn="20" data-t="세션이 자동으로 종료되는 시간은 얼마인가요?" data-cn="보안 정책에 따라 60분 동안 사용이 없으면 자동 로그아웃됩니다. 상단 세션 시간 옆 [시간연장] 버튼으로 연장할 수 있습니다." data-w="관리자" onclick="toggleFaq(this)"><td>20</td><td class="t-l"><span class="faq-q">Q</span>세션이 자동으로 종료되는 시간은 얼마인가요?</td><td>관리자</td><td>2026-08-20</td><td class="t-r">241</td><td><button type="button" class="btn s btn-line" title="수정" onclick="event.stopPropagation();location.href='guide_faq_write.html?mode=edit&amp;sn=20'">수정</button></td><td class="arr"><i class="ri-arrow-down-s-line"></i></td></tr>
+<tr class="ans" hidden><td></td><td colspan="6" class="t-l"><span class="faq-a">A</span><div>보안 정책에 따라 60분 동안 사용이 없으면 자동 로그아웃됩니다. 상단 세션 시간 옆 [시간연장] 버튼으로 연장할 수 있습니다.</div></td></tr>
+<tr class="clk" data-sn="19" data-t="연계확인서 발급 후 점검기간을 변경할 수 있나요?" data-cn="발급 이후에는 점검기간을 변경할 수 없습니다. 변경이 필요하면 재점검을 신청하여 새 연계확인서를 발급받아야 합니다." data-w="관리자" onclick="toggleFaq(this)"><td>19</td><td class="t-l"><span class="faq-q">Q</span>연계확인서 발급 후 점검기간을 변경할 수 있나요?</td><td>관리자</td><td>2026-08-12</td><td class="t-r">167</td><td><button type="button" class="btn s btn-line" title="수정" onclick="event.stopPropagation();location.href='guide_faq_write.html?mode=edit&amp;sn=19'">수정</button></td><td class="arr"><i class="ri-arrow-down-s-line"></i></td></tr>
+<tr class="ans" hidden><td></td><td colspan="6" class="t-l"><span class="faq-a">A</span><div>발급 이후에는 점검기간을 변경할 수 없습니다. 변경이 필요하면 재점검을 신청하여 새 연계확인서를 발급받아야 합니다.</div></td></tr>
+<tr class="clk" data-sn="18" data-t="엑셀 다운로드 시 조회 조건이 반영되나요?" data-cn="네. 엑셀 다운로드는 현재 화면의 검색 조건과 선택한 탭(집계 기준)의 결과만 내려받습니다." data-w="운영팀" onclick="toggleFaq(this)"><td>18</td><td class="t-l"><span class="faq-q">Q</span>엑셀 다운로드 시 조회 조건이 반영되나요?</td><td>운영팀</td><td>2026-08-05</td><td class="t-r">198</td><td><button type="button" class="btn s btn-line" title="수정" onclick="event.stopPropagation();location.href='guide_faq_write.html?mode=edit&amp;sn=18'">수정</button></td><td class="arr"><i class="ri-arrow-down-s-line"></i></td></tr>
+<tr class="ans" hidden><td></td><td colspan="6" class="t-l"><span class="faq-a">A</span><div>네. 엑셀 다운로드는 현재 화면의 검색 조건과 선택한 탭(집계 기준)의 결과만 내려받습니다.</div></td></tr>
+<tr class="clk" data-sn="17" data-t="사용자 권한을 변경하려면 어떻게 하나요?" data-cn="권한 변경은 시스템관리자가 [시스템관리 &gt; 사용자관리] 사용자 상세정보에서 권한 그룹을 바꿔 처리합니다. 권한 그룹별 메뉴·기능은 [사용자 권한관리]에서 설정합니다." data-w="관리자" onclick="toggleFaq(this)"><td>17</td><td class="t-l"><span class="faq-q">Q</span>사용자 권한을 변경하려면 어떻게 하나요?</td><td>관리자</td><td>2026-07-29</td><td class="t-r">143</td><td><button type="button" class="btn s btn-line" title="수정" onclick="event.stopPropagation();location.href='guide_faq_write.html?mode=edit&amp;sn=17'">수정</button></td><td class="arr"><i class="ri-arrow-down-s-line"></i></td></tr>
+<tr class="ans" hidden><td></td><td colspan="6" class="t-l"><span class="faq-a">A</span><div>권한 변경은 시스템관리자가 [시스템관리 &gt; 사용자관리] 사용자 상세정보에서 권한 그룹을 바꿔 처리합니다. 권한 그룹별 메뉴·기능은 [사용자 권한관리]에서 설정합니다.</div></td></tr>
+<tr class="clk" data-sn="16" data-t="재해문자전광판 메시지가 일부만 표출됩니다." data-cn="전광판 기종별 표출 가능 글자 수를 초과하면 메시지가 잘리거나 실패 처리됩니다. 공지사항의 표출 메시지 길이 기준을 확인하십시오." data-w="운영팀" onclick="toggleFaq(this)"><td>16</td><td class="t-l"><span class="faq-q">Q</span>재해문자전광판 메시지가 일부만 표출됩니다.</td><td>운영팀</td><td>2026-07-18</td><td class="t-r">129</td><td><button type="button" class="btn s btn-line" title="수정" onclick="event.stopPropagation();location.href='guide_faq_write.html?mode=edit&amp;sn=16'">수정</button></td><td class="arr"><i class="ri-arrow-down-s-line"></i></td></tr>
+<tr class="ans" hidden><td></td><td colspan="6" class="t-l"><span class="faq-a">A</span><div>전광판 기종별 표출 가능 글자 수를 초과하면 메시지가 잘리거나 실패 처리됩니다. 공지사항의 표출 메시지 길이 기준을 확인하십시오.</div></td></tr>
+<tr class="clk" data-sn="15" data-t="즐겨찾기 메뉴는 어떻게 등록하나요?" data-cn="화면명 옆 ☆ 아이콘을 누르면 즐겨찾기에 추가되며, 왼쪽 메뉴의 [즐겨찾기] 탭에서 확인할 수 있습니다." data-w="운영팀" onclick="toggleFaq(this)"><td>15</td><td class="t-l"><span class="faq-q">Q</span>즐겨찾기 메뉴는 어떻게 등록하나요?</td><td>운영팀</td><td>2026-07-09</td><td class="t-r">112</td><td><button type="button" class="btn s btn-line" title="수정" onclick="event.stopPropagation();location.href='guide_faq_write.html?mode=edit&amp;sn=15'">수정</button></td><td class="arr"><i class="ri-arrow-down-s-line"></i></td></tr>
+<tr class="ans" hidden><td></td><td colspan="6" class="t-l"><span class="faq-a">A</span><div>화면명 옆 ☆ 아이콘을 누르면 즐겨찾기에 추가되며, 왼쪽 메뉴의 [즐겨찾기] 탭에서 확인할 수 있습니다.</div></td></tr>
+<tr class="clk" data-sn="14" data-t="글자 크기를 조절할 수 있나요?" data-cn="상단 오른쪽 글자크기 [+] [−] 버튼으로 80%~130%까지 조절할 수 있습니다." data-w="운영팀" onclick="toggleFaq(this)"><td>14</td><td class="t-l"><span class="faq-q">Q</span>글자 크기를 조절할 수 있나요?</td><td>운영팀</td><td>2026-06-30</td><td class="t-r">87</td><td><button type="button" class="btn s btn-line" title="수정" onclick="event.stopPropagation();location.href='guide_faq_write.html?mode=edit&amp;sn=14'">수정</button></td><td class="arr"><i class="ri-arrow-down-s-line"></i></td></tr>
+<tr class="ans" hidden><td></td><td colspan="6" class="t-l"><span class="faq-a">A</span><div>상단 오른쪽 글자크기 [+] [−] 버튼으로 80%~130%까지 조절할 수 있습니다.</div></td></tr>
+<tr class="clk" data-sn="13" data-t="시스템 장애 발생 시 어디로 문의하나요?" data-cn="재난예경보 통합상황실(044-205-1234)로 연락하시거나 [시스템 이력 &gt; 장애이력]에 장애를 접수하십시오." data-w="관리자" onclick="toggleFaq(this)"><td>13</td><td class="t-l"><span class="faq-q">Q</span>시스템 장애 발생 시 어디로 문의하나요?</td><td>관리자</td><td>2026-06-22</td><td class="t-r">205</td><td><button type="button" class="btn s btn-line" title="수정" onclick="event.stopPropagation();location.href='guide_faq_write.html?mode=edit&amp;sn=13'">수정</button></td><td class="arr"><i class="ri-arrow-down-s-line"></i></td></tr>
+<tr class="ans" hidden><td></td><td colspan="6" class="t-l"><span class="faq-a">A</span><div>재난예경보 통합상황실(044-205-1234)로 연락하시거나 [시스템 이력 &gt; 장애이력]에 장애를 접수하십시오.</div></td></tr>
+      <tr class="nodata" id="noData" hidden><td colspan="7">검색된 결과가 없습니다.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="paging" id="pgBtns" data-total="2" data-page="1"></div>
+        <!-- ===== 업무영역 끝 ===== -->
+      </main>
+    </div>
+  </div>
+@@include('../inc/footer.html')
+</div>
+@@include('../inc/pop-common.html')
+@@include('../inc/script.html')
+@@include('../inc/script-common.html')
+<script src="js/pages/guide_faq.js"></script>
+</body>
+</html>

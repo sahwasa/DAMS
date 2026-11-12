@@ -147,7 +147,7 @@
   border-left: 1px solid #f0f0f0;
 }
 .org-tip .ot-t .z {
-  color: #8e8e8e;
+  color: #707070;
 }
 .org-tip .ot-sd {
   margin: 8px 12px 4px;
@@ -191,7 +191,7 @@
   padding-right: 6px;
 }
 .org-tip .ot-t tr.z td, .org-tip .ot-t tr.z th {
-  color: #8e8e8e;
+  color: #707070;
   font-weight: 400;
 }
 
@@ -271,7 +271,7 @@
 .mon-feed time {
   display: block;
   font-size: 12px;
-  color: #8e8e8e;
+  color: #707070;
   line-height: 16px;
   font-variant-numeric: tabular-nums;
 }
@@ -290,12 +290,12 @@
 .mon-feed .tl-src {
   margin-left: 6px;
   font-size: 12px;
-  color: #8e8e8e;
+  color: #707070;
   white-space: nowrap;
 }
 .mon-feed li.oc .tl-k {
   border-color: #f5930b;
-  color: #b86a00;
+  color: #98690a;
   background: #fff8e9;
 }
 .mon-feed p {
@@ -309,7 +309,7 @@
   font-style: normal;
   font-size: 12px;
   font-weight: 400;
-  color: #8e8e8e;
+  color: #707070;
 }
 .mon-feed li:hover p {
   color: #3e55e1;

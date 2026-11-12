@@ -67,7 +67,7 @@
 }
 .bbs-v .v-file .file-list em {
   font-style: normal;
-  color: #8e8e8e;
+  color: #707070;
 }
 
 .v-nav {
@@ -97,7 +97,7 @@
 .v-nav li > span.none {
   flex: 1;
   font-weight: 400;
-  color: #8e8e8e;
+  color: #707070;
 }
 .v-nav a {
   color: #202020;
@@ -107,13 +107,13 @@
   text-decoration: underline;
 }
 .v-nav .none {
-  color: #8e8e8e;
+  color: #707070;
 }
 .v-nav li > em {
   margin-left: auto;
   font-style: normal;
   font-size: 13px;
-  color: #8e8e8e;
+  color: #707070;
 }
 
 @media (max-width: 767px) {

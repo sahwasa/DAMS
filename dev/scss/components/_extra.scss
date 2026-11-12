@@ -6,7 +6,14 @@
 .col5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
 .chk input:indeterminate{background:$pri linear-gradient(#fff,#fff) center/8px 2px no-repeat;border-color:$pri}
 .tbl td .inp.inp-time{width:120px}
-.txa.code{height:320px;font:12px/1.6 Consolas,Menlo,monospace;white-space:pre;resize:none}
-.txa.view{min-height:96px;background:$g5;white-space:pre-wrap}
-.grid.mini{font-size:12px}.grid.mini th,.grid.mini td{height:26px;padding:2px 6px}
-.chips{display:flex;flex-wrap:wrap;gap:4px}.chips span,.chips button{display:inline-flex;align-items:center;height:20px;padding:0 7px;border:1px solid $c-line2;border-radius:10px;background:#fff;font-size:12px}
+.txa{
+  &.code{height:320px;font:12px/1.6 Consolas,Menlo,monospace;white-space:pre;resize:none}
+  &.view{min-height:96px;background:$g5;white-space:pre-wrap}
+}
+.grid{
+  &.mini{font-size:12px}
+  &.mini th, &.mini td{height:26px;padding:2px 6px}
+}
+.chips{display:flex;flex-wrap:wrap;gap:4px;
+  span, button{display:inline-flex;align-items:center;height:20px;padding:0 7px;border:1px solid $c-line2;border-radius:10px;background:#fff;font-size:12px}
+}

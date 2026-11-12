@@ -1,19 +1,37 @@
 @use "../abstracts" as *;
 /* ---------- 3-1. GNB ---------- */
 // GNB
-.gnb{display:flex;align-items:center;height:$gnb-h;padding:0 16px 0 20px;white-space:nowrap;background:$gnb-bg;color:#fff;flex:0 0 $gnb-h;position:relative;z-index:30}
-.gnb .logo{display:flex;align-items:center;gap:8px;margin-right:12px;font-size:17px;font-weight:500;white-space:nowrap}
-.gnb .logo i{font-size:26px}
-.gov-logo{display:block;flex:0 0 auto;width:32px;height:32px;object-fit:contain}.gov-logo.s{width:18px;height:18px}
-.gnb .menu{display:flex;height:100%}
-.gnb .menu{gap:0}.gnb .menu>li>a{display:flex;align-items:center;height:100%;padding:0 8px;font-size:17px;font-weight:700;opacity:.9;position:relative}
-.gnb .menu>li>a:hover,.gnb .menu>li.on>a{opacity:1}.gnb .menu>li.on>a::after{content:"";position:absolute;left:8px;right:8px;bottom:9px;height:3px;background:$pri}
-.gnb .util{display:flex;align-items:center;gap:2px;margin-left:auto}.gnb .util>.btn{margin-left:6px}
-.gnb .sess{display:flex;align-items:center;gap:6px;height:32px;padding:0 3px 0 12px;border-radius:16px;background:rgba(0,0,0,.25);font-size:$fs-xs}
-.gnb .sess button{height:26px;padding:0 10px;border-radius:13px;background:$pri;color:#fff;font-size:12px;font-weight:600}
-.gnb .user{display:inline-flex;align-items:center;gap:4px;padding:0 6px;font-size:$fs-xs;text-decoration:underline;text-underline-offset:3px}.gnb .user em{font-style:normal}.gnb .user i{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:$pri;font-size:12px}
-.gnb .ico{width:30px;height:30px;border-radius:$r;color:#fff;font-size:18px;display:inline-flex;align-items:center;justify-content:center;position:relative}
-.gnb .ico:hover{background:rgba(255,255,255,.12)}
-.gnb .ico .badge{position:absolute;top:4px;right:4px;display:block;width:7px;height:7px;min-width:0;padding:0;border:0;border-radius:50%;background:$dg;font-size:0;line-height:0;box-sizing:content-box}
-.gnb .fsz{display:flex;align-items:center;gap:4px;height:32px;padding:0 10px;border-radius:16px;background:rgba(0,0,0,.25);font-size:12px}.gnb .fsz>span{margin-right:2px}
-.gnb .fsz button{color:#fff;width:20px;font-size:14px}
+.gnb{display:flex;align-items:center;height:$gnb-h;padding:0 16px 0 20px;white-space:nowrap;background:$gnb-bg;color:#fff;flex:0 0 $gnb-h;position:relative;z-index:30;
+  .logo{display:flex;align-items:center;gap:8px;margin-right:12px;font-size:17px;font-weight:500;white-space:nowrap;
+    i{font-size:26px}
+  }
+}
+.gov-logo{display:block;flex:0 0 auto;width:32px;height:32px;object-fit:contain;
+  &.s{width:18px;height:18px}
+}
+.gnb{
+  .menu{display:flex;height:100%}
+  .menu{gap:0;
+    >li>a{display:flex;align-items:center;height:100%;padding:0 8px;font-size:17px;font-weight:700;opacity:.9;position:relative}
+    >li>a:hover, >li.on>a{opacity:1}
+    >li.on>a::after{content:"";position:absolute;left:8px;right:8px;bottom:9px;height:3px;background:$pri}
+  }
+  .util{display:flex;align-items:center;gap:2px;margin-left:auto;
+    >.btn{margin-left:6px}
+  }
+  .sess{display:flex;align-items:center;gap:6px;height:32px;padding:0 3px 0 12px;border-radius:16px;background:rgba(0,0,0,.25);font-size:$fs-xs;
+    button{height:26px;padding:0 10px;border-radius:13px;background:$pri;color:#fff;font-size:12px;font-weight:600}
+  }
+  .user{display:inline-flex;align-items:center;gap:4px;padding:0 6px;font-size:$fs-xs;text-decoration:underline;text-underline-offset:3px;
+    em{font-style:normal}
+    i{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:$pri;font-size:12px}
+  }
+  .ico{width:30px;height:30px;border-radius:$r;color:#fff;font-size:18px;display:inline-flex;align-items:center;justify-content:center;position:relative;
+    &:hover{background:rgba(255,255,255,.12)}
+    .badge{position:absolute;top:4px;right:4px;display:block;width:7px;height:7px;min-width:0;padding:0;border:0;border-radius:50%;background:$dg;font-size:0;line-height:0;box-sizing:content-box}
+  }
+  .fsz{display:flex;align-items:center;gap:4px;height:32px;padding:0 10px;border-radius:16px;background:rgba(0,0,0,.25);font-size:12px;
+    >span{margin-right:2px}
+    button{color:#fff;width:20px;font-size:14px}
+  }
+}

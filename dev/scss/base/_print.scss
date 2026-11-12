@@ -1,21 +1,63 @@
 @use "../abstracts" as *;
 /* ---------- 23. 인쇄(보고서 인쇄 SFR-02) ---------- */
 /* 태블릿·모바일 푸터(공공기관 모바일 사이트 형식): 세로 가운데 정렬 — 개인정보처리방침 · SERVICE DESK · 저작권 · 바로가기 버튼, 옅은 회색 바탕 */
-@media (max-width:1279px){html:not(.pc-pop) .ft{flex-direction:column;flex-wrap:nowrap;gap:6px;padding:20px 16px 24px;background:#f5f7f9;border-top:1px solid #e4e4e4;font-size:13px;line-height:1.5}html:not(.pc-pop) .ft .pp{order:1;font-size:14px;font-weight:700}html:not(.pc-pop) .ft .desk{order:2;color:#505050}html:not(.pc-pop) .ft .copy{order:3;flex:none;font-size:12px;color:#707070}html:not(.pc-pop) .ft .ft-go{order:4;width:auto;max-width:none;height:36px;margin-top:8px;padding:0 16px;border-radius:18px;background:#fff;font-size:13px}}
+@media (max-width:1279px){
+  html{
+    &:not(.pc-pop){
+      .ft{flex-direction:column;flex-wrap:nowrap;gap:6px;padding:20px 16px 24px;background:#f5f7f9;border-top:1px solid #e4e4e4;font-size:13px;line-height:1.5;
+        .pp{order:1;font-size:14px;font-weight:700}
+        .desk{order:2;color:#505050}
+        .copy{order:3;flex:none;font-size:12px;color:#707070}
+        .ft-go{order:4;width:auto;max-width:none;height:36px;margin-top:8px;padding:0 16px;border-radius:18px;background:#fff;font-size:13px}
+      }
+    }
+  }
+}
 /* 태블릿 검색영역: 기간(시작~종료)·선택상자 2개짜리 항목은 두 칸을 차지해 잘리지 않게 */
-@media (min-width:768px) and (max-width:1279px){html:not(.pc-pop) .sch-box .it:has(>.range),html:not(.pc-pop) .sch-box .it:has(>.flex>.sel+.sel){grid-column:span 2}
- html:not(.pc-pop) .sch-box .it:has(>.f-msg){flex-wrap:wrap}html:not(.pc-pop) .sch-box .it>.f-msg{flex-basis:100%;padding-left:100px}
- html:not(.pc-pop) .sub-head h3,html:not(.pc-pop) .sub-head h4,html:not(.pc-pop) .sub-head .h4{white-space:nowrap}}
+@media (min-width:768px) and (max-width:1279px){
+  html{
+    &:not(.pc-pop){
+      .sch-box{
+        .it{
+          &:has(>.range), &:has(>.flex>.sel+.sel){grid-column:span 2}
+          &:has(>.f-msg){flex-wrap:wrap}
+          >.f-msg{flex-basis:100%;padding-left:100px}
+        }
+      }
+      .sub-head h3, .sub-head h4, .sub-head .h4{white-space:nowrap}
+    }
+  }
+}
 /* 모니터링 종합 상태 타일(연계현황 모니터링·시스템 자원 모니터링) */
-.mon-kpi{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-bottom:12px}
-.mon-kpi>div{min-width:0;padding:8px 10px;border-radius:8px;background:#eef2fb;text-align:center}
-.mon-kpi dl{display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;column-gap:6px;white-space:nowrap}
-.mon-kpi dt{flex-basis:100%;font-size:13px;font-weight:600;color:#505050}
-.mon-kpi dd{margin:0;font-size:18px;font-weight:700;color:#3e55e1;line-height:1.45}.mon-kpi dd small{margin-left:2px;font-size:12px;font-weight:500;color:#505050}
-.mon-kpi dd.s{overflow:hidden;font-size:12px;font-weight:400;color:#505050;text-overflow:ellipsis}
-.mon-kpi>div.dg dd:not(.s){color:#d50136}.mon-kpi>div.wn dd:not(.s){color:#c77700}.mon-kpi dd .c-dg{font-weight:600}
-.mon-kpi>div.sc dd:not(.s){color:#008a1e}
-.mon-kpi.lg>div:is(.sc,.wn,.dg) dt::before{content:"";display:inline-block;width:10px;height:10px;margin-right:5px;border-radius:2px;vertical-align:-1px}.mon-kpi.lg>div.sc dt::before{background:#008a1e}.mon-kpi.lg>div.wn dt::before{background:#ffb724}.mon-kpi.lg>div.dg dt::before{background:#eb003b}
-.mon-kpi.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
-@media (max-width:1279px){html:not(.pc-pop) .mon-kpi{grid-template-columns:repeat(3,minmax(0,1fr))}html:not(.pc-pop) .mon-kpi.c4{grid-template-columns:repeat(4,minmax(0,1fr))}}
-@media (max-width:767px){html:not(.pc-pop) .mon-kpi,html:not(.pc-pop) .mon-kpi.c4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.mon-kpi{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-bottom:12px;
+  >div{min-width:0;padding:8px 10px;border-radius:8px;background:#eef2fb;text-align:center}
+  dl{display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;column-gap:6px;white-space:nowrap}
+  dt{flex-basis:100%;font-size:13px;font-weight:600;color:#505050}
+  dd{margin:0;font-size:18px;font-weight:700;color:#3e55e1;line-height:1.45;
+    small{margin-left:2px;font-size:12px;font-weight:500;color:#505050}
+    &.s{overflow:hidden;font-size:12px;font-weight:400;color:#505050;text-overflow:ellipsis}
+  }
+  >div.dg dd:not(.s){color:#d50136}
+  >div.wn dd:not(.s){color:#c77700}
+  dd .c-dg{font-weight:600}
+  >div.sc dd:not(.s){color:#008a1e}
+  &.lg{
+    >div:is(.sc,.wn,.dg) dt::before{content:"";display:inline-block;width:10px;height:10px;margin-right:5px;border-radius:2px;vertical-align:-1px}
+    >div.sc dt::before{background:#008a1e}
+    >div.wn dt::before{background:#ffb724}
+    >div.dg dt::before{background:#eb003b}
+  }
+  &.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media (max-width:1279px){
+  html{
+    &:not(.pc-pop){
+      .mon-kpi{grid-template-columns:repeat(3,minmax(0,1fr));
+        &.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
+      }
+    }
+  }
+}
+@media (max-width:767px){
+  html:not(.pc-pop) .mon-kpi,html:not(.pc-pop) .mon-kpi.c4{grid-template-columns:repeat(2,minmax(0,1fr))}
+}

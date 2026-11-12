@@ -128,7 +128,11 @@
   border: 1px dashed #c6c6c6;
   border-radius: 13px;
   font-size: 13px;
-  color: #8e8e8e;
+  color: #707070;
+}
+
+.sd-st .cert-none {
+  color: #505050;
 }
 
 /* 시도 행 sticky(헤더 아래) — PC는 목록 안에서 스크롤 */

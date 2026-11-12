@@ -1,0 +1,73 @@
+@@include('../inc/top.html',{"title": "연계기관현황 | 재난 예경보 통합관리시스템", "css": "plat_org"})
+
+<body>
+<div class="skip"><a href="#content">본문 바로가기</a><a href="#gnbMenu">주메뉴 바로가기</a><a href="#lnbMenu">서브메뉴 바로가기</a></div>
+<div class="wrap">
+  <!-- GNB -->
+  @@include('../inc/header.html')
+
+  <div class="body">
+    <!-- LNB -->
+    @@include('../inc/lnb-plat.html')
+
+    <!-- MAIN -->
+    <div class="main">
+      @@include('../inc/mdi.html',{"file": "plat_org.html", "name": "연계기관현황"})
+
+      <main class="work" id="content" tabindex="-1">
+        <div class="page-head">
+          <div>
+            <h2 class="tit">연계기관현황<button type="button" class="star" title="즐겨찾기" data-star><i class="ri-star-line"></i></button></h2>
+            @@include('../inc/breadcrumb.html',{"d1": "통합플랫폼관리", "d1h": "plat_org.html", "d2": "연계기관현황", "d2h": "plat_org.html"})
+          </div>
+        </div>
+
+        <!-- ===== 업무영역 (화면별 교체) ===== -->
+        <form class="sch-box">
+          <div class="rows">
+            <div class="it c2"><span class="lb">연계기관</span>
+              <div class="flex w100"><select class="sel" style="flex:1" id="sido_select" name="sido_select" title="시도" onchange="fillSigungu(this.value)"><option value="">시도 전체</option><option value="11">서울특별시</option><option value="46">전남광주통합특별시</option><option value="26">부산광역시</option><option value="27">대구광역시</option><option value="28">인천광역시</option><option value="30">대전광역시</option><option value="31">울산광역시</option><option value="36">세종특별자치시</option><option value="41">경기도</option><option value="42">강원특별자치도</option><option value="43">충청북도</option><option value="44">충청남도</option><option value="45">전북특별자치도</option><option value="47">경상북도</option><option value="48">경상남도</option><option value="50">제주특별자치도</option></select><select class="sel" style="flex:1" id="sgg_select" name="sgg_select" title="시군구"><option value="">시군구 전체</option></select></div>
+            </div>
+            <div class="it"><label for="oper_select">운영여부</label><select class="sel" id="oper_select" name="oper_select"><option value="">전체</option><option value="Y">운영</option><option value="N">미운영</option></select></div>
+            <div class="it"><label for="srch_pic_nm">담당자</label><input class="inp" id="srch_pic_nm" name="srch_pic_nm" maxlength="100" placeholder="담당자명 입력"></div>
+          </div>
+          <div class="ctrl">
+            <button type="reset" class="btn btn-rst"><i class="ri-refresh-line"></i>초기화</button>
+            <button type="submit" class="btn btn-sch"><i class="ri-search-line"></i>검색</button>
+          </div>
+        </form>
+
+        <div class="sub-head">
+          <h3>연계기관 목록</h3><span class="cnt">전체<b id="cntAll">245</b>건 / 운영 <b class="c-sc" id="cntOp">0</b>건 / 미운영 <b class="c-wn" id="cntNo">0</b>건</span><span class="f-msg acnt-lg">통합 발급 <b class="c-pri">통합 n</b> 시도 연계확인서로 함께 발급한 시군구 · <b class="lm-via">시도 통합</b> 시도 연계확인서로 발급된 시군구</span>
+          <div class="grid-top">
+            <button type="button" class="btn btn-crud op-btns" id="btnOpenDestAdd" onclick="openDest('new','')"><i class="ri-add-line"></i>등록</button>
+          </div>
+        </div>
+        <div class="grid-wrap" id="destWrap">
+          <table class="grid fix-head" id="destTable">
+            <caption class="blind">연계기관 목록</caption>
+            <colgroup><col style="width:64px"><col><col style="width:96px"><col style="width:84px"><col style="width:112px"><col style="width:212px"><col style="width:80px"><col style="width:120px"><col style="width:76px"><col style="width:150px"></colgroup>
+            <thead><tr><th>No</th><th class="sort">연계기관</th><th>통합 발급</th><th class="sort">운영여부</th><th class="sort">운영시작일자</th><th>연계확인서</th><th class="sort">담당자</th><th class="sort">부서</th><th>사용여부</th><th>관리</th></tr></thead>
+            <tbody id="destTableBody">
+              <tr class="nodata" hidden><td colspan="10">검색된 결과가 없습니다.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- ===== 업무영역 끝 ===== -->
+      </main>
+    </div>
+  </div>
+@@include('../inc/footer.html')
+</div>
+@@include('../inc/pop-common.html')
+@@include('../inc/pop/UI-DA04-001-P01.html')
+@@include('../inc/pop/UI-DA04-001-P02.html')
+@@include('../inc/pop/UI-DA09-002-P01.html')
+@@include('../inc/script.html')
+@@include('../inc/script-common.html')
+<script src="js/pop/UI-DA04-001-P01.js"></script>
+<script src="js/pop/UI-DA04-001-P02.js"></script>
+<script src="js/pop/UI-DA09-002-P01.js"></script>
+<script src="js/pages/plat_org.js"></script>
+</body>
+</html>

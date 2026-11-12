@@ -1,20 +1,46 @@
 @use "../abstracts" as *;
 /* ---------- 4. Title ---------- */
-.page-head{display:flex;align-items:flex-end;padding-bottom:4px;margin-bottom:20px}
-.page-head .tit{display:flex;align-items:center;gap:6px;font-size:24px;font-weight:700;color:$c-title;line-height:1.4}.page-head .pg-ico{font-size:19px;color:$g40;line-height:1}.page-head .pg-ico:hover{color:$g60}
-.page-head .star{font-size:20px;color:$g40}.page-head .star.on{color:$wn}
-.bread{display:flex;align-items:center;margin-top:6px;font-size:$fs-s;color:$g60}.bread li:first-child a{display:inline-flex;align-items:center;gap:3px}.bread li:first-child a::after{content:"Home"}
-.bread li+li::before{content:"\ea6e";font-family:remixicon;margin:0 4px;color:$g50}
-.bread li:last-child{color:$g60;font-weight:400}
-.bread .home{font-size:14px}
+.page-head{display:flex;align-items:flex-end;padding-bottom:4px;margin-bottom:20px;
+  .tit{display:flex;align-items:center;gap:6px;font-size:24px;font-weight:700;color:$c-title;line-height:1.4}
+  .pg-ico{font-size:19px;color:$g40;line-height:1;
+    &:hover{color:$g60}
+  }
+  .star{font-size:20px;color:$g40;
+    &.on{color:$wn}
+  }
+}
+.bread{display:flex;align-items:center;margin-top:6px;font-size:$fs-s;color:$g60;
+  li{
+    &:first-child{
+      a{display:inline-flex;align-items:center;gap:3px;
+        &::after{content:"Home"}
+      }
+    }
+    +li::before{content:"\ea6e";font-family:remixicon;margin:0 4px;color:$g50}
+    &:last-child{color:$g60;font-weight:400}
+  }
+  .home{font-size:14px}
+}
 .page-head .btns{margin-left:auto}
-.sub-head{display:flex;align-items:center;gap:6px;min-height:$h-btn;margin:24px 0 8px}
-.sub-head:first-child{margin-top:0}
-.sub-head h3,.sub-head .h3{font-size:$fs-t2;font-weight:700;color:$c-title}
-.sub-head h4,.sub-head .h4{font-size:$fs-t3;font-weight:700;color:$c-title;display:flex;align-items:center;gap:4px}
-.sub-head h4::before,.sub-head .h4::before{content:"\ebd9";font-family:remixicon;color:$pri;font-size:14px}
-.sub-head .cnt{margin-left:6px;font-size:$fs-s;color:$c-body}.sub-head .cnt b{color:$pri;font-weight:500;margin:0 2px}
-.sub-head .btns{margin-left:auto}
-.btns{display:flex;align-items:center;gap:4px}.btns.c{justify-content:center}.btns.r{justify-content:flex-end}
+.sub-head{display:flex;align-items:center;gap:6px;min-height:$h-btn;margin:24px 0 8px;
+  &:first-child{margin-top:0}
+  h3, .h3{font-size:$fs-t2;font-weight:700;color:$c-title}
+  h4, .h4{font-size:$fs-t3;font-weight:700;color:$c-title;display:flex;align-items:center;gap:4px}
+  h4::before, .h4::before{content:"\ebd9";font-family:remixicon;color:$pri;font-size:14px}
+  .cnt{margin-left:6px;font-size:$fs-s;color:$c-body;
+    b{color:$pri;font-weight:500;margin:0 2px}
+  }
+  .btns{margin-left:auto}
+}
+.btns{display:flex;align-items:center;gap:4px;
+  &.c{justify-content:center}
+  &.r{justify-content:flex-end}
+}
 .fold-btn{width:24px;height:24px;border:1px solid $c-line;border-radius:$r-s;background:#fff;color:$g60}
-.box-fold>.fold-cont{display:block}.box-fold.closed>.fold-cont{display:none}.box-fold.closed .fold-btn i{transform:rotate(180deg)}
+.box-fold{
+  >.fold-cont{display:block}
+  &.closed{
+    >.fold-cont{display:none}
+    .fold-btn i{transform:rotate(180deg)}
+  }
+}

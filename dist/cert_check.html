@@ -52,34 +52,34 @@
         <li><button type="button" data-tab="tab-st">단말 상태정보<span class="badge" id="tbT" hidden></span></button></li>
       </ul>
       <div id="tab-conn">
-        <div class="sub-head mt0"><h3 id="ttlConn"></h3></div>
+        <div class="sub-head mt0"><h2 class="h3" id="ttlConn"></h2></div>
         <div class="help-box" id="connNA" hidden><i class="ri-information-line"></i><span>시군구는 행안부 접속 시작·종료 시간을 알 수 없으므로 <b>해당없음</b>으로 표기합니다.</span></div>
         <div class="grid-wrap" id="connTbl"><table class="grid fix-head"><caption class="blind">연결상태 목록</caption><colgroup><col style="width:60px"><col style="width:200px"><col style="width:200px"><col style="width:150px"><col><col style="width:140px"></colgroup>
           <thead><tr><th>No</th><th>접속 시작 시각</th><th>접속 종료 시각</th><th>접속 유지 시간</th><th>비고</th><th>판정</th></tr></thead><tbody id="tbodyConn"></tbody></table></div>
       </div>
       <div id="tab-noti" hidden>
-        <div class="sub-head mt0"><h3 id="ttlNoti"></h3></div>
+        <div class="sub-head mt0"><h2 class="h3" id="ttlNoti"></h2></div>
         <div class="grid-wrap"><table class="grid fix-head"><caption class="blind">통보문 목록</caption><colgroup><col style="width:60px"><col style="width:180px"><col><col style="width:170px"><col style="width:160px"><col style="width:110px"><col style="width:200px"></colgroup>
           <thead><tr><th>No</th><th>재난분류명</th><th>제목</th><th class="sort asc">발령시각</th><th>발령지역</th><th>발령결과</th><th>판정</th></tr></thead><tbody id="tbodyNoti"></tbody></table></div>
       </div>
       <div id="tab-src" hidden>
-        <div class="sub-head mt0"><h3 id="ttlSrc"></h3></div>
+        <div class="sub-head mt0"><h2 class="h3" id="ttlSrc"></h2></div>
         <div class="grid-wrap"><table class="grid fix-head"><caption class="blind">단말 제원정보 목록</caption><colgroup><col style="width:60px"><col style="width:160px"><col><col style="width:120px"><col style="width:120px"><col style="width:140px"><col style="width:140px"></colgroup>
           <thead><tr><th>No</th><th>단말 ID</th><th>설치 위치</th><th>필수 필드</th><th>코드 검사</th><th>수신 일자</th><th>판정</th></tr></thead><tbody id="tbodySrc"></tbody></table></div>
       </div>
       <div id="tab-st" hidden>
-        <div class="sub-head mt0"><h3 id="ttlSt"></h3></div>
+        <div class="sub-head mt0"><h2 class="h3" id="ttlSt"></h2></div>
         <div class="grid-wrap"><table class="grid fix-head"><caption class="blind">단말 상태정보 목록</caption><colgroup><col style="width:60px"><col><col style="width:140px"><col style="width:140px"><col style="width:140px"><col style="width:140px"><col style="width:160px"></colgroup>
           <thead><tr><th>No</th><th>일자</th><th>기대(24)</th><th>수신</th><th>결손</th><th>수신율</th><th>판정</th></tr></thead><tbody id="tbodySt"></tbody></table></div>
       </div>
     </div>
 
     <div id="docSec" hidden>
-      <div class="sub-head"><h3>연계확인서 서식(자동생성)</h3><div class="btns"><button type="button" class="btn btn-dark" onclick="doDown('연계확인서(PDF)')"><i class="ri-download-2-line"></i>다운로드</button></div></div>
+      <div class="sub-head"><h2 class="h3">연계확인서 서식(자동생성)</h2><div class="btns"><button type="button" class="btn btn-dark" onclick="doDown('연계확인서(PDF)')"><i class="ri-download-2-line"></i>다운로드</button></div></div>
       <div class="doc-wrap"><div class="doc" id="docArea"></div></div>
     </div>
 
-    <p class="f-msg mt16">※ 목업 샘플 — 점검 기준 수치는 제안값. 예시 기관: <a class="c-pri" href="cert_check.html?org=bucheon">부천시(적합)</a> · <a class="c-pri" href="cert_check.html?org=cheongju">청주시(부적합)</a> · <a class="c-pri" href="cert_check.html?org=gyeonggi">경기도(시도·연결상태)</a></p>
+    <p class="f-msg mt16">※ 목업 샘플 — 점검 기준 수치는 제안값. 예시 기관: <a class="c-pri lk-u" href="cert_check.html?org=bucheon">부천시(적합)</a> · <a class="c-pri lk-u" href="cert_check.html?org=cheongju">청주시(부적합)</a> · <a class="c-pri lk-u" href="cert_check.html?org=gyeonggi">경기도(시도·연결상태)</a></p>
   </main>
 </div>
 <!-- UI-DA09-002-P01 연계확인서 발급 승인 (팝업: openPop으로 dialog에 띄움) -->

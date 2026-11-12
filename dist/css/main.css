@@ -103,6 +103,14 @@ img {
   outline-offset: -2px;
 }
 
+.pop-frm {
+  display: contents;
+}
+
+.lk-u {
+  text-decoration: underline;
+}
+
 .req::after {
   content: "*";
   color: #eb003b;
@@ -763,12 +771,12 @@ img {
 .sub-head:first-child {
   margin-top: 0;
 }
-.sub-head h3 {
+.sub-head h3, .sub-head .h3 {
   font-size: 17px;
   font-weight: 700;
   color: #101010;
 }
-.sub-head h4 {
+.sub-head h4, .sub-head .h4 {
   font-size: 15px;
   font-weight: 700;
   color: #101010;
@@ -776,7 +784,7 @@ img {
   align-items: center;
   gap: 4px;
 }
-.sub-head h4::before {
+.sub-head h4::before, .sub-head .h4::before {
   content: "\ebd9";
   font-family: remixicon;
   color: #3e55e1;
@@ -2139,7 +2147,7 @@ img {
   align-items: center;
   justify-content: center;
   background: #f0f0f0;
-  color: #707070;
+  color: #505050;
   font-size: 14px;
   font-weight: 600;
   clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%, 12px 50%);
@@ -2522,7 +2530,7 @@ details.help-box.ttl > summary {
 .nlayer li em {
   display: block;
   font-style: normal;
-  color: #8e8e8e;
+  color: #707070;
   font-size: 12px;
 }
 
@@ -3138,7 +3146,7 @@ body.win-body {
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
-  color: #707070;
+  color: #505050;
   margin-left: 8px;
 }
 .grid tbody tr.ng td {
@@ -3211,7 +3219,7 @@ body.win-body {
 
 /* ---------- 18. 일괄작업 공통 추가 ---------- */
 .c-dis {
-  color: #8e8e8e;
+  color: #707070;
 }
 
 .cl-wn {
@@ -4715,7 +4723,6 @@ body.win-body {
 .toast span {
   display: block;
   font-size: 13px;
-  opacity: 0.9;
 }
 .toast.back {
   pointer-events: none;
@@ -4833,7 +4840,7 @@ body.win-body {
     order: 3;
     flex: none;
     font-size: 12px;
-    color: #8e8e8e;
+    color: #707070;
   }
   html:not(.pc-pop) .ft .ft-go {
     order: 4;
@@ -4859,7 +4866,7 @@ body.win-body {
     flex-basis: 100%;
     padding-left: 100px;
   }
-  html:not(.pc-pop) .sub-head h3, html:not(.pc-pop) .sub-head h4 {
+  html:not(.pc-pop) .sub-head h3, html:not(.pc-pop) .sub-head h4, html:not(.pc-pop) .sub-head .h4 {
     white-space: nowrap;
   }
 }
@@ -4902,13 +4909,13 @@ body.win-body {
   margin-left: 2px;
   font-size: 12px;
   font-weight: 500;
-  color: #707070;
+  color: #505050;
 }
 .mon-kpi dd.s {
   overflow: hidden;
   font-size: 12px;
   font-weight: 400;
-  color: #707070;
+  color: #505050;
   text-overflow: ellipsis;
 }
 .mon-kpi > div.dg dd:not(.s) {

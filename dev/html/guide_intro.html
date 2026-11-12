@@ -1,0 +1,93 @@
+@@include('../inc/top.html',{"title": "시스템 소개 | 재난 예경보 통합관리시스템", "css": "guide_intro"})
+
+<body>
+<div class="skip"><a href="#content">본문 바로가기</a><a href="#gnbMenu">주메뉴 바로가기</a><a href="#lnbMenu">서브메뉴 바로가기</a></div>
+<div class="wrap">
+  <!-- GNB -->
+  @@include('../inc/header.html')
+
+  <div class="body">
+    <!-- LNB -->
+    @@include('../inc/lnb-guide.html')
+
+    <!-- MAIN -->
+    <div class="main">
+      @@include('../inc/mdi.html',{"file": "guide_intro.html", "name": "시스템 소개"})
+
+      <main class="work" id="content" tabindex="-1">
+        <div class="page-head">
+          <div>
+            <h2 class="tit">시스템 소개<button type="button" class="star" title="즐겨찾기" data-star><i class="ri-star-line"></i></button></h2>
+            @@include('../inc/breadcrumb.html',{"d1": "이용안내", "d1h": "guide_intro.html", "d2": "시스템 소개", "d2h": "guide_intro.html"})
+          </div>
+        </div>
+
+        <!-- ===== 업무영역 (화면별 교체) ===== -->
+<div class="intro-hero">
+  <div class="tx">
+    <span class="eyebrow">국가재난안전 표준연계망</span>
+    <h3>재난 예경보 통합관리시스템<small>DAMS · Disaster Alert Management System</small></h3>
+    <p>DAMS는 행정안전부와 지방정부가 운영하는 재난 예경보 시스템(자동음성통보, 재해문자전광판, 마을방송, 자동우량경보 등)을 표준 규격으로 연계하여, 재난 발생 시 신속하고 누락 없는 예경보 발령과 전국 단말기의 실시간 가동 상태를 통합 관제하는 플랫폼입니다.</p>
+  </div>
+  <dl class="kpis">
+    <div class="kpi"><dt>연계 지방정부</dt><dd class="c-pri">243<small>개 기관</small></dd></div>
+    <div class="kpi"><dt>운영 단말기</dt><dd>1,452<small>대</small></dd></div>
+    <div class="kpi"><dt>2026년 재난발령</dt><dd>326<small>건</small></dd></div>
+  </dl>
+</div>
+
+<div class="sub-head"><h3>주요 기능</h3></div>
+<div class="col4 feat">
+  <div class="card"><div class="card-b"><span class="ic"><i class="ri-broadcast-line"></i></span><div><b>신속한 전파</b><p>재난 발령 즉시 관할 지방정부 통합플랫폼을 거쳐 단말기까지 발령 통보문을 전파하고 결과를 수신합니다.</p></div></div></div>
+  <div class="card"><div class="card-b"><span class="ic"><i class="ri-map-2-line"></i></span><div><b>GIS 기반 상황판</b><p>전국 단말기 위치와 가청반경, 발령 지역·경보 단계를 지도에서 한눈에 확인합니다.</p></div></div></div>
+  <div class="card"><div class="card-b"><span class="ic"><i class="ri-shield-check-line"></i></span><div><b>표준 연계검증</b><p>신규 연계 시 통보문·단말 제원·상태정보를 자동 점검하고 연계확인서를 발급합니다.</p></div></div></div>
+  <div class="card"><div class="card-b"><span class="ic"><i class="ri-bar-chart-box-line"></i></span><div><b>통계·이력 관리</b><p>재난발령·단말기 통계와 문자전송·송수신·장애 이력을 조회하고 품질을 관리합니다.</p></div></div></div>
+</div>
+
+<div class="sub-head"><h3>연계 구성</h3></div>
+<div class="flow">
+  <div class="nd"><b>NDMS · 재난 발령기관</b><ul><li>행정안전부 상황실</li><li>기상청·산림청 등 특보 정보</li></ul></div><i class="ri-arrow-right-line"></i>
+  <div class="nd on"><b>DAMS (중앙)</b><ul><li>발령 통보문(CAP) 송수신</li><li>단말 제원·상태정보 수집</li><li>연계현황 모니터링·통계</li></ul></div><i class="ri-arrow-left-right-line"></i>
+  <div class="nd"><b>지방정부 통합플랫폼</b><ul><li>17개 시도 · 226개 시군구</li><li>표준 인터페이스 연계</li></ul></div><i class="ri-arrow-right-line"></i>
+  <div class="nd"><b>예경보 단말기</b><ul><li>자동음성통보 · 재해문자전광판</li><li>마을방송 · 자동우량경보</li></ul></div>
+</div>
+
+<div class="col2">
+  <div>
+    <div class="sub-head mt24"><h3>메뉴 안내</h3></div>
+    <table class="tbl"><caption class="blind">메뉴 안내</caption>
+      <colgroup><col style="width:160px"><col></colgroup>
+      <tbody>
+        <tr><th><a href="gis.html" class="c-pri">GIS상황판</a></th><td>재난 발령·발생 현황과 단말기 상태를 지도 기반으로 표출</td></tr>
+        <tr><th><a href="warn_monitor.html" class="c-pri">재난 예경보 현황</a></th><td>연계현황 모니터링, 재난발생현황, 재난발령현황 조회</td></tr>
+        <tr><th><a href="plat_org.html" class="c-pri">통합플랫폼관리</a></th><td>연계기관, 계정, 단말기 현황 관리</td></tr>
+        <tr><th><a href="stat_event.html" class="c-pri">통계</a></th><td>재난발령통계, 단말기통계</td></tr>
+        <tr><th><a href="guide_manual.html" class="c-pri">이용안내</a></th><td>시스템 매뉴얼, 공지사항, FAQ</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <div class="sub-head mt24"><h3>운영 안내</h3></div>
+    <table class="tbl"><caption class="blind">운영 안내</caption>
+      <colgroup><col style="width:160px"><col></colgroup>
+      <tbody>
+        <tr><th>운영기관</th><td>행정안전부 재난정보통신과</td></tr>
+        <tr><th>운영시간</th><td>24시간 365일 (정기점검: 매월 셋째 주 수요일 02:00~04:00)</td></tr>
+        <tr><th>문의</th><td>재난예경보 통합상황실 044-205-1234 · <a href="guide_faq.html" class="c-pri">자주 묻는 질문(FAQ)</a></td></tr>
+        <tr><th>권장 환경</th><td>Chrome · Edge 최신 버전, 해상도 1600×900 이상</td></tr>
+        <tr><th>시스템 버전</th><td>v1.0.0 (2026-10-30)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+        <!-- ===== 업무영역 끝 ===== -->
+      </main>
+    </div>
+  </div>
+@@include('../inc/footer.html')
+</div>
+@@include('../inc/pop-common.html')
+@@include('../inc/script.html')
+@@include('../inc/script-common.html')
+</body>
+</html>

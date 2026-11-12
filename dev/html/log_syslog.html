@@ -1,0 +1,83 @@
+@@include('../inc/top.html',{"title": "시스템 로그 | 재난 예경보 통합관리시스템"})
+
+<body>
+<div class="skip"><a href="#content">본문 바로가기</a><a href="#gnbMenu">주메뉴 바로가기</a><a href="#lnbMenu">서브메뉴 바로가기</a></div>
+<div class="wrap">
+  <!-- GNB -->
+  @@include('../inc/header.html')
+
+  <div class="body">
+    <!-- LNB -->
+    @@include('../inc/lnb-log.html')
+
+    <!-- MAIN -->
+    <div class="main">
+      @@include('../inc/mdi.html',{"file": "log_syslog.html", "name": "시스템 로그"})
+
+      <main class="work" id="content" tabindex="-1">
+        <div class="page-head">
+          <div>
+            <h2 class="tit">시스템 로그<button type="button" class="star" title="즐겨찾기" data-star><i class="ri-star-line"></i></button></h2>
+            @@include('../inc/breadcrumb.html',{"d1": "시스템 이력", "d1h": "log_sms.html", "d2": "시스템 로그", "d2h": "log_syslog.html"})
+          </div>
+        </div>
+
+        <!-- ===== 업무영역 (화면별 교체) ===== -->
+<form class="sch-box" id="schForm">
+          <div class="rows">
+            <div class="it c2"><span class="lb req">로그기간</span>
+              <div class="range"><span class="inp-ico inp-date"><input type="date" class="inp" id="dtFr" name="dtFr" value="2026-09-30" title="시작일" required data-label="로그기간 시작일"></span><span>~</span><span class="inp-ico inp-date"><input type="date" class="inp" id="dtTo" name="dtTo" value="2026-10-30" title="종료일" required data-label="로그기간 종료일"></span></div>
+            </div>
+            <div class="it c2"><label for="searchKeyword">검색어</label><input class="inp" style="flex:0 0 320px" id="searchKeyword" name="searchKeyword" maxlength="100" placeholder="로그 내용, 유형(ERROR·WARN·INFO), 분류 입력"></div>
+          </div>
+          <div class="ctrl">
+            <button type="reset" class="btn btn-rst"><i class="ri-refresh-line"></i>초기화</button>
+            <button type="submit" class="btn btn-sch"><i class="ri-search-line"></i>검색</button>
+          </div>
+        </form>
+
+        <div class="sub-head">
+          <h3>시스템 로그 목록</h3><span class="cnt">전체<b id="totCnt">8,652</b>건</span>
+          <div class="grid-top">
+            <select class="sel" id="pageSize" name="pageSize" title="목록노출건수"><option value="15">15개</option><option value="30">30개</option><option value="50">50개</option><option value="100">100개</option></select>
+            <button type="button" class="btn s btn-line" id="btnApply" onclick="applySize()">적용</button>
+          </div>
+        </div>
+        <div class="grid-wrap">
+          <table class="grid" id="histBody">
+            <caption class="blind">시스템 로그 목록</caption>
+            <colgroup><col style="width:80px"><col style="width:180px"><col><col style="width:100px"><col style="width:100px"></colgroup>
+            <thead><tr><th>번호</th><th class="sort desc">로그시각</th><th>내용</th><th class="sort">유형</th><th class="sort">분류</th></tr></thead>
+            <tbody>
+              <tr><td>8,652</td><td>2026-10-30 14:22:05</td><td class="t-l">[로그인] GPKI 인증서 검증 성공 user=admin ip=10.10.1.20</td><td><span class="badge in">INFO</span></td><td>AUTH</td></tr>
+              <tr><td>8,651</td><td>2026-10-30 14:15:42</td><td class="t-l">[송출] 통보문 KR.ULSAN-NAM-20261030141531.118 단말기통보결과 송신 (32개소)</td><td><span class="badge in">INFO</span></td><td>SEND</td></tr>
+              <tr><td>8,650</td><td>2026-10-30 14:15:31</td><td class="t-l">[수신] 울산광역시 남구 통보문 수신 KR.ULSAN-NAM-20261030141531.118</td><td><span class="badge in">INFO</span></td><td>RECV</td></tr>
+              <tr><td>8,649</td><td>2026-10-30 13:00:00</td><td class="t-l">[배치] 단말기 상태수집 완료 (수집 4,812 / 미수신 37)</td><td><span class="badge in">INFO</span></td><td>BATCH</td></tr>
+              <tr><td>8,648</td><td>2026-10-30 10:40:18</td><td class="t-l">[자원] DB서버 /data 디스크 사용률 정상화 (54%)</td><td><span class="badge in">INFO</span></td><td>SYS</td></tr>
+              <tr><td>8,647</td><td>2026-10-30 09:12:40</td><td class="t-l">[자원경고] DB서버 /data 디스크 사용률 85% 초과</td><td><span class="badge wn">WARN</span></td><td>SYS</td></tr>
+              <tr><td>8,646</td><td>2026-10-30 08:30:02</td><td class="t-l">[수신오류] 충남 천안시 통보문 XML 파싱 실패: &lt;info&gt;&lt;area&gt; 필수항목 누락</td><td><span class="badge dg">ERROR</span></td><td>RECV</td></tr>
+              <tr><td>8,645</td><td>2026-10-30 07:55:10</td><td class="t-l">[시험] 공주시 단말기 음향 송출 시험 통보문 수신</td><td><span class="badge in">INFO</span></td><td>TEST</td></tr>
+              <tr><td>8,644</td><td>2026-10-30 06:00:00</td><td class="t-l">[배치] 재난발령 통계 일 집계 완료 (10/29분 18건)</td><td><span class="badge in">INFO</span></td><td>BATCH</td></tr>
+              <tr><td>8,643</td><td>2026-10-30 03:00:04</td><td class="t-l">[백업] DB 정기 백업 완료 (12.8GB, 소요 21분)</td><td><span class="badge in">INFO</span></td><td>DB</td></tr>
+              <tr><td>8,642</td><td>2026-10-29 21:30:12</td><td class="t-l">[DB] 통보문 수신 테이블 잠금 해소</td><td><span class="badge in">INFO</span></td><td>DB</td></tr>
+              <tr><td>8,641</td><td>2026-10-29 21:05:47</td><td class="t-l">[DB경고] Lock wait timeout 40초 초과 (tb_cap_rcv)</td><td><span class="badge wn">WARN</span></td><td>DB</td></tr>
+              <tr><td>8,640</td><td>2026-10-29 18:40:33</td><td class="t-l">[시스템 장애] 연계서버 응답지연 (충남 아산시, 12,034ms)</td><td><span class="badge wn">WARN</span></td><td>SEND</td></tr>
+              <tr><td>8,639</td><td>2026-10-29 16:10:09</td><td class="t-l">[송출오류] 재해문자전광판 방어진항 표출 메시지 길이 초과 (최대 80자)</td><td><span class="badge dg">ERROR</span></td><td>SEND</td></tr>
+              <tr><td>8,638</td><td>2026-10-29 15:02:21</td><td class="t-l">[시험] 송출프로세스 비정상 감지 시험 (감시 스크립트 점검)</td><td><span class="badge in">INFO</span></td><td>TEST</td></tr>
+              <tr class="nodata" hidden><td colspan="5">검색된 결과가 없습니다.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="paging" id="pgBtns" data-total="577" data-page="1"></div>
+        <!-- ===== 업무영역 끝 ===== -->
+      </main>
+    </div>
+  </div>
+@@include('../inc/footer.html')
+</div>
+@@include('../inc/pop-common.html')
+@@include('../inc/script.html')
+@@include('../inc/script-common.html')
+<script src="js/pages/log_syslog.js"></script>
+</body>
+</html>

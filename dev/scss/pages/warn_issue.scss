@@ -1,0 +1,50 @@
+// 재난발령현황 | 재난 예경보 통합관리시스템 화면 전용
+@use "../abstracts" as *;
+@media (min-width:1280px){
+  .dev-sch{
+    .rows{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .it>.lb, .it>label{flex:0 0 64px!important;width:64px}
+  }
+}
+#devWrap{height:360px;overflow:auto}
+#device_table tbody tr.grp td{position:sticky;top:34px;z-index:1}
+@media (max-width:767px){
+  html{
+    &:not(.pc-pop){
+      #devWrap{height:auto;max-height:70vh}
+      #device_table tbody tr.grp td{top:0}
+    }
+  }
+}
+.tab{
+  .tab-info{display:flex;align-items:center;gap:8px;margin-left:auto;padding-bottom:4px;font-size:14px;color:#101010;min-width:0;
+    b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .btn{flex:0 0 auto;gap:4px;height:28px;margin:0 0 0 6px;padding:0 12px;border:1px solid #182146;border-radius:2px;background:#182146;font-size:13px;font-weight:500;color:#fff;
+      &:hover{background:#2b3667;border-color:#2b3667;color:#fff}
+    }
+  }
+}
+@media (max-width:767px){
+  html{
+    &:not(.pc-pop){
+      #tab-issue{flex-wrap:wrap;
+        .tab-info{flex:1 1 100%;order:3;margin:8px 0 0;padding:0 0 8px;border:0;background:none;font-size:13px;
+          .c-dis{display:none}
+          b{flex:1 1 auto;min-width:0}
+          .btn{width:auto!important;height:32px}
+        }
+      }
+    }
+  }
+}
+#issue-message{
+  .card-h{height:34px}
+  .card-b{padding:10px 14px;
+    &.pre{min-height:0;height:70px;overflow:auto;font-size:13px;line-height:1.5}
+  }
+  .chart-box{height:50px!important}
+}
+.page-head{margin-bottom:12px;padding-bottom:10px}
+.sch-box{margin-bottom:12px}
+#issue-summary th,#issue-summary td{height:36px;padding:4px 10px}
+.work{padding-bottom:12px}

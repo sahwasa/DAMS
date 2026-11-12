@@ -1,0 +1,133 @@
+// 재난발령통계 | 재난 예경보 통합관리시스템 화면 전용
+@use "../abstracts" as *;
+.rg-bub{flex-direction:column;line-height:1.1;border-radius:50%;background:rgba(62,85,225,.3);border:2px solid #3e55e1;font-size:13px;font-weight:700;color:#182146;
+  small{font-size:10px;font-weight:600}
+  &:hover, &.on{background:rgba(62,85,225,.6);color:#fff}
+}
+.rg-ch{stroke:none;
+  &.h1{fill:#eef0fc}
+  &.h2{fill:#cdd3f6}
+  &.h3{fill:#9aa6ee}
+  &.h4{fill:#3e55e1}
+}
+.rg-val{height:22px;padding:0 7px;border-radius:11px;background:#fff;border:1px solid #182146;font-size:11px;color:#182146;white-space:nowrap;
+  b{margin-left:2px;font-size:12px}
+  &.on{background:#182146;color:#fff}
+}
+.rg-heat{border-radius:50%;background:radial-gradient(circle,rgba(235,0,59,.85) 0,rgba(255,183,36,.55) 40%,rgba(255,183,36,0) 70%);pointer-events:none}
+@media (min-width:1280px){
+  .sch-box{
+    .rows{
+      &.r1{column-gap:20px}
+      &.r1{
+        .flex>.sel[style*="flex"]{flex:0 0 120px!important}
+        >.it>#selSituation{flex:0 0 120px}
+      }
+    }
+    #regionCond>.rdo+.rdo{margin-right:0}
+    #rgSido{flex:0 0 150px;margin-left:4px!important}
+  }
+}
+.rg-all{position:absolute;left:10px;top:10px;z-index:10;background:#fff}
+.rg-lgd{position:absolute;left:78px;top:10px;z-index:10;display:flex;align-items:center;gap:4px;padding:4px 8px;background:rgba(255,255,255,.92);border:1px solid #d8d8d8;border-radius:2px;font-size:12px;color:#505050;
+  b{color:#101010}
+  i{display:inline-block;width:12px;height:12px;margin-left:4px}
+  .h1{background:#eef0fc}
+  .h2{background:#cdd3f6}
+  .h3{background:#9aa6ee}
+  .h4{background:#3e55e1}
+}
+@media (min-width:1280px){
+  #tabEvent>.col-lr .card-h,#tabMedia>.card .card-h{height:34px}
+  #tabEvent>.sub-head,#tabMedia>.sub-head{margin-top:16px}
+}
+
+/* 재난유형별 발령 현황(14종): 세로 막대 · 가로 막대(카드 안 스크롤) · 비율(도넛) */
+#regionHeatmap th:first-child{width:128px}
+.ev-cat{position:relative;height:320px}
+.ev-note{margin:4px 0 0}
+.md-cat{position:relative;height:320px}
+.md-tr{position:relative;height:320px;
+  svg{display:block;width:100%;height:100%;overflow:visible}
+  .gl{stroke:#f0f0f0}
+  text{font-size:11px;fill:#707070}
+  polyline{fill:none;stroke-width:2}
+}
+.md-tl{position:absolute;left:40px;right:0;top:0;flex-wrap:wrap;gap:4px 12px;font-size:12px;
+  i{width:14px!important;height:3px!important;border-radius:2px}
+}
+.md-h{padding:30px 4px 0 0;
+  li{height:38px;grid-template-columns:96px 1fr 50px}
+  .bar{height:18px}
+}
+.md-v{
+  &.vbar{height:196px;margin:22px 0 0;gap:18px;padding:0 10px}
+  &.vbar{
+    >li{max-width:56px}
+    >li>em{font-size:11px;letter-spacing:-.04em}
+  }
+}
+.md-dl{display:grid;grid-template-columns:1fr;gap:10px;flex:1;font-size:13px;max-width:420px;
+  li{display:grid;grid-template-columns:12px 96px 50px 1fr;align-items:center;gap:6px;white-space:nowrap;
+    b{font-weight:600;color:#101010;text-align:right}
+    em{font-style:normal;color:#707070;font-size:12px;text-align:right}
+  }
+}
+.ev-v.vbar>li.etc>span{filter:grayscale(1) opacity(.55)}
+.ev-h li.etc .bar span{filter:grayscale(1) opacity(.55)}
+.ev-v{
+  &.vbar{height:196px;margin:22px 0 0;gap:8px;padding:0 4px}
+  &.vbar{
+    >li{max-width:34px}
+    >li>b{font-size:11px}
+    >li>em{font-size:11px;letter-spacing:-.04em}
+  }
+}
+.ev-h{padding:22px 4px 0 0;
+  li{grid-template-columns:64px 1fr 34px;height:15px;gap:8px;font-size:12px}
+  .bar{height:11px}
+}
+.ev-dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 20px;flex:1;font-size:13px;
+  li{display:flex;align-items:center;gap:4px;white-space:nowrap;
+    span{overflow:hidden;text-overflow:ellipsis}
+    b{margin-left:auto;font-weight:600;color:#101010}
+  }
+}
+/* 재난별 탭: 기간 추이(연도·분기·기간=월별, 월=일별) 막대 + 값 */
+.ev-tr{height:320px;
+  svg{display:block;width:100%;height:100%;overflow:visible}
+  .gl{stroke:#f0f0f0}
+  .ax{stroke:#8e8e8e}
+  text{font-size:11px;fill:#707070;
+    &.v{font-size:11px;font-weight:600;fill:#101010}
+  }
+  rect{fill:#3e55e1;
+    &:hover{fill:#182146}
+    &.fu{fill:none;stroke:#c6c6c6;stroke-dasharray:3 2}
+  }
+  polyline{fill:none;stroke:#182146;stroke-width:1.5;opacity:.5}
+}
+@media (min-width:1280px){
+  #tabRegion>.col-lr{align-items:stretch}
+  .rg-right{position:relative;min-width:0;
+    >#rgTbl, >#rgHeat{position:absolute;left:0;right:0;top:48px;bottom:0;display:flex;flex-direction:column}
+    >#rgTbl[hidden], >#rgHeat[hidden]{display:none}
+    .grid-wrap{flex:1;min-height:0;overflow:auto}
+    .rg-lgd2{flex:0 0 auto}
+  }
+}
+
+/* 시군구별: 시도 묶음 행(시도 소계) + 시군구 행 들여쓰기 */
+.grid{
+  tbody{
+    tr{
+      &.grp td.t-r{text-align:right}
+      &.sgc{
+        td{
+          &:first-child{padding-left:24px}
+          &:first-child::before{content:"└ ";color:#8e8e8e}
+        }
+      }
+    }
+  }
+}
