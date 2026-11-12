@@ -171,30 +171,6 @@
 </div>
 </template>
 
-<!-- UI-CO-P02 비밀번호 변경 (팝업: openPop으로 dialog에 띄움) -->
-<template id="pop-UI-CO-P02" data-w="540">
-<div class="pop w540" role="dialog" aria-modal="true" aria-labelledby="popTit">
-  <div class="pop-head"><h2 id="popTit">비밀번호 변경</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
-  <form class="pop-body" id="pwForm" onsubmit="save();return false">
-    <div class="help-box"><i class="ri-shield-keyhole-line"></i><span>비밀번호는 <b>영문·숫자·특수문자를 조합하여 9자 이상</b>으로 설정합니다. 아이디·연속된 문자(3자 이상)·직전 비밀번호는 사용할 수 없으며, 변경 후 다시 로그인해야 합니다.</span></div>
-    <table class="tbl">
-      <caption class="blind">비밀번호 변경</caption>
-      <colgroup><col style="width:150px"><col></colgroup>
-      <tbody>
-        <tr><th><label for="curPassword" class="req">현재 비밀번호</label></th><td><input type="password" class="inp" id="curPassword" name="curPassword" required data-label="현재 비밀번호" autocomplete="current-password"></td></tr>
-        <tr><th><label for="newPassword" class="req">새 비밀번호</label></th><td><input type="password" class="inp" id="newPassword" name="newPassword" required data-label="새 비밀번호" maxlength="20" autocomplete="new-password" oninput="rule()">
-          <ul class="rule" id="ruleList"><li data-r="len">9~20자</li><li data-r="mix">영문·숫자·특수문자 조합</li><li data-r="seq">연속 문자 3자 미만</li><li data-r="id">아이디 미포함</li></ul></td></tr>
-        <tr><th><label for="newPasswordCfm" class="req">새 비밀번호 확인</label></th><td><input type="password" class="inp" id="newPasswordCfm" name="newPasswordCfm" required data-label="새 비밀번호 확인" maxlength="20" autocomplete="new-password" oninput="same()"><span class="f-msg" id="cfmMsg">새 비밀번호를 한 번 더 입력하세요.</span></td></tr>
-      </tbody>
-    </table>
-  </form>
-  <div class="pop-foot">
-    <button type="button" class="btn btn-line" onclick="closePop()">취소</button>
-    <button type="button" class="btn btn-crud" onclick="save()"><i class="ri-save-line"></i>변경</button>
-  </div>
-</div>
-</template>
-
 <!-- UI-CO-P03 메시지창 샘플 (팝업: openPop으로 dialog에 띄움) -->
 <template id="pop-UI-CO-P03" data-w="540">
 <div class="pop w540" role="dialog" aria-modal="true" aria-labelledby="popTit">
@@ -251,7 +227,6 @@
 <script src="js/common.js"></script>
 
 <script src="js/pop/UI-CO-P01.js"></script>
-<script src="js/pop/UI-CO-P02.js"></script>
 <script src="js/pop/UI-CO-P03.js"></script>
 
 <script src="js/pop/UI-DA08-001-P01.js"></script>
