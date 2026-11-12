@@ -13,6 +13,13 @@ table{border-collapse:collapse;border-spacing:0;width:100%}
 img{border:0;vertical-align:middle}
 [hidden]{display:none!important}
 .blind{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+// 건너뛰기 링크(KWCAG 6.4.1 반복 영역 건너뛰기): 평소 화면 밖, 키보드 포커스 시 왼쪽 위에 표시
+.skip{
+  a{position:absolute;left:-9999px;top:0;z-index:1000;padding:10px 16px;background:$sec;color:#fff;font-size:$fs-b;font-weight:700;white-space:nowrap;
+    &:focus{left:0;outline:2px solid $pri;outline-offset:-2px}
+  }
+}
+#content:focus,#gnbMenu:focus{outline:0}
 .req::after{content:"*";color:$dg;margin-left:2px}
 .t-l{text-align:left!important}
 .t-c{text-align:center!important}

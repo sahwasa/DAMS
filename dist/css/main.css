@@ -76,6 +76,28 @@ img {
   clip: rect(0 0 0 0);
 }
 
+.skip a {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 1000;
+  padding: 10px 16px;
+  background: #182146;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.skip a:focus {
+  left: 0;
+  outline: 2px solid #3e55e1;
+  outline-offset: -2px;
+}
+
+#content:focus, #gnbMenu:focus {
+  outline: 0;
+}
+
 .req::after {
   content: "*";
   color: #eb003b;
