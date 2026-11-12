@@ -33,11 +33,12 @@ function drawRg(){var el=document.getElementById('rgChart');if(!el)return;var D=
  tt=function(d){return d.n+'<br>설치 '+d.ins.toLocaleString()+'대 · 연결 '+d.ok.toLocaleString()+' · 끊김 '+d.ng.toLocaleString()+'<br>수신율 '+d.rr+'%'};
  document.getElementById('rgTit2').textContent=(UNIT==='sgg'?'시군구별':'시도별')+' 설치 현황';
  var nar=ecNar(el);el.style.height=(RGM==='h'?Math.max(220,D.length*32+44):Math.max(320,D.length*20+60))+'px';var ch=echarts.getInstanceByDom(el);if(ch){ch.clear();ch.resize()}
- if(RGM==='d'){var ins=D.reduce(function(s,d){return s+d.ins},0),P=['#3e55e1','#2b9bd8','#00a37a','#f5930b','#8e6bd6','#e0587a','#5cb85c','#d8a227','#4b7bec','#20b2aa','#ff7f50','#9aa6ee','#6c8ebf','#c97b63','#7fb069','#b07fc0','#8e8e8e'];
+ var PN=ecNar(el);/* 도넛: 가운데 합계를 원 중심에 맞춤(textVerticalAlign), 좁은 화면은 범례를 아래로 */
+ if(RGM==='d'){if(PN){el.style.height=(250+(el.offsetWidth<420?D.length:Math.ceil(D.length/2))*24)+'px';var c2=echarts.getInstanceByDom(el);c2&&c2.resize()}var ins=D.reduce(function(s,d){return s+d.ins},0),P=['#3e55e1','#2b9bd8','#00a37a','#f5930b','#8e6bd6','#e0587a','#5cb85c','#d8a227','#4b7bec','#20b2aa','#ff7f50','#9aa6ee','#6c8ebf','#c97b63','#7fb069','#b07fc0','#8e8e8e'];
   return EC(el,{tooltip:{trigger:'item',formatter:function(p){return p.marker+tt(D[p.dataIndex])+'<br>설치 비중 '+p.percent+'%'}},
-   title:{text:ins.toLocaleString(),subtext:'설치 대수',left:'30%',top:'42%',textAlign:'center',textStyle:{fontSize:22,fontWeight:700,color:STC.tt},subtextStyle:{fontSize:12,color:STC.gray},itemGap:2},
-   legend:ecLegend({type:'scroll',orient:'vertical',top:'middle',right:'2%',icon:'circle',itemGap:8,formatter:function(n){var d=D.filter(function(x){return x.n===n})[0];return sh(n)+'  '+(d.ins/ins*100).toFixed(1)+'%  (수신율 '+d.rr+'%)'}}),
-   series:[{type:'pie',radius:['44%','72%'],center:['30%','52%'],label:{show:false},itemStyle:{borderColor:'#fff',borderWidth:2},data:D.map(function(d,i){return {name:d.n,value:d.ins,itemStyle:{color:/기타/.test(d.n)?'#c6c6c6':P[i%P.length]}}})}]})}
+   title:{text:ins.toLocaleString(),subtext:'설치 대수',left:PN?'50%':'30%',top:PN?115:'50%',textAlign:'center',textVerticalAlign:'middle',textStyle:{fontSize:22,fontWeight:700,color:STC.tt},subtextStyle:{fontSize:12,color:STC.gray},itemGap:2},
+   legend:ecLegend({type:PN?'plain':'scroll',orient:PN?'horizontal':'vertical',top:PN?230:'middle',width:PN?'92%':undefined,right:PN?'auto':'2%',left:PN?'center':'auto',icon:'circle',itemGap:8,formatter:function(n){var d=D.filter(function(x){return x.n===n})[0];return sh(n)+'  '+(d.ins/ins*100).toFixed(1)+'%  (수신율 '+d.rr+'%)'}}),
+   series:[{type:'pie',radius:['44%','72%'],center:[PN?'50%':'30%',PN?115:'50%'],radius:PN?[60,98]:['44%','72%'],label:{show:false},itemStyle:{borderColor:'#fff',borderWidth:2},data:D.map(function(d,i){return {name:d.n,value:d.ins,itemStyle:{color:/기타/.test(d.n)?'#c6c6c6':P[i%P.length]}}})}]})}
  /* 설치 대수가 중심(막대 길이), 수신율은 보조 — 전체 수신율보다 낮은 지역은 빨강으로 표시 */
  var tok=D.reduce(function(s,d){return s+d.ok},0),tall=D.reduce(function(s,d){return s+d.ok+d.ng},0),avg=tall?+(tok/tall*100).toFixed(1):100,low=function(d){return +d.rr<avg},NOTE=[{type:'text',left:8,bottom:4,style:{text:'수신율 빨강 = 전체 수신율('+avg+'%) 미만',fill:STC.gray,fontSize:11}}];
  if(RGM==='v'){var mn=Math.floor(Math.min.apply(null,D.map(function(d){return +d.rr}))-1);
@@ -62,10 +63,11 @@ var DM=[['자동음성통보',580,4217760,4141885,75875],['재해문자전광판
 function dmMode(b,m){b.parentNode.querySelectorAll('button').forEach(function(x){x.className='btn s ico '+(x===b?'btn-pri':'btn-line')});DMM=m;drawDm();msg('매체구분별 단말기 설치 현황을 '+b.title+'(으)로 표시합니다.')}
 function drawDm(){var el=document.getElementById('deviceTypeChart');var D=DM.map(function(r){return {n:r[0],ins:r[1],t:r[2],ok:r[3],ng:r[4],rt:(r[4]/r[2]*100).toFixed(1),rr:(r[3]/r[2]*100).toFixed(1)}}),N=D.map(function(d){return d.n}),ins=D.reduce(function(s,d){return s+d.ins},0),
  tt=function(d){return d.n+'<br>설치 '+d.ins+'대 · 연결 '+d.ok.toLocaleString()+' · 끊김 '+d.ng.toLocaleString()+'<br>수신율 '+d.rr+'%'};
+ var PN=ecNar(el);/* 도넛: 가운데 합계를 원 중심에 맞춤, 좁은 화면은 범례를 아래로 */
  if(DMM==='d')return EC(el,{tooltip:{trigger:'item',formatter:function(p){return p.marker+tt(D[p.dataIndex])+' · 설치 비중 '+p.percent+'%'}},
-   title:{text:ins.toLocaleString(),subtext:'설치 대수',left:'26%',top:'40%',textAlign:'center',textStyle:{fontSize:22,fontWeight:700,color:STC.tt},subtextStyle:{fontSize:12,color:STC.gray},itemGap:2},
-   legend:ecLegend({orient:'vertical',top:'middle',right:'4%',icon:'circle',itemGap:12,formatter:function(n){var d=D.filter(function(x){return x.n===n})[0];return n+'  '+(d.ins/ins*100).toFixed(1)+'%  (수신율 '+d.rr+'%)'}}),
-   series:[{type:'pie',radius:['46%','76%'],center:['26%','52%'],label:{show:false},itemStyle:{borderColor:'#fff',borderWidth:2},data:D.map(function(d,i){return {name:d.n,value:d.ins,itemStyle:{color:MPAL[i]}}})}]});
+   title:{text:ins.toLocaleString(),subtext:'설치 대수',left:PN?'50%':'26%',top:PN?'36%':'50%',textAlign:'center',textVerticalAlign:'middle',textStyle:{fontSize:22,fontWeight:700,color:STC.tt},subtextStyle:{fontSize:12,color:STC.gray},itemGap:2},
+   legend:ecLegend({orient:PN?'horizontal':'vertical',top:PN?'72%':'middle',right:PN?'auto':'4%',left:PN?'center':'auto',icon:'circle',itemGap:12,formatter:function(n){var d=D.filter(function(x){return x.n===n})[0];return n+'  '+(d.ins/ins*100).toFixed(1)+'%  (수신율 '+d.rr+'%)'}}),
+   series:[{type:'pie',radius:['46%','76%'],center:[PN?'50%':'26%',PN?'36%':'50%'],label:{show:false},itemStyle:{borderColor:'#fff',borderWidth:2},data:D.map(function(d,i){return {name:d.n,value:d.ins,itemStyle:{color:MPAL[i]}}})}]});
  /* 주요 지표 = 설치 대수(막대), 보조 지표 = 수신율 — 전체 수신율보다 낮은 매체는 빨강 */
  var tok=D.reduce(function(s,d){return s+d.ok},0),tall=D.reduce(function(s,d){return s+d.t},0),avg=+(tok/tall*100).toFixed(1),low=function(d){return +d.rr<avg},
   NOTE=[{type:'text',left:8,bottom:4,style:{text:'수신율 빨강 = 전체 수신율('+avg+'%) 미만',fill:STC.gray,fontSize:11}}];
