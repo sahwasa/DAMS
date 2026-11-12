@@ -1,6 +1,6 @@
 <!-- UI-DA07-004-P01 상세 재난코드 등록 (팝업: openPop으로 dialog에 띄움) -->
 <template id="pop-UI-DA07-004-P01" data-w="540">
-<form class="pop w540" role="dialog" aria-modal="true" aria-labelledby="popTit" id="dsstrForm" onsubmit="return false">
+<div class="pop w540" role="dialog" aria-modal="true" aria-labelledby="popTit"><form class="pop-frm" id="dsstrForm" onsubmit="return false">
   <div class="pop-head"><h2 id="popTit">상세 재난코드 등록</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
   <div class="pop-body">
     <table class="tbl">
@@ -19,5 +19,5 @@
     <button type="button" class="btn btn-line" onclick="closePop()">취소</button>
     <button type="button" class="btn btn-crud" onclick="save()">저장</button>
   </div>
-</form>
+</form></div>
 </template>

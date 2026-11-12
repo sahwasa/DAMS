@@ -56,7 +56,7 @@ function markOn(){var b=CUR.replace(/_(view|write)$/,'');
 /* 프레임 화면에 전환 버튼 추가 */
 function layInit(){
  if(!$('.mdi')||!$('.gnb .util'))return;
- var s=document.createElement('div');s.className='lay-sw';s.title='화면 버전 비교(미확정 — 목업 시연용)';
+ var s=document.createElement('div');s.className='lay-sw';s.setAttribute('role','complementary');s.setAttribute('aria-label','화면 버전 비교(목업 시연용)');s.title='화면 버전 비교(미확정 — 목업 시연용)';
  s.innerHTML='<span>화면 버전</span><button type="button" data-lay="basic">기본</button><button type="button" data-lay="wide">넓은 화면</button>';
  s.onclick=function(e){var b=e.target.closest('button');b&&setLayout(b.dataset.lay==='wide')};document.body.appendChild(s);
  $$('button',s).forEach(function(b){b.classList.toggle('on',(b.dataset.lay==='wide')===isWide())});
@@ -260,7 +260,10 @@ function scrollFocus(){$$('body *').forEach(function(el){if(el.closest('.skip,sv
   if(sc&&!el.hasAttribute('tabindex')&&!el.querySelector(FOC)&&el.getClientRects().length){el.setAttribute('tabindex','0');el.setAttribute('data-sf','');if(!el.hasAttribute('aria-label')){el.setAttribute('aria-label',sfLabel(el));el.setAttribute('data-sf-l','')}}
   else if(!sc&&el.hasAttribute('data-sf')){el.removeAttribute('tabindex');el.removeAttribute('data-sf');if(el.hasAttribute('data-sf-l')){el.removeAttribute('aria-label');el.removeAttribute('data-sf-l')}}})}
 window.scrollFocus=scrollFocus;
-var sfT;function sfLater(){clearTimeout(sfT);sfT=setTimeout(scrollFocus,250)}
+/* 표 제목 셀 scope(KWCAG 표의 구성): thead th = col(여러 칸 묶음은 colgroup), 본문·상세표 th = row. 화면에 적은 scope는 그대로 둠 */
+function thScope(){$$('th:not([scope])').forEach(function(th){th.setAttribute('scope',th.closest('thead')?(th.colSpan>1?'colgroup':'col'):'row')})}
+window.thScope=thScope;
+var sfT;function sfLater(){clearTimeout(sfT);sfT=setTimeout(function(){thScope();scrollFocus()},250)}
 window.addEventListener('resize',sfLater);window.addEventListener('load',sfLater);
 document.addEventListener('DOMContentLoaded',function(){if(window.MutationObserver)new MutationObserver(function(ms){for(var i=0;i<ms.length;i++){var t=ms[i].target;if(ms[i].type==='childList'||!(t.hasAttribute&&t.hasAttribute('data-sf'))){sfLater();return}}}).observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['hidden','class','style','open']})});
 
@@ -316,7 +319,7 @@ function mHead(){
  var g=$('.gnb');if(!g||$('.m-ham',g))return;
  var lg=$('.logo a',g);if(lg)[].slice.call(lg.childNodes).forEach(function(n){if(n.nodeType===3&&n.textContent.trim()){var sp=document.createElement('span');sp.className='lt';sp.textContent=n.textContent;lg.replaceChild(sp,n)}});
  var pt=$('.page-head .tit'),ps=$('.page-head .star');
- if(pt){var t=document.createElement('div');t.className='m-tit m-only';t.innerHTML='<span></span>'+(ps?'<button type="button" class="star" title="즐겨찾기"><i></i></button>':'');$('span',t).textContent=pt.childNodes[0].textContent.trim();g.insertBefore(t,$('.menu',g));
+ if(pt){var t=document.createElement('div');t.className='m-tit m-only';t.innerHTML='<span role="heading" aria-level="2"></span>'+(ps?'<button type="button" class="star" title="즐겨찾기"><i></i></button>':'');$('span',t).textContent=pt.childNodes[0].textContent.trim();g.insertBefore(t,$('.menu',g));
   var sync=function(){var b=$('.star',t);if(b){b.classList.toggle('on',ps.classList.contains('on'));$('i',b).className=ps.classList.contains('on')?'ri-star-fill':'ri-star-line'}};sync();
   if(ps){$('.star',t).onclick=function(){ps.click();sync()};ps.addEventListener('click',function(){setTimeout(sync)})}}
  var h=document.createElement('button');h.type='button';h.className='m-ham';h.title='전체메뉴';h.innerHTML='<i class="ri-menu-line"></i>';h.onclick=mNav;g.appendChild(h);

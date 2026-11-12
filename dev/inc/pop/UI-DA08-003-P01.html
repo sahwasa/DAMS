@@ -7,11 +7,11 @@
       <caption class="blind">작업이력 입력</caption>
       <colgroup><col style="width:110px"><col></colgroup>
       <tbody>
-        <tr><th><span class="req">구분</span></th><td><select class="sel" id="m_job_se_cd" name="m_job_se_cd" required data-label="구분"><option value="">선택</option><option>정기점검</option><option>긴급점검</option><option>공통코드 변경</option><option>배치작업</option><option>데이터 동기화</option><option>마이그레이션</option><option>기타</option></select></td></tr>
+        <tr><th><label for="m_job_se_cd"><span class="req">구분</span></label></th><td><select class="sel" id="m_job_se_cd" name="m_job_se_cd" required data-label="구분"><option value="">선택</option><option>정기점검</option><option>긴급점검</option><option>공통코드 변경</option><option>배치작업</option><option>데이터 동기화</option><option>마이그레이션</option><option>기타</option></select></td></tr>
         <tr><th><span class="req">작업시각</span></th><td><div class="range"><span class="inp-ico inp-date"><input type="date" class="inp" id="m_prcs_dt" name="m_prcs_dt" value="2026-10-30" title="작업시각 일자" required data-label="작업시각"></span><input type="time" class="inp inp-time" id="m_prcs_dt_tm" name="m_prcs_dt_tm" value="14:30" title="작업시각 시각"></div></td></tr>
-        <tr><th><span class="req">작업내용</span></th><td><textarea class="txa" id="m_job_cn" name="m_job_cn" maxlength="4000" rows="4" required data-label="작업내용" placeholder="작업내용을 입력하세요."></textarea></td></tr>
-        <tr><th>이슈</th><td><textarea class="txa" id="m_issue_cn" name="m_issue_cn" maxlength="4000" rows="3" placeholder="작업 중 발생한 이슈·특이사항을 입력하세요."></textarea></td></tr>
-        <tr><th><span class="req">작업자</span></th><td><input class="inp" id="m_prcr_nm" name="m_prcr_nm" maxlength="100" value="홍길동" required data-label="작업자"></td></tr>
+        <tr><th><label for="m_job_cn"><span class="req">작업내용</span></label></th><td><textarea class="txa" id="m_job_cn" name="m_job_cn" maxlength="4000" rows="4" required data-label="작업내용" placeholder="작업내용을 입력하세요."></textarea></td></tr>
+        <tr><th><label for="m_issue_cn">이슈</label></th><td><textarea class="txa" id="m_issue_cn" name="m_issue_cn" maxlength="4000" rows="3" placeholder="작업 중 발생한 이슈·특이사항을 입력하세요."></textarea></td></tr>
+        <tr><th><label for="m_prcr_nm"><span class="req">작업자</span></label></th><td><input class="inp" id="m_prcr_nm" name="m_prcr_nm" maxlength="100" value="홍길동" required data-label="작업자"></td></tr>
       </tbody>
     </table>
   </div>

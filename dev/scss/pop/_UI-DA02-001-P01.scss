@@ -1,38 +1,17 @@
 // UI-DA02-001-P01 재난발령 상세 — dialog 안으로 한정
-.pop-dlg[data-pop="UI-DA02-001-P01"]{
-  .is-tit{display:flex;align-items:center;gap:8px;margin-bottom:12px;font-size:16px;font-weight:700;color:#101010}
-  #issue-message{
-    .card-h{height:34px}
-    .card-b{padding:10px 14px;
-      &.pre{height:96px;overflow:auto;font-size:13px;line-height:1.5;white-space:pre-line}
-    }
-  }
-  .pop-body{
-    .grid-wrap{max-height:330px}
-    .grid-wrap{overflow:auto}
-  }
-  #device_table tbody tr.grp td{position:sticky;top:34px;z-index:1}
+.pop-dlg[data-pop="UI-DA02-001-P01"] .is-tit{display:flex;align-items:center;gap:8px;margin-bottom:12px;font-size:16px;font-weight:700;color:#101010}
+.pop-dlg[data-pop="UI-DA02-001-P01"] #issue-message .card-h{height:34px}
+.pop-dlg[data-pop="UI-DA02-001-P01"] #issue-message .card-b{padding:10px 14px}
+.pop-dlg[data-pop="UI-DA02-001-P01"] #issue-message .card-b.pre{height:96px;overflow:auto;font-size:13px;line-height:1.5;white-space:pre-line}
+.pop-dlg[data-pop="UI-DA02-001-P01"] .pop-body .grid-wrap{max-height:330px}
+.pop-dlg[data-pop="UI-DA02-001-P01"] .pop-body .grid-wrap{overflow:auto}
+.pop-dlg[data-pop="UI-DA02-001-P01"] #device_table tbody tr.grp td{position:sticky;top:34px;z-index:1}
+@media (max-width:767px){html:not(.pc-pop) .pop-dlg[data-pop="UI-DA02-001-P01"] #device_table tbody tr.grp td{top:0}
 }
-@media (max-width:767px){
-  html:not(.pc-pop) .pop-dlg[data-pop="UI-DA02-001-P01"] #device_table tbody tr.grp td{top:0}
+@media (min-width:768px){.pop-dlg[data-pop="UI-DA02-001-P01"] #devSch .rows{display:flex;flex-wrap:wrap;gap:8px 24px}
+.pop-dlg[data-pop="UI-DA02-001-P01"] #devSch .it{flex:0 0 auto}
+.pop-dlg[data-pop="UI-DA02-001-P01"] #devSch .sel{width:180px}
 }
-@media (min-width:768px){
-  .pop-dlg[data-pop="UI-DA02-001-P01"]{
-    #devSch{
-      .rows{display:flex;flex-wrap:wrap;gap:8px 24px}
-      .it{flex:0 0 auto}
-      .sel{width:180px}
-    }
-  }
-}
-html{
-  &.pc-pop{
-    .pop-dlg[data-pop="UI-DA02-001-P01"]{
-      #devSch{
-        .rows{display:flex;flex-wrap:wrap;gap:8px 24px}
-        .it{flex:0 0 auto}
-        .sel{width:180px}
-      }
-    }
-  }
-}
+html.pc-pop .pop-dlg[data-pop="UI-DA02-001-P01"] #devSch .rows{display:flex;flex-wrap:wrap;gap:8px 24px}
+html.pc-pop .pop-dlg[data-pop="UI-DA02-001-P01"] #devSch .it{flex:0 0 auto}
+html.pc-pop .pop-dlg[data-pop="UI-DA02-001-P01"] #devSch .sel{width:180px}

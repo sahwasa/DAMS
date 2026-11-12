@@ -7,10 +7,10 @@ var d=new Date(iss),day=function(n){var x=new Date(d);x.setDate(x.getDate()-n);r
 var rg=nm.split(' ').pop(),IG=(Q.get('integ')||'').split(',').filter(Boolean),HL=Q.get('hl')||'';
 var NOTI=[['자연재난 > 호우','호우주의보 발령',day(14)+' 10:20',rg+' 전역'],['자연재난 > 강풍','강풍주의보 발표',day(10)+' 09:05',rg+' 해안'],['사회재난 > 미세먼지','미세먼지 주의보',day(7)+' 16:44',rg+' 전역'],['자연재난 > 폭염','폭염특보 안내',day(3)+' 10:00',rg+' 전역']];
 var SRC=[['ST-'+(lv==='sido'?'SD':'SG')+'-0001',rg+' 중앙로'],['ST-'+(lv==='sido'?'SD':'SG')+'-0012',rg+' 시민로']];
-var sec=function(n,t,sum,head,rows){return '<div class="sub-head"><h4>'+n+'. '+t+'</h4><span class="cnt">'+sum+'</span></div><div class="grid-wrap"><table class="grid"><thead><tr>'+head.map(function(h){return '<th>'+h+'</th>'}).join('')+'</tr></thead><tbody>'+rows.map(function(r){return '<tr>'+r.map(function(c){return '<td>'+c+'</td>'}).join('')+'</tr>'}).join('')+'</tbody></table></div>'};
+var sec=function(n,t,sum,head,rows){return '<div class="sub-head"><h3 class="h4">'+n+'. '+t+'</h3><span class="cnt">'+sum+'</span></div><div class="grid-wrap"><table class="grid"><caption class="blind">'+t+'</caption><thead><tr>'+head.map(function(h){return '<th>'+h+'</th>'}).join('')+'</tr></thead><tbody>'+rows.map(function(r){return '<tr>'+r.map(function(c){return '<td>'+c+'</td>'}).join('')+'</tr>'}).join('')+'</tbody></table></div>'};
 $('popTit').textContent='연계확인서 — '+nm;$('issInfo').textContent='(발급일 '+iss+')';
 $('docArea').innerHTML='<h2>연계확인서</h2><p class="doc-sub">재난 예·경보 단말 데이터 연계 적합성 확인 · 시스템 자동 생성</p>'+
- '<table class="tbl"><colgroup><col style="width:110px"><col><col style="width:110px"><col></colgroup><tbody>'+
+ '<table class="tbl"><caption class="blind">연계확인서 발급 정보</caption><colgroup><col style="width:110px"><col><col style="width:110px"><col></colgroup><tbody>'+
  '<tr><th>기관명</th><td>'+nm+' ('+(lv==='sido'?'시도':'시군구')+')</td><th>확인 기간</th><td>'+from+' ~ '+to+' (14일)</td></tr>'+
  (IG.length?'<tr><th>통합 발급<br>시군구</th><td colspan="3">'+IG.length+'곳 — '+IG.map(function(g){return g===HL?'<b class="c-pri">'+g+'</b>':g}).join(', ')+'<br><span class="f-msg mt0">자체 플랫폼 없이 '+nm+' 플랫폼으로 연계하여 본 연계확인서로 함께 발급</span></td></tr>':'')+
  '<tr><th>0. 연결상태</th><td>'+(lv==='sido'?'적합 — 접속 이력 3건':'해당없음 (시군구)')+'</td><th>1. 통보문</th><td>적합 — 총 '+NOTI.length+'건</td></tr>'+
