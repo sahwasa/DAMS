@@ -22,7 +22,7 @@
 }
 
 #termMap {
-  height: calc(100vh - 302px + var(--lay-dh, 0px));
+  height: calc(100vh - 313px + var(--lay-dh, 0px));
   min-height: 480px;
 }
 
@@ -156,7 +156,7 @@
   }
 }
 .tree-box {
-  height: calc(100vh - 302px + var(--lay-dh, 0px));
+  height: calc(100vh - 313px + var(--lay-dh, 0px));
   min-height: 480px;
   overflow: auto;
   border: 1px solid #d8d8d8;
