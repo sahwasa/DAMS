@@ -4804,6 +4804,9 @@ body.win-body {
     width: 100%;
     justify-content: flex-end;
   }
+  html:not(.pc-pop) .sub-head .grid-top .btn {
+    height: 40px;
+  }
   html:not(.pc-pop) .col3,
   html:not(.pc-pop) .col4 {
     grid-template-columns: minmax(0, 1fr) !important;
@@ -5064,7 +5067,7 @@ body.win-body {
     border-bottom-width: 1px;
   }
   html:not(.pc-pop) .tab li {
-    flex: 1 0 auto;
+    flex: 1 1 0;
   }
   html:not(.pc-pop) .tab li a,
   html:not(.pc-pop) .tab li button {

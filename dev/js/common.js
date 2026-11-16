@@ -907,6 +907,8 @@
   }
 
   /* ---------- 페이징 ---------- */
+  /* 모바일(≤767)은 5페이지씩, 그 밖은 10페이지씩 끊어 표시(구간을 넘나들면 다시 그림) */
+  var PG_MQ = window.matchMedia('(max-width:767px)');
   function paging(p) {
     var tot = +p.dataset.total || 1,
       cur = +p.dataset.page || 1;
@@ -923,8 +925,9 @@
         '"></i></button>'
       );
     };
-    var s = Math.floor((cur - 1) / 10) * 10 + 1,
-      e = Math.min(s + 9, tot),
+    var n = PG_MQ.matches && !document.documentElement.classList.contains('pc-pop') ? 5 : 10,
+      s = Math.floor((cur - 1) / n) * n + 1,
+      e = Math.min(s + n - 1, tot),
       h = b('first', 'ri-skip-left-line', '처음', cur === 1) + b('prev', 'ri-arrow-left-s-line', '이전', cur === 1);
     for (var i = s; i <= e; i++)
       h += i === cur ? '<strong>' + i + '</strong>' : '<button type="button" data-pg="' + i + '">' + i + '</button>';
@@ -936,6 +939,10 @@
   window.initPaging = function (scope) {
     $$('.paging[data-total]', scope).forEach(paging);
   };
+  if (PG_MQ.addEventListener)
+    PG_MQ.addEventListener('change', function () {
+      initPaging(document);
+    });
 
   /* ---------- 탭 ---------- */
   window.showTab = function (btn) {

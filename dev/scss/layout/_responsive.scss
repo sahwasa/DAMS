@@ -381,8 +381,16 @@
         .grid-top {
           width: 100%;
           justify-content: flex-end;
+          .btn {
+            height: 40px;
+          }
         }
       }
+    }
+  }
+  // 건수 선택(40)과 [적용] 높이 맞춤
+  html {
+    &:not(.pc-pop) {
       .col3,
       .col4 {
         grid-template-columns: minmax(0, 1fr) !important;
@@ -697,7 +705,7 @@
         scrollbar-width: none;
         border-bottom-width: 1px;
         li {
-          flex: 1 0 auto;
+          flex: 1 1 0;
           a,
           button {
             height: 50px;
