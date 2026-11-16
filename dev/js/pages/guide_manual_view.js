@@ -57,7 +57,7 @@ function goList() {
 }
 function remove() {
   confirmMsg(
-    '시스템 매뉴얼을(를) 삭제하시겠습니까?\n삭제된 데이터는 복구할 수 없습니다.',
+    '삭제된 데이터는 복구할 수 없습니다.\n시스템 매뉴얼을 삭제하시겠습니까?',
     function () {
       location.href = 'guide_manual.html?done=delete';
     },

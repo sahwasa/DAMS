@@ -34,9 +34,10 @@ function cnt(d) {
 function delAcnt(b) {
   var tr = b.closest('tr');
   confirmMsg(
-    '[' +
+    '연계기관현황의 기관 정보는 삭제되지 않습니다.\n' +
+      '[' +
       tr.cells[2].textContent +
-      '] 계정을 계정관리 대상에서 삭제하시겠습니까?\n연계기관현황의 기관 정보는 삭제되지 않습니다.',
+      '] 계정을 계정관리 대상에서 삭제하시겠습니까?',
     function () {
       tr.remove();
       cnt(-1);

@@ -40,7 +40,7 @@ DAMS_POP['log_dsblty_form'] = function (location, dlg) {
   }
   function remove() {
     confirmMsg(
-      '장애이력을 삭제하시겠습니까?\n삭제된 데이터는 복구할 수 없습니다.',
+      '삭제된 데이터는 복구할 수 없습니다.\n장애이력을 삭제하시겠습니까?',
       function () {
         popOk('delete');
       },

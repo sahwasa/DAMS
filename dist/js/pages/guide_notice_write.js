@@ -64,7 +64,7 @@ function save() {
 }
 function cancelW() {
   confirmMsg(
-    '작성을 취소하시겠습니까?\n입력한 내용은 저장되지 않습니다.',
+    '입력한 내용은 저장되지 않습니다.\n작성을 취소하시겠습니까?',
     function () {
       if (history.length > 1) history.back();
       else location.href = BACK;
@@ -74,7 +74,7 @@ function cancelW() {
 }
 function remove() {
   confirmMsg(
-    '공지사항을(를) 삭제하시겠습니까?\n삭제된 데이터는 복구할 수 없습니다.',
+    '삭제된 데이터는 복구할 수 없습니다.\n공지사항을 삭제하시겠습니까?',
     function () {
       location.href = 'guide_notice.html?done=delete';
     },

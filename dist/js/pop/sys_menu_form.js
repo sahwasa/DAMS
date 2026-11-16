@@ -50,7 +50,7 @@ DAMS_POP['sys_menu_form'] = function (location, dlg) {
   }
   function removeMenu() {
     confirmMsg(
-      '[' + f.m_menu_nm.value + '] 메뉴를 삭제하시겠습니까?\n삭제된 메뉴는 복구할 수 없습니다.',
+      '삭제된 메뉴는 복구할 수 없습니다.\n' + '[' + f.m_menu_nm.value + '] 메뉴를 삭제하시겠습니까?',
       function () {
         popOk('menuDel', { id: f.m_menu_id.value });
       },

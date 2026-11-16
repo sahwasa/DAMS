@@ -23,12 +23,6 @@
         </div>
 
         <!-- ===== 업무영역 (화면별 교체) ===== -->
-<ul class="tab">
-  <li class="on"><button type="button" data-tab="tabType">매체별 통계</button></li>
-  <li><button type="button" data-tab="tabRegion">지역별 통계</button></li>
-  <li><button type="button" data-tab="tabStatus">상태별 통계</button></li>
-</ul>
-
 <form class="sch-box" id="schForm">
   <div class="rows r1">
     <div class="it c2" id="periodCond"><label for="selPeriodType">기간 유형</label>
@@ -51,6 +45,12 @@
     <button type="submit" class="btn btn-sch"><i class="ri-search-line"></i>검색</button>
   </div>
 </form>
+
+<ul class="tab">
+  <li class="on"><button type="button" data-tab="tabType">매체별 통계</button></li>
+  <li><button type="button" data-tab="tabRegion">지역별 통계</button></li>
+  <li><button type="button" data-tab="tabStatus">상태별 통계</button></li>
+</ul>
 <p class="st-note st-calc"><i class="ri-information-line"></i><span><b>산정기준</b> 설치 대수 = 조회 종료일 기준 운영중인 단말기 수(사용중지 제외) · 전체(기대 수신) = 운영 단말기 수 × 운영 시간(1시간 1회 상태 수신) · 수신율 = 연결 ÷ 전체 × 100</span></p>
 
 

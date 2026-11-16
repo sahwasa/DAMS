@@ -360,7 +360,7 @@ function delDest(b) {
   var tr = b.closest('tr'),
     o = byNm(nmOf(tr));
   confirmMsg(
-    '[' + nmOf(tr) + '] 연계기관을 삭제하시겠습니까?\n연계 계정 정보도 함께 삭제되며 복구할 수 없습니다.',
+    '연계 계정 정보도 함께 삭제되며 복구할 수 없습니다.\n' + '[' + nmOf(tr) + '] 연계기관을 삭제하시겠습니까?',
     function () {
       ORG.splice(ORG.indexOf(o), 1);
       FIL = FIL.filter(function (x) {

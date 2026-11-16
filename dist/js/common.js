@@ -180,7 +180,7 @@
       LS('damsFav', JSON.stringify(f));
     }
   }
-  /* 최근접속: 열어 본 메뉴 화면ID를 localStorage damsRecent에 최신순 10개 유지(MDI 탭 숨김 후 대체) */
+  /* 최근접속: 열어 본 메뉴 화면ID를 localStorage damsRecent에 최신순 30개 유지(UI 표준 4.1.3 최근접속 최대 30개)(MDI 탭 숨김 후 대체) */
   function menuOf(id) {
     var r = null;
     MENU.forEach(function (g) {
@@ -211,7 +211,7 @@
       return x !== CUR;
     });
     a.unshift(CUR);
-    LS('damsRecent', JSON.stringify(a.slice(0, 10)));
+    LS('damsRecent', JSON.stringify(a.slice(0, 30)));
   })();
   function recentDel(id) {
     var a;
@@ -413,7 +413,7 @@
   };
   window.doDelete = function (cb) {
     confirmMsg(
-      '선택한 항목을 삭제하시겠습니까?\n삭제된 데이터는 복구할 수 없습니다.',
+      '삭제된 데이터는 복구할 수 없습니다.\n선택한 항목을 삭제하시겠습니까?',
       function () {
         msg('삭제가 완료되었습니다.');
         cb && cb();
@@ -425,13 +425,13 @@
     msg((name || '목록') + ' 엑셀 다운로드를 시작합니다.');
   };
   window.goBoardSystem = function () {
-    confirmMsg('재해문자전광판 시스템으로 이동하시겠습니까?\n새 창으로 열립니다.', function () {
+    confirmMsg('새 창으로 열립니다.\n재해문자전광판 시스템으로 이동하시겠습니까?', function () {
       msg('재해문자전광판 시스템을 새 창으로 엽니다. (목업: 연계 주소 협의 필요)');
     });
   };
   /* 보고서 인쇄(SFR-02): 확인 후 브라우저 인쇄 — 인쇄용 CSS(common.scss 23절)가 메뉴·검색영역을 숨김 */
   window.doPrint = function (name) {
-    confirmMsg((name || '보고서') + '를 인쇄하시겠습니까?\n현재 검색 조건의 목록이 인쇄됩니다.', function () {
+    confirmMsg('현재 검색 조건의 목록이 인쇄됩니다.\n' + (name || '보고서') + '를 인쇄하시겠습니까?', function () {
       msg((name || '보고서') + ' 인쇄를 시작합니다.');
       var w = document.querySelector('.work');
       if (w) w.dataset.printTitle = name || '';
@@ -993,6 +993,18 @@
   }
 
   /* ---------- 페이징 ---------- */
+  /* 말줄임 툴팁(UI 표준 5.3.3·5.5.1): 글자가 칸보다 길어 …로 잘리면 마우스를 올릴 때 전체 내용을 title로 보여줌 */
+  document.addEventListener('mouseover', function (e) {
+    var t = e.target.closest && e.target.closest('td,th,.ell,.inp,.sel');
+    if (!t || t.title || t.dataset.ellT) return;
+    if (t.scrollWidth > t.clientWidth + 1 && getComputedStyle(t).textOverflow === 'ellipsis') {
+      var x = (t.value !== undefined && t.tagName === 'INPUT' ? t.value : t.textContent).trim();
+      if (x) {
+        t.title = x;
+        t.dataset.ellT = 1;
+      }
+    }
+  });
   /* 모바일(≤767)은 5페이지씩, 그 밖은 10페이지씩 끊어 표시(구간을 넘나들면 다시 그림) */
   var PG_MQ = window.matchMedia('(max-width:767px)');
   function paging(p) {

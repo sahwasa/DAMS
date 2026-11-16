@@ -60,7 +60,7 @@ function goList() {
 }
 function remove() {
   confirmMsg(
-    '공지사항을(를) 삭제하시겠습니까?\n삭제된 데이터는 복구할 수 없습니다.',
+    '삭제된 데이터는 복구할 수 없습니다.\n공지사항을 삭제하시겠습니까?',
     function () {
       location.href = 'guide_notice.html?done=delete';
     },

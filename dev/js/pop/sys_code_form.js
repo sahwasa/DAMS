@@ -19,7 +19,7 @@ DAMS_POP['sys_code_form'] = function (location, dlg) {
   }
   function saveCode() {
     if (!checkReq(f)) return;
-    confirmMsg('저장하시겠습니까?\n변경 내용은 작업이력에 공통코드 변경으로 기록됩니다.', function () {
+    confirmMsg('변경 내용은 작업이력에 공통코드 변경으로 기록됩니다.\n저장하시겠습니까?', function () {
       popOk('code', {
         cd: f.m_code_cd.value.trim(),
         nm: f.m_code_nm.value.trim(),

@@ -40,7 +40,14 @@ DAMS_POP['plat_org_cert'] = function (location, dlg) {
       sum +
       '</span></div><div class="grid-wrap"><table class="grid"><caption class="blind">' +
       t +
-      '</caption><thead><tr>' +
+      '</caption><colgroup>' +
+      head
+        .map(function (h) {
+          var w = { No: 50, 발령시각: 150, 판정: 70, '필수 필드': 90, '코드 검사': 90 }[h];
+          return '<col' + (w ? ' style="width:' + w + 'px"' : '') + '>';
+        })
+        .join('') +
+      '</colgroup><thead><tr>' +
       head
         .map(function (h) {
           return '<th>' + h + '</th>';

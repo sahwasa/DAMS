@@ -39,7 +39,7 @@ DAMS_POP['sys_code_group_form'] = function (location, dlg) {
       alertMsg('이미 등록된 그룹코드입니다.', { ico: 'wn', focus: f.m_code_cd });
       return;
     }
-    confirmMsg('저장하시겠습니까?\n변경 내용은 작업이력에 공통코드 변경으로 기록됩니다.', function () {
+    confirmMsg('변경 내용은 작업이력에 공통코드 변경으로 기록됩니다.\n저장하시겠습니까?', function () {
       popOk('group', {
         cd: cd,
         nm: f.m_code_nm.value.trim(),

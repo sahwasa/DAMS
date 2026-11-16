@@ -238,7 +238,7 @@ function deleteSelected() {
     return;
   }
   confirmMsg(
-    '선택한 메뉴 ' + ids.length + '건을 삭제하시겠습니까?\n삭제된 메뉴는 복구할 수 없습니다.',
+    '삭제된 메뉴는 복구할 수 없습니다.\n' + '선택한 메뉴 ' + ids.length + '건을 삭제하시겠습니까?',
     function () {
       del(ids);
       msg('메뉴 ' + ids.length + '건이 삭제되었습니다.');

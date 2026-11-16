@@ -30,9 +30,10 @@ DAMS_POP['sys_user_detail'] = function (location, dlg) {
   lckView();
   function unlockAcnt() {
     confirmMsg(
-      '[' +
+      '비밀번호 오류 횟수가 0회로 초기화되며 바로 로그인할 수 있습니다.\n' +
+        '[' +
         document.getElementById('d_user_id').textContent +
-        '] 계정 잠금을 해제하시겠습니까?\n비밀번호 오류 횟수가 0회로 초기화되며 바로 로그인할 수 있습니다.',
+        '] 계정 잠금을 해제하시겠습니까?',
       function () {
         lck = false;
         lckView();
@@ -94,9 +95,10 @@ DAMS_POP['sys_user_detail'] = function (location, dlg) {
     }
     var o = sel.selectedOptions[0];
     confirmMsg(
-      '사용자 권한을 [' +
+      '다음 로그인부터 적용되며 권한 변경 이력에 기록됩니다.\n' +
+        '사용자 권한을 [' +
         o.textContent +
-        ']으로 변경하시겠습니까?\n다음 로그인부터 적용되며 권한 변경 이력에 기록됩니다.',
+        ']으로 변경하시겠습니까?',
       function () {
         popOk('auth', {
           id: document.getElementById('d_user_id').textContent,

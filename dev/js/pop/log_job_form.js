@@ -26,7 +26,7 @@ DAMS_POP['log_job_form'] = function (location, dlg) {
   }
   function remove() {
     confirmMsg(
-      '작업이력을 삭제하시겠습니까?\n삭제된 데이터는 복구할 수 없습니다.',
+      '삭제된 데이터는 복구할 수 없습니다.\n작업이력을 삭제하시겠습니까?',
       function () {
         popOk('delete');
       },

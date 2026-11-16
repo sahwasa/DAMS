@@ -678,7 +678,7 @@ DAMS_POP['plat_org_form'] = function (location, dlg) {
   }
   function resetPw() {
     confirmMsg(
-      '비밀번호를 초기화하시겠습니까?\n초기화하면 기존 비밀번호로는 연계 접속이 되지 않습니다.',
+      '초기화하면 기존 비밀번호로는 연계 접속이 되지 않습니다.\n비밀번호를 초기화하시겠습니까?',
       function () {
         var p = $('m_dest_pw');
         p.value = pwGen(12);

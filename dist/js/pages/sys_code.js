@@ -141,7 +141,7 @@ function deleteGroup(i) {
     return;
   }
   confirmMsg(
-    '[' + G[i][1] + '] 그룹코드를 삭제하시겠습니까?\n삭제된 데이터는 복구할 수 없습니다.',
+    '삭제된 데이터는 복구할 수 없습니다.\n' + '[' + G[i][1] + '] 그룹코드를 삭제하시겠습니까?',
     function () {
       var cd = G[i][1];
       G.splice(i, 1);
@@ -155,7 +155,7 @@ function deleteGroup(i) {
 function deleteCode(j) {
   var c = G[cur][5][j];
   confirmMsg(
-    '[' + c[0] + ' ' + c[1] + '] 코드를 삭제하시겠습니까?\n삭제된 데이터는 복구할 수 없습니다.',
+    '삭제된 데이터는 복구할 수 없습니다.\n' + '[' + c[0] + ' ' + c[1] + '] 코드를 삭제하시겠습니까?',
     function () {
       G[cur][5].splice(j, 1);
       drawCodes();

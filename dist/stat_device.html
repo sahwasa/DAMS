@@ -20,7 +20,7 @@
   <!-- GNB -->
   <!-- GNB: 현재 1Depth .on은 common.js markOn()이 파일명으로 표시 -->
   <header class="gnb">
-    <h1 class="logo"><a href="index.html" class="flex"><img src="images/gov_logo_w.png" alt="정부 상징" class="gov-logo">재난 예경보 통합관리시스템</a></h1>
+    <h1 class="logo"><a href="gis.html" class="flex" title="메인(GIS상황판)으로 이동"><img src="images/gov_logo_w.png" alt="정부 상징" class="gov-logo">재난 예경보 통합관리시스템</a></h1>
     <ul class="menu" id="gnbMenu" tabindex="-1">
       <li><a href="gis.html">GIS상황판</a></li>
       <li><a href="warn_monitor.html">재난 예경보 현황</a></li>
@@ -83,12 +83,6 @@
         </div>
 
         <!-- ===== 업무영역 (화면별 교체) ===== -->
-<ul class="tab">
-  <li class="on"><button type="button" data-tab="tabType">매체별 통계</button></li>
-  <li><button type="button" data-tab="tabRegion">지역별 통계</button></li>
-  <li><button type="button" data-tab="tabStatus">상태별 통계</button></li>
-</ul>
-
 <form class="sch-box" id="schForm">
   <div class="rows r1">
     <div class="it c2" id="periodCond"><label for="selPeriodType">기간 유형</label>
@@ -111,6 +105,12 @@
     <button type="submit" class="btn btn-sch"><i class="ri-search-line"></i>검색</button>
   </div>
 </form>
+
+<ul class="tab">
+  <li class="on"><button type="button" data-tab="tabType">매체별 통계</button></li>
+  <li><button type="button" data-tab="tabRegion">지역별 통계</button></li>
+  <li><button type="button" data-tab="tabStatus">상태별 통계</button></li>
+</ul>
 <p class="st-note st-calc"><i class="ri-information-line"></i><span><b>산정기준</b> 설치 대수 = 조회 종료일 기준 운영중인 단말기 수(사용중지 제외) · 전체(기대 수신) = 운영 단말기 수 × 운영 시간(1시간 1회 상태 수신) · 수신율 = 연결 ÷ 전체 × 100</span></p>
 
 
@@ -262,7 +262,7 @@
           <tr><td><span class="badge dg">오류</span></td><td class="t-l">시스템 오류(코드·상세)</td><td><button type="button" class="btn s btn-line" onclick="errSample()">alert 오류</button></td></tr>
           <tr><td><span class="badge sc">완료</span></td><td class="t-l">저장·발급 완료</td><td><button type="button" class="btn s btn-line" onclick="alertMsg('저장이 완료되었습니다.',{ico:'sc'})">alert 완료</button></td></tr>
           <tr><td><span class="badge pri">질의</span></td><td class="t-l">저장·등록 확인</td><td><button type="button" class="btn s btn-line" onclick="confirmMsg('입력한 내용을 저장하시겠습니까?',function(){alertMsg('저장이 완료되었습니다.',{ico:'sc'})})">confirm</button></td></tr>
-          <tr><td><span class="badge dg">질의(위험)</span></td><td class="t-l">삭제 등 데이터 손실</td><td><button type="button" class="btn s btn-line" onclick="confirmMsg('선택한 항목을 삭제하시겠습니까?\n삭제된 데이터는 복구할 수 없습니다.',function(){alertMsg('삭제가 완료되었습니다.',{ico:'sc'})},{ico:'wn',danger:true})">confirm 위험</button></td></tr>
+          <tr><td><span class="badge dg">질의(위험)</span></td><td class="t-l">삭제 등 데이터 손실</td><td><button type="button" class="btn s btn-line" onclick="confirmMsg('삭제된 데이터는 복구할 수 없습니다.\n선택한 항목을 삭제하시겠습니까?',function(){alertMsg('삭제가 완료되었습니다.',{ico:'sc'})},{ico:'wn',danger:true})">confirm 위험</button></td></tr>
         </tbody>
       </table>
     </div>

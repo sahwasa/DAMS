@@ -167,7 +167,7 @@ function openModal(i) {
 function deleteDisaster(i) {
   var r = D[cm][i];
   confirmMsg(
-    '[' + r[0] + ' ' + r[1] + '] 코드를 삭제하시겠습니까?\n삭제된 데이터는 복구할 수 없습니다.',
+    '삭제된 데이터는 복구할 수 없습니다.\n' + '[' + r[0] + ' ' + r[1] + '] 코드를 삭제하시겠습니까?',
     function () {
       D[cm].splice(i, 1);
       drawDsstr();
