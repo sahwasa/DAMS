@@ -534,18 +534,18 @@
   }
 }
 @media (min-width: 1280px) {
-  html {
-    &.wide {
-      .page-head {
-        display: none;
-      }
-      .work {
-        padding: 12px 16px;
-      }
-    }
+  .main {
+    padding: 0;
+  }
+  .work {
+    border: 0;
+    padding: 12px 16px;
+  }
+  .page-head {
+    display: none;
   }
 }
-/* 넓은 화면: 화면명·브레드크럼 숨기고 지도 영역 최대 */
+/* 지도 화면: 바깥 여백·테두리·화면명·브레드크럼 없이 지도 영역 최대(2026-11-16 사용자 결정) */
 @media (max-width: 767px) {
   .gis.dtl-on .gis-side,
   .gis:not(.dtl-on) .gis-dtl {

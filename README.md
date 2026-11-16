@@ -24,7 +24,6 @@ npm run format    # JS·SCSS 형식 정리(prettier 3.3.3, 설정 .prettierrc �
 | **로딩** | `loading(문구, ms, cb)` — ms 뒤 cb | 실제 요청 시작·완료에 맞춰 표시/제거 |
 | **새 재난 알림** | `toast(제목,{kind})` | 서버 푸시(웹소켓·폴링) 수신 때 호출. 목업의 첫 진입 알림 시연·GNB 5번 클릭 시연은 퍼블에서 제거 |
 | **목업 전용 창 연동** | 파일 맨 위 `[목업 전용] localStorage(...)` 주석 — 연계기관현황·연계확인서 발급(새 창)·점검실행의 발급 취소(`damsCertCancel`)·통합 발급(`damsInteg`) 상태 공유 | 서버 데이터 조회로 대체(localStorage 코드 삭제) |
-| **[미확정] 화면 버전 전환** | 푸터 왼쪽 [기본 \| 넓은 화면] 버튼(`layInit`·`setLayout`, `LAYOUT_DEFAULT='basic'`) — 두 레이아웃 비교 시연 | 확정되면 `LAYOUT_DEFAULT`만 남기고 전환 버튼 제거 |
 | **팝업 바로 열기** | 화면 주소 `?pop=팝업명`(index.html [화면에서 열기]용) | 필요 없으면 제거 |
 | 개인 설정(유지) | localStorage `damsFav`(즐겨찾기)·`damsSound`(장애 경고음)·`damsLayout`, sessionStorage `damsNoti`(알림 목록) | 사용자 설정을 서버에 저장한다면 대체 |
 

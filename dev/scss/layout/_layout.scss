@@ -269,89 +269,12 @@
     color: $dg-t;
   }
 }
-// --lay-dh: 넓은 화면에서 늘어나는 높이 = MDI 42 + 아래 여백 10 + 테두리 1. 화면 버전 비교(미확정): html.wide(PC ≥1280) = LNB 메뉴/즐겨찾기/최근접속 탭 유지(2026-11-16 사용자 요청)·화면명 ☆ 유지, MDI 탭 없음, .main 여백·.work 테두리 없음. 고정 높이 화면은 var(--lay-dh)만큼 키운다
-// MDI 탭은 기본 화면에서도 숨김(2026-11-16 사용자 요청) — 업무영역 위 여백 8(LNB 탭 줄과 맞춤), --lay-dh 기본 34(MDI 42 − 8)
+// MDI 탭 숨김(2026-11-16 사용자 결정 — 기본 화면 확정, 화면 버전 전환 삭제), 업무영역 위 여백 8(LNB 탭 줄과 맞춤)
 @media (min-width: 1280px) {
-  :root {
-    --lay-dh: 34px;
-  }
   .mdi {
     display: none;
   }
   .main {
     padding-top: 8px;
-  }
-  html {
-    &.wide {
-      --lay-dh: 53px;
-    }
-    &.wide {
-      body {
-        min-width: $lnb-w + $work-min;
-      }
-      .mdi {
-        display: none;
-      }
-      .lnb-tab {
-        padding: 8px 4px 0;
-      }
-      .main {
-        padding: 0;
-      }
-      .work {
-        border: 0;
-      }
-      .lnb-tit,
-      .lnb-menu {
-        margin: 0;
-      }
-      .lnb-tit {
-        border-width: 0 1px 1px 0;
-      }
-      .lnb-menu {
-        border-width: 0 1px 0 0;
-      }
-    }
-  }
-}
-.lay-sw {
-  position: fixed;
-  left: 136px;
-  bottom: 2px;
-  z-index: 800;
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  padding: 3px;
-  border-radius: 16px;
-  background: rgba(24, 33, 70, 0.9);
-  box-shadow: $sh-s;
-  color: #fff;
-  font-size: 12px;
-  span {
-    padding: 0 6px 0 8px;
-    opacity: 0.8;
-  }
-  button {
-    height: 22px;
-    padding: 0 10px;
-    border-radius: 12px;
-    color: #c9d0f2;
-    font-size: 12px;
-    &.on {
-      background: $pri;
-      color: #fff;
-      font-weight: 700;
-    }
-  }
-}
-@media (max-width: 1279px) {
-  .lay-sw {
-    display: none;
-  }
-}
-@media print {
-  .lay-sw {
-    display: none;
   }
 }

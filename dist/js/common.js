@@ -145,69 +145,13 @@
     ]
   ];
 
-  /* ---------- 화면 버전 비교(2026-11-11, 미확정): 기본(LNB 메뉴/즐겨찾기/최근접속 탭 + MDI 탭) ↔ 넓은 화면(html.wide: 바깥 여백·테두리 없음, MDI 탭은 두 버전 모두 숨김) ---------- */
-  /* 설정값 LAYOUT_DEFAULT로 기본 버전 지정, 사용자가 고른 값은 localStorage damsLayout에 유지 */
-  var LAYOUT_DEFAULT = 'basic',
-    LS = function (k, v) {
-      try {
-        if (v === undefined) return localStorage.getItem(k);
-        localStorage.setItem(k, v);
-      } catch (e) {
-        return null;
-      }
-    };
-  /* 게시 환경(샌드박스)에서 localStorage가 막히면 같은 탭 안 페이지 이동에도 유지되는 window.name(damsLay=…)에 함께 저장 */
-  var LAYQ = (/[?&]lay=(wide|basic)\b/.exec(location.search) || [])[1] || null;
-  function layGet() {
-    if (LAYQ) return LAYQ;
-    var v = LS('damsLayout');
-    if (v) return v;
-    var m = /(?:^|;)damsLay=(\w+)/.exec(window.name || '');
-    return m ? m[1] : null;
-  }
-  function laySet(v) {
-    LAYQ = v;
-    LS('damsLayout', v);
+  var LS = function (k, v) {
     try {
-      window.name = (window.name || '').replace(/(?:^|;)damsLay=\w+/g, '') + ';damsLay=' + v;
-    } catch (e) {}
-  }
-  if (LAYQ) laySet(LAYQ);
-  function isWide() {
-    return (layGet() || LAYOUT_DEFAULT) === 'wide';
-  }
-  /* 화면 링크로 이동할 때 주소에 lay=… 를 붙여 새로 열린 페이지도 같은 버전 유지(저장소가 모두 막힌 환경 대비) */
-  document.addEventListener(
-    'click',
-    function (e) {
-      var a = e.target.closest && e.target.closest('a[href]');
-      if (!a || a.target || e.defaultPrevented) return;
-      var h = a.getAttribute('href'),
-        v = layGet();
-      if (!v || !/^[\w\-\/.]+\.html(\?|#|$)/.test(h)) return;
-      a.setAttribute(
-        'href',
-        h
-          .replace(/([?&])lay=\w+&?/, '$1')
-          .replace(/[?&]$/, '')
-          .replace(/^([^#]*?)(#.*)?$/, function (m, u, hs) {
-            return u + (u.indexOf('?') > -1 ? '&' : '?') + 'lay=' + v + (hs || '');
-          })
-      );
-    },
-    true
-  );
-  if (isWide() && !(document.body && document.body.classList.contains('pop-only')))
-    document.documentElement.classList.add('wide');
-  window.setLayout = function (w) {
-    laySet(w ? 'wide' : 'basic');
-    document.documentElement.classList.toggle('wide', !!w);
-    $$('.lay-sw button').forEach(function (b) {
-      b.classList.toggle('on', (b.dataset.lay === 'wide') === !!w);
-    });
-    closeLayers();
-    msg(w ? '넓은 화면(바깥 여백·테두리 없음)으로 전환되었습니다.' : '기본 화면으로 전환되었습니다.');
-    dispatchEvent(new Event('resize'));
+      if (v === undefined) return localStorage.getItem(k);
+      localStorage.setItem(k, v);
+    } catch (e) {
+      return null;
+    }
   };
   /* 즐겨찾기: 화면명 옆 ☆ 상태를 localStorage damsFav(화면ID 목록)에 유지 — LNB [즐겨찾기] 탭·모바일 메뉴 공통 */
   var CUR = (location.pathname.split('/').pop() || '').replace(/\.html$/, '');
@@ -236,47 +180,8 @@
     LS('damsFav', JSON.stringify(f));
   }
   var FAV_EMPTY = '즐겨찾기한 메뉴가 없습니다.<br>화면명 옆 ☆을 눌러 추가하세요.';
-  /* 현재 화면 표시: inc/header·lnb 조각은 공통이라 .on 없이 두고, 파일명(상세·쓰기 화면은 목록 화면)으로 GNB 1Depth·LNB 메뉴에 .on */
-  function markOn() {
-    var b = CUR.replace(/_(view|write)$/, '');
-    $$('.gnb .menu>li').forEach(function (li) {
-      var g = null,
-        t = $('a', li).textContent.trim();
-      MENU.forEach(function (x) {
-        if (x[0] === t) g = x;
-      });
-      li.classList.toggle(
-        'on',
-        !!g &&
-          g[1].some(function (m) {
-            return m[0] === b;
-          })
-      );
-    });
-    $$('.lnb-menu .d2>li').forEach(function (li) {
-      var a = $('a', li);
-      li.classList.toggle('on', !!a && a.getAttribute('href').split('?')[0] === b + '.html');
-    });
-  }
-  /* 프레임 화면에 전환 버튼 추가 */
-  /* [미확정] 화면 버전 전환(기본 / 넓은 화면) — 두 레이아웃 비교 시연용 푸터 버튼. 확정되면 LAYOUT_DEFAULT만 남기고 전환 버튼(layInit)은 제거 */
+  /* 화면명 ☆에 저장된 즐겨찾기 상태 반영 */
   function layInit() {
-    if (!$('.mdi') || !$('.gnb .util')) return;
-    var s = document.createElement('div');
-    s.className = 'lay-sw';
-    s.setAttribute('role', 'complementary');
-    s.setAttribute('aria-label', '화면 버전 비교(목업 시연용)');
-    s.title = '화면 버전 비교(미확정 — 목업 시연용)';
-    s.innerHTML =
-      '<span>화면 버전</span><button type="button" data-lay="basic">기본</button><button type="button" data-lay="wide">넓은 화면</button>';
-    s.onclick = function (e) {
-      var b = e.target.closest('button');
-      b && setLayout(b.dataset.lay === 'wide');
-    };
-    document.body.appendChild(s);
-    $$('button', s).forEach(function (b) {
-      b.classList.toggle('on', (b.dataset.lay === 'wide') === isWide());
-    });
     /* 저장된 즐겨찾기 상태를 화면명 ☆에 반영 */
     var st = $('.page-head .star'),
       f = favGet();
