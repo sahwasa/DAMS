@@ -395,8 +395,18 @@ $gm-dim: rgba(70, 70, 70, 0.5);
   bottom: auto;
 }
 .gis-map.gm .lbl {
-  left: 72px;
+  top: auto;
+  bottom: 38px;
+  left: 10px;
+  max-width: calc(100% - 70px);
 }
+/* GIS상황판: 선택 표시는 지도 아래(안내 문구 위), 2026-11-16 사용자 요청 */
+@media (max-width: 767px) {
+  html:not(.pc-pop) .gis-map.gm .lbl {
+    bottom: 58px;
+  }
+}
+/* 모바일은 안내 문구가 두 줄 */
 .gm-lgd {
   position: absolute;
   right: 10px;

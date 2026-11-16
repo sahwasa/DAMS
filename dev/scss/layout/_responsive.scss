@@ -353,7 +353,7 @@
       }
     }
   }
-  // 화면명 = 맨 위로 버튼html:not(.pc-pop) .m-tit .star{color:rgba(255,255,255,.6);font-size:18px}html:not(.pc-pop) .m-tit .star.on{color:$wn}
+  /* 화면명 = 맨 위로 버튼html:not(.pc-pop) .m-tit .star{color:rgba(255,255,255,.6);font-size:18px}html:not(.pc-pop) .m-tit .star.on{color:$wn} */
   html {
     &:not(.pc-pop) {
       .m-ham {
@@ -399,7 +399,7 @@
       }
     }
   }
-  // 건수 선택(40)과 [적용] 높이 맞춤
+  /* 건수 선택(40)과 [적용] 높이 맞춤 */
   html {
     &:not(.pc-pop) {
       .col3,

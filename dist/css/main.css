@@ -4258,9 +4258,19 @@ body.win-body {
 }
 
 .gis-map.gm .lbl {
-  left: 72px;
+  top: auto;
+  bottom: 38px;
+  left: 10px;
+  max-width: calc(100% - 70px);
 }
 
+/* GIS상황판: 선택 표시는 지도 아래(안내 문구 위), 2026-11-16 사용자 요청 */
+@media (max-width: 767px) {
+  html:not(.pc-pop) .gis-map.gm .lbl {
+    bottom: 58px;
+  }
+}
+/* 모바일은 안내 문구가 두 줄 */
 .gm-lgd {
   position: absolute;
   right: 10px;
@@ -4842,6 +4852,7 @@ body.win-body {
     white-space: nowrap;
     cursor: pointer;
   }
+  /* 화면명 = 맨 위로 버튼html:not(.pc-pop) .m-tit .star{color:rgba(255,255,255,.6);font-size:18px}html:not(.pc-pop) .m-tit .star.on{color:$wn} */
   html:not(.pc-pop) .m-ham {
     margin-left: 0;
   }
@@ -4883,6 +4894,7 @@ body.win-body {
   html:not(.pc-pop) .sub-head .grid-top .btn {
     height: 40px;
   }
+  /* 건수 선택(40)과 [적용] 높이 맞춤 */
   html:not(.pc-pop) .col3,
   html:not(.pc-pop) .col4 {
     grid-template-columns: minmax(0, 1fr) !important;
