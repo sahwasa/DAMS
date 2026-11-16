@@ -1,0 +1,26 @@
+@@include('../inc/top.html',{"title": "오류 안내 | 재난 예경보 통합관리시스템", "css": "error"})
+
+<body>
+<div class="skip"><a href="#content">본문 바로가기</a></div>
+<header class="er-head">
+  <h1><a href="gis.html"><img src="images/gov_logo_w.png" alt="정부 상징" class="gov-logo">재난 예경보 통합관리시스템</a></h1>
+</header>
+<main class="er" id="content" tabindex="-1">
+  <div class="er-box">
+    <span class="er-ico" id="erIco"><i class="ri-error-warning-line" aria-hidden="true"></i></span>
+    <p class="er-code" id="erCode">404 Not Found</p>
+    <h2 id="erTit">요청하신 페이지를 찾을 수 없습니다.</h2>
+    <p id="erMsg">입력하신 주소의 페이지를 찾을 수 없거나, 서비스 연결 오류일 수 있습니다. <br>주소를 확인하신 후 다시 이용해 주시기 바랍니다.</p>
+    <div class="er-btns">
+      <button type="button" class="btn l btn-line" id="btnBack" onclick="goBack()"><i class="ri-arrow-left-line"></i>이전 페이지</button>
+      <a href="gis.html" class="btn l btn-pri" id="btnHome"><i class="ri-home-4-line"></i>초기화면 바로가기</a>
+    </div>
+    <div class="er-desk"><strong>SERVICE DESK</strong><span>000-0000-0000</span></div>
+  </div>
+</main>
+<footer class="er-foot">&copy; Ministry of the Interior and Safety. All rights reserved.</footer>
+@@include('../inc/script.html')
+<script src="js/pages/error.data.js"></script>
+<script src="js/pages/error.js"></script>
+</body>
+</html>

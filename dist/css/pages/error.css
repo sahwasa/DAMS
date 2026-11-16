@@ -1,0 +1,164 @@
+@charset "UTF-8";
+/* ==========================================================
+   common.scss — 재난·안전정보시스템 UI 표준정의서(NDMS-DE33 v1.1) 기준
+   ========================================================== */
+/* ---------- 1. Tokens ---------- */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  height: auto;
+  background: #f5f7f9;
+}
+
+.er-head {
+  flex: 0 0 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  background: #172e55;
+  color: #fff;
+}
+.er-head h1 a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.er {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.er-box {
+  width: 100%;
+  max-width: 640px;
+  padding: 48px 40px 36px;
+  background: #fff;
+  border: 1px solid #d9def0;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.er-ico {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 84px;
+  height: 84px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  background: #e9f0ff;
+  font-size: 44px;
+  color: #3e55e1;
+}
+.er-ico.dg {
+  background: #feecf0;
+  color: #d50136;
+}
+.er-ico.wn {
+  background: #fff8e9;
+  color: #98690a;
+}
+
+.er-code {
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #707070;
+}
+
+.er-box h2 {
+  margin-bottom: 14px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #101010;
+}
+.er-box p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #505050;
+}
+
+.er-btns {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 32px;
+}
+.er-btns .btn {
+  min-width: 150px;
+}
+
+.er-desk {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid #f0f0f0;
+  font-size: 14px;
+  color: #505050;
+}
+.er-desk strong {
+  font-weight: 700;
+  color: #1c3b5e;
+}
+.er-desk span {
+  font-size: 17px;
+  font-weight: 700;
+  color: #101010;
+}
+
+.er-foot {
+  padding: 14px 20px;
+  text-align: center;
+  font-size: 13px;
+  color: #707070;
+}
+
+@media (max-width: 767px) {
+  .er-head {
+    flex-basis: 56px;
+    padding: 0 16px;
+  }
+  .er-head h1 a {
+    font-size: 15px;
+  }
+  .er {
+    align-items: flex-start;
+    padding: 24px 16px;
+  }
+  .er-box {
+    padding: 36px 20px 28px;
+  }
+  .er-ico {
+    width: 68px;
+    height: 68px;
+    font-size: 36px;
+  }
+  .er-box h2 {
+    font-size: 19px;
+  }
+  .er-box p {
+    font-size: 14px;
+  }
+  .er-box p br {
+    display: none;
+  }
+  .er-btns {
+    flex-direction: column;
+  }
+  .er-btns .btn {
+    width: 100%;
+    height: 48px;
+  }
+}
