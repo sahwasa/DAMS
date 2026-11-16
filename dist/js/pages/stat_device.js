@@ -257,7 +257,7 @@ function drawRg() {
     };
   document.getElementById('rgTit2').textContent = (UNIT === 'sgg' ? '시군구별' : '시도별') + ' 설치 현황';
   var nar = ecNar(el);
-  el.style.height = (RGM === 'h' ? Math.max(220, D.length * 32 + 44) : Math.max(320, D.length * 20 + 60)) + 'px';
+  el.style.height = (RGM === 'h' ? Math.max(220, D.length * 32 + 44) : Math.max(354, D.length * 20 + 60)) + 'px';
   var ch = echarts.getInstanceByDom(el);
   if (ch) {
     ch.clear();
