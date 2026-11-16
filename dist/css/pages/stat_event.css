@@ -143,7 +143,7 @@
 
 .ev-cat {
   position: relative;
-  height: 354px;
+  height: 338px;
 }
 
 .ev-note {
@@ -152,12 +152,12 @@
 
 .md-cat {
   position: relative;
-  height: 354px;
+  height: 338px;
 }
 
 .md-tr {
   position: relative;
-  height: 354px;
+  height: 338px;
 }
 .md-tr svg {
   display: block;
@@ -204,7 +204,7 @@
 }
 
 .md-v.vbar {
-  height: 230px;
+  height: 214px;
   margin: 22px 0 0;
   gap: 18px;
   padding: 0 10px;
@@ -253,7 +253,7 @@
 }
 
 .ev-v.vbar {
-  height: 230px;
+  height: 214px;
   margin: 22px 0 0;
   gap: 8px;
   padding: 0 4px;
@@ -307,7 +307,7 @@
 
 /* 재난별 탭: 기간 추이(연도·분기·기간=월별, 월=일별) 막대 + 값 */
 .ev-tr {
-  height: 354px;
+  height: 338px;
 }
 .ev-tr svg {
   display: block;
