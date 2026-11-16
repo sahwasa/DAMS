@@ -1339,9 +1339,15 @@
       var t = document.createElement('div');
       t.className = 'm-tit m-only';
       t.innerHTML =
-        '<span role="heading" aria-level="2"></span>' +
+        '<span role="heading" aria-level="2"><button type="button" class="m-top" title="맨 위로 이동"></button></span>' +
         (ps ? '<button type="button" class="star" title="즐겨찾기"><i></i></button>' : '');
-      $('span', t).textContent = pt.childNodes[0].textContent.trim();
+      $('.m-top', t).textContent = pt.childNodes[0].textContent.trim();
+      /* 모바일 화면명을 누르면 화면 맨 위로(페이지·업무영역 스크롤 모두) */
+      $('.m-top', t).onclick = function () {
+        var w = $('.work');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (w && w.scrollTop) w.scrollTo({ top: 0, behavior: 'smooth' });
+      };
       g.insertBefore(t, $('.menu', g));
       var sync = function () {
         var b = $('.star', t);

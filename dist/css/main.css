@@ -4757,14 +4757,20 @@ body.win-body {
   }
   html:not(.pc-pop) .m-tit span {
     overflow: hidden;
+    min-width: 0;
+    display: flex;
+  }
+  html:not(.pc-pop) .m-tit .m-top {
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    color: inherit;
+    overflow: hidden;
     text-overflow: ellipsis;
-  }
-  html:not(.pc-pop) .m-tit .star {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 18px;
-  }
-  html:not(.pc-pop) .m-tit .star.on {
-    color: #ffb724;
+    white-space: nowrap;
+    cursor: pointer;
   }
   html:not(.pc-pop) .m-ham {
     margin-left: 0;

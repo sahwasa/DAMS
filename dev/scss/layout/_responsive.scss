@@ -335,16 +335,27 @@
       .m-tit {
         span {
           overflow: hidden;
-          text-overflow: ellipsis;
+          min-width: 0;
+          display: flex;
         }
-        .star {
-          color: rgba(255, 255, 255, 0.6);
-          font-size: 18px;
-          &.on {
-            color: $wn;
-          }
+        .m-top {
+          min-width: 0;
+          padding: 0;
+          border: 0;
+          background: none;
+          font: inherit;
+          color: inherit;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          cursor: pointer;
         }
       }
+    }
+  }
+  // 화면명 = 맨 위로 버튼html:not(.pc-pop) .m-tit .star{color:rgba(255,255,255,.6);font-size:18px}html:not(.pc-pop) .m-tit .star.on{color:$wn}
+  html {
+    &:not(.pc-pop) {
       .m-ham {
         margin-left: 0;
       }
