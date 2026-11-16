@@ -270,7 +270,17 @@
   }
 }
 // --lay-dh: 넓은 화면에서 늘어나는 높이 = MDI 42 + 아래 여백 10 + 테두리 1. 화면 버전 비교(미확정): html.wide(PC ≥1280) = LNB 메뉴/즐겨찾기/최근접속 탭 유지(2026-11-16 사용자 요청)·화면명 ☆ 유지, MDI 탭 없음, .main 여백·.work 테두리 없음. 고정 높이 화면은 var(--lay-dh)만큼 키운다
+// MDI 탭은 기본 화면에서도 숨김(2026-11-16 사용자 요청) — 업무영역 위 여백 8(LNB 탭 줄과 맞춤), --lay-dh 기본 34(MDI 42 − 8)
 @media (min-width: 1280px) {
+  :root {
+    --lay-dh: 34px;
+  }
+  .mdi {
+    display: none;
+  }
+  .main {
+    padding-top: 8px;
+  }
   html {
     &.wide {
       --lay-dh: 53px;

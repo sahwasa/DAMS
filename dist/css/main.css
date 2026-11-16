@@ -646,6 +646,15 @@ img {
 }
 
 @media (min-width: 1280px) {
+  :root {
+    --lay-dh: 34px;
+  }
+  .mdi {
+    display: none;
+  }
+  .main {
+    padding-top: 8px;
+  }
   html.wide {
     --lay-dh: 53px;
   }
