@@ -547,25 +547,17 @@
   .page-head {
     flex: 0 0 auto;
     margin: 0;
-    padding: 10px 16px;
-    background: #f3f5ff;
-    border-bottom: 1px solid $frame-bd;
+    padding: 12px 16px 10px;
+    border-bottom: 1px solid $g10;
     .tit {
       font-size: 20px;
-      color: #1c3b5e;
-    }
-  }
-  .tab {
-    margin-top: 8px !important;
-    li:not(.on) button {
-      background: $frame-bg;
     }
   }
   .bread {
     display: none;
   }
 }
-/* 화면명·☆(즐겨찾기)는 왼쪽 박스 맨 위 제목줄(LNB 제목줄과 같은 연파랑·남색 글자, 탭과 8px 띄움), 브레드크럼 없음 */
+/* 화면명·☆(즐겨찾기)는 왼쪽 박스 맨 위(탭과 사이 1px #f0f0f0 선), 브레드크럼 없음 */
 @media (max-width: 767px) {
   .gis.dtl-on .gis-side,
   .gis:not(.dtl-on) .gis-dtl {
