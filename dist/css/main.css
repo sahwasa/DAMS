@@ -652,10 +652,11 @@ img {
   html.wide body {
     min-width: 1600px;
   }
-  html.wide .lnb-tab,
-  html.wide .mdi,
-  html.wide .page-head .star {
+  html.wide .mdi {
     display: none;
+  }
+  html.wide .lnb-tab {
+    padding: 8px 4px 0;
   }
   html.wide .main {
     padding: 0;
@@ -672,9 +673,6 @@ img {
   }
   html.wide .lnb-menu {
     border-width: 0 1px 0 0;
-  }
-  html.wide .lnb-fold {
-    top: 8px;
   }
 }
 .lay-sw {

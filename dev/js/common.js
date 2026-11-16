@@ -145,7 +145,7 @@
     ]
   ];
 
-  /* ---------- 화면 버전 비교(2026-11-11, 미확정): 기본(LNB 메뉴/즐겨찾기/최근접속 탭 + MDI 탭) ↔ 넓은 화면(html.wide: LNB 메뉴만, MDI 탭·화면명 ☆ 없음) ---------- */
+  /* ---------- 화면 버전 비교(2026-11-11, 미확정): 기본(LNB 메뉴/즐겨찾기/최근접속 탭 + MDI 탭) ↔ 넓은 화면(html.wide: LNB 탭 유지, MDI 탭 없음) ---------- */
   /* 설정값 LAYOUT_DEFAULT로 기본 버전 지정, 사용자가 고른 값은 localStorage damsLayout에 유지 */
   var LAYOUT_DEFAULT = 'basic',
     LS = function (k, v) {
@@ -202,12 +202,11 @@
   window.setLayout = function (w) {
     laySet(w ? 'wide' : 'basic');
     document.documentElement.classList.toggle('wide', !!w);
-    if (w && $('.lnb-tab')) lnbPanel('menu');
     $$('.lay-sw button').forEach(function (b) {
       b.classList.toggle('on', (b.dataset.lay === 'wide') === !!w);
     });
     closeLayers();
-    msg(w ? '넓은 화면(MDI 탭·즐겨찾기 없음)으로 전환되었습니다.' : '기본 화면으로 전환되었습니다.');
+    msg(w ? '넓은 화면(MDI 탭 없음)으로 전환되었습니다.' : '기본 화면으로 전환되었습니다.');
     dispatchEvent(new Event('resize'));
   };
   /* 즐겨찾기: 화면명 옆 ☆ 상태를 localStorage damsFav(화면ID 목록)에 유지 — LNB [즐겨찾기] 탭·모바일 메뉴 공통 */
