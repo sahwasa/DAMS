@@ -18,7 +18,7 @@ DAMS_POP['UI-DA08-006-P01'] = function (location, dlg) {
   $id('v_rs').innerHTML =
     rs === '성공'
       ? '<span class="badge sc">성공</span>'
-      : '<span class="badge dg">실패</span> <span class="c-dg" style="font-size:13px">' +
+      : '<span class="badge dg">실패</span> <span class="c-dg u-fs13px">' +
         (se === '통보문'
           ? '(E102 필수항목 누락: info/area)'
           : se === '단말기제원'

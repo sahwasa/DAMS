@@ -15,7 +15,7 @@ var SZ = ['2.4MB', '1.1MB', '860KB', '3.2MB', '540KB', '1.8MB'];
 function fileLi(ul, n, sz, saved, edit) {
   var li = document.createElement('li');
   li.innerHTML =
-    '<i class="ri-file-text-line"></i><span></span><em class="c-wn" style="font-style:normal">' +
+    '<i class="ri-file-text-line"></i><span></span><em class="c-wn u-fst-normal">' +
     sz +
     '</em>' +
     (saved

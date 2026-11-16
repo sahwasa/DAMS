@@ -5,11 +5,11 @@
   <div class="pop-body">
     <table class="tbl">
       <caption class="blind">상세 재난코드 정보 입력</caption>
-      <colgroup><col style="width:120px"><col></colgroup>
+      <colgroup><col class="u-w120px"><col></colgroup>
       <tbody>
         <tr><th><span class="req">대분류코드</span></th><td class="ro" id="m_dsstr_lclas">T1 (자연재난)</td></tr>
         <tr><th><span class="req">중분류코드</span></th><td class="ro" id="m_dsstr_mclas">T10102 (호우)</td></tr>
-        <tr><th><label for="m_dsstr_code" class="req">코드</label></th><td><input class="inp" id="m_dsstr_code" name="m_dsstr_code" maxlength="15" placeholder="예: RAA" required data-label="코드" style="text-transform:uppercase"><span class="f-msg" id="cdMsg">영문 대문자·숫자 15자 이내, 중복 불가</span></td></tr>
+        <tr><th><label for="m_dsstr_code" class="req">코드</label></th><td><input class="inp u-upper" id="m_dsstr_code" name="m_dsstr_code" maxlength="15" placeholder="예: RAA" required data-label="코드"><span class="f-msg" id="cdMsg">영문 대문자·숫자 15자 이내, 중복 불가</span></td></tr>
         <tr><th><label for="m_dsstr_name" class="req">코드명</label></th><td><input class="inp" id="m_dsstr_name" name="m_dsstr_name" maxlength="100" placeholder="예: 호우주의보" required data-label="코드명"></td></tr>
         <tr><th><span class="req">사용여부</span></th><td><label class="tgl"><input type="checkbox" id="m_dsstr_use" name="m_dsstr_use" checked onchange="this.nextElementSibling.textContent=this.checked?'사용':'미사용'"><span>사용</span></label></td></tr>
       </tbody>

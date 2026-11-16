@@ -93,16 +93,16 @@
   <div class="rows r1">
     <div class="it c2" id="periodCond"><label for="selPeriodType">기간 유형</label>
       <div class="flex w100">
-        <select class="sel" id="selPeriodType" name="selPeriodType" style="width:120px" onchange="changePeriodType(this.value)"><option value="year" selected>연도</option><option value="month">월</option><option value="quarter">분기</option><option value="custom">사용자선택</option></select>
-        <select class="sel" id="selYear" name="selYear" style="width:110px" title="연도"><option>2026년</option><option>2025년</option><option>2024년</option></select>
-        <select class="sel" id="selMonth" name="selMonth" style="width:90px" title="월" hidden><option>1월</option><option>2월</option><option>3월</option><option>4월</option><option>5월</option><option>6월</option><option>7월</option><option>8월</option><option>9월</option><option selected>10월</option><option>11월</option><option>12월</option></select>
-        <select class="sel" id="selQuarter" name="selQuarter" style="width:100px" title="분기" hidden><option>1분기</option><option>2분기</option><option>3분기</option><option selected>4분기</option></select>
+        <select class="sel u-w120px" id="selPeriodType" name="selPeriodType" onchange="changePeriodType(this.value)"><option value="year" selected>연도</option><option value="month">월</option><option value="quarter">분기</option><option value="custom">사용자선택</option></select>
+        <select class="sel u-w110px" id="selYear" name="selYear" title="연도"><option>2026년</option><option>2025년</option><option>2024년</option></select>
+        <select class="sel u-w90px" id="selMonth" name="selMonth" title="월" hidden><option>1월</option><option>2월</option><option>3월</option><option>4월</option><option>5월</option><option>6월</option><option>7월</option><option>8월</option><option>9월</option><option selected>10월</option><option>11월</option><option>12월</option></select>
+        <select class="sel u-w100px" id="selQuarter" name="selQuarter" title="분기" hidden><option>1분기</option><option>2분기</option><option>3분기</option><option selected>4분기</option></select>
         <div class="range" id="periodRange" hidden><span class="inp-ico inp-date"><input type="date" class="inp" id="startDate" name="startDate" value="2026-01-01" title="시작일"></span><span>~</span><span class="inp-ico inp-date"><input type="date" class="inp" id="endDate" name="endDate" value="2026-10-30" title="종료일"></span><span class="f-msg mt0">최대 1년</span></div>
       </div>
     </div>
     <div class="it c2" id="regionCond"><span class="lb">지역 레벨</span>
       <label class="rdo"><input type="radio" name="regionUnit" value="sido" checked onchange="setUnit(this.value)"><span>시도별</span></label>
-      <label class="rdo"><input type="radio" name="regionUnit" value="sgg" onchange="setUnit(this.value)"><span>시군구별</span></label><select class="sel" id="rgSido" name="rgSido" title="시도" style="width:170px;margin-left:8px" hidden onchange="setUnit('sgg')"><option value="">시도 전체</option><option>전남광주통합특별시</option><option>대전광역시</option><option>울산광역시</option><option>경기도</option><option>강원특별자치도</option><option>충청남도</option><option>경상북도</option></select>
+      <label class="rdo"><input type="radio" name="regionUnit" value="sgg" onchange="setUnit(this.value)"><span>시군구별</span></label><select class="sel u-w170px u-ml8px" id="rgSido" name="rgSido" title="시도" hidden onchange="setUnit('sgg')"><option value="">시도 전체</option><option>전남광주통합특별시</option><option>대전광역시</option><option>울산광역시</option><option>경기도</option><option>강원특별자치도</option><option>충청남도</option><option>경상북도</option></select>
     </div>
     <div class="it"><label for="selDevice">매체구분</label><select class="sel" id="selDevice" name="selDevice"><option value="">전체</option><option value="01">자동음성통보</option><option value="02">재해문자전광판</option><option value="03">마을방송</option><option value="04">자동우량경보</option></select></div>
   </div>
@@ -116,7 +116,7 @@
 
 <!-- [탭1] 매체별 -->
 <div id="tabType">
-  <div class="col-lr" style="grid-template-columns:minmax(0,5fr) minmax(0,5fr)">
+  <div class="col-lr u-cols-5-5">
     <div class="card"><div class="card-h" title="설치 대수(막대)와 수신율(보조)">매체구분별 단말기 설치 현황<span class="sub">(설치 대수 · 수신율)</span><span class="st-cond" data-cond></span>
       <div class="btns" id="dmMode" role="group" aria-label="차트 종류"><button type="button" class="btn s ico btn-pri" title="가로 막대" aria-label="가로 막대" onclick="dmMode(this,'h')"><i class="ri-bar-chart-horizontal-line"></i></button><button type="button" class="btn s ico btn-line" title="세로 막대" aria-label="세로 막대" onclick="dmMode(this,'v')"><i class="ri-bar-chart-line"></i></button><button type="button" class="btn s ico btn-line" title="비율" aria-label="비율" onclick="dmMode(this,'d')"><i class="ri-donut-chart-line"></i></button></div><button type="button" class="btn s btn-line ico img-dn" title="차트 이미지 다운로드(PNG)" onclick="chartPng('매체구분별 단말기 설치 현황',this)"><i class="ri-image-line"></i></button></div>
       <div class="card-b"><div class="dm-cat" id="deviceTypeChart"></div></div></div>
@@ -129,7 +129,7 @@
   </div>
   <div class="grid-wrap" id="dvTblWrap" hidden>
     <table class="grid"><caption class="blind">매체별 통계</caption>
-      <colgroup><col><col style="width:100px"><col style="width:140px"><col style="width:130px"><col style="width:100px"><col style="width:84px"></colgroup>
+      <colgroup><col><col class="u-w100px"><col class="u-w140px"><col class="u-w130px"><col class="u-w100px"><col class="u-w84px"></colgroup>
       <thead><tr><th>매체구분</th><th class="sort">설치(대)</th><th class="sort" data-tip="운영 단말기 수 × 운영 시간">전체(기대 수신)</th><th class="sort">연결(건)</th><th class="sort">끊김(건)</th><th class="sort">수신율</th></tr></thead>
       <tbody id="deviceStatTbody">
 <tr><td class="t-l">자동음성통보</td><td class="t-r">580</td><td class="t-r">4,217,760</td><td class="t-r">4,141,885</td><td class="t-r">75,875</td><td class="t-r">98.2%</td></tr>
@@ -147,7 +147,7 @@
 <div id="tabRegion" hidden>
   <div class="col-lr st-lr">
     <div class="card"><div class="card-h"><span id="rgTit2">시도별 설치 현황</span><span class="sub" id="unitSub" hidden>(시도 단위)</span><span class="st-cond" data-cond></span><div class="btns" role="group" aria-label="차트 종류"><button type="button" class="btn s ico btn-pri" title="가로 막대" aria-label="가로 막대" onclick="chMode(this,'RGM','h','drawRg')"><i class="ri-bar-chart-horizontal-line"></i></button><button type="button" class="btn s ico btn-line" title="세로 막대(설치 대수)+선(수신율)" aria-label="세로 막대와 선" onclick="chMode(this,'RGM','v','drawRg')"><i class="ri-bar-chart-line"></i></button><button type="button" class="btn s ico btn-line" title="비율" aria-label="비율" onclick="chMode(this,'RGM','d','drawRg')"><i class="ri-donut-chart-line"></i></button></div><button type="button" class="btn s btn-line ico img-dn" title="차트 이미지 다운로드(PNG)" onclick="chartPng(document.getElementById('rgTit2').textContent,this)"><i class="ri-image-line"></i></button></div>
-      <div class="card-b"><div id="rgChart" style="height:300px"></div><ul class="hbar hv" id="deviceRegionChart" hidden><li title="전남광주통합특별시 — 연결 1,293,904 · 끊김 29,600"><span class="lb">전남광주통합특별시</span><span class="bar"><span class="cl-sc" style="width:97.76%"></span><span class="cl-dg" style="width:2.24%"></span></span><span class="v">연결 <b class="c-sc">97.8%</b> · 끊김 <b class="c-dg">2.2%</b></span></li><li title="대전광역시 — 연결 602,650 · 끊김 8,198"><span class="lb">대전광역시</span><span class="bar"><span class="cl-sc" style="width:98.66%"></span><span class="cl-dg" style="width:1.34%"></span></span><span class="v">연결 <b class="c-sc">98.7%</b> · 끊김 <b class="c-dg">1.3%</b></span></li><li title="울산광역시 — 연결 845,966 · 끊김 12,130"><span class="lb">울산광역시</span><span class="bar"><span class="cl-sc" style="width:98.59%"></span><span class="cl-dg" style="width:1.41%"></span></span><span class="v">연결 <b class="c-sc">98.6%</b> · 끊김 <b class="c-dg">1.4%</b></span></li><li title="경기도 — 연결 2,100,513 · 끊김 37,455"><span class="lb">경기도</span><span class="bar"><span class="cl-sc" style="width:98.25%"></span><span class="cl-dg" style="width:1.75%"></span></span><span class="v">연결 <b class="c-sc">98.2%</b> · 끊김 <b class="c-dg">1.8%</b></span></li><li title="강원특별자치도 — 연결 1,587,563 · 끊김 41,365"><span class="lb">강원특별자치도</span><span class="bar"><span class="cl-sc" style="width:97.46%"></span><span class="cl-dg" style="width:2.54%"></span></span><span class="v">연결 <b class="c-sc">97.5%</b> · 끊김 <b class="c-dg">2.5%</b></span></li><li title="충청남도 — 연결 1,738,677 · 끊김 35,691"><span class="lb">충청남도</span><span class="bar"><span class="cl-sc" style="width:97.99%"></span><span class="cl-dg" style="width:2.01%"></span></span><span class="v">연결 <b class="c-sc">98.0%</b> · 끊김 <b class="c-dg">2.0%</b></span></li><li title="경상북도 — 연결 1,470,674 · 끊김 27,358"><span class="lb">경상북도</span><span class="bar"><span class="cl-sc" style="width:98.17%"></span><span class="cl-dg" style="width:1.83%"></span></span><span class="v">연결 <b class="c-sc">98.2%</b> · 끊김 <b class="c-dg">1.8%</b></span></li><li title="기타 시도 — 연결 715,405 · 끊김 11,795"><span class="lb">기타 시도</span><span class="bar"><span class="cl-sc" style="width:98.38%"></span><span class="cl-dg" style="width:1.62%"></span></span><span class="v">연결 <b class="c-sc">98.4%</b> · 끊김 <b class="c-dg">1.6%</b></span></li></ul></div></div>
+      <div class="card-b"><div class="u-h300px" id="rgChart"></div><ul class="hbar hv" id="deviceRegionChart" hidden><li title="전남광주통합특별시 — 연결 1,293,904 · 끊김 29,600"><span class="lb">전남광주통합특별시</span><span class="bar"><span class="cl-sc" style="width:97.76%"></span><span class="cl-dg" style="width:2.24%"></span></span><span class="v">연결 <b class="c-sc">97.8%</b> · 끊김 <b class="c-dg">2.2%</b></span></li><li title="대전광역시 — 연결 602,650 · 끊김 8,198"><span class="lb">대전광역시</span><span class="bar"><span class="cl-sc" style="width:98.66%"></span><span class="cl-dg" style="width:1.34%"></span></span><span class="v">연결 <b class="c-sc">98.7%</b> · 끊김 <b class="c-dg">1.3%</b></span></li><li title="울산광역시 — 연결 845,966 · 끊김 12,130"><span class="lb">울산광역시</span><span class="bar"><span class="cl-sc" style="width:98.59%"></span><span class="cl-dg" style="width:1.41%"></span></span><span class="v">연결 <b class="c-sc">98.6%</b> · 끊김 <b class="c-dg">1.4%</b></span></li><li title="경기도 — 연결 2,100,513 · 끊김 37,455"><span class="lb">경기도</span><span class="bar"><span class="cl-sc" style="width:98.25%"></span><span class="cl-dg" style="width:1.75%"></span></span><span class="v">연결 <b class="c-sc">98.2%</b> · 끊김 <b class="c-dg">1.8%</b></span></li><li title="강원특별자치도 — 연결 1,587,563 · 끊김 41,365"><span class="lb">강원특별자치도</span><span class="bar"><span class="cl-sc" style="width:97.46%"></span><span class="cl-dg" style="width:2.54%"></span></span><span class="v">연결 <b class="c-sc">97.5%</b> · 끊김 <b class="c-dg">2.5%</b></span></li><li title="충청남도 — 연결 1,738,677 · 끊김 35,691"><span class="lb">충청남도</span><span class="bar"><span class="cl-sc" style="width:97.99%"></span><span class="cl-dg" style="width:2.01%"></span></span><span class="v">연결 <b class="c-sc">98.0%</b> · 끊김 <b class="c-dg">2.0%</b></span></li><li title="경상북도 — 연결 1,470,674 · 끊김 27,358"><span class="lb">경상북도</span><span class="bar"><span class="cl-sc" style="width:98.17%"></span><span class="cl-dg" style="width:1.83%"></span></span><span class="v">연결 <b class="c-sc">98.2%</b> · 끊김 <b class="c-dg">1.8%</b></span></li><li title="기타 시도 — 연결 715,405 · 끊김 11,795"><span class="lb">기타 시도</span><span class="bar"><span class="cl-sc" style="width:98.38%"></span><span class="cl-dg" style="width:1.62%"></span></span><span class="v">연결 <b class="c-sc">98.4%</b> · 끊김 <b class="c-dg">1.6%</b></span></li></ul></div></div>
     <div class="rg-right">
       <div class="sub-head mt0">
         <h3 id="regTit">시도별 통계</h3>
@@ -156,7 +156,7 @@
       <div id="rgTbl">
       <div class="grid-wrap">
         <table class="grid fix-head"><caption class="blind">지역별 통계</caption>
-          <colgroup><col><col style="width:90px"><col style="width:120px"><col style="width:110px"><col style="width:100px"><col style="width:76px"></colgroup>
+          <colgroup><col><col class="u-w90px"><col class="u-w120px"><col class="u-w110px"><col class="u-w100px"><col class="u-w76px"></colgroup>
           <thead><tr><th id="regionColTh">시도</th><th class="sort">설치(대)</th><th class="sort">전체(기대 수신)</th><th class="sort">연결(건)</th><th class="sort">끊김(건)</th><th class="sort asc">수신율</th></tr></thead>
           <tbody id="deviceRegionTbody">
 <tr class="clk" onclick="showRegionDetail(this)"><td class="t-l">전남광주통합특별시</td><td class="t-r">182</td><td class="t-r">1,323,504</td><td class="t-r">1,293,904</td><td class="t-r">29,600</td><td class="t-r">97.8%</td></tr>
@@ -186,7 +186,7 @@
   </div>
   <div class="grid-wrap" id="dsTblWrap" hidden>
     <table class="grid"><caption class="blind">상태별 통계</caption>
-      <colgroup><col style="width:120px"><col><col><col><col style="width:90px"></colgroup>
+      <colgroup><col class="u-w120px"><col><col><col><col class="u-w90px"></colgroup>
       <thead><tr><th class="sort desc" id="dsTh">월</th><th>전체(기대 수신 건수)</th><th>연결(건)</th><th>끊김(건)</th><th>수신율(%)</th></tr></thead>
       <tbody id="deviceStatusTbody">
 <tr><td>2026-10-16</td><td class="t-r">34,848</td><td class="t-r">34,206</td><td class="t-r">642</td><td class="t-r">98.2%</td></tr>
@@ -229,7 +229,7 @@
   <div class="pop-body">
     <table class="tbl">
       <caption class="blind">내정보</caption>
-      <colgroup><col style="width:130px"><col></colgroup>
+      <colgroup><col class="u-w130px"><col></colgroup>
       <tbody>
         <tr><th>사용자 ID</th><td>hong.gd</td></tr>
         <tr><th>사용자명</th><td>홍길동</td></tr>
@@ -254,7 +254,7 @@
     <div class="grid-wrap">
       <table class="grid">
         <caption class="blind">메시지창 유형</caption>
-        <colgroup><col style="width:90px"><col><col style="width:110px"></colgroup>
+        <colgroup><col class="u-w90px"><col><col class="u-w110px"></colgroup>
         <thead><tr><th>구분</th><th>사용 예</th><th>미리보기</th></tr></thead>
         <tbody>
           <tr><td><span class="badge in">안내</span></td><td class="t-l">처리 결과·일반 안내</td><td><button type="button" class="btn s btn-line" onclick="alertMsg('조회 조건에 해당하는 데이터가 없습니다.',{ico:'in'})">alert 안내</button></td></tr>

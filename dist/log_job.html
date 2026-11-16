@@ -111,7 +111,7 @@
         <div class="grid-wrap">
           <table class="grid" id="histBody">
             <caption class="blind">작업이력 목록</caption>
-            <colgroup><col style="width:80px"><col style="width:130px"><col><col><col style="width:110px"><col style="width:170px"></colgroup>
+            <colgroup><col class="u-w80px"><col class="u-w130px"><col><col><col class="u-w110px"><col class="u-w170px"></colgroup>
             <thead><tr><th>번호</th><th class="sort">구분</th><th>내용</th><th>이슈</th><th class="sort">작업자</th><th class="sort desc">작업시각</th></tr></thead>
             <tbody>
               <tr class="clk" onclick="openEdit(0)"><td>47</td><td><span class="badge pri">공통코드 변경</span></td><td class="t-l">[공통코드] job_se_cd 그룹코드 &#x27;작업이력 구분&#x27; 추가 (상세코드 7건)</td><td class="t-l">없음</td><td>홍*동</td><td>2026-10-30 10:15</td></tr>
@@ -154,7 +154,7 @@
   <div class="pop-body">
     <table class="tbl">
       <caption class="blind">내정보</caption>
-      <colgroup><col style="width:130px"><col></colgroup>
+      <colgroup><col class="u-w130px"><col></colgroup>
       <tbody>
         <tr><th>사용자 ID</th><td>hong.gd</td></tr>
         <tr><th>사용자명</th><td>홍길동</td></tr>
@@ -179,7 +179,7 @@
     <div class="grid-wrap">
       <table class="grid">
         <caption class="blind">메시지창 유형</caption>
-        <colgroup><col style="width:90px"><col><col style="width:110px"></colgroup>
+        <colgroup><col class="u-w90px"><col><col class="u-w110px"></colgroup>
         <thead><tr><th>구분</th><th>사용 예</th><th>미리보기</th></tr></thead>
         <tbody>
           <tr><td><span class="badge in">안내</span></td><td class="t-l">처리 결과·일반 안내</td><td><button type="button" class="btn s btn-line" onclick="alertMsg('조회 조건에 해당하는 데이터가 없습니다.',{ico:'in'})">alert 안내</button></td></tr>
@@ -204,7 +204,7 @@
   <div class="pop-body">
     <table class="tbl" id="frm">
       <caption class="blind">작업이력 입력</caption>
-      <colgroup><col style="width:110px"><col></colgroup>
+      <colgroup><col class="u-w110px"><col></colgroup>
       <tbody>
         <tr><th><label for="m_job_se_cd"><span class="req">구분</span></label></th><td><select class="sel" id="m_job_se_cd" name="m_job_se_cd" required data-label="구분"><option value="">선택</option><option>정기점검</option><option>긴급점검</option><option>공통코드 변경</option><option>배치작업</option><option>데이터 동기화</option><option>마이그레이션</option><option>기타</option></select></td></tr>
         <tr><th><span class="req">작업시각</span></th><td><div class="range"><span class="inp-ico inp-date"><input type="date" class="inp" id="m_prcs_dt" name="m_prcs_dt" value="2026-10-30" title="작업시각 일자" required data-label="작업시각"></span><input type="time" class="inp inp-time" id="m_prcs_dt_tm" name="m_prcs_dt_tm" value="14:30" title="작업시각 시각"></div></td></tr>

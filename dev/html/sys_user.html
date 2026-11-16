@@ -29,7 +29,7 @@
     <div class="it"><label for="smsRcptnYn">문자수신</label><select class="sel" id="smsRcptnYn" name="smsRcptnYn"><option value="">전체</option><option value="Y">수신</option><option value="N">미수신</option></select></div>
     <div class="it"><label for="acntLckYn">계정잠금</label><select class="sel" id="acntLckYn" name="acntLckYn"><option value="">전체</option><option value="Y">잠김</option><option value="N">정상</option></select></div>
     <div class="it c2"><label for="searchType">검색어</label>
-      <div class="flex w100"><select class="sel" id="searchType" name="searchType" title="검색 유형" style="width:130px"><option value="userId">사용자 ID</option><option value="userNm" selected>사용자명</option><option value="instNm">기관명</option></select><input class="inp" style="flex:1" id="userSearchKeyword" name="userSearchKeyword" maxlength="100" placeholder="검색어 입력 후 Enter" title="검색어"></div>
+      <div class="flex w100"><select class="sel u-w130px" id="searchType" name="searchType" title="검색 유형"><option value="userId">사용자 ID</option><option value="userNm" selected>사용자명</option><option value="instNm">기관명</option></select><input class="inp u-flex1" id="userSearchKeyword" name="userSearchKeyword" maxlength="100" placeholder="검색어 입력 후 Enter" title="검색어"></div>
     </div>
   </div>
   <div class="ctrl">
@@ -48,7 +48,7 @@
 <div class="grid-wrap">
   <table class="grid" id="userTable">
     <caption class="blind">사용자 목록</caption>
-    <colgroup><col style="width:60px"><col style="width:140px"><col style="width:180px"><col style="width:140px"><col><col style="width:220px"><col style="width:100px"><col style="width:100px"><col style="width:100px"><col style="width:90px"></colgroup>
+    <colgroup><col class="u-w60px"><col class="u-w140px"><col class="u-w180px"><col class="u-w140px"><col><col class="u-w220px"><col class="u-w100px"><col class="u-w100px"><col class="u-w100px"><col class="u-w90px"></colgroup>
     <thead><tr><th>No</th><th class="sort">권한</th><th class="sort">사용자 ID</th><th class="sort">사용자명</th><th class="sort">기관명</th><th>부서</th><th class="sort" title="장애·긴급 알림 문자 수신(NDMS 등록 휴대전화번호로 발송)">문자수신</th><th>사용여부</th><th class="sort" title="아이디 로그인 비밀번호 5회 연속 오류 시 잠김 — 사용자 상세에서 해제">계정잠금</th><th>관리</th></tr></thead>
     <tbody id="userTableBody">
               <tr class="clk" onclick="selRow(this)"><td>10</td><td><span class="badge pri">관리자</span></td><td class="t-l">admin</td><td class="t-l">김*리</td><td class="t-l">행정안전부</td><td class="t-l">재난정보통신과</td><td><span class="badge in" data-sms>수신</span></td><td><span class="badge sc" data-use>사용</span></td><td><span class="badge" data-lck>정상</span></td><td><button type="button" class="btn s btn-line" name="btnUserDetail" onclick="event.stopPropagation();openDetail(this,0)">상세</button></td></tr>

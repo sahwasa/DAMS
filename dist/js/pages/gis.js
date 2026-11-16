@@ -232,7 +232,7 @@ function isDetail(i) {
     i.end +
     '</dd><dt>발령지역</dt><dd>' +
     i.rg.join(', ') +
-    '</dd></dl><table class="grid mini"><colgroup><col><col style="width:44px"><col style="width:44px"><col style="width:44px"><col style="width:50px"></colgroup><thead><tr><th>매체구분</th><th>전체</th><th>성공</th><th>실패</th><th>미수신</th></tr></thead><tbody>' +
+    '</dd></dl><table class="grid mini"><colgroup><col><col class="u-w44px"><col class="u-w44px"><col class="u-w44px"><col class="u-w50px"></colgroup><thead><tr><th>매체구분</th><th>전체</th><th>성공</th><th>실패</th><th>미수신</th></tr></thead><tbody>' +
     i.md
       .map(function (m) {
         return (
@@ -1215,7 +1215,7 @@ MAP.addEventListener('click', function (e) {
       c,
       tipBox(
         '단말기 클러스터 · ' + IS[c.dataset.dcl].sys,
-        '<p style="margin-bottom:6px">겹친 단말기 ' + n + '대의 발령결과 요약</p>' + sumBox([n, r[0], r[1], r[2]])
+        '<p class="u-mb6px">겹친 단말기 ' + n + '대의 발령결과 요약</p>' + sumBox([n, r[0], r[1], r[2]])
       ),
       1
     );

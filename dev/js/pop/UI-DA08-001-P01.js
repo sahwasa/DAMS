@@ -14,7 +14,7 @@ DAMS_POP['UI-DA08-001-P01'] = function (location, dlg) {
   $id('d_rslt').innerHTML =
     rs === '성공'
       ? '<span class="badge sc">전송성공</span>'
-      : '<span class="badge dg">전송실패</span> <span class="c-dg" style="font-size:13px">(' + err + ')</span>';
+      : '<span class="badge dg">전송실패</span> <span class="c-dg u-fs13px">(' + err + ')</span>';
   function resend() {
     confirmMsg('같은 수신자에게 문자를 재발송하시겠습니까?', function () {
       popOk('resend');

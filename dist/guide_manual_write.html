@@ -86,12 +86,12 @@
 <div class="sub-head"><h3 id="fTit">시스템 매뉴얼 등록</h3><div class="btns"><span class="f-msg mt0"><span class="req"></span> 필수 입력 항목</span></div></div>
 <form id="wForm" onsubmit="return false">
 <table class="tbl"><caption class="blind">시스템 매뉴얼 입력 항목</caption>
-  <colgroup><col style="width:160px"><col><col style="width:160px"><col></colgroup>
+  <colgroup><col class="u-w160px"><col><col class="u-w160px"><col></colgroup>
   <tbody>
     <tr class="ed" hidden><th>작성자</th><td class="ro" id="dWriter"></td><th>작성일</th><td class="ro" id="dDate"></td></tr>
-    <tr><th><label for="m_se" class="req">구분</label></th><td colspan="3"><select class="sel" id="m_se" name="m_se" required data-label="구분" style="width:240px"><option value="">선택</option><option>운영자 매뉴얼</option><option>지방정부 매뉴얼</option><option>사용자 매뉴얼</option></select></td></tr>
+    <tr><th><label for="m_se" class="req">구분</label></th><td colspan="3"><select class="sel u-w240px" id="m_se" name="m_se" required data-label="구분"><option value="">선택</option><option>운영자 매뉴얼</option><option>지방정부 매뉴얼</option><option>사용자 매뉴얼</option></select></td></tr>
     <tr><th><label for="m_title" class="req">제목</label></th><td colspan="3"><input class="inp" id="m_title" name="m_title" maxlength="1000" required data-label="제목" placeholder="제목을 입력하세요"></td></tr>
-    <tr><th><label for="m_body" class="req">내용</label></th><td colspan="3"><textarea class="txa" id="m_body" name="m_body" maxlength="4000" required data-label="내용" style="min-height:320px" oninput="cnt(this)" placeholder="내용을 입력하세요"></textarea><span class="f-cnt" style="margin-top:4px"><b>0</b> / 4,000자</span></td></tr>
+    <tr><th><label for="m_body" class="req">내용</label></th><td colspan="3"><textarea class="txa u-minh320px" id="m_body" name="m_body" maxlength="4000" required data-label="내용" oninput="cnt(this)" placeholder="내용을 입력하세요"></textarea><span class="f-cnt u-mt4px"><b>0</b> / 4,000자</span></td></tr>
     <tr><th>첨부파일</th><td colspan="3">
       <div class="inp-file"><input class="inp" id="m_file_nm" title="첨부파일명" placeholder="파일을 선택하세요 (파일당 최대 20MB)" readonly><input type="file" id="m_file" name="m_file" hidden multiple onchange="addFiles(this)"><button type="button" class="btn btn-line" onclick="$i('m_file').click()"><i class="ri-upload-2-line"></i>파일 선택</button></div>
       <ul class="file-list mt8" id="fileList" hidden></ul>
@@ -124,7 +124,7 @@
   <div class="pop-body">
     <table class="tbl">
       <caption class="blind">내정보</caption>
-      <colgroup><col style="width:130px"><col></colgroup>
+      <colgroup><col class="u-w130px"><col></colgroup>
       <tbody>
         <tr><th>사용자 ID</th><td>hong.gd</td></tr>
         <tr><th>사용자명</th><td>홍길동</td></tr>
@@ -149,7 +149,7 @@
     <div class="grid-wrap">
       <table class="grid">
         <caption class="blind">메시지창 유형</caption>
-        <colgroup><col style="width:90px"><col><col style="width:110px"></colgroup>
+        <colgroup><col class="u-w90px"><col><col class="u-w110px"></colgroup>
         <thead><tr><th>구분</th><th>사용 예</th><th>미리보기</th></tr></thead>
         <tbody>
           <tr><td><span class="badge in">안내</span></td><td class="t-l">처리 결과·일반 안내</td><td><button type="button" class="btn s btn-line" onclick="alertMsg('조회 조건에 해당하는 데이터가 없습니다.',{ico:'in'})">alert 안내</button></td></tr>

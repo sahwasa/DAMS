@@ -887,7 +887,7 @@ function drawRegionMap() {
   if (!el.offsetWidth) return;
   if (!el.querySelector('#rgMapEc')) {
     el.innerHTML =
-      '<div id="rgMapEc" style="position:absolute;inset:0"></div><button type="button" class="btn s btn-line rg-all" title="전국 보기" onclick="drillTo(\'sido\')"><i class="ri-fullscreen-exit-line"></i>전국</button><div class="gm-zoom"><button type="button" title="확대" onclick="rgZoom(1.4)">+</button><button type="button" title="축소" onclick="rgZoom(1/1.4)">−</button><button type="button" title="처음 위치" onclick="drawRegionMap()"><i class="ri-focus-3-line"></i></button></div><p class="gm-note">※ 행정구역은 현재 GIS 정보로 표출됩니다. (GIS 최종갱신일자 : ' +
+      '<div class="u-abs u-inset0" id="rgMapEc"></div><button type="button" class="btn s btn-line rg-all" title="전국 보기" onclick="drillTo(\'sido\')"><i class="ri-fullscreen-exit-line"></i>전국</button><div class="gm-zoom"><button type="button" title="확대" onclick="rgZoom(1.4)">+</button><button type="button" title="축소" onclick="rgZoom(1/1.4)">−</button><button type="button" title="처음 위치" onclick="drawRegionMap()"><i class="ri-focus-3-line"></i></button></div><p class="gm-note">※ 행정구역은 현재 GIS 정보로 표출됩니다. (GIS 최종갱신일자 : ' +
       (window.GIS_DATE || '2026-11-03') +
       ')</p>';
   }
@@ -940,7 +940,7 @@ function drawRegionMap() {
         '건 · 성공률 ' +
         (r.tx ? ((r.ok / r.tx) * 100).toFixed(1) : '-') +
         '%' +
-        (sg ? '' : '<br><span style="opacity:.75">클릭: 시군구 보기</span>')
+        (sg ? '' : '<br><span class="u-op75">클릭: 시군구 보기</span>')
       );
     },
     pt = D.map(function (r) {

@@ -67,7 +67,7 @@ DAMS_POP['UI-DA04-001-P02'] = function (location, dlg) {
   $('issInfo').textContent = '(발급일 ' + iss + ')';
   $('docArea').innerHTML =
     '<h2>연계확인서</h2><p class="doc-sub">재난 예·경보 단말 데이터 연계 적합성 확인 · 시스템 자동 생성</p>' +
-    '<table class="tbl"><caption class="blind">연계확인서 발급 정보</caption><colgroup><col style="width:110px"><col><col style="width:110px"><col></colgroup><tbody>' +
+    '<table class="tbl"><caption class="blind">연계확인서 발급 정보</caption><colgroup><col class="u-w110px"><col><col class="u-w110px"><col></colgroup><tbody>' +
     '<tr><th>기관명</th><td>' +
     nm +
     ' (' +

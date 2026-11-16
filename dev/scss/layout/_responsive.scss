@@ -799,7 +799,7 @@
           }
         }
       }
-      .grid-wrap[style*="height"] {
+      .grid-wrap:is([class*="u-h"], [class*="u-minh"], [class*="u-maxh"]) {
         height: auto !important;
         max-height: none !important;
       }

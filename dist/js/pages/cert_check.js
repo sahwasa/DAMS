@@ -25,8 +25,7 @@ function judge(ok, why) {
   if (!S.ran) return '<span class="c-dis">-</span>';
   return ok
     ? '<span class="badge sc">적합</span>'
-    : '<span class="badge dg">부적합</span>' +
-        (why ? ' <span class="c-dg" style="font-size:12px">' + why + '</span>' : '');
+    : '<span class="badge dg">부적합</span>' + (why ? ' <span class="c-dg u-fs12px">' + why + '</span>' : '');
 }
 function badge(id, k, t) {
   var e = $(id);
@@ -36,9 +35,9 @@ function badge(id, k, t) {
 }
 function ttl(n, all, ok, ng) {
   return !S.ran
-    ? n + ' 목록 <small class="c-dis" style="font-weight:400;font-size:13px">(전체 ' + all + '건)</small>'
+    ? n + ' 목록 <small class="c-dis u-fw400 u-fs13px">(전체 ' + all + '건)</small>'
     : n +
-        ' 점검내역 <small style="font-weight:400;font-size:13px">(전체 ' +
+        ' 점검내역 <small class="u-fw400 u-fs13px">(전체 ' +
         all +
         '건 중 <b class="c-sc">적합 ' +
         ok +
@@ -104,8 +103,7 @@ function render() {
     na = D.level !== 'sido';
   $('connNA').hidden = !na;
   $('connTbl').hidden = na;
-  if (na)
-    $('ttlConn').innerHTML = '연결상태 <small class="c-dis" style="font-weight:400;font-size:13px">(해당없음)</small>';
+  if (na) $('ttlConn').innerHTML = '연결상태 <small class="c-dis u-fw400 u-fs13px">(해당없음)</small>';
   else {
     R.conn.forEach(function (r, i) {
       h +=
@@ -390,7 +388,7 @@ function genDoc() {
   };
   $('docArea').innerHTML =
     '<h2>연계확인서</h2><p class="doc-sub">재난 예·경보 단말 데이터 연계 적합성 확인 · 시스템 자동 생성</p>' +
-    '<table class="tbl"><caption class="blind">연계확인서 발급 정보</caption><colgroup><col style="width:110px"><col><col style="width:110px"><col></colgroup><tbody>' +
+    '<table class="tbl"><caption class="blind">연계확인서 발급 정보</caption><colgroup><col class="u-w110px"><col><col class="u-w110px"><col></colgroup><tbody>' +
     '<tr><th>기관명</th><td>' +
     orgName() +
     '</td><th>확인 기간</th><td>' +

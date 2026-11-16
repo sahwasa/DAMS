@@ -9,7 +9,7 @@ function yn(v) {
 }
 function mng(nd, fe, fd) {
   return nd
-    ? '<span style="color:#8e8e8e">-</span>'
+    ? '<span class="u-c-g50">-</span>'
     : '<button type="button" class="btn s btn-line" onclick="event.stopPropagation();' +
         fe +
         '">수정</button> <button type="button" class="btn s btn-line" onclick="event.stopPropagation();' +

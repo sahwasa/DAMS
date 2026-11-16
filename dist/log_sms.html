@@ -113,7 +113,7 @@
         <div class="grid-wrap">
           <table class="grid" id="smsLogTbody">
             <caption class="blind">문자전송 이력 목록</caption>
-            <colgroup><col style="width:70px"><col style="width:100px"><col style="width:150px"><col><col style="width:110px"><col style="width:150px"><col style="width:180px"></colgroup>
+            <colgroup><col class="u-w70px"><col class="u-w100px"><col class="u-w150px"><col><col class="u-w110px"><col class="u-w150px"><col class="u-w180px"></colgroup>
             <thead><tr><th>번호</th><th class="sort">전송결과</th><th class="sort">구분</th><th>내용</th><th class="sort">수신자</th><th>수신번호</th><th class="sort desc">전송시각</th></tr></thead>
             <tbody>
               <tr class="clk" onclick="openDetail(0)"><td>133</td><td><span class="badge sc">성공</span></td><td>자원오류</td><td class="t-l">[자원경고] DB서버 디스크 사용률 85% 초과</td><td>김*리</td><td>010-****-5678</td><td>2026-10-30 09:12:40</td></tr>
@@ -156,7 +156,7 @@
   <div class="pop-body">
     <table class="tbl">
       <caption class="blind">내정보</caption>
-      <colgroup><col style="width:130px"><col></colgroup>
+      <colgroup><col class="u-w130px"><col></colgroup>
       <tbody>
         <tr><th>사용자 ID</th><td>hong.gd</td></tr>
         <tr><th>사용자명</th><td>홍길동</td></tr>
@@ -181,7 +181,7 @@
     <div class="grid-wrap">
       <table class="grid">
         <caption class="blind">메시지창 유형</caption>
-        <colgroup><col style="width:90px"><col><col style="width:110px"></colgroup>
+        <colgroup><col class="u-w90px"><col><col class="u-w110px"></colgroup>
         <thead><tr><th>구분</th><th>사용 예</th><th>미리보기</th></tr></thead>
         <tbody>
           <tr><td><span class="badge in">안내</span></td><td class="t-l">처리 결과·일반 안내</td><td><button type="button" class="btn s btn-line" onclick="alertMsg('조회 조건에 해당하는 데이터가 없습니다.',{ico:'in'})">alert 안내</button></td></tr>
@@ -206,17 +206,17 @@
   <div class="pop-body">
     <table class="tbl">
       <caption class="blind">문자 전송 상세</caption>
-      <colgroup><col style="width:110px"><col></colgroup>
+      <colgroup><col class="u-w110px"><col></colgroup>
       <tbody>
         <tr><th>수신자</th><td id="d_rcvr_nm">김*리</td></tr>
         <tr><th>수신번호</th><td id="d_rcvr">010-****-5678</td></tr>
         <tr><th>전송시각</th><td id="d_trsm_dt">2026-10-27 16:50:31</td></tr>
         <tr><th>메시지 구분</th><td id="d_se">자원오류</td></tr>
         <tr><th>전송결과</th><td id="d_rslt"></td></tr>
-        <tr><th>내용</th><td><div class="txa" id="d_cn" style="min-height:96px;background:#f8f8f8;white-space:pre-wrap">[시스템 장애] 충남 아산시 연계서버 응답지연(평균 12초)</div></td></tr>
+        <tr><th>내용</th><td><div class="txa u-minh96px u-bg-g5 u-pre" id="d_cn">[시스템 장애] 충남 아산시 연계서버 응답지연(평균 12초)</div></td></tr>
       </tbody>
     </table>
-    <p class="f-msg mt8" style="color:#707070"><i class="ri-information-line"></i> 문자 발송은 NURI2 서비스로 처리됩니다. 수신자명·수신번호는 가운데를 가려 표시하며, 재발송 시 같은 수신자에게 같은 내용을 다시 전송합니다.</p>
+    <p class="f-msg mt8 u-c-g60"><i class="ri-information-line"></i> 문자 발송은 NURI2 서비스로 처리됩니다. 수신자명·수신번호는 가운데를 가려 표시하며, 재발송 시 같은 수신자에게 같은 내용을 다시 전송합니다.</p>
   </div>
   <div class="pop-foot">
     <button type="button" class="btn btn-line" id="btnClose" onclick="closePop()">닫기</button>

@@ -87,18 +87,18 @@
         </div>
 
         <!-- ===== 업무영역 (화면별 교체) ===== -->
-<div class="col-lr" style="grid-template-columns:minmax(0,36fr) minmax(0,64fr)">
+<div class="col-lr u-cols-36-64">
   <div>
     <div class="sub-head mt0"><h3>사용자 권한 그룹</h3><span class="cnt">전체<b>6</b>건</span></div>
-    <div class="grid-wrap" style="max-height:420px">
+    <div class="grid-wrap u-maxh420px">
       <table class="grid fix-head">
         <caption class="blind">사용자 권한 그룹</caption>
-        <colgroup><col style="width:116px"><col style="width:112px"><col><col style="width:76px"></colgroup>
+        <colgroup><col class="u-w116px"><col class="u-w112px"><col><col class="u-w76px"></colgroup>
         <thead><tr><th>그룹</th><th>권한코드</th><th>설명</th><th>사용자 수</th></tr></thead>
         <tbody id="authTableBody"></tbody>
       </table>
     </div>
-    <div class="help-box mt16" style="margin-bottom:0"><i class="ri-information-line"></i><span>권한코드는 NDMS에서 연계하며, 그룹(관리자·운영자·사용자)은 공통코드 <b>user_authrt_cd</b>에서 관리합니다. <b>연계확인서</b>는 새 창 화면으로, 권한이 있는 사용자에게만 GNB [연계확인서 발급] 버튼이 표시됩니다.</span></div>
+    <div class="help-box mt16 u-mb0"><i class="ri-information-line"></i><span>권한코드는 NDMS에서 연계하며, 그룹(관리자·운영자·사용자)은 공통코드 <b>user_authrt_cd</b>에서 관리합니다. <b>연계확인서</b>는 새 창 화면으로, 권한이 있는 사용자에게만 GNB [연계확인서 발급] 버튼이 표시됩니다.</span></div>
   </div>
   <div>
     <div class="sub-head mt0"><h3>메뉴접근 권한</h3><span class="badge pri" id="authTit">관리자 · DAMS_ADM</span><span class="cnt">접근 메뉴<b id="menuCnt">0</b>/ <span id="menuTot">28</span>개</span>
@@ -132,7 +132,7 @@
   <div class="pop-body">
     <table class="tbl">
       <caption class="blind">내정보</caption>
-      <colgroup><col style="width:130px"><col></colgroup>
+      <colgroup><col class="u-w130px"><col></colgroup>
       <tbody>
         <tr><th>사용자 ID</th><td>hong.gd</td></tr>
         <tr><th>사용자명</th><td>홍길동</td></tr>
@@ -157,7 +157,7 @@
     <div class="grid-wrap">
       <table class="grid">
         <caption class="blind">메시지창 유형</caption>
-        <colgroup><col style="width:90px"><col><col style="width:110px"></colgroup>
+        <colgroup><col class="u-w90px"><col><col class="u-w110px"></colgroup>
         <thead><tr><th>구분</th><th>사용 예</th><th>미리보기</th></tr></thead>
         <tbody>
           <tr><td><span class="badge in">안내</span></td><td class="t-l">처리 결과·일반 안내</td><td><button type="button" class="btn s btn-line" onclick="alertMsg('조회 조건에 해당하는 데이터가 없습니다.',{ico:'in'})">alert 안내</button></td></tr>

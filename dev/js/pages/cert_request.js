@@ -830,7 +830,7 @@ function act(r) {
     u = 'cert_check.html?org=' + r[6];
   if (r[0] === '부적합' && ntAft(r) < MIN_NT)
     return (
-      '<span class="flex" style="justify-content:center;gap:4px"><span title="최종 점검일(' +
+      '<span class="flex u-jc-center u-gap4px"><span title="최종 점검일(' +
       r[4] +
       ') 이후 통보문 ' +
       ntAft(r) +
@@ -842,7 +842,7 @@ function act(r) {
     );
   if (r[0] === '발급대기' && ntOf(r) < MIN_NT)
     return (
-      '<span class="flex" style="justify-content:center;gap:4px"><span title="최근 2주 통보문 ' +
+      '<span class="flex u-jc-center u-gap4px"><span title="최근 2주 통보문 ' +
       ntOf(r) +
       '건 — ' +
       MIN_NT +
@@ -856,7 +856,7 @@ function act(r) {
     );
   if (r[10] === 'via')
     return (
-      '<span class="flex" style="justify-content:center;gap:4px"><button type="button" class="btn s btn-line" title="' +
+      '<span class="flex u-jc-center u-gap4px"><button type="button" class="btn s btn-line" title="' +
       r[1] +
       ' 연계확인서로 통합 발급" onclick="openPop(\'pop/UI-DA09-001-P01.html?' +
       histQ(r) +
@@ -868,7 +868,7 @@ function act(r) {
     return '<button type="button" class="btn s btn-pri" onclick="location.href=\'' + u + '\'">점검시작</button>';
   if (r[0] === '부적합')
     return (
-      '<span class="flex" style="justify-content:center;gap:4px"><button type="button" class="btn s btn-dg-o" onclick="reCheck(\'' +
+      '<span class="flex u-jc-center u-gap4px"><button type="button" class="btn s btn-dg-o" onclick="reCheck(\'' +
       u +
       "','" +
       nm +
@@ -877,7 +877,7 @@ function act(r) {
       '</span>'
     );
   return (
-    '<span class="flex" style="justify-content:center;gap:4px"><button type="button" class="btn s btn-line" onclick="openPop(\'pop/UI-DA09-001-P01.html?' +
+    '<span class="flex u-jc-center u-gap4px"><button type="button" class="btn s btn-line" onclick="openPop(\'pop/UI-DA09-001-P01.html?' +
     histQ(r) +
     '\',760)">상세보기</button>' +
     okBtn(r) +

@@ -23,7 +23,7 @@
         </div>
 
         <!-- ===== 업무영역 (화면별 교체) ===== -->
-        <div class="col-lr" style="grid-template-columns:260px minmax(0,1fr)">
+        <div class="col-lr u-cols-260px-1">
           <!-- ① 연계기관 트리 -->
           <div>
             <div class="sub-head mt0 tree-hd"><h3>연계기관</h3><div class="btns"><label class="chk" title="미연계 기관·지역까지 전체 표시"><input type="checkbox" id="ncShow" onchange="ncView(this.checked)"><span>전체</span></label><button type="button" class="btn s btn-line" id="treeTgl" onclick="treeTgl()"><i class="ri-expand-up-down-line"></i>전체 펼침</button></div></div>
@@ -54,7 +54,7 @@
             <form class="sch-box">
               <div class="rows">
                 <div class="it c3"><span class="lb">설치지역</span>
-                  <div class="flex w100"><select class="sel" style="flex:1" id="addr1" name="addr1" title="시도" onchange="loadAddress(2,this.value)"><option value="">시도 전체</option><option value="31">울산광역시</option><option value="41">경기도</option><option value="44">충청남도</option></select><select class="sel" style="flex:1" id="addr2" name="addr2" title="시군구" onchange="loadAddress(3,this.value)"><option value="">시군구 전체</option></select><select class="sel" style="flex:1" id="addr3" name="addr3" title="읍면동"><option value="">읍면동 전체</option></select></div>
+                  <div class="flex w100"><select class="sel u-flex1" id="addr1" name="addr1" title="시도" onchange="loadAddress(2,this.value)"><option value="">시도 전체</option><option value="31">울산광역시</option><option value="41">경기도</option><option value="44">충청남도</option></select><select class="sel u-flex1" id="addr2" name="addr2" title="시군구" onchange="loadAddress(3,this.value)"><option value="">시군구 전체</option></select><select class="sel u-flex1" id="addr3" name="addr3" title="읍면동"><option value="">읍면동 전체</option></select></div>
                 </div>
                 <div class="it"><label for="dev_type">매체구분</label><select class="sel" id="dev_type" name="dev_type"><option value="">전체</option><option>자동음성통보</option><option>재해문자전광판</option><option>마을방송</option><option>자동우량경보</option></select></div>
                 <div class="it c2"><label for="termKeyword">단말기명</label><input class="inp" id="termKeyword" name="termKeyword" maxlength="100" placeholder="단말기명 입력"></div>

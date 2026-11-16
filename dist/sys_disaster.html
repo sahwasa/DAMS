@@ -88,12 +88,12 @@
 
         <!-- ===== 업무영역 (화면별 교체) ===== -->
 <div class="help-box"><i class="ri-information-line"></i><span>대분류·중분류는 공통코드(NDMS 표준)로 <b>사용여부만</b> 변경할 수 있습니다.</span></div>
-<div class="col3" style="grid-template-columns:minmax(0,30fr) minmax(0,34fr) minmax(0,36fr)">
+<div class="col3 u-cols-30-34-36">
   <div>
     <div class="sub-head mt0"><h3>재난코드 대분류</h3><span class="cnt">전체<b id="lclasCnt">0</b>건</span></div>
-    <div class="grid-wrap" style="height:544px">
+    <div class="grid-wrap u-h544px">
       <table class="grid fix-head"><caption class="blind">재난코드 대분류 그룹</caption>
-        <colgroup><col style="width:62px"><col style="width:96px"><col><col style="width:76px"></colgroup>
+        <colgroup><col class="u-w62px"><col class="u-w96px"><col><col class="u-w76px"></colgroup>
         <thead><tr><th>코드</th><th>코드명</th><th>설명</th><th>사용여부</th></tr></thead>
         <tbody id="lclasTableBody"></tbody>
       </table>
@@ -101,9 +101,9 @@
   </div>
   <div>
     <div class="sub-head mt0"><h3 id="mclasTit">재난코드 중분류</h3><span class="cnt">전체<b id="mclasCnt">0</b>건</span></div>
-    <div class="grid-wrap" style="height:544px">
+    <div class="grid-wrap u-h544px">
       <table class="grid fix-head"><caption class="blind">재난코드 중분류 그룹</caption>
-        <colgroup><col style="width:80px"><col style="width:110px"><col><col style="width:76px"></colgroup>
+        <colgroup><col class="u-w80px"><col class="u-w110px"><col><col class="u-w76px"></colgroup>
         <thead><tr><th>코드</th><th>코드명</th><th>설명</th><th>사용여부</th></tr></thead>
         <tbody id="mclasTableBody"></tbody>
       </table>
@@ -113,9 +113,9 @@
     <div class="sub-head mt0"><h3 id="dsstrTit">상세 재난코드</h3><span class="cnt">전체<b id="dsstrCnt">0</b>건</span>
       <div class="btns"><button type="button" class="btn s btn-crud" id="btnOpenDisasterAdd" onclick="openModal()"><i class="ri-add-line"></i>추가</button></div>
     </div>
-    <div class="grid-wrap" style="height:544px">
+    <div class="grid-wrap u-h544px">
       <table class="grid fix-head"><caption class="blind">상세 재난코드 목록</caption>
-        <colgroup><col style="width:70px"><col><col style="width:76px"><col style="width:76px"></colgroup>
+        <colgroup><col class="u-w70px"><col><col class="u-w76px"><col class="u-w76px"></colgroup>
         <thead><tr><th class="sort asc">코드</th><th class="sort">코드명</th><th>사용여부</th><th>관리</th></tr></thead>
         <tbody id="disasterTableBody"></tbody>
       </table>
@@ -142,7 +142,7 @@
   <div class="pop-body">
     <table class="tbl">
       <caption class="blind">내정보</caption>
-      <colgroup><col style="width:130px"><col></colgroup>
+      <colgroup><col class="u-w130px"><col></colgroup>
       <tbody>
         <tr><th>사용자 ID</th><td>hong.gd</td></tr>
         <tr><th>사용자명</th><td>홍길동</td></tr>
@@ -167,7 +167,7 @@
     <div class="grid-wrap">
       <table class="grid">
         <caption class="blind">메시지창 유형</caption>
-        <colgroup><col style="width:90px"><col><col style="width:110px"></colgroup>
+        <colgroup><col class="u-w90px"><col><col class="u-w110px"></colgroup>
         <thead><tr><th>구분</th><th>사용 예</th><th>미리보기</th></tr></thead>
         <tbody>
           <tr><td><span class="badge in">안내</span></td><td class="t-l">처리 결과·일반 안내</td><td><button type="button" class="btn s btn-line" onclick="alertMsg('조회 조건에 해당하는 데이터가 없습니다.',{ico:'in'})">alert 안내</button></td></tr>
@@ -192,11 +192,11 @@
   <div class="pop-body">
     <table class="tbl">
       <caption class="blind">상세 재난코드 정보 입력</caption>
-      <colgroup><col style="width:120px"><col></colgroup>
+      <colgroup><col class="u-w120px"><col></colgroup>
       <tbody>
         <tr><th><span class="req">대분류코드</span></th><td class="ro" id="m_dsstr_lclas">T1 (자연재난)</td></tr>
         <tr><th><span class="req">중분류코드</span></th><td class="ro" id="m_dsstr_mclas">T10102 (호우)</td></tr>
-        <tr><th><label for="m_dsstr_code" class="req">코드</label></th><td><input class="inp" id="m_dsstr_code" name="m_dsstr_code" maxlength="15" placeholder="예: RAA" required data-label="코드" style="text-transform:uppercase"><span class="f-msg" id="cdMsg">영문 대문자·숫자 15자 이내, 중복 불가</span></td></tr>
+        <tr><th><label for="m_dsstr_code" class="req">코드</label></th><td><input class="inp u-upper" id="m_dsstr_code" name="m_dsstr_code" maxlength="15" placeholder="예: RAA" required data-label="코드"><span class="f-msg" id="cdMsg">영문 대문자·숫자 15자 이내, 중복 불가</span></td></tr>
         <tr><th><label for="m_dsstr_name" class="req">코드명</label></th><td><input class="inp" id="m_dsstr_name" name="m_dsstr_name" maxlength="100" placeholder="예: 호우주의보" required data-label="코드명"></td></tr>
         <tr><th><span class="req">사용여부</span></th><td><label class="tgl"><input type="checkbox" id="m_dsstr_use" name="m_dsstr_use" checked onchange="this.nextElementSibling.textContent=this.checked?'사용':'미사용'"><span>사용</span></label></td></tr>
       </tbody>

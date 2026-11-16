@@ -84,7 +84,7 @@
         </div>
 
         <!-- ===== 업무영역 (화면별 교체) ===== -->
-        <div class="col-lr" style="grid-template-columns:260px minmax(0,1fr)">
+        <div class="col-lr u-cols-260px-1">
           <!-- ① 연계기관 트리 -->
           <div>
             <div class="sub-head mt0 tree-hd"><h3>연계기관</h3><div class="btns"><label class="chk" title="미연계 기관·지역까지 전체 표시"><input type="checkbox" id="ncShow" onchange="ncView(this.checked)"><span>전체</span></label><button type="button" class="btn s btn-line" id="treeTgl" onclick="treeTgl()"><i class="ri-expand-up-down-line"></i>전체 펼침</button></div></div>
@@ -115,7 +115,7 @@
             <form class="sch-box">
               <div class="rows">
                 <div class="it c3"><span class="lb">설치지역</span>
-                  <div class="flex w100"><select class="sel" style="flex:1" id="addr1" name="addr1" title="시도" onchange="loadAddress(2,this.value)"><option value="">시도 전체</option><option value="31">울산광역시</option><option value="41">경기도</option><option value="44">충청남도</option></select><select class="sel" style="flex:1" id="addr2" name="addr2" title="시군구" onchange="loadAddress(3,this.value)"><option value="">시군구 전체</option></select><select class="sel" style="flex:1" id="addr3" name="addr3" title="읍면동"><option value="">읍면동 전체</option></select></div>
+                  <div class="flex w100"><select class="sel u-flex1" id="addr1" name="addr1" title="시도" onchange="loadAddress(2,this.value)"><option value="">시도 전체</option><option value="31">울산광역시</option><option value="41">경기도</option><option value="44">충청남도</option></select><select class="sel u-flex1" id="addr2" name="addr2" title="시군구" onchange="loadAddress(3,this.value)"><option value="">시군구 전체</option></select><select class="sel u-flex1" id="addr3" name="addr3" title="읍면동"><option value="">읍면동 전체</option></select></div>
                 </div>
                 <div class="it"><label for="dev_type">매체구분</label><select class="sel" id="dev_type" name="dev_type"><option value="">전체</option><option>자동음성통보</option><option>재해문자전광판</option><option>마을방송</option><option>자동우량경보</option></select></div>
                 <div class="it c2"><label for="termKeyword">단말기명</label><input class="inp" id="termKeyword" name="termKeyword" maxlength="100" placeholder="단말기명 입력"></div>
@@ -192,7 +192,7 @@
   <div class="pop-body">
     <table class="tbl">
       <caption class="blind">내정보</caption>
-      <colgroup><col style="width:130px"><col></colgroup>
+      <colgroup><col class="u-w130px"><col></colgroup>
       <tbody>
         <tr><th>사용자 ID</th><td>hong.gd</td></tr>
         <tr><th>사용자명</th><td>홍길동</td></tr>
@@ -217,7 +217,7 @@
     <div class="grid-wrap">
       <table class="grid">
         <caption class="blind">메시지창 유형</caption>
-        <colgroup><col style="width:90px"><col><col style="width:110px"></colgroup>
+        <colgroup><col class="u-w90px"><col><col class="u-w110px"></colgroup>
         <thead><tr><th>구분</th><th>사용 예</th><th>미리보기</th></tr></thead>
         <tbody>
           <tr><td><span class="badge in">안내</span></td><td class="t-l">처리 결과·일반 안내</td><td><button type="button" class="btn s btn-line" onclick="alertMsg('조회 조건에 해당하는 데이터가 없습니다.',{ico:'in'})">alert 안내</button></td></tr>
@@ -243,7 +243,7 @@
     <div class="sub-head mt0"><h3 class="h4">기본정보</h3><span class="badge" id="dv_status_b"></span><span class="cnt ml-auto" id="spec_sent">제원정보 수신시각 : 2026-10-30 09:00:05</span></div>
     <table class="tbl">
       <caption class="blind">기본정보</caption>
-      <colgroup><col style="width:130px"><col><col style="width:130px"><col></colgroup>
+      <colgroup><col class="u-w130px"><col><col class="u-w130px"><col></colgroup>
       <tbody>
         <tr><th>예경보시스템명</th><td id="server_name">청주시 마을방송 시스템</td><th>서버 IP</th><td id="server_ip">10.43.113.21</td></tr>
         <tr><th>단말기명</th><td id="device_name">청주 흥덕구 1호기</td><th>고유번호</th><td id="device_id">CB-VB-0421</td></tr>
@@ -257,7 +257,7 @@
     <div class="sub-head"><h3 class="h4">사양정보</h3></div>
     <table class="tbl">
       <caption class="blind">사양정보</caption>
-      <colgroup><col style="width:130px"><col><col style="width:130px"><col><col style="width:130px"><col></colgroup>
+      <colgroup><col class="u-w130px"><col><col class="u-w130px"><col><col class="u-w130px"><col></colgroup>
       <tbody>
         <tr><th>모델명</th><td id="device_model">SP-2000A</td><th>제조사</th><td id="device_company">한국음향</td><th>출력방식</th><td id="device_output">스피커</td></tr>
         <tr><th>최소 허용거리(m)</th><td id="device_allow_dist_min">0</td><th>최대 허용거리(m)</th><td id="device_allow_dist_max">87</td><th>가청범위(m)</th><td id="device_audible">0 ~ 80</td></tr>
@@ -267,7 +267,7 @@
     <div class="sub-head"><h3 class="h4">상태정보</h3><span class="cnt">1시간 주기 수신</span></div>
     <table class="tbl">
       <caption class="blind">상태정보</caption>
-      <colgroup><col style="width:130px"><col><col style="width:130px"><col></colgroup>
+      <colgroup><col class="u-w130px"><col><col class="u-w130px"><col></colgroup>
       <tbody>
         <tr><th>상태</th><td id="device_status"><span class="badge sc">연결</span></td><th>상태정보 수신시각</th><td id="status_sent">2026-10-30 15:00:12</td></tr>
         <tr><th>끊김 사유</th><td colspan="3" id="status_note">-</td></tr>

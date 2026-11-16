@@ -66,7 +66,7 @@ DAMS_POP['UI-DA09-002-P02'] = function (location, dlg) {
     $('rH1').textContent = '연계 점검 결과서(적합)';
     $('rVer').className = 'verdict ok';
     $('rVer').innerHTML =
-      '<i class="ri-checkbox-circle-line" style="font-size:20px"></i><span>총괄판정 <b>적합</b> — 모든 점검 항목이 기준을 충족하여 연계확인서를 발급하였습니다' +
+      '<i class="ri-checkbox-circle-line u-fs20px"></i><span>총괄판정 <b>적합</b> — 모든 점검 항목이 기준을 충족하여 연계확인서를 발급하였습니다' +
       (Q.get('iss') ? ' (발급일자 ' + esc(Q.get('iss')) + ')' : '') +
       '.</span>';
     $('ngArea').hidden = true;

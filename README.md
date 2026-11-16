@@ -104,7 +104,10 @@ dev/
 팝업      .pop.w760 > .pop-head(h2#popTit .close) + .pop-body + .pop-foot   메시지창 .pop.msg
 기타      .help-box(.wh .dg .wn .sc, details.help-box) .badge(.pri .sec .dg .wn .sc .in + .f 채움 .r 둥근) .card .kpi .legend .blind(화면 숨김·낭독)
           .t-l .t-c .t-r(정렬) .c-pri .c-dg .c-wn .c-sc .c-dis(보조 글자) .lk-u(본문 링크 밑줄) .flex .col2 .col-lr
+유틸리티 u-*(components/_utils.scss) 값 하나짜리 배치 조정 — 이름 = 속성+값: u-w100px(width) u-w24pct u-flex1 u-flex140px u-flex-none
+          u-mt8px u-mb0 u-ml8px u-mlauto u-h400px u-minh320px u-maxh420px u-cols-5-5(격자 5:5) u-jc-center u-bg-sc(토큰 이름) …  (!important)
 ```
+- HTML에는 인라인 `style`을 쓰지 않는다. 표 열 폭은 `<col class="u-w120px">`. 남은 인라인 style은 **데이터 값**(막대 비율 `width:97.76%`, 게이지 `conic-gradient` 비율, JS가 값으로 만드는 위치·색)뿐이며 개발 시 서버 값으로 채운다.
 - 색·크기는 `scss/abstracts/_tokens.scss` 토큰(`$pri` `$sec` `$g0~$g90` `$dg` `$wn` `$sc` `$in`…)을 쓴다. 화면·팝업 SCSS의 색도 토큰과 같은 값은 토큰 변수로 바꿔 두었다(토큰에 없는 색만 숫자).
 - 반응형: PC ≥1280(기준 1600×900, 가로 스크롤 없음) · 태블릿 768~1279 · 모바일 ≤767 — `layout/_responsive.scss`. 팝업 안 반응형 규칙은 `html:not(.pc-pop)` 접두.
 

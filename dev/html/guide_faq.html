@@ -25,7 +25,7 @@
         <!-- ===== 업무영역 (화면별 교체) ===== -->
 <form class="sch-box">
   <div class="rows">
-    <div class="it c2"><label for="searchType">검색어</label><select class="sel" id="searchType" name="searchType" title="검색 유형" style="flex:0 0 140px"><option value="title">질문</option><option value="titleCn">질문+답변</option><option value="writer">작성자</option></select><input class="inp" id="searchKeyword" name="searchKeyword" maxlength="100" placeholder="검색어를 입력하세요"></div>
+    <div class="it c2"><label for="searchType">검색어</label><select class="sel u-flex140px" id="searchType" name="searchType" title="검색 유형"><option value="title">질문</option><option value="titleCn">질문+답변</option><option value="writer">작성자</option></select><input class="inp" id="searchKeyword" name="searchKeyword" maxlength="100" placeholder="검색어를 입력하세요"></div>
   </div>
   <div class="ctrl">
     <button type="reset" class="btn btn-rst"><i class="ri-refresh-line"></i>초기화</button>
@@ -42,7 +42,7 @@
 </div>
 <div class="grid-wrap">
   <table class="grid faq"><caption class="blind">FAQ 목록</caption>
-    <colgroup><col style="width:70px"><col><col style="width:120px"><col style="width:130px"><col style="width:100px"><col style="width:80px"><col style="width:44px"></colgroup>
+    <colgroup><col class="u-w70px"><col><col class="u-w120px"><col class="u-w130px"><col class="u-w100px"><col class="u-w80px"><col class="u-w44px"></colgroup>
     <thead><tr><th>번호</th><th>질문</th><th>작성자</th><th class="sort desc">등록일</th><th class="sort">조회수</th><th>관리</th><th><span class="blind">펼침</span></th></tr></thead>
     <tbody id="listBody">
 <tr class="clk" data-sn="27" data-t="인증서 로그인이 되지 않을 때는 어떻게 해야 하나요?" data-cn="공무원 로그인은 국가재난관리정보시스템(NDMS)에 등록한 GPKI 인증서로 합니다.

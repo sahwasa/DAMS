@@ -67,7 +67,7 @@
   .sch-box .rows.r1 {
     column-gap: 20px;
   }
-  .sch-box .rows.r1 .flex > .sel[style*=flex] {
+  .sch-box .rows.r1 .flex > .sel[class*=u-flex] {
     flex: 0 0 120px !important;
   }
   .sch-box .rows.r1 > .it > #selSituation {

@@ -170,7 +170,7 @@ function rowHtml(o) {
     '">' +
     o[8] +
     '</span></td>' +
-    '<td><span class="op-btns flex" style="justify-content:center"><button type="button" class="btn s btn-line" name="btnDestEdit" onclick="openDest(\'edit\',\'' +
+    '<td><span class="op-btns flex u-jc-center"><button type="button" class="btn s btn-line" name="btnDestEdit" onclick="openDest(\'edit\',\'' +
     q +
     '\')"><i class="ri-edit-line"></i>수정</button><button type="button" class="btn s btn-dg-o" name="btnDestDelete" onclick="delDest(this)"><i class="ri-delete-bin-line"></i>삭제</button></span><button type="button" class="btn s btn-line usr-btn" onclick="openDest(\'view\',\'' +
     q +

@@ -1,0 +1,342 @@
+@use "../abstracts" as *;
+// 유틸리티 클래스(u-*) — 목업의 인라인 style을 퍼블 변환 때 옮긴 것. 이름 = 속성+값(u-w100px = width:100px, u-cols-5-5 = 5:5 격자)
+// 인라인 style처럼 다른 규칙보다 우선하도록 !important. 새로 쓸 때도 값 하나짜리 배치 조정에만 쓰고, 묶음 모양은 컴포넌트 클래스로.
+.u-abs {
+  position: absolute !important;
+}
+.u-bg-fff3c4 {
+  background: #fff3c4 !important;
+}
+.u-bg-g5 {
+  background: $g5 !important;
+}
+.u-bg-sc {
+  background: $sc !important;
+}
+.u-c-g50 {
+  color: $g50 !important;
+}
+.u-c-g60 {
+  color: $g60 !important;
+}
+.u-cols-1-1-auto {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto !important;
+}
+.u-cols-5-5 {
+  grid-template-columns: minmax(0, 5fr) minmax(0, 5fr) !important;
+}
+.u-cols-6-4 {
+  grid-template-columns: minmax(0, 6fr) minmax(0, 4fr) !important;
+}
+.u-cols-30-34-36 {
+  grid-template-columns: minmax(0, 30fr) minmax(0, 34fr) minmax(0, 36fr) !important;
+}
+.u-cols-36-64 {
+  grid-template-columns: minmax(0, 36fr) minmax(0, 64fr) !important;
+}
+.u-cols-60-40 {
+  grid-template-columns: minmax(0, 60fr) minmax(0, 40fr) !important;
+}
+.u-cols-260px-1 {
+  grid-template-columns: 260px minmax(0, 1fr) !important;
+}
+.u-flex1 {
+  flex: 1 !important;
+}
+.u-flex100px {
+  flex: 0 0 100px !important;
+}
+.u-flex140px {
+  flex: 0 0 140px !important;
+}
+.u-flex320px {
+  flex: 0 0 320px !important;
+}
+.u-flex-none {
+  flex: 0 0 auto !important;
+}
+.u-fs12px {
+  font-size: 12px !important;
+}
+.u-fs13px {
+  font-size: 13px !important;
+}
+.u-fs20px {
+  font-size: 20px !important;
+}
+.u-fst-normal {
+  font-style: normal !important;
+}
+.u-fw400 {
+  font-weight: 400 !important;
+}
+.u-fw600 {
+  font-weight: 600 !important;
+}
+.u-gap4px {
+  gap: 4px !important;
+}
+.u-gap12px {
+  gap: 12px !important;
+}
+.u-h7px {
+  height: 7px !important;
+}
+.u-h300px {
+  height: 300px !important;
+}
+.u-h400px {
+  height: 400px !important;
+}
+.u-h476px {
+  height: 476px !important;
+}
+.u-h544px {
+  height: 544px !important;
+}
+.u-h-fill38 {
+  height: calc(100% - 38px) !important;
+}
+.u-iblock {
+  display: inline-block !important;
+}
+.u-inline {
+  display: inline !important;
+}
+.u-inset0 {
+  inset: 0 !important;
+}
+.u-jc-center {
+  justify-content: center !important;
+}
+.u-mauto-l {
+  margin: 0 0 0 auto !important;
+}
+.u-maxh420px {
+  max-height: 420px !important;
+}
+.u-mb0 {
+  margin-bottom: 0 !important;
+}
+.u-mb6px {
+  margin-bottom: 6px !important;
+}
+.u-minh0 {
+  min-height: 0 !important;
+}
+.u-minh80px {
+  min-height: 80px !important;
+}
+.u-minh96px {
+  min-height: 96px !important;
+}
+.u-minh300px {
+  min-height: 300px !important;
+}
+.u-minh320px {
+  min-height: 320px !important;
+}
+.u-minw0 {
+  min-width: 0 !important;
+}
+.u-ml4px {
+  margin-left: 4px !important;
+}
+.u-ml8px {
+  margin-left: 8px !important;
+}
+.u-ml12px {
+  margin-left: 12px !important;
+}
+.u-mlauto {
+  margin-left: auto !important;
+}
+.u-mt4px {
+  margin-top: 4px !important;
+}
+.u-mt8px {
+  margin-top: 8px !important;
+}
+.u-mx8px {
+  margin: 0 8px !important;
+}
+.u-op75 {
+  opacity: 0.75 !important;
+}
+.u-pre {
+  white-space: pre-wrap !important;
+}
+.u-round {
+  border-radius: 50% !important;
+}
+.u-upper {
+  text-transform: uppercase !important;
+}
+.u-w7px {
+  width: 7px !important;
+}
+.u-w14pct {
+  width: 14% !important;
+}
+.u-w17pct {
+  width: 17% !important;
+}
+.u-w20pct {
+  width: 20% !important;
+}
+.u-w21pct {
+  width: 21% !important;
+}
+.u-w22pct {
+  width: 22% !important;
+}
+.u-w24pct {
+  width: 24% !important;
+}
+.u-w35pct {
+  width: 35% !important;
+}
+.u-w44px {
+  width: 44px !important;
+}
+.u-w46px {
+  width: 46px !important;
+}
+.u-w48px {
+  width: 48px !important;
+}
+.u-w50px {
+  width: 50px !important;
+}
+.u-w52px {
+  width: 52px !important;
+}
+.u-w56px {
+  width: 56px !important;
+}
+.u-w58px {
+  width: 58px !important;
+}
+.u-w60px {
+  width: 60px !important;
+}
+.u-w62px {
+  width: 62px !important;
+}
+.u-w64px {
+  width: 64px !important;
+}
+.u-w68px {
+  width: 68px !important;
+}
+.u-w70px {
+  width: 70px !important;
+}
+.u-w72px {
+  width: 72px !important;
+}
+.u-w76px {
+  width: 76px !important;
+}
+.u-w78px {
+  width: 78px !important;
+}
+.u-w80px {
+  width: 80px !important;
+}
+.u-w82px {
+  width: 82px !important;
+}
+.u-w84px {
+  width: 84px !important;
+}
+.u-w90px {
+  width: 90px !important;
+}
+.u-w92px {
+  width: 92px !important;
+}
+.u-w94px {
+  width: 94px !important;
+}
+.u-w96px {
+  width: 96px !important;
+}
+.u-w98px {
+  width: 98px !important;
+}
+.u-w100pct {
+  width: 100% !important;
+}
+.u-w100px {
+  width: 100px !important;
+}
+.u-w104px {
+  width: 104px !important;
+}
+.u-w110px {
+  width: 110px !important;
+}
+.u-w112px {
+  width: 112px !important;
+}
+.u-w116px {
+  width: 116px !important;
+}
+.u-w120px {
+  width: 120px !important;
+}
+.u-w124px {
+  width: 124px !important;
+}
+.u-w128px {
+  width: 128px !important;
+}
+.u-w130px {
+  width: 130px !important;
+}
+.u-w136px {
+  width: 136px !important;
+}
+.u-w140px {
+  width: 140px !important;
+}
+.u-w150px {
+  width: 150px !important;
+}
+.u-w158px {
+  width: 158px !important;
+}
+.u-w160px {
+  width: 160px !important;
+}
+.u-w170px {
+  width: 170px !important;
+}
+.u-w180px {
+  width: 180px !important;
+}
+.u-w190px {
+  width: 190px !important;
+}
+.u-w200px {
+  width: 200px !important;
+}
+.u-w210px {
+  width: 210px !important;
+}
+.u-w212px {
+  width: 212px !important;
+}
+.u-w220px {
+  width: 220px !important;
+}
+.u-w240px {
+  width: 240px !important;
+}
+.u-w260px {
+  width: 260px !important;
+}
+.u-w320px {
+  width: 320px !important;
+}

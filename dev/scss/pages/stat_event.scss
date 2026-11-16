@@ -69,7 +69,7 @@
         column-gap: 20px;
       }
       &.r1 {
-        .flex > .sel[style*="flex"] {
+        .flex > .sel[class*="u-flex"] {
           flex: 0 0 120px !important;
         }
         > .it > #selSituation {

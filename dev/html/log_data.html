@@ -28,7 +28,7 @@
             <div class="it c2"><span class="lb req">처리일시</span>
               <div class="range"><span class="inp-ico inp-date"><input type="date" class="inp" id="dtFr" name="dtFr" value="2026-09-30" title="시작일" required data-label="처리일시 시작일"></span><span>~</span><span class="inp-ico inp-date"><input type="date" class="inp" id="dtTo" name="dtTo" value="2026-10-30" title="종료일" required data-label="처리일시 종료일"></span></div>
             </div>
-            <div class="it c2"><span class="lb">연계기관</span><div class="flex w100"><select class="sel" style="flex:1" id="sido_select" name="sido_select" title="시도" data-f="1" data-m="has" onchange="setSgg(this.value)"><option value="">시도 전체</option><option>서울특별시</option><option>울산광역시</option><option>경기도</option><option>강원특별자치도</option><option>충청남도</option><option>경상북도</option></select><select class="sel" style="flex:1" id="sgg_select" name="sgg_select" title="시군구" data-f="1" data-m="has"><option value="">시군구 전체</option></select></div></div>
+            <div class="it c2"><span class="lb">연계기관</span><div class="flex w100"><select class="sel u-flex1" id="sido_select" name="sido_select" title="시도" data-f="1" data-m="has" onchange="setSgg(this.value)"><option value="">시도 전체</option><option>서울특별시</option><option>울산광역시</option><option>경기도</option><option>강원특별자치도</option><option>충청남도</option><option>경상북도</option></select><select class="sel u-flex1" id="sgg_select" name="sgg_select" title="시군구" data-f="1" data-m="has"><option value="">시군구 전체</option></select></div></div>
             <div class="it"><label for="msgSe">메시지구분</label><select class="sel" id="msgSe" name="msgSe" data-f="3"><option value="">전체</option><option>통보문</option><option>단말기제원</option><option>단말기통보결과</option></select></div>
           </div>
           <div class="ctrl">
@@ -47,7 +47,7 @@
         <div class="grid-wrap">
           <table class="grid" id="dataLogTbl">
             <caption class="blind">데이터 송수신 이력 목록</caption>
-            <colgroup><col style="width:80px"><col style="width:190px"><col style="width:100px"><col style="width:130px"><col><col style="width:90px"><col style="width:170px"><col style="width:90px"></colgroup>
+            <colgroup><col class="u-w80px"><col class="u-w190px"><col class="u-w100px"><col class="u-w130px"><col><col class="u-w90px"><col class="u-w170px"><col class="u-w90px"></colgroup>
             <thead><tr><th>번호</th><th class="sort">연계기관</th><th class="sort">송수신구분</th><th class="sort">메시지구분</th><th>메시지아이디</th><th class="sort">처리결과</th><th class="sort desc">처리일시</th><th>내용</th></tr></thead>
             <tbody>
               <tr><td>19,524</td><td class="t-l">울산광역시 남구</td><td>송신</td><td>단말기통보결과</td><td>KR.ULSAN-NAM-20261030141542.118</td><td><span class="badge sc">성공</span></td><td>2026-10-30 14:15:42</td><td><button type="button" class="btn s btn-line" onclick="openCap(0)"><i class="ri-file-code-line"></i>CAP</button></td></tr>

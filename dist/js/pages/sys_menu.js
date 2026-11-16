@@ -140,7 +140,7 @@ function load() {
             '</td><td class="t-l">' +
             (c ? nm(r.up) : '-') +
             '</td><td class="t-l">' +
-            (c ? '<i class="ri-corner-down-right-line" style="color:#8e8e8e"></i> ' : '<b>') +
+            (c ? '<i class="ri-corner-down-right-line u-c-g50"></i> ' : '<b>') +
             r.nm +
             (c ? '' : '</b>') +
             '</td><td class="t-l">' +

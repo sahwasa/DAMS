@@ -106,7 +106,7 @@
 <div class="grid-wrap">
   <table class="grid" id="menuTable">
     <caption class="blind">메뉴 목록</caption>
-    <colgroup><col style="width:44px"><col style="width:70px"><col style="width:220px"><col style="width:240px"><col><col style="width:130px"><col style="width:70px"><col style="width:90px"><col style="width:100px"></colgroup>
+    <colgroup><col class="u-w44px"><col class="u-w70px"><col class="u-w220px"><col class="u-w240px"><col><col class="u-w130px"><col class="u-w70px"><col class="u-w90px"><col class="u-w100px"></colgroup>
     <thead><tr><th><label class="chk only"><input type="checkbox" id="chkAllMenu" title="전체 선택" onchange="checkAll(this)"><span class="blind">전체 선택</span></label></th><th>번호</th><th class="sort">상위메뉴</th><th class="sort">메뉴명</th><th>URL경로</th><th>기능</th><th class="sort asc">순서</th><th>사용여부</th><th>관리</th></tr></thead>
     <tbody id="menuTableBody"></tbody>
   </table>
@@ -132,7 +132,7 @@
   <div class="pop-body">
     <table class="tbl">
       <caption class="blind">내정보</caption>
-      <colgroup><col style="width:130px"><col></colgroup>
+      <colgroup><col class="u-w130px"><col></colgroup>
       <tbody>
         <tr><th>사용자 ID</th><td>hong.gd</td></tr>
         <tr><th>사용자명</th><td>홍길동</td></tr>
@@ -157,7 +157,7 @@
     <div class="grid-wrap">
       <table class="grid">
         <caption class="blind">메시지창 유형</caption>
-        <colgroup><col style="width:90px"><col><col style="width:110px"></colgroup>
+        <colgroup><col class="u-w90px"><col><col class="u-w110px"></colgroup>
         <thead><tr><th>구분</th><th>사용 예</th><th>미리보기</th></tr></thead>
         <tbody>
           <tr><td><span class="badge in">안내</span></td><td class="t-l">처리 결과·일반 안내</td><td><button type="button" class="btn s btn-line" onclick="alertMsg('조회 조건에 해당하는 데이터가 없습니다.',{ico:'in'})">alert 안내</button></td></tr>
@@ -182,7 +182,7 @@
   <div class="pop-body">
     <table class="tbl">
       <caption class="blind">메뉴 정보 입력</caption>
-      <colgroup><col style="width:120px"><col></colgroup>
+      <colgroup><col class="u-w120px"><col></colgroup>
       <tbody>
         <tr><th><label for="m_up_menu_id" class="req">상위메뉴</label></th><td><select class="sel" id="m_up_menu_id" name="m_up_menu_id" required data-label="상위메뉴">
           <option value="-">- (1DEPTH 메뉴)</option><option value="M01">GIS상황판</option><option value="M02">재난 예경보 현황</option><option value="M03">통합플랫폼관리</option><option value="M04">통계</option><option value="M05">이용안내</option><option value="M06">시스템관리</option><option value="M07">시스템 이력</option></select>
@@ -192,9 +192,9 @@
         <tr><th><label for="m_menu_path" class="req">URL경로</label></th><td><input class="inp" id="m_menu_path" name="m_menu_path" maxlength="300" placeholder="예: /sys/menu.do" required data-label="URL경로"></td></tr>
         <tr><th>기능</th><td><label class="chk"><input type="checkbox" name="m_menu_fn" value="EDT"><span>편집</span></label><label class="chk"><input type="checkbox" name="m_menu_fn" value="DWN"><span>다운</span></label>
           <span class="f-msg">편집=등록·수정·삭제, 다운=엑셀·PDF·CAP 파일 다운로드. 선택한 기능은 사용자 권한관리에서 권한 그룹별로 부여합니다.</span></td></tr>
-        <tr><th><label for="m_menu_seq" class="req">순서</label></th><td><input class="inp auto" type="number" min="1" max="99" style="width:100px" id="m_menu_seq" name="m_menu_seq" value="1" required data-label="순서"></td></tr>
+        <tr><th><label for="m_menu_seq" class="req">순서</label></th><td><input class="inp auto u-w100px" type="number" min="1" max="99" id="m_menu_seq" name="m_menu_seq" value="1" required data-label="순서"></td></tr>
         <tr><th>사용여부</th><td><label class="tgl"><input type="checkbox" id="m_use_yn" name="m_use_yn" checked onchange="this.nextElementSibling.textContent=this.checked?'사용':'미사용'"><span>사용</span></label></td></tr>
-        <tr><th><label for="m_menu_rmk">비고</label></th><td><textarea class="txa" id="m_menu_rmk" name="m_menu_rmk" rows="3" maxlength="500" style="width:100%"></textarea></td></tr>
+        <tr><th><label for="m_menu_rmk">비고</label></th><td><textarea class="txa u-w100pct" id="m_menu_rmk" name="m_menu_rmk" rows="3" maxlength="500"></textarea></td></tr>
       </tbody>
     </table>
   </div>

@@ -25,7 +25,7 @@
         <!-- ===== 업무영역 (화면별 교체) ===== -->
 <form class="sch-box">
   <div class="rows">
-    <div class="it c2"><label for="searchType">검색어</label><select class="sel" id="searchType" name="searchType" title="검색 유형" style="flex:0 0 140px"><option value="title">제목</option><option value="titleCn">제목+내용</option><option value="writer">작성자</option></select><input class="inp" id="searchKeyword" name="searchKeyword" maxlength="100" placeholder="검색어를 입력하세요"></div>
+    <div class="it c2"><label for="searchType">검색어</label><select class="sel u-flex140px" id="searchType" name="searchType" title="검색 유형"><option value="title">제목</option><option value="titleCn">제목+내용</option><option value="writer">작성자</option></select><input class="inp" id="searchKeyword" name="searchKeyword" maxlength="100" placeholder="검색어를 입력하세요"></div>
   </div>
   <div class="ctrl">
     <button type="reset" class="btn btn-rst"><i class="ri-refresh-line"></i>초기화</button>
@@ -42,7 +42,7 @@
 </div>
 <div class="grid-wrap">
   <table class="grid"><caption class="blind">공지사항 목록</caption>
-    <colgroup><col style="width:70px"><col><col style="width:120px"><col style="width:130px"><col style="width:100px"></colgroup>
+    <colgroup><col class="u-w70px"><col><col class="u-w120px"><col class="u-w130px"><col class="u-w100px"></colgroup>
     <thead><tr><th>번호</th><th class="sort">제목</th><th class="sort">작성자</th><th class="sort desc">등록일</th><th class="sort">조회수</th></tr></thead>
     <tbody id="listBody">
 <tr class="clk" data-sn="135" data-t="GPKI 인증서 로그인 적용 및 로그인 세션 정책 변경" data-w="관리자" onclick="location.href='guide_notice_view.html?sn=135'"><td>135</td><td class="t-l">GPKI 인증서 로그인 적용 및 로그인 세션 정책 변경</td><td>관리자</td><td>2026-10-28</td><td class="t-r">212</td></tr>

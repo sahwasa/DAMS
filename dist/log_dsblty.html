@@ -114,7 +114,7 @@
         <div class="grid-wrap">
           <table class="grid" id="histBody">
             <caption class="blind">장애이력 목록</caption>
-            <colgroup><col style="width:60px"><col style="width:100px"><col style="width:170px"><col style="width:110px"><col style="width:120px"><col><col style="width:140px"><col style="width:140px"><col style="width:80px"></colgroup>
+            <colgroup><col class="u-w60px"><col class="u-w100px"><col class="u-w170px"><col class="u-w110px"><col class="u-w120px"><col><col class="u-w140px"><col class="u-w140px"><col class="u-w80px"></colgroup>
             <thead><tr><th>번호</th><th class="sort">장애구분</th><th class="sort">대상서버</th><th class="sort">연계기관</th><th class="sort">데이터 종류</th><th>내용</th><th class="sort desc">발생시각</th><th class="sort">복구시각</th><th>처리자</th></tr></thead>
             <tbody>
               <tr class="clk" onclick="openEdit(0)"><td>23</td><td>서버자원</td><td class="t-l">DB서버</td><td>중앙(DAMS)</td><td>-</td><td class="t-l">디스크 사용률 85% 초과 (/data 파티션)</td><td>2026-10-30 09:12</td><td>2026-10-30 10:40</td><td>이*영</td></tr>
@@ -157,7 +157,7 @@
   <div class="pop-body">
     <table class="tbl">
       <caption class="blind">내정보</caption>
-      <colgroup><col style="width:130px"><col></colgroup>
+      <colgroup><col class="u-w130px"><col></colgroup>
       <tbody>
         <tr><th>사용자 ID</th><td>hong.gd</td></tr>
         <tr><th>사용자명</th><td>홍길동</td></tr>
@@ -182,7 +182,7 @@
     <div class="grid-wrap">
       <table class="grid">
         <caption class="blind">메시지창 유형</caption>
-        <colgroup><col style="width:90px"><col><col style="width:110px"></colgroup>
+        <colgroup><col class="u-w90px"><col><col class="u-w110px"></colgroup>
         <thead><tr><th>구분</th><th>사용 예</th><th>미리보기</th></tr></thead>
         <tbody>
           <tr><td><span class="badge in">안내</span></td><td class="t-l">처리 결과·일반 안내</td><td><button type="button" class="btn s btn-line" onclick="alertMsg('조회 조건에 해당하는 데이터가 없습니다.',{ico:'in'})">alert 안내</button></td></tr>
@@ -208,7 +208,7 @@
     <div class="sub-head mt0"><h3 class="h4">장애 접수</h3></div>
     <table class="tbl" id="frm">
       <caption class="blind">장애 접수 및 조치 입력</caption>
-      <colgroup><col style="width:120px"><col><col style="width:120px"><col></colgroup>
+      <colgroup><col class="u-w120px"><col><col class="u-w120px"><col></colgroup>
       <tbody>
         <tr><th><label for="m_srvr_cd"><span class="req">대상서버</span></label></th><td><select class="sel" id="m_srvr_cd" name="m_srvr_cd" required data-label="대상서버"><option value="">선택</option><option>연계서버 1호</option><option>연계서버 2호</option><option>WEB서버</option><option>WAS서버 1호</option><option>WAS서버 2호</option><option>DB서버</option><option>통합플랫폼 GW</option><option>충남 아산시 연계서버</option><option>울산 남구 예경보서버</option><option>강원 철원군 연계서버</option></select></td>
             <th><label for="m_dsblty_se_cd"><span class="req">장애구분</span></label></th><td><select class="sel" id="m_dsblty_se_cd" name="m_dsblty_se_cd" required data-label="장애구분"><option value="">선택</option><option>네트워크</option><option>프로세스</option><option>데이터베이스</option><option>서버자원</option><option>단말기통신</option></select></td></tr>
@@ -221,11 +221,11 @@
     <div class="sub-head"><h3 class="h4">조치 결과</h3><span class="cnt" id="stat"></span></div>
     <table class="tbl">
       <caption class="blind">조치 결과 입력</caption>
-      <colgroup><col style="width:120px"><col><col style="width:120px"><col></colgroup>
+      <colgroup><col class="u-w120px"><col><col class="u-w120px"><col></colgroup>
       <tbody>
         <tr><th><label for="m_prcs_rslt_cn">조치내용</label></th><td colspan="3"><textarea class="txa" id="m_prcs_rslt_cn" name="m_prcs_rslt_cn" maxlength="4000" rows="3" placeholder="원인 및 조치내용을 입력하세요."></textarea></td></tr>
         <tr><th>복구시각</th><td colspan="3"><div class="range"><span class="inp-ico inp-date"><input type="date" class="inp" id="m_rstr_dt" name="m_rstr_dt" value="" title="복구시각 일자" data-label="복구시각"></span><input type="time" class="inp inp-time" id="m_rstr_dt_tm" name="m_rstr_dt_tm" value="" title="복구시각 시각"></div></td></tr>
-        <tr><th><label for="m_prcr_nm"><span class="req">처리자</span></label></th><td colspan="3"><input class="inp" style="width:240px" id="m_prcr_nm" name="m_prcr_nm" maxlength="100" value="홍길동" required data-label="처리자"></td></tr>
+        <tr><th><label for="m_prcr_nm"><span class="req">처리자</span></label></th><td colspan="3"><input class="inp u-w240px" id="m_prcr_nm" name="m_prcr_nm" maxlength="100" value="홍길동" required data-label="처리자"></td></tr>
       </tbody>
     </table>
   </div>

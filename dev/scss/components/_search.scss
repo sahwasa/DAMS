@@ -76,7 +76,7 @@
         > .it > .inp {
           flex: 0 0 200px;
         }
-        .flex > .sel[style*="flex"] {
+        .flex > .sel[class*="u-flex"] {
           flex: 0 0 160px !important;
         }
         .range {
@@ -108,7 +108,7 @@
           &.w100 {
             width: auto;
           }
-          > .sel[style*="flex"] {
+          > .sel[class*="u-flex"] {
             flex: 0 0 140px !important;
           }
         }
