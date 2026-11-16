@@ -11,3 +11,10 @@
     grid-column: 1/-1;
   }
 }
+/* 스크롤 표 높이: PC는 창 높이에 맞춤(1600×900에서 기존 높이, 업무영역 스크롤 없음) */
+@media (min-width: 1280px) {
+  html:not(.pc-pop) .grid-wrap.fit-h {
+    height: calc(100vh - 336px) !important;
+    min-height: 160px;
+  }
+}
