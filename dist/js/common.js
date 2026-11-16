@@ -213,6 +213,22 @@
     a.unshift(CUR);
     LS('damsRecent', JSON.stringify(a.slice(0, 10)));
   })();
+  function recentDel(id) {
+    var a;
+    try {
+      a = JSON.parse(LS('damsRecent') || '[]');
+    } catch (e) {
+      a = [];
+    }
+    LS(
+      'damsRecent',
+      JSON.stringify(
+        a.filter(function (x) {
+          return x !== id;
+        })
+      )
+    );
+  }
   var RECENT_EMPTY = '최근 접속한 메뉴가 없습니다.';
   /* LNB 즐겨찾기·최근접속 항목: 메뉴명 + 경로(1Depth > 메뉴명), 즐겨찾기는 오른쪽 ★로 해제 */
   function lnbItem(m, fav) {
@@ -234,7 +250,11 @@
           '" title="' +
           m[1] +
           ' 즐겨찾기 해제"><i class="ri-star-fill" aria-hidden="true"></i></button>'
-        : '') +
+        : '<button type="button" class="lnb-unrec" data-unrec="' +
+          m[0] +
+          '" title="' +
+          m[1] +
+          ' 최근접속에서 삭제"><i class="ri-close-line" aria-hidden="true"></i></button>') +
       '</li>'
     );
   }
@@ -1207,6 +1227,13 @@
     }
     if ((c = t.closest('.lnb-tab button'))) {
       lnbPanel(c.dataset.lnb);
+      return;
+    }
+    if ((c = t.closest('[data-unrec]'))) {
+      var nm2 = c.closest('li').querySelector('b').textContent;
+      recentDel(c.dataset.unrec);
+      lnbPanel('recent');
+      msg(nm2 + ' 최근접속 기록이 삭제되었습니다.');
       return;
     }
     if ((c = t.closest('[data-unfav]'))) {

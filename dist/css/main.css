@@ -3066,7 +3066,8 @@ details.help-box.ttl > summary {
   color: #8e8e8e;
 }
 
-.lnb-unfav {
+.lnb-unfav,
+.lnb-unrec {
   flex: 0 0 auto;
   width: 28px;
   height: 28px;
@@ -3077,8 +3078,16 @@ details.help-box.ttl > summary {
   color: #ffb724;
   cursor: pointer;
 }
+
 .lnb-unfav:hover {
   color: #98690a;
+}
+
+.lnb-unrec {
+  color: #707070;
+}
+.lnb-unrec:hover {
+  color: #101010;
 }
 
 .lnb-empty {

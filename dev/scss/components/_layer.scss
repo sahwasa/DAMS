@@ -167,7 +167,8 @@
     color: $g50;
   }
 }
-.lnb-unfav {
+.lnb-unfav,
+.lnb-unrec {
   flex: 0 0 auto;
   width: 28px;
   height: 28px;
@@ -177,8 +178,14 @@
   font-size: 18px;
   color: $wn;
   cursor: pointer;
+}
+.lnb-unfav:hover {
+  color: $wn-t;
+}
+.lnb-unrec {
+  color: $g60;
   &:hover {
-    color: $wn-t;
+    color: $g90;
   }
 }
 .lnb-empty {
