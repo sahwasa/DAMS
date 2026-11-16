@@ -3,85 +3,69 @@
    common.scss — 재난·안전정보시스템 UI 표준정의서(NDMS-DE33 v1.1) 기준
    ========================================================== */
 /* ---------- 1. Tokens ---------- */
+/* NDMS 오류 페이지 형식(사용자 제시 캡처, 2026-11-16): 남색 헤더 98 · 흰 바탕 · 가운데 960 영역 왼쪽 정렬 */
 body {
-  display: flex;
-  flex-direction: column;
   min-height: 100vh;
   height: auto;
-  background: #f5f7f9;
+  background: #fff;
 }
 
 .er-head {
-  flex: 0 0 60px;
+  height: 98px;
+  background: #172e55;
+}
+
+.er-in {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.er-head .er-in {
   display: flex;
   align-items: center;
-  padding: 0 40px;
-  background: #172e55;
-  color: #fff;
+  height: 100%;
 }
 .er-head h1 a {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 17px;
+  gap: 10px;
+  font-size: 26px;
   font-weight: 700;
+  letter-spacing: -0.03em;
   color: #fff;
 }
-
-.er {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 20px;
+.er-head .gov-logo {
+  width: 52px;
+  height: 52px;
 }
 
-.er-box {
-  width: 100%;
-  max-width: 640px;
-  padding: 48px 40px 36px;
-  background: #fff;
-  border: 1px solid #d9def0;
-  border-radius: 8px;
-  text-align: center;
+.er .er-in {
+  padding: 110px 40px 80px;
 }
 
 .er-ico {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 84px;
-  height: 84px;
-  margin-bottom: 20px;
-  border-radius: 50%;
-  background: #e9f0ff;
-  font-size: 44px;
-  color: #3e55e1;
+  display: block;
+  font-size: 100px;
+  line-height: 1;
+  margin: 0 0 6px -10px;
+  color: #e6e9fa;
 }
 .er-ico.dg {
-  background: #feecf0;
-  color: #d50136;
+  color: #fcd4de;
 }
 .er-ico.wn {
-  background: #fff8e9;
-  color: #98690a;
+  color: #ffeac1;
 }
 
-.er-code {
-  margin-bottom: 6px;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  color: #707070;
+.er h2 {
+  margin-bottom: 56px;
+  font-size: 42px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.3;
+  color: #172e55;
 }
-
-.er-box h2 {
-  margin-bottom: 14px;
-  font-size: 24px;
-  font-weight: 700;
-  color: #101010;
-}
-.er-box p {
+.er p.er-msg {
   font-size: 15px;
   line-height: 1.7;
   color: #505050;
@@ -89,76 +73,91 @@ body {
 
 .er-btns {
   display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 32px;
+  gap: 2px;
+  margin-top: 50px;
 }
 .er-btns .btn {
-  min-width: 150px;
+  height: 52px;
+  padding: 0 20px;
+  font-size: 14px;
+  border-radius: 2px;
+}
+.er-btns .btn-line {
+  background: #fff;
+  color: #505050;
+  border-color: #d8d8d8;
 }
 
 .er-desk {
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 10px;
-  margin-top: 32px;
-  padding-top: 20px;
-  border-top: 1px solid #f0f0f0;
-  font-size: 14px;
-  color: #505050;
+  gap: 20px;
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid #e4e4e4;
+  font-size: 15px;
 }
 .er-desk strong {
   font-weight: 700;
-  color: #1c3b5e;
+  color: #3e55e1;
 }
 .er-desk span {
-  font-size: 17px;
-  font-weight: 700;
-  color: #101010;
+  font-weight: 600;
+  color: #505050;
 }
 
-.er-foot {
-  padding: 14px 20px;
-  text-align: center;
-  font-size: 13px;
-  color: #707070;
-}
-
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
   .er-head {
-    flex-basis: 56px;
+    height: 64px;
+  }
+  .er-head .er-in {
     padding: 0 16px;
   }
   .er-head h1 a {
-    font-size: 15px;
+    font-size: 18px;
+    gap: 8px;
   }
-  .er {
-    align-items: flex-start;
-    padding: 24px 16px;
+  .er-head .gov-logo {
+    width: 36px;
+    height: 36px;
   }
-  .er-box {
-    padding: 36px 20px 28px;
+  .er .er-in {
+    padding: 48px 20px 40px;
   }
   .er-ico {
-    width: 68px;
-    height: 68px;
-    font-size: 36px;
+    font-size: 72px;
+    margin-left: -7px;
   }
-  .er-box h2 {
-    font-size: 19px;
+  .er h2 {
+    margin-bottom: 28px;
+    font-size: 28px;
   }
-  .er-box p {
+  .er-btns {
+    margin-top: 32px;
+  }
+}
+@media (max-width: 767px) {
+  .er .er-in {
+    padding: 40px 16px 32px;
+  }
+  .er h2 {
+    font-size: 24px;
+  }
+  .er p.er-msg {
     font-size: 14px;
   }
-  .er-box p br {
+  .er p.er-msg br {
     display: none;
   }
   .er-btns {
     flex-direction: column;
+    gap: 8px;
   }
   .er-btns .btn {
     width: 100%;
     height: 48px;
+  }
+  .er-desk {
+    gap: 12px;
   }
 }
