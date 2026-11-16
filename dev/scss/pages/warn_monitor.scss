@@ -137,6 +137,20 @@
   &.w2 {
     width: 400px;
   }
+  &.w2 {
+    .ot-t {
+      table-layout: fixed;
+      .c-nm {
+        width: 32%;
+      }
+      .c-v {
+        width: 18%;
+      }
+    }
+  }
+}
+/* 2열 툴팁: 좌우 열 폭 같게 */
+.org-tip {
   &.w2 .ot-t th:nth-child(3) {
     padding-left: 16px;
     border-left: 1px solid $g10;

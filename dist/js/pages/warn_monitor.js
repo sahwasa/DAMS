@@ -81,7 +81,9 @@ function orgTip(e, i) {
     '</b>건<button type="button" class="close" title="닫기" onclick="this.closest(\'.org-tip\').remove()"><i class="ri-close-line"></i></button></div>' +
     '<p class="ot-sd">' +
     (ISS[d[0]] ? '시도 통합플랫폼 — 본청 + 관할 시군구 발령' : '시군구 통합플랫폼 — 해당 시군구 발령') +
-    '</p><table class="ot-t"><tbody>' +
+    '</p><table class="ot-t">' +
+    (w2 ? '<colgroup><col class="c-nm"><col class="c-v"><col class="c-nm"><col class="c-v"></colgroup>' : '') +
+    '<tbody>' +
     '<tr class="p"><th' +
     (w2 ? ' colspan="3"' : '') +
     '>' +
