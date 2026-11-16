@@ -81,6 +81,7 @@
             <h2 class="tit">계정관리<button type="button" class="star" title="즐겨찾기" data-star><i class="ri-star-line"></i></button></h2>
             <ul class="bread"><li><a href="gis.html" title="홈"><i class="ri-home-4-line home"></i></a></li><li><a href="plat_org.html">통합플랫폼관리</a></li><li><a href="plat_account.html">계정관리</a></li></ul>
           </div>
+          <div class="btns"><button type="button" class="btn btn-crud" id="btnAcntAdd" onclick="openPop('pop/plat_account_form.html',540)"><i class="ri-user-add-line"></i>등록</button></div>
         </div>
 
         <!-- ===== 업무영역 (화면별 교체) ===== -->
@@ -98,9 +99,6 @@
 
         <div class="sub-head">
           <h3>계정 목록</h3><span class="cnt">전체<b id="cntAll">10</b>건</span>
-          <div class="grid-top">
-            <button type="button" class="btn btn-crud" id="btnAcntAdd" onclick="openPop('pop/plat_account_form.html',540)"><i class="ri-user-add-line"></i>등록</button>
-          </div>
         </div>
         <div class="grid-wrap" id="acntWrap">
           <table class="grid fix-head" id="table_list">

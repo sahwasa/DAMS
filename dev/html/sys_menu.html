@@ -20,6 +20,7 @@
             <h2 class="tit">메뉴관리<button type="button" class="star" title="즐겨찾기" data-star><i class="ri-star-line"></i></button></h2>
             @@include('../inc/breadcrumb.html',{"d1": "시스템관리", "d1h": "sys_user.html", "d2": "메뉴관리", "d2h": "sys_menu.html"})
           </div>
+          <div class="btns"><button type="button" class="btn btn-crud" id="btnOpenAdd" onclick="openModal()"><i class="ri-add-line"></i>등록</button><button type="button" class="btn btn-crud" id="btnDeleteSelected" onclick="deleteSelected()"><i class="ri-delete-bin-line"></i>삭제</button></div>
         </div>
 
         <!-- ===== 업무영역 (화면별 교체) ===== -->
@@ -36,10 +37,6 @@
 
 <div class="sub-head mt0">
   <h3>메뉴 목록</h3><span class="cnt">전체<b id="menuCnt">32</b>건</span>
-  <div class="btns">
-    <button type="button" class="btn s btn-crud" id="btnOpenAdd" onclick="openModal()"><i class="ri-add-line"></i>등록</button>
-    <button type="button" class="btn s btn-line" id="btnDeleteSelected" onclick="deleteSelected()"><i class="ri-delete-bin-line"></i>삭제</button>
-  </div>
 </div>
 <div class="grid-wrap">
   <table class="grid" id="menuTable">

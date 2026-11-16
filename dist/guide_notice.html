@@ -80,6 +80,7 @@
             <h2 class="tit">공지사항<button type="button" class="star" title="즐겨찾기" data-star><i class="ri-star-line"></i></button></h2>
             <ul class="bread"><li><a href="gis.html" title="홈"><i class="ri-home-4-line home"></i></a></li><li><a href="guide_intro.html">이용안내</a></li><li><a href="guide_notice.html">공지사항</a></li></ul>
           </div>
+          <div class="btns"><button type="button" class="btn btn-crud" id="btnWrite" title="운영자 권한 이상 표출" onclick="location.href='guide_notice_write.html'"><i class="ri-edit-line"></i>등록</button></div>
         </div>
 
         <!-- ===== 업무영역 (화면별 교체) ===== -->
@@ -95,7 +96,6 @@
 <div class="sub-head">
   <h3>공지사항 목록</h3><span class="cnt">전체<b id="totCnt">135</b>건</span>
   <div class="grid-top">
-    <button type="button" class="btn s btn-crud" id="btnWrite" title="운영자 권한 이상 표출" onclick="location.href='guide_notice_write.html'"><i class="ri-edit-line"></i>등록</button>
     <select class="sel" id="pageSize" name="pageSize" title="페이지당 건수"><option value="15">15개</option><option value="30">30개</option><option value="50">50개</option><option value="100">100개</option></select>
     <button type="button" class="btn s btn-line" id="btnApply" onclick="applySize()">적용</button>
   </div>

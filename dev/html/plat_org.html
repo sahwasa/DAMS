@@ -20,6 +20,7 @@
             <h2 class="tit">연계기관현황<button type="button" class="star" title="즐겨찾기" data-star><i class="ri-star-line"></i></button></h2>
             @@include('../inc/breadcrumb.html',{"d1": "통합플랫폼관리", "d1h": "plat_org.html", "d2": "연계기관현황", "d2h": "plat_org.html"})
           </div>
+          <div class="btns"><button type="button" class="btn btn-crud op-btns" id="btnOpenDestAdd" onclick="openDest('new','')"><i class="ri-add-line"></i>등록</button></div>
         </div>
 
         <!-- ===== 업무영역 (화면별 교체) ===== -->
@@ -39,9 +40,6 @@
 
         <div class="sub-head">
           <h3>연계기관 목록</h3><span class="cnt">전체<b id="cntAll">245</b>건 / 운영 <b class="c-sc" id="cntOp">0</b>건 / 미운영 <b class="c-wn" id="cntNo">0</b>건</span><span class="f-msg acnt-lg">통합 발급 <b class="c-pri">통합 n</b> 시도 연계확인서로 함께 발급한 시군구 · <b class="lm-via">시도 통합</b> 시도 연계확인서로 발급된 시군구</span>
-          <div class="grid-top">
-            <button type="button" class="btn btn-crud op-btns" id="btnOpenDestAdd" onclick="openDest('new','')"><i class="ri-add-line"></i>등록</button>
-          </div>
         </div>
         <div class="grid-wrap" id="destWrap">
           <table class="grid fix-head" id="destTable">

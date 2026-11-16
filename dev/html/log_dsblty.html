@@ -20,6 +20,7 @@
             <h2 class="tit">장애이력<button type="button" class="star" title="즐겨찾기" data-star><i class="ri-star-line"></i></button></h2>
             @@include('../inc/breadcrumb.html',{"d1": "시스템 이력", "d1h": "log_sms.html", "d2": "장애이력", "d2h": "log_dsblty.html"})
           </div>
+          <div class="btns"><button type="button" class="btn btn-crud" id="btnDsbltyAdd" onclick="openEdit()"><i class="ri-add-line"></i>등록</button></div>
         </div>
 
         <!-- ===== 업무영역 (화면별 교체) ===== -->
@@ -43,7 +44,6 @@
         <div class="sub-head">
           <h3>장애이력 목록</h3><span class="cnt">전체<b id="totCnt">23</b>건</span>
           <div class="grid-top">
-            <button type="button" class="btn s btn-crud" id="btnDsbltyAdd" onclick="openEdit()"><i class="ri-add-line"></i>등록</button>
             <select class="sel" id="pageSize" name="pageSize" title="목록노출건수"><option value="15">15개</option><option value="30">30개</option><option value="50">50개</option><option value="100">100개</option></select>
             <button type="button" class="btn s btn-line" id="btnApply" onclick="applySize()">적용</button>
           </div>
