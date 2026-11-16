@@ -229,7 +229,9 @@ function drawFeed() {
         '</time><span class="tl-k">' +
         (o ? '재난정보' : '발령정보') +
         '</span>' +
-        (o ? '<span class="tl-src">출처: ' + (FSRC[f[0]] || '기상청') + '</span>' : '') +
+        '<span class="tl-src">' +
+        (o ? '출처: ' + (FSRC[f[0]] || '기상청') : '발령기관: ' + f[4]) +
+        '</span>' +
         '<p>' +
         f[2] +
         '<em>' +

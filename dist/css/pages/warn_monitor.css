@@ -234,7 +234,7 @@
   font-weight: 700;
 }
 
-/* 금일 수신 현황: 타임라인(세로선 + 원형 점 · 시각 · 둥근 구분 배지 · 내용) */
+/* 금일 수신 현황 — 항목은 통보문 제목(발령정보: 지방정부 발령 제목 [사건명] 내용 + 연계기관, 재난정보: 재난발생 통보문 제목): 타임라인(세로선 + 원형 점 · 시각 · 둥근 구분 배지 · 내용) */
 .mon-pills {
   display: flex;
   gap: 6px;
@@ -331,6 +331,7 @@
 }
 .mon-feed em {
   margin-left: 6px;
+  white-space: nowrap;
   font-style: normal;
   font-size: 12px;
   font-weight: 400;
