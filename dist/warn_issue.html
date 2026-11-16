@@ -105,7 +105,8 @@
         <div class="sub-head">
           <h3>재난발령 목록</h3><span class="cnt">전체<b>133</b>건</span>
           <div class="grid-top">
-            <select class="sel" title="목록노출건수"><option value="5" selected>5개</option><option value="15">15개</option><option value="30">30개</option><option value="50">50개</option><option value="100">100개</option></select>
+            <select class="sel" id="pageSize" name="pageSize" title="목록노출건수"><option value="5" selected>5개</option><option value="15">15개</option><option value="30">30개</option><option value="50">50개</option><option value="100">100개</option></select>
+            <button type="button" class="btn s btn-line" id="btnApply" onclick="applySize()">적용</button>
           </div>
         </div>
         <div class="grid-wrap">

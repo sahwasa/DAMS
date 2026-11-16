@@ -270,3 +270,12 @@ window.onTab = function (id) {
     msg('선택한 발령의 단말기 발령이력을 조회하였습니다.');
   }
 };
+function applySize() {
+  var n = +document.getElementById('pageSize').value,
+    c = +document.querySelector('.sub-head .cnt b').textContent.replace(/,/g, ''),
+    p = document.querySelector('.paging');
+  p.dataset.total = Math.max(1, Math.ceil(c / n));
+  p.dataset.page = 1;
+  initPaging(p.parentNode);
+  msg('페이지당 ' + n + '건으로 목록을 조회하였습니다.');
+}
