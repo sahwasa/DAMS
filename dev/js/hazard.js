@@ -1,7 +1,7 @@
 /* 재난 사건분류코드(eventCode) — 재난 예경보 통합플랫폼 연동 가이드라인 v1.5.3 별첨6 기준 222종.
    코드:[사건분류명, 아이콘(images/hazard_icon/*.png), 단계 d경보·a주의보·i정보/해제, 구분, 재난명]
    아이콘·단계는 원본(github.com/sahwasa/DAMS hazard_icon_mapping.json) 매핑, 매핑에 없는 12종(EQW EEW FEI YSN AVC MFC MFE CNW CHE MAE FRC RLE)은 같은 재난 아이콘으로 보충.
-   soc_CH(유해화학물질)·soc_DW(식용수) 아이콘은 원본에도 파일이 없어 기본 테두리만 표시된다. */
+   soc_CH(유해화학물질)·soc_DW(감염병) 아이콘은 원본에 파일이 없어 같은 그림인 soc_CO·soc_DE를 복사해 추가(2026-11-16). */
 var HZ = {
   EQI: ['지진정보', 'nat_EQ', 'i', '자연재난', '지진'],
   EQW: ['지진속보', 'nat_EQ', 'd', '자연재난', '지진'],
