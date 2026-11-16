@@ -271,7 +271,7 @@
   content: "";
   position: absolute;
   left: 5px;
-  top: 14px;
+  top: 12px;
   bottom: -2px;
   border-left: 2px solid #e4e7f0;
 }
@@ -281,11 +281,11 @@
 .mon-feed li::after {
   content: "";
   position: absolute;
-  left: 0;
-  top: 2px;
+  left: 2px;
+  top: 4px;
   box-sizing: border-box;
-  width: 12px;
-  height: 12px;
+  width: 8px;
+  height: 8px;
   border: 2px solid #3e55e1;
   border-radius: 50%;
   background: #fff;
