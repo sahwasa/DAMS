@@ -86,6 +86,11 @@
         </div>
 
         <!-- ===== 업무영역 (화면별 교체) ===== -->
+<ul class="tab">
+  <li class="on"><button type="button" data-tab="tabCap">지방정부 연계(CAP)</button></li>
+  <li><button type="button" data-tab="tabDs">NDMS 데이터셋 연계</button></li>
+</ul>
+<div id="tabCap">
 <form class="sch-box" id="schForm">
           <div class="rows r1">
             <div class="it c2"><span class="lb req">처리일시</span>
@@ -133,6 +138,41 @@
           </table>
         </div>
         <div class="paging" id="pgBtns" data-total="1302" data-page="1"></div>
+</div>
+<div id="tabDs" hidden>
+<form class="sch-box" id="dsForm">
+          <div class="rows r1">
+            <div class="it c2"><span class="lb req">처리일시</span>
+              <div class="range"><span class="inp-ico inp-date"><input type="date" class="inp" id="dsFr" name="dsFr" value="2026-10-30" title="시작일" required data-label="처리일시 시작일"></span><span>~</span><span class="inp-ico inp-date"><input type="date" class="inp" id="dsTo" name="dsTo" value="2026-10-30" title="종료일" required data-label="처리일시 종료일"></span></div>
+            </div>
+            <div class="it"><label for="ifId">인터페이스</label><select class="sel u-flex320px" id="ifId" name="ifId"><option value="">전체 (52개)</option><option value="GIS-EI-002">NDMS_법정동_GIS (GIS-EI-002)</option><option value="GIS-EI-003">NDMS_기관_GIS (GIS-EI-003)</option><option value="GIS-EI-017">NDMS_지역산사태위험_GIS (GIS-EI-017)</option><option value="GIS-EI-020">NDMS_공통코드_GIS (GIS-EI-020)</option><option value="GIS-EI-030">NDMS_홍수통제소댐1분_GIS (GIS-EI-030)</option><option value="GIS-EI-033">NDMS_기상청지진통보_GIS (GIS-EI-033)</option><option value="GIS-EI-034">NDMS_기상청지진진도_GIS (GIS-EI-034)</option><option value="GIS-EI-035">NDMS_기상청지진해일_GIS (GIS-EI-035)</option><option value="GIS-EI-036">NDMS_기상청특보예보_GIS (GIS-EI-036)</option><option value="GIS-EI-037">NDMS_기상청특보통보문_GIS (GIS-EI-037)</option><option value="GIS-EI-038">NDMS_기상청태풍5일예보_GIS (GIS-EI-038)</option><option value="GIS-EI-039">NDMS_한국수자원공사시수위_GIS (GIS-EI-039)</option><option value="GIS-EI-081">NDMS_사용자_GIS (GIS-EI-081)</option><option value="GIS-EI-086">NDMS_기상청AWS관측_GIS (GIS-EI-086)</option><option value="GIS-EI-088">NDMS_한국수자원공사수위관측소_GIS (GIS-EI-088)</option><option value="GIS-EI-089">NDMS_기상청AWS10분_GIS (GIS-EI-089)</option><option value="GIS-EI-090">NDMS_기상청특보구역코드_GIS (GIS-EI-090)</option><option value="GIS-EI-091">NDMS_기상특보지역_GIS (GIS-EI-091)</option><option value="GIS-EI-114">NDMS_법정동_GIS (GIS-EI-114)</option><option value="GIS-EI-149">NDMS_홍수통제소유량10분_GIS (GIS-EI-149)</option><option value="GIS-EI-150">NDMS_홍수통제소유량시간_GIS (GIS-EI-150)</option><option value="GIS-EI-151">NDMS_홍수통제소1시간자료_GIS (GIS-EI-151)</option><option value="GIS-EI-152">NDMS_홍수통제소수질_GIS (GIS-EI-152)</option><option value="GIS-EI-153">NDMS_홍수통제소우량10분_GIS (GIS-EI-153)</option><option value="GIS-EI-154">NDMS_홍수통제소우량시간_GIS (GIS-EI-154)</option><option value="GIS-EI-155">NDMS_홍수통제소수위10분_GIS (GIS-EI-155)</option><option value="GIS-EI-156">NDMS_홍수통제소수위일_GIS (GIS-EI-156)</option><option value="GIS-EI-157">NDMS_홍수통제소수위관측소_GIS (GIS-EI-157)</option><option value="GIS-EI-161">NDMS_소방긴급구조출동_GIS (GIS-EI-161)</option><option value="GIS-EI-187">NDMS_한국도로공사특별상황발생_GIS (GIS-EI-187)</option><option value="GIS-EI-194">NDMS_기상청지진_GIS (GIS-EI-194)</option><option value="GIS-EI-195">NDMS_기상청지진속보_GIS (GIS-EI-195)</option><option value="GIS-EI-205">NDMS_기상청특보구역매핑_GIS (GIS-EI-205)</option><option value="GIS-EI-209">NDMS_기상청기상특보발효_GIS (GIS-EI-209)</option><option value="GIS-EI-232">NDMS_산사태예보발령_GIS (GIS-EI-232)</option><option value="GIS-EI-233">NDMS_산사태발생예측_GIS (GIS-EI-233)</option><option value="GIS-EI-246">NDMS_돌발상황발생_GIS (GIS-EI-246)</option><option value="GIS-EI-263">NDMS_시군구코드_GIS (GIS-EI-263)</option><option value="GIS-EI-283">NDMS_행정동_GIS (GIS-EI-283)</option><option value="GIS-EI-296">NDMS_홍수통제소댐제원_GIS (GIS-EI-296)</option><option value="GIS-EI-297">NDMS_홍수통제소우량관측소제원_GIS (GIS-EI-297)</option><option value="GIS-EI-298">NDMS_긴급산불신고관리_GIS (GIS-EI-298)</option><option value="GIS-EI-299">NDMS_산불신고_GIS (GIS-EI-299)</option><option value="GIS-EI-300">NDMS_산불정보_GIS (GIS-EI-300)</option><option value="GIS-EI-301">NDMS_산림청산불진화_GIS (GIS-EI-301)</option><option value="GIS-EI-302">NDMS_산불발생_GIS (GIS-EI-302)</option><option value="GIS-EI-460">GIS_산불상황도_외부연계 (GIS-EI-460)</option><option value="GIS-EI-461">산림청_산불상황도_GIS (GIS-EI-461)</option><option value="GIS-EI-462">GIS_산불상황도도형_외부연계 (GIS-EI-462)</option><option value="GIS-EI-463">산림청_산불상황도도형_GIS (GIS-EI-463)</option><option value="GIS-EI-494">NDMS_홍수정보_GIS (GIS-EI-494)</option><option value="GIS-EI-496">산림청_산불위기경보_GIS (GIS-EI-496)</option></select></div>
+            <div class="it"><label for="ifNet">망</label><select class="sel" id="ifNet" name="ifNet"><option value="">전체</option><option>행정망</option><option>인터넷망</option></select></div>
+            <div class="it"><label for="ifRslt">처리결과</label><select class="sel" id="ifRslt" name="ifRslt"><option value="">전체</option><option>성공</option><option>실패</option></select></div>
+          </div>
+          <div class="ctrl">
+            <button type="reset" class="btn btn-rst"><i class="ri-refresh-line"></i>초기화</button>
+            <button type="submit" class="btn btn-sch"><i class="ri-search-line"></i>검색</button>
+          </div>
+        </form>
+
+        <div class="sub-head">
+          <h3>데이터셋 연계 수신 이력</h3><span class="cnt">전체<b id="dsCnt">0</b>건</span>
+          <div class="grid-top">
+            <select class="sel" id="dsPageSize" name="dsPageSize" title="목록노출건수"><option value="15">15개</option><option value="30">30개</option><option value="50">50개</option><option value="100">100개</option></select>
+            <button type="button" class="btn s btn-line" onclick="dsApply()">적용</button>
+          </div>
+        </div>
+        <div class="grid-wrap">
+          <table class="grid" id="dsTbl">
+            <caption class="blind">NDMS 데이터셋 연계 수신 이력</caption>
+            <colgroup><col class="u-w64px"><col class="u-w120px"><col><col class="u-w104px"><col class="u-w136px"><col class="u-w72px"><col class="u-w96px"><col class="u-w96px"><col class="u-w164px"><col class="u-w180px"></colgroup>
+            <thead><tr><th>번호</th><th class="sort" data-sort="if_id">인터페이스ID</th><th class="sort" data-sort="if_nm">인터페이스명</th><th>방식</th><th>연계주기</th><th>망</th><th class="sort" data-sort="prcs_cnt">처리건수</th><th class="sort" data-sort="prcs_rslt">처리결과</th><th class="sort desc" data-sort="prcs_dt">처리일시</th><th>오류내용</th></tr></thead>
+            <tbody id="dsBody"></tbody>
+          </table>
+        </div>
+        <div class="paging" id="dsPg" data-total="1" data-page="1"></div>
+        <p class="f-msg">※ 인터페이스·방식·연계주기는 데이터셋 연계 현황표(2026-11-16) 기준. 제공 시스템은 NDMS 시스템(행안부NDMS)·GIS통합상황관리시스템·GIS연계시스템(인터넷망).</p>
+</div>
         <!-- ===== 업무영역 끝 ===== -->
       </main>
     </div>
