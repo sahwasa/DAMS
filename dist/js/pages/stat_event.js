@@ -281,11 +281,11 @@ function drawMd() {
         text: sum.toLocaleString(),
         subtext: '전송 건',
         left: '26%',
-        top: '40%',
-        textAlign: 'center',
+        top: Math.round(el.clientHeight * 0.52) - 27,
+        /* 원 중심(52%)에 글자 묶음 가운데 */ textAlign: 'center',
         textStyle: { fontSize: 22, fontWeight: 700, color: STC.tt },
         subtextStyle: { fontSize: 12, color: STC.gray },
-        itemGap: 2
+        itemGap: 6
       },
       legend: ecLegend({
         orient: 'vertical',
@@ -435,8 +435,8 @@ function drawEvCat() {
         text: String(sum),
         subtext: '건',
         left: '26%',
-        top: '40%',
-        textAlign: 'center',
+        top: Math.round(el.clientHeight * 0.52) - 25,
+        /* 원 중심(52%)에 글자 묶음 가운데 */ textAlign: 'center',
         textStyle: { fontSize: 24, fontWeight: 700, color: STC.tt },
         subtextStyle: { fontSize: 12, color: STC.gray },
         itemGap: 2
