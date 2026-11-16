@@ -121,6 +121,66 @@
   cursor: pointer;
   text-decoration: underline dotted;
 }
+// LNB 즐겨찾기·최근접속 항목(메뉴명 + 경로 + ★ 해제)
+.lnb-menu {
+  .lnb-alt {
+    > li.lnb-it {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1px solid #ebebeb;
+    }
+    > li.lnb-it > a {
+      flex: 1;
+      min-width: 0;
+      height: auto;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+      padding: 12px 6px;
+      border: 0;
+    }
+  }
+}
+.lnb-it {
+  b {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: $fs-b;
+    font-weight: 700;
+    color: $g90;
+  }
+  &.on b {
+    color: $pri;
+  }
+}
+.lnb-path {
+  display: flex;
+  align-items: center;
+  font-size: $fs-xs;
+  font-weight: 400;
+  color: $g60;
+  i {
+    font-size: 14px;
+    color: $g50;
+  }
+}
+.lnb-unfav {
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 18px;
+  color: $wn;
+  cursor: pointer;
+  &:hover {
+    color: $wn-t;
+  }
+}
 .lnb-empty {
   padding: 30px 16px;
   text-align: center;

@@ -3024,6 +3024,63 @@ details.help-box.ttl > summary {
   text-decoration: underline dotted;
 }
 
+.lnb-menu .lnb-alt > li.lnb-it {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-bottom: 1px solid #ebebeb;
+}
+.lnb-menu .lnb-alt > li.lnb-it > a {
+  flex: 1;
+  min-width: 0;
+  height: auto;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 12px 6px;
+  border: 0;
+}
+
+.lnb-it b {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 15px;
+  font-weight: 700;
+  color: #101010;
+}
+.lnb-it.on b {
+  color: #3e55e1;
+}
+
+.lnb-path {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 400;
+  color: #707070;
+}
+.lnb-path i {
+  font-size: 14px;
+  color: #8e8e8e;
+}
+
+.lnb-unfav {
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 18px;
+  color: #ffb724;
+  cursor: pointer;
+}
+.lnb-unfav:hover {
+  color: #98690a;
+}
+
 .lnb-empty {
   padding: 30px 16px;
   text-align: center;

@@ -167,10 +167,76 @@
       r = [];
     MENU.forEach(function (g) {
       g[1].forEach(function (m) {
-        if (f.indexOf(m[0]) > -1) r.push(m);
+        if (f.indexOf(m[0]) > -1) r.push([m[0], m[1], g[0]]);
       });
     });
     return r;
+  }
+  function favDel(id) {
+    var f = favGet() || [],
+      i = f.indexOf(id);
+    if (i > -1) {
+      f.splice(i, 1);
+      LS('damsFav', JSON.stringify(f));
+    }
+  }
+  /* 최근접속: 열어 본 메뉴 화면ID를 localStorage damsRecent에 최신순 10개 유지(MDI 탭 숨김 후 대체) */
+  function menuOf(id) {
+    var r = null;
+    MENU.forEach(function (g) {
+      g[1].forEach(function (m) {
+        if (m[0] === id) r = [m[0], m[1], g[0]];
+      });
+    });
+    return r;
+  }
+  function recentList() {
+    var a;
+    try {
+      a = JSON.parse(LS('damsRecent') || '[]');
+    } catch (e) {
+      a = [];
+    }
+    return a.map(menuOf).filter(Boolean);
+  }
+  (function () {
+    if (!menuOf(CUR)) return;
+    var a;
+    try {
+      a = JSON.parse(LS('damsRecent') || '[]');
+    } catch (e) {
+      a = [];
+    }
+    a = a.filter(function (x) {
+      return x !== CUR;
+    });
+    a.unshift(CUR);
+    LS('damsRecent', JSON.stringify(a.slice(0, 10)));
+  })();
+  var RECENT_EMPTY = '최근 접속한 메뉴가 없습니다.';
+  /* LNB 즐겨찾기·최근접속 항목: 메뉴명 + 경로(1Depth > 메뉴명), 즐겨찾기는 오른쪽 ★로 해제 */
+  function lnbItem(m, fav) {
+    return (
+      '<li class="lnb-it' +
+      (m[0] === CUR ? ' on' : '') +
+      '"><a href="' +
+      m[0] +
+      '.html"><b>' +
+      m[1] +
+      '</b><span class="lnb-path">' +
+      m[2] +
+      '<i class="ri-arrow-right-s-line" aria-hidden="true"></i>' +
+      m[1] +
+      '</span></a>' +
+      (fav
+        ? '<button type="button" class="lnb-unfav" data-unfav="' +
+          m[0] +
+          '" title="' +
+          m[1] +
+          ' 즐겨찾기 해제"><i class="ri-star-fill" aria-hidden="true"></i></button>'
+        : '') +
+      '</li>'
+    );
   }
   function favSet(on) {
     var f = favGet() || [],
@@ -1143,6 +1209,21 @@
       lnbPanel(c.dataset.lnb);
       return;
     }
+    if ((c = t.closest('[data-unfav]'))) {
+      var id = c.dataset.unfav,
+        nm = c.closest('li').querySelector('b').textContent;
+      favDel(id);
+      if (id === CUR) {
+        var ps = $('.page-head .star');
+        if (ps) {
+          ps.classList.remove('on');
+          $('i', ps).className = 'ri-star-line';
+        }
+      }
+      lnbPanel('fav');
+      msg(nm + ' 즐겨찾기가 해제되었습니다.');
+      return;
+    }
     if ((c = t.closest('.lnb-fold'))) {
       document.body.classList.toggle('lnb-off');
       return;
@@ -1282,16 +1363,17 @@
       x.innerHTML =
         favList()
           .map(function (m) {
-            return '<li' + (m[0] === CUR ? ' class="on"' : '') + '><a href="' + m[0] + '.html">' + m[1] + '</a></li>';
+            return lnbItem(m, 1);
           })
           .join('') || '<li class="lnb-empty">' + FAV_EMPTY + '</li>';
     }
     if (k === 'recent')
-      x.innerHTML = $$('.mdi-tabs li a')
-        .map(function (a) {
-          return '<li><a href="' + a.getAttribute('href') + '">' + a.textContent + '</a></li>';
-        })
-        .join('');
+      x.innerHTML =
+        recentList()
+          .map(function (m) {
+            return lnbItem(m);
+          })
+          .join('') || '<li class="lnb-empty">' + RECENT_EMPTY + '</li>';
   }
 
   /* ---------- 세션 타이머 ---------- */
