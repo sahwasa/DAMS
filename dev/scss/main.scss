@@ -29,13 +29,13 @@
 @use "./components/stat";
 
 // 팝업(화면 안 dialog) 전용 — .pop-dlg[data-pop="팝업ID"] 안으로 한정
-@use "./pop/UI-CO-P03";
-@use "./pop/UI-DA01-001-P01";
-@use "./pop/UI-DA02-001-P01";
-@use "./pop/UI-DA03-003-P01";
-@use "./pop/UI-DA03-003-P02";
-@use "./pop/UI-DA04-001-P01";
-@use "./pop/UI-DA04-001-P02";
-@use "./pop/UI-DA08-006-P01";
-@use "./pop/UI-DA09-002-P01";
-@use "./pop/UI-DA09-002-P02";
+@use "./pop/com_msg";
+@use "./pop/login_auth_guide";
+@use "./pop/gis_issue_detail";
+@use "./pop/warn_issue_map";
+@use "./pop/warn_issue_report";
+@use "./pop/plat_org_form";
+@use "./pop/plat_org_cert";
+@use "./pop/log_data_cap";
+@use "./pop/cert_check_issue";
+@use "./pop/cert_check_result";

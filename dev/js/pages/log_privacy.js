@@ -58,7 +58,7 @@ function openDetail(i) {
     x.classList.toggle('on', k === i);
   });
   openPop(
-    popUrl('pop/UI-DA08-007-P01.html', {
+    popUrl('pop/log_privacy_detail.html', {
       dt: r[0],
       uid: r[1],
       nm: r[2],

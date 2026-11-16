@@ -251,7 +251,7 @@ function doneRun() {
     !R.pass
   );
 }
-/* 부적합 결과서(UI-DA09-002-P02): 점검 결과를 쿼리 d로 넘김 */
+/* 부적합 결과서(cert_check_result): 점검 결과를 쿼리 d로 넘김 */
 function ngReport() {
   if (!S.ran || R.pass) return;
   var per = S.days[0] + ' ~ ' + S.days[S.days.length - 1] + ' (' + S.days.length + '일)',
@@ -286,7 +286,7 @@ function ngReport() {
     ng.push(['단말 상태정보', '상태정보 수신 ' + R.stRecv + ' / 예상 ' + R.stExpect + '건', per, '수신율 95% 미만']);
   if (!R.noti.length) ng.push(['통보문', '점검기간 내 통보문 수신 없음', per, '통보문 미수신']);
   openPop(
-    'pop/UI-DA09-002-P02.html?d=' +
+    'pop/cert_check_result.html?d=' +
       encodeURIComponent(
         JSON.stringify({
           org: orgName(),
@@ -304,7 +304,7 @@ function ngReport() {
 function approveAsk() {
   if (!S.ran || !R.pass) return;
   openPop(
-    'pop/UI-DA09-002-P01.html?org=' +
+    'pop/cert_check_issue.html?org=' +
       encodeURIComponent(orgName()) +
       '&period=' +
       encodeURIComponent(S.days[0] + ' ~ ' + S.days[S.days.length - 1] + ' (' + S.days.length + '일)') +

@@ -14,7 +14,7 @@ function openDetail(btn, i) {
   var q = ['id', 'nm', 'inst', 'dept', 'jbps', 'code', 'use', 'sms', 'lck', 'lckdt'],
     v = [u[1], u[2], u[3], u[4], u[5], u[7], u[8], u[9], u[10], u[11]];
   openPop(
-    'pop/UI-DA07-001-P01.html?' +
+    'pop/sys_user_detail.html?' +
       q
         .map(function (k, j) {
           return k + '=' + encodeURIComponent(v[j]);

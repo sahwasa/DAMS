@@ -59,7 +59,7 @@ function openDetail(i) {
     x.classList.toggle('on', k === i);
   });
   openPop(
-    popUrl('pop/UI-DA08-001-P01.html', { rs: r[0], se: r[1], cn: r[2], no: r[3], nm: r[4], dt: r[5], err: r[6] }),
+    popUrl('pop/log_sms_detail.html', { rs: r[0], se: r[1], cn: r[2], no: r[3], nm: r[4], dt: r[5], err: r[6] }),
     540
   );
 }

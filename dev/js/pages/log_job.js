@@ -57,14 +57,11 @@ function openEdit(i) {
     x.classList.toggle('on', k === i);
   });
   if (i == null) {
-    openPop('pop/UI-DA08-003-P01.html', 540);
+    openPop('pop/log_job_form.html', 540);
     return;
   }
   var r = ROWS[i];
-  openPop(
-    popUrl('pop/UI-DA08-003-P01.html', { mode: 'edit', dt: r[0], se: r[1], cn: r[2], issue: r[3], nm: r[4] }),
-    540
-  );
+  openPop(popUrl('pop/log_job_form.html', { mode: 'edit', dt: r[0], se: r[1], cn: r[2], issue: r[3], nm: r[4] }), 540);
 }
 window.onPopOk = function (k) {
   msg(

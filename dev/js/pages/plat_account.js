@@ -25,7 +25,7 @@ document.querySelector('.sch-box').addEventListener('reset', function () {
   });
 });
 function editAcnt(q) {
-  openPop('pop/UI-DA04-001-P01.html?mode=edit&acnt=1&' + q, 760);
+  openPop('pop/plat_org_form.html?mode=edit&acnt=1&' + q, 760);
 }
 function cnt(d) {
   var c = document.getElementById('cntAll');

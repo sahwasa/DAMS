@@ -698,8 +698,8 @@ window.addEventListener('storage', function (e) {
     msg('연계기관현황에서 연계확인서 발급 취소가 반영되었습니다.');
   }
 });
-/* 부적합 기관: 마지막 점검 결과로 부적합 결과서(UI-DA09-002-P02) 열기 — 목업은 청주시 샘플 결과 */
-/* 발급완료 기관: [연계확인서] → 연계확인서 보기(UI-DA04-001-P02) — 시도는 '통합 발급 시군구'(발급 취소·통합 해제 제외) 포함, 통합 시군구는 시도 연계확인서(해당 시군구 강조) */
+/* 부적합 기관: 마지막 점검 결과로 부적합 결과서(cert_check_result) 열기 — 목업은 청주시 샘플 결과 */
+/* 발급완료 기관: [연계확인서] → 연계확인서 보기(plat_org_cert) — 시도는 '통합 발급 시군구'(발급 취소·통합 해제 제외) 포함, 통합 시군구는 시도 연계확인서(해당 시군구 강조) */
 function certQ(r) {
   var v = r[10] === 'via',
     sd = v
@@ -719,7 +719,7 @@ function okBtn(r) {
   return (
     '<button type="button" class="btn s btn-line" title="' +
     (r[10] === 'via' ? r[1] + ' 연계확인서(통합 발급)' : nmOf(r) + ' 연계확인서') +
-    ' 보기" onclick="openPop(\'pop/UI-DA04-001-P02.html?' +
+    ' 보기" onclick="openPop(\'pop/plat_org_cert.html?' +
     certQ(r) +
     '\',900)">연계확인서</button>'
   );
@@ -745,7 +745,7 @@ function ngBtn(r) {
   return (
     '<button type="button" class="btn s btn-line" title="' +
     nm +
-    ' 부적합 결과서 보기·인쇄" onclick="openPop(\'pop/UI-DA09-002-P02.html?org=' +
+    ' 부적합 결과서 보기·인쇄" onclick="openPop(\'pop/cert_check_result.html?org=' +
     encodeURIComponent(r[2] + ' (' + r[1] + ')') +
     '&chkDt=' +
     r[4] +
@@ -858,7 +858,7 @@ function act(r) {
     return (
       '<span class="flex u-jc-center u-gap4px"><button type="button" class="btn s btn-line" title="' +
       r[1] +
-      ' 연계확인서로 통합 발급" onclick="openPop(\'pop/UI-DA09-001-P01.html?' +
+      ' 연계확인서로 통합 발급" onclick="openPop(\'pop/cert_request_hist.html?' +
       histQ(r) +
       '\',760)">상세보기</button>' +
       okBtn(r) +
@@ -877,7 +877,7 @@ function act(r) {
       '</span>'
     );
   return (
-    '<span class="flex u-jc-center u-gap4px"><button type="button" class="btn s btn-line" onclick="openPop(\'pop/UI-DA09-001-P01.html?' +
+    '<span class="flex u-jc-center u-gap4px"><button type="button" class="btn s btn-line" onclick="openPop(\'pop/cert_request_hist.html?' +
     histQ(r) +
     '\',760)">상세보기</button>' +
     okBtn(r) +

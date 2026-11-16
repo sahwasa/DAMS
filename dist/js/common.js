@@ -642,9 +642,12 @@
   }
   window.popHost = popHost;
   function popId(url) {
-    var m = String(url).match(/UI-(?:DA\d\d-\d\d\d|CO)-P\d\d/);
-    return m ? m[0] : '';
-  }
+    return String(url)
+      .split('?')[0]
+      .split('/')
+      .pop()
+      .replace(/\.html$/, '');
+  } /* 'pop/sys_user_detail.html?x=1' → 'sys_user_detail' */
   function dlgClose(d) {
     if (!d || d._closed) return;
     d._closed = 1;

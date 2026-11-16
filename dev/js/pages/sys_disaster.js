@@ -162,7 +162,7 @@ function openModal(i) {
     o.nm = r[1];
     o.use = r[2];
   }
-  openPop('pop/UI-DA07-004-P01.html?' + q(o), 540);
+  openPop('pop/sys_disaster_form.html?' + q(o), 540);
 }
 function deleteDisaster(i) {
   var r = D[cm][i];

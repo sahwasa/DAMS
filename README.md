@@ -25,7 +25,7 @@ npm run format    # JS·SCSS 형식 정리(prettier 3.3.3, 설정 .prettierrc �
 | **새 재난 알림** | `toast(제목,{kind})` | 서버 푸시(웹소켓·폴링) 수신 때 호출. 목업의 첫 진입 알림 시연·GNB 5번 클릭 시연은 퍼블에서 제거 |
 | **목업 전용 창 연동** | 파일 맨 위 `[목업 전용] localStorage(...)` 주석 — 연계기관현황·연계확인서 발급(새 창)·점검실행의 발급 취소(`damsCertCancel`)·통합 발급(`damsInteg`) 상태 공유 | 서버 데이터 조회로 대체(localStorage 코드 삭제) |
 | **[미확정] 화면 버전 전환** | 푸터 왼쪽 [기본 \| 넓은 화면] 버튼(`layInit`·`setLayout`, `LAYOUT_DEFAULT='basic'`) — 두 레이아웃 비교 시연 | 확정되면 `LAYOUT_DEFAULT`만 남기고 전환 버튼 제거 |
-| **팝업 바로 열기** | 화면 주소 `?pop=팝업ID`(index.html [화면에서 열기]용) | 필요 없으면 제거 |
+| **팝업 바로 열기** | 화면 주소 `?pop=팝업명`(index.html [화면에서 열기]용) | 필요 없으면 제거 |
 | 개인 설정(유지) | localStorage `damsFav`(즐겨찾기)·`damsSound`(장애 경고음)·`damsLayout`, sessionStorage `damsNoti`(알림 목록) | 사용자 설정을 서버에 저장한다면 대체 |
 
 - 입력 항목 `id`·`name`은 DB 영문 컬럼명 기준(화면정의서 입출력 내역). 화면 목록의 화면ID ↔ 파일명은 아래 표.
@@ -44,32 +44,59 @@ dev/
     mdi.html · mdi-gis.html                 MDI 탭 {"file","name"}
     breadcrumb.html     {"d1","d1h","d2","d2h"}
     footer.html · script.html · pop-common.html · script-common.html
-    pop/팝업ID.html     팝업 마크업 <template id="pop-팝업ID">
+    pop/팝업명.html     팝업 마크업 <template id="pop-팝업명">
   scss/
     main.scss           진입점 → css/main.css (원본 common.scss 절 순서 그대로 @use)
     abstracts/          _tokens(디자인 토큰) · _mixin(버튼 색 세트)
     base/ layout/ components/
     pages/화면.scss      화면 전용 → css/pages/화면.css (그 화면에서만 읽음)
-    pop/_팝업ID.scss     팝업 전용 — .pop-dlg[data-pop="팝업ID"] 안으로 한정
+    pop/_팝업명.scss     팝업 전용 — .pop-dlg[data-pop="팝업명"] 안으로 한정
   js/
     common.js           공통(레이아웃·탭·정렬·페이징·메시지창·팝업·화면 버전 전환)
     gismap.js · geo/kr-geo.js   GIS 기본도(통계청 2013 행정경계)
     hazard.js           재난 사건코드 222종·심볼
     stchart.js          통계 차트(ECharts)
     pages/화면.js        화면 동작
-    pop/팝업ID.js        팝업 동작 DAMS_POP['팝업ID']
+    pop/팝업명.js        팝업 동작 DAMS_POP['팝업명']
     vendor/echarts.min.js   Apache ECharts 5.6.0 (Apache-2.0, echarts.LICENSE·NOTICE)
   images/               gov_logo_w.png, 단말기 심볼(device_ico_*), map_type.png, hazard_icon/(재난 심볼 50종)
   font/                 pretendard-gov(Pretendard GOV), remixicon(아이콘)
 ```
 
 ## 팝업(화면 안 dialog)
-- 마크업은 `inc/pop/팝업ID.html`의 `<template>`, 동작은 `js/pop/팝업ID.js`. 팝업을 여는 화면이 둘 다 include 한다.
-- `openPop('pop/팝업ID.html?쿼리', 폭)` → `<dialog class="pop-dlg" data-pop="팝업ID">`로 띄우고(showModal) 팝업 스크립트를 실행한다. 스크립트 안의 `location.search`는 넘긴 쿼리다.
+- 마크업은 `inc/pop/팝업명.html`의 `<template>`, 동작은 `js/pop/팝업명.js`. 팝업을 여는 화면이 둘 다 include 한다.
+- `openPop('pop/팝업명.html?쿼리', 폭)` → `<dialog class="pop-dlg" data-pop="팝업명">`로 띄우고(showModal) 팝업 스크립트를 실행한다. 스크립트 안의 `location.search`는 넘긴 쿼리다.
 - `closePop()` 맨 위 팝업 닫기 / `popOk(key,data)` 팝업을 연 화면의 `window.onPopOk(key,data)` 호출 후 닫기. 팝업 위에 팝업(중첩)·ESC·제목줄 끌어 옮기기 지원.
 - 팝업 스크립트의 함수는 열려 있는 동안만 전역에 두고 닫으면 원래대로 돌린다(화면 함수와 이름이 겹쳐도 됨).
 - 메시지창(alertMsg·confirmMsg)·로딩·툴팁은 열린 팝업 안(최상위 층)에 그린다. 팝업에서 인쇄하면 팝업만 인쇄된다.
-- 화면 주소에 `?pop=팝업ID`를 붙이면 그 팝업을 바로 연다(index.html의 [화면에서 열기]).
+- 화면 주소에 `?pop=팝업명`을 붙이면 그 팝업을 바로 연다(index.html의 [화면에서 열기]).
+- **팝업 파일명 = 업무명**: 여는 화면 파일명 + 용도(`_detail` 상세 · `_form` 등록/수정 · 그 밖은 내용, 공통은 `com_`). 파일 머리 주석에 화면정의서 팝업ID를 함께 적었다.
+
+| 화면정의서 팝업ID | 팝업명 | 파일(inc/pop·js/pop·scss/pop) |
+|---|---|---|
+| UI-CO-P01 | 내정보 | `com_myinfo` |
+| UI-CO-P03 | 메시지창 샘플 | `com_msg` |
+| UI-DA01-001-P01 | NDMS 권한신청 안내 | `login_auth_guide` |
+| UI-DA02-001-P01 | 재난발령 상세 | `gis_issue_detail` |
+| UI-DA03-003-P01 | 단말기 위치(전체화면) | `warn_issue_map` |
+| UI-DA03-003-P02 | 발령보고서 | `warn_issue_report` |
+| UI-DA04-001-P01 | 연계기관 등록/수정 | `plat_org_form` |
+| UI-DA04-001-P02 | 연계확인서 보기 | `plat_org_cert` |
+| UI-DA04-002-P01 | 통합플랫폼 계정 등록 | `plat_account_form` |
+| UI-DA04-003-P01 | 단말기 상세정보 | `plat_device_detail` |
+| UI-DA07-001-P01 | 사용자 상세정보 | `sys_user_detail` |
+| UI-DA07-002-P01 | 메뉴 등록/수정 | `sys_menu_form` |
+| UI-DA07-003-P01 | 그룹코드 등록/수정 | `sys_code_group_form` |
+| UI-DA07-003-P02 | 상세코드 등록/수정 | `sys_code_form` |
+| UI-DA07-004-P01 | 상세 재난코드 등록/수정 | `sys_disaster_form` |
+| UI-DA08-001-P01 | 문자 전송 상세 | `log_sms_detail` |
+| UI-DA08-003-P01 | 작업이력 등록/수정 | `log_job_form` |
+| UI-DA08-004-P01 | 장애 접수 및 조치 | `log_dsblty_form` |
+| UI-DA08-006-P01 | CAP 전문보기 | `log_data_cap` |
+| UI-DA08-007-P01 | 개인정보 접근이력 상세 | `log_privacy_detail` |
+| UI-DA09-001-P01 | 연계확인서 발급 이력 | `cert_request_hist` |
+| UI-DA09-002-P01 | 연계확인서 발급 승인 | `cert_check_issue` |
+| UI-DA09-002-P02 | 부적합 결과서 | `cert_check_result` |
 
 ## 공통 함수(js/common.js)
 | 함수 | 용도 |

@@ -110,11 +110,11 @@ function q(o) {
 }
 function openGroup(i) {
   if (i == null) {
-    openPop('pop/UI-DA07-003-P01.html', 540);
+    openPop('pop/sys_code_group_form.html', 540);
     return;
   }
   var g = G[i];
-  openPop('pop/UI-DA07-003-P01.html?' + q({ mode: 'edit', cd: g[1], nm: g[2], expln: g[3], use: g[4] }), 540);
+  openPop('pop/sys_code_group_form.html?' + q({ mode: 'edit', cd: g[1], nm: g[2], expln: g[3], use: g[4] }), 540);
 }
 function openCode(j) {
   var g = G[cur];
@@ -123,13 +123,12 @@ function openCode(j) {
     return;
   }
   if (j == null) {
-    openPop('pop/UI-DA07-003-P02.html?' + q({ group: g[1], gnm: g[2] }), 540);
+    openPop('pop/sys_code_form.html?' + q({ group: g[1], gnm: g[2] }), 540);
     return;
   }
   var c = g[5][j];
   openPop(
-    'pop/UI-DA07-003-P02.html?' +
-      q({ mode: 'edit', group: g[1], gnm: g[2], cd: c[0], nm: c[1], expln: c[2], use: c[3] }),
+    'pop/sys_code_form.html?' + q({ mode: 'edit', group: g[1], gnm: g[2], cd: c[0], nm: c[1], expln: c[2], use: c[3] }),
     540
   );
 }

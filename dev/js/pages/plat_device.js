@@ -685,7 +685,7 @@ function openDetail(q) {
         }).indexOf(n)
       ];
   if (c) q += '&lat=' + c[1].toFixed(5) + '&lng=' + c[0].toFixed(4);
-  openPop('pop/UI-DA04-003-P01.html?' + q, 900);
+  openPop('pop/plat_device_detail.html?' + q, 900);
 }
 /* TODO(API): 검색 조건(form)으로 목록 조회 API 호출 후 목록·건수·페이징 갱신 */
 window.onSearch = function () {

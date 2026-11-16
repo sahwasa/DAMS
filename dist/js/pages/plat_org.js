@@ -20,7 +20,7 @@ document.querySelector('.sch-box').addEventListener('reset', function () {
     render();
   });
 });
-/* 시도 통합 발급: 시도 연계확인서 발급 승인 때 함께 통합 발급한 관할 시군구(자체 플랫폼 없이 시도 플랫폼으로 연계, 직제순) — 발급 승인 팝업(UI-DA09-002-P01)에서 선택 */
+/* 시도 통합 발급: 시도 연계확인서 발급 승인 때 함께 통합 발급한 관할 시군구(자체 플랫폼 없이 시도 플랫폼으로 연계, 직제순) — 발급 승인 팝업(cert_check_issue)에서 선택 */
 var INTEG = {
   울산광역시: ['북구', '울주군'],
   경기도: [
@@ -314,7 +314,7 @@ document.addEventListener('keydown', function (e) {
 function openCertOf(sd, b) {
   var s = byNm(sd);
   openPop(
-    'pop/UI-DA04-001-P02.html?' +
+    'pop/plat_org_cert.html?' +
       new URLSearchParams({
         nm: sd,
         iss: b.querySelector('em').textContent,
@@ -337,7 +337,7 @@ function openCert(b) {
       lv: nm.indexOf(' ') > -1 ? 'sgg' : 'sido'
     };
   if (INTEG[nm]) q.integ = INTEG[nm].join(',');
-  openPop('pop/UI-DA04-001-P02.html?' + new URLSearchParams(q).toString(), 900);
+  openPop('pop/plat_org_cert.html?' + new URLSearchParams(q).toString(), 900);
 }
 var CUR = null;
 function openDest(mode, q) {
@@ -354,7 +354,7 @@ function openDest(mode, q) {
     if (integOf(n0)) q += '&integ=' + encodeURIComponent(INTEG[n0].join(','));
     if (viaOf(n0)) q += '&via=' + encodeURIComponent(viaOf(n0));
   }
-  openPop('pop/UI-DA04-001-P01.html?mode=' + mode + (q ? '&' + q : ''), 760);
+  openPop('pop/plat_org_form.html?mode=' + mode + (q ? '&' + q : ''), 760);
 }
 function delDest(b) {
   var tr = b.closest('tr'),

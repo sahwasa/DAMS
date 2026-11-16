@@ -59,13 +59,13 @@ function openEdit(i) {
     x.classList.toggle('on', k === i);
   });
   if (i == null) {
-    openPop('pop/UI-DA08-004-P01.html', 760);
+    openPop('pop/log_dsblty_form.html', 760);
     return;
   }
   var r = ROWS[i];
   var tds = document.querySelectorAll('#histBody tbody tr')[i].cells;
   openPop(
-    popUrl('pop/UI-DA08-004-P01.html', {
+    popUrl('pop/log_dsblty_form.html', {
       mode: 'edit',
       se: r[0],
       srv: r[1],

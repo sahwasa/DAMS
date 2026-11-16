@@ -137,7 +137,7 @@ function selectRow(tr, i) {
 }
 /* 발령보고서: 선택한 발령을 보고서 팝업으로(팝업에서 인쇄) */
 function openReport() {
-  openPop('pop/UI-DA03-003-P02.html?d=' + encodeURIComponent(JSON.stringify({ r: ROWS[CUR], d: DET[CUR] })), 900);
+  openPop('pop/warn_issue_report.html?d=' + encodeURIComponent(JSON.stringify({ r: ROWS[CUR], d: DET[CUR] })), 900);
 }
 render(0);
 document.querySelector('#history_table tbody tr').classList.add('on');
@@ -247,7 +247,7 @@ function focusDevice(tr, i) {
   }
   msg(tr.cells[2].textContent + ' 단말기 위치로 이동하였습니다.');
 }
-/* 단말기 위치 [전체화면 보기] → 큰 지도 팝업(UI-DA03-003-P01): 현재 발령의 단말기 목록을 쿼리로 전달 */
+/* 단말기 위치 [전체화면 보기] → 큰 지도 팝업(warn_issue_map): 현재 발령의 단말기 목록을 쿼리로 전달 */
 function openDevFull() {
   var d = DET[CUR],
     r = ROWS[CUR],
@@ -261,7 +261,7 @@ function openDevFull() {
         })
       )
     });
-  openPop('pop/UI-DA03-003-P01.html?' + q.toString(), Math.max(760, Math.min(innerWidth - 80, 1600)));
+  openPop('pop/warn_issue_map.html?' + q.toString(), Math.max(760, Math.min(innerWidth - 80, 1600)));
   msg('단말기 위치를 전체화면으로 표시합니다.');
 }
 window.onTab = function (id) {

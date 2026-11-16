@@ -30,7 +30,7 @@
     </ul>
     <div class="util">
       <div class="sess" title="세션 남은시간"><b>59:10</b><button type="button" data-sess>시간연장</button></div>
-      <a href="#pop-UI-CO-P01" class="user" onclick="openPop('UI-CO-P01',540);return false;">홍길동 님<em>(재난정보통신과)</em><i class="ri-user-3-line"></i></a>
+      <a href="#pop-com_myinfo" class="user" onclick="openPop('com_myinfo',540);return false;">홍길동 님<em>(재난정보통신과)</em><i class="ri-user-3-line"></i></a>
       <a href="index.html" class="ico" title="전체메뉴" data-layer="all"><i class="ri-menu-line"></i></a>
       <a href="log_dsblty.html" class="ico" title="알림" data-layer="noti"><i class="ri-notification-3-line"></i><span class="badge"></span></a>
       <a href="login.html" class="ico" title="로그아웃" data-logout><i class="ri-logout-box-r-line"></i></a>
@@ -147,8 +147,8 @@
 
 </div>
 <!-- 모든 프레임 화면 공통 팝업(GNB 내정보 등) -->
-<!-- UI-CO-P01 내정보 (팝업: openPop으로 dialog에 띄움) -->
-<template id="pop-UI-CO-P01" data-w="540">
+<!-- com_myinfo (화면정의서 UI-CO-P01) 내정보 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-com_myinfo" data-w="540">
 <div class="pop w540" role="dialog" aria-modal="true" aria-labelledby="popTit">
   <div class="pop-head"><h2 id="popTit">내정보</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
   <div class="pop-body">
@@ -170,8 +170,8 @@
 </div>
 </template>
 
-<!-- UI-CO-P03 메시지창 샘플 (팝업: openPop으로 dialog에 띄움) -->
-<template id="pop-UI-CO-P03" data-w="540">
+<!-- com_msg (화면정의서 UI-CO-P03) 메시지창 샘플 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-com_msg" data-w="540">
 <div class="pop w540" role="dialog" aria-modal="true" aria-labelledby="popTit">
   <div class="pop-head"><h2 id="popTit">메시지창 샘플</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
   <div class="pop-body">
@@ -197,8 +197,8 @@
 </template>
 
 
-<!-- UI-DA08-007-P01 개인정보 접근이력 상세 (팝업: openPop으로 dialog에 띄움) -->
-<template id="pop-UI-DA08-007-P01" data-w="540">
+<!-- log_privacy_detail (화면정의서 UI-DA08-007-P01) 개인정보 접근이력 상세 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-log_privacy_detail" data-w="540">
 <div class="pop w540" role="dialog" aria-modal="true" aria-labelledby="popTit">
   <div class="pop-head"><h2 id="popTit">개인정보 접근이력 상세</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
   <div class="pop-body">
@@ -234,10 +234,10 @@
 
 <script src="js/common.js"></script>
 
-<script src="js/pop/UI-CO-P01.js"></script>
-<script src="js/pop/UI-CO-P03.js"></script>
+<script src="js/pop/com_myinfo.js"></script>
+<script src="js/pop/com_msg.js"></script>
 
-<script src="js/pop/UI-DA08-007-P01.js"></script>
+<script src="js/pop/log_privacy_detail.js"></script>
 <script src="js/pages/log_privacy.data.js"></script>
 <script src="js/pages/log_privacy.js"></script>
 </body>

@@ -66,5 +66,5 @@ function openCap(i) {
   document.querySelectorAll('#dataLogTbl tbody tr').forEach(function (x, k) {
     x.classList.toggle('on', k === i);
   });
-  openPop(popUrl('pop/UI-DA08-006-P01.html', { org: r[0], io: r[1], se: r[2], rs: r[3], dt: r[4], id: r[6] }), 760);
+  openPop(popUrl('pop/log_data_cap.html', { org: r[0], io: r[1], se: r[2], rs: r[3], dt: r[4], id: r[6] }), 760);
 }

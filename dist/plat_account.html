@@ -32,7 +32,7 @@
     </ul>
     <div class="util">
       <div class="sess" title="세션 남은시간"><b>59:10</b><button type="button" data-sess>시간연장</button></div>
-      <a href="#pop-UI-CO-P01" class="user" onclick="openPop('UI-CO-P01',540);return false;">홍길동 님<em>(재난정보통신과)</em><i class="ri-user-3-line"></i></a>
+      <a href="#pop-com_myinfo" class="user" onclick="openPop('com_myinfo',540);return false;">홍길동 님<em>(재난정보통신과)</em><i class="ri-user-3-line"></i></a>
       <a href="index.html" class="ico" title="전체메뉴" data-layer="all"><i class="ri-menu-line"></i></a>
       <a href="log_dsblty.html" class="ico" title="알림" data-layer="noti"><i class="ri-notification-3-line"></i><span class="badge"></span></a>
       <a href="login.html" class="ico" title="로그아웃" data-logout><i class="ri-logout-box-r-line"></i></a>
@@ -99,7 +99,7 @@
         <div class="sub-head">
           <h3>계정 목록</h3><span class="cnt">전체<b id="cntAll">10</b>건</span>
           <div class="grid-top">
-            <button type="button" class="btn btn-crud" id="btnAcntAdd" onclick="openPop('pop/UI-DA04-002-P01.html',540)"><i class="ri-user-add-line"></i>등록</button>
+            <button type="button" class="btn btn-crud" id="btnAcntAdd" onclick="openPop('pop/plat_account_form.html',540)"><i class="ri-user-add-line"></i>등록</button>
           </div>
         </div>
         <div class="grid-wrap" id="acntWrap">
@@ -135,8 +135,8 @@
 
 </div>
 <!-- 모든 프레임 화면 공통 팝업(GNB 내정보 등) -->
-<!-- UI-CO-P01 내정보 (팝업: openPop으로 dialog에 띄움) -->
-<template id="pop-UI-CO-P01" data-w="540">
+<!-- com_myinfo (화면정의서 UI-CO-P01) 내정보 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-com_myinfo" data-w="540">
 <div class="pop w540" role="dialog" aria-modal="true" aria-labelledby="popTit">
   <div class="pop-head"><h2 id="popTit">내정보</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
   <div class="pop-body">
@@ -158,8 +158,8 @@
 </div>
 </template>
 
-<!-- UI-CO-P03 메시지창 샘플 (팝업: openPop으로 dialog에 띄움) -->
-<template id="pop-UI-CO-P03" data-w="540">
+<!-- com_msg (화면정의서 UI-CO-P03) 메시지창 샘플 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-com_msg" data-w="540">
 <div class="pop w540" role="dialog" aria-modal="true" aria-labelledby="popTit">
   <div class="pop-head"><h2 id="popTit">메시지창 샘플</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
   <div class="pop-body">
@@ -185,8 +185,8 @@
 </template>
 
 
-<!-- UI-DA04-001-P01 연계기관 등록/수정 (팝업: openPop으로 dialog에 띄움) -->
-<template id="pop-UI-DA04-001-P01" data-w="760">
+<!-- plat_org_form (화면정의서 UI-DA04-001-P01) 연계기관 등록/수정 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-plat_org_form" data-w="760">
 <div class="pop w760" role="dialog" aria-modal="true" aria-labelledby="popTit">
   <div class="pop-head"><h2 id="popTit">연계기관 수정</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
   <div class="pop-body">
@@ -227,8 +227,8 @@
 </div>
 </template>
 
-<!-- UI-DA04-002-P01 통합플랫폼 계정 등록 (팝업: openPop으로 dialog에 띄움) -->
-<template id="pop-UI-DA04-002-P01" data-w="540">
+<!-- plat_account_form (화면정의서 UI-DA04-002-P01) 통합플랫폼 계정 등록 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-plat_account_form" data-w="540">
 <div class="pop w540" role="dialog" aria-modal="true" aria-labelledby="popTit">
   <div class="pop-head"><h2 id="popTit">통합플랫폼 계정 등록</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
   <div class="pop-body">
@@ -255,8 +255,8 @@
 </div>
 </template>
 
-<!-- UI-DA04-001-P02 연계확인서 (팝업: openPop으로 dialog에 띄움) -->
-<template id="pop-UI-DA04-001-P02" data-w="900">
+<!-- plat_org_cert (화면정의서 UI-DA04-001-P02) 연계확인서 (팝업: openPop으로 dialog에 띄움) -->
+<template id="pop-plat_org_cert" data-w="900">
 <div class="pop w900" role="dialog" aria-modal="true" aria-labelledby="popTit">
   <div class="pop-head"><h2 id="popTit">연계확인서</h2><button type="button" class="close" title="닫기" onclick="closePop()"><i class="ri-close-line"></i></button></div>
   <div class="pop-body">
@@ -272,12 +272,12 @@
 
 <script src="js/common.js"></script>
 
-<script src="js/pop/UI-CO-P01.js"></script>
-<script src="js/pop/UI-CO-P03.js"></script>
+<script src="js/pop/com_myinfo.js"></script>
+<script src="js/pop/com_msg.js"></script>
 
-<script src="js/pop/UI-DA04-001-P01.js"></script>
-<script src="js/pop/UI-DA04-002-P01.js"></script>
-<script src="js/pop/UI-DA04-001-P02.js"></script>
+<script src="js/pop/plat_org_form.js"></script>
+<script src="js/pop/plat_account_form.js"></script>
+<script src="js/pop/plat_org_cert.js"></script>
 <script src="js/pages/plat_account.js"></script>
 </body>
 </html>

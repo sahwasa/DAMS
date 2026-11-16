@@ -187,14 +187,14 @@ function openModal(id) {
       MENUS.filter(function (x) {
         return x.id === sel;
       })[0];
-    openPop('pop/UI-DA07-002-P01.html' + (c ? '?up=' + (c.up === '-' ? c.id : c.up) : ''), 540);
+    openPop('pop/sys_menu_form.html' + (c ? '?up=' + (c.up === '-' ? c.id : c.up) : ''), 540);
     return;
   }
   var m = MENUS.filter(function (x) {
     return x.id === id;
   })[0];
   openPop(
-    'pop/UI-DA07-002-P01.html?mode=edit&' +
+    'pop/sys_menu_form.html?mode=edit&' +
       ['id', 'up', 'nm', 'path', 'seq', 'use', 'fn']
         .map(function (k) {
           return k + '=' + encodeURIComponent(m[k]);

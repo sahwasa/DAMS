@@ -222,7 +222,7 @@ function openIssue(id) {
         .join(','),
       pl: i.pl.join(',')
     };
-  openPop('pop/UI-DA02-001-P01.html?' + new URLSearchParams(o).toString(), 900);
+  openPop('pop/gis_issue_detail.html?' + new URLSearchParams(o).toString(), 900);
 }
 function isDetail(i) {
   return (
