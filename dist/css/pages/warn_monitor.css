@@ -154,8 +154,11 @@
 
 /* 2열 툴팁: 좌우 열 폭 같게 */
 .org-tip.w2 .ot-t th:nth-child(3) {
-  padding-left: 16px;
+  padding-left: 12px;
   border-left: 1px solid #f0f0f0;
+}
+.org-tip.w2 .ot-t td:nth-child(2) {
+  padding-right: 12px;
 }
 .org-tip .ot-t .z {
   color: #707070;
@@ -191,6 +194,14 @@
   margin-right: 3px;
   color: #8e8e8e;
 }
+.org-tip .ot-t th {
+  padding-left: 6px;
+}
+.org-tip .ot-t td {
+  padding-right: 6px;
+}
+
+/* 제목 줄(시도명·합계)과 글자 시작·끝 맞춤 */
 .org-tip .ot-t tr.p th,
 .org-tip .ot-t tr.p td {
   font-weight: 700;
