@@ -28,6 +28,15 @@ function setAuto(on) {
 }
 /* 연계기관 데이터(계정관리 등록 10개 기관, 직제순): [기관, 세션 ok|dg(정상/끊김), 금일 발령, 제원정보 최종 수신시각, 전체 단말기, 수신 단말기, 연결, 끊김, 전일대비 증감, 상태정보 최종 수신시각] — 단말기현황(394/387/7)과 맞춤 */
 /* 샘플 데이터 SD → warn_monitor.data.js */
+/* 제원정보 전일 대비 변동(신규·제외 대수) — 표의 '전일대비 증감'(순증감) = 신규 − 제외 */
+var CHG = {
+  서울특별시: [1, 0],
+  '전남광주 함평군': [1, 0],
+  울산광역시: [2, 1],
+  '경기 안성시': [0, 1],
+  '충북 청주시': [1, 1],
+  '충남 공주시': [0, 2]
+};
 var ST = { ok: ['정상', 'sc'], dg: ['끊김', 'dg'] };
 /* 금일 발령 상세(시도 → 하위 시군구): 시도 통합플랫폼은 본청 + 관할 시군구 발령, 시군구 통합플랫폼은 해당 시군구 발령 — 직제순 */
 /* 샘플 데이터 ISS → warn_monitor.data.js */
@@ -167,7 +176,9 @@ function drawTerm() {
     t[1] += d[5];
     t[2] += d[6];
     t[3] += d[7];
-    var dv = d[8] === '0' ? '0' : '<span class="' + (d[8][0] === '+' ? 'c-sc' : 'c-dg') + '">' + d[8] + '</span>';
+    var c = CHG[d[0]] || [0, 0],
+      dv = d[8] === '0' ? '0' : '<span class="' + (d[8][0] === '+' ? 'c-sc' : 'c-dg') + '">' + d[8] + '</span>';
+    if (c[0] || c[1]) dv = '<span title="신규 ' + c[0] + ' · 제외 ' + c[1] + '">' + dv + '</span>';
     return (
       '<tr' +
       (d[1] === 'dg' ? ' class="ng"' : '') +
@@ -270,6 +281,8 @@ function drawFeed() {
     dd = SD.reduce(function (a, d) {
       return a + +d[8];
     }, 0),
+    nw = 0,
+    dl = 0,
     lt = SD.filter(function (d) {
       return d[1] !== 'ok';
     }),
@@ -279,6 +292,10 @@ function drawFeed() {
         return d[0];
       })
       .join(', ');
+  Object.keys(CHG).forEach(function (k) {
+    nw += CHG[k][0];
+    dl += CHG[k][1];
+  });
   document.getElementById('monKpi').innerHTML =
     '<div><dl><dt>NDMS 메인포털</dt><dd>정상</dd><dd class="s" title="최종 수신 15:20:29">15:20:29</dd></dl></div>' +
     '<div class="' +
@@ -297,9 +314,12 @@ function drawFeed() {
     '><small>끊김</small> ' +
     bad +
     '<small>대</small></dd></dl></div>' +
-    '<div><dl><dt>단말기 제원정보</dt><dd title="전일 대비 제원정보 단말기 수 증감(연계기관 합계)"><small>전일 대비</small> ' +
-    (dd > 0 ? '+' : '') +
-    dd +
+    '<div><dl><dt>단말기 제원정보</dt><dd title="전일 대비 제원정보 변동 단말기(연계기관 합계)' +
+    (nw + dl ? ' · 순증감 ' + (nw - dl > 0 ? '+' : '') + (nw - dl) + '대' : '') +
+    '"><small>신규</small> ' +
+    nw +
+    ' <small>· 제외</small> ' +
+    dl +
     '<small>대</small></dd></dl></div>' +
     '<div class="in"><dl><dt>금일 재난정보 수신</dt><dd>' +
     nO +
