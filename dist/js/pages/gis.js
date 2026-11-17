@@ -300,47 +300,7 @@ function uniqF(a) {
   });
 }
 /* 미연계지역: 지방정부 재난 예경보 통합플랫폼이 DAMS와 연계되지 않은 시군구(샘플) — 지도에 회색 빗금 */
-var NC_RG = [
-    '충남 당진시',
-    '충남 홍성군',
-    '충남 예산군',
-    '경북 영천시',
-    '경북 청송군',
-    '경북 영양군',
-    '경북 영덕군',
-    '경북 예천군',
-    '경남 양산시'
-  ],
-  NC = null;
-/* 미연계지역은 '재난발생지역인데 연계가 안 돼 발령이 나갈 수 없는 곳'이라 재난을 선택했을 때만 그 재난발생지역 안에서 표시(처음 화면·지방정부발령 탭은 표시 안 함) */
-var NCEV = null;
-function ncAll() {
-  return (
-    NC ||
-    (NC = uniqF(
-      [].concat.apply(
-        [],
-        NC_RG.map(function (n) {
-          return GeoMap.find(n);
-        })
-      )
-    ))
-  );
-}
-function ncF(all) {
-  var ev = NCEV;
-  if (!ev || (!S.ly.nc && !all)) return [];
-  if (ev.nat) return ncAll();
-  var m = ev.fs.map(function (f) {
-    return f[0];
-  });
-  return ncAll().filter(function (f) {
-    return m.some(function (x) {
-      return f[0].indexOf(x) === 0 || x.indexOf(f[0]) === 0;
-    });
-  });
-}
-/* 연계지역: 계정관리 등록 9개 기관 관할(군위군은 2013 경계상 경북) — 파란 테두리 */
+/* 연계지역: 계정관리 직접 연계 9개 기관 관할 + 재난발령을 보내는 지자체 플랫폼(샘플 IS) 관할(군위군은 2013 경계상 경북) — 파란 테두리 */
 var LK_RG = [
     '전남 구례군',
     '전남 보성군',
@@ -361,10 +321,37 @@ function lkAll() {
         [],
         LK_RG.map(function (n) {
           return GeoMap.find(n);
-        })
+        }).concat(
+          Object.keys(IS).map(function (k) {
+            return feats([IS[k].sgg], IS[k].sido);
+          })
+        )
       )
     ))
   );
+}
+function inLk(c) {
+  return lkAll().some(function (f) {
+    return c.indexOf(f[0]) === 0 || f[0].indexOf(c) === 0;
+  });
+}
+/* 미연계지역 = 재난발생지역(시군구 단위) 중 연계지역이 아닌 곳 — 연계가 안 돼 발령이 나갈 수 없는 곳이라 재난을 선택했을 때만 표시(처음 화면·지방정부발령 탭은 표시 안 함) */
+var NCEV = null;
+function ncF(all) {
+  var ev = NCEV;
+  if (!ev || (!S.ly.nc && !all)) return [];
+  var m = ev.fs.map(function (f) {
+    return f[0];
+  });
+  return KRGEO.sgg.filter(function (g) {
+    return (
+      (ev.nat ||
+        m.some(function (x) {
+          return g[0].indexOf(x) === 0 || x.indexOf(g[0]) === 0;
+        })) &&
+      !inLk(g[0])
+    );
+  });
 }
 function lkF() {
   return S.ly.lk ? lkAll() : [];
