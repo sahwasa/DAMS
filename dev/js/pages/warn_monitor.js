@@ -263,7 +263,22 @@ function drawFeed() {
     }, 0),
     bad = SD.reduce(function (a, d) {
       return a + d[7];
-    }, 0);
+    }, 0),
+    con = SD.reduce(function (a, d) {
+      return a + d[6];
+    }, 0),
+    dd = SD.reduce(function (a, d) {
+      return a + +d[8];
+    }, 0),
+    lt = SD.filter(function (d) {
+      return d[1] !== 'ok';
+    }),
+    late = lt.length,
+    lateNm = lt
+      .map(function (d) {
+        return d[0];
+      })
+      .join(', ');
   document.getElementById('monKpi').innerHTML =
     '<div><dl><dt>NDMS 메인포털</dt><dd>정상</dd><dd class="s" title="최종 수신 15:20:29">15:20:29</dd></dl></div>' +
     '<div class="' +
@@ -276,19 +291,28 @@ function drawFeed() {
     (N - ok ? '<span class="c-dg">끊김 ' + (N - ok) + '</span>' : '전 기관 정상') +
     '</dd></dl></div>' +
     '<div class="' +
-    (ok < N ? 'wn' : '') +
-    '"><dl><dt>단말기 상태정보</dt><dd>' +
-    ok +
+    (bad ? 'wn' : '') +
+    '"><dl><dt>단말기 상태정보</dt><dd title="연결 단말기 / 전체 단말기">' +
+    con +
     '<small>/ ' +
-    N +
-    '</small></dd><dd class="s">끊김 <span class="c-dg">' +
+    dev +
+    '대</small></dd><dd class="s"' +
+    (late ? ' title="상태정보(1시간 1회) 수신이 늦은 기관: ' + lateNm + '"' : '') +
+    '>끊김 <span class="c-dg">' +
     bad +
     '</span>대</dd></dl></div>' +
-    '<div><dl><dt>단말기 제원정보</dt><dd>' +
+    '<div><dl><dt>단말기 제원정보</dt><dd title="제원정보 수신 단말기">' +
+    SD.reduce(function (a, d) {
+      return a + d[5];
+    }, 0) +
+    '<small>대</small></dd><dd class="s" title="제원정보 수신 기관 ' +
     N +
-    '<small>/ ' +
+    ' / ' +
     N +
-    '</small></dd></dl></div>' +
+    ' · 전일 대비 증감 합계">전일 대비 ' +
+    (dd > 0 ? '+' : '') +
+    dd +
+    '대</dd></dl></div>' +
     '<div class="in"><dl><dt>금일 재난정보 수신</dt><dd>' +
     nO +
     '<small>건</small></dd><dd class="s" title="최근 15:10 기상특보">최근 15:10</dd></dl></div>' +
