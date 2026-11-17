@@ -239,7 +239,7 @@
       m[0] +
       '.html"><b>' +
       m[1] +
-      '</b><span class="lnb-path"><span>' +
+      '</b><span class="lnb-path ell"><span>' +
       m[2] +
       '<i class="ri-arrow-right-s-line" aria-hidden="true"></i></span><span>' +
       m[1] +

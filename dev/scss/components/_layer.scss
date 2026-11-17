@@ -157,27 +157,24 @@
   }
 }
 .lnb-path {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  display: block;
   max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   font-size: $fs-xs;
   font-weight: 400;
   color: $g60;
   > span {
-    display: inline-flex;
-    align-items: center;
-    max-width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    display: inline;
+  }
+  i {
+    font-size: 14px;
+    vertical-align: -1px;
+    color: $g50;
   }
 }
-/* 경로가 길면 단어 중간이 아니라 '1Depth >' | '메뉴명' 단위로 2줄 */
-.lnb-path i {
-  font-size: 14px;
-  color: $g50;
-}
+/* 경로는 한 줄, 넘치면 말줄임(…) — 마우스 올리면 전체 경로(common.js .ell 툴팁) */
 .lnb-unfav,
 .lnb-unrec {
   flex: 0 0 auto;
