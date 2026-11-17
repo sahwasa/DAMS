@@ -279,8 +279,11 @@
   }
 
   /* ---------- 상태바 ---------- */
-  /* 데이터 처리결과 표시영역(UI 표준 4장·5.7, 2026-11-17 복원): 업무영역 아래 상태바 .status — 프레임 화면·새 창에 자동 삽입, 조회·저장·삭제 결과 문구 표시(오류는 .err) */
+  /* 데이터 처리결과 표시영역(UI 표준 4장·5.7): 업무영역 아래 상태바 .status — 프레임 화면·새 창에 자동 삽입, 조회·저장·삭제 결과 문구 표시(오류는 .err)
+   [미확정] STATUS_ON=false: 2026-11-17 사용자 결정으로 다시 숨김(표준 예외 승인 요청 중) — true로 바꾸면 상태바 표시(.has-stat 여백 규칙 포함, 1600×900 맞춤 확인됨) */
+  var STATUS_ON = false;
   (function () {
+    if (!STATUS_ON) return;
     var w = $('.main>.work') || $('.win-body .work');
     if (!w || $('.status')) return;
     var s = document.createElement('div');
@@ -422,7 +425,7 @@
    doSave(cb)   저장 확인창 → (여기서 저장 API 호출) → 성공 시 msg + cb
    doDelete(cb) 삭제 확인창(취소 기본) → (삭제 API) → 성공 시 msg + cb
    doExcel(name)·doDown(name) 다운로드 시작 문구만 → (파일 다운로드 URL 호출)
-   msg(text,err) 처리결과 문구 — 업무영역 아래 상태바(.status, 데이터 처리결과 표시영역)와 콘솔에 표시 */
+   msg(text,err) 처리결과 문구 — 콘솔 + 상태바(.status, STATUS_ON=true일 때만 — 현재 숨김) */
   window.doSave = function (cb) {
     confirmMsg('저장하시겠습니까?', function () {
       msg('저장이 완료되었습니다.');
