@@ -291,28 +291,16 @@ function drawFeed() {
     (N - ok ? '<span class="c-dg">끊김 ' + (N - ok) + '</span>' : '전 기관 정상') +
     '</dd></dl></div>' +
     '<div class="' +
-    (bad ? 'wn' : '') +
-    '"><dl><dt>단말기 상태정보</dt><dd title="연결 단말기 / 전체 단말기">' +
-    con +
-    '<small>/ ' +
-    dev +
-    '대</small></dd><dd class="s"' +
+    (bad ? 'dg' : '') +
+    '"><dl><dt>단말기 상태정보</dt><dd' +
     (late ? ' title="상태정보(1시간 1회) 수신이 늦은 기관: ' + lateNm + '"' : '') +
-    '>끊김 <span class="c-dg">' +
+    '><small>끊김</small> ' +
     bad +
-    '</span>대</dd></dl></div>' +
-    '<div><dl><dt>단말기 제원정보</dt><dd title="제원정보 수신 단말기">' +
-    SD.reduce(function (a, d) {
-      return a + d[5];
-    }, 0) +
-    '<small>대</small></dd><dd class="s" title="제원정보 수신 기관 ' +
-    N +
-    ' / ' +
-    N +
-    ' · 전일 대비 증감 합계">전일 대비 ' +
+    '<small>대</small></dd></dl></div>' +
+    '<div><dl><dt>단말기 제원정보</dt><dd title="전일 대비 제원정보 단말기 수 증감(연계기관 합계)"><small>전일 대비</small> ' +
     (dd > 0 ? '+' : '') +
     dd +
-    '대</dd></dl></div>' +
+    '<small>대</small></dd></dl></div>' +
     '<div class="in"><dl><dt>금일 재난정보 수신</dt><dd>' +
     nO +
     '<small>건</small></dd><dd class="s" title="최근 15:10 기상특보">최근 15:10</dd></dl></div>' +
