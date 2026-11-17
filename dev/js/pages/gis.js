@@ -63,7 +63,7 @@ Object.keys(IS).forEach(function (k) {
 });
 var GIS = document.querySelector('.gis');
 var S = {
-  ly: { lk: true, nc: true, un: true },
+  ly: { lk: false, nc: true, un: false },
   tab: 'occur',
   ev: null,
   is: null,
