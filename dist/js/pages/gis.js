@@ -312,18 +312,33 @@ var NC_RG = [
     '경남 양산시'
   ],
   NC = null;
-function ncF() {
-  return S.ly.nc
-    ? NC ||
-        (NC = uniqF(
-          [].concat.apply(
-            [],
-            NC_RG.map(function (n) {
-              return GeoMap.find(n);
-            })
-          )
-        ))
-    : [];
+/* 미연계지역은 '재난발생지역인데 연계가 안 돼 발령이 나갈 수 없는 곳'이라 재난을 선택했을 때만 그 재난발생지역 안에서 표시(처음 화면·지방정부발령 탭은 표시 안 함) */
+var NCEV = null;
+function ncAll() {
+  return (
+    NC ||
+    (NC = uniqF(
+      [].concat.apply(
+        [],
+        NC_RG.map(function (n) {
+          return GeoMap.find(n);
+        })
+      )
+    ))
+  );
+}
+function ncF(all) {
+  var ev = NCEV;
+  if (!ev || (!S.ly.nc && !all)) return [];
+  if (ev.nat) return ncAll();
+  var m = ev.fs.map(function (f) {
+    return f[0];
+  });
+  return ncAll().filter(function (f) {
+    return m.some(function (x) {
+      return f[0].indexOf(x) === 0 || x.indexOf(f[0]) === 0;
+    });
+  });
 }
 /* 연계지역: 계정관리 등록 9개 기관 관할(군위군은 2013 경계상 경북) — 파란 테두리 */
 var LK_RG = [
@@ -744,8 +759,9 @@ var NCL = '';
 function lyList() {
   return (
     LYI('lk', 'lk', '연계지역') +
-    LYI('nc', 'nc', '미연계지역') +
-    (S.tab === 'occur' && S.ev ? LYI('un', 'un', '미발령지역') : '')
+    (S.tab === 'occur' && S.ev
+      ? (ncF(1).length ? LYI('nc', 'nc', '미연계지역') : '') + LYI('un', 'un', '미발령지역')
+      : '')
   );
 }
 function legend(kind, area, only) {
@@ -813,6 +829,7 @@ function render(symOnly) {
           })
       )
     );
+  NCEV = ev;
   if (!symOnly || !CUR.P) base(keep, hl, ev ? ev.fs : null, hl2, unF(ev, hl.concat(hl2)), ev && !ev.nat ? ev.fs : null);
   if (!ids) {
     h =
