@@ -3086,11 +3086,23 @@ details.help-box.ttl > summary {
 
 .lnb-path {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  max-width: 100%;
   font-size: 13px;
   font-weight: 400;
   color: #707070;
 }
+.lnb-path > span {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 경로가 길면 단어 중간이 아니라 '1Depth >' | '메뉴명' 단위로 2줄 */
 .lnb-path i {
   font-size: 14px;
   color: #8e8e8e;

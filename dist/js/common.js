@@ -239,11 +239,11 @@
       m[0] +
       '.html"><b>' +
       m[1] +
-      '</b><span class="lnb-path">' +
+      '</b><span class="lnb-path"><span>' +
       m[2] +
-      '<i class="ri-arrow-right-s-line" aria-hidden="true"></i>' +
+      '<i class="ri-arrow-right-s-line" aria-hidden="true"></i></span><span>' +
       m[1] +
-      '</span></a>' +
+      '</span></span></a>' +
       (fav
         ? '<button type="button" class="lnb-unfav" data-unfav="' +
           m[0] +

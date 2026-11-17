@@ -158,14 +158,25 @@
 }
 .lnb-path {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  max-width: 100%;
   font-size: $fs-xs;
   font-weight: 400;
   color: $g60;
-  i {
-    font-size: 14px;
-    color: $g50;
+  > span {
+    display: inline-flex;
+    align-items: center;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
+}
+/* 경로가 길면 단어 중간이 아니라 '1Depth >' | '메뉴명' 단위로 2줄 */
+.lnb-path i {
+  font-size: 14px;
+  color: $g50;
 }
 .lnb-unfav,
 .lnb-unrec {
