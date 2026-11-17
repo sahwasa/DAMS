@@ -20,7 +20,7 @@ npm run format    # JS·SCSS 형식 정리(prettier 3.3.3, 설정 .prettierrc �
 | **샘플 데이터** | `js/pages/화면.data.js` (26개 화면). 화면 JS에는 `/* 샘플 데이터 변수명 → 화면.data.js */` 표시 | 서버 API 응답(또는 JSP 출력)으로 대체. 변수명·배열 열 순서는 화면 JS가 읽는 형식 그대로 |
 | **검색** | 화면 JS의 `window.onSearch = function(form){…}` 앞 `TODO(API)` 주석 | 검색 조건으로 목록 조회 API 호출 → 목록·건수·페이징 갱신 |
 | **저장·삭제·다운로드** | `common.js` `[목업 가짜 동작]` — `doSave(cb)` `doDelete(cb)` `doExcel(name)` `doDown(name)` | 확인창은 그대로 쓰고, 확인 뒤 API 호출 → 성공 시 `msg()`·`cb()` |
-| **처리결과 문구** | `msg(text, err)` → 브라우저 **콘솔** 출력(화면 상태바는 시안에 없어 삭제) | 필요하면 토스트 등으로 표시 |
+| **처리결과 문구** | `msg(text, err)` → 업무영역 아래 **상태바 `.status`**(데이터 처리결과 표시영역, common.js가 자동 삽입) + 콘솔 | 서버 응답 결과 문구로 호출 |
 | **로딩** | `loading(문구, ms, cb)` — ms 뒤 cb | 실제 요청 시작·완료에 맞춰 표시/제거 |
 | **새 재난 알림** | `toast(제목,{kind})` | 서버 푸시(웹소켓·폴링) 수신 때 호출. 목업의 첫 진입 알림 시연·GNB 5번 클릭 시연은 퍼블에서 제거 |
 | **목업 전용 창 연동** | 파일 맨 위 `[목업 전용] localStorage(...)` 주석 — 연계기관현황·연계확인서 발급(새 창)·점검실행의 발급 취소(`damsCertCancel`)·통합 발급(`damsInteg`) 상태 공유 | 서버 데이터 조회로 대체(localStorage 코드 삭제) |

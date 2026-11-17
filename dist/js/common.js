@@ -279,9 +279,27 @@
   }
 
   /* ---------- 상태바 ---------- */
-  /* 처리결과 메시지: 화면 상태바 없음(NDMS 시안 기준, 사용자 결정) → 브라우저 콘솔로 출력 */
+  /* 데이터 처리결과 표시영역(UI 표준 4장·5.7, 2026-11-17 복원): 업무영역 아래 상태바 .status — 프레임 화면·새 창에 자동 삽입, 조회·저장·삭제 결과 문구 표시(오류는 .err) */
+  (function () {
+    var w = $('.main>.work') || $('.win-body .work');
+    if (!w || $('.status')) return;
+    var s = document.createElement('div');
+    s.className = 'status';
+    s.setAttribute('role', 'status');
+    s.setAttribute('aria-live', 'polite');
+    s.textContent = $('.work .btns.c') ? '' : '조회가 완료되었습니다.';
+    w.insertAdjacentElement('afterend', s);
+    document.body.classList.add('has-stat');
+  })();
   function msg(t, err) {
     (err ? console.warn : console.info)('[DAMS] ' + t);
+    var s = $('.status');
+    if (!s) return;
+    s.textContent = t;
+    s.classList.toggle('err', !!err);
+    s.classList.remove('flash');
+    void s.offsetWidth;
+    s.classList.add('flash');
   }
   window.msg = msg;
 
@@ -404,7 +422,7 @@
    doSave(cb)   저장 확인창 → (여기서 저장 API 호출) → 성공 시 msg + cb
    doDelete(cb) 삭제 확인창(취소 기본) → (삭제 API) → 성공 시 msg + cb
    doExcel(name)·doDown(name) 다운로드 시작 문구만 → (파일 다운로드 URL 호출)
-   msg(text)    처리결과 문구 — 목업은 브라우저 콘솔 출력(화면 상태바 없음) */
+   msg(text,err) 처리결과 문구 — 업무영역 아래 상태바(.status, 데이터 처리결과 표시영역)와 콘솔에 표시 */
   window.doSave = function (cb) {
     confirmMsg('저장하시겠습니까?', function () {
       msg('저장이 완료되었습니다.');

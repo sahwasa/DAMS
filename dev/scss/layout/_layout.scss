@@ -269,6 +269,31 @@
     color: $dg-t;
   }
 }
+.main > .status {
+  border: 1px solid $frame-bd;
+  border-top: 0;
+  padding: 0 24px;
+}
+.has-stat {
+  .main > .work {
+    padding-bottom: 0;
+  }
+  .main {
+    padding-bottom: 4px;
+  }
+}
+/* 상태바 30px만큼 업무영역 아래 여백(24)·바깥 여백(10→4)에서 확보 — 1600×900 고정 높이 화면 유지 */
+.status.flash {
+  animation: statFlash 0.8s ease-out;
+}
+@keyframes statFlash {
+  from {
+    background: $wn-b;
+  }
+  to {
+    background: $wn-s;
+  }
+}
 // MDI 탭 숨김(2026-11-16 사용자 결정 — 기본 화면 확정, 화면 버전 전환 삭제), 업무영역 위 여백 8(LNB 탭 줄과 맞춤)
 @media (min-width: 1280px) {
   .mdi {
