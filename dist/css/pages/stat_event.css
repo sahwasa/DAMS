@@ -76,7 +76,8 @@
   .sch-box #regionCond > .rdo + .rdo {
     margin-right: 0;
   }
-  .sch-box #rgSido {
+  .sch-box #rgSido,
+  .sch-box #rgSgg {
     flex: 0 0 150px;
     margin-left: 4px !important;
   }

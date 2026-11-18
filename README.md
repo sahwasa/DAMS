@@ -40,7 +40,6 @@ dev/
     top.html            <head> — @@include('../inc/top.html',{"title":"…","css":"화면"}) css가 있으면 css/pages/화면.css 연결
     header.html         GNB (현재 1Depth .on은 js/common.js markOn()이 파일명으로 표시)
     lnb-warn|plat|stat|guide|sys|log.html   LNB (현재 메뉴 .on도 markOn())
-    mdi.html · mdi-gis.html                 MDI 탭 {"file","name"}
     breadcrumb.html     {"d1","d1h","d2","d2h"}
     footer.html · script.html · pop-common.html · script-common.html
     pop/팝업명.html     팝업 마크업 <template id="pop-팝업명">
@@ -112,13 +111,13 @@ dev/
 | `pwEye(버튼,보이기)` · `pwGen(길이)` | 비밀번호 보기/숨기기 · 자동 생성(기본 12자, 영문 대·소문자·숫자·특수문자) |
 | `doPrint(name)` | 인쇄 확인창 → 인쇄(팝업이 열려 있으면 팝업만) |
 | `scrollFocus()` · `thScope()` | 접근성 자동 처리: 넘치는 스크롤 영역에 `tabindex=0`·`aria-label`, 표 `th`에 `scope`(DOM이 바뀌면 자동 재실행) |
-| `markOn()` | 현재 파일명으로 GNB·LNB·MDI `.on` 표시(_view·_write는 목록 화면 메뉴) |
+| `markOn()` | 현재 파일명으로 GNB·LNB `.on` 표시(_view·_write는 목록 화면 메뉴) |
 
 화면에서 정의하면 공통 동작이 불러주는 훅: `window.onSearch(form)`(검색 submit, false면 기본 문구 생략) · `window.onTab(id)` · `window.onSort(키,방향,th)` · `window.onPopOk(key,data)`(팝업 결과). 검색 폼 `.sch-box`의 submit은 `checkReq` → `onSearch` → '조회가 완료되었습니다.', reset은 초기화 문구.
 
 ## 공통 클래스(scss/components)
 ```
-레이아웃  .wrap > header.gnb + .body > (.lnb + .main > .mdi + main.work#content) + footer.ft   LNB 접기 body.lnb-off
+레이아웃  .wrap > header.gnb + .body > (.lnb + .main > main.work#content) + footer.ft   LNB 접기 body.lnb-off
 타이틀    .page-head(.tit .star .bread .btns) / .sub-head(h3|h4 .cnt .btns)  — 제목 단계만 바꿀 땐 <h3 class="h4">처럼 모양 클래스
 버튼      .btn + .btn-crud(목록·삭제·취소·저장·신규) .btn-sch(검색) .btn-rst(초기화) .btn-line(그리드·폼 기본) .btn-dark(엑셀·강조)
           색 .btn-pri|sec|dg|wn|sc|in (+ -o 외곽선형)  크기 .s .l .ico
@@ -138,7 +137,7 @@ dev/
 - 반응형: PC ≥1280(기준 1600×900, 가로 스크롤 없음) · 태블릿 768~1279 · 모바일 ≤767 — `layout/_responsive.scss`. 팝업 안 반응형 규칙은 `html:not(.pc-pop)` 접두.
 
 ## 웹접근성(KWCAG 2.2 · axe WCAG 2.1 AA 점검 위반 0)
-- 건너뛰기 링크 `.skip`(본문 `#content`·주메뉴 `#gnbMenu`·서브메뉴 `#lnbMenu`, 대상 `tabindex="-1"`), 랜드마크(header·nav·main·footer, MDI `role="navigation"`).
+- 건너뛰기 링크 `.skip`(본문 `#content`·주메뉴 `#gnbMenu`·서브메뉴 `#lnbMenu`, 대상 `tabindex="-1"`), 랜드마크(header·nav·main·footer).
 - 글자 대비 4.5:1 — 보조 글자 `#707070`, 회색·연한 배경 위 작은 글자 `#505050`(`#8e8e8e`는 비활성·장식에만).
 - 입력에는 `<label for>` 또는 `title`(한 항목에 입력 2개인 기간·시도+시군구), 표에는 `<caption class="blind">`.
 - 새 창 링크는 `title="…(새 창)"`, 팝업은 `role="dialog" aria-modal aria-labelledby="popTit"`.

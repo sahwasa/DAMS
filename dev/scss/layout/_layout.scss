@@ -188,64 +188,6 @@
   background: $frame-bg;
   padding: 0 10px 10px 10px;
 }
-.mdi {
-  display: flex;
-  align-items: flex-end;
-  height: $mdi-h + 8px;
-  padding: 0;
-  background: $frame-bg;
-  flex: 0 0 $mdi-h + 8px;
-}
-.mdi-tabs {
-  display: flex;
-  gap: 2px;
-  flex: 1;
-  overflow: hidden;
-  align-self: stretch;
-  align-items: flex-end;
-  li {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 6px;
-    height: 32px;
-    width: 130px;
-    padding: 0 8px 0 14px;
-    border-radius: 2px 2px 0 0;
-    background: #5d6063;
-    font-size: 13px;
-    color: #fff;
-    white-space: nowrap;
-    span,
-    a {
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    &.on {
-      background: $pri;
-      font-weight: 600;
-    }
-    button {
-      font-size: 15px;
-      color: #fff;
-      opacity: 0.85;
-    }
-  }
-}
-.mdi-ctrl {
-  display: flex;
-  gap: 2px;
-  padding-bottom: 4px;
-  button {
-    width: 26px;
-    height: 26px;
-    border: 1px solid $c-line2;
-    background: #fff;
-    border-radius: $r-s;
-    font-size: 15px;
-    color: $g60;
-  }
-}
 .work {
   flex: 1;
   overflow-y: auto;
@@ -294,11 +236,8 @@
     background: $wn-s;
   }
 }
-// MDI 탭 숨김(2026-11-16 사용자 결정 — 기본 화면 확정, 화면 버전 전환 삭제), 업무영역 위 여백 8(LNB 탭 줄과 맞춤)
+// MDI 탭 삭제(2026-11-18 사용자 결정 — 2026-11-16 숨김 → 삭제), 업무영역 위 여백 8(LNB 탭 줄과 맞춤)
 @media (min-width: 1280px) {
-  .mdi {
-    display: none;
-  }
   .main {
     padding-top: 8px;
   }

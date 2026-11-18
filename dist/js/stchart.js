@@ -61,8 +61,31 @@
       o || {}
     );
   };
+  /* 값 축 숫자 단위: 1천 이상은 천, 1만 이상은 만, 1억 이상은 억(K·M 대신, 2026-11-18) — 축 라벨에 formatter가 없으면 기본 적용 */
+  window.krNum = function (v) {
+    var a = Math.abs(v),
+      r = function (x) {
+        return +x.toFixed(1);
+      };
+    return a >= 1e8 ? r(v / 1e8) + '억' : a >= 1e4 ? r(v / 1e4) + '만' : a >= 1e3 ? r(v / 1e3) + '천' : v;
+  };
+  /* 좌우 2축 차트의 축 이름(어느 값의 축인지): ecAxName('연결(건)') — 축 위쪽에 회색 작은 글자 */
+  window.ecAxName = function (n, right) {
+    return {
+      name: n,
+      nameLocation: 'end',
+      nameGap: 12,
+      nameTextStyle: {
+        color: C.tx,
+        fontSize: 11,
+        fontWeight: 600,
+        align: right ? 'right' : 'left',
+        padding: right ? [0, -6, 0, 0] : [0, 0, 0, -30]
+      }
+    };
+  };
   window.ecVal = function (o) {
-    return Object.assign(
+    var v = Object.assign(
       {
         type: 'value',
         axisLine: { show: false },
@@ -72,6 +95,8 @@
       },
       o || {}
     );
+    if (!v.axisLabel.formatter) v.axisLabel = Object.assign({}, v.axisLabel, { formatter: krNum });
+    return v;
   };
   window.ecLegend = function (o) {
     return Object.assign(

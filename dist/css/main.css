@@ -559,67 +559,6 @@ img {
   padding: 0 10px 10px 10px;
 }
 
-.mdi {
-  display: flex;
-  align-items: flex-end;
-  height: 42px;
-  padding: 0;
-  background: #f5f7f9;
-  flex: 0 0 42px;
-}
-
-.mdi-tabs {
-  display: flex;
-  gap: 2px;
-  flex: 1;
-  overflow: hidden;
-  align-self: stretch;
-  align-items: flex-end;
-}
-.mdi-tabs li {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 6px;
-  height: 32px;
-  width: 130px;
-  padding: 0 8px 0 14px;
-  border-radius: 2px 2px 0 0;
-  background: #5d6063;
-  font-size: 13px;
-  color: #fff;
-  white-space: nowrap;
-}
-.mdi-tabs li span,
-.mdi-tabs li a {
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.mdi-tabs li.on {
-  background: #3e55e1;
-  font-weight: 600;
-}
-.mdi-tabs li button {
-  font-size: 15px;
-  color: #fff;
-  opacity: 0.85;
-}
-
-.mdi-ctrl {
-  display: flex;
-  gap: 2px;
-  padding-bottom: 4px;
-}
-.mdi-ctrl button {
-  width: 26px;
-  height: 26px;
-  border: 1px solid #d8d8d8;
-  background: #fff;
-  border-radius: 2px;
-  font-size: 15px;
-  color: #707070;
-}
-
 .work {
   flex: 1;
   overflow-y: auto;
@@ -672,9 +611,6 @@ img {
   }
 }
 @media (min-width: 1280px) {
-  .mdi {
-    display: none;
-  }
   .main {
     padding-top: 8px;
   }
@@ -4734,8 +4670,7 @@ body.win-body {
     font-size: 26px;
   }
   html:not(.pc-pop) .lnb,
-  html:not(.pc-pop) .lnb-fold,
-  html:not(.pc-pop) .mdi {
+  html:not(.pc-pop) .lnb-fold {
     display: none !important;
   }
   html:not(.pc-pop) .body {
@@ -5760,7 +5695,6 @@ body.win-body {
   .gnb,
   .lnb,
   .lnb-fold,
-  .mdi,
   .status,
   .ft,
   .sch-box,

@@ -60,20 +60,6 @@
 
     <!-- MAIN -->
     <div class="main">
-      
-      <div class="mdi" role="navigation" aria-label="열린 화면 탭">
-        <ul class="mdi-tabs">
-          <li><a href="gis.html">GIS상황판</a><button type="button" title="닫기" data-mdi="close"><i class="ri-close-line"></i></button></li>
-          <li class="on"><a href="stat_device.html">단말기통계</a><button type="button" title="닫기" data-mdi="close"><i class="ri-close-line"></i></button></li>
-        </ul>
-        <div class="mdi-ctrl">
-          <button type="button" title="이전" data-mdi="prev"><i class="ri-arrow-left-s-line"></i></button>
-          <button type="button" title="다음" data-mdi="next"><i class="ri-arrow-right-s-line"></i></button>
-          <button type="button" title="전체닫기" data-mdi="all"><i class="ri-close-line"></i></button>
-        </div>
-      </div>
-
-
       <main class="work" id="content" tabindex="-1">
         <div class="page-head">
           <div>
@@ -96,7 +82,7 @@
     </div>
     <div class="it c2" id="regionCond"><span class="lb">지역 레벨</span>
       <label class="rdo"><input type="radio" name="regionUnit" value="sido" checked onchange="setUnit(this.value)"><span>시도별</span></label>
-      <label class="rdo"><input type="radio" name="regionUnit" value="sgg" onchange="setUnit(this.value)"><span>시군구별</span></label><select class="sel u-w170px u-ml8px" id="rgSido" name="rgSido" title="시도" hidden onchange="setUnit('sgg')"><option value="">시도 전체</option><option>전남광주통합특별시</option><option>대전광역시</option><option>울산광역시</option><option>경기도</option><option>강원특별자치도</option><option>충청남도</option><option>경상북도</option></select>
+      <label class="rdo"><input type="radio" name="regionUnit" value="sgg" onchange="setUnit(this.value)"><span>시군구별</span></label><select class="sel u-w170px u-ml8px" id="rgSido" name="rgSido" title="시도" onchange="rgChg()"><option value="">시도 전체</option><option>전남광주통합특별시</option><option>대전광역시</option><option>울산광역시</option><option>경기도</option><option>강원특별자치도</option><option>충청남도</option><option>경상북도</option></select><select class="sel u-w150px u-ml4px" id="rgSgg" name="rgSgg" title="시군구" hidden onchange="setUnit(UNIT)"><option value="">시군구 전체</option></select>
     </div>
     <div class="it"><label for="selDevice">매체구분</label><select class="sel" id="selDevice" name="selDevice"><option value="">전체</option><option value="01">자동음성통보</option><option value="02">재해문자전광판</option><option value="03">마을방송</option><option value="04">자동우량경보</option></select></div>
   </div>
@@ -120,7 +106,7 @@
     <div class="card"><div class="card-h" title="설치 대수(막대)와 수신율(보조)">매체구분별 단말기 설치 현황<span class="sub">(설치 대수 · 수신율)</span><span class="st-cond" data-cond></span>
       <div class="btns" id="dmMode" role="group" aria-label="차트 종류"><button type="button" class="btn s ico btn-pri" title="가로 막대" aria-label="가로 막대" onclick="dmMode(this,'h')"><i class="ri-bar-chart-horizontal-line"></i></button><button type="button" class="btn s ico btn-line" title="세로 막대" aria-label="세로 막대" onclick="dmMode(this,'v')"><i class="ri-bar-chart-line"></i></button><button type="button" class="btn s ico btn-line" title="비율" aria-label="비율" onclick="dmMode(this,'d')"><i class="ri-donut-chart-line"></i></button></div><button type="button" class="btn s btn-line ico img-dn" title="차트 이미지 다운로드(PNG)" onclick="chartPng('매체구분별 단말기 설치 현황',this)"><i class="ri-image-line"></i></button></div>
       <div class="card-b"><div class="dm-cat" id="deviceTypeChart"></div></div></div>
-    <div class="card"><div class="card-h"><span id="dmTrTit">월별 설치 대수·수신율 추이</span><span class="sub">(막대 설치 대수(대) · 선 수신율(%))</span><span class="st-cond" data-cond></span><button type="button" class="btn s btn-line ico img-dn" title="차트 이미지 다운로드(PNG)" onclick="chartPng(document.getElementById('dmTrTit').textContent,this)"><i class="ri-image-line"></i></button></div>
+    <div class="card"><div class="card-h"><span id="dmTrTit">설치 대수·수신율 추이</span><span class="sub">(막대 설치 대수 · 선 수신율)</span><span class="st-cond" data-cond></span><button type="button" class="btn s btn-line ico img-dn" title="차트 이미지 다운로드(PNG)" onclick="chartPng(document.getElementById('dmTrTit').textContent,this)"><i class="ri-image-line"></i></button></div>
       <div class="card-b"><div class="md-tr" id="dmTrend"></div></div></div>
   </div>
   <div class="tbl-acc" id="dvTblWrapAcc">
@@ -178,7 +164,7 @@
 
 <!-- [탭3] 상태별 -->
 <div id="tabStatus" hidden>
-  <div class="card"><div class="card-h"><span id="dsTit">월별 연결·끊김 추이</span><span class="sub" id="dsSub">(건, 연결=왼쪽 축·끊김=오른쪽 축)</span><span class="st-cond" data-cond></span><div class="btns" role="group" aria-label="차트 종류"><button type="button" class="btn s ico btn-pri" title="막대+선" aria-label="막대+선" onclick="chMode(this,'DSM','c','drawStatus')"><i class="ri-bar-chart-2-line"></i></button><button type="button" class="btn s ico btn-line" title="누적 막대" aria-label="누적 막대" onclick="chMode(this,'DSM','s','drawStatus')"><i class="ri-bar-chart-box-line"></i></button><button type="button" class="btn s ico btn-line" title="수신율 꺾은선" aria-label="수신율 꺾은선" onclick="chMode(this,'DSM','l','drawStatus')"><i class="ri-line-chart-line"></i></button></div><button type="button" class="btn s btn-line ico img-dn" title="차트 이미지 다운로드(PNG)" onclick="chartPng('일자별 연결·끊김 추이',this)"><i class="ri-image-line"></i></button></div>
+  <div class="card"><div class="card-h"><span id="dsTit">연결·끊김 추이</span><span class="sub" id="dsSub">(연결=선 · 끊김=막대)</span><span class="st-cond" data-cond></span><div class="btns" role="group" aria-label="차트 종류"><button type="button" class="btn s ico btn-pri" title="막대+선" aria-label="막대+선" onclick="chMode(this,'DSM','c','drawStatus')"><i class="ri-bar-chart-2-line"></i></button><button type="button" class="btn s ico btn-line" title="누적 막대" aria-label="누적 막대" onclick="chMode(this,'DSM','s','drawStatus')"><i class="ri-bar-chart-box-line"></i></button><button type="button" class="btn s ico btn-line" title="수신율 꺾은선" aria-label="수신율 꺾은선" onclick="chMode(this,'DSM','l','drawStatus')"><i class="ri-line-chart-line"></i></button></div><button type="button" class="btn s btn-line ico img-dn" title="차트 이미지 다운로드(PNG)" onclick="chartPng('일자별 연결·끊김 추이',this)"><i class="ri-image-line"></i></button></div>
     <div class="card-b"><div class="ds-tr" id="deviceStatusChart"></div></div></div>
   <div class="tbl-acc" id="dsTblWrapAcc">
   <div class="sub-head" onclick="tglTbl(event,'dsTblWrap')" title="표 펼치기/접기"><i class="ri-arrow-right-s-line acc-ico"></i><h3>상태별 통계</h3><span class="cnt">전체<b id="dsCnt">11</b>건</span>

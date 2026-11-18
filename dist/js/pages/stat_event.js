@@ -78,11 +78,68 @@ function grpRow(tr) {
     .replace(/class="heat h\d"/g, 'class="t-r"')
     .replace(/ title="[^"]*"/g, '');
 }
+/* 지역 선택: 시도별 = [시도 전체|시도(표의 시도 전체, 직제순)], 시군구별 = [시도(시군구 데이터가 있는 시도)] > [시군구 전체|시군구] — 2026-11-18 */
+function SIDOS() {
+  var t = document.createElement('tbody');
+  t.innerHTML = ORIG.tb || document.getElementById('regionStatTbody').innerHTML;
+  return [].filter
+    .call(t.rows, function (r) {
+      return !r.classList.contains('tot') && r.cells[0].textContent.indexOf('기타') < 0;
+    })
+    .map(function (r) {
+      return r.cells[0].textContent;
+    });
+}
+function rgOpts(u) {
+  var SL = document.getElementById('rgSido'),
+    GL = document.getElementById('rgSgg'),
+    k = SL.value;
+  if (SL.dataset.u !== u) {
+    var o = u === 'sgg' ? Object.keys(SPLIT) : SIDOS();
+    SL.innerHTML =
+      '<option value="">시도 전체</option>' +
+      o
+        .map(function (x) {
+          return '<option>' + x + '</option>';
+        })
+        .join('');
+    SL.value = o.indexOf(k) > -1 ? k : '';
+    SL.dataset.u = u;
+  }
+  GL.hidden = u !== 'sgg';
+  var sp = SPLIT[SL.value];
+  if (GL.dataset.sd !== SL.value) {
+    GL.innerHTML =
+      '<option value="">시군구 전체</option>' +
+      (sp
+        ? sp[1]
+            .map(function (g) {
+              return '<option>' + g + '</option>';
+            })
+            .join('')
+        : '');
+    GL.dataset.sd = SL.value;
+  }
+  GL.disabled = !sp;
+}
+function rgChg() {
+  document.getElementById('rgSgg').value = '';
+  setUnit(UNIT);
+}
+function keepRow(h, nm) {
+  var t = document.createElement('tbody');
+  t.innerHTML = h;
+  [].slice.call(t.rows).forEach(function (r) {
+    if (r.cells[0].textContent !== nm) r.remove();
+  });
+  return t.innerHTML;
+}
 function setUnit(u) {
   UNIT = u;
   var SL = document.getElementById('rgSido');
-  SL.hidden = u === 'sido';
-  var SEL = u === 'sido' ? '' : SL.value;
+  rgOpts(u);
+  var SEL = SL.value,
+    SG = u === 'sgg' ? document.getElementById('rgSgg').value : '';
   [].forEach.call(document.getElementsByName('regionUnit'), function (r) {
     r.checked = r.value === u;
   });
@@ -99,8 +156,8 @@ function setUnit(u) {
   document.getElementById('regTit').textContent = lb + '별 발령·전송 결과';
   document.getElementById('heatTit').textContent = lb + ' × 재난유형 발령 건수';
   if (!sg) {
-    tb.innerHTML = ORIG.tb;
-    hb.innerHTML = ORIG.hb;
+    tb.innerHTML = SEL ? keepRow(ORIG.tb, SEL) : ORIG.tb;
+    hb.innerHTML = SEL ? keepRow(ORIG.hb, SEL) : ORIG.hb;
   } else {
     var t = document.createElement('tbody'),
       h = document.createElement('tbody');
@@ -130,6 +187,7 @@ function setUnit(u) {
         return split(num(c[i].textContent), k);
       });
       sp[1].forEach(function (g, j) {
+        if (SG && g !== SG) return;
         var tx = v[1][j],
           ok = v[2][j];
         rows.push({
@@ -174,6 +232,7 @@ function setUnit(u) {
       var cols = [];
       for (var i = 1; i < c.length - 1; i++) cols.push(split(num(c[i].textContent), k + i));
       sp[1].forEach(function (g, j) {
+        if (SG && g !== SG) return;
         var sum = 0,
           td = cols
             .map(function (a) {
@@ -214,14 +273,20 @@ function setUnit(u) {
       (hetc || '') +
       htot;
   }
-  applyScope(SEL);
+  var r1 = SG && tb.querySelector('tr.sgc');
+  applyScope(SEL, r1 ? num(r1.cells[1].textContent) : null);
   updCond();
   drawRegionMap();
-  msg((sg ? '시군구별' + (SEL ? '(' + SEL + ')' : '') : '시도별') + ' 기준으로 통계를 조회하였습니다.');
+  msg(
+    (sg ? '시군구별' : '시도별') +
+      (SEL ? '(' + SEL + (SG ? ' ' + SG : '') + ')' : '') +
+      ' 기준으로 통계를 조회하였습니다.'
+  );
 }
 /* 드릴다운 경로(전국 › 시도): 상위 단계 클릭 시 올라감 */
 function drillTo(u, sd) {
   var SL = document.getElementById('rgSido');
+  document.getElementById('rgSgg').value = '';
   if (u === 'sido') SL.value = '';
   if (sd != null) SL.value = sd;
   setUnit(u);
@@ -633,7 +698,7 @@ function evSeries() {
         }, 0);
     for (k = 0; r > 0; k = (k + 3) % d, r--) v[k]++;
     return {
-      tit: '일별 재난 발령 추이',
+      tit: '재난 발령 추이',
       lb: v.map(function (_, i) {
         return i + 1;
       }),
@@ -645,7 +710,7 @@ function evSeries() {
   if (t === 'quarter') {
     var q = parseInt(f.selQuarter.value);
     return {
-      tit: '월별 재난 발령 추이',
+      tit: '재난 발령 추이',
       lb: [1, 2, 3].map(function (i) {
         return (q - 1) * 3 + i;
       }),
@@ -671,9 +736,9 @@ function evSeries() {
       }
       if (lb.length > 24) break;
     }
-    return { tit: '월별 재난 발령 추이', lb: lb, v: v, unit: '월' };
+    return { tit: '재난 발령 추이', lb: lb, v: v, unit: '월' };
   }
-  return { tit: '월별 재난 발령 추이', lb: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], v: M, unit: '월' };
+  return { tit: '재난 발령 추이', lb: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], v: M, unit: '월' };
 }
 function drawEvTrend() {
   var el = document.getElementById('evTrend');
@@ -747,7 +812,7 @@ function drawEvTrend() {
     ]
   });
 }
-function applyScope(sd) {
+function applyScope(sd, n) {
   var tb = document.createElement('tbody');
   tb.innerHTML = ORIG.tb || document.getElementById('regionStatTbody').innerHTML;
   var f = 1;
@@ -755,6 +820,7 @@ function applyScope(sd) {
     [].forEach.call(tb.rows, function (tr) {
       if (tr.cells[0].textContent === sd) f = num(tr.cells[1].textContent) / 326;
     });
+  if (n != null) f = n / 326;
   ['tabEvent', 'tabMedia'].forEach(function (id) {
     if (!SCOPE0[id]) {
       var el = document.getElementById(id),
@@ -911,7 +977,14 @@ function drawRegionMap() {
   if (!sg) {
     fs = KRGEO.sido;
     key = 'rg-sido';
-    box = [125.9, 33.1, 129.7, 38.65];
+    var pc = SDv ? (SD[SDv] === '36' ? ['24', '36'] : [SD[SDv]]) : null;
+    box = pc
+      ? GeoMap.bbox(
+          fs.filter(function (f) {
+            return pc.indexOf(f[0]) > -1;
+          })
+        )
+      : [125.9, 33.1, 129.7, 38.65];
   } else {
     var pre = SDv ? (SD[SDv] === '36' ? ['24', '36'] : [SD[SDv]]) : null;
     fs = KRGEO.sgg.filter(function (f) {
@@ -1159,7 +1232,7 @@ function showRegionDetail(tr) {
 /* 초기화 시 지역 레벨·시도 선택도 시도별로 */
 document.querySelector('.sch-box').addEventListener('reset', function () {
   setTimeout(function () {
-    if (UNIT !== 'sido') setUnit('sido');
+    setUnit('sido');
   });
 });
 window.onTab = function (id) {
@@ -1185,7 +1258,7 @@ window.onSearch = function (f) {
   var c = (f.selLclsf.value || '전체') + (f.selCategory.value ? ' > ' + f.selCategory.value : ''),
     s = f.selSituation.selectedOptions[0].textContent;
   /* 차트 제목 옆 조회조건: 기간 · 재난분류 · 재난상황(전체면 생략) */
-  var sd = UNIT === 'sgg' && f.rgSido.value ? f.rgSido.value : '',
+  var sd = f.rgSido.value ? f.rgSido.value + (UNIT === 'sgg' && f.rgSgg.value ? ' ' + f.rgSgg.value : '') : '',
     v =
       p +
       ' · ' +
@@ -1202,6 +1275,7 @@ window.onSearch = function (f) {
     e.title = '조회기간: ' + p + ' | 지역: ' + (sd || '전국') + ' | 재난분류: ' + c + ' | 재난상황: ' + s;
   });
 };
+rgOpts('sido');
 window.onSearch(document.querySelector('.sch-box'));
 document.querySelector('.sch-box').addEventListener('reset', function () {
   setTimeout(function () {

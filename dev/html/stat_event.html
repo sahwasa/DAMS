@@ -12,8 +12,6 @@
 
     <!-- MAIN -->
     <div class="main">
-      @@include('../inc/mdi.html',{"file": "stat_event.html", "name": "재난발령통계"})
-
       <main class="work" id="content" tabindex="-1">
         <div class="page-head">
           <div>
@@ -40,7 +38,7 @@
             <div class="it"><label for="selSituation">재난상황</label><select class="sel" id="selSituation" name="selSituation"><option value="">전체</option><option value="R">실제</option><option value="T">훈련</option><option value="E">시험</option></select></div>
             <div class="it c2" id="regionCond"><span class="lb">지역 레벨</span>
               <label class="rdo"><input type="radio" name="regionUnit" value="sido" checked onchange="setUnit(this.value)"><span>시도별</span></label>
-              <label class="rdo"><input type="radio" name="regionUnit" value="sgg" onchange="setUnit(this.value)"><span>시군구별</span></label><select class="sel u-w170px u-ml8px" id="rgSido" name="rgSido" title="시도" hidden onchange="setUnit(UNIT)"><option value="">시도 전체</option><option>전남광주통합특별시</option><option>대전광역시</option><option>울산광역시</option><option>경기도</option><option>강원특별자치도</option><option>충청남도</option><option>경상북도</option></select>
+              <label class="rdo"><input type="radio" name="regionUnit" value="sgg" onchange="setUnit(this.value)"><span>시군구별</span></label><select class="sel u-w170px u-ml8px" id="rgSido" name="rgSido" title="시도" onchange="rgChg()"><option value="">시도 전체</option><option>전남광주통합특별시</option><option>대전광역시</option><option>울산광역시</option><option>경기도</option><option>강원특별자치도</option><option>충청남도</option><option>경상북도</option></select><select class="sel u-w150px u-ml4px" id="rgSgg" name="rgSgg" title="시군구" hidden onchange="setUnit(UNIT)"><option value="">시군구 전체</option></select>
             </div>
           </div>
           <div class="ctrl">
@@ -62,7 +60,7 @@
             <div class="card"><div class="card-h">재난유형별 발령 현황<span class="sub">(건)</span><span class="st-cond" data-cond></span>
                 <div class="btns" id="evMode" role="group" aria-label="차트 종류"><button type="button" class="btn s ico btn-pri" title="세로 막대" aria-label="세로 막대" onclick="evMode(this,'v')"><i class="ri-bar-chart-line"></i></button><button type="button" class="btn s ico btn-line" title="가로 막대" aria-label="가로 막대" onclick="evMode(this,'h')"><i class="ri-bar-chart-horizontal-line"></i></button><button type="button" class="btn s ico btn-line" title="비율" aria-label="비율" onclick="evMode(this,'d')"><i class="ri-donut-chart-line"></i></button></div><button type="button" class="btn s btn-line ico img-dn" title="차트 이미지 다운로드(PNG)" onclick="chartPng('재난유형별 발령 현황',this)"><i class="ri-image-line"></i></button></div>
               <div class="card-b"><div class="ev-cat" id="evCat"></div><p class="st-note ev-note"><i class="ri-information-line"></i> 발령 건수 상위 14개 재난유형만 표시하고, 나머지 재난유형은 '기타'로 묶어 표시합니다.</p></div></div>
-            <div class="card"><div class="card-h"><span id="evTrTit">월별 재난 발령 추이</span><span class="sub">(건)</span><span class="st-cond" data-cond></span><button type="button" class="btn s btn-line ico img-dn u-mlauto" title="차트 이미지 다운로드(PNG)" onclick="chartPng('재난 발령 추이',this)"><i class="ri-image-line"></i></button></div>
+            <div class="card"><div class="card-h"><span id="evTrTit">재난 발령 추이</span><span class="sub">(건)</span><span class="st-cond" data-cond></span><button type="button" class="btn s btn-line ico img-dn u-mlauto" title="차트 이미지 다운로드(PNG)" onclick="chartPng('재난 발령 추이',this)"><i class="ri-image-line"></i></button></div>
               <div class="card-b"><div class="ev-tr" id="evTrend"></div></div></div>
           </div>
           <div class="tbl-acc" id="evTblWrapAcc">

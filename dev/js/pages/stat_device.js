@@ -63,11 +63,68 @@ function grpRow(tr) {
     .replace(/class="heat h\d"/g, 'class="t-r"')
     .replace(/ title="[^"]*"/g, '');
 }
+/* 지역 선택: 시도별 = [시도 전체|시도(표의 시도 전체, 직제순)], 시군구별 = [시도(시군구 데이터가 있는 시도)] > [시군구 전체|시군구] — 2026-11-18 */
+function SIDOS() {
+  var t = document.createElement('tbody');
+  t.innerHTML = ORIG.tb || document.getElementById('deviceRegionTbody').innerHTML;
+  return [].filter
+    .call(t.rows, function (r) {
+      return !r.classList.contains('tot') && r.cells[0].textContent.indexOf('기타') < 0;
+    })
+    .map(function (r) {
+      return r.cells[0].textContent;
+    });
+}
+function rgOpts(u) {
+  var SL = document.getElementById('rgSido'),
+    GL = document.getElementById('rgSgg'),
+    k = SL.value;
+  if (SL.dataset.u !== u) {
+    var o = u === 'sgg' ? Object.keys(SPLIT) : SIDOS();
+    SL.innerHTML =
+      '<option value="">시도 전체</option>' +
+      o
+        .map(function (x) {
+          return '<option>' + x + '</option>';
+        })
+        .join('');
+    SL.value = o.indexOf(k) > -1 ? k : '';
+    SL.dataset.u = u;
+  }
+  GL.hidden = u !== 'sgg';
+  var sp = SPLIT[SL.value];
+  if (GL.dataset.sd !== SL.value) {
+    GL.innerHTML =
+      '<option value="">시군구 전체</option>' +
+      (sp
+        ? sp[1]
+            .map(function (g) {
+              return '<option>' + g + '</option>';
+            })
+            .join('')
+        : '');
+    GL.dataset.sd = SL.value;
+  }
+  GL.disabled = !sp;
+}
+function rgChg() {
+  document.getElementById('rgSgg').value = '';
+  setUnit(UNIT);
+}
+function keepRow(h, nm) {
+  var t = document.createElement('tbody');
+  t.innerHTML = h;
+  [].slice.call(t.rows).forEach(function (r) {
+    if (r.cells[0].textContent !== nm) r.remove();
+  });
+  return t.innerHTML;
+}
 function setUnit(u) {
   UNIT = u;
   var SL = document.getElementById('rgSido');
-  SL.hidden = u !== 'sgg';
-  var SEL = u === 'sgg' ? SL.value : '';
+  rgOpts(u);
+  var SEL = SL.value,
+    SG = u === 'sgg' ? document.getElementById('rgSgg').value : '';
   var tb = document.getElementById('deviceRegionTbody'),
     hb = document.querySelector('#deviceRegionHeatmap tbody'),
     ch = document.getElementById('deviceRegionChart');
@@ -82,8 +139,13 @@ function setUnit(u) {
   document.getElementById('unitSub').textContent = '(' + lb + ' 단위)';
   document.getElementById('regTit').textContent = lb + '별 통계';
   if (!sg) {
-    tb.innerHTML = ORIG.tb;
+    tb.innerHTML = SEL ? keepRow(ORIG.tb, SEL) : ORIG.tb;
+    if (hb) hb.innerHTML = SEL ? keepRow(ORIG.hb, SEL) : ORIG.hb;
     ch.innerHTML = ORIG.ch;
+    if (SEL)
+      [].slice.call(ch.children).forEach(function (li) {
+        if (li.querySelector('.lb').textContent !== SEL) li.remove();
+      });
   } else {
     var t = document.createElement('tbody'),
       h = document.createElement('tbody');
@@ -116,6 +178,7 @@ function setUnit(u) {
         return (i === 4 ? splitAdj : split)(num(c[i].textContent));
       });
       sp[1].forEach(function (g, j) {
+        if (SG && g !== SG) return;
         var tot2 = v[1][j],
           ng = v[2][j],
           ok = tot2 - ng,
@@ -156,6 +219,7 @@ function setUnit(u) {
       if (SEL && nm !== SEL) return;
       hrows.push(grpRow(tr));
       sp[1].forEach(function (g, j) {
+        if (SG && g !== SG) return;
         var n = sp[0] + ' ' + g,
           td = '';
         for (var i = 1; i < c.length; i++) {
@@ -204,7 +268,11 @@ function setUnit(u) {
   }
   window.onSearch(document.getElementById('schForm'));
   drawRg();
-  msg((sg ? '시군구별' + (SEL ? '(' + SEL + ')' : '') : '시도별') + ' 비교로 지역별 단말기 통계를 조회하였습니다.');
+  msg(
+    (sg ? '시군구별' : '시도별') +
+      (SEL ? '(' + SEL + (SG ? ' ' + SG : '') + ')' : '') +
+      ' 비교로 지역별 단말기 통계를 조회하였습니다.'
+  );
 }
 /* 지역별 단말기 상태(연결·끊김 비율): 지역별 표의 지역 행(시도별 = 시도 + 기타, 시군구별 = 시군구 + 기타)에서 그림 */
 function drawRg() {
@@ -378,30 +446,22 @@ function drawRg() {
         }
       },
       legend: ecLegend({ data: ['설치 대수', '수신율'] }),
-      grid: { left: 52, right: 48, top: 34, bottom: D.length > 6 ? 78 : 44 },
+      grid: { left: 52, right: 48, top: 46, bottom: D.length > 6 ? 78 : 44 },
       graphic: NOTE,
       xAxis: ecCat(N.map(sh), {
         axisLabel: { color: STC.tx, fontSize: 11, interval: 0, rotate: D.length > 6 ? 35 : 0 }
       }),
       yAxis: [
-        ecVal({
-          name: '대',
-          nameTextStyle: { color: STC.gray, fontSize: 11 },
-          axisLabel: {
-            color: STC.gray,
-            fontSize: 11,
-            formatter: function (v) {
-              return v.toLocaleString();
-            }
-          }
-        }),
-        ecVal({
-          min: Math.min(95, mn),
-          max: 100,
-          interval: 1,
-          splitLine: { show: false },
-          axisLabel: { color: STC.gray, fontSize: 11, formatter: '{value}%' }
-        })
+        ecVal(Object.assign(ecAxName('설치 대수(대)'), { axisLabel: { color: STC.gray, fontSize: 11 } })),
+        ecVal(
+          Object.assign(ecAxName('수신율(%)', 1), {
+            min: Math.min(95, mn),
+            max: 100,
+            interval: 1,
+            splitLine: { show: false },
+            axisLabel: { color: STC.gray, fontSize: 11, formatter: '{value}%' }
+          })
+        )
       ],
       series: [
         {
@@ -631,22 +691,20 @@ function drawDm() {
         }
       },
       legend: ecLegend({ data: ['설치 대수', '수신율'] }),
-      grid: { left: 52, right: 48, top: 34, bottom: 44 },
+      grid: { left: 52, right: 48, top: 46, bottom: 44 },
       graphic: NOTE,
       xAxis: ecCat(N, { axisLabel: { color: STC.tx, fontSize: 12, interval: 0 } }),
       yAxis: [
-        ecVal({
-          name: '대',
-          nameTextStyle: { color: STC.gray, fontSize: 11 },
-          axisLabel: { color: STC.gray, fontSize: 11 }
-        }),
-        ecVal({
-          min: 95,
-          max: 100,
-          interval: 1,
-          splitLine: { show: false },
-          axisLabel: { color: STC.gray, fontSize: 11, formatter: '{value}%' }
-        })
+        ecVal(Object.assign(ecAxName('설치 대수(대)'), { axisLabel: { color: STC.gray, fontSize: 11 } })),
+        ecVal(
+          Object.assign(ecAxName('수신율(%)', 1), {
+            min: 95,
+            max: 100,
+            interval: 1,
+            splitLine: { show: false },
+            axisLabel: { color: STC.gray, fontSize: 11, formatter: '{value}%' }
+          })
+        )
       ],
       series: [
         {
@@ -865,7 +923,6 @@ function drawDmTrend() {
   var el = document.getElementById('dmTrend');
   if (!el) return;
   var S = stSer();
-  document.getElementById('dmTrTit').textContent = S.tit + ' 설치 대수·수신율 추이';
   var L = S.lb.map(function (x) {
     return x + S.unit;
   });
@@ -925,7 +982,7 @@ function drawDmTrend() {
       itemHeight: 10,
       itemWidth: 10
     }),
-    grid: { left: 52, right: 44, top: 34, bottom: 26 },
+    grid: { left: 52, right: 44, top: 46, bottom: 26 },
     xAxis: ecCat(L, {
       axisLabel: {
         color: STC.tx,
@@ -938,23 +995,16 @@ function drawDmTrend() {
       }
     }),
     yAxis: [
-      ecVal({
-        min: 0,
-        axisLabel: {
-          color: STC.gray,
-          fontSize: 11,
-          formatter: function (v) {
-            return v.toLocaleString();
-          }
-        }
-      }),
-      ecVal({
-        min: 95,
-        max: 100,
-        interval: 1,
-        splitLine: { show: false },
-        axisLabel: { color: STC.gray, fontSize: 11, formatter: '{value}%' }
-      })
+      ecVal(Object.assign(ecAxName('설치 대수(대)'), { min: 0, axisLabel: { color: STC.gray, fontSize: 11 } })),
+      ecVal(
+        Object.assign(ecAxName('수신율(%)', 1), {
+          min: 95,
+          max: 100,
+          interval: 1,
+          splitLine: { show: false },
+          axisLabel: { color: STC.gray, fontSize: 11, formatter: '{value}%' }
+        })
+      )
     ],
     series: DM.map(function (md, k) {
       return {
@@ -1039,7 +1089,6 @@ function buildStatus() {
     '%</td></tr>';
   document.getElementById('dsTh').textContent = S.day ? '일자' : '월';
   document.getElementById('dsCnt').textContent = rows.length;
-  document.getElementById('dsTit').textContent = (S.day ? '일자별' : '월별') + ' 연결·끊김 추이';
   if (!document.getElementById('tabStatus').hidden) drawStatus();
 }
 /* 일자별 연결·끊김 추이: 상태별 표 데이터로 그림(연결=선·왼쪽 축, 끊김=막대·오른쪽 축) */
@@ -1073,11 +1122,7 @@ function drawStatus() {
   var ch = echarts.getInstanceByDom(el);
   if (ch) ch.clear();
   document.getElementById('dsSub').textContent =
-    DSM === 'c'
-      ? '(건, 연결=왼쪽 축·끊김=오른쪽 축)'
-      : DSM === 's'
-        ? '(%, 연결+끊김=100)'
-        : '(%, 수신율 = 연결 ÷ 전체 × 100)';
+    DSM === 'c' ? '(연결=선 · 끊김=막대)' : DSM === 's' ? '(%, 연결+끊김=100)' : '(%, 수신율 = 연결 ÷ 전체 × 100)';
   if (DSM === 's')
     return EC(el, {
       tooltip: {
@@ -1193,31 +1238,18 @@ function drawStatus() {
       }
     },
     legend: ecLegend(),
-    grid: { left: 64, right: 52, top: 34, bottom: 26 },
+    grid: { left: 52, right: 48, top: 46, bottom: 26 },
     xAxis: X,
     yAxis: [
-      ecVal({
-        scale: true,
-        axisLabel: {
-          color: STC.gray,
-          fontSize: 11,
-          formatter: function (v) {
-            return v >= 1e6 ? (v / 1e6).toFixed(1) + 'M' : v.toLocaleString();
-          }
-        }
-      }),
-      ecVal({
-        min: 0,
-        position: 'right',
-        splitLine: { show: false },
-        axisLabel: {
-          color: STC.gray,
-          fontSize: 11,
-          formatter: function (v) {
-            return v >= 1e3 ? v / 1e3 + 'k' : v;
-          }
-        }
-      })
+      ecVal(Object.assign(ecAxName('연결(건)'), { scale: true, axisLabel: { color: STC.gray, fontSize: 11 } })),
+      ecVal(
+        Object.assign(ecAxName('끊김(건)', 1), {
+          min: 0,
+          position: 'right',
+          splitLine: { show: false },
+          axisLabel: { color: STC.gray, fontSize: 11 }
+        })
+      )
     ],
     series: [
       {
@@ -1253,7 +1285,7 @@ function ymd(s) {
 /* 초기화 시 지역 레벨·시도 선택도 시도별로 */
 document.querySelector('.sch-box').addEventListener('reset', function () {
   setTimeout(function () {
-    if (UNIT !== 'sido') setUnit('sido');
+    setUnit('sido');
   });
 });
 window.onTab = function (id) {
@@ -1283,7 +1315,7 @@ window.onSearch = function (f) {
     }
   }
   /* 차트 제목 옆 조회조건: 기간 · 지역(전국/시도) · 매체(전체면 '전체 매체') */
-  var sd = UNIT === 'sgg' && f.rgSido.value ? f.rgSido.value : '',
+  var sd = f.rgSido.value ? f.rgSido.value + (UNIT === 'sgg' && f.rgSgg.value ? ' ' + f.rgSgg.value : '') : '',
     md = f.selDevice.value ? f.selDevice.selectedOptions[0].text : '전체 매체',
     v = p + ' · ' + (sd || '전국') + ' · ' + md;
   document.querySelectorAll('[data-cond]').forEach(function (e) {
@@ -1295,6 +1327,7 @@ window.onSearch = function (f) {
   buildStatus();
   if (!document.getElementById('tabRegion').hidden) drawRg();
 };
+rgOpts('sido');
 window.onSearch(document.getElementById('schForm'));
 document.getElementById('schForm').addEventListener('reset', function () {
   setTimeout(function () {
@@ -1302,5 +1335,8 @@ document.getElementById('schForm').addEventListener('reset', function () {
   });
 });
 function regionText(f) {
-  return UNIT === 'sgg' ? '시군구별' + (f.rgSido.value ? '(' + f.rgSido.value + ')' : '') : '시도별';
+  return (
+    (UNIT === 'sgg' ? '시군구별' : '시도별') +
+    (f.rgSido.value ? '(' + f.rgSido.value + (UNIT === 'sgg' && f.rgSgg.value ? ' ' + f.rgSgg.value : '') + ')' : '')
+  );
 }

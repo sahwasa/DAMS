@@ -180,7 +180,7 @@
       LS('damsFav', JSON.stringify(f));
     }
   }
-  /* 최근접속: 열어 본 메뉴 화면ID를 localStorage damsRecent에 최신순 30개 유지(UI 표준 4.1.3 최근접속 최대 30개)(MDI 탭 숨김 후 대체) */
+  /* 최근접속: 열어 본 메뉴 화면ID를 localStorage damsRecent에 최신순 30개 유지(UI 표준 4.1.3 최근접속 최대 30개)(MDI 탭 삭제 후 대체) */
   function menuOf(id) {
     var r = null;
     MENU.forEach(function (g) {
@@ -1320,27 +1320,6 @@
     }
     if ((c = t.closest('.box-fold .fold-btn'))) {
       c.closest('.box-fold').classList.toggle('closed');
-      return;
-    }
-    if ((c = t.closest('.mdi-tabs li>button'))) {
-      var li = c.parentNode,
-        nx = li.classList.contains('on') && (li.nextElementSibling || li.previousElementSibling);
-      li.remove();
-      if (nx) location.href = $('a', nx).href;
-      return;
-    }
-    if ((c = t.closest('.mdi-ctrl button'))) {
-      var on2 = $('.mdi-tabs li.on'),
-        k2 = c.dataset.mdi;
-      if (k2 === 'all') {
-        $$('.mdi-tabs li:not(.on)').forEach(function (x) {
-          x.remove();
-        });
-        msg('현재 화면을 제외한 탭을 닫았습니다.');
-      } else {
-        var s = on2 && (k2 === 'prev' ? on2.previousElementSibling : on2.nextElementSibling);
-        s ? (location.href = $('a', s).href) : msg(k2 === 'prev' ? '첫 번째 탭입니다.' : '마지막 탭입니다.');
-      }
       return;
     }
     if ((c = t.closest('.gnb .sess button'))) {
