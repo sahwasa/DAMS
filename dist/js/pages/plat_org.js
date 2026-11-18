@@ -89,7 +89,14 @@ var CHIP = function (nm, d) {
 };
 /* 담당자 샘플(기관마다 고정): 성명·소속부서(pic_ogdp_dept_nm)·직급(가칭)·연락처(기관 일반전화, DB entlno 암호화 저장) */
 /* 샘플 데이터 AREA·SUR·GIV·DSD·DSG·JB → plat_org.data.js */
-ORG.forEach(function (o) {
+/* 번호: 직제순 1부터(서울특별시 1, 2026-11-18) — 담당자 정보는 연계확인서가 발급된 기관(시도 통합 발급 시군구 포함)만(미발급·발급취소·통합 해제는 없음) */
+function certOk(o) {
+  var sd = viaOf(o[1]),
+    x = sd && byNm(sd);
+  return /^\d{4}-/.test(o[7]) || !!(x && /^\d{4}-/.test(x[7]));
+}
+ORG.forEach(function (o, i) {
+  o[0] = i + 1;
   var h = 0,
     k = o[4] + o[1];
   for (var i = 0; i < k.length; i++) h = (h * 31 + k.charCodeAt(i)) >>> 0;
@@ -99,6 +106,7 @@ ORG.forEach(function (o) {
   var a = o[2] === '46' && /^(동구|서구|남구|북구|광산구)$/.test(o[3]) ? '062' : AREA[o[2]] || '02';
   o[13] =
     a + '-' + (o[3] ? 200 + ((h >>> 14) % 700) : 120 + ((h >>> 14) % 80)) + '-' + String(1000 + ((h >>> 4) % 9000));
+  if (!certOk(o)) o[10] = o[11] = o[12] = o[13] = '';
 });
 function certCell(o) {
   var sd = viaOf(o[1]),
@@ -139,7 +147,7 @@ function rowHtml(o) {
           encodeURIComponent(o[12]) +
           '&amp;tel=' +
           o[13]
-        : ''),
+        : '&amp;pic=&amp;dept=&amp;jbgd=&amp;tel='),
     run = o[5] === 'Y';
   return (
     '<tr' +

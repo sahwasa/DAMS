@@ -30,7 +30,6 @@ function setAuto(on) {
 /* 샘플 데이터 SD → warn_monitor.data.js */
 /* 제원정보 전일 대비 변동(신규·제외 대수) — 표의 '전일대비 증감'(순증감) = 신규 − 제외 */
 /* 상태정보 직전 수신(1시간 전) 대비 새로 끊긴 단말기 수 */
-var NEWNG = { 울산광역시: 1, '충북 청주시': 1 };
 var CHG = {
   서울특별시: [1, 0],
   '전남광주 함평군': [1, 0],
@@ -194,11 +193,8 @@ function drawTerm() {
       d[6] +
       '</td><td class="t-r' +
       (d[7] ? ' c-dg' : '') +
-      '"' +
-      (NEWNG[d[0]] ? ' title="직전 수신 대비 신규 끊김 ' + NEWNG[d[0]] + '대"' : '') +
-      '>' +
+      '">' +
       d[7] +
-      (NEWNG[d[0]] ? '<sup class="c-dg"> +' + NEWNG[d[0]] + '</sup>' : '') +
       '</td><td>' +
       d[3] +
       '</td><td class="t-r">' +
@@ -301,9 +297,6 @@ function drawFeed() {
     nw += CHG[k][0];
     dl += CHG[k][1];
   });
-  var nng = Object.keys(NEWNG).reduce(function (a, k) {
-    return a + NEWNG[k];
-  }, 0);
   document.getElementById('monKpi').innerHTML =
     '<div><dl><dt>NDMS 메인포털</dt><dd>정상</dd><dd class="s" title="최종 수신 15:20:29">15:20:29</dd></dl></div>' +
     '<div class="' +
@@ -321,9 +314,7 @@ function drawFeed() {
     (late ? ' title="상태정보(1시간 1회) 수신이 늦은 기관: ' + lateNm + '"' : '') +
     '><small>끊김</small> ' +
     bad +
-    '<small>대 · 신규</small> ' +
-    nng +
-    '</dd></dl></div>' +
+    '<small>대</small></dd></dl></div>' +
     '<div><dl><dt>단말기 제원정보</dt><dd title="전일 대비 제원정보 변동 단말기(연계기관 합계)' +
     (nw + dl ? ' · 순증감 ' + (nw - dl > 0 ? '+' : '') + (nw - dl) + '대' : '') +
     '"><small>신규</small> ' +

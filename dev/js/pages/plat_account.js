@@ -54,7 +54,6 @@ window.onPopOk = function (k, d) {
   if (k !== 'acnt' || !d) return;
   var tb = document.getElementById('acntTbody'),
     tr = tb.rows[0].cloneNode(true);
-  tr.cells[0].textContent = +tb.rows[0].cells[0].textContent + 1;
   tr.cells[1].textContent = d.cd;
   tr.cells[2].textContent = d.nm;
   tr.cells[3].textContent = d.ip;
@@ -68,6 +67,9 @@ window.onPopOk = function (k, d) {
   });
   tr.classList.add('on');
   tb.insertBefore(tr, tb.firstChild);
+  [].forEach.call(tb.rows, function (r, i) {
+    r.cells[0].textContent = i + 1;
+  });
   cnt(1);
   msg('[' + d.nm + '] 계정이 등록되었습니다.');
 };

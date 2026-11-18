@@ -938,7 +938,7 @@ function rcv(r) {
     st = dev * 24 * 14 - (h % 7) * 24,
     sp = dev * 14,
     cn = r[2]
-      ? '<td class="c-dis" title="시군구는 NDMS 직접 연계 대상이 아닙니다.">대상 아님</td>'
+      ? '<td class="c-dis" title="시군구는 NDMS 직접 연계 대상이 아닙니다.">-</td>'
       : '<td>2026-11-' +
         ('0' + (1 + (h % 5))).slice(-2) +
         ' ' +
@@ -979,7 +979,7 @@ function draw() {
           '<tr' +
           (r[2] ? '' : ' class="sd-st"') +
           '><td>' +
-          (tot - i) +
+          (i + 1) +
           '</td><td><span class="badge ' +
           BD[r[0]] +
           '"' +
