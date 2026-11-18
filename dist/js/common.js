@@ -509,7 +509,7 @@
     msg(v ? '장애 경고음을 켰습니다.' : '장애 경고음을 껐습니다.');
   };
   /* ---------- 토스트 알림(새 재난발생·재난발령 정보 도착) ----------
-   toast(제목,{kind:'occur'|'issue'}) 화면 가운데 아래, 10초 후 자동 닫힘, GNB 알림 목록에도 쌓임. 여러 건이면 위로 쌓지 않고 새 알림이 맨 앞(카드 겹침).
+   toast(내용,{kind:'occur'|'issue',lead:'재난분류 또는 발령기관',tm:'YYYY-MM-DD HH:MM'}) — [재난발생]/[신규발령] 꼬리표 + lead · 내용 + 시각(2026-11-18). 화면 가운데 아래, 10초 후 자동 닫힘, GNB 알림 목록에도 쌓임. 여러 건이면 위로 쌓지 않고 새 알림이 맨 앞(카드 겹침).
    알림 클릭: GIS상황판이면 새로고침, 다른 화면이면 GIS상황판으로 이동. X는 닫기 */
   function toastBox() {
     var b = $('.toast-stack');
@@ -536,31 +536,36 @@
     var d = new Date(),
       p2 = function (n) {
         return String(n).padStart(2, '0');
-      };
-    notiAdd({
-      k: o.kind === 'issue' ? '발령' : o.kind === 'alarm' ? '장애' : '발생',
-      href: o.href,
-      t: t,
-      tm:
+      },
+      tm =
+        o.tm ||
         d.getFullYear() +
-        '-' +
-        p2(d.getMonth() + 1) +
-        '-' +
-        p2(d.getDate()) +
-        ' ' +
-        p2(d.getHours()) +
-        ':' +
-        p2(d.getMinutes())
-    });
+          '-' +
+          p2(d.getMonth() + 1) +
+          '-' +
+          p2(d.getDate()) +
+          ' ' +
+          p2(d.getHours()) +
+          ':' +
+          p2(d.getMinutes()),
+      tg = o.kind === 'issue' ? '신규발령' : o.kind === 'alarm' ? '장애' : '재난발생',
+      full = (o.lead ? o.lead + ' · ' : '') + t;
+    notiAdd({ k: tg, href: o.href, t: full, tm: tm });
     var b = toastBox(),
       el = document.createElement('div');
-    el.className = 'toast' + (o.cls ? ' ' + o.cls : '');
+    el.className = 'toast' + (o.cls ? ' ' + o.cls : '') + (o.kind ? ' k-' + o.kind : '');
     el.setAttribute('role', 'status');
     el.innerHTML =
-      '<p><b></b><span>' +
-      (o.sub != null ? o.sub : '현재 화면 새로고침 또는 GIS 상황판으로 이동하시려면<br>이 알림을 클릭하세요.') +
+      '<p><b>' +
+      (o.kind === 'alarm' ? '' : '<em class="tg"></em>') +
+      '<span class="tt"></span></b><time></time><span>' +
+      (o.sub != null ? o.sub : '클릭하면 GIS 상황판에서 확인합니다.') +
       '</span></p><button type="button" class="toast-x" title="알림 닫기"><i class="ri-close-line"></i></button>';
-    $('b', el).textContent = t;
+    var g = $('.tg', el);
+    if (g) g.textContent = '[' + tg + ']';
+    $('.tt', el).textContent = full;
+    $('time', el).textContent = tm;
+    el.title = '[' + tg + '] ' + full;
     b.appendChild(el);
     toastLay();
     var close = function () {
@@ -585,7 +590,7 @@
       else location.href = 'gis.html';
     };
     setTimeout(close, o.ms || 10000);
-    msg('[알림] ' + t);
+    msg('[' + tg + '] ' + full);
     return el;
   };
   window.doDown = function (name) {
@@ -948,7 +953,7 @@
       (soundOn() ? ' checked' : '') +
       ' onchange="setSound(this.checked)"><span class="blind">장애 경고음</span></label></div><ul class="layer-b">' +
       notiItems() +
-      '<li><a href="log_dsblty.html">[장애] 충남 아산시 연계서버 응답 지연<em>2026-10-27 16:50</em></a></li><li><a href="warn_issue.html">[발령] 천안시 원성천 하천범람 대피 긴급방송<em>2026-10-27 16:42</em></a></li><li><a href="guide_notice.html">[공지] 11월 정기 점검 안내<em>2026-10-26 09:00</em></a></li></ul>';
+      '<li><a href="log_dsblty.html">[장애] 충남 아산시 연계서버 응답 지연<em>2026-10-27 16:50</em></a></li><li><a href="warn_issue.html">[신규발령] 충청남도 천안시 · [호우경보] 원성천 하천범람 대피 긴급방송<em>2026-10-27 16:42</em></a></li><li><a href="guide_notice.html">[공지] 11월 정기 점검 안내<em>2026-10-26 09:00</em></a></li></ul>';
     $('.gnb').appendChild(l);
     $('.close', l).onclick = function () {
       l.remove();

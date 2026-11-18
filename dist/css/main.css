@@ -5244,8 +5244,8 @@ body.win-body {
   left: 50%;
   bottom: 44px;
   z-index: 190;
-  width: 400px;
-  margin-left: -200px;
+  width: 480px;
+  margin-left: -240px;
   height: 74px;
   pointer-events: none;
 }
@@ -5277,13 +5277,40 @@ body.win-body {
   min-width: 0;
 }
 .toast b {
-  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   font-weight: 600;
+  word-break: keep-all;
+}
+.toast b .tt {
+  display: inline;
+  font-size: 14px;
 }
 .toast span {
   display: block;
   font-size: 13px;
 }
+.toast .tg {
+  margin-right: 4px;
+  font-style: normal;
+  color: #ffc95c;
+}
+.toast.k-issue .tg {
+  color: #9db0ff;
+}
+.toast time {
+  display: block;
+  margin: 2px 0 4px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.75);
+}
+.toast p > span {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* [재난발생] 주황·[신규발령] 연파랑 꼬리표 + 시각(2026-11-18) */
 .toast.back {
   pointer-events: none;
 }
