@@ -656,6 +656,7 @@ function applyCancel() {
       k = r[2] ? I['@' + nm] : I[nm];
     if (k && k.iss) {
       r[0] = '발급완료';
+      r[4] = k.iss;
       r[5] = k.iss;
       r[10] = undefined;
     }
@@ -672,7 +673,11 @@ function applyCancel() {
       r[5] = '-';
       r[10] = undefined;
     }
-  });
+    if (on) {
+      r[4] = SD[r[1]][4];
+      if (r[10] !== 'via') r[5] = SD[r[1]][5];
+    }
+  }); /* 시도 통합 시군구: 최종 점검일·발급일자 = 시도(2026-11-18) */
   D.forEach(function (r) {
     var v = m[nmOf(r)] && String(m[nmOf(r)]).split('|');
     if (r[0] === '발급완료' && v) {

@@ -240,7 +240,7 @@ function applySaved() {
     if (k[0] !== '@') INTEG[nm] = v.sgg || [];
     if (o && v.iss) {
       o[5] = 'Y';
-      if (!o[6] || o[6] === '-') o[6] = v.iss;
+      o[6] = v.iss;
       o[7] = v.iss;
     }
   });
@@ -469,5 +469,9 @@ window.onSearch = function (f) {
   msg(FIL.length ? '연계기관 목록을 조회하였습니다. (' + FIL.length + '건)' : '검색된 결과가 없습니다.');
   return false;
 };
+/* 운영시작일자 = 연계확인서 발급일(발급 승인 시 운영 전환) — 시도 통합 시군구는 syncInteg에서 시도 날짜를 따름(2026-11-18) */
+ORG.forEach(function (o) {
+  if (o[5] === 'Y' && /^\d{4}-/.test(o[7])) o[6] = o[7];
+});
 applySaved();
 render();
