@@ -21,30 +21,6 @@ function loginPage() {
     $('password').focus();
   } else $('userId').focus();
 }
-/* 재난발생현황(GIS상황판 재난발생 샘플과 동일) */
-/* 샘플 데이터 EVS·ei → login.data.js */
-function evShow() {
-  var e = EVS[ei];
-  $('evIdx').textContent = ei + 1;
-  $('evCnt').textContent = EVS.length;
-  $('evTm').textContent = e.tm;
-  $('evTit').textContent = e.tit;
-  $('evBody').innerHTML =
-    '<b>[재난분류]</b>' +
-    e.cls +
-    '<b>[발생시각]</b>' +
-    e.tm +
-    '<b>[발생지역]</b>' +
-    e.rg +
-    '<b>[내용]</b>' +
-    e.bd +
-    '<b>[연계]</b>' +
-    e.iss;
-}
-function evNav(d) {
-  ei = (ei + d + EVS.length) % EVS.length;
-  evShow();
-}
 function togglePw(b) {
   var p = $('password'),
     v = p.type === 'password';
@@ -68,7 +44,7 @@ function login() {
     fail++;
     pw.value = '';
     $('fldBox').classList.add('err');
-    $('failInfo').innerHTML = '<b class="c-dg">비밀번호 오류 ' + fail + ' / ' + MAX + '회</b>';
+    $('failInfo').innerHTML = '<b>비밀번호 오류 ' + fail + ' / ' + MAX + '회</b>';
     if (fail >= MAX) {
       $('lockNotice').hidden = false;
       alertMsg('비밀번호를 5회 잘못 입력하여 계정이 잠겼습니다.\n시스템 관리자에게 잠금 해제를 요청하세요.', {
@@ -102,5 +78,12 @@ function login() {
 $('password').addEventListener('input', function () {
   $('fldBox').classList.remove('err');
 });
-evShow();
+/* Caps Lock 안내 */
+['userId', 'password'].forEach(function (k) {
+  $(k).addEventListener('keyup', capsChk);
+  $(k).addEventListener('keydown', capsChk);
+});
+function capsChk(e) {
+  if (e.getModifierState) $('capsMsg').hidden = !e.getModifierState('CapsLock');
+}
 loginPage();

@@ -1,126 +1,203 @@
 // 로그인 | 재난 예경보 통합관리시스템 화면 전용
 @use "../abstracts" as *;
+/* 로그인(2026-11-18 사용자 확정 시안 — 가운데 카드 1개, NDMS SERVICE DESK 로그인 형식) + GPKI 인증서 로그인(최초 버전) */
 body {
-  background: $frame-bg;
+  min-height: 100vh;
+  height: auto;
+  background: $g5;
 }
 .lg {
-  max-width: 1144px;
-  margin: 0 auto;
-  padding: 28px 0 0;
-}
-.lg-logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  height: 40px;
-  font-size: 20px;
-  font-weight: 600;
-  color: $g80;
-  img {
-    width: 36px;
-    height: 36px;
-  }
-}
-.lg-row {
-  display: grid;
-  grid-template-columns: 343px 371px 371px;
-  gap: 29px;
-  margin-top: 14px;
-}
-.lg-id {
-  position: relative;
-  padding: 28px 28px 22px;
-  border-radius: 8px;
-  background: $gnb-bg linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0 40%, transparent 40%);
-  color: #fff;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px 16px 16px;
 }
-.lg-id h2,
-.lg-gw h2,
-.lg-msg h2 {
-  font-size: 20px;
-  font-weight: 800;
-  letter-spacing: -0.03em;
+.lg-card {
+  width: 410px;
+  max-width: 100%;
+  padding: 34px 45px 28px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
 }
-.lg-id .sub {
-  font-size: 13px;
-  opacity: 0.85;
+.lg-logo {
+  text-align: center;
+  img {
+    display: block;
+    width: 46px;
+    height: 46px;
+    margin: 0 auto 8px;
+    filter: drop-shadow(0 0 1px rgba(23, 46, 85, 0.35));
+  }
+  b {
+    display: block;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    color: #404040;
+  }
+  span {
+    display: inline-block;
+    margin-top: 2px;
+    padding-bottom: 1px;
+    border-bottom: 1px solid $gnb-bg;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    color: $gnb-bg;
+  }
 }
-.lg-fld {
-  margin-top: 16px;
-  background: #e8f0fe;
-  border-radius: 2px;
-  label {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    height: 48px;
-    padding: 0 14px;
-    + label {
-      border-top: 1px solid #d5def0;
+.lg-sso {
+  margin-top: 24px;
+  h2 {
+    position: relative;
+    padding-top: 12px;
+    font-size: 17px;
+    font-weight: 700;
+    color: $g90;
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 24px;
+      height: 3px;
+      background: $dg;
     }
   }
-  i {
-    font-size: 18px;
-    color: #748299;
+  p {
+    margin: 6px 0 12px;
+    font-size: 14px;
+    color: $g70;
+    word-break: keep-all;
   }
-  input {
+  .btn-cert {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    height: 48px;
+    border-radius: 2px;
+    background: $dg-t;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 700;
+    &:hover {
+      background: $dg-t2;
+    }
+    i {
+      font-size: 20px;
+    }
+  }
+  .lnk {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin-top: 10px;
+    font-size: 13px;
+    color: $g60;
+    button {
+      color: $g60;
+      &:hover {
+        color: $pri;
+        text-decoration: underline;
+      }
+    }
+    span {
+      margin: 0 8px;
+      color: $g40;
+    }
+  }
+}
+.lg-or {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0 4px;
+  font-size: 13px;
+  color: $g60;
+  &::before,
+  &::after {
+    content: "";
     flex: 1;
-    min-width: 0;
-    height: 100%;
+    height: 1px;
+    background: $g20;
+  }
+}
+.lg-tit {
+  margin-bottom: 6px;
+  text-align: center;
+  font-size: 14px;
+  color: #404040;
+}
+.lg-fld {
+  input {
+    display: block;
+    width: 100%;
+    height: 48px;
+    padding: 0 6px;
     border: 0;
+    border-bottom: 1px solid $pri;
+    border-radius: 0;
     background: none;
     font-size: 15px;
     color: $g90;
     outline: 0;
     &::placeholder {
-      color: $g50;
+      color: $g60;
+    }
+    &:focus {
+      border-bottom-width: 2px;
     }
   }
-  .eye {
-    color: #748299;
-    font-size: 18px;
+  &.err input {
+    border-bottom-color: $dg;
   }
-  &.err {
-    box-shadow: 0 0 0 2px $dg;
-  }
+}
+.lg-caps {
+  display: block;
+  margin-top: 8px;
+  font-size: 13px;
+  color: $pri;
 }
 .lg-opt {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 10px 0 12px;
-  font-size: 13px;
+  margin: 10px 0 18px;
   .chk {
-    font-size: 13px;
-    color: #fff;
-    input {
-      border-color: #748299;
-      background-color: transparent;
-    }
+    font-size: 14px;
+    font-weight: 600;
+    color: $g80;
   }
 }
 #failInfo {
   font-size: 12px;
-  opacity: 0.8;
+  color: $g60;
   b {
-    color: #ff8fa8;
-    opacity: 1;
+    color: $dg-t;
   }
 }
-.lg-id {
-  .btn-login {
-    width: 100%;
-    height: 42px;
-    border-radius: 2px;
-    background: $pri;
-    color: #fff;
-    font-size: 15px;
-    font-weight: 700;
-    &:hover {
-      background: $pri-h;
-    }
+.btn-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  height: 54px;
+  border-radius: 0;
+  background: $pri;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  &:hover {
+    background: $pri-h;
+  }
+  i {
+    font-size: 20px;
   }
 }
 .lg-lock {
@@ -129,293 +206,55 @@ body {
   margin-top: 10px;
   padding: 8px 10px;
   border-radius: 2px;
-  background: rgba(235, 0, 59, 0.18);
+  background: $dg-s;
   font-size: 12px;
-  color: #ffd0dc;
+  color: $dg-t;
+}
+.lg-note {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #404040;
+  word-break: keep-all;
+  button {
+    color: $pri;
+    text-decoration: underline;
+  }
 }
 .lg-tip {
-  margin-top: 8px;
+  margin-top: 4px;
   font-size: 11px;
-  opacity: 0.65;
-  line-height: 1.5;
+  color: $g60;
+  word-break: keep-all;
 }
-.lg-guide {
-  position: relative;
-  display: block;
-  width: 100%;
-  margin-top: auto;
-  padding: 12px 32px 12px 18px;
-  border: 2px solid #fff;
-  border-radius: 6px;
-  text-align: left;
-  color: #fff;
-  b {
-    display: block;
-    font-size: 14px;
-    margin-bottom: 2px;
-  }
-  span {
-    font-size: 13px;
-    opacity: 0.9;
-    line-height: 1.5;
-  }
-  i {
-    position: absolute;
-    right: 10px;
-    top: 8px;
-    font-size: 18px;
-  }
-}
-.lg-gw {
-  display: flex;
-  flex-direction: column;
-  padding: 28px 28px 22px;
-  border: 1px solid #e1e5f5;
-  border-radius: 8px;
-  background: #f5f6fd;
-  h2 {
-    color: $pri;
-  }
-}
-.lg-card {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: 16px;
-  padding: 20px 20px 18px;
-  border: 1px solid #e1e5f5;
-  border-radius: 6px;
-  background: #fff;
+.lg-foot {
+  margin-top: 20px;
   text-align: center;
-  h3 {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 17px;
-    font-weight: 700;
-    color: $g90;
-    text-align: left;
-    i {
-      font-size: 24px;
-      color: $g70;
-    }
-  }
-  p {
-    margin: 14px 0 0;
-    font-size: 13px;
-    color: $g60;
-    word-break: keep-all;
-  }
-  .btn-cert {
-    margin: 20px auto 0;
-    width: 190px;
-    height: 54px;
-    border-radius: 2px;
-    background: #5d6063;
-    color: #fff;
-    font-size: 15px;
-    font-weight: 700;
-    &:hover {
-      background: #44474a;
-    }
-  }
-}
-.lg-links {
-  margin-top: 24px;
   font-size: 13px;
   color: $g60;
-  button {
-    color: $g60;
-    &:hover {
-      color: $pri;
-      text-decoration: underline;
-    }
+  a {
+    color: $pri;
+    font-weight: 600;
   }
   span {
     margin: 0 8px;
     color: $g40;
   }
-}
-.lg-msg {
-  display: flex;
-  flex-direction: column;
-  padding: 28px 28px 22px;
-  border: 1px solid #d8ecf3;
-  border-radius: 8px;
-  background: #eef6f9;
-  h2 {
-    display: flex;
-    align-items: center;
-    color: #0077a4;
-  }
-  .nav {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 13px;
-    font-weight: 600;
-    color: $g70;
-    button {
-      width: 22px;
-      height: 22px;
-      color: $g60;
-      font-size: 18px;
-    }
-    b {
-      color: #0077a4;
-    }
-  }
-}
-.lg-when {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 12px;
-  font-size: 14px;
-  color: $g80;
-  em {
-    display: inline-flex;
-    align-items: center;
-    gap: 3px;
-    height: 24px;
-    padding: 0 9px;
-    border-radius: 12px;
-    background: #0077a4;
-    color: #fff;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 600;
-  }
-}
-.lg-bar {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 14px;
-  min-height: 50px;
-  padding: 8px 16px;
-  border-radius: 2px;
-  background: #0077a4;
-  color: #fff;
-  font-size: 15px;
-  font-weight: 600;
-  line-height: 1.4;
-  i {
-    font-size: 20px;
-  }
-}
-.lg-body {
-  flex: 1;
-  min-height: 200px;
-  max-height: 248px;
-  margin-top: 6px;
-  padding: 14px 18px;
-  overflow-y: auto;
-  border: 1px dashed #b6dcea;
-  background: #fff;
-  font-size: 13px;
-  line-height: 1.6;
-  color: $g70;
-  white-space: pre-line;
-  b {
-    display: block;
-    margin-top: 8px;
-    font-weight: 400;
-    color: $g80;
-    &:first-child {
-      margin-top: 0;
-    }
-  }
-}
-.lg-desk {
-  margin-top: 18px;
-  padding: 12px 18px;
-  border-radius: 2px;
-  background: #0077a4;
-  color: #fff;
-  b {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 15px;
-    i {
-      font-size: 20px;
-    }
-  }
   p {
     margin-top: 4px;
-    font-size: 14px;
-  }
-}
-.lg-foot {
-  display: flex;
-  align-items: center;
-  max-width: 1144px;
-  margin: 28px auto 0;
-  padding: 0 0 24px;
-  font-size: 13px;
-  color: $g60;
-  a {
-    color: $pri;
-    font-weight: 500;
-  }
-  .cp {
-    margin-left: auto;
-  }
-  .dk {
-    margin-left: 24px;
-  }
-}
-@media (max-width: 1200px) {
-  .lg {
-    padding: 20px 20px 0;
-  }
-  .lg-row {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
-  }
-  .lg-foot {
-    padding: 0 20px 20px;
-  }
-}
-@media (max-width: 1023px) {
-  .lg-row {
-    grid-template-columns: minmax(0, 1fr);
-  }
-  .lg-foot {
-    flex-wrap: wrap;
-    gap: 4px 16px;
-    .cp {
-      margin-left: 0;
-      width: 100%;
-      order: 3;
-    }
-    .dk {
-      margin-left: auto;
-    }
   }
 }
 @media (max-width: 767px) {
   .lg {
-    padding: 16px 16px 0;
+    justify-content: flex-start;
+    padding: 24px 16px 20px;
   }
-  .lg-logo {
-    font-size: 17px;
-  }
-  .lg-id,
-  .lg-gw,
-  .lg-msg {
-    padding: 22px 18px 18px;
-  }
-  .lg-guide {
-    margin-top: 16px;
+  .lg-card {
+    padding: 32px 20px 28px;
   }
   .lg-fld input {
     font-size: 16px;
   }
-  .lg-foot {
-    padding: 0 16px 20px;
+  .btn-login {
+    height: 52px;
   }
 }
