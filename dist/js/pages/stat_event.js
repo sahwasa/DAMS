@@ -122,9 +122,23 @@ function rgOpts(u) {
   }
   GL.disabled = !sp;
 }
+/* 선택 변경은 선택 목록만 바꾸고, 통계 적용은 [검색](onSearch에서 지역 조건이 바뀌었으면 setUnit) — 2026-11-18 */
+function rUnit() {
+  return (document.querySelector('[name=regionUnit]:checked') || { value: 'sido' }).value;
+}
+function rgKey() {
+  return (
+    rUnit() +
+    '|' +
+    document.getElementById('rgSido').value +
+    '|' +
+    (rUnit() === 'sgg' ? document.getElementById('rgSgg').value : '')
+  );
+}
+var RGKEY = 'sido||';
 function rgChg() {
   document.getElementById('rgSgg').value = '';
-  setUnit(UNIT);
+  rgOpts(rUnit());
 }
 function keepRow(h, nm) {
   var t = document.createElement('tbody');
@@ -136,8 +150,12 @@ function keepRow(h, nm) {
 }
 function setUnit(u) {
   UNIT = u;
+  [].forEach.call(document.getElementsByName('regionUnit'), function (r) {
+    r.checked = r.value === u;
+  });
   var SL = document.getElementById('rgSido');
   rgOpts(u);
+  RGKEY = rgKey();
   var SEL = SL.value,
     SG = u === 'sgg' ? document.getElementById('rgSgg').value : '';
   [].forEach.call(document.getElementsByName('regionUnit'), function (r) {
@@ -1249,6 +1267,11 @@ window.onTab = function (id) {
 };
 /* TODO(API): 검색 조건(form)으로 목록 조회 API 호출 후 목록·건수·페이징 갱신 */
 window.onSearch = function (f) {
+  if (rgKey() !== RGKEY) {
+    RGKEY = rgKey();
+    setUnit(rUnit());
+    return false;
+  }
   var t = f.selPeriodType,
     p =
       t.value === 'custom'

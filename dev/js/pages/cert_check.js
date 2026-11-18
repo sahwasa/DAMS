@@ -442,11 +442,7 @@ function genDoc() {
     '<p class="f-msg mt16">· 본 서식은 점검 결과로 자동 생성되며, 공문 별첨용으로 다운로드합니다. · 발급 승인 시점부터 해당 기관의 데이터는 운영 상태로 전환됩니다.</p>';
 }
 /* 점검기간 변경(달력 선택·직접 입력) 시 바로 다시 점검 — 발급 후에는 변경 불가(readonly) */
-['dfrom', 'dto'].forEach(function (id) {
-  $(id).addEventListener('change', function () {
-    if (!S.issued && !S.running) window.onSearch();
-  });
-});
+/* 점검기간 변경은 [검색]을 눌러야 다시 점검(2026-11-18 — 검색영역 공통: 선택 변경만으로 조회하지 않음) */
 function goList() {
   if (S.running) {
     confirmMsg(
