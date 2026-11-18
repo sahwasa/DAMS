@@ -78,7 +78,7 @@ function grpRow(tr) {
     .replace(/class="heat h\d"/g, 'class="t-r"')
     .replace(/ title="[^"]*"/g, '');
 }
-/* 지역 선택: 시도별 = [시도 전체|시도(표의 시도 전체, 직제순)], 시군구별 = [시도(시군구 데이터가 있는 시도)] > [시군구 전체|시군구] — 2026-11-18 */
+/* 지역 선택: 시도별 = [전국|시도(표의 시도 전체, 직제순)], 시군구별 = [시도(시군구 데이터가 있는 시도)] > [시군구 전체|시군구] — 2026-11-18 */
 function SIDOS() {
   var t = document.createElement('tbody');
   t.innerHTML = ORIG.tb || document.getElementById('regionStatTbody').innerHTML;
@@ -97,7 +97,7 @@ function rgOpts(u) {
   if (SL.dataset.u !== u) {
     var o = u === 'sgg' ? Object.keys(SPLIT) : SIDOS();
     SL.innerHTML =
-      '<option value="">시도 전체</option>' +
+      '<option value="">전국</option>' +
       o
         .map(function (x) {
           return '<option>' + x + '</option>';
