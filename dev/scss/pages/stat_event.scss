@@ -66,9 +66,6 @@
   .sch-box {
     .rows {
       &.r1 {
-        column-gap: 20px;
-      }
-      &.r1 {
         .flex > .sel[class*="u-flex"] {
           flex: 0 0 120px !important;
         }
@@ -79,11 +76,6 @@
     }
     #regionCond > .rdo + .rdo {
       margin-right: 0;
-    }
-    #rgSido,
-    #rgSgg {
-      flex: 0 0 150px;
-      margin-left: 4px !important;
     }
   }
 }

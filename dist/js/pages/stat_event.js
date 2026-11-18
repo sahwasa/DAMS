@@ -428,7 +428,7 @@ function drawMd() {
     xAxis: H ? ecVal({ splitLine: { show: false }, axisLabel: { show: false } }) : ecCat(N),
     yAxis: H
       ? ecCat(N, { inverse: true, axisLabel: { color: STC.tt, fontSize: 12, fontWeight: 600, interval: 0 } })
-      : ecVal(),
+      : ecVal(ecAxName('(건)')),
     series: S.map(function (x, i) {
       return {
         name: x[0],
@@ -583,7 +583,7 @@ function drawEvCat() {
       : ecCat(N, { axisLabel: { color: STC.tx, fontSize: 11, interval: 0 } }),
     yAxis: H
       ? ecCat(N, { inverse: true, axisLabel: { color: STC.tt, fontSize: 12, fontWeight: 600, interval: 0 } })
-      : ecVal(),
+      : ecVal(ecAxName('(건)')),
     series: S.map(function (x, i) {
       return {
         name: x[0],
@@ -670,12 +670,9 @@ function drawMdTrend() {
           : 0
       }
     }),
-    yAxis: ecVal({
-      min: 90,
-      max: 100,
-      interval: 2.5,
-      axisLabel: { color: STC.gray, fontSize: 11, formatter: '{value}%' }
-    }),
+    yAxis: ecVal(
+      Object.assign(ecAxName('(%)'), { min: 90, max: 100, interval: 2.5, axisLabel: { color: STC.gray, fontSize: 11 } })
+    ),
     series: MD.map(function (md, k) {
       return {
         name: md[0],
@@ -786,7 +783,7 @@ function drawEvTrend() {
         return L[i] + '<br>' + (v[i] == null ? '집계 전' : '재난 발령 ' + v[i] + '건');
       }
     },
-    grid: { left: 36, right: 10, top: 22, bottom: 26 },
+    grid: { left: 36, right: 10, top: 34, bottom: 26 },
     xAxis: ecCat(L, {
       axisLabel: {
         color: STC.tx,
@@ -798,7 +795,7 @@ function drawEvTrend() {
           : 0
       }
     }),
-    yAxis: ecVal({ minInterval: 1 }),
+    yAxis: ecVal(Object.assign(ecAxName('(건)'), { minInterval: 1 })),
     series: [
       {
         name: '발령 건수',

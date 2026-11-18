@@ -89,6 +89,41 @@
 /* 한 줄 검색(.rows.r1, PC): 항목 수가 적은 검색영역은 항목을 내용 폭으로 한 줄 배치 */
 @media (min-width: 1280px) {
   .sch-box {
+    .rows.r1.r1 {
+      column-gap: 16px;
+    }
+    #rgSido,
+    #rgSgg {
+      flex: 0 0 120px;
+      width: 120px !important;
+      margin-left: 4px !important;
+    }
+    #regionCond > .rdo {
+      margin-right: 10px;
+    }
+    #selPeriodType,
+    .rows.r1 #selYear {
+      width: 100px !important;
+    }
+    .rows {
+      &.r1 {
+        #selMonth {
+          width: 80px !important;
+        }
+        #selQuarter {
+          width: 80px !important;
+        }
+        #selDevice {
+          flex: 0 0 116px;
+          width: 116px;
+        }
+      }
+    }
+  }
+}
+/* 통계 지역 선택(시도·시군구 120)·기간 유형(100)·매체구분(116)·항목 간격 14: 시군구별로 바꿔도 줄이 넘어가지 않게(2026-11-18) */
+@media (min-width: 1280px) {
+  .sch-box {
     .rows {
       &.r1 {
         display: flex;

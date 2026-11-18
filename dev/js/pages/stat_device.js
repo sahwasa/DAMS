@@ -477,7 +477,7 @@ function drawRg() {
             max: 100,
             interval: 1,
             splitLine: { show: false },
-            axisLabel: { color: STC.gray, fontSize: 11, formatter: '{value}%' }
+            axisLabel: { color: STC.gray, fontSize: 11 }
           })
         )
       ],
@@ -720,7 +720,7 @@ function drawDm() {
             max: 100,
             interval: 1,
             splitLine: { show: false },
-            axisLabel: { color: STC.gray, fontSize: 11, formatter: '{value}%' }
+            axisLabel: { color: STC.gray, fontSize: 11 }
           })
         )
       ],
@@ -1020,7 +1020,7 @@ function drawDmTrend() {
           max: 100,
           interval: 1,
           splitLine: { show: false },
-          axisLabel: { color: STC.gray, fontSize: 11, formatter: '{value}%' }
+          axisLabel: { color: STC.gray, fontSize: 11 }
         })
       )
     ],
@@ -1139,8 +1139,6 @@ function drawStatus() {
     );
   var ch = echarts.getInstanceByDom(el);
   if (ch) ch.clear();
-  document.getElementById('dsSub').textContent =
-    DSM === 'c' ? '(연결=선 · 끊김=막대)' : DSM === 's' ? '(%, 연결+끊김=100)' : '(%, 수신율 = 연결 ÷ 전체 × 100)';
   if (DSM === 's')
     return EC(el, {
       tooltip: {
@@ -1165,12 +1163,9 @@ function drawStatus() {
       legend: ecLegend(),
       grid: { left: 44, right: 12, top: 34, bottom: 26 },
       xAxis: X,
-      yAxis: ecVal({
-        min: 90,
-        max: 100,
-        interval: 2,
-        axisLabel: { color: STC.gray, fontSize: 11, formatter: '{value}%' }
-      }),
+      yAxis: ecVal(
+        Object.assign(ecAxName('(%)'), { min: 90, max: 100, interval: 2, axisLabel: { color: STC.gray, fontSize: 11 } })
+      ),
       series: [
         {
           name: '연결',
@@ -1219,12 +1214,9 @@ function drawStatus() {
         }),
         { boundaryGap: false }
       ),
-      yAxis: ecVal({
-        min: 96,
-        max: 100,
-        interval: 1,
-        axisLabel: { color: STC.gray, fontSize: 11, formatter: '{value}%' }
-      }),
+      yAxis: ecVal(
+        Object.assign(ecAxName('(%)'), { min: 96, max: 100, interval: 1, axisLabel: { color: STC.gray, fontSize: 11 } })
+      ),
       series: [
         {
           name: '수신율',
