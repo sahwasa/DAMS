@@ -24,12 +24,10 @@
       <h2>GPKI인증서 로그인</h2>
       <p>국가재난관리정보시스템(NDMS)에서 등록한 GPKI인증서로 로그인 가능합니다.</p>
       <button type="button" class="btn-cert" id="btnGpkiLogin" onclick="gpkiLogin()"><i class="ri-shield-keyhole-line" aria-hidden="true"></i>인증서 로그인</button>
-      <div class="lnk"><button type="button" onclick="msg('인증서 내보내기 프로그램을 실행합니다.')">인증서 내보내기</button><span>|</span><button type="button" onclick="doDown('인증서 SW')">인증서 SW다운로드</button></div>
     </section>
     <!-- 아이디 로그인(DAMS 자체 계정, 비상/유지보수용) -->
     <div class="lg-or">아이디 로그인(비상·유지보수용)</div>
     <form id="loginForm" onsubmit="login();return false">
-      <p class="lg-tit">아이디와 비밀번호를 입력해주세요.</p>
       <div class="lg-fld" id="fldBox">
         <input id="userId" name="userId" maxlength="20" placeholder="아이디" title="아이디" required data-label="아이디" autocomplete="username">
         <input type="password" id="password" name="password" placeholder="비밀번호" title="비밀번호" required data-label="비밀번호" autocomplete="current-password">
@@ -39,7 +37,6 @@
       <button type="submit" class="btn-login" id="btnLogin"><i class="ri-login-circle-line" aria-hidden="true"></i>로그인</button>
       <div class="lg-lock" id="lockNotice" hidden><i class="ri-lock-line"></i><span>비밀번호 5회 연속 오류로 계정이 잠겼습니다. 시스템 관리자에게 잠금 해제를 요청하세요.</span></div>
       <p class="lg-note">※ 계정이 없거나 권한이 필요하면 <button type="button" id="lnkAuthGuide" onclick="openPop('pop/login_auth_guide.html',540)">NDMS 권한신청 안내</button>를 확인하세요.</p>
-      <p class="lg-tip">※ 목업: 비밀번호를 <b>fail</b>로 입력하면 오류 횟수가 증가하고, 아이디 <b>dup</b>은 중복로그인 안내를 표시합니다.</p>
     </form>
   </main>
   <footer class="lg-foot"><a href="privacy.html">개인정보처리방침</a><span>|</span>SERVICE DESK : 000-0000-0000<p>© Ministry of the Interior and Safety. All rights reserved.</p></footer>

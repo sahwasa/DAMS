@@ -100,25 +100,6 @@ body {
 .lg-sso .btn-cert i {
   font-size: 20px;
 }
-.lg-sso .lnk {
-  display: flex;
-  justify-content: center;
-  gap: 0;
-  margin-top: 10px;
-  font-size: 13px;
-  color: #707070;
-}
-.lg-sso .lnk button {
-  color: #707070;
-}
-.lg-sso .lnk button:hover {
-  color: #3e55e1;
-  text-decoration: underline;
-}
-.lg-sso .lnk span {
-  margin: 0 8px;
-  color: #c6c6c6;
-}
 
 .lg-or {
   display: flex;
@@ -133,13 +114,6 @@ body {
   flex: 1;
   height: 1px;
   background: #e4e4e4;
-}
-
-.lg-tit {
-  margin-bottom: 6px;
-  text-align: center;
-  font-size: 14px;
-  color: #404040;
 }
 
 .lg-fld input {
@@ -232,13 +206,6 @@ body {
 .lg-note button {
   color: #3e55e1;
   text-decoration: underline;
-}
-
-.lg-tip {
-  margin-top: 4px;
-  font-size: 11px;
-  color: #707070;
-  word-break: keep-all;
 }
 
 .lg-foot {
