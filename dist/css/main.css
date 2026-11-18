@@ -2034,6 +2034,14 @@ img {
 .grid tr > *:last-child {
   border-right: 0;
 }
+.grid thead tr + tr > *:last-child {
+  border-right: 1px solid #c9ced8;
+}
+.grid thead:has(tr:first-child > [colspan]:last-child) tr + tr > *:last-child {
+  border-right: 0;
+}
+
+/* 2단 헤더: 묶음이 마지막 열이 아니면 아래 줄 마지막 칸 오른쪽 구분선 유지(2026-11-18) */
 .grid thead th {
   height: 34px;
   background: #e1e5eb;
