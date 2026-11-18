@@ -10,7 +10,7 @@ function changePeriodType(v) {
     document.getElementById(id).hidden = m.indexOf(id) < 0;
   });
 }
-/* 지역 레벨: 시도별(원본) / 시군구별(시도 값을 시군구로 나눠 생성 — 합계 동일) */
+/* 지역: 시도별(원본) / 시군구별(시도 값을 시군구로 나눠 생성 — 합계 동일) */
 /* 샘플 데이터 UNIT·ORIG·SPLIT·W·ADJ → stat_device.data.js */
 function num(t) {
   return +String(t).replace(/[^0-9.]/g, '');
@@ -1282,7 +1282,7 @@ function ymd(s) {
   var p = s.split(/[-\/]/);
   return new Date(+p[0], p[1] - 1, +p[2]);
 }
-/* 초기화 시 지역 레벨·시도 선택도 시도별로 */
+/* 초기화 시 지역·시도 선택도 시도별로 */
 document.querySelector('.sch-box').addEventListener('reset', function () {
   setTimeout(function () {
     setUnit('sido');

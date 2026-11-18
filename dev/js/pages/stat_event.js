@@ -34,7 +34,7 @@ var SD = {
 var RMODE = '버블',
   RMAP = null,
   NUDGE = { 25: [0.32, -0.1] }; /* 대전은 충남과 겹쳐 오른쪽 아래로 */
-/* 지역 레벨: 시도별(원본 표) / 시군구별(시도 값을 연계 시군구로 나눠 생성 — 합계 동일) */
+/* 지역: 시도별(원본 표) / 시군구별(시도 값을 연계 시군구로 나눠 생성 — 합계 동일) */
 var UNIT = 'sido',
   ORIG = {},
   SPLIT = {
@@ -1229,7 +1229,7 @@ function showRegionDetail(tr) {
   }
   msg(tr.cells[0].textContent + ' 지역 상세 통계를 표출합니다.');
 }
-/* 초기화 시 지역 레벨·시도 선택도 시도별로 */
+/* 초기화 시 지역·시도 선택도 시도별로 */
 document.querySelector('.sch-box').addEventListener('reset', function () {
   setTimeout(function () {
     setUnit('sido');
