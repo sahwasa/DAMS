@@ -1,5 +1,65 @@
 @use "../abstracts" as *;
 /* ---------- 20. GIS 기본도·심볼·범례 (js/gismap.js, 원본 DAMS map 컴포넌트 기준) ---------- */
+// map placeholder
+.map-box {
+  position: relative;
+  height: 100%;
+  min-height: 360px;
+  border: 1px solid $c-line2;
+  border-radius: $r;
+  overflow: hidden;
+  background: #eef3f6
+    linear-gradient(135deg, #e6eef2 25%, transparent 25%, transparent 50%, #e6eef2 50%, #e6eef2 75%, transparent 75%) 0
+    0/40px 40px;
+  .map-tool {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    display: flex;
+    gap: $sp-4;
+  }
+  .pin {
+    position: absolute;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: $sh-s;
+    &.on {
+      width: 20px;
+      height: 20px;
+      outline: 3px solid rgba(62, 85, 225, 0.35);
+    }
+  }
+  .bub {
+    position: absolute;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: rgba(62, 85, 225, 0.35);
+    border: 2px solid $pri;
+    @include flex-c($jc: center);
+    font-size: $fs-2xs;
+    font-weight: 700;
+    color: $pri-a;
+    cursor: pointer;
+  }
+  .lbl {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    z-index: 2;
+    padding: $sp-4 $sp-8;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid $c-line2;
+    border-radius: $r-s;
+    font-size: $fs-2xs;
+  }
+}
+
 // 배경 m1 기본 / m2 2D / m3 위성
 $gm-sea: #b5d0e6;
 $gm-land: #f4f1ea;

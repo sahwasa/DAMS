@@ -46,7 +46,11 @@ dev/
   scss/
     main.scss           진입점 → css/main.css (원본 common.scss 절 순서 그대로 @use)
     abstracts/          _tokens(디자인 토큰) · _mixin(버튼 색 세트·배치·말줄임·중단점)
-    base/ layout/ components/
+    base/               _reset(초기화·건너뛰기·blind) · _print(인쇄)
+    layout/             _layout · _header(GNB) · _title(화면명) · _footer · _responsive(태블릿·모바일)
+    components/         _buttons · _forms · _search · _grid · _grid-ext · _table · _tab · _paginate · _popup · _window(새 창)
+                        _layer(레이어·툴팁) · _misc(STEP·안내 박스·배지·첨부) · _card(카드·KPI·모니터링 타일) · _chart(범례·막대·도넛·히트맵)
+                        _hazard(재난 심볼) · _map(GIS 지도·지도 자리) · _stat(통계 화면 공통) · _extra · _utils(u-* 유틸리티)
     pages/화면.scss      화면 전용 → css/pages/화면.css (그 화면에서만 읽음)
     pop/_팝업명.scss     팝업 전용 — .pop-dlg[data-pop="팝업명"] 안으로 한정
   js/

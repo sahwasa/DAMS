@@ -1,0 +1,191 @@
+@use "../abstracts" as *;
+/* ---------- 16-1. Chart (범례·막대·도넛·히트맵 — 통계·모니터링·시스템 소개) ---------- */
+.chart-box {
+  @include flex-c($jc: center);
+  height: 280px;
+  border: 1px solid $c-line2;
+  background: repeating-linear-gradient(45deg, #fafafa 0 10px, #f3f3f3 10px 20px);
+  color: $g50;
+  font-size: $fs-s;
+}
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $sp-4 $sp-14;
+  font-size: $fs-2xs;
+  color: $c-body;
+  li {
+    @include flex-c($gap: 5px);
+  }
+  i {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    flex: 0 0 10px;
+  }
+}
+.cl1 {
+  background: $ch1;
+}
+.cl2 {
+  background: $ch2;
+}
+.cl3 {
+  background: $ch3;
+}
+.cl-sc {
+  background: $sc;
+}
+.cl-dg {
+  background: $dg;
+}
+.cl-na {
+  background: $g40;
+}
+// vertical stacked bar
+.vbar {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  gap: $sp-12;
+  height: 220px;
+  margin: $sp-8 0 0;
+  padding: 0 $sp-8;
+  border-bottom: 1px solid $g50;
+  background: repeating-linear-gradient(to top, $g10 0 1px, transparent 1px 25%);
+  > li {
+    position: relative;
+    flex: 1;
+    max-width: 56px;
+    height: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: $sp-2;
+  }
+  > li > span {
+    display: block;
+    width: 100%;
+    min-height: 2px;
+  }
+  > li > span:last-of-type {
+    border-radius: 4px 4px 0 0;
+  }
+  > li > b {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: $fs-2xs;
+    font-weight: 600;
+    color: $c-title;
+    white-space: nowrap;
+  }
+  > li > em {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: $sp-4;
+    font-style: normal;
+    @include txt-sub;
+    white-space: nowrap;
+  }
+}
+.vbar-x {
+  height: 24px;
+}
+// horizontal stacked bar
+.hbar {
+  li {
+    display: grid;
+    grid-template-columns: 120px 1fr 60px;
+    align-items: center;
+    gap: $sp-10;
+    height: 34px;
+    font-size: $fs-xs;
+  }
+  .lb {
+    color: $c-title;
+    font-weight: 600;
+    @include ell;
+  }
+  .bar {
+    display: flex;
+    gap: $sp-2;
+    height: 16px;
+    span {
+      min-width: 2px;
+      &:last-child {
+        border-radius: 0 4px 4px 0;
+      }
+    }
+  }
+  .v {
+    text-align: right;
+    color: $c-title;
+    font-weight: 600;
+  }
+}
+// donut
+.donut-wrap {
+  @include flex-c($jc: center, $gap: $sp-28);
+  height: 244px;
+}
+.donut {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 30px;
+    border-radius: 50%;
+    background: #fff;
+  }
+  > div {
+    @include abs-fill;
+    z-index: 1;
+    @include flex-col;
+    align-items: center;
+    justify-content: center;
+  }
+  b {
+    font-size: 26px;
+    @include txt-strong;
+    line-height: 1.2;
+  }
+  small {
+    @include txt-sub;
+  }
+}
+.legend {
+  &.v {
+    flex-direction: column;
+    gap: $sp-8;
+    font-size: $fs-xs;
+  }
+  &.v b {
+    margin-left: auto;
+    padding-left: $sp-16;
+    color: $c-title;
+  }
+}
+// heat cell
+.heat {
+  font-weight: 600;
+  color: $c-title;
+  &.h1 {
+    background: #eef0fc !important;
+  }
+  &.h2 {
+    background: #cdd3f6 !important;
+  }
+  &.h3 {
+    background: #9aa6ee !important;
+  }
+  &.h4 {
+    background: $pri !important;
+    color: #fff;
+  }
+}

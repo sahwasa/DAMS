@@ -986,3 +986,73 @@
     cursor: default;
   }
 }
+
+/* 태블릿·모바일 푸터(공공기관 모바일 사이트 형식): 세로 가운데 정렬 — 개인정보처리방침 · SERVICE DESK · 저작권 · 바로가기 버튼, 옅은 회색 바탕 */
+@include tablet-down {
+  html {
+    &:not(.pc-pop) {
+      .ft {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        gap: $sp-6;
+        padding: $sp-20 $sp-16 $sp-24;
+        background: $frame-bg;
+        border-top: 1px solid $g20;
+        font-size: $fs-xs;
+        line-height: 1.5;
+        .pp {
+          order: 1;
+          font-size: $fs-s;
+          font-weight: 700;
+        }
+        .desk {
+          order: 2;
+          color: $c-body;
+        }
+        .copy {
+          order: 3;
+          flex: none;
+          @include txt-sub;
+        }
+        .ft-go {
+          order: 4;
+          width: auto;
+          max-width: none;
+          height: 36px;
+          margin-top: $sp-8;
+          padding: 0 $sp-16;
+          border-radius: 18px;
+          background: #fff;
+          font-size: $fs-xs;
+        }
+      }
+    }
+  }
+}
+/* 태블릿 검색영역: 기간(시작~종료)·선택상자 2개짜리 항목은 두 칸을 차지해 잘리지 않게 */
+@include tablet {
+  html {
+    &:not(.pc-pop) {
+      .sch-box {
+        .it {
+          &:has(> .range),
+          &:has(> .flex > .sel + .sel) {
+            grid-column: span 2;
+          }
+          &:has(> .f-msg) {
+            flex-wrap: wrap;
+          }
+          > .f-msg {
+            flex-basis: 100%;
+            padding-left: 100px;
+          }
+        }
+      }
+      .sub-head h3,
+      .sub-head h4,
+      .sub-head .h4 {
+        white-space: nowrap;
+      }
+    }
+  }
+}

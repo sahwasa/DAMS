@@ -1,5 +1,5 @@
 @use "../abstracts" as *;
-/* ---------- 16. Card / Chart ---------- */
+/* ---------- 16. Card / KPI ---------- */
 .col3 {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -75,243 +75,104 @@
     }
   }
 }
-.legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: $sp-4 $sp-14;
-  font-size: $fs-2xs;
-  color: $c-body;
-  li {
-    @include flex-c($gap: 5px);
+/* 모니터링 종합 상태 타일(연계현황 모니터링·시스템 자원 모니터링) */
+.mon-kpi {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: $sp-10;
+  margin-bottom: $sp-12;
+  > div {
+    min-width: 0;
+    padding: $sp-8 $sp-10;
+    border-radius: 8px;
+    background: #eef2fb;
+    text-align: center;
   }
-  i {
-    width: 10px;
-    height: 10px;
-    border-radius: 2px;
-    flex: 0 0 10px;
-  }
-}
-.cl1 {
-  background: $ch1;
-}
-.cl2 {
-  background: $ch2;
-}
-.cl3 {
-  background: $ch3;
-}
-.cl-sc {
-  background: $sc;
-}
-.cl-dg {
-  background: $dg;
-}
-.cl-na {
-  background: $g40;
-}
-// vertical stacked bar
-.vbar {
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-around;
-  gap: $sp-12;
-  height: 220px;
-  margin: $sp-8 0 0;
-  padding: 0 $sp-8;
-  border-bottom: 1px solid $g50;
-  background: repeating-linear-gradient(to top, $g10 0 1px, transparent 1px 25%);
-  > li {
-    position: relative;
-    flex: 1;
-    max-width: 56px;
-    height: 100%;
+  dl {
     display: flex;
-    flex-direction: column-reverse;
-    gap: $sp-2;
-  }
-  > li > span {
-    display: block;
-    width: 100%;
-    min-height: 2px;
-  }
-  > li > span:last-of-type {
-    border-radius: 4px 4px 0 0;
-  }
-  > li > b {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: $fs-2xs;
-    font-weight: 600;
-    color: $c-title;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
+    column-gap: $sp-6;
     white-space: nowrap;
   }
-  > li > em {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: $sp-4;
-    font-style: normal;
-    @include txt-sub;
-    white-space: nowrap;
-  }
-}
-.vbar-x {
-  height: 24px;
-}
-// horizontal stacked bar
-.hbar {
-  li {
-    display: grid;
-    grid-template-columns: 120px 1fr 60px;
-    align-items: center;
-    gap: $sp-10;
-    height: 34px;
+  dt {
+    flex-basis: 100%;
     font-size: $fs-xs;
-  }
-  .lb {
-    color: $c-title;
     font-weight: 600;
-    @include ell;
+    color: $c-body;
   }
-  .bar {
-    display: flex;
-    gap: $sp-2;
-    height: 16px;
-    span {
-      min-width: 2px;
-      &:last-child {
-        border-radius: 0 4px 4px 0;
+  dd {
+    margin: 0;
+    font-size: $fs-l;
+    font-weight: 700;
+    color: $pri;
+    line-height: 1.45;
+    small {
+      margin-left: $sp-2;
+      font-size: $fs-2xs;
+      font-weight: 500;
+      color: $c-body;
+    }
+    &.s {
+      overflow: hidden;
+      font-size: $fs-2xs;
+      font-weight: 400;
+      color: $c-body;
+      text-overflow: ellipsis;
+    }
+  }
+  > div.dg dd:not(.s) {
+    color: $dg-t;
+  }
+  > div.wn dd:not(.s) {
+    color: #c77700;
+  }
+  dd .c-dg {
+    font-weight: 600;
+  }
+  > div.sc dd:not(.s) {
+    color: $sc;
+  }
+  &.lg {
+    > div:is(.sc, .wn, .dg) dt::before {
+      content: "";
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      margin-right: 5px;
+      border-radius: 2px;
+      vertical-align: -1px;
+    }
+    > div.sc dt::before {
+      background: $sc;
+    }
+    > div.wn dt::before {
+      background: $wn;
+    }
+    > div.dg dt::before {
+      background: $dg;
+    }
+  }
+  &.c4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+@include tablet-down {
+  html {
+    &:not(.pc-pop) {
+      .mon-kpi {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        &.c4 {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
       }
     }
   }
-  .v {
-    text-align: right;
-    color: $c-title;
-    font-weight: 600;
-  }
 }
-// donut
-.donut-wrap {
-  @include flex-c($jc: center, $gap: $sp-28);
-  height: 244px;
-}
-.donut {
-  position: relative;
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 30px;
-    border-radius: 50%;
-    background: #fff;
-  }
-  > div {
-    @include abs-fill;
-    z-index: 1;
-    @include flex-col;
-    align-items: center;
-    justify-content: center;
-  }
-  b {
-    font-size: 26px;
-    @include txt-strong;
-    line-height: 1.2;
-  }
-  small {
-    @include txt-sub;
-  }
-}
-.legend {
-  &.v {
-    flex-direction: column;
-    gap: $sp-8;
-    font-size: $fs-xs;
-  }
-  &.v b {
-    margin-left: auto;
-    padding-left: $sp-16;
-    color: $c-title;
-  }
-}
-// heat cell
-.heat {
-  font-weight: 600;
-  color: $c-title;
-  &.h1 {
-    background: #eef0fc !important;
-  }
-  &.h2 {
-    background: #cdd3f6 !important;
-  }
-  &.h3 {
-    background: #9aa6ee !important;
-  }
-  &.h4 {
-    background: $pri !important;
-    color: #fff;
-  }
-}
-// map placeholder
-.map-box {
-  position: relative;
-  height: 100%;
-  min-height: 360px;
-  border: 1px solid $c-line2;
-  border-radius: $r;
-  overflow: hidden;
-  background: #eef3f6
-    linear-gradient(135deg, #e6eef2 25%, transparent 25%, transparent 50%, #e6eef2 50%, #e6eef2 75%, transparent 75%) 0
-    0/40px 40px;
-  .map-tool {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 2;
-    display: flex;
-    gap: $sp-4;
-  }
-  .pin {
-    position: absolute;
-    z-index: 1;
-    transform: translate(-50%, -50%);
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    border: 2px solid #fff;
-    box-shadow: $sh-s;
-    &.on {
-      width: 20px;
-      height: 20px;
-      outline: 3px solid rgba(62, 85, 225, 0.35);
-    }
-  }
-  .bub {
-    position: absolute;
-    z-index: 1;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    background: rgba(62, 85, 225, 0.35);
-    border: 2px solid $pri;
-    @include flex-c($jc: center);
-    font-size: $fs-2xs;
-    font-weight: 700;
-    color: $pri-a;
-    cursor: pointer;
-  }
-  .lbl {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    z-index: 2;
-    padding: $sp-4 $sp-8;
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid $c-line2;
-    border-radius: $r-s;
-    font-size: $fs-2xs;
+@include mobile {
+  html:not(.pc-pop) .mon-kpi,
+  html:not(.pc-pop) .mon-kpi.c4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

@@ -1,172 +1,50 @@
 @use "../abstracts" as *;
 /* ---------- 23. 인쇄(보고서 인쇄 SFR-02) ---------- */
-/* 태블릿·모바일 푸터(공공기관 모바일 사이트 형식): 세로 가운데 정렬 — 개인정보처리방침 · SERVICE DESK · 저작권 · 바로가기 버튼, 옅은 회색 바탕 */
-@include tablet-down {
-  html {
-    &:not(.pc-pop) {
-      .ft {
-        flex-direction: column;
-        flex-wrap: nowrap;
-        gap: $sp-6;
-        padding: $sp-20 $sp-16 $sp-24;
-        background: $frame-bg;
-        border-top: 1px solid $g20;
-        font-size: $fs-xs;
-        line-height: 1.5;
-        .pp {
-          order: 1;
-          font-size: $fs-s;
-          font-weight: 700;
-        }
-        .desk {
-          order: 2;
-          color: $c-body;
-        }
-        .copy {
-          order: 3;
-          flex: none;
-          @include txt-sub;
-        }
-        .ft-go {
-          order: 4;
-          width: auto;
-          max-width: none;
-          height: 36px;
-          margin-top: $sp-8;
-          padding: 0 $sp-16;
-          border-radius: 18px;
-          background: #fff;
-          font-size: $fs-xs;
-        }
-      }
-    }
+@media print {
+  body {
+    min-width: 0 !important;
+    background: #fff;
   }
-}
-/* 태블릿 검색영역: 기간(시작~종료)·선택상자 2개짜리 항목은 두 칸을 차지해 잘리지 않게 */
-@include tablet {
-  html {
-    &:not(.pc-pop) {
-      .sch-box {
-        .it {
-          &:has(> .range),
-          &:has(> .flex > .sel + .sel) {
-            grid-column: span 2;
-          }
-          &:has(> .f-msg) {
-            flex-wrap: wrap;
-          }
-          > .f-msg {
-            flex-basis: 100%;
-            padding-left: 100px;
-          }
-        }
-      }
-      .sub-head h3,
-      .sub-head h4,
-      .sub-head .h4 {
-        white-space: nowrap;
-      }
-    }
+  .gnb,
+  .lnb,
+  .lnb-fold,
+  .status,
+  .ft,
+  .sch-box,
+  .page-head,
+  .grid-top,
+  .paging,
+  .page-head .btns,
+  .page-head .star,
+  .page-head .pg-ico,
+  .bread,
+  .pop-dim,
+  .m-ham {
+    display: none !important;
   }
-}
-/* 모니터링 종합 상태 타일(연계현황 모니터링·시스템 자원 모니터링) */
-.mon-kpi {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: $sp-10;
-  margin-bottom: $sp-12;
-  > div {
-    min-width: 0;
-    padding: $sp-8 $sp-10;
-    border-radius: 8px;
-    background: #eef2fb;
-    text-align: center;
+  .wrap,
+  .body,
+  .main,
+  .work {
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    background: #fff !important;
   }
-  dl {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: baseline;
-    column-gap: $sp-6;
-    white-space: nowrap;
+  .work[data-print-title]:not([data-print-title=""])::before {
+    content: attr(data-print-title);
+    display: block;
+    margin-bottom: $sp-12;
+    font-size: $fs-xl;
+    @include txt-strong;
   }
-  dt {
-    flex-basis: 100%;
-    font-size: $fs-xs;
-    font-weight: 600;
-    color: $c-body;
+  .grid-wrap {
+    overflow: visible !important;
   }
-  dd {
-    margin: 0;
-    font-size: $fs-l;
-    font-weight: 700;
-    color: $pri;
-    line-height: 1.45;
-    small {
-      margin-left: $sp-2;
-      font-size: $fs-2xs;
-      font-weight: 500;
-      color: $c-body;
-    }
-    &.s {
-      overflow: hidden;
-      font-size: $fs-2xs;
-      font-weight: 400;
-      color: $c-body;
-      text-overflow: ellipsis;
-    }
-  }
-  > div.dg dd:not(.s) {
-    color: $dg-t;
-  }
-  > div.wn dd:not(.s) {
-    color: #c77700;
-  }
-  dd .c-dg {
-    font-weight: 600;
-  }
-  > div.sc dd:not(.s) {
-    color: $sc;
-  }
-  &.lg {
-    > div:is(.sc, .wn, .dg) dt::before {
-      content: "";
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      margin-right: 5px;
-      border-radius: 2px;
-      vertical-align: -1px;
-    }
-    > div.sc dt::before {
-      background: $sc;
-    }
-    > div.wn dt::before {
-      background: $wn;
-    }
-    > div.dg dt::before {
-      background: $dg;
-    }
-  }
-  &.c4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-}
-@include tablet-down {
-  html {
-    &:not(.pc-pop) {
-      .mon-kpi {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        &.c4 {
-          grid-template-columns: repeat(4, minmax(0, 1fr));
-        }
-      }
-    }
-  }
-}
-@include mobile {
-  html:not(.pc-pop) .mon-kpi,
-  html:not(.pc-pop) .mon-kpi.c4 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .grid {
+    min-width: 0 !important;
   }
 }

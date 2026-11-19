@@ -2802,97 +2802,12 @@ details.help-box.ttl > summary {
   color: #8e8e8e;
 }
 
-.chart-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 280px;
-  border: 1px solid #d8d8d8;
-  background: repeating-linear-gradient(45deg, #fafafa 0 10px, #f3f3f3 10px 20px);
-  color: #8e8e8e;
-  font-size: 14px;
-}
-
 .col2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
 
-/* 통계: 왼쪽 차트 + 오른쪽 표, 표 아래 안내, 표/히트맵 전환, PC 고정 높이 스크롤 */
-.st-lr {
-  grid-template-columns: minmax(0, 4fr) minmax(0, 6fr);
-  align-items: start;
-}
-
-.st-l {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  min-width: 0;
-}
-
-.st-lr .sub-head h3 {
-  white-space: nowrap;
-}
-
-.st-note {
-  display: flex;
-  gap: 4px;
-  margin-top: 8px;
-  font-size: 12px;
-  color: #707070;
-  line-height: 1.5;
-}
-.st-note i {
-  color: #3e55e1;
-}
-.st-note b {
-  color: #505050;
-}
-
-.rg-sw {
-  display: inline-flex;
-  gap: 4px;
-  margin: 0;
-}
-.rg-sw li button {
-  display: flex;
-  align-items: center;
-  height: 32px;
-  padding: 0 14px;
-  border-radius: 6px;
-  font-size: 14px;
-  font-weight: 500;
-  color: #707070;
-  background: transparent;
-  white-space: nowrap;
-}
-.rg-sw li button:hover {
-  color: #3e55e1;
-  background: #f5f6fe;
-}
-.rg-sw li.on button {
-  background: #eceffd;
-  color: #3e55e1;
-  font-weight: 700;
-}
-
-.rg-lgd2 {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 6px;
-}
-.rg-lgd2 .legend {
-  margin: 0;
-}
-
-@media (min-width: 1280px) {
-  .st-fit {
-    height: var(--h);
-    overflow: auto;
-  }
-}
 .col-lr {
   display: grid;
   grid-template-columns: minmax(0, 4fr) minmax(0, 6fr);
@@ -3323,7 +3238,7 @@ body.win-body {
   font-size: 22px;
 }
 
-/* ---------- 16. Card / Chart ---------- */
+/* ---------- 16. Card / KPI ---------- */
 .col3 {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -3410,6 +3325,114 @@ body.win-body {
   font-weight: 500;
   color: #707070;
   margin-left: 2px;
+}
+
+/* 모니터링 종합 상태 타일(연계현황 모니터링·시스템 자원 모니터링) */
+.mon-kpi {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.mon-kpi > div {
+  min-width: 0;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #eef2fb;
+  text-align: center;
+}
+.mon-kpi dl {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  column-gap: 6px;
+  white-space: nowrap;
+}
+.mon-kpi dt {
+  flex-basis: 100%;
+  font-size: 13px;
+  font-weight: 600;
+  color: #505050;
+}
+.mon-kpi dd {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #3e55e1;
+  line-height: 1.45;
+}
+.mon-kpi dd small {
+  margin-left: 2px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #505050;
+}
+.mon-kpi dd.s {
+  overflow: hidden;
+  font-size: 12px;
+  font-weight: 400;
+  color: #505050;
+  text-overflow: ellipsis;
+}
+.mon-kpi > div.dg dd:not(.s) {
+  color: #d50136;
+}
+.mon-kpi > div.wn dd:not(.s) {
+  color: #c77700;
+}
+.mon-kpi dd .c-dg {
+  font-weight: 600;
+}
+.mon-kpi > div.sc dd:not(.s) {
+  color: #008a1e;
+}
+.mon-kpi.lg > div:is(.sc, .wn, .dg) dt::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 5px;
+  border-radius: 2px;
+  vertical-align: -1px;
+}
+.mon-kpi.lg > div.sc dt::before {
+  background: #008a1e;
+}
+.mon-kpi.lg > div.wn dt::before {
+  background: #ffb724;
+}
+.mon-kpi.lg > div.dg dt::before {
+  background: #eb003b;
+}
+.mon-kpi.c4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 1279px) {
+  html:not(.pc-pop) .mon-kpi {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  html:not(.pc-pop) .mon-kpi.c4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+@media (max-width: 767px) {
+  html:not(.pc-pop) .mon-kpi,
+  html:not(.pc-pop) .mon-kpi.c4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+/* ---------- 16-1. Chart (범례·막대·도넛·히트맵 — 통계·모니터링·시스템 소개) ---------- */
+.chart-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 280px;
+  border: 1px solid #d8d8d8;
+  background: repeating-linear-gradient(45deg, #fafafa 0 10px, #f3f3f3 10px 20px);
+  color: #8e8e8e;
+  font-size: 14px;
 }
 
 .legend {
@@ -3609,65 +3632,6 @@ body.win-body {
 .heat.h4 {
   background: #3e55e1 !important;
   color: #fff;
-}
-
-.map-box {
-  position: relative;
-  height: 100%;
-  min-height: 360px;
-  border: 1px solid #d8d8d8;
-  border-radius: 4px;
-  overflow: hidden;
-  background: #eef3f6 linear-gradient(135deg, #e6eef2 25%, transparent 25%, transparent 50%, #e6eef2 50%, #e6eef2 75%, transparent 75%) 0 0/40px 40px;
-}
-.map-box .map-tool {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 2;
-  display: flex;
-  gap: 4px;
-}
-.map-box .pin {
-  position: absolute;
-  z-index: 1;
-  transform: translate(-50%, -50%);
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  border: 2px solid #fff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-}
-.map-box .pin.on {
-  width: 20px;
-  height: 20px;
-  outline: 3px solid rgba(62, 85, 225, 0.35);
-}
-.map-box .bub {
-  position: absolute;
-  z-index: 1;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  background: rgba(62, 85, 225, 0.35);
-  border: 2px solid #3e55e1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: 700;
-  color: #182146;
-  cursor: pointer;
-}
-.map-box .lbl {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  z-index: 2;
-  padding: 4px 8px;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid #d8d8d8;
-  border-radius: 2px;
-  font-size: 12px;
 }
 
 /* ---------- 17. Grid ext / Result ---------- */
@@ -3875,6 +3839,65 @@ body.win-body {
 }
 
 /* ---------- 20. GIS 기본도·심볼·범례 (js/gismap.js, 원본 DAMS map 컴포넌트 기준) ---------- */
+.map-box {
+  position: relative;
+  height: 100%;
+  min-height: 360px;
+  border: 1px solid #d8d8d8;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #eef3f6 linear-gradient(135deg, #e6eef2 25%, transparent 25%, transparent 50%, #e6eef2 50%, #e6eef2 75%, transparent 75%) 0 0/40px 40px;
+}
+.map-box .map-tool {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  display: flex;
+  gap: 4px;
+}
+.map-box .pin {
+  position: absolute;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.map-box .pin.on {
+  width: 20px;
+  height: 20px;
+  outline: 3px solid rgba(62, 85, 225, 0.35);
+}
+.map-box .bub {
+  position: absolute;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: rgba(62, 85, 225, 0.35);
+  border: 2px solid #3e55e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #182146;
+  cursor: pointer;
+}
+.map-box .lbl {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  z-index: 2;
+  padding: 4px 8px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #d8d8d8;
+  border-radius: 2px;
+  font-size: 12px;
+}
+
 .gm {
   position: relative;
   overflow: hidden;
@@ -5449,7 +5472,6 @@ body.win-body {
     cursor: default;
   }
 }
-/* ---------- 23. 인쇄(보고서 인쇄 SFR-02) ---------- */
 /* 태블릿·모바일 푸터(공공기관 모바일 사이트 형식): 세로 가운데 정렬 — 개인정보처리방침 · SERVICE DESK · 저작권 · 바로가기 버튼, 옅은 회색 바탕 */
 @media (max-width: 1279px) {
   html:not(.pc-pop) .ft {
@@ -5507,103 +5529,131 @@ body.win-body {
     white-space: nowrap;
   }
 }
-/* 모니터링 종합 상태 타일(연계현황 모니터링·시스템 자원 모니터링) */
-.mon-kpi {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 10px;
-  margin-bottom: 12px;
-}
-.mon-kpi > div {
-  min-width: 0;
-  padding: 8px 10px;
-  border-radius: 8px;
-  background: #eef2fb;
-  text-align: center;
-}
-.mon-kpi dl {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: baseline;
-  column-gap: 6px;
-  white-space: nowrap;
-}
-.mon-kpi dt {
-  flex-basis: 100%;
-  font-size: 13px;
-  font-weight: 600;
-  color: #505050;
-}
-.mon-kpi dd {
-  margin: 0;
-  font-size: 18px;
-  font-weight: 700;
-  color: #3e55e1;
-  line-height: 1.45;
-}
-.mon-kpi dd small {
-  margin-left: 2px;
-  font-size: 12px;
-  font-weight: 500;
-  color: #505050;
-}
-.mon-kpi dd.s {
-  overflow: hidden;
-  font-size: 12px;
-  font-weight: 400;
-  color: #505050;
-  text-overflow: ellipsis;
-}
-.mon-kpi > div.dg dd:not(.s) {
-  color: #d50136;
-}
-.mon-kpi > div.wn dd:not(.s) {
-  color: #c77700;
-}
-.mon-kpi dd .c-dg {
-  font-weight: 600;
-}
-.mon-kpi > div.sc dd:not(.s) {
-  color: #008a1e;
-}
-.mon-kpi.lg > div:is(.sc, .wn, .dg) dt::before {
-  content: "";
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  margin-right: 5px;
-  border-radius: 2px;
-  vertical-align: -1px;
-}
-.mon-kpi.lg > div.sc dt::before {
-  background: #008a1e;
-}
-.mon-kpi.lg > div.wn dt::before {
-  background: #ffb724;
-}
-.mon-kpi.lg > div.dg dt::before {
-  background: #eb003b;
-}
-.mon-kpi.c4 {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
-@media (max-width: 1279px) {
-  html:not(.pc-pop) .mon-kpi {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+/* ---------- 23. 인쇄(보고서 인쇄 SFR-02) ---------- */
+@media print {
+  body {
+    min-width: 0 !important;
+    background: #fff;
   }
-  html:not(.pc-pop) .mon-kpi.c4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+  .gnb,
+  .lnb,
+  .lnb-fold,
+  .status,
+  .ft,
+  .sch-box,
+  .page-head,
+  .grid-top,
+  .paging,
+  .page-head .btns,
+  .page-head .star,
+  .page-head .pg-ico,
+  .bread,
+  .pop-dim,
+  .m-ham {
+    display: none !important;
   }
-}
-@media (max-width: 767px) {
-  html:not(.pc-pop) .mon-kpi,
-  html:not(.pc-pop) .mon-kpi.c4 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .wrap,
+  .body,
+  .main,
+  .work {
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    background: #fff !important;
+  }
+  .work[data-print-title]:not([data-print-title=""])::before {
+    content: attr(data-print-title);
+    display: block;
+    margin-bottom: 12px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #101010;
+  }
+  .grid-wrap {
+    overflow: visible !important;
+  }
+  .grid {
+    min-width: 0 !important;
   }
 }
 /* ---------- 통계 화면 공통(재난발령통계·단말기통계, 2026-11-11): 조회조건 알약·차트 이미지 버튼·표 아코디언·차트 안 범례·도넛 ---------- */
+/* 통계: 왼쪽 차트 + 오른쪽 표, 표 아래 안내, 표/히트맵 전환, PC 고정 높이 스크롤 */
+.st-lr {
+  grid-template-columns: minmax(0, 4fr) minmax(0, 6fr);
+  align-items: start;
+}
+
+.st-l {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.st-lr .sub-head h3 {
+  white-space: nowrap;
+}
+
+.st-note {
+  display: flex;
+  gap: 4px;
+  margin-top: 8px;
+  font-size: 12px;
+  color: #707070;
+  line-height: 1.5;
+}
+.st-note i {
+  color: #3e55e1;
+}
+.st-note b {
+  color: #505050;
+}
+
+.rg-sw {
+  display: inline-flex;
+  gap: 4px;
+  margin: 0;
+}
+.rg-sw li button {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #707070;
+  background: transparent;
+  white-space: nowrap;
+}
+.rg-sw li button:hover {
+  color: #3e55e1;
+  background: #f5f6fe;
+}
+.rg-sw li.on button {
+  background: #eceffd;
+  color: #3e55e1;
+  font-weight: 700;
+}
+
+.rg-lgd2 {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 6px;
+}
+.rg-lgd2 .legend {
+  margin: 0;
+}
+
+@media (min-width: 1280px) {
+  .st-fit {
+    height: var(--h);
+    overflow: auto;
+  }
+}
 .st-cond {
   flex: 0 0 auto;
   margin-left: 8px;
@@ -5756,55 +5806,6 @@ body.win-body {
   }
   html:not(.pc-pop) .card-h > .sub {
     display: none;
-  }
-}
-@media print {
-  body {
-    min-width: 0 !important;
-    background: #fff;
-  }
-  .gnb,
-  .lnb,
-  .lnb-fold,
-  .status,
-  .ft,
-  .sch-box,
-  .page-head,
-  .grid-top,
-  .paging,
-  .page-head .btns,
-  .page-head .star,
-  .page-head .pg-ico,
-  .bread,
-  .pop-dim,
-  .m-ham {
-    display: none !important;
-  }
-  .wrap,
-  .body,
-  .main,
-  .work {
-    display: block !important;
-    height: auto !important;
-    overflow: visible !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    border: 0 !important;
-    background: #fff !important;
-  }
-  .work[data-print-title]:not([data-print-title=""])::before {
-    content: attr(data-print-title);
-    display: block;
-    margin-bottom: 12px;
-    font-size: 20px;
-    font-weight: 700;
-    color: #101010;
-  }
-  .grid-wrap {
-    overflow: visible !important;
-  }
-  .grid {
-    min-width: 0 !important;
   }
 }
 .pop-dlg[data-pop=com_msg] .pop-body {

@@ -1,5 +1,71 @@
 @use "../abstracts" as *;
 /* ---------- 통계 화면 공통(재난발령통계·단말기통계, 2026-11-11): 조회조건 알약·차트 이미지 버튼·표 아코디언·차트 안 범례·도넛 ---------- */
+/* 통계: 왼쪽 차트 + 오른쪽 표, 표 아래 안내, 표/히트맵 전환, PC 고정 높이 스크롤 */
+.st-lr {
+  grid-template-columns: minmax(0, 4fr) minmax(0, 6fr);
+  align-items: start;
+}
+.st-l {
+  @include flex-col;
+  gap: $sp-16;
+  min-width: 0;
+}
+.st-lr .sub-head h3 {
+  white-space: nowrap;
+}
+.st-note {
+  display: flex;
+  gap: $sp-4;
+  margin-top: $sp-8;
+  @include txt-sub;
+  line-height: 1.5;
+  i {
+    color: $pri;
+  }
+  b {
+    color: $c-body;
+  }
+}
+.rg-sw {
+  display: inline-flex;
+  gap: $sp-4;
+  margin: 0;
+  li {
+    button {
+      @include flex-c;
+      height: 32px;
+      padding: 0 $sp-14;
+      border-radius: 6px;
+      font-size: $fs-s;
+      font-weight: 500;
+      color: $c-sub;
+      background: transparent;
+      white-space: nowrap;
+      &:hover {
+        color: $pri;
+        background: #f5f6fe;
+      }
+    }
+    &.on button {
+      background: #eceffd;
+      @include txt-pri(700);
+    }
+  }
+}
+.rg-lgd2 {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: $sp-6;
+  .legend {
+    margin: 0;
+  }
+}
+@include pc {
+  .st-fit {
+    height: var(--h);
+    overflow: auto;
+  }
+}
 .st-cond {
   flex: 0 0 auto;
   margin-left: $sp-8;
@@ -156,54 +222,5 @@
         }
       }
     }
-  }
-}
-
-@media print {
-  body {
-    min-width: 0 !important;
-    background: #fff;
-  }
-  .gnb,
-  .lnb,
-  .lnb-fold,
-  .status,
-  .ft,
-  .sch-box,
-  .page-head,
-  .grid-top,
-  .paging,
-  .page-head .btns,
-  .page-head .star,
-  .page-head .pg-ico,
-  .bread,
-  .pop-dim,
-  .m-ham {
-    display: none !important;
-  }
-  .wrap,
-  .body,
-  .main,
-  .work {
-    display: block !important;
-    height: auto !important;
-    overflow: visible !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    border: 0 !important;
-    background: #fff !important;
-  }
-  .work[data-print-title]:not([data-print-title=""])::before {
-    content: attr(data-print-title);
-    display: block;
-    margin-bottom: $sp-12;
-    font-size: $fs-xl;
-    @include txt-strong;
-  }
-  .grid-wrap {
-    overflow: visible !important;
-  }
-  .grid {
-    min-width: 0 !important;
   }
 }
