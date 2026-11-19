@@ -54,6 +54,45 @@ function popUrl(u, o) {
   return u + '?' + new URLSearchParams(o).toString();
 }
 /* 샘플 데이터 ROWS → log_dsblty.data.js */
+/* 국장 보고 시연 E(연계 장애) 부여 후: 장애이력 맨 위에 1건 자동 등록(미복구) */
+(function () {
+  var e = window.SCN && SCN.on('E');
+  if (!e) return;
+  var d = new Date(e),
+    z = function (n) {
+      return (n < 10 ? '0' : '') + n;
+    },
+    t =
+      d.getFullYear() +
+      '-' +
+      z(d.getMonth() + 1) +
+      '-' +
+      z(d.getDate()) +
+      ' ' +
+      z(d.getHours()) +
+      ':' +
+      z(d.getMinutes()),
+    cn = '강원 철원군 예·경보 통합플랫폼 연계 세션 끊김 (30초 세션 체크 3회 연속 실패)';
+  ROWS.unshift(['네트워크', '강원 철원군 연계서버', cn, t, '', '-', '']);
+  TOTAL++;
+  var tb = document.querySelector('#histBody tbody');
+  tb.insertAdjacentHTML(
+    'afterbegin',
+    '<tr class="clk warn"><td>' +
+      TOTAL +
+      '</td><td>네트워크</td><td class="t-l">강원 철원군 연계서버</td><td>강원 철원군</td><td>연계상태</td><td class="t-l">' +
+      cn +
+      '</td><td>' +
+      t +
+      '</td><td><span class="badge wn">미복구</span></td><td>-</td></tr>'
+  );
+  [].forEach.call(tb.querySelectorAll('tr.clk'), function (r, k) {
+    r.setAttribute('onclick', 'openEdit(' + k + ')');
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    setCnt(TOTAL, Math.ceil(TOTAL / +document.getElementById('pageSize').value));
+  });
+})();
 function openEdit(i) {
   document.querySelectorAll('#histBody tbody tr').forEach(function (x, k) {
     x.classList.toggle('on', k === i);

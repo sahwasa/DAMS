@@ -1,6 +1,6 @@
 /* 연계현황 모니터링 | 재난 예경보 통합관리시스템 */
 document.querySelector('.page-head').appendChild(document.getElementById('headBtns'));
-var T = new Date(2026, 9, 30, 15, 20, 30),
+var T = new Date(),
   timer = null;
 function p2(n) {
   return String(n).padStart(2, '0');
@@ -31,7 +31,6 @@ function setAuto(on) {
 /* 제원정보 전일 대비 변동(신규·제외 대수) — 표의 '전일대비 증감'(순증감) = 신규 − 제외 */
 /* 상태정보 직전 수신(1시간 전) 대비 새로 끊긴 단말기 수 */
 var CHG = {
-  서울특별시: [1, 0],
   '전남광주 함평군': [1, 0],
   울산광역시: [2, 1],
   '경기 안성시': [0, 1],
@@ -40,7 +39,16 @@ var CHG = {
 };
 var ST = { ok: ['정상', 'sc'], dg: ['끊김', 'dg'] };
 /* 금일 발령 상세(시도 → 하위 시군구): 시도 통합플랫폼은 본청 + 관할 시군구 발령, 시군구 통합플랫폼은 해당 시군구 발령 — 직제순 */
-/* 샘플 데이터 ISS → warn_monitor.data.js */
+var ISS = {
+  울산광역시: [
+    ['본청', 2],
+    ['중구', 1],
+    ['남구', 2],
+    ['동구', 1],
+    ['북구', 0],
+    ['울주군', 1]
+  ]
+};
 function orgTip(e, i) {
   e.stopPropagation();
   var old = document.getElementById('orgTip'),
@@ -209,6 +217,68 @@ function drawTerm() {
 }
 /* 금일 수신 현황(재난정보·발령정보 통합, 최신순) */
 /* 샘플 데이터 FEED·FK → warn_monitor.data.js */
+/* (2026-11-19 국장 보고 시연) 시각은 현재 시각 기준, 금일 수신 현황은 시연 상황(js/scn-data.js)과 같은 재난·발령. E(연계 장애) 부여 시 서울특별시 끊김 */
+var HH = p2(T.getHours()),
+  HM = p2(Math.max(0, T.getHours() - 1));
+SD.forEach(function (d) {
+  d[9] = HH + d[9].slice(2);
+});
+function scnApply() {
+  var e = SCN.on('E'),
+    x = SD.filter(function (d) {
+      return d[0] === '강원 철원군';
+    })[0];
+  x[1] = e ? 'dg' : 'ok';
+  if (e) x[9] = HM + x[9].slice(2);
+  var d = scnData(),
+    f = [],
+    ts = function (x) {
+      return x.slice(11, 19);
+    };
+  d.ev.forEach(function (x) {
+    f.push([
+      x.tm.slice(11, 16) + ':' + p2((x.tm.charCodeAt(15) * 7) % 60),
+      'occur',
+      x.tit.replace(/\s*\(.*\)$/, ''),
+      x.tm.slice(11, 16) + ' ' + (x.ev === 'EQW' ? '발생' : '발표')
+    ]);
+  });
+  Object.keys(d.is).forEach(function (k) {
+    var i = d.is[k];
+    if (HIST[k] || i.tm.slice(0, 10) !== scnDay()) return;
+    f.push([ts(i.tm), 'issue', i.tit, '발령 ' + ts(i.tm), org2(i)]);
+  });
+  f.sort(function (a, b) {
+    return a[0] < b[0] ? 1 : -1;
+  });
+  var low = f.length ? f[f.length - 1][0] : '99';
+  FEED = f.concat(
+    FEED0.filter(function (x) {
+      return x[0] < low && !/포항|울산 동구·북구 강풍/.test(x[2]);
+    })
+  );
+}
+function scnDay() {
+  return dt(Date.now()).slice(0, 10);
+}
+function org2(i) {
+  var n = i.rg[0].split(' ');
+  return /^(서울|부산|대구|인천|광주|대전|울산|세종|경기|강원|충북|충남|전북|전남광주|전남|경북|경남|제주)$/.test(n[0])
+    ? n[0] + ' ' + i.sgg
+    : (SHN[i.sido] || '') + ' ' + i.sgg;
+}
+var FEED0 = FEED.slice();
+scnApply();
+document.getElementById('lastUpdateTime').textContent = dt(Date.now(), 1);
+window.onScnFire = function (k) {
+  if (k !== 'E') return;
+  scnApply();
+  drawTiles();
+  drawTerm();
+  drawFeed();
+  kpi();
+  refreshDashboard();
+};
 function feedTab(b, k) {
   FK = k;
   [].forEach.call(document.querySelectorAll('#feedTab li'), function (l) {
@@ -259,7 +329,7 @@ function drawFeed() {
     '재난정보<b>' + n + '</b>건 / 발령정보<b>' + (FEED.length - n) + '</b>건';
 }
 /* 종합 상태 */
-(function () {
+function kpi() {
   var N = SD.length,
     ok = SD.filter(function (d) {
       return d[1] === 'ok';
@@ -298,7 +368,9 @@ function drawFeed() {
     dl += CHG[k][1];
   });
   document.getElementById('monKpi').innerHTML =
-    '<div><dl><dt>NDMS 메인포털</dt><dd>정상</dd><dd class="s" title="최종 수신 15:20:29">15:20:29</dd></dl></div>' +
+    '<div><dl><dt>NDMS 메인포털</dt><dd>정상</dd><dd class="s">' +
+    document.getElementById('lastUpdateTime').textContent.slice(11) +
+    '</dd></dl></div>' +
     '<div class="' +
     (ok < N ? 'dg' : '') +
     '"><dl><dt>연계기관 연결상태</dt><dd>' +
@@ -324,17 +396,30 @@ function drawFeed() {
     '<small>대</small></dd></dl></div>' +
     '<div class="in"><dl><dt>금일 재난정보 수신</dt><dd>' +
     nO +
-    '<small>건</small></dd><dd class="s" title="최근 15:10 기상특보">최근 15:10</dd></dl></div>' +
+    '<small>건</small></dd><dd class="s">최근 ' +
+    (FEED.filter(function (f) {
+      return f[1] === 'occur';
+    })[0] || ['--:--'])[0].slice(0, 5) +
+    '</dd></dl></div>' +
     '<div class="in"><dl><dt>금일 재난발령 수신</dt><dd>' +
     (FEED.length - nO) +
-    '<small>건</small></dd><dd class="s" title="최근 15:00 울산 강풍주의보">최근 15:00</dd></dl></div>';
-})();
+    '<small>건</small></dd><dd class="s">최근 ' +
+    (FEED.filter(function (f) {
+      return f[1] === 'issue';
+    })[0] || ['--:--'])[0].slice(0, 5) +
+    '</dd></dl></div>';
+}
+kpi();
 drawTiles();
 drawFeed();
 drawTerm();
 
 timer = setInterval(refreshDashboard, 30000);
 /* 장애 알림(SFR-04): 시각(배너) + 청각(경고음) — 목업은 화면 진입 1초 후 1회 */
-setTimeout(function () {
-  alarm('연계 장애 1건: 강원 철원군 연계서버 연결 끊김', { href: 'log_dsblty.html' });
-}, 1000);
+/* 장애 알림은 시연 상황 E(Shift+N)로 발생 — 화면 진입 시 자동 알림 삭제(2026-11-19) */
+refreshDashboard = (function (f) {
+  return function () {
+    T = new Date(Date.now() - 30000);
+    f();
+  };
+})(refreshDashboard);

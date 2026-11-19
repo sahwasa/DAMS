@@ -128,6 +128,44 @@ function render(i) {
       })
       .join('');
 }
+/* 국장 보고 시연: B(울산 동구 발령) 부여 후에는 첫 행 발령시각을 상황판과 같은 시각으로 */
+(function () {
+  var b = window.SCN && SCN.on('B');
+  if (!b) return;
+  var z = function (n) {
+      return (n < 10 ? '0' : '') + n;
+    },
+    f = function (ms) {
+      var d = new Date(ms);
+      return (
+        d.getFullYear() +
+        '-' +
+        z(d.getMonth() + 1) +
+        '-' +
+        z(d.getDate()) +
+        ' ' +
+        z(d.getHours()) +
+        ':' +
+        z(d.getMinutes()) +
+        ':' +
+        z(d.getSeconds())
+      );
+    },
+    old = ROWS[0][3];
+  ROWS[0][3] = f(b);
+  DET[0].end = f(b + 6 * 3600000);
+  DET[0].dev.forEach(function (x, k) {
+    if (x[4] !== '-') x[4] = f(b + 8000 + k * 1000);
+  });
+  DET[0].sms = DET[0].sms.replace(/\d\d:\d\d/, ROWS[0][3].slice(11, 16));
+  var tr = document.querySelector('tr.clk[onclick="selectRow(this,0)"]');
+  if (tr)
+    [].forEach.call(tr.cells, function (c) {
+      if (c.textContent === old) c.textContent = ROWS[0][3];
+    });
+  var e = document.getElementById('date_timepicker_end');
+  if (e) e.value = ROWS[0][3].slice(0, 10);
+})();
 function selectRow(tr, i) {
   [].forEach.call(tr.parentNode.children, function (x) {
     x.classList.toggle('on', x === tr);

@@ -229,6 +229,26 @@
     padding: $sp-2 $sp-6;
   }
 }
+.gis-card.new {
+  animation: gcNew 2.4s ease-out;
+}
+@keyframes gcNew {
+  0%,
+  40% {
+    background: #fff3cd;
+    border-color: #f5930b;
+  }
+}
+#cntMatch.flash {
+  animation: cmFlash 1.2s;
+}
+@keyframes cmFlash {
+  0%,
+  50% {
+    background: #f5930b;
+    color: #fff;
+  }
+}
 .gis-empty {
   padding: $sp-40 0;
   text-align: center;

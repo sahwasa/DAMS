@@ -1,22 +1,51 @@
 /* [목업 전용] localStorage('damsCertCancel'·'damsInteg')로 연계확인서 발급 취소·시도 통합 발급 상태를 화면·창 사이에 시연 — 개발 시 서버 데이터 조회로 대체 */
 /* 연계확인서 점검실행 | 재난 예경보 통합관리시스템 */
 /* 샘플 데이터 ORG → cert_check.data.js */
+/* 국장 보고 시연(2026-11-19): 첫 화면에서 바로 보이는 서울 용산구(적합)·광진구(부적합) — 부천시·청주시 샘플을 지역명만 바꿔 사용 */
+(function () {
+  function cp(k, nk, rep) {
+    var t = JSON.stringify(ORG[k]);
+    rep.forEach(function (r) {
+      t = t.split(r[0]).join(r[1]);
+    });
+    ORG[nk] = JSON.parse(t);
+  }
+  cp('bucheon', 'yongsan', [
+    ['부천시', '용산구'],
+    ['경기도', '서울특별시'],
+    ['원미구', '한강로동'],
+    ['소사구', '이태원동'],
+    ['오정구', '서빙고동'],
+    ['ST-BK', 'ST-YS']
+  ]);
+  cp('gyeonggi', 'incheon', [
+    ['경기도', '인천광역시'],
+    ['경기 북부', '인천 북부'],
+    ['경기 남부', '인천 남부'],
+    ['경기 전역', '인천 전역'],
+    ['수원시 팔달구', '남동구 구월동'],
+    ['의정부시 시민로', '연수구 송도동'],
+    ['ST-GG', 'ST-IC']
+  ]);
+  cp('cheongju', 'gwangjin', [
+    ['청주시', '광진구'],
+    ['충청북도', '서울특별시'],
+    ['상당구', '자양동'],
+    ['흥덕구', '구의동'],
+    ['서원구', '광장동'],
+    ['청원구', '중곡동'],
+    ['오창읍', '화양동'],
+    ['ST-CJ', 'ST-GJ']
+  ]);
+  /* 연결상태(접속 이력) 점검은 행정안전부와 직접 연계된 기관(계정관리 등록)만 대상 — 목업 샘플 중 청주시만 해당 */
+  Object.keys(ORG).forEach(function (k) {
+    ORG[k].direct = k === 'cheongju';
+  });
+  ORG.cheongju.conn = ORG.gyeonggi.conn;
+})();
 var Q = new URLSearchParams(location.search),
   KEY = ORG[Q.get('org')] ? Q.get('org') : 'bucheon',
   D = ORG[KEY];
-/* 목록에서 넘긴 실제 기관명(nm='시도' 또는 '시도 시군구')으로 표시 — 점검 데이터는 샘플 유형(org) 그대로 */
-(function () {
-  var nm = Q.get('nm');
-  if (!nm) return;
-  var a = nm.split(' ');
-  D = Object.assign(
-    {},
-    D,
-    a.length > 1
-      ? { name: a.slice(1).join(' '), parent: a[0], level: 'sgg' }
-      : { name: a[0], parent: '광역', level: 'sido' }
-  );
-})();
 var S = { ran: false, issued: false, running: false, days: [] },
   R = {};
 function $(id) {
@@ -113,7 +142,7 @@ function build() {
 function render() {
   build();
   var h = '',
-    na = D.level !== 'sido';
+    na = !D.direct;
   $('connNA').hidden = !na;
   $('connTbl').hidden = na;
   if (na) $('ttlConn').innerHTML = '연결상태 <small class="c-dis u-fw400 u-fs13px">(해당없음)</small>';
@@ -241,7 +270,7 @@ function doneRun() {
   S.ran = true;
   setStatus();
   render();
-  badge('tbC', D.level === 'sido' ? 'sc' : '', D.level === 'sido' ? '적합' : '해당없음');
+  badge('tbC', D.direct ? 'sc' : '', D.direct ? '적합' : '해당없음');
   badge('tbN', R.notiNg ? 'dg' : 'sc', R.notiNg ? '부적합' : '적합');
   badge('tbS', 'sc', '적합');
   badge('tbT', R.stPass ? 'sc' : 'dg', R.stPass ? '적합' : '부적합');
@@ -272,8 +301,8 @@ function ngReport() {
   var items = [
     [
       '연결상태',
-      sd ? '적합' : '해당없음',
-      sd ? '접속 이력 ' + R.conn.length + '건 · 정상 유지' : '시군구 — NDMS 직접 연계 대상 아님'
+      D.direct ? '적합' : '해당없음',
+      D.direct ? '접속 이력 ' + R.conn.length + '건 · 정상 유지' : '행정안전부 직접 연계 기관 아님(계정관리 미등록)'
     ],
     [
       '통보문',
@@ -324,7 +353,9 @@ function approveAsk() {
       '&checker=' +
       encodeURIComponent(D.checker + ' · ' + D.checkDate) +
       '&sido=' +
-      (D.level === 'sido' ? 1 : 0),
+      (D.level === 'sido' ? 1 : 0) +
+      '&direct=' +
+      (D.direct ? 1 : 0),
     760
   );
 }
@@ -408,7 +439,7 @@ function genDoc() {
     per +
     '</td></tr>' +
     '<tr><th>0. 연결상태</th><td>' +
-    (D.level === 'sido' ? '적합 — 접속 이력 ' + R.conn.length + '건' : '해당없음 (시군구)') +
+    (D.direct ? '적합 — 접속 이력 ' + R.conn.length + '건' : '해당없음 (직접 연계 기관 아님)') +
     '</td><th>1. 통보문</th><td>적합 — 총 ' +
     R.noti.length +
     '건</td></tr>' +

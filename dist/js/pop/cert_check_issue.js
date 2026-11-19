@@ -7,7 +7,7 @@ DAMS_POP['cert_check_issue'] = function (location, dlg) {
   if (Q.get('checker')) document.getElementById('pChecker').textContent = Q.get('checker');
   document.getElementById('pResult').innerHTML = ['연결상태', '통보문', '단말 제원정보', '단말 상태정보']
     .map(function (t, i) {
-      return i === 0 && !sido
+      return i === 0 && Q.get('direct') !== '1'
         ? '<span class="badge">연결상태 해당없음</span>'
         : '<span class="badge sc">' + t + ' 적합</span>';
     })
@@ -252,9 +252,9 @@ DAMS_POP['cert_check_issue'] = function (location, dlg) {
   };
   var OWN = {
     서울특별시: [],
+    인천광역시: ['제물포구', '영종구', '미추홀구', '연수구', '부평구', '계양구', '서해구', '검단구'],
     전남광주통합특별시: ['구례군', '보성군', '함평군'],
     부산광역시: ['해운대구'],
-    인천광역시: ['제물포구', '영종구', '미추홀구', '연수구', '부평구', '계양구', '서해구', '검단구'],
     대구광역시: ['군위군'],
     울산광역시: ['동구'],
     경기도: ['부천시', '안산시', '화성시', '안성시'],

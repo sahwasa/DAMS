@@ -28,39 +28,13 @@ var FR = [
   '인증 실패(키 불일치)'
 ];
 var RS = { s: ['성공', 'sc', '#008a1e'], f: ['실패', 'dg', '#eb003b'], n: ['미수신', '', '#8e8e8e'] };
-var CAT = { 자연재난: ['호우', '강풍', '지진', '대설', '태풍'], 사회재난: ['산불', '미세먼지', '화재'] };
-var SGG = {
-  충청남도: ['천안시', '아산시', '보령시', '서산시', '태안군'],
-  울산광역시: ['동구', '남구', '북구', '울주군'],
-  경상북도: ['안동시', '의성군', '포항시', '경주시']
+var CAT = {
+  자연재난: ['호우', '강풍', '지진', '대설', '태풍', '건조', '풍랑', '한파'],
+  사회재난: ['산불', '미세먼지', '화재']
 };
-/* 재난발생정보 (최근 1년, 발표일시 내림차순) */
-/* 샘플 데이터 EV → gis.data.js */
-/* 재난발령정보: md=[매체코드,전체,성공,실패,미수신] */
-/* 샘플 데이터 IS → gis.data.js */
-var LOCAL = ['I20', 'I19', 'I18', 'I6', 'I11', 'I12', 'I7', 'I1', 'I9', 'I2', 'I4', 'I5', 'I14', 'I10', 'I8', 'I16'];
-/* 사건분류코드(ev) → 심볼 아이콘·단계(js/hazard.js, 연동 가이드라인 별첨6) */
-[]
-  .concat(
-    EV,
-    Object.keys(IS).map(function (k) {
-      return IS[k];
-    })
-  )
-  .forEach(function (x) {
-    var h = x.ev && HZ[x.ev];
-    if (h) {
-      x.lv = h[2];
-      x.ic = h[1];
-    }
-  });
-var EVM = {};
-EV.forEach(function (e) {
-  EVM[e.id] = e;
-});
-Object.keys(IS).forEach(function (k) {
-  IS[k].id = k;
-});
+var SGG = {}; /* 발령 데이터의 시도·시군구로 채움(initSel) */
+/* 시연 데이터·시각: js/scn-data.js (scnData) */
+var EV, IS, LOCAL, EVM;
 var GIS = document.querySelector('.gis');
 var S = {
   ly: { lk: false, nc: true, un: false },
@@ -71,9 +45,9 @@ var S = {
   rng: true,
   media: {},
   lg: { hz: !matchMedia('(max-width:767px)').matches, dv: !matchMedia('(max-width:767px)').matches },
-  evList: EV.slice(),
+  evList: [],
   mList: [],
-  lList: LOCAL.slice(),
+  lList: [],
   dv: [],
   dsel: null
 };
@@ -205,7 +179,8 @@ var IC = {
 };
 function openIssue(id) {
   var i = IS[id],
-    c = IC[i.ic] || ['자연재난', ''],
+    hh = HZ[i.ev],
+    c = hh ? [hh[3], hh[4]] : IC[String(i.ic).replace(/^\w+_/, '')] || ['자연재난', ''],
     nm = (i.tit.match(/^\[([^\]]+)\]/) || [0, ''])[1],
     o = {
       sys: i.sys,
@@ -260,15 +235,28 @@ function drawOccur() {
     S.evList.map(evCard).join('') || '<li class="gis-empty">검색된 결과가 없습니다.</li>';
   $('cntOccur').textContent = S.evList.length;
 }
+var SEEN = {};
 function drawMatch() {
   $('gisResultList').innerHTML =
-    S.mList.map(isCard).join('') ||
+    S.mList
+      .map(function (k) {
+        var h = isCard(k);
+        if (SEEN[S.ev] && !SEEN[S.ev][k]) h = h.replace('class="gis-card', 'class="gis-card new');
+        return h;
+      })
+      .join('') ||
     '<li class="gis-empty">매칭되는 재난발령이 없습니다.' +
       (S.ev && !EVM[S.ev].iss.length
         ? '<br><small>재난발생지역 중 연계지역은 지도에 미발령지역으로 표시됩니다.</small>'
         : '') +
       '</li>';
   $('cntMatch').textContent = S.mList.length + '건';
+  if (S.ev) {
+    var m = (SEEN[S.ev] = SEEN[S.ev] || {});
+    S.mList.forEach(function (k) {
+      m[k] = 1;
+    });
+  }
 }
 function drawLocal() {
   $('localIssueList').innerHTML = S.lList.map(isCard).join('') || '<li class="gis-empty">검색된 결과가 없습니다.</li>';
@@ -286,7 +274,18 @@ var MAP = $('gisMap'),
   MAPI = GeoMap.interact(MAP, ST),
   CUR = {},
   MODE_NM = ['기본', '2D', '위성'];
-var SH = { 충청남도: '충남', 울산광역시: '울산', 경상북도: '경북' };
+var SH = {
+  충청남도: '충남',
+  울산광역시: '울산',
+  경상북도: '경북',
+  강원특별자치도: '강원',
+  부산광역시: '부산',
+  경상남도: '경남',
+  제주특별자치도: '제주',
+  전남광주통합특별시: '전남광주',
+  대구광역시: '대구',
+  전북특별자치도: '전북'
+};
 function gq(n, sd) {
   n = n.replace(/\s*전역$/, '');
   return /^(서울|부산|대구|인천|광주|대전|울산|세종|경기|강원|충북|충남|전북|전남광주|전남|경북|경남|제주)/.test(n)
@@ -481,6 +480,15 @@ function base(keep, hl, focus, hl2, un, evb) {
   return P;
 }
 /* 전국 보기에서 확대(zl≥2)하면 읍면동 경계를 한 번만 추가 */
+var WZL = 1;
+new MutationObserver(function () {
+  var zl = +MAP.dataset.zl,
+    ev = S.tab === 'occur' && S.ev ? EVM[S.ev] : null;
+  if (ev && ev.sd && !S.is && zl !== WZL) {
+    WZL = zl;
+    render(true);
+  } else WZL = zl;
+}).observe(MAP, { attributes: true, attributeFilter: ['data-zl'] });
 new MutationObserver(function () {
   if (CUR.nat && !CUR.emd && +MAP.dataset.zl > 1) {
     CUR.emd = true;
@@ -583,7 +591,7 @@ function hzSyms(list, kind) {
     .join('');
 }
 /* 단말기: 매체별 실패·미수신 우선 3대는 개별 심볼, 나머지는 도넛 클러스터 */
-function devList(i) {
+function devList(i, all) {
   var a = [],
     rest = [0, 0, 0];
   i.md.forEach(function (m) {
@@ -594,13 +602,15 @@ function devList(i) {
     for (x = 0; x < m[4]; x++) r.push('n');
     for (x = 0; x < m[2]; x++) r.push('s');
     r.forEach(function (v, j) {
-      if (j < 3 || r.length < 5) a.push({ md: m[0], r: v });
+      if (all || j < 3 || r.length < 5) a.push({ md: m[0], r: v });
       else rest[v === 's' ? 0 : v === 'f' ? 1 : 2]++;
     });
   });
   return { a: a, rest: rest };
 }
 /* 겹치지 않게 나선형으로 자리 찾기 — 심볼 테두리까지 1순위 발령지역 안, 2순위 내륙(바다에 걸치지 않게), 3순위 중심만 내륙, 없으면 겹침만 피함 */
+/* 겹치지 않게 나선형으로 자리 찾기 — 단말기는 반드시 발령지역 안(2026-11-19: 좁은 발령지역은 조금 겹쳐도 지역 밖으로 나가지 않게)
+   1순위 심볼 테두리까지 발령지역 안·안 겹침, 2순위 중심만 발령지역 안·안 겹침, 3순위 발령지역 안·절반까지 겹침 허용, 4순위 발령지역 안, (발령지역 정보가 없을 때만) 내륙 */
 function place(items) {
   var done = [];
   items.forEach(function (it) {
@@ -608,9 +618,9 @@ function place(items) {
       t,
       c,
       k,
-      free = function (c) {
+      free = function (c, f) {
         return done.every(function (d) {
-          return Math.hypot(d.q[0] - c[0], d.q[1] - c[1]) >= d.r + it.r;
+          return Math.hypot(d.q[0] - c[0], d.q[1] - c[1]) >= (d.r + it.r) * f;
         });
       },
       pts = function (c, m) {
@@ -629,8 +639,10 @@ function place(items) {
         });
       },
       inFs = function (c, m) {
+        m = m || 0;
         return (
           it.fs &&
+          it.fs.length &&
           pts(c, m).every(function (g) {
             return it.fs.some(function (f) {
               return GeoMap.inFeat(f, g[0], g[1]);
@@ -643,35 +655,84 @@ function place(items) {
           return GeoMap.onLand(g[0], g[1]);
         });
       },
-      m = it.r - 2,
+      m = Math.max(0, it.r - 2 / (it.st ? 4 / it.st : 1)),
       tests = [
         function (c) {
-          return inFs(c, m);
+          return free(c, 1) && inFs(c, m);
         },
         function (c) {
-          return land(c, m);
+          return free(c, 1) && inFs(c, 0);
         },
         function (c) {
-          return land(c, 0);
+          return free(c, 0.55) && inFs(c, 0);
         },
-        function () {
-          return true;
+        function (c) {
+          return free(c, 0.3) && inFs(c, 0);
+        },
+        function (c) {
+          return inFs(c, 0);
+        },
+        function (c) {
+          return free(c, 1) && land(c, m);
+        },
+        function (c) {
+          return free(c, 1);
         }
       ];
     for (k = 0; k < tests.length; k++) {
-      for (t = 0; t < 600; t++) {
+      for (t = 0; t < 700; t++) {
         var an = t * 2.39996,
-          rd = 6 * Math.sqrt(t);
+          rd = (it.st || 4) * Math.sqrt(t);
         c = [p[0] + Math.cos(an) * rd, p[1] + Math.sin(an) * rd];
-        if (free(c) && tests[k](c)) break;
+        if (tests[k](c)) break;
       }
-      if (t < 600) break;
+      if (t < 700) break;
     }
+    if (k === tests.length) c = p;
     it.q = c;
     done.push(it);
   });
 }
-function devView(ids) {
+/* 여러 시·도 재난(전국 범위)을 선택했을 때: 관련 발령마다 단말기를 숫자 묶음 1개로(성공·실패 비율 도넛) — 묶음 클릭 → 요약 + [단말기 보기] */
+function curZ() {
+  return parseFloat(ST.style.getPropertyValue('--z')) || 1;
+}
+function wideDev(ids) {
+  var it = ids.map(function (id) {
+    var i = IS[id],
+      t = tot(i);
+    return { iss: id, t: t, fs: i.fs, p: px(i.pos), r: t[0] < 20 ? 13 : 16 };
+  });
+  place(it);
+  return it
+    .map(function (x) {
+      var c = ll(x.q);
+      return GeoMap.donut(
+        CUR.P,
+        c[0],
+        c[1],
+        x.t[0],
+        x.t[1],
+        x.t[2],
+        'data-wdc="' +
+          x.iss +
+          '" title="' +
+          org(IS[x.iss]) +
+          ' · 단말기 ' +
+          x.t[0] +
+          '대 (성공 ' +
+          x.t[1] +
+          ' · 실패 ' +
+          x.t[2] +
+          ' · 미수신 ' +
+          x.t[3] +
+          ')"'
+      );
+    })
+    .join('');
+}
+function devView(ids, z) {
+  z = z || 1;
   var it = [],
     P = CUR.P,
     B = P.B,
@@ -679,7 +740,7 @@ function devView(ids) {
   S.dv = [];
   ids.forEach(function (id) {
     var i = IS[id],
-      d = devList(i),
+      d = devList(i, z > 1),
       n = d.rest[0] + d.rest[1] + d.rest[2];
     d.a.forEach(function (v, k) {
       v.iss = id;
@@ -687,9 +748,18 @@ function devView(ids) {
       v.k = S.dv.length;
       S.dv.push(v);
       var q = px(i.anc[k % i.anc.length]);
-      it.push({ v: v, fs: i.fs, p: [q[0], q[1] + 20], r: 15 });
+      it.push({ v: v, fs: i.fs, p: [q[0], q[1] + 20 / z], r: 15 / z, st: 4 / z });
     });
-    if (n) it.push({ don: d.rest, n: n, iss: id, fs: i.fs, p: px(GeoMap.centroid(i.fs[0])), r: n < 20 ? 23 : 29 });
+    if (n)
+      it.push({
+        don: d.rest,
+        n: n,
+        iss: id,
+        fs: i.fs,
+        p: px(GeoMap.centroid(i.fs[0])),
+        r: (n < 20 ? 23 : 29) / z,
+        st: 4 / z
+      });
   });
   place(
     it
@@ -830,6 +900,16 @@ function render(symOnly) {
           );
     legend('hz');
     lb = '전국';
+  } else if (ev && ev.sd && !S.is) {
+    var zz = curZ();
+    h = zz >= 2.5 ? devView(ids, zz) : wideDev(ids);
+    legend('dv', '', mediaOf(ids));
+    lb =
+      ev.nm +
+      ' · 재난발생지역 9개 시·도 · 관련 발령 ' +
+      ids.length +
+      '건 단말기' +
+      (zz >= 2.5 ? '' : '(발령별 묶음 · 확대하면 개별 단말기)');
   } else if (ids.length) {
     h = devView(ids);
     legend('dv', hl.length ? '발령지역' : '', mediaOf(ids));
@@ -1085,7 +1165,9 @@ window.onTab = function (id) {
   drawLists();
   render();
   msg(
-    S.tab === 'occur' ? '재난발생현황 목록으로 전환했습니다.' : '지방정부 예·경보 발령 목록(최근 1년)으로 전환했습니다.'
+    S.tab === 'occur'
+      ? '재난발생현황 목록으로 전환했습니다.'
+      : '지방정부 예·경보 발령 목록(최근 1개월)으로 전환했습니다.'
   );
 };
 
@@ -1212,6 +1294,23 @@ MAP.addEventListener('click', function (e) {
     );
     return;
   }
+  if ((c = t.closest('[data-wdc]'))) {
+    var i = IS[c.dataset.wdc],
+      tt = tot(i);
+    tip(
+      c,
+      tipBox(
+        org(i) + ' 발령 단말기 ' + tt[0] + '대',
+        '<p class="u-mb6px u-fw600">' +
+          i.tit +
+          '</p>' +
+          sumBox(tt) +
+          '<p class="u-mt6px u-c-g60">지도를 확대하면 단말기가 하나씩 표시됩니다.</p>'
+      ),
+      1
+    );
+    return;
+  }
   if ((c = t.closest('[data-dcl]'))) {
     var r = devList(IS[c.dataset.dcl]).rest,
       n = r[0] + r[1] + r[2];
@@ -1276,90 +1375,268 @@ window.addEventListener('resize', function () {
   }, 150);
 });
 
-/* 최초 로드 (loadMeta/loadEvents): 지역명 → 행정경계 피처, 심볼 위치는 발령·발생지역 중심으로 보정 */
-(function init() {
-  /* 전국 단위 재난(nat): 발생지역 = 16개 시도 전체, 지도 심볼은 시도마다 하나씩(parts) */
-  var SDC = ['11', '36', '21', '22', '23', '25', '26', '29', '31', '32', '33', '34', '35', '37', '38', '39'],
-    SDN = {
-      11: '서울',
-      21: '부산',
-      22: '대구',
-      23: '인천',
-      25: '대전',
-      26: '울산',
-      29: '세종',
-      31: '경기',
-      32: '강원',
-      33: '충북',
-      34: '충남',
-      35: '전북',
-      36: '전남광주',
-      37: '경북',
-      38: '경남',
-      39: '제주'
-    };
+/* 데이터 구성(시연 상황 반영) + 행정경계 피처·심볼 위치 계산(지역별 1회 캐시) */
+var GC = {},
+  SDC = ['11', '36', '21', '22', '23', '25', '26', '29', '31', '32', '33', '34', '35', '37', '38', '39'],
+  SDN = {
+    11: '서울',
+    21: '부산',
+    22: '대구',
+    23: '인천',
+    24: '전남광주',
+    25: '대전',
+    26: '울산',
+    29: '세종',
+    31: '경기',
+    32: '강원',
+    33: '충북',
+    34: '충남',
+    35: '전북',
+    36: '전남광주',
+    37: '경북',
+    38: '경남',
+    39: '제주'
+  };
+function build() {
+  var d = scnData();
+  EV = d.ev;
+  IS = d.is;
+  LOCAL = d.loc;
+  []
+    .concat(
+      EV,
+      Object.keys(IS).map(function (k) {
+        return IS[k];
+      })
+    )
+    .forEach(function (x) {
+      var h = x.ev && HZ[x.ev];
+      if (h) {
+        x.lv = h[2];
+        x.ic = h[1];
+      }
+    });
+  EVM = {};
   EV.forEach(function (e) {
-    if (e.nat) {
-      e.fs = uniqF(
-        [].concat.apply(
-          [],
-          SDC.map(function (c) {
-            return GeoMap.find(c);
+    EVM[e.id] = e;
+  });
+  Object.keys(IS).forEach(function (k) {
+    IS[k].id = k;
+  });
+  LK = null;
+  EV.forEach(function (e) {
+    var g = GC['e' + e.id];
+    if (!g) {
+      g = {};
+      if (e.nat || e.sd) {
+        g.fs = uniqF(
+          [].concat.apply(
+            [],
+            (e.sd || SDC).map(function (c) {
+              return GeoMap.find(c);
+            })
+          )
+        );
+        g.pos = GeoMap.centroid(g.fs[0]);
+        /* 여러 시도 재난: 시도마다 심볼 1개(광주는 전남광주로 묶어 생략) */
+        g.parts = g.fs
+          .filter(function (f) {
+            return f[0] !== '24';
           })
-        )
-      );
-      e.parts = e.fs.map(function (f) {
+          .map(function (f) {
+            return { pos: f[0] === '29' ? [127.27, 36.56] : GeoMap.centroid(f), rg: [SDN[f[0]] || f[1]], piece: 1 };
+          });
+      } else {
+        g.fs = feats(e.rg);
+        g.pos = e.epi || (g.fs.length ? GeoMap.centroid(g.fs[0]) : [127.8, 36.4]);
+        /* 심볼 위치 규칙: 위·경도가 있는 재난(지진 진앙 epi)은 그 지점 1개, 그 밖은 발생지역마다 1개 */
+        if (!e.epi && e.rg.length > 1)
+          g.parts = e.rg.map(function (r) {
+            var f = feats([r]);
+            return { pos: f.length ? GeoMap.centroid(f[0]) : g.pos, rg: [r], piece: 2 };
+          });
+      }
+      GC['e' + e.id] = g;
+    }
+    e.fs = g.fs;
+    e.pos = g.pos;
+    if (g.parts)
+      e.parts = g.parts.map(function (p) {
         var o = Object.create(e);
-        o.pos = f[0] === '29' ? [127.27, 36.56] : GeoMap.centroid(f);
-        o.rg = [SDN[f[0]] || f[1]];
-        o.piece = 1;
-        return o;
-      });
-      return;
-    }
-    /* 심볼 위치 규칙: 위·경도가 있는 재난(지진 진앙 epi)은 그 지점 1개, 그 밖은 발생지역마다 1개 */
-    e.fs = feats(e.rg);
-    if (e.epi) {
-      e.pos = e.epi;
-      return;
-    }
-    if (e.fs.length) e.pos = GeoMap.centroid(e.fs[0]);
-    if (e.rg.length > 1)
-      e.parts = e.rg.map(function (r) {
-        var f = feats([r]),
-          o = Object.create(e);
-        o.pos = f.length ? GeoMap.centroid(f[0]) : e.pos;
-        o.rg = [r];
-        o.piece = 2;
+        o.pos = p.pos;
+        o.rg = p.rg;
+        o.piece = p.piece;
         return o;
       });
   });
   Object.keys(IS).forEach(function (k) {
-    var i = IS[k];
-    i.fs = feats(i.rg, i.sido);
-    i.anc = anchors(i.fs);
-    if (i.fs.length) i.pos = GeoMap.centroid(i.fs[0]);
+    var i = IS[k],
+      g = GC['i' + k];
+    if (!g) {
+      g = { fs: feats(i.rg, i.sido) };
+      g.anc = anchors(g.fs);
+      g.pos = g.fs.length ? GeoMap.centroid(g.fs[0]) : [127.8, 36.4];
+      GC['i' + k] = g;
+    }
+    i.fs = g.fs;
+    i.anc = g.anc;
+    i.pos = g.pos;
   });
+  /* 기본 기간: 재난발생현황 최근 7일, 지방정부발령 최근 1개월(2026-11-19 결정) — 검색조건 날짜 기준으로 목록 구성 */
+  S.evList = EV.filter(function (e) {
+    return inRange(e.tm, $('dtGisFr').value, $('dtGisTo').value);
+  });
+  S.lList = LOCAL.filter(function (k) {
+    return inRange(IS[k].tm, $('dtLocalFr').value, $('dtLocalTo').value);
+  });
+}
+function setDefDates() {
+  var n = new Date(),
+    m = new Date(n);
+  m.setMonth(m.getMonth() - 1);
+  [
+    ['dtGisFr', ymd(Date.now() - 6 * 864e5)],
+    ['dtGisTo', ymd(Date.now())],
+    ['dtLocalFr', ymd(m.getTime())],
+    ['dtLocalTo', ymd(Date.now())]
+  ].forEach(function (x) {
+    $(x[0]).value = x[1];
+    $(x[0]).defaultValue = x[1];
+  });
+}
+function initSel() {
+  var m = {};
+  LOCAL.forEach(function (k) {
+    var i = IS[k];
+    (m[i.sido] = m[i.sido] || {})[i.sgg] = 1;
+  });
+  SGG = {};
+  Object.keys(m).forEach(function (sd) {
+    SGG[sd] = Object.keys(m[sd]);
+  });
+  var o =
+    '<option value="">시도 전체</option>' +
+    Object.keys(SGG)
+      .map(function (x) {
+        return '<option>' + x + '</option>';
+      })
+      .join('');
+  $('selLocalSido').innerHTML = o;
+  $('selGisPlatform').innerHTML = o;
+}
+function ymd(ms) {
+  return dt(ms).slice(0, 10);
+}
+/* 토스트 클릭(시연 상황): 최신 데이터로 다시 구성 후 해당 재난(·발령) 자동 선택. 토스트를 누르지 않으면 보던 화면 유지 */
+window.scnFocus = function (f) {
+  if (f.ev === 'SD' && !DT) DT = Date.now();
+  setDefDates();
+  $('fOccur').reset();
+  build();
+  initSel();
+  if (S.tab !== 'occur') $('tabDisasterOcrn').click();
+  $('fOccur').reset();
+  if (!EVM[f.ev]) {
+    drawLists();
+    render();
+    return;
+  }
+  selectGroup(f.ev);
+  if (f.is && S.mList.indexOf(f.is) > -1) selectIssue(f.is);
+  var c = document.querySelector('#gisDisasterList [data-ev="' + f.ev + '"]');
+  c && c.scrollIntoView({ block: 'nearest' });
+};
+/* 보고 있는 재난에 매칭되는 발령이 새로 들어오면(토스트를 누르지 않아도) 매칭 발령 목록·재난발령현황 건수·지도에 바로 반영(2026-11-19) */
+window.onScnFire = function (k) {
+  var st = SCN.steps.filter(function (x) {
+    return x.k === k;
+  })[0];
+  if (!st || st.kind !== 'issue' || S.tab !== 'occur' || S.ev !== st.ev) return;
+  var ev = S.ev,
+    is = S.is;
+  build();
+  initSel();
+  S.ev = ev;
+  S.is = is && IS[is] ? is : null;
+  applyDetailFilter();
+  drawLists();
+  render();
+  var c = $('cntMatch');
+  c.classList.remove('flash');
+  void c.offsetWidth;
+  c.classList.add('flash');
+  msg(
+    '보고 있는 재난에 매칭되는 재난발령 ' +
+      (st.next ? 2 : 1) +
+      '건이 추가되었습니다. (관련 발령 ' +
+      S.mList.length +
+      '건)'
+  );
+};
+/* 1초 주기: 선택 중인 발령의 결과 도착(미수신 → 성공·실패), 태풍 선택 중 관련 발령 추가 도착 */
+setInterval(function () {
+  var now = Date.now(),
+    ch = false,
+    add = false,
+    shown = (S.is ? [S.is] : []).concat(S.ev ? S.mList : []);
+  shown.forEach(function (k, j) {
+    var i = IS[k];
+    if (!i || !i.mdF || RES[k]) return;
+    if (!RT[k]) RT[k] = now + 3500 + j * 1200;
+    else if (now >= RT[k]) {
+      RES[k] = 1;
+      i.md = i.mdF;
+      ch = true;
+    }
+  });
+  /* 화면에 띄우지 않은 발령도 수신 1분이 지나면 결과 도착 */
+  Object.keys(IS).forEach(function (k) {
+    var i = IS[k];
+    if (i.mdF && !RES[k] && now - i.t > 60000) {
+      RES[k] = 1;
+      i.md = i.mdF;
+      ch = true;
+    }
+  });
+  if (S.ev === 'SD' && F.D) {
+    var n = TY.filter(function (r, k) {
+      return (DT || F.D) + tyOff(k) <= now;
+    }).length;
+    if (n !== TYN) add = true;
+  }
+  if (add) {
+    var ev = S.ev,
+      is = S.is;
+    build();
+    S.ev = ev;
+    S.is = is;
+    applyDetailFilter();
+    drawLists();
+    render();
+    var c = $('cntMatch');
+    c.classList.remove('flash');
+    void c.offsetWidth;
+    c.classList.add('flash');
+  } else if (ch) {
+    drawLists();
+    render(true);
+  }
+}, 1000);
+
+/* 최초 로드: 아무것도 선택하지 않은 전국 지도(주소에 ?ev=재난&is=발령이 있으면 그 재난·발령 자동 선택 — 다른 화면에서 토스트·알림을 누른 경우) */
+(function init() {
+  var q = new URLSearchParams(location.search),
+    qe = q.get('ev');
+  if (qe === 'SD' && SCN.on('D') && Date.now() - SCN.on('D') < 15000) DT = Date.now();
+  setDefDates();
+  build();
+  initSel();
   $('gmMode').innerHTML = GeoMap.modeBtns(1, 'mapMode');
   fillCategory();
   drawLists();
   render();
-  /* 알림(토스트·GNB 알림 목록) 클릭 → 해당 재난·발령 선택(?ev=재난ID / ?is=발령ID). 상황판에서 누르면 화면 이동 없이 선택만 바꿈 */
-  window.onToastGo = function (h) {
-    var m = /UI-DA02-001\.html\?(ev|is)=(\w+)/.exec(h);
-    if (!m) return;
-    goSel(m[1], m[2]);
-    return false;
-  };
-  var Q = /[?&](ev|is)=(\w+)/.exec(location.search);
-  if (Q) goSel(Q[1], Q[2]);
-})();
-function goSel(k, id) {
-  if (k === 'ev' && EVM[id]) {
-    if (S.tab !== 'occur') document.querySelector('[data-tab="pnlOccur"]').click();
-    selectGroup(id);
-  } else if (k === 'is' && IS[id]) {
-    if (S.tab !== 'local') document.querySelector('[data-tab="pnlLocal"]').click();
-    if (S.is !== id) selectIssue(id);
+  if (qe && EVM[qe]) {
+    history.replaceState(null, '', location.pathname);
+    scnFocus({ ev: qe, is: q.get('is') });
   }
-}
+})();

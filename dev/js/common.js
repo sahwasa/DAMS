@@ -267,6 +267,29 @@
   }
   var FAV_EMPTY = '즐겨찾기한 메뉴가 없습니다.<br>화면명 옆 ☆을 눌러 추가하세요.';
   /* 화면명 ☆에 저장된 즐겨찾기 상태 반영 */
+  /* 현재 화면 표시: inc/header·lnb 조각은 공통이라 .on 없이 두고, 파일명(상세·쓰기 화면은 목록 화면)으로 GNB 1Depth·LNB 메뉴에 .on */
+  function markOn() {
+    var b = CUR.replace(/_(view|write)$/, '');
+    $$('.gnb .menu>li').forEach(function (li) {
+      var g = null,
+        t = $('a', li).textContent.trim();
+      MENU.forEach(function (x) {
+        if (x[0] === t) g = x;
+      });
+      li.classList.toggle(
+        'on',
+        !!g &&
+          g[1].some(function (m) {
+            return m[0] === b;
+          })
+      );
+    });
+    $$('.lnb-menu .d2>li').forEach(function (li) {
+      var a = $('a', li);
+      li.classList.toggle('on', !!a && a.getAttribute('href').split('?')[0] === b + '.html');
+    });
+  }
+  /* 프레임 화면에 전환 버튼 추가 */
   function layInit() {
     /* 저장된 즐겨찾기 상태를 화면명 ☆에 반영 */
     var st = $('.page-head .star'),
@@ -485,7 +508,7 @@
     toast(t, {
       kind: 'alarm',
       cls: 'dg',
-      sub: o.href ? '장애이력을 보려면 이 알림을 클릭하세요.' : '',
+      sub: o.sub != null ? o.sub : o.href ? '장애이력을 보려면 이 알림을 클릭하세요.' : '',
       href: o.href,
       ms: o.ms || 10000
     });
@@ -550,7 +573,8 @@
           p2(d.getMinutes()),
       tg = o.kind === 'issue' ? '신규발령' : o.kind === 'alarm' ? '장애' : '재난발생',
       full = (o.lead ? o.lead + ' · ' : '') + t;
-    notiAdd({ k: tg, href: o.href, t: full, tm: tm });
+    var fu = o.focus ? 'gis.html?ev=' + o.focus.ev + (o.focus.is ? '&is=' + o.focus.is : '') : '';
+    notiAdd({ k: tg, href: o.href || fu, t: full, tm: tm });
     var b = toastBox(),
       el = document.createElement('div');
     el.className = 'toast' + (o.cls ? ' ' + o.cls : '') + (o.kind ? ' k-' + o.kind : '');
@@ -559,7 +583,7 @@
       '<p><b>' +
       (o.kind === 'alarm' ? '' : '<em class="tg"></em>') +
       '<span class="tt"></span></b><time></time><span>' +
-      (o.sub != null ? o.sub : '클릭하면 GIS 상황판에서 해당 정보를 선택합니다.') +
+      (o.sub != null ? o.sub : '클릭하면 GIS 상황판에서 확인합니다.') +
       '</span></p><button type="button" class="toast-x" title="알림 닫기"><i class="ri-close-line"></i></button>';
     var g = $('.tg', el);
     if (g) g.textContent = '[' + tg + ']';
@@ -581,9 +605,14 @@
       close();
     };
     el.onclick = function () {
+      if (o.focus) {
+        if (window.scnFocus) {
+          close();
+          scnFocus(o.focus);
+        } else location.href = fu;
+        return;
+      }
       if (o.href) {
-        close();
-        if (window.onToastGo && window.onToastGo(o.href) === false) return;
         location.href = o.href;
         return;
       }
@@ -1670,4 +1699,194 @@
     lt && (lt.dataset.t = lt.textContent);
     if ($('.gnb .sess b')) setInterval(tick, 1000);
   });
+})();
+
+/* [목업 시연 데이터] 퍼블에서는 상황 부여 조작(단축키·시연 패널·GNB 5번 클릭)을 뺐다 — SCN은 처음 상태 샘플(js/scn-data.js)용으로만 남김, 개발 시 서버 데이터·푸시로 대체 */
+/* ===== 국장 보고 시연: 상황 부여 장치(2026-11-19) =====
+   다음 상황: Shift+N 또는 상단 GNB 빈 곳을 2초 안에 5번 클릭 / 처음 상태: Shift+R / 시연 패널: Shift+D
+   상태는 localStorage damsScn {t0:시작시각, f:{단계:발생시각}} — 같은 브라우저의 모든 창이 공유. 시각은 실제 현재 시각 기준 가상 시각 */
+(function () {
+  var K = 'damsScn';
+  var STEPS = [
+    {
+      k: 'A',
+      nm: 'A 신규 재난 · 울산 강풍주의보',
+      kind: 'occur',
+      lead: '자연재난 > 강풍',
+      t: '울산 동구·북구·울주군 강풍주의보가 발표되었습니다.',
+      ev: 'SA'
+    },
+    {
+      k: 'B',
+      nm: 'B 신규 발령 · 울산 동구',
+      kind: 'issue',
+      lead: '울산 동구',
+      t: '강풍주의보 발표에 따른 시설물 안전 유의 발령이 수신되었습니다.',
+      ev: 'SA',
+      is: 'B1'
+    },
+    {
+      k: 'B2',
+      nm: 'B-2 발령 2건 · 울산 북구·울주군',
+      kind: 'issue',
+      lead: '울산 북구',
+      t: '강동 해안 산책로 출입 자제 안내 발령이 수신되었습니다.',
+      ev: 'SA',
+      is: 'B2',
+      next: { lead: '울산 울주군', t: '진하·간절곶 해안가 시설물 결박 안내 발령이 수신되었습니다.', is: 'B3' }
+    },
+    {
+      k: 'C',
+      nm: 'C 지진 · 경북 포항',
+      kind: 'occur',
+      lead: '자연재난 > 지진',
+      t: '경북 포항시 북구 북쪽 8km 지역 규모 3.1 지진이 발생했습니다.',
+      ev: 'SC'
+    },
+    {
+      k: 'C2',
+      nm: 'C-2 지진 발령 2건 · 포항·경주',
+      kind: 'issue',
+      lead: '경북 포항시',
+      t: '지진 발생에 따른 여진 대비 행동요령 안내 발령이 수신되었습니다.',
+      ev: 'SC',
+      is: 'C1',
+      next: { lead: '경북 경주시', t: '경주 동부 지역 여진 대비 행동요령 안내 발령이 수신되었습니다.', is: 'C2' }
+    },
+    {
+      k: 'D',
+      nm: 'D 전국 재난 · 태풍경보',
+      kind: 'occur',
+      lead: '자연재난 > 태풍',
+      t: '태풍경보가 발표되었습니다(부산·울산·경남 외 6개 시·도).',
+      ev: 'SD'
+    },
+    {
+      k: 'E',
+      nm: 'E 연계 장애 · 강원 철원군',
+      kind: 'alarm',
+      t: '강원 철원군 예·경보 통합플랫폼과의 연결이 끊겼습니다.'
+    }
+  ];
+  function put(s) {
+    try {
+      localStorage.setItem(K, JSON.stringify(s));
+    } catch (e) {}
+  }
+  function get() {
+    var s = null;
+    try {
+      s = JSON.parse(localStorage.getItem(K));
+    } catch (e) {}
+    if (!s || !s.t0) {
+      s = { t0: Date.now(), f: {} };
+      put(s);
+    }
+    s.f = s.f || {};
+    return s;
+  }
+  function step(k) {
+    return STEPS.filter(function (x) {
+      return x.k === k;
+    })[0];
+  }
+  function fire(k) {
+    var st = step(k),
+      s = get();
+    if (!st) return;
+    s.f[k] = Date.now();
+    put(s);
+    /* 시연 토스트는 20초 유지(클릭할 시간 확보, 2026-11-19) */
+    if (st.kind === 'alarm')
+      alarm(st.t, { href: 'warn_monitor.html', sub: '클릭하면 연계현황 모니터링에서 확인합니다.', ms: 20000 });
+    else {
+      toast(st.t, { kind: st.kind, lead: st.lead, focus: { ev: st.ev, is: st.is }, ms: 20000 });
+      /* 발령 2건(B-2·C-2)은 묶지 않고 1건씩 차례로 알림(토스트는 최대 3건까지 겹쳐 보임) */
+      if (st.next)
+        setTimeout(function () {
+          toast(st.next.t, { kind: st.kind, lead: st.next.lead, focus: { ev: st.ev, is: st.next.is }, ms: 20000 });
+        }, 1500);
+    }
+    if (window.onScnFire)
+      try {
+        onScnFire(k);
+      } catch (e) {}
+    drawPanel();
+  }
+  function next() {
+    var s = get(),
+      st = STEPS.filter(function (x) {
+        return !s.f[x.k];
+      })[0];
+    if (st) fire(st.k);
+    else msg('모든 상황을 부여했습니다. 처음 상태로 되돌리려면 Shift+R을 누르세요.');
+  }
+  function reset() {
+    put({ t0: Date.now(), f: {} });
+    try {
+      sessionStorage.removeItem('damsNoti');
+      localStorage.removeItem('damsInteg');
+      localStorage.removeItem('damsCertCancel');
+    } catch (e) {}
+    msg('시연 상황을 처음 상태로 되돌렸습니다.');
+    setTimeout(function () {
+      location.href = location.pathname.split('/').pop() || 'gis.html';
+    }, 300);
+  }
+  function drawPanel() {
+    var p = document.getElementById('scnPanel');
+    if (!p) return;
+    var s = get();
+    p.innerHTML =
+      '<b>시연 상황 부여</b>' +
+      STEPS.map(function (x) {
+        return (
+          '<button type="button" data-k="' +
+          x.k +
+          '"' +
+          (s.f[x.k] ? ' class="on"' : '') +
+          '>' +
+          (s.f[x.k] ? '✓ ' : '') +
+          x.nm +
+          '</button>'
+        );
+      }).join('') +
+      '<div><button type="button" data-k="next">다음 ▶ (Shift+N)</button><button type="button" data-k="reset">처음 상태 (Shift+R)</button></div>';
+  }
+  function panel() {
+    var p = document.getElementById('scnPanel');
+    if (p) {
+      p.remove();
+      return;
+    }
+    p = document.createElement('div');
+    p.id = 'scnPanel';
+    p.style.cssText =
+      'position:fixed;left:10px;bottom:40px;z-index:400;width:250px;padding:10px;border-radius:4px;background:rgba(16,16,16,.88);color:#fff;font-size:12px;box-shadow:0 6px 20px rgba(0,0,0,.3)';
+    document.body.appendChild(p);
+    if (!document.getElementById('scnCss')) {
+      var c = document.createElement('style');
+      c.id = 'scnCss';
+      c.textContent =
+        '#scnPanel b{display:block;margin-bottom:6px;font-size:13px}#scnPanel button{display:block;width:100%;margin-top:3px;padding:4px 8px;border:1px solid rgba(255,255,255,.3);border-radius:2px;color:#fff;text-align:left;font-size:12px}#scnPanel button:hover{background:rgba(255,255,255,.12)}#scnPanel button.on{color:#9be7a8}#scnPanel div{display:flex;gap:4px}#scnPanel div button{text-align:center;background:#3e55e1;border-color:#3e55e1}';
+      document.head.appendChild(c);
+    }
+    p.onclick = function (e) {
+      var b = e.target.closest('button');
+      if (!b) return;
+      var k = b.dataset.k;
+      k === 'next' ? next() : k === 'reset' ? reset() : fire(k);
+    };
+    drawPanel();
+  }
+  window.SCN = {
+    steps: STEPS,
+    get: get,
+    fire: fire,
+    next: next,
+    reset: reset,
+    on: function (k) {
+      return get().f[k] || 0;
+    }
+  };
 })();

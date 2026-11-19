@@ -446,16 +446,9 @@ function showTip(i) {
     hh = t.offsetHeight,
     L,
     T;
-  if (y - hh - 6 > 8) {
-    T = y - hh - 6;
-    L = x - w / 2;
-  } else if (r.bottom - R.top + hh + 6 < R.height - 8) {
-    T = r.bottom - R.top + 6;
-    L = x - w / 2;
-  } else {
-    T = y + r.height / 2 - hh / 2;
-    L = x + w + 30 < R.width - 240 ? x + 18 : x - w - 18;
-  }
+  /* 심볼을 가리지 않게 심볼 옆(오른쪽, 자리가 없으면 왼쪽)에 세로 가운데로 — 2026-11-19 */ var gap = r.width / 2 + 14;
+  T = y + r.height / 2 - hh / 2;
+  L = x + gap + w < R.width - 8 ? x + gap : x - gap - w;
   t.style.left = Math.max(8, Math.min(R.width - w - 8, L)) + 'px';
   t.style.top = Math.max(8, Math.min(R.height - hh - 8, T)) + 'px';
 }
