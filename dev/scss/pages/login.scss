@@ -32,7 +32,7 @@ body {
   }
   b {
     display: block;
-    font-size: 22px;
+    font-size: $fs-2xl;
     font-weight: 700;
     letter-spacing: -0.04em;
     color: #404040;
@@ -42,7 +42,7 @@ body {
     margin-top: 2px;
     padding-bottom: 1px;
     border-bottom: 1px solid $gnb-bg;
-    font-size: 15px;
+    font-size: $fs-b;
     font-weight: 600;
     letter-spacing: 0.3em;
     color: $gnb-bg;
@@ -53,9 +53,8 @@ body {
   h2 {
     position: relative;
     padding-top: 12px;
-    font-size: 17px;
-    font-weight: 700;
-    color: $g90;
+    font-size: $fs-t2;
+    @include txt-strong;
     &::before {
       content: "";
       position: absolute;
@@ -68,8 +67,8 @@ body {
   }
   p {
     margin: 6px 0 12px;
-    font-size: 14px;
-    color: $g70;
+    font-size: $fs-s;
+    color: $c-body;
     word-break: keep-all;
   }
   .btn-cert {
@@ -79,21 +78,20 @@ body {
     border-radius: 2px;
     background: $dg-t;
     color: #fff;
-    font-size: 17px;
+    font-size: $fs-t2;
     font-weight: 700;
     &:hover {
       background: $dg-t2;
     }
     i {
-      font-size: 20px;
+      font-size: $fs-xl;
     }
   }
 }
 .lg-or {
   @include flex-c($gap: 10px);
   margin: 20px 0 4px;
-  font-size: 13px;
-  color: $g60;
+  @include txt-sub($fs-xs);
   &::before,
   &::after {
     content: "";
@@ -112,11 +110,11 @@ body {
     border-bottom: 1px solid $pri;
     border-radius: 0;
     background: none;
-    font-size: 15px;
-    color: $g90;
+    font-size: $fs-b;
+    color: $c-title;
     outline: 0;
     &::placeholder {
-      color: $g60;
+      color: $c-sub;
     }
     &:focus {
       border-bottom-width: 2px;
@@ -129,21 +127,20 @@ body {
 .lg-caps {
   display: block;
   margin-top: 8px;
-  font-size: 13px;
+  font-size: $fs-xs;
   color: $pri;
 }
 .lg-opt {
   @include flex-c($jc: space-between);
   margin: 10px 0 18px;
   .chk {
-    font-size: 14px;
+    font-size: $fs-s;
     font-weight: 600;
     color: $g80;
   }
 }
 #failInfo {
-  font-size: 12px;
-  color: $g60;
+  @include txt-sub;
   b {
     color: $dg-t;
   }
@@ -155,13 +152,13 @@ body {
   border-radius: 0;
   background: $pri;
   color: #fff;
-  font-size: 18px;
+  font-size: $fs-l;
   font-weight: 700;
   &:hover {
     background: $pri-h;
   }
   i {
-    font-size: 20px;
+    font-size: $fs-xl;
   }
 }
 .lg-lock {
@@ -171,12 +168,12 @@ body {
   padding: 8px 10px;
   border-radius: 2px;
   background: $dg-s;
-  font-size: 12px;
+  font-size: $fs-2xs;
   color: $dg-t;
 }
 .lg-note {
   margin-top: 12px;
-  font-size: 13px;
+  font-size: $fs-xs;
   color: #404040;
   word-break: keep-all;
   button {
@@ -187,11 +184,9 @@ body {
 .lg-foot {
   margin-top: 20px;
   text-align: center;
-  font-size: 13px;
-  color: $g60;
+  @include txt-sub($fs-xs);
   a {
-    color: $pri;
-    font-weight: 600;
+    @include txt-pri;
   }
   span {
     margin: 0 8px;
@@ -210,7 +205,7 @@ body {
     padding: 32px 20px 28px;
   }
   .lg-fld input {
-    font-size: 16px;
+    font-size: $fs-m;
   }
   .btn-login {
     height: 52px;

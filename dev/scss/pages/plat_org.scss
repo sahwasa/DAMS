@@ -8,7 +8,7 @@
   border: 1px solid #cfd8f6;
   border-radius: 13px;
   background: #f3f5ff;
-  font-size: 13px;
+  font-size: $fs-xs;
   font-weight: 600;
   color: $pri;
   cursor: pointer;
@@ -16,7 +16,7 @@
     background 0.15s,
     border-color 0.15s;
   i {
-    font-size: 15px;
+    font-size: $fs-b;
   }
   em {
     position: relative;
@@ -24,7 +24,7 @@
     padding-left: 9px;
     font-style: normal;
     font-weight: 400;
-    color: $g70;
+    color: $c-body;
     font-variant-numeric: tabular-nums;
     &::before {
       content: "";
@@ -45,7 +45,7 @@
   border: 1px solid #cfd8f6;
   border-radius: 10px;
   background: #fff;
-  font-size: 12px;
+  font-size: $fs-2xs;
   font-weight: 600;
   color: $pri;
   vertical-align: 1px;
@@ -75,28 +75,26 @@
     height: 38px;
     padding: 0 8px 0 12px;
     border-bottom: 1px solid $g20;
-    font-size: 14px;
-    font-weight: 700;
-    color: $g90;
+    font-size: $fs-s;
+    @include txt-strong;
     .close {
       margin-left: auto;
       width: 24px;
       height: 24px;
-      color: $g60;
-      font-size: 16px;
+      color: $c-sub;
+      font-size: $fs-m;
     }
   }
   p {
     margin: 8px 12px 6px;
-    font-size: 12px;
-    color: $g60;
+    @include txt-sub;
   }
   ul {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 4px 8px;
     margin: 0 12px;
-    font-size: 13px;
+    font-size: $fs-xs;
   }
   li::before {
     content: "· ";
@@ -113,11 +111,10 @@
   padding: 0 12px;
   border: 1px dashed $g40;
   border-radius: 13px;
-  font-size: 13px;
-  color: $g60;
+  @include txt-sub($fs-xs);
 }
 .sd-st .cert-none {
-  color: $g70;
+  color: $c-body;
 }
 
 /* 시도 행 sticky(헤더 아래) — PC는 목록 안에서 스크롤 */
@@ -158,7 +155,7 @@ td.lm {
   margin-right: 2px;
 }
 .lm-via {
-  color: $g60;
+  color: $c-sub;
 }
 .lm-dot {
   margin: 0 5px;

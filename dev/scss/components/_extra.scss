@@ -2,7 +2,7 @@
 /* ---------- 18. 일괄작업 공통 추가 ---------- */
 // 비활성 컨트롤이 아닌 글자라 대비 4.5:1(#707070)
 .c-dis {
-  color: $g60;
+  color: $c-sub;
 }
 .cl-wn {
   background: $wn;
@@ -37,7 +37,7 @@
 }
 .grid {
   &.mini {
-    font-size: 12px;
+    font-size: $fs-2xs;
   }
   &.mini th,
   &.mini td {
@@ -57,6 +57,6 @@
     border: 1px solid $c-line2;
     border-radius: 10px;
     background: #fff;
-    font-size: 12px;
+    font-size: $fs-2xs;
   }
 }

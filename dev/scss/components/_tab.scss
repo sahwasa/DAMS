@@ -14,8 +14,7 @@
       border: 1px solid $c-line2;
       border-bottom: 0;
       background: $g5;
-      font-size: $fs-b;
-      color: $g60;
+      @include txt-sub($fs-b);
     }
     a:hover,
     button:hover {
@@ -46,14 +45,12 @@
     button {
       display: block;
       padding: 6px 2px;
-      font-size: $fs-s;
-      color: $g60;
+      @include txt-sub($fs-s);
       margin-bottom: -1px;
     }
     &.on a,
     &.on button {
-      color: $pri;
-      font-weight: 600;
+      @include txt-pri;
       border-bottom: 2px solid $pri;
     }
   }
@@ -73,8 +70,7 @@
   }
   > ul li.on a {
     background: $in-s;
-    color: $pri;
-    font-weight: 600;
+    @include txt-pri;
   }
   > div {
     @include flex-fill;

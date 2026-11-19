@@ -77,16 +77,14 @@
 .f-msg {
   display: block;
   margin-top: 4px;
-  font-size: 12px;
-  color: $g60;
+  @include txt-sub;
   &.err {
     color: $dg-t;
   }
 }
 .f-cnt {
   float: right;
-  font-size: 12px;
-  color: $g60;
+  @include txt-sub;
   b {
     color: $c-title;
     font-weight: 500;
@@ -134,8 +132,8 @@
   width: 28px;
   height: $h-inp - 2px;
   @include flex-c($jc: center);
-  color: $g60;
-  font-size: 15px;
+  color: $c-sub;
+  font-size: $fs-b;
 }
 .inp-date {
   width: 140px;
@@ -150,7 +148,7 @@
 .range {
   @include flex-c($gap: 4px, $d: inline-flex);
   > span {
-    color: $g60;
+    color: $c-sub;
   }
 }
 .inp-file {

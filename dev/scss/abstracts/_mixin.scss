@@ -56,6 +56,50 @@
   outline-offset: $offset;
 }
 
+// ---------- 글자 묶음(크기·색·굵기) ----------
+// 보조 글자(회색): 기본 12px
+@mixin txt-sub($fs: $fs-2xs) {
+  font-size: $fs;
+  color: $c-sub;
+}
+// 강조 제목 글자(굵게 + 제목색)
+@mixin txt-strong {
+  font-weight: 700;
+  color: $c-title;
+}
+// Primary 강조 글자
+@mixin txt-pri($fw: 600) {
+  color: $pri;
+  font-weight: $fw;
+}
+
+// ---------- 접근성 ----------
+// 화면에는 숨기고 화면낭독기로만 읽기
+@mixin blind {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+// 건너뛰기 링크(KWCAG 6.4.1): 평소 화면 밖, 키보드 포커스 시 왼쪽 위에 표시
+@mixin skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 1000;
+  padding: 10px 16px;
+  background: $sec;
+  color: #fff;
+  font-size: $fs-b;
+  font-weight: 700;
+  white-space: nowrap;
+  &:focus {
+    left: 0;
+    @include focus-ring;
+  }
+}
+
 // ---------- 반응형 중단점(PC ≥1280 · 태블릿 768~1279 · 모바일 ≤767) ----------
 // 주의: PC에서 연 팝업(iframe/dialog)은 html.pc-pop — 태블릿·모바일 규칙 선택자 앞에 html:not(.pc-pop)를 붙인다.
 @mixin pc {

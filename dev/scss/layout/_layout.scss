@@ -30,7 +30,7 @@
     border-radius: 6px 6px 0 0;
     background: #e1e5f5;
     font-size: $fs-s;
-    color: $g70;
+    color: $c-body;
     &.on {
       background: $pri;
       color: #fff;
@@ -114,8 +114,7 @@
       margin-right: 8px;
     }
     > li.on > a {
-      color: $pri;
-      font-weight: 600;
+      @include txt-pri;
     }
     > li.on > a::before {
       background: $pri;
@@ -132,15 +131,14 @@
       font-size: $fs-xs;
     }
     .on a {
-      color: $pri;
-      font-weight: 600;
+      @include txt-pri;
     }
   }
   a {
     .fav {
       margin-left: auto;
       color: $g40;
-      font-size: 14px;
+      font-size: $fs-s;
       &.on {
         color: $wn;
       }
@@ -157,7 +155,7 @@
   border-radius: 4px 0 0 4px;
   background: $pri;
   color: #fff;
-  font-size: 18px;
+  font-size: $fs-l;
   @include flex-c($jc: center);
 }
 .lnb-off {

@@ -52,10 +52,10 @@
 }
 .gis-flt-h {
   @include flex-c($gap: 8px);
-  font-size: 13px;
+  font-size: $fs-xs;
   .cnt {
     margin-left: auto;
-    color: $g70;
+    color: $c-body;
     b {
       color: $pri;
       margin: 0 1px;
@@ -91,12 +91,11 @@
 .gis-ctx {
   padding: 8px 12px;
   border-bottom: 1px solid $g10;
-  font-size: 12px;
-  color: $g60;
+  @include txt-sub;
   b {
     display: block;
-    font-size: 13px;
-    color: $g90;
+    font-size: $fs-xs;
+    color: $c-title;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -108,15 +107,13 @@
     height: 42px;
     padding: 0 8px 0 14px;
     border-bottom: 2px solid $pri;
-    font-size: 15px;
-    font-weight: 700;
-    color: $g90;
+    font-size: $fs-b;
+    @include txt-strong;
     .close {
       margin-left: auto;
       width: 28px;
       height: 28px;
-      font-size: 18px;
-      color: $g60;
+      @include txt-sub($fs-l);
     }
   }
 }
@@ -130,8 +127,7 @@
   @include flex-c($jc: flex-end, $gap: 4px);
   padding: 6px 12px;
   border-top: 1px solid $g20;
-  font-size: 12px;
-  color: $g60;
+  @include txt-sub;
 }
 .gis-card {
   padding: 10px 12px;
@@ -151,8 +147,7 @@
 }
 .gc-h {
   @include flex-c($gap: 6px);
-  font-size: 12px;
-  color: $g60;
+  @include txt-sub;
   white-space: nowrap;
   .r {
     margin-left: auto;
@@ -162,9 +157,9 @@
 .gc-t {
   @include flex-c($gap: 6px);
   margin: 5px 0 6px;
-  font-size: 14px;
+  font-size: $fs-s;
   font-weight: 600;
-  color: $g90;
+  color: $c-title;
   span {
     @include ell;
   }
@@ -181,29 +176,28 @@
     border: 1px solid $g30;
     border-radius: 10px;
     background: #fff;
-    font-size: 12px;
-    color: $g70;
+    font-size: $fs-2xs;
+    color: $c-body;
   }
   button {
-    color: $pri;
-    font-weight: 600;
+    @include txt-pri;
   }
 }
 .gc-f .gc-dtl {
   margin-left: auto;
   height: 22px;
   padding: 0 6px;
-  font-size: 12px;
+  font-size: $fs-2xs;
 }
 .gc-f {
   @include flex-c($gap: 10px);
   margin-top: 8px;
   padding-top: 6px;
   border-top: 1px dashed $g30;
-  font-size: 12px;
+  font-size: $fs-2xs;
   color: $g80;
   .na {
-    color: $g60;
+    color: $c-sub;
   }
 }
 .gc-d {
@@ -216,18 +210,18 @@
     grid-template-columns: 62px 1fr;
     gap: 2px 8px;
     margin-bottom: 8px;
-    font-size: 12px;
+    font-size: $fs-2xs;
   }
   dt {
-    color: $g60;
+    color: $c-sub;
   }
   dd {
-    color: $g90;
+    color: $c-title;
   }
 }
 .grid {
   &.mini {
-    font-size: 12px;
+    font-size: $fs-2xs;
   }
   &.mini th,
   &.mini td {
@@ -238,8 +232,7 @@
 .gis-empty {
   padding: 40px 0;
   text-align: center;
-  font-size: 13px;
-  color: $g60;
+  @include txt-sub($fs-xs);
 }
 .gis-map {
   @include flex-fill;
@@ -271,8 +264,8 @@
     display: none;
   }
   &.nat .gm-lbl.sgg {
-    font-size: 11px;
-    color: $g70;
+    font-size: $fs-3xs;
+    color: $c-body;
   }
 }
 .gm-sym {
@@ -300,10 +293,10 @@
   padding: 0 4px;
   border-radius: 2px;
   background: rgba(255, 255, 255, 0.92);
-  font-size: 11px;
+  font-size: $fs-3xs;
   font-style: normal;
   font-weight: 600;
-  color: $g90;
+  color: $c-title;
   white-space: nowrap;
 }
 .gm-lgd .lg-a {
@@ -339,7 +332,7 @@
       border-radius: 2px;
       background: $dg;
       color: #fff;
-      font-size: 11px;
+      font-size: $fs-3xs;
       font-style: normal;
       line-height: 16px;
     }
@@ -406,7 +399,7 @@
   .ar li {
     @include flex-c($gap: 8px);
     padding: 3px 0;
-    font-size: 12px;
+    font-size: $fs-2xs;
   }
 }
 .gm-lgd-b > ul.ar {
@@ -416,21 +409,20 @@
   width: 280px;
   max-width: none;
   padding: 0;
-  font-size: 12px;
+  font-size: $fs-2xs;
   .th {
     @include flex-c($gap: 6px);
     height: 36px;
     padding: 0 6px 0 14px;
     border-bottom: 1px solid $g30;
-    font-size: 13px;
+    font-size: $fs-xs;
     font-weight: 700;
     b {
       @include ell;
     }
     button {
       margin-left: auto;
-      font-size: 16px;
-      color: $g60;
+      @include txt-sub($fs-m);
     }
   }
   .tb {
@@ -442,10 +434,10 @@
     gap: 3px 8px;
   }
   dt {
-    color: $g60;
+    color: $c-sub;
   }
   dd {
-    color: $g90;
+    color: $c-title;
   }
   .tl {
     li {
@@ -461,7 +453,7 @@
     }
     em {
       font-style: normal;
-      color: $g60;
+      color: $c-sub;
     }
   }
 }
@@ -477,8 +469,8 @@
   }
   b {
     display: block;
-    font-size: 16px;
-    color: $g90;
+    font-size: $fs-m;
+    color: $c-title;
   }
 }
 @include tablet-down {
@@ -518,7 +510,7 @@
     margin: 0;
     padding: 12px 16px 10px;
     .tit {
-      font-size: 20px;
+      font-size: $fs-xl;
     }
   }
   .tab li:not(.on) button {
@@ -539,8 +531,8 @@
     width: 32px;
     height: 32px;
     margin-left: -8px;
-    font-size: 22px;
-    color: $g70;
+    font-size: $fs-2xl;
+    color: $c-body;
     align-items: center;
     justify-content: center;
   }

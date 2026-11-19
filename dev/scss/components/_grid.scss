@@ -123,13 +123,12 @@
     }
     &.tot td {
       background: $grid-tot;
-      font-weight: 700;
-      color: $c-title;
+      @include txt-strong;
     }
   }
   .nodata td {
     height: 120px;
-    color: $g60;
+    color: $c-sub;
     white-space: normal;
   }
   &.fix-head {
@@ -160,19 +159,18 @@
   .sel {
     width: 90px;
     height: 30px;
-    font-size: 14px;
+    font-size: $fs-s;
   }
   .btn.s {
     height: 30px;
     padding: 0 12px;
-    font-size: 13px;
+    font-size: $fs-xs;
   }
   #btnApply {
     padding: 0 14px;
     border-color: $g30;
     background: #fff;
-    font-size: 14px;
-    color: $g60;
+    @include txt-sub($fs-s);
     &:hover {
       border-color: $g50;
       color: $g80;

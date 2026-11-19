@@ -7,9 +7,8 @@
     border-bottom: 1px solid $g30;
     h3 {
       @include flex-c($gap: 8px);
-      font-size: 19px;
-      font-weight: 700;
-      color: $g90;
+      font-size: $fs-t1;
+      @include txt-strong;
       line-height: 1.4;
     }
   }
@@ -17,8 +16,7 @@
     display: flex;
     flex-wrap: wrap;
     margin-top: 10px;
-    font-size: 13px;
-    color: $g60;
+    @include txt-sub($fs-xs);
     li + li::before {
       content: "";
       display: inline-block;
@@ -31,13 +29,13 @@
     b {
       margin-left: 6px;
       font-weight: 500;
-      color: $g70;
+      color: $c-body;
     }
   }
   .v-body {
     min-height: 240px;
     padding: 24px 20px;
-    font-size: 15px;
+    font-size: $fs-b;
     line-height: 1.8;
     color: $g80;
     white-space: pre-wrap;
@@ -50,7 +48,7 @@
     background: $g5;
     > strong {
       flex: 0 0 70px;
-      font-size: 14px;
+      font-size: $fs-s;
       line-height: 30px;
       color: $g80;
     }
@@ -59,7 +57,7 @@
       background: #fff;
       em {
         font-style: normal;
-        color: $g60;
+        color: $c-sub;
       }
     }
   }
@@ -72,14 +70,14 @@
     @include flex-c;
     height: 44px;
     padding: 0 20px;
-    font-size: 14px;
+    font-size: $fs-s;
     + li {
       border-top: 1px solid $g10;
     }
     > span {
       flex: 0 0 96px;
       font-weight: 600;
-      color: $g70;
+      color: $c-body;
     }
     > span i {
       margin-right: 4px;
@@ -88,7 +86,7 @@
     > span.none {
       flex: 1;
       font-weight: 400;
-      color: $g60;
+      color: $c-sub;
     }
   }
   a {
@@ -99,13 +97,12 @@
     }
   }
   .none {
-    color: $g60;
+    color: $c-sub;
   }
   li > em {
     margin-left: auto;
     font-style: normal;
-    font-size: 13px;
-    color: $g60;
+    @include txt-sub($fs-xs);
   }
 }
 @include mobile {
@@ -114,7 +111,7 @@
       padding: 14px 4px 12px;
       h3 {
         flex-wrap: wrap;
-        font-size: 18px;
+        font-size: $fs-l;
       }
     }
     .v-body {

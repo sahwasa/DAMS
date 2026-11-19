@@ -10,7 +10,7 @@
     border-radius: 50%;
     background: $pri;
     color: #fff;
-    font-size: 12px;
+    font-size: $fs-2xs;
     font-weight: 700;
     vertical-align: middle;
   }
@@ -34,7 +34,7 @@
     }
   }
   td.arr i {
-    font-size: 18px;
+    font-size: $fs-l;
     color: $g50;
     display: inline-block;
     transition: 0.15s;
@@ -47,7 +47,7 @@
       }
       td {
         font-weight: 600;
-        color: $g90;
+        color: $c-title;
       }
     }
   }

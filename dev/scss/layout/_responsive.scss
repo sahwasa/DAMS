@@ -20,11 +20,11 @@
   color: #fff;
   flex: 0 0 56px;
   b {
-    font-size: 17px;
+    font-size: $fs-t2;
   }
   em {
     font-style: normal;
-    font-size: 13px;
+    font-size: $fs-xs;
     opacity: 0.75;
   }
   .out {
@@ -34,14 +34,14 @@
     border: 1px solid rgba(255, 255, 255, 0.4);
     border-radius: 14px;
     color: #fff;
-    font-size: 12px;
+    font-size: $fs-2xs;
   }
   .close {
     margin-left: auto;
     width: 40px;
     height: 40px;
     color: #fff;
-    font-size: 24px;
+    font-size: $fs-3xl;
   }
 }
 .mnav-cert {
@@ -51,8 +51,7 @@
   padding: 0 16px;
   border: 1px solid $pri;
   border-radius: $r;
-  color: $pri;
-  font-weight: 600;
+  @include txt-pri;
 }
 .mnav-sch {
   margin: 12px 20px 0;
@@ -61,7 +60,7 @@
   }
   .inp {
     height: 44px;
-    font-size: 16px;
+    font-size: $fs-m;
   }
 }
 .mnav-tab {
@@ -71,8 +70,7 @@
   button {
     flex: 1;
     height: 50px;
-    font-size: 16px;
-    color: $g60;
+    @include txt-sub($fs-m);
     border-bottom: 2px solid transparent;
     margin-bottom: -1px;
     &.on {
@@ -100,7 +98,7 @@
     min-height: 52px;
     padding: 8px 16px;
     text-align: left;
-    font-size: 15px;
+    font-size: $fs-b;
     font-weight: 600;
     color: $c-title;
     border-bottom: 1px solid $g10;
@@ -119,22 +117,19 @@
     @include flex-c;
     min-height: 48px;
     padding: 0 20px;
-    font-size: 15px;
+    font-size: $fs-b;
     color: $c-title;
     &.on {
-      color: $pri;
-      font-weight: 700;
+      @include txt-pri(700);
     }
   }
   .nodata {
     padding: 24px 20px;
-    font-size: 14px;
-    color: $g60;
+    @include txt-sub($fs-s);
   }
   mark {
     background: none;
-    color: $pri;
-    font-weight: 700;
+    @include txt-pri(700);
   }
 }
 .sch-mtog {
@@ -286,12 +281,12 @@
   html {
     &:not(.pc-pop) {
       body {
-        font-size: 15px;
+        font-size: $fs-b;
         line-height: 1.4;
       }
       .gnb {
         .logo {
-          font-size: 15px;
+          font-size: $fs-b;
           margin-right: 0;
           min-width: 0;
           a {
@@ -311,7 +306,7 @@
           align-items: center;
           justify-content: center;
           gap: 4px;
-          font-size: 17px;
+          font-size: $fs-t2;
           font-weight: 700;
           color: #fff;
           overflow: hidden;
@@ -343,7 +338,7 @@
       .m-tit {
         .star {
           color: rgba(255, 255, 255, 0.6);
-          font-size: 18px;
+          font-size: $fs-l;
           &.on {
             color: $wn;
           }
@@ -411,7 +406,7 @@
       .inp,
       .sel {
         height: 40px;
-        font-size: 16px;
+        font-size: $fs-m;
       }
       .inp-ico > button,
       .inp-ico > i {
@@ -421,11 +416,11 @@
       .btn {
         height: 40px;
         padding: 0 14px;
-        font-size: 15px;
+        font-size: $fs-b;
         &.s {
           height: 32px;
           padding: 0 10px;
-          font-size: 13px;
+          font-size: $fs-xs;
         }
         &.l {
           height: 48px;
@@ -440,7 +435,7 @@
       .chk,
       .rdo {
         line-height: 40px;
-        font-size: 15px;
+        font-size: $fs-b;
       }
       .chk input,
       .rdo input {
@@ -485,16 +480,14 @@
         background: #fff !important;
         border-radius: 4px;
         padding: 0 16px;
-        font-size: 16px;
-        font-weight: 700;
-        color: $c-title;
+        font-size: $fs-m;
+        @include txt-strong;
         &::after {
           content: "\ea4e";
           font-family: remixicon;
           margin-left: auto;
           font-weight: 400;
-          font-size: 20px;
-          color: $g60;
+          @include txt-sub($fs-xl);
         }
       }
       .sch-box {
@@ -527,7 +520,7 @@
           > label:not(.rdo):not(.chk),
           > .lb {
             flex: 0 0 100%;
-            font-size: 14px;
+            font-size: $fs-s;
           }
           > .inp,
           > .sel,
@@ -592,13 +585,12 @@
               text-align: left !important;
               white-space: normal;
               overflow: visible;
-              font-size: 14px;
+              font-size: $fs-s;
               line-height: 1.5;
               &::before {
                 content: attr(data-th);
                 flex: 0 0 84px;
-                font-size: 13px;
-                color: $g60;
+                @include txt-sub($fs-xs);
               }
             }
             td[data-th=""]::before {
@@ -643,7 +635,7 @@
               }
               &.sum td:first-child,
               &.tot td:first-child {
-                font-size: 15px;
+                font-size: $fs-b;
               }
               &:hover td {
                 background: none;
@@ -675,7 +667,7 @@
             padding: 12px 0 4px;
             background: none;
             border: 0;
-            font-size: 14px;
+            font-size: $fs-s;
           }
           > tbody > tr > td {
             height: auto;
@@ -713,7 +705,7 @@
             width: 100%;
             justify-content: center;
             padding: 0 14px;
-            font-size: 15px;
+            font-size: $fs-b;
             white-space: nowrap;
           }
         }
@@ -789,10 +781,10 @@
         align-items: center;
       }
       .help-box {
-        font-size: 14px;
+        font-size: $fs-s;
       }
       .kpi dd {
-        font-size: 22px;
+        font-size: $fs-2xl;
       }
       .chart-box {
         overflow-x: auto;
@@ -815,7 +807,7 @@
       .gm-lgd {
         min-width: 0;
         max-width: calc(100% - 20px);
-        font-size: 12px;
+        font-size: $fs-2xs;
       }
       .m-hide {
         display: none !important;
@@ -859,7 +851,7 @@
   border-radius: 2px;
   background: rgba(51, 51, 51, 0.94);
   color: #fff;
-  font-size: 14px;
+  font-size: $fs-s;
   line-height: 1.5;
   box-shadow: $sh;
   cursor: pointer;
@@ -881,12 +873,12 @@
     word-break: keep-all;
     .tt {
       display: inline;
-      font-size: 14px;
+      font-size: $fs-s;
     }
   }
   span {
     display: block;
-    font-size: 13px;
+    font-size: $fs-xs;
   }
   .tg {
     margin-right: 4px;
@@ -899,7 +891,7 @@
   time {
     display: block;
     margin: 2px 0 4px;
-    font-size: 12px;
+    font-size: $fs-2xs;
     color: rgba(255, 255, 255, 0.75);
   }
   p > span {
@@ -933,7 +925,7 @@
   border: 1px solid rgba(255, 255, 255, 0.6);
   background: #fff;
   color: $c-title;
-  font-size: 18px;
+  font-size: $fs-l;
   border-radius: 2px;
 }
 @keyframes toastIn {
@@ -967,14 +959,13 @@
     color: $c-title;
   }
   > span i {
-    font-size: 16px;
+    font-size: $fs-m;
     color: $pri;
   }
   em {
     font-style: normal;
     font-weight: 400;
-    font-size: 12px;
-    color: $g60;
+    @include txt-sub;
   }
 }
 

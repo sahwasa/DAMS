@@ -2,7 +2,6 @@
 @use "../abstracts" as *;
 .src-t {
   margin-left: 6px;
-  font-size: 12px;
-  color: $g60;
+  @include txt-sub;
   white-space: nowrap;
 }

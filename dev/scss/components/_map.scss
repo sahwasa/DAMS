@@ -163,7 +163,7 @@ $gm-dim: rgba(70, 70, 70, 0.5);
   transform: translate(-50%, -50%) scale(calc(1 / var(--z)));
 }
 .gm-lbl {
-  font-size: 11px;
+  font-size: $fs-3xs;
   color: #333;
   white-space: nowrap;
   pointer-events: none;
@@ -172,12 +172,12 @@ $gm-dim: rgba(70, 70, 70, 0.5);
     0 0 2px #fff,
     0 0 3px #fff;
   &.sido {
-    font-size: 14px;
+    font-size: $fs-s;
     font-weight: 700;
     color: $g80;
   }
   &.sgg {
-    font-size: 12px;
+    font-size: $fs-2xs;
     font-weight: 600;
   }
 }
@@ -299,9 +299,8 @@ $gm-dim: rgba(70, 70, 70, 0.5);
   }
   b {
     position: relative;
-    font-size: 13px;
-    font-weight: 700;
-    color: $c-title;
+    font-size: $fs-xs;
+    @include txt-strong;
   }
   &.sm {
     width: 44px;
@@ -311,7 +310,7 @@ $gm-dim: rgba(70, 70, 70, 0.5);
     inset: 8px;
   }
   &.sm b {
-    font-size: 12px;
+    font-size: $fs-2xs;
   }
 }
 .gm-cl {
@@ -322,7 +321,7 @@ $gm-dim: rgba(70, 70, 70, 0.5);
   border-radius: 15px;
   background: #e5202e;
   color: #fff;
-  font-size: 12px;
+  font-size: $fs-2xs;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 .gm-cl-i {
@@ -349,7 +348,7 @@ $gm-dim: rgba(70, 70, 70, 0.5);
   border: 1px solid $c-line2;
   border-radius: 8px;
   box-shadow: $sh;
-  font-size: 13px;
+  font-size: $fs-xs;
   color: $c-title;
   cursor: default;
   li {
@@ -376,8 +375,8 @@ $gm-dim: rgba(70, 70, 70, 0.5);
   padding: 3px 8px;
   border-radius: 2px;
   background: rgba(255, 255, 255, 0.88);
-  font-size: 12px;
-  color: $g70;
+  font-size: $fs-2xs;
+  color: $c-body;
   pointer-events: none;
   max-width: calc(100% - 70px);
   line-height: 1.45;
@@ -405,7 +404,7 @@ $gm-dim: rgba(70, 70, 70, 0.5);
   top: 62px;
   z-index: 10;
   min-width: 212px;
-  font-size: 13px;
+  font-size: $fs-xs;
   summary {
     @include flex-c($gap: 5px);
     padding: 5px 10px;
@@ -480,7 +479,7 @@ $gm-dim: rgba(70, 70, 70, 0.5);
   .md {
     label {
       @include flex-c($gap: 6px);
-      font-size: 12px;
+      font-size: $fs-2xs;
       line-height: 22px;
       font-weight: 500;
       cursor: pointer;
@@ -538,7 +537,7 @@ $gm-dim: rgba(70, 70, 70, 0.5);
   .hz li {
     @include flex-c($gap: 8px);
     padding: 3px 0;
-    font-size: 12px;
+    font-size: $fs-2xs;
   }
 }
 // 배경지도 선택(썸네일)
@@ -555,9 +554,9 @@ $gm-dim: rgba(70, 70, 70, 0.5);
     background: url(../images/map_type.png) 50% 0 no-repeat #fff;
     outline: 1px solid $c-line2;
     border-radius: 8px;
-    font-size: 11px;
+    font-size: $fs-3xs;
     line-height: 1;
-    color: $g60;
+    color: $c-sub;
     font-weight: 500;
     box-sizing: content-box;
     &.m2 {
@@ -586,8 +585,8 @@ $gm-dim: rgba(70, 70, 70, 0.5);
   button {
     width: 30px;
     height: 30px;
-    font-size: 16px;
-    color: $g70;
+    font-size: $fs-m;
+    color: $c-body;
     + button {
       border-top: 1px solid $c-line2;
     }

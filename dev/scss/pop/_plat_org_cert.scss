@@ -13,18 +13,17 @@
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
     h2 {
       text-align: center;
-      font-size: 24px;
+      font-size: $fs-3xl;
       letter-spacing: 12px;
-      color: $g90;
+      color: $c-title;
     }
     .doc-sub {
       text-align: center;
-      font-size: 12px;
-      color: $g60;
+      @include txt-sub;
       margin: 4px 0 20px;
     }
     .tbl {
-      font-size: 13px;
+      font-size: $fs-xs;
     }
     .sub-head {
       margin-top: 20px;
@@ -41,8 +40,8 @@
   .cert-info {
     @include flex-c($gap: 8px);
     margin-bottom: 12px;
-    font-size: 13px;
-    color: $g70;
+    font-size: $fs-xs;
+    color: $c-body;
   }
 }
 @media print {

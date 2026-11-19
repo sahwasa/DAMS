@@ -20,12 +20,10 @@
   height: 42px;
   padding: 0 12px 0 16px;
   border-bottom: 1px solid $c-line2;
-  font-weight: 700;
-  color: $c-title;
+  @include txt-strong;
   .close {
     margin-left: auto;
-    font-size: 18px;
-    color: $g60;
+    @include txt-sub($fs-l);
   }
 }
 .layer-b {
@@ -43,8 +41,7 @@
     gap: 12px 20px;
   }
   dt {
-    font-weight: 700;
-    color: $c-title;
+    @include txt-strong;
     padding-bottom: 4px;
     margin-bottom: 4px;
     border-bottom: 1px solid $c-line2;
@@ -65,7 +62,7 @@
     grid-column: span 4;
     padding: 20px 0;
     text-align: center;
-    color: $g60;
+    color: $c-sub;
   }
 }
 .nlayer {
@@ -82,8 +79,8 @@
     em {
       display: block;
       font-style: normal;
-      color: $g60;
-      font-size: 12px;
+      color: $c-sub;
+      font-size: $fs-2xs;
     }
   }
 }
@@ -95,7 +92,7 @@
   border-radius: $r;
   background: $sec;
   color: #fff;
-  font-size: 12px;
+  font-size: $fs-2xs;
   line-height: 1.5;
   box-shadow: $sh-s;
   pointer-events: none;
@@ -142,8 +139,7 @@
     max-width: 100%;
     @include ell;
     font-size: $fs-b;
-    font-weight: 700;
-    color: $g90;
+    @include txt-strong;
   }
   &.on b {
     color: $pri;
@@ -157,12 +153,12 @@
   text-overflow: ellipsis;
   font-size: $fs-xs;
   font-weight: 400;
-  color: $g60;
+  color: $c-sub;
   > span {
     display: inline;
   }
   i {
-    font-size: 14px;
+    font-size: $fs-s;
     vertical-align: -1px;
     color: $g50;
   }
@@ -176,7 +172,7 @@
   padding: 0;
   border: 0;
   background: none;
-  font-size: 18px;
+  font-size: $fs-l;
   color: $wn;
   cursor: pointer;
 }
@@ -184,14 +180,14 @@
   color: $wn-t;
 }
 .lnb-unrec {
-  color: $g60;
+  color: $c-sub;
   &:hover {
-    color: $g90;
+    color: $c-title;
   }
 }
 .lnb-empty {
   padding: 30px 16px;
   text-align: center;
-  color: $g60;
+  color: $c-sub;
   font-size: $fs-xs;
 }

@@ -14,7 +14,7 @@
   .logo {
     @include flex-c($gap: 8px);
     margin-right: 12px;
-    font-size: 17px;
+    font-size: $fs-t2;
     font-weight: 500;
     white-space: nowrap;
     i {
@@ -44,7 +44,7 @@
       @include flex-c;
       height: 100%;
       padding: 0 8px;
-      font-size: 17px;
+      font-size: $fs-t2;
       font-weight: 700;
       opacity: 0.9;
       position: relative;
@@ -83,7 +83,7 @@
       border-radius: 13px;
       background: $pri;
       color: #fff;
-      font-size: 12px;
+      font-size: $fs-2xs;
       font-weight: 600;
     }
   }
@@ -102,7 +102,7 @@
       height: 18px;
       border-radius: 50%;
       background: $pri;
-      font-size: 12px;
+      font-size: $fs-2xs;
     }
   }
   .ico {
@@ -110,7 +110,7 @@
     height: 30px;
     border-radius: $r;
     color: #fff;
-    font-size: 18px;
+    font-size: $fs-l;
     @include flex-c($jc: center, $d: inline-flex);
     position: relative;
     &:hover {
@@ -139,14 +139,14 @@
     padding: 0 10px;
     border-radius: 16px;
     background: rgba(0, 0, 0, 0.25);
-    font-size: 12px;
+    font-size: $fs-2xs;
     > span {
       margin-right: 2px;
     }
     button {
       color: #fff;
       width: 20px;
-      font-size: 14px;
+      font-size: $fs-s;
     }
   }
 }

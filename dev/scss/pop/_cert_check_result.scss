@@ -8,11 +8,11 @@
     color: $g80;
     h1 {
       margin-bottom: 6px;
-      font-size: 22px;
+      font-size: $fs-2xl;
       font-weight: 800;
       text-align: center;
       letter-spacing: 0.12em;
-      color: $g90;
+      color: $c-title;
     }
     .meta {
       display: flex;
@@ -22,15 +22,14 @@
       margin-bottom: 18px;
       padding-bottom: 8px;
       border-bottom: 2px solid $g90;
-      font-size: 13px;
-      color: $g70;
+      font-size: $fs-xs;
+      color: $c-body;
     }
     h2 {
       @include flex-c($gap: 6px);
       margin: 18px 0 8px;
-      font-size: 15px;
-      font-weight: 700;
-      color: $g90;
+      font-size: $fs-b;
+      @include txt-strong;
       &::before {
         content: "";
         width: 4px;
@@ -55,17 +54,17 @@
       border: 1px solid $dg-b;
       background: $dg-s;
       border-radius: 4px;
-      font-size: 14px;
+      font-size: $fs-s;
       color: $dg-t2;
       b {
-        font-size: 16px;
+        font-size: $fs-m;
         color: $dg-t;
       }
     }
     .req {
       margin: 0;
       padding-left: 18px;
-      font-size: 14px;
+      font-size: $fs-s;
       line-height: 1.7;
       li {
         list-style: decimal;
@@ -78,10 +77,10 @@
     .from {
       margin-top: 22px;
       text-align: center;
-      font-size: 16px;
+      font-size: $fs-m;
       font-weight: 700;
       letter-spacing: 0.1em;
-      color: $g90;
+      color: $c-title;
     }
     .verdict {
       &.ok {
@@ -95,8 +94,7 @@
     }
     .note {
       margin-top: 8px;
-      font-size: 12px;
-      color: $g60;
+      @include txt-sub;
     }
   }
 }

@@ -23,11 +23,11 @@
     border: 1px solid $g30;
     border-radius: 4px;
     background: $g5;
-    font-size: 14px;
+    font-size: $fs-s;
     font-weight: 600;
     color: $g80;
     b {
-      font-size: 20px;
+      font-size: $fs-xl;
     }
     &.on {
       border-color: $pri;

@@ -156,7 +156,7 @@
   border: 1px solid $g30;
   border-top: 2px solid $g90;
   padding: 6px 8px;
-  font-size: 14px;
+  font-size: $fs-s;
   .nd {
     @include flex-c($gap: 2px);
     height: 30px;
@@ -168,8 +168,7 @@
     em {
       margin-left: auto;
       font-style: normal;
-      font-size: 12px;
-      color: $g60;
+      @include txt-sub;
     }
   }
   .chk {
@@ -186,8 +185,8 @@
   .tg {
     width: 18px;
     height: 18px;
-    color: $g60;
-    font-size: 16px;
+    color: $c-sub;
+    font-size: $fs-m;
     @include flex-c($jc: center);
   }
   li.open > .nd .tg i {
@@ -238,12 +237,11 @@
     @include flex-c($gap: 8px);
     padding: 7px 0 6px;
     border-bottom: 1px solid $g30;
-    font-size: 14px;
+    font-size: $fs-s;
   }
   .tip-x {
     margin-left: auto;
-    font-size: 16px;
-    color: $g60;
+    @include txt-sub($fs-m);
   }
   li {
     padding: 3px 0;
@@ -260,7 +258,7 @@
   em {
     flex: 0 0 78px;
     font-style: normal;
-    color: $g60;
+    color: $c-sub;
   }
 }
 .tree-box {
@@ -269,7 +267,7 @@
     height: 22px;
     margin-left: auto;
     color: $g40;
-    font-size: 14px;
+    font-size: $fs-s;
   }
   .go:hover,
   .nd.sel .go {
@@ -330,8 +328,7 @@
       border: 1px solid $g40;
       border-radius: 2px;
       background: $g10;
-      font-size: 11px;
-      color: $g60;
+      @include txt-sub($fs-3xs);
       line-height: 18px;
     }
     &.sel {

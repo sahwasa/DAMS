@@ -7,7 +7,7 @@
       position: relative;
       padding: 8px 0 8px 36px;
       border-bottom: 1px dashed $g30;
-      font-size: 14px;
+      font-size: $fs-s;
       color: $g80;
       &:last-child {
         border-bottom: 0;
@@ -23,7 +23,7 @@
         border-radius: 50%;
         background: $pri;
         color: #fff;
-        font-size: 12px;
+        font-size: $fs-2xs;
         font-weight: 700;
         @include flex-c($jc: center);
       }

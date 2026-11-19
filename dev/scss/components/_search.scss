@@ -170,7 +170,7 @@
   @include flex-c($jc: center);
   background: $g60;
   color: #fff;
-  font-size: 14px;
+  font-size: $fs-s;
   border-radius: 0 0 $r-s $r-s;
   &:hover {
     background: $g70;

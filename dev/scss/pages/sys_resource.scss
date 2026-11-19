@@ -10,9 +10,9 @@
 }
 .gauge {
   text-align: center;
-  font-size: 13px;
+  font-size: $fs-xs;
   font-weight: 600;
-  color: $g70;
+  color: $c-body;
   .donut {
     width: 90px;
     height: 90px;
@@ -21,10 +21,10 @@
       inset: 9px;
     }
     b {
-      font-size: 16px;
+      font-size: $fs-m;
     }
     small {
-      font-size: 11px;
+      font-size: $fs-3xs;
     }
   }
 }
@@ -34,8 +34,8 @@
     white-space: nowrap;
     small {
       font-weight: 400;
-      font-size: 12px;
-      color: $g70;
+      font-size: $fs-2xs;
+      color: $c-body;
     }
     .badge {
       margin-left: auto;
@@ -48,7 +48,7 @@
     li {
       grid-template-columns: 62px 1fr auto;
       height: 20px;
-      font-size: 12px;
+      font-size: $fs-2xs;
     }
     .bar {
       background: $g10;
@@ -89,7 +89,7 @@
         inset: 7px;
       }
       b {
-        font-size: 14px;
+        font-size: $fs-s;
       }
       small {
         font-size: 10px;

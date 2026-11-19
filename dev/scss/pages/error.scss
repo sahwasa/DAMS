@@ -57,9 +57,9 @@ body {
     color: $gnb-bg;
   }
   p.er-msg {
-    font-size: 15px;
+    font-size: $fs-b;
     line-height: 1.7;
-    color: $g70;
+    color: $c-body;
   }
 }
 .er-btns {
@@ -69,12 +69,12 @@ body {
   .btn {
     height: 52px;
     padding: 0 20px;
-    font-size: 14px;
+    font-size: $fs-s;
     border-radius: 2px;
   }
   .btn-line {
     background: #fff;
-    color: $g70;
+    color: $c-body;
     border-color: $g30;
   }
 }
@@ -83,14 +83,14 @@ body {
   margin-top: 40px;
   padding-top: 16px;
   border-top: 1px solid $g20;
-  font-size: 15px;
+  font-size: $fs-b;
   strong {
     font-weight: 700;
     color: $pri;
   }
   span {
     font-weight: 600;
-    color: $g70;
+    color: $c-body;
   }
 }
 @media (max-width: 1023px) {
@@ -100,7 +100,7 @@ body {
       padding: 0 16px;
     }
     h1 a {
-      font-size: 18px;
+      font-size: $fs-l;
       gap: 8px;
     }
     .gov-logo {
@@ -129,11 +129,11 @@ body {
       padding: 40px 16px 32px;
     }
     h2 {
-      font-size: 24px;
+      font-size: $fs-3xl;
     }
     p {
       &.er-msg {
-        font-size: 14px;
+        font-size: $fs-s;
       }
       &.er-msg br {
         display: none;

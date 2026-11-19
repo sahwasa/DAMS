@@ -8,11 +8,11 @@
     color: $g80;
     h1 {
       margin-bottom: 6px;
-      font-size: 22px;
+      font-size: $fs-2xl;
       font-weight: 800;
       text-align: center;
       letter-spacing: 0.2em;
-      color: $g90;
+      color: $c-title;
     }
     .meta {
       display: flex;
@@ -20,15 +20,14 @@
       margin-bottom: 18px;
       padding-bottom: 8px;
       border-bottom: 2px solid $g90;
-      font-size: 13px;
-      color: $g70;
+      font-size: $fs-xs;
+      color: $c-body;
     }
     h2 {
       @include flex-c($gap: 6px);
       margin: 18px 0 8px;
-      font-size: 15px;
-      font-weight: 700;
-      color: $g90;
+      font-size: $fs-b;
+      @include txt-strong;
       &::before {
         content: "";
         width: 4px;
@@ -65,7 +64,7 @@
         width: auto !important;
         table-layout: auto !important;
         border-collapse: collapse;
-        font-size: 12px;
+        font-size: $fs-2xs;
         text-align: center;
       }
       th,

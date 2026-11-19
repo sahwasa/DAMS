@@ -43,7 +43,7 @@
   }
   .help {
     margin-left: 8px;
-    font-size: 16px;
+    font-size: $fs-m;
     color: #fff;
     opacity: 0.85;
   }
@@ -52,7 +52,7 @@
     width: 30px;
     height: 30px;
     color: #fff;
-    font-size: 22px;
+    font-size: $fs-2xl;
   }
 }
 .pop-body {
@@ -108,8 +108,7 @@
     word-break: keep-all;
   }
   .msg-code {
-    font-size: 12px;
-    color: $g60;
+    @include txt-sub;
     margin-top: -16px;
     margin-bottom: 16px;
   }
@@ -120,7 +119,7 @@
     overflow: auto;
     background: $g5;
     border: 1px solid $c-line2;
-    font-size: 12px;
+    font-size: $fs-2xs;
     text-align: left;
   }
   .btns {

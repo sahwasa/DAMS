@@ -7,15 +7,14 @@
   .dv-sum {
     @include flex-c($gap: 14px);
     margin-bottom: 10px;
-    font-size: 14px;
+    font-size: $fs-s;
     color: $g80;
     b {
       margin: 0 2px;
     }
     .r {
       margin-left: auto;
-      font-size: 13px;
-      color: $g60;
+      @include txt-sub($fs-xs);
     }
   }
   #devMapFull {

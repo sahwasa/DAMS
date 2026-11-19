@@ -6,10 +6,9 @@
 #headBtns {
   .upd {
     @include flex-c($gap: 4px);
-    font-size: 13px;
-    color: $g60;
+    @include txt-sub($fs-xs);
     b {
-      color: $g90;
+      color: $c-title;
       font-weight: 600;
     }
   }
@@ -45,7 +44,7 @@
     min-height: 30px;
     padding: 0 8px;
     border-bottom: 1px solid #eceef3;
-    font-size: 14px;
+    font-size: $fs-s;
     cursor: default;
     &:hover {
       background: $sch-bg;
@@ -70,7 +69,7 @@
       flex: 1;
       overflow: hidden;
       font-weight: 600;
-      color: $g90;
+      color: $c-title;
       white-space: nowrap;
       text-overflow: ellipsis;
     }
@@ -81,8 +80,7 @@
     border: 0;
     border-radius: 2px;
     background: none;
-    font-size: 13px;
-    color: $g60;
+    @include txt-sub($fs-xs);
     text-align: right;
     font-variant-numeric: tabular-nums;
     cursor: pointer;
@@ -92,8 +90,7 @@
       color: $pri;
     }
     b {
-      color: $pri;
-      font-weight: 700;
+      @include txt-pri(700);
       text-decoration: underline;
       text-underline-offset: 2px;
     }
@@ -113,17 +110,16 @@
     height: 38px;
     padding: 0 8px 0 12px;
     border-bottom: 1px solid $g20;
-    font-size: 14px;
-    font-weight: 700;
-    color: $g90;
+    font-size: $fs-s;
+    @include txt-strong;
     .close {
       margin-left: auto;
       width: 24px;
       height: 24px;
       border: 0;
       background: none;
-      color: $g60;
-      font-size: 16px;
+      color: $c-sub;
+      font-size: $fs-m;
     }
   }
   &.w2 {
@@ -155,12 +151,11 @@
     }
   }
   .ot-t .z {
-    color: $g60;
+    color: $c-sub;
   }
   .ot-sd {
     margin: 8px 12px 4px;
-    font-size: 12px;
-    color: $g60;
+    @include txt-sub;
     i {
       margin-right: 3px;
     }
@@ -169,7 +164,7 @@
     width: calc(100% - 24px);
     margin: 0 12px;
     border-collapse: collapse;
-    font-size: 13px;
+    font-size: $fs-xs;
     th,
     td {
       height: 26px;
@@ -202,8 +197,7 @@
       &.p {
         th,
         td {
-          font-weight: 700;
-          color: $g90;
+          @include txt-strong;
           background: #f5f7fb;
         }
         th {
@@ -215,7 +209,7 @@
       }
       &.z td,
       &.z th {
-        color: $g60;
+        color: $c-sub;
         font-weight: 400;
       }
     }
@@ -228,8 +222,8 @@
   padding: 6px 8px;
   border-radius: 2px;
   background: #f5f7fb;
-  font-size: 13px;
-  color: $g70;
+  font-size: $fs-xs;
+  color: $c-body;
   b {
     margin: 0 2px;
     font-weight: 700;
@@ -246,8 +240,8 @@
     border: 1px solid $g30;
     border-radius: 14px;
     background: #fff;
-    font-size: 13px;
-    color: $g70;
+    font-size: $fs-xs;
+    color: $c-body;
   }
   li.on button {
     border-color: $sec;
@@ -294,8 +288,7 @@
   }
   time {
     display: block;
-    font-size: 12px;
-    color: $g60;
+    @include txt-sub;
     line-height: 16px;
     font-variant-numeric: tabular-nums;
   }
@@ -305,7 +298,7 @@
     padding: 0 10px;
     border: 1.5px solid $pri;
     border-radius: 12px;
-    font-size: 12px;
+    font-size: $fs-2xs;
     font-weight: 600;
     line-height: 20px;
     color: $pri;
@@ -313,8 +306,7 @@
   }
   .tl-src {
     margin-left: 6px;
-    font-size: 12px;
-    color: $g60;
+    @include txt-sub;
     white-space: nowrap;
   }
   li.oc .tl-k {
@@ -323,7 +315,7 @@
     background: $wn-s;
   }
   p {
-    font-size: 14px;
+    font-size: $fs-s;
     font-weight: 600;
     color: $g80;
     word-break: keep-all;
@@ -332,9 +324,9 @@
     margin-left: 6px;
     white-space: nowrap;
     font-style: normal;
-    font-size: 12px;
+    font-size: $fs-2xs;
     font-weight: 400;
-    color: $g60;
+    color: $c-sub;
   }
   li:hover p {
     color: $pri;

@@ -202,7 +202,13 @@ dev/
 | `ell` | 한 줄 말줄임(…) | 그리드 칸·LNB 경로 |
 | `abs-fill` | position:absolute + inset:0 | 덮개(dim) |
 | `focus-ring($offset: -2px)` | 2px Primary 포커스 링 | `&:focus-visible { @include focus-ring; }` |
+| `txt-sub($fs: $fs-2xs)` | 보조 글자: 크기 + `$c-sub`(회색) | `@include txt-sub($fs-xs);` |
+| `txt-strong` | 굵게 + `$c-title` | 표 합계·카드 제목 |
+| `txt-pri($fw: 600)` | `$pri` 글자 + 굵기 | 강조 숫자 |
+| `blind` | 화면에 숨기고 화면낭독기로만 읽기 | `.blind` |
+| `skip-link` | 건너뛰기 링크(평소 화면 밖, 포커스 시 왼쪽 위) | `.skip a` |
 | `btn(...)` | 버튼 색 세트(기본·hover·active·disabled) | `.btn-pri` |
 | `pc` / `tablet-up` / `tablet` / `tablet-down` / `mobile` | ≥1280 / ≥768 / 768~1279 / ≤1279 / ≤767 미디어 쿼리 | `@include mobile { html:not(.pc-pop) .x { … } }` |
 
+- 글자 토큰(_tokens): 크기 `$fs-3xs 11` · `$fs-2xs 12` · `$fs-xs 13` · `$fs-s 14` · `$fs-b 15` · `$fs-m 16` · `$fs-t2 17` · `$fs-l 18` · `$fs-t1 19` · `$fs-xl 20` · `$fs-h 21` · `$fs-2xl 22` · `$fs-3xl 24`(그 밖의 아이콘·큰 숫자 크기는 px 그대로), 글자색은 의미 토큰 `$c-title`(제목 #101010) · `$c-body`(본문 #505050) · `$c-sub`(보조 #707070)을 쓴다.
 - 태블릿·모바일 규칙은 선택자 앞에 `html:not(.pc-pop)`를 붙인다(PC에서 연 팝업은 폭이 좁아도 PC 스타일). 그 밖의 조건(1023·480, 높이, print)은 `@media` 그대로.

@@ -18,7 +18,7 @@
     background: $g5;
     border-bottom: 1px solid $g30;
     font-weight: 600;
-    color: $g90;
+    color: $c-title;
   }
   > li > .chk:only-child {
     border-bottom: 0;
@@ -62,7 +62,7 @@
       border: 1px solid #c9d2f5;
       border-radius: 11px;
       background: #f3f5ff;
-      font-size: 12px;
+      font-size: $fs-2xs;
       color: #1f3fae;
       white-space: nowrap;
       input {
@@ -83,8 +83,8 @@
   flex-wrap: wrap;
   gap: 4px;
   margin: 0 0 12px;
-  font-size: 13px;
-  color: $g70;
+  font-size: $fs-xs;
+  color: $c-body;
   i {
     color: $pri;
   }
@@ -93,7 +93,7 @@
   padding: 0 7px;
   border: 1px solid #c9d2f5;
   border-radius: 10px;
-  font-size: 12px;
+  font-size: $fs-2xs;
   line-height: 18px;
   color: #1f3fae;
   background: #f3f5ff;
@@ -105,10 +105,10 @@
   border: 1px solid $g30;
   border-radius: 4px;
   background: $g5;
-  font-size: 14px;
+  font-size: $fs-s;
   b {
     flex: 0 0 110px;
-    color: $g90;
+    color: $c-title;
   }
   > span:not(.f-msg) {
     display: flex;

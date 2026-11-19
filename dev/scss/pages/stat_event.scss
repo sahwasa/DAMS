@@ -6,7 +6,7 @@
   border-radius: 50%;
   background: rgba(62, 85, 225, 0.3);
   border: 2px solid $pri;
-  font-size: 13px;
+  font-size: $fs-xs;
   font-weight: 700;
   color: $sec;
   small {
@@ -40,12 +40,12 @@
   border-radius: 11px;
   background: #fff;
   border: 1px solid $sec;
-  font-size: 11px;
+  font-size: $fs-3xs;
   color: $sec;
   white-space: nowrap;
   b {
     margin-left: 2px;
-    font-size: 12px;
+    font-size: $fs-2xs;
   }
   &.on {
     background: $sec;
@@ -96,10 +96,10 @@
   background: rgba(255, 255, 255, 0.92);
   border: 1px solid $g30;
   border-radius: 2px;
-  font-size: 12px;
-  color: $g70;
+  font-size: $fs-2xs;
+  color: $c-body;
   b {
-    color: $g90;
+    color: $c-title;
   }
   i {
     display: inline-block;
@@ -159,7 +159,7 @@
     stroke: $g10;
   }
   text {
-    font-size: 11px;
+    font-size: $fs-3xs;
     fill: $g60;
   }
   polyline {
@@ -174,7 +174,7 @@
   top: 0;
   flex-wrap: wrap;
   gap: 4px 12px;
-  font-size: 12px;
+  font-size: $fs-2xs;
   i {
     width: 14px !important;
     height: 3px !important;
@@ -203,7 +203,7 @@
       max-width: 56px;
     }
     > li > em {
-      font-size: 11px;
+      font-size: $fs-3xs;
       letter-spacing: -0.04em;
     }
   }
@@ -213,7 +213,7 @@
   grid-template-columns: 1fr;
   gap: 10px;
   flex: 1;
-  font-size: 13px;
+  font-size: $fs-xs;
   max-width: 420px;
   li {
     display: grid;
@@ -223,13 +223,13 @@
     white-space: nowrap;
     b {
       font-weight: 600;
-      color: $g90;
+      color: $c-title;
       text-align: right;
     }
     em {
       font-style: normal;
-      color: $g60;
-      font-size: 12px;
+      color: $c-sub;
+      font-size: $fs-2xs;
       text-align: right;
     }
   }
@@ -252,10 +252,10 @@
       max-width: 34px;
     }
     > li > b {
-      font-size: 11px;
+      font-size: $fs-3xs;
     }
     > li > em {
-      font-size: 11px;
+      font-size: $fs-3xs;
       letter-spacing: -0.04em;
     }
   }
@@ -266,7 +266,7 @@
     grid-template-columns: 64px 1fr 34px;
     height: 15px;
     gap: 8px;
-    font-size: 12px;
+    font-size: $fs-2xs;
   }
   .bar {
     height: 11px;
@@ -277,7 +277,7 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px 20px;
   flex: 1;
-  font-size: 13px;
+  font-size: $fs-xs;
   li {
     @include flex-c($gap: 4px);
     white-space: nowrap;
@@ -288,7 +288,7 @@
     b {
       margin-left: auto;
       font-weight: 600;
-      color: $g90;
+      color: $c-title;
     }
   }
 }
@@ -308,10 +308,10 @@
     stroke: $g50;
   }
   text {
-    font-size: 11px;
+    font-size: $fs-3xs;
     fill: $g60;
     &.v {
-      font-size: 11px;
+      font-size: $fs-3xs;
       font-weight: 600;
       fill: $g90;
     }

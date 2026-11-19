@@ -4,9 +4,8 @@
   .is-tit {
     @include flex-c($gap: 8px);
     margin-bottom: 12px;
-    font-size: 16px;
-    font-weight: 700;
-    color: $g90;
+    font-size: $fs-m;
+    @include txt-strong;
   }
   #issue-message {
     .card-h {
@@ -17,7 +16,7 @@
       &.pre {
         height: 96px;
         overflow: auto;
-        font-size: 13px;
+        font-size: $fs-xs;
         line-height: 1.5;
         white-space: pre-line;
       }
