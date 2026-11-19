@@ -6,7 +6,7 @@
     @include flex-c($jc: center, $d: inline-flex);
     width: 22px;
     height: 22px;
-    margin-right: 8px;
+    margin-right: $sp-8;
     border-radius: 50%;
     background: $pri;
     color: #fff;
@@ -24,7 +24,7 @@
       td {
         white-space: normal;
         background: $g5 !important;
-        padding: 14px 16px;
+        padding: $sp-14 $sp-16;
         line-height: 1.7;
         color: $g80;
         > div {

@@ -1,7 +1,7 @@
 @use "../abstracts" as *;
 // plat_org_form (화면정의서 UI-DA04-001-P01) 연계기관 등록/수정 — dialog 안으로 한정
 .pop-dlg[data-pop="plat_org_form"] .nm-v {
-  margin-left: 6px;
+  margin-left: $sp-6;
   font-size: $fs-s;
   color: $pri;
   white-space: nowrap;

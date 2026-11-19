@@ -3,12 +3,12 @@
 .col3 {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
+  gap: $sp-20;
 }
 .col4 {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
+  gap: $sp-16;
 }
 .card {
   border: 1px solid $c-line2;
@@ -17,9 +17,9 @@
   min-width: 0;
 }
 .card-h {
-  @include flex-c($gap: 6px);
+  @include flex-c($gap: $sp-6);
   height: 40px;
-  padding: 0 16px;
+  padding: 0 $sp-16;
   border-bottom: 1px solid $c-line2;
   font-size: $fs-s;
   @include txt-strong;
@@ -33,7 +33,7 @@
   }
 }
 .card-b {
-  padding: 14px 16px;
+  padding: $sp-14 $sp-16;
   &.pre {
     white-space: pre-wrap;
     font-size: $fs-s;
@@ -43,8 +43,8 @@
 }
 .kpi {
   @include flex-col;
-  gap: 2px;
-  padding: 14px 18px;
+  gap: $sp-2;
+  padding: $sp-14 $sp-18;
   border: 1px solid $c-line2;
   border-radius: $r;
   background: $g5;
@@ -71,14 +71,14 @@
       font-size: $fs-xs;
       font-weight: 500;
       color: $c-sub;
-      margin-left: 2px;
+      margin-left: $sp-2;
     }
   }
 }
 .legend {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px 14px;
+  gap: $sp-4 $sp-14;
   font-size: $fs-2xs;
   color: $c-body;
   li {
@@ -115,10 +115,10 @@
   display: flex;
   align-items: flex-end;
   justify-content: space-around;
-  gap: 12px;
+  gap: $sp-12;
   height: 220px;
-  margin: 8px 0 0;
-  padding: 0 8px;
+  margin: $sp-8 0 0;
+  padding: 0 $sp-8;
   border-bottom: 1px solid $g50;
   background: repeating-linear-gradient(to top, $g10 0 1px, transparent 1px 25%);
   > li {
@@ -128,7 +128,7 @@
     height: 100%;
     display: flex;
     flex-direction: column-reverse;
-    gap: 2px;
+    gap: $sp-2;
   }
   > li > span {
     display: block;
@@ -152,7 +152,7 @@
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
-    margin-top: 4px;
+    margin-top: $sp-4;
     font-style: normal;
     @include txt-sub;
     white-space: nowrap;
@@ -167,7 +167,7 @@
     display: grid;
     grid-template-columns: 120px 1fr 60px;
     align-items: center;
-    gap: 10px;
+    gap: $sp-10;
     height: 34px;
     font-size: $fs-xs;
   }
@@ -178,7 +178,7 @@
   }
   .bar {
     display: flex;
-    gap: 2px;
+    gap: $sp-2;
     height: 16px;
     span {
       min-width: 2px;
@@ -195,7 +195,7 @@
 }
 // donut
 .donut-wrap {
-  @include flex-c($jc: center, $gap: 28px);
+  @include flex-c($jc: center, $gap: $sp-28);
   height: 244px;
 }
 .donut {
@@ -229,12 +229,12 @@
 .legend {
   &.v {
     flex-direction: column;
-    gap: 8px;
+    gap: $sp-8;
     font-size: $fs-xs;
   }
   &.v b {
     margin-left: auto;
-    padding-left: 16px;
+    padding-left: $sp-16;
     color: $c-title;
   }
 }
@@ -273,7 +273,7 @@
     right: 10px;
     z-index: 2;
     display: flex;
-    gap: 4px;
+    gap: $sp-4;
   }
   .pin {
     position: absolute;
@@ -308,7 +308,7 @@
     bottom: 10px;
     left: 10px;
     z-index: 2;
-    padding: 4px 8px;
+    padding: $sp-4 $sp-8;
     background: rgba(255, 255, 255, 0.9);
     border: 1px solid $c-line2;
     border-radius: $r-s;

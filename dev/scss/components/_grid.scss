@@ -11,7 +11,7 @@
   th,
   td {
     height: $h-row;
-    padding: 3px 8px;
+    padding: 3px $sp-8;
     border: 1px solid #e6ebef;
     border-left-color: #d3d8dd;
     border-right-color: #d3d8dd;
@@ -54,7 +54,7 @@
       &.sort::after {
         content: "\ea74";
         font-family: remixicon;
-        margin-left: 2px;
+        margin-left: $sp-2;
         color: $g50;
         font-weight: 400;
       }
@@ -154,7 +154,7 @@
   }
 }
 .grid-top {
-  @include flex-c($gap: 6px);
+  @include flex-c($gap: $sp-6);
   margin-left: auto;
   .sel {
     width: 90px;
@@ -163,11 +163,11 @@
   }
   .btn.s {
     height: 30px;
-    padding: 0 12px;
+    padding: 0 $sp-12;
     font-size: $fs-xs;
   }
   #btnApply {
-    padding: 0 14px;
+    padding: 0 $sp-14;
     border-color: $g30;
     background: #fff;
     @include txt-sub($fs-s);

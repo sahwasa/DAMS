@@ -2,10 +2,10 @@
 /* ---------- 21. 푸터 (화면정의서 "0. 레이아웃 - 웹", 국가재난관리정보시스템 형식: 화면 맨 아래 전체 폭 띠) ---------- */
 .ft {
   position: relative;
-  @include flex-c($jc: center, $gap: 12px);
+  @include flex-c($jc: center, $gap: $sp-12);
   flex: 0 0 32px;
   height: 32px;
-  padding: 0 16px;
+  padding: 0 $sp-16;
   background: #fff;
   border-top: 1px solid $c-line2;
   @include txt-sub($fs-xs);

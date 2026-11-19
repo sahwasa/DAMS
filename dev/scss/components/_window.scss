@@ -18,16 +18,16 @@
 }
 .err-pop {
   .pop-body {
-    padding: 0 20px;
+    padding: 0 $sp-20;
     min-height: 0;
   }
   .er {
     display: flex;
-    gap: 10px;
-    margin-top: 10px;
+    gap: $sp-10;
+    margin-top: $sp-10;
     &:first-child {
-      margin-top: 16px;
-      padding-top: 16px;
+      margin-top: $sp-16;
+      padding-top: $sp-16;
       border-top: 1px solid $c-line2;
     }
     > b {
@@ -42,7 +42,7 @@
     }
     > div {
       @include flex-fill;
-      padding: 6px 10px;
+      padding: $sp-6 $sp-10;
       border: 1px solid $c-line;
       font-size: $fs-xs;
       color: $c-title;
@@ -57,13 +57,13 @@
     }
   }
   .er-more {
-    margin: 6px 0 0 76px;
+    margin: $sp-6 0 0 76px;
     font-size: $fs-2xs;
     color: $pri;
   }
   .er-det {
-    margin: 6px 0 0 76px;
-    padding: 6px 10px;
+    margin: $sp-6 0 0 76px;
+    padding: $sp-6 $sp-10;
     height: 96px;
     overflow: auto;
     border: 1px solid $c-line;
@@ -73,8 +73,8 @@
   .er-ft {
     display: flex;
     justify-content: center;
-    margin-top: 16px;
-    padding: 16px 0 20px;
+    margin-top: $sp-16;
+    padding: $sp-16 0 $sp-20;
     border-top: 1px solid $c-line2;
   }
 }
@@ -88,7 +88,7 @@
 }
 .ld-box {
   width: 240px;
-  padding: 24px 16px 20px;
+  padding: $sp-24 $sp-16 $sp-20;
   background: #fff;
   border-radius: 6px;
   box-shadow: $sh;
@@ -99,7 +99,7 @@
 .ld-bar {
   position: relative;
   height: 8px;
-  margin-top: 14px;
+  margin-top: $sp-14;
   border-radius: 4px;
   background: $g20;
   overflow: hidden;
@@ -131,7 +131,7 @@
   background: $sec repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.05) 0 18px, transparent 18px 36px);
   color: #fff;
   .ld-logo {
-    @include flex-c($gap: 10px);
+    @include flex-c($gap: $sp-10);
     font-size: 26px;
     font-weight: 700;
     margin-bottom: 48px;
@@ -150,7 +150,7 @@
 body.pop-only {
   min-width: 0;
   height: auto;
-  padding: 20px;
+  padding: $sp-20;
   display: flex;
   justify-content: center;
 }
@@ -176,9 +176,9 @@ body.win-body {
   min-width: 1260px;
 }
 .win-head {
-  @include flex-c($gap: 10px);
+  @include flex-c($gap: $sp-10);
   height: 50px;
-  padding: 0 16px 0 20px;
+  padding: 0 $sp-16 0 $sp-20;
   flex: 0 0 50px;
   background: $sec;
   color: #fff;

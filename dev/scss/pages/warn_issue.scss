@@ -36,9 +36,9 @@
 }
 .tab {
   .tab-info {
-    @include flex-c($gap: 8px);
+    @include flex-c($gap: $sp-8);
     margin-left: auto;
-    padding-bottom: 4px;
+    padding-bottom: $sp-4;
     font-size: $fs-s;
     color: $c-title;
     min-width: 0;
@@ -47,10 +47,10 @@
     }
     .btn {
       flex: 0 0 auto;
-      gap: 4px;
+      gap: $sp-4;
       height: 28px;
-      margin: 0 0 0 6px;
-      padding: 0 12px;
+      margin: 0 0 0 $sp-6;
+      padding: 0 $sp-12;
       border: 1px solid $sec;
       border-radius: 2px;
       background: $sec;
@@ -73,8 +73,8 @@
         .tab-info {
           flex: 1 1 100%;
           order: 3;
-          margin: 8px 0 0;
-          padding: 0 0 8px;
+          margin: $sp-8 0 0;
+          padding: 0 0 $sp-8;
           border: 0;
           background: none;
           font-size: $fs-xs;
@@ -99,7 +99,7 @@
     height: 34px;
   }
   .card-b {
-    padding: 10px 14px;
+    padding: $sp-10 $sp-14;
     &.pre {
       min-height: 0;
       height: 88px;
@@ -113,17 +113,17 @@
   }
 }
 .page-head {
-  margin-bottom: 12px;
-  padding-bottom: 10px;
+  margin-bottom: $sp-12;
+  padding-bottom: $sp-10;
 }
 .sch-box {
-  margin-bottom: 12px;
+  margin-bottom: $sp-12;
 }
 #issue-summary th,
 #issue-summary td {
   height: 36px;
-  padding: 4px 10px;
+  padding: $sp-4 $sp-10;
 }
 .work {
-  padding-bottom: 12px;
+  padding-bottom: $sp-12;
 }

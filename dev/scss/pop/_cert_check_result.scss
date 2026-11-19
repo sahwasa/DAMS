@@ -2,12 +2,12 @@
 // cert_check_result (화면정의서 UI-DA09-002-P02) 연계 점검 부적합 결과서 — dialog 안으로 한정
 .pop-dlg[data-pop="cert_check_result"] {
   .rpt {
-    padding: 28px 32px 24px;
+    padding: $sp-28 $sp-32 $sp-24;
     border: 1px solid $g30;
     background: #fff;
     color: $g80;
     h1 {
-      margin-bottom: 6px;
+      margin-bottom: $sp-6;
       font-size: $fs-2xl;
       font-weight: 800;
       text-align: center;
@@ -18,16 +18,16 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      gap: 4px 16px;
-      margin-bottom: 18px;
-      padding-bottom: 8px;
+      gap: $sp-4 $sp-16;
+      margin-bottom: $sp-18;
+      padding-bottom: $sp-8;
       border-bottom: 2px solid $g90;
       font-size: $fs-xs;
       color: $c-body;
     }
     h2 {
-      @include flex-c($gap: 6px);
-      margin: 18px 0 8px;
+      @include flex-c($gap: $sp-6);
+      margin: $sp-18 0 $sp-8;
       font-size: $fs-b;
       @include txt-strong;
       &::before {
@@ -49,8 +49,8 @@
       }
     }
     .verdict {
-      @include flex-c($gap: 10px);
-      padding: 10px 14px;
+      @include flex-c($gap: $sp-10);
+      padding: $sp-10 $sp-14;
       border: 1px solid $dg-b;
       background: $dg-s;
       border-radius: 4px;
@@ -63,7 +63,7 @@
     }
     .req {
       margin: 0;
-      padding-left: 18px;
+      padding-left: $sp-18;
       font-size: $fs-s;
       line-height: 1.7;
       li {
@@ -93,7 +93,7 @@
       }
     }
     .note {
-      margin-top: 8px;
+      margin-top: $sp-8;
       @include txt-sub;
     }
   }

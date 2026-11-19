@@ -1,9 +1,9 @@
 @use "../abstracts" as *;
 /* ---------- 5. Button ---------- */
 .btn {
-  @include flex-c($jc: center, $gap: 4px, $d: inline-flex);
+  @include flex-c($jc: center, $gap: $sp-4, $d: inline-flex);
   height: $h-btn;
-  padding: 0 12px;
+  padding: 0 $sp-12;
   border: 1px solid transparent;
   border-radius: $r-s;
   font-size: $fs-s;
@@ -18,12 +18,12 @@
   }
   &.s {
     height: $h-btn-s;
-    padding: 0 8px;
+    padding: 0 $sp-8;
     font-size: $fs-2xs;
   }
   &.l {
     height: $h-btn-l;
-    padding: 0 16px;
+    padding: 0 $sp-16;
     font-size: $fs-b;
   }
   &.ico {

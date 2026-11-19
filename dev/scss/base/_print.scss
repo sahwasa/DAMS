@@ -7,8 +7,8 @@
       .ft {
         flex-direction: column;
         flex-wrap: nowrap;
-        gap: 6px;
-        padding: 20px 16px 24px;
+        gap: $sp-6;
+        padding: $sp-20 $sp-16 $sp-24;
         background: $frame-bg;
         border-top: 1px solid $g20;
         font-size: $fs-xs;
@@ -32,8 +32,8 @@
           width: auto;
           max-width: none;
           height: 36px;
-          margin-top: 8px;
-          padding: 0 16px;
+          margin-top: $sp-8;
+          padding: 0 $sp-16;
           border-radius: 18px;
           background: #fff;
           font-size: $fs-xs;
@@ -73,11 +73,11 @@
 .mon-kpi {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 10px;
-  margin-bottom: 12px;
+  gap: $sp-10;
+  margin-bottom: $sp-12;
   > div {
     min-width: 0;
-    padding: 8px 10px;
+    padding: $sp-8 $sp-10;
     border-radius: 8px;
     background: #eef2fb;
     text-align: center;
@@ -87,7 +87,7 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: baseline;
-    column-gap: 6px;
+    column-gap: $sp-6;
     white-space: nowrap;
   }
   dt {
@@ -103,7 +103,7 @@
     color: $pri;
     line-height: 1.45;
     small {
-      margin-left: 2px;
+      margin-left: $sp-2;
       font-size: $fs-2xs;
       font-weight: 500;
       color: $c-body;

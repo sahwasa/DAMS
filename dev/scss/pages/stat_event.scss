@@ -44,7 +44,7 @@
   color: $sec;
   white-space: nowrap;
   b {
-    margin-left: 2px;
+    margin-left: $sp-2;
     font-size: $fs-2xs;
   }
   &.on {
@@ -91,8 +91,8 @@
   right: 10px;
   top: 10px;
   z-index: 10;
-  @include flex-c($gap: 4px);
-  padding: 4px 8px;
+  @include flex-c($gap: $sp-4);
+  padding: $sp-4 $sp-8;
   background: rgba(255, 255, 255, 0.92);
   border: 1px solid $g30;
   border-radius: 2px;
@@ -105,7 +105,7 @@
     display: inline-block;
     width: 12px;
     height: 12px;
-    margin-left: 4px;
+    margin-left: $sp-4;
   }
   .h1 {
     background: #eef0fc;
@@ -127,7 +127,7 @@
   }
   #tabEvent > .sub-head,
   #tabMedia > .sub-head {
-    margin-top: 16px;
+    margin-top: $sp-16;
   }
 }
 
@@ -140,7 +140,7 @@
   height: 338px;
 }
 .ev-note {
-  margin: 4px 0 0;
+  margin: $sp-4 0 0;
 }
 .md-cat {
   position: relative;
@@ -173,7 +173,7 @@
   right: 0;
   top: 0;
   flex-wrap: wrap;
-  gap: 4px 12px;
+  gap: $sp-4 $sp-12;
   font-size: $fs-2xs;
   i {
     width: 14px !important;
@@ -182,7 +182,7 @@
   }
 }
 .md-h {
-  padding: 30px 4px 0 0;
+  padding: 30px $sp-4 0 0;
   li {
     height: 38px;
     grid-template-columns: 96px 1fr 50px;
@@ -195,8 +195,8 @@
   &.vbar {
     height: 214px;
     margin: 22px 0 0;
-    gap: 18px;
-    padding: 0 10px;
+    gap: $sp-18;
+    padding: 0 $sp-10;
   }
   &.vbar {
     > li {
@@ -211,7 +211,7 @@
 .md-dl {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 10px;
+  gap: $sp-10;
   flex: 1;
   font-size: $fs-xs;
   max-width: 420px;
@@ -219,7 +219,7 @@
     display: grid;
     grid-template-columns: 12px 96px 50px 1fr;
     align-items: center;
-    gap: 6px;
+    gap: $sp-6;
     white-space: nowrap;
     b {
       font-weight: 600;
@@ -244,8 +244,8 @@
   &.vbar {
     height: 214px;
     margin: 22px 0 0;
-    gap: 8px;
-    padding: 0 4px;
+    gap: $sp-8;
+    padding: 0 $sp-4;
   }
   &.vbar {
     > li {
@@ -261,11 +261,11 @@
   }
 }
 .ev-h {
-  padding: 22px 4px 0 0;
+  padding: 22px $sp-4 0 0;
   li {
     grid-template-columns: 64px 1fr 34px;
     height: 15px;
-    gap: 8px;
+    gap: $sp-8;
     font-size: $fs-2xs;
   }
   .bar {
@@ -275,11 +275,11 @@
 .ev-dl {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px 20px;
+  gap: $sp-8 $sp-20;
   flex: 1;
   font-size: $fs-xs;
   li {
-    @include flex-c($gap: 4px);
+    @include flex-c($gap: $sp-4);
     white-space: nowrap;
     span {
       overflow: hidden;
@@ -375,7 +375,7 @@
       &.sgc {
         td {
           &:first-child {
-            padding-left: 24px;
+            padding-left: $sp-24;
           }
           &:first-child::before {
             content: "└ ";

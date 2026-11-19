@@ -21,16 +21,16 @@
   }
 }
 .rq-box {
-  padding: 14px 18px;
+  padding: $sp-14 $sp-18;
 }
 .rq-it {
   + .rq-it {
-    margin-top: 14px;
-    padding-top: 14px;
+    margin-top: $sp-14;
+    padding-top: $sp-14;
     border-top: 1px dashed $g40;
   }
   h4 {
-    @include flex-c($gap: 8px);
+    @include flex-c($gap: $sp-8);
     font-size: $fs-b;
     color: $c-title;
     em {
@@ -43,8 +43,8 @@
   dl {
     display: grid;
     grid-template-columns: 70px 1fr;
-    gap: 6px 12px;
-    margin-top: 8px;
+    gap: $sp-6 $sp-12;
+    margin-top: $sp-8;
     font-size: $fs-xs;
     line-height: 1.6;
   }
@@ -64,7 +64,7 @@
     background: #fff3c4;
     color: $c-title;
     font-weight: 600;
-    padding: 1px 2px;
+    padding: 1px $sp-2;
     border-radius: 2px;
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
@@ -98,7 +98,7 @@
     display: none;
   }
   .rq-box {
-    padding: 12px;
+    padding: $sp-12;
   }
   .grid {
     &.mcard {
@@ -123,10 +123,10 @@
     }
     dl {
       grid-template-columns: 1fr;
-      gap: 2px;
+      gap: $sp-2;
     }
     dd {
-      margin-bottom: 6px;
+      margin-bottom: $sp-6;
     }
   }
 }

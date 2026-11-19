@@ -16,7 +16,7 @@
   }
 }
 .hbar-l {
-  padding: 6px 0;
+  padding: $sp-6 0;
   li {
     height: 36px;
   }
@@ -94,7 +94,7 @@
   height: 354px;
 }
 .dm-h {
-  padding: 34px 4px 0 0;
+  padding: 34px $sp-4 0 0;
   li {
     height: 44px;
     grid-template-columns: 100px 1fr auto;
@@ -115,7 +115,7 @@
     height: 230px;
     margin: 22px 0 0;
     gap: 30px;
-    padding: 0 24px;
+    padding: 0 $sp-24;
   }
   &.vbar {
     > li {
@@ -129,7 +129,7 @@
 .md-dl {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 12px;
+  gap: $sp-12;
   flex: 1;
   font-size: $fs-xs;
   max-width: 420px;
@@ -137,7 +137,7 @@
     display: grid;
     grid-template-columns: 12px 96px 50px 1fr;
     align-items: center;
-    gap: 6px;
+    gap: $sp-6;
     white-space: nowrap;
     b {
       font-weight: 600;
@@ -186,7 +186,7 @@
   right: 0;
   top: 0;
   flex-wrap: wrap;
-  gap: 4px 12px;
+  gap: $sp-4 $sp-12;
   font-size: $fs-2xs;
   i {
     width: 14px !important;
@@ -210,7 +210,7 @@
 }
 #tabType > .tbl-acc,
 #tabStatus > .tbl-acc {
-  margin-top: 16px;
+  margin-top: $sp-16;
 }
 
 /* 시군구별: 시도 묶음 행(시도 소계) + 시군구 행 들여쓰기 */
@@ -223,7 +223,7 @@
       &.sgc {
         td {
           &:first-child {
-            padding-left: 24px;
+            padding-left: $sp-24;
           }
           &:first-child::before {
             content: "└ ";

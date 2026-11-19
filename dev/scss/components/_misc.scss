@@ -2,7 +2,7 @@
 /* ---------- 13. Etc ---------- */
 .steps {
   display: flex;
-  margin-bottom: 16px;
+  margin-bottom: $sp-16;
   li {
     flex: 1;
     height: 34px;
@@ -27,9 +27,9 @@
 }
 .help-box {
   display: flex;
-  gap: 8px;
-  padding: 10px 14px;
-  margin-bottom: 16px;
+  gap: $sp-8;
+  padding: $sp-10 $sp-14;
+  margin-bottom: $sp-16;
   background: $in-s;
   border: 1px solid $in-b;
   border-radius: $r;
@@ -77,7 +77,7 @@ details {
   }
   &.help-box {
     > summary {
-      @include flex-c($gap: 8px);
+      @include flex-c($gap: $sp-8);
       cursor: pointer;
       list-style: none;
       color: $c-title;
@@ -97,7 +97,7 @@ details {
     content: "\ea78";
   }
   &.help-box > .hb-b {
-    margin: 6px 0 0 22px;
+    margin: $sp-6 0 0 22px;
     line-height: 1.6;
   }
   &.help-box.ttl > summary {
@@ -108,7 +108,7 @@ details {
   @include flex-c($jc: center, $d: inline-flex);
   line-height: 1;
   height: 20px;
-  padding: 0 6px;
+  padding: 0 $sp-6;
   border: 1px solid $c-line;
   border-radius: $r-s;
   font-size: $fs-2xs;
@@ -177,7 +177,7 @@ details {
   }
   &.r {
     border-radius: 10px;
-    padding: 0 8px;
+    padding: 0 $sp-8;
   }
 }
 .file-list {
@@ -185,9 +185,9 @@ details {
   max-height: 150px;
   overflow: auto;
   li {
-    @include flex-c($gap: 6px);
+    @include flex-c($gap: $sp-6);
     height: 30px;
-    padding: 0 10px;
+    padding: 0 $sp-10;
     border-bottom: 1px solid $g10;
     font-size: $fs-xs;
     &:last-child {
@@ -210,7 +210,7 @@ details {
 .col2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: $sp-20;
 }
 /* 통계: 왼쪽 차트 + 오른쪽 표, 표 아래 안내, 표/히트맵 전환, PC 고정 높이 스크롤 */
 .st-lr {
@@ -219,7 +219,7 @@ details {
 }
 .st-l {
   @include flex-col;
-  gap: 16px;
+  gap: $sp-16;
   min-width: 0;
 }
 .st-lr .sub-head h3 {
@@ -227,8 +227,8 @@ details {
 }
 .st-note {
   display: flex;
-  gap: 4px;
-  margin-top: 8px;
+  gap: $sp-4;
+  margin-top: $sp-8;
   @include txt-sub;
   line-height: 1.5;
   i {
@@ -240,13 +240,13 @@ details {
 }
 .rg-sw {
   display: inline-flex;
-  gap: 4px;
+  gap: $sp-4;
   margin: 0;
   li {
     button {
       @include flex-c;
       height: 32px;
-      padding: 0 14px;
+      padding: 0 $sp-14;
       border-radius: 6px;
       font-size: $fs-s;
       font-weight: 500;
@@ -267,7 +267,7 @@ details {
 .rg-lgd2 {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 6px;
+  margin-bottom: $sp-6;
   .legend {
     margin: 0;
   }
@@ -281,5 +281,5 @@ details {
 .col-lr {
   display: grid;
   grid-template-columns: minmax(0, 4fr) minmax(0, 6fr);
-  gap: 20px;
+  gap: $sp-20;
 }

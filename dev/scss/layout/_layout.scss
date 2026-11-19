@@ -21,8 +21,8 @@
 }
 .lnb-tab {
   display: flex;
-  gap: 4px;
-  padding: 8px 0 0 10px;
+  gap: $sp-4;
+  padding: $sp-8 0 0 $sp-10;
   button {
     flex: 1;
     height: 34px;
@@ -41,8 +41,8 @@
 .lnb-tit {
   @include flex-c;
   height: 44px;
-  padding: 0 16px;
-  margin: 0 0 0 10px;
+  padding: 0 $sp-16;
+  margin: 0 0 0 $sp-10;
   background: #f3f5ff;
   border: 1px solid $frame-bd;
   border-width: 0 1px;
@@ -53,8 +53,8 @@
 .lnb-menu {
   flex: 1;
   overflow-y: auto;
-  margin: 0 0 10px 10px;
-  padding: 12px 14px;
+  margin: 0 0 $sp-10 $sp-10;
+  padding: $sp-12 $sp-14;
   background: #fff;
   border: 1px solid $frame-bd;
   border-top: 0;
@@ -65,7 +65,7 @@
   .d2 {
     > li > a {
       height: 38px;
-      padding: 0 6px;
+      padding: 0 $sp-6;
       font-weight: 600;
       color: #333;
       border-bottom: 1px solid #ebebeb;
@@ -92,7 +92,7 @@
   }
   .d3 {
     display: none;
-    padding: 6px 0;
+    padding: $sp-6 0;
     background: $g5;
     border-bottom: 1px solid $g10;
   }
@@ -102,7 +102,7 @@
   .d3 {
     > li > a {
       height: 32px;
-      padding: 0 16px 0 28px;
+      padding: 0 $sp-16 0 $sp-28;
       font-size: $fs-s;
     }
     > li > a::before {
@@ -111,7 +111,7 @@
       height: 3px;
       border-radius: 50%;
       background: $g50;
-      margin-right: 8px;
+      margin-right: $sp-8;
     }
     > li.on > a {
       @include txt-pri;
@@ -121,8 +121,8 @@
     }
   }
   .d4 {
-    margin: 2px 12px 6px 40px;
-    padding: 6px 10px;
+    margin: $sp-2 $sp-12 $sp-6 $sp-40;
+    padding: $sp-6 $sp-10;
     background: #fff;
     border: 1px solid $c-line2;
     border-radius: $r;
@@ -177,19 +177,19 @@
   @include flex-col;
   min-height: 0;
   background: $frame-bg;
-  padding: 0 10px 10px 10px;
+  padding: 0 $sp-10 $sp-10 $sp-10;
 }
 .work {
   flex: 1;
   overflow-y: auto;
-  padding: 20px 24px 24px;
+  padding: $sp-20 $sp-24 $sp-24;
   background: #fff;
   border: 1px solid $frame-bd;
 }
 .status {
   @include flex-c;
   height: $stat-h;
-  padding: 0 24px;
+  padding: 0 $sp-24;
   flex: 0 0 $stat-h;
   background: $wn-s;
   border-top: 1px solid $wn-b;
@@ -204,14 +204,14 @@
 .main > .status {
   border: 1px solid $frame-bd;
   border-top: 0;
-  padding: 0 24px;
+  padding: 0 $sp-24;
 }
 .has-stat {
   .main > .work {
     padding-bottom: 0;
   }
   .main {
-    padding-bottom: 4px;
+    padding-bottom: $sp-4;
   }
 }
 /* 상태바 30px만큼 업무영역 아래 여백(24)·바깥 여백(10→4)에서 확보 — 1600×900 고정 높이 화면 유지 */
@@ -229,6 +229,6 @@
 // MDI 탭 삭제(2026-11-18 사용자 결정 — 2026-11-16 숨김 → 삭제), 업무영역 위 여백 8(LNB 탭 줄과 맞춤)
 @include pc {
   .main {
-    padding-top: 8px;
+    padding-top: $sp-8;
   }
 }

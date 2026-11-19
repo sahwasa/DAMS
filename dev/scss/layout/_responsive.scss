@@ -13,9 +13,9 @@
   color: $c-body;
 }
 .mnav-h {
-  @include flex-c($gap: 10px);
+  @include flex-c($gap: $sp-10);
   height: 56px;
-  padding: 0 12px 0 20px;
+  padding: 0 $sp-12 0 $sp-20;
   background: $sec;
   color: #fff;
   flex: 0 0 56px;
@@ -28,9 +28,9 @@
     opacity: 0.75;
   }
   .out {
-    @include flex-c($gap: 4px, $d: inline-flex);
+    @include flex-c($gap: $sp-4, $d: inline-flex);
     height: 28px;
-    padding: 0 10px;
+    padding: 0 $sp-10;
     border: 1px solid rgba(255, 255, 255, 0.4);
     border-radius: 14px;
     color: #fff;
@@ -46,15 +46,15 @@
 }
 .mnav-cert {
   @include flex-c($jc: space-between);
-  margin: 12px 20px 0;
+  margin: $sp-12 $sp-20 0;
   height: 48px;
-  padding: 0 16px;
+  padding: 0 $sp-16;
   border: 1px solid $pri;
   border-radius: $r;
   @include txt-pri;
 }
 .mnav-sch {
-  margin: 12px 20px 0;
+  margin: $sp-12 $sp-20 0;
   .inp-ico {
     display: flex;
   }
@@ -65,7 +65,7 @@
 }
 .mnav-tab {
   display: flex;
-  margin: 12px 20px 0;
+  margin: $sp-12 $sp-20 0;
   border-bottom: 1px solid $c-line2;
   button {
     flex: 1;
@@ -96,7 +96,7 @@
     @include flex-c;
     width: 100%;
     min-height: 52px;
-    padding: 8px 16px;
+    padding: $sp-8 $sp-16;
     text-align: left;
     font-size: $fs-b;
     font-weight: 600;
@@ -112,11 +112,11 @@
 .mnav-d2 {
   flex: 1;
   overflow-y: auto;
-  padding: 8px 0;
+  padding: $sp-8 0;
   a {
     @include flex-c;
     min-height: 48px;
-    padding: 0 20px;
+    padding: 0 $sp-20;
     font-size: $fs-b;
     color: $c-title;
     &.on {
@@ -124,7 +124,7 @@
     }
   }
   .nodata {
-    padding: 24px 20px;
+    padding: $sp-24 $sp-20;
     @include txt-sub($fs-s);
   }
   mark {
@@ -155,7 +155,7 @@
         top: 0;
         height: 56px;
         flex: 0 0 56px;
-        padding: 0 8px 0 16px;
+        padding: 0 $sp-8 0 $sp-16;
         .menu,
         .util {
           display: none;
@@ -187,13 +187,13 @@
       }
       .work {
         overflow: visible;
-        padding: 20px;
+        padding: $sp-20;
       }
       .status {
         position: sticky;
         bottom: 0;
         z-index: 20;
-        padding: 0 20px;
+        padding: 0 $sp-20;
         height: auto;
         min-height: 30px;
       }
@@ -201,8 +201,8 @@
         flex-wrap: wrap;
         height: auto;
         flex-basis: auto;
-        padding: 10px 16px;
-        gap: 4px 12px;
+        padding: $sp-10 $sp-16;
+        gap: $sp-4 $sp-12;
         white-space: normal;
         text-align: center;
         .ft-go {
@@ -210,19 +210,19 @@
           width: 100%;
           max-width: 320px;
           height: 40px;
-          margin-top: 6px;
+          margin-top: $sp-6;
         }
       }
       .page-head {
         flex-wrap: wrap;
-        row-gap: 10px;
+        row-gap: $sp-10;
         > div:first-child {
           flex: 1 0 auto;
         }
         .btns {
           flex-wrap: wrap;
           justify-content: flex-end;
-          row-gap: 6px;
+          row-gap: $sp-6;
         }
       }
       .page-head .btns > *,
@@ -272,7 +272,7 @@
         max-width: calc(100vw - 32px);
       }
       .wrap.win .work {
-        padding: 20px;
+        padding: $sp-20;
       }
     }
   }
@@ -305,7 +305,7 @@
           display: flex !important;
           align-items: center;
           justify-content: center;
-          gap: 4px;
+          gap: $sp-4;
           font-size: $fs-t2;
           font-weight: 700;
           color: #fff;
@@ -348,13 +348,13 @@
         margin-left: 0;
       }
       .work {
-        padding: 16px 16px 24px;
+        padding: $sp-16 $sp-16 $sp-24;
       }
       .page-head {
         flex-wrap: wrap;
-        gap: 8px;
+        gap: $sp-8;
         padding-bottom: 0;
-        margin-bottom: 12px;
+        margin-bottom: $sp-12;
         border-bottom: 0;
         > div:first-child {
           display: none;
@@ -370,8 +370,8 @@
       }
       .sub-head {
         flex-wrap: wrap;
-        margin: 20px 0 8px;
-        row-gap: 6px;
+        margin: $sp-20 0 $sp-8;
+        row-gap: $sp-6;
         .btns,
         .grid-top {
           margin-left: auto;
@@ -415,11 +415,11 @@
       }
       .btn {
         height: 40px;
-        padding: 0 14px;
+        padding: 0 $sp-14;
         font-size: $fs-b;
         &.s {
           height: 32px;
-          padding: 0 10px;
+          padding: 0 $sp-10;
           font-size: $fs-xs;
         }
         &.l {
@@ -469,17 +469,17 @@
       .sch-box {
         flex-direction: column;
         align-items: stretch;
-        gap: 12px;
+        gap: $sp-12;
         padding: 0;
         background: #fff;
       }
       .sch-mtog {
-        @include flex-c($gap: 6px);
+        @include flex-c($gap: $sp-6);
         width: 100%;
         height: 48px;
         background: #fff !important;
         border-radius: 4px;
-        padding: 0 16px;
+        padding: 0 $sp-16;
         font-size: $fs-m;
         @include txt-strong;
         &::after {
@@ -505,8 +505,8 @@
         .rows,
         .rows[style] {
           grid-template-columns: minmax(0, 1fr) !important;
-          gap: 12px;
-          padding: 0 16px;
+          gap: $sp-12;
+          padding: 0 $sp-16;
         }
         .it {
           &,
@@ -515,7 +515,7 @@
           &.c4 {
             grid-column: auto;
             flex-wrap: wrap;
-            gap: 6px;
+            gap: $sp-6;
           }
           > label:not(.rdo):not(.chk),
           > .lb {
@@ -533,7 +533,7 @@
         }
         .ctrl {
           align-self: stretch;
-          padding: 0 16px 16px;
+          padding: 0 $sp-16 $sp-16;
           .btn {
             flex: 1;
           }
@@ -572,14 +572,14 @@
           }
           tbody {
             tr {
-              padding: 10px 4px;
+              padding: $sp-10 $sp-4;
               border-bottom: 1px solid $c-line2;
             }
             td {
               display: flex;
-              gap: 10px;
+              gap: $sp-10;
               height: auto;
-              padding: 3px 8px;
+              padding: 3px $sp-8;
               border: 0;
               background: none !important;
               text-align: left !important;
@@ -664,19 +664,19 @@
           }
           > tbody > tr > th {
             height: auto;
-            padding: 12px 0 4px;
+            padding: $sp-12 0 $sp-4;
             background: none;
             border: 0;
             font-size: $fs-s;
           }
           > tbody > tr > td {
             height: auto;
-            padding: 0 0 12px;
+            padding: 0 0 $sp-12;
             border: 0;
             border-bottom: 1px solid $c-line2;
           }
           > tbody > tr > td.ro {
-            padding: 8px 10px;
+            padding: $sp-8 $sp-10;
             margin-bottom: 0;
           }
         }
@@ -704,7 +704,7 @@
             height: 50px;
             width: 100%;
             justify-content: center;
-            padding: 0 14px;
+            padding: 0 $sp-14;
             font-size: $fs-b;
             white-space: nowrap;
           }
@@ -764,10 +764,10 @@
     }
     &:not(.pc-pop) {
       .pop-body {
-        padding: 16px;
+        padding: $sp-16;
       }
       .pop-foot {
-        padding: 0 16px 16px;
+        padding: 0 $sp-16 $sp-16;
         .btn {
           flex: 1;
         }
@@ -796,7 +796,7 @@
             flex-basis: 56px;
           }
           .work {
-            padding: 16px;
+            padding: $sp-16;
           }
         }
       }
@@ -820,8 +820,8 @@
 }
 @media (max-width: 767px) and (min-width: 481px) {
   html:not(.pc-pop) .work {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: $sp-20;
+    padding-right: $sp-20;
   }
 }
 
@@ -845,9 +845,9 @@
   bottom: 0;
   display: flex;
   align-items: flex-start;
-  gap: 10px;
+  gap: $sp-10;
   min-height: 74px;
-  padding: 12px 10px 12px 18px;
+  padding: $sp-12 $sp-10 $sp-12 $sp-18;
   border-radius: 2px;
   background: rgba(51, 51, 51, 0.94);
   color: #fff;
@@ -881,7 +881,7 @@
     font-size: $fs-xs;
   }
   .tg {
-    margin-right: 4px;
+    margin-right: $sp-4;
     font-style: normal;
     color: #ffc95c;
   }
@@ -890,7 +890,7 @@
   }
   time {
     display: block;
-    margin: 2px 0 4px;
+    margin: $sp-2 0 $sp-4;
     font-size: $fs-2xs;
     color: rgba(255, 255, 255, 0.75);
   }
@@ -908,7 +908,7 @@
   }
   &.dg b::before {
     content: "\ea1c";
-    margin-right: 6px;
+    margin-right: $sp-6;
     font-family: remixicon;
     font-weight: 400;
   }
@@ -948,12 +948,12 @@
   font-weight: 600;
 }
 .nl-snd {
-  @include flex-c($gap: 8px);
-  padding: 8px 16px;
+  @include flex-c($gap: $sp-8);
+  padding: $sp-8 $sp-16;
   border-bottom: 1px solid $c-line2;
   background: $g5;
   > span {
-    @include flex-c($gap: 6px);
+    @include flex-c($gap: $sp-6);
     flex: 1;
     font-weight: 600;
     color: $c-title;

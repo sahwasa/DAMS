@@ -4,7 +4,7 @@
 .gnb {
   @include flex-c;
   height: $gnb-h;
-  padding: 0 16px 0 20px;
+  padding: 0 $sp-16 0 $sp-20;
   white-space: nowrap;
   background: $gnb-bg;
   color: #fff;
@@ -12,8 +12,8 @@
   position: relative;
   z-index: 30;
   .logo {
-    @include flex-c($gap: 8px);
-    margin-right: 12px;
+    @include flex-c($gap: $sp-8);
+    margin-right: $sp-12;
     font-size: $fs-t2;
     font-weight: 500;
     white-space: nowrap;
@@ -43,7 +43,7 @@
     > li > a {
       @include flex-c;
       height: 100%;
-      padding: 0 8px;
+      padding: 0 $sp-8;
       font-size: $fs-t2;
       font-weight: 700;
       opacity: 0.9;
@@ -64,22 +64,22 @@
     }
   }
   .util {
-    @include flex-c($gap: 2px);
+    @include flex-c($gap: $sp-2);
     margin-left: auto;
     > .btn {
-      margin-left: 6px;
+      margin-left: $sp-6;
     }
   }
   .sess {
-    @include flex-c($gap: 6px);
+    @include flex-c($gap: $sp-6);
     height: 32px;
-    padding: 0 3px 0 12px;
+    padding: 0 3px 0 $sp-12;
     border-radius: 16px;
     background: rgba(0, 0, 0, 0.25);
     font-size: $fs-xs;
     button {
       height: 26px;
-      padding: 0 10px;
+      padding: 0 $sp-10;
       border-radius: 13px;
       background: $pri;
       color: #fff;
@@ -88,8 +88,8 @@
     }
   }
   .user {
-    @include flex-c($gap: 4px, $d: inline-flex);
-    padding: 0 6px;
+    @include flex-c($gap: $sp-4, $d: inline-flex);
+    padding: 0 $sp-6;
     font-size: $fs-xs;
     text-decoration: underline;
     text-underline-offset: 3px;
@@ -134,14 +134,14 @@
     }
   }
   .fsz {
-    @include flex-c($gap: 4px);
+    @include flex-c($gap: $sp-4);
     height: 32px;
-    padding: 0 10px;
+    padding: 0 $sp-10;
     border-radius: 16px;
     background: rgba(0, 0, 0, 0.25);
     font-size: $fs-2xs;
     > span {
-      margin-right: 2px;
+      margin-right: $sp-2;
     }
     button {
       color: #fff;

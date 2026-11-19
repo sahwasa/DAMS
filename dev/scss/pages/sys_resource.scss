@@ -6,7 +6,7 @@
 .gauges {
   display: flex;
   justify-content: space-around;
-  gap: 8px;
+  gap: $sp-8;
 }
 .gauge {
   text-align: center;
@@ -16,7 +16,7 @@
   .donut {
     width: 90px;
     height: 90px;
-    margin: 0 auto 2px;
+    margin: 0 auto $sp-2;
     &::after {
       inset: 9px;
     }
@@ -30,7 +30,7 @@
 }
 .srv {
   .card-h {
-    padding: 0 12px;
+    padding: 0 $sp-12;
     white-space: nowrap;
     small {
       font-weight: 400;
@@ -42,8 +42,8 @@
     }
   }
   .hbar {
-    margin-top: 8px;
-    padding-top: 6px;
+    margin-top: $sp-8;
+    padding-top: $sp-6;
     border-top: 1px dashed $g30;
     li {
       grid-template-columns: 62px 1fr auto;
@@ -103,12 +103,12 @@
       height: 32px;
     }
     .card-b {
-      padding-top: 8px;
-      padding-bottom: 8px;
+      padding-top: $sp-8;
+      padding-bottom: $sp-8;
     }
     .hbar {
-      margin-top: 4px;
-      padding-top: 4px;
+      margin-top: $sp-4;
+      padding-top: $sp-4;
       li {
         height: 18px;
       }

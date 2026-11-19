@@ -1,7 +1,7 @@
 // 재난발생현황 | 재난 예경보 통합관리시스템 화면 전용
 @use "../abstracts" as *;
 .src-t {
-  margin-left: 6px;
+  margin-left: $sp-6;
   @include txt-sub;
   white-space: nowrap;
 }

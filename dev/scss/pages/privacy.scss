@@ -11,13 +11,13 @@ body {
   position: sticky;
   top: 0;
   z-index: 10;
-  @include flex-c($gap: 12px);
+  @include flex-c($gap: $sp-12);
   height: 60px;
-  padding: 0 40px;
+  padding: 0 $sp-40;
   background: $sec;
   color: #fff;
   h1 {
-    @include flex-c($gap: 8px);
+    @include flex-c($gap: $sp-8);
     font-size: $fs-t2;
     font-weight: 700;
   }
@@ -33,10 +33,10 @@ body {
 .pp {
   display: grid;
   grid-template-columns: 260px minmax(0, 1fr);
-  gap: 40px;
+  gap: $sp-40;
   max-width: 1240px;
   margin: 0 auto;
-  padding: 32px 40px 48px;
+  padding: $sp-32 $sp-40 48px;
 }
 .pp-toc {
   position: sticky;
@@ -47,18 +47,18 @@ body {
   h2 {
     height: 44px;
     @include flex-c;
-    padding: 0 16px;
+    padding: 0 $sp-16;
     border-bottom: 1px solid $g30;
     background: $g5;
     font-size: $fs-b;
     @include txt-strong;
   }
   ol {
-    padding: 8px 0;
+    padding: $sp-8 0;
   }
   a {
     display: block;
-    padding: 6px 16px;
+    padding: $sp-6 $sp-16;
     font-size: $fs-xs;
     color: $c-body;
     &:hover,
@@ -71,8 +71,8 @@ body {
 .pp-tit {
   display: flex;
   align-items: flex-end;
-  gap: 12px;
-  padding-bottom: 16px;
+  gap: $sp-12;
+  padding-bottom: $sp-16;
   border-bottom: 2px solid $g90;
   h2 {
     font-size: 28px;
@@ -80,22 +80,22 @@ body {
   }
   .ver {
     margin-left: auto;
-    @include flex-c($gap: 6px);
+    @include flex-c($gap: $sp-6);
     font-size: $fs-xs;
   }
 }
 .pp-intro {
-  margin: 20px 0 8px;
+  margin: $sp-20 0 $sp-8;
   font-size: $fs-b;
   color: $g80;
   line-height: 1.8;
 }
 .pp {
   section {
-    padding-top: 28px;
+    padding-top: $sp-28;
   }
   h3 {
-    margin-bottom: 10px;
+    margin-bottom: $sp-10;
     font-size: $fs-l;
     @include txt-strong;
   }
@@ -107,10 +107,10 @@ body {
       color: #303030;
     }
     ul {
-      margin: 6px 0 0 4px;
+      margin: $sp-6 0 0 $sp-4;
       li {
         position: relative;
-        padding-left: 12px;
+        padding-left: $sp-12;
         &::before {
           content: "";
           position: absolute;
@@ -126,20 +126,20 @@ body {
   }
   .tbl,
   .grid-wrap {
-    margin-top: 10px;
+    margin-top: $sp-10;
   }
 }
 .pp-foot {
   border-top: 1px solid $g10;
-  padding: 20px 40px;
+  padding: $sp-20 $sp-40;
   text-align: center;
   @include txt-sub($fs-xs);
 }
 @media (max-width: 1023px) {
   .pp-head {
     height: 56px;
-    padding: 0 12px 0 16px;
-    gap: 8px;
+    padding: 0 $sp-12 0 $sp-16;
+    gap: $sp-8;
     h1 {
       min-width: 0;
       font-size: $fs-b;
@@ -164,8 +164,8 @@ body {
   }
   .pp {
     grid-template-columns: minmax(0, 1fr);
-    gap: 20px;
-    padding: 20px 16px 32px;
+    gap: $sp-20;
+    padding: $sp-20 $sp-16 $sp-32;
   }
   .pp-toc {
     position: static;
@@ -183,6 +183,6 @@ body {
     overflow-x: auto;
   }
   .pp-foot {
-    padding: 16px;
+    padding: $sp-16;
   }
 }

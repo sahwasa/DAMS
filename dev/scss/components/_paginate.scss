@@ -4,14 +4,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 4px;
-  margin-top: 16px;
+  gap: $sp-4;
+  margin-top: $sp-16;
   a,
   button,
   strong {
     min-width: 26px;
     height: 26px;
-    padding: 0 4px;
+    padding: 0 $sp-4;
     border: 1px solid $c-line2;
     border-radius: $r-s;
     background: #fff;

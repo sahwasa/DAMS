@@ -2,7 +2,7 @@
 // cert_check_issue (화면정의서 UI-DA09-002-P01) 연계확인서 발급 승인 — dialog 안으로 한정
 .pop-dlg[data-pop="cert_check_issue"] {
   .sgg-hd {
-    @include flex-c($gap: 12px);
+    @include flex-c($gap: $sp-12);
     .f-msg {
       margin: 0;
     }
@@ -10,15 +10,15 @@
   .sgg-chk {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 2px 8px;
+    gap: $sp-2 $sp-8;
     max-height: 190px;
     overflow: auto;
-    margin: 6px 0 4px;
-    padding: 6px 10px;
+    margin: $sp-6 0 $sp-4;
+    padding: $sp-6 $sp-10;
     border: 1px solid $g20;
     border-radius: 2px;
     li {
-      @include flex-c($gap: 4px);
+      @include flex-c($gap: $sp-4);
       min-width: 0;
       min-height: 28px;
     }

@@ -5,7 +5,7 @@
     counter-reset: s;
     li {
       position: relative;
-      padding: 8px 0 8px 36px;
+      padding: $sp-8 0 $sp-8 36px;
       border-bottom: 1px dashed $g30;
       font-size: $fs-s;
       color: $g80;

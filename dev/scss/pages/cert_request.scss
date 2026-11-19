@@ -2,8 +2,8 @@
 @use "../abstracts" as *;
 .st-sum {
   display: flex;
-  gap: 8px;
-  margin-bottom: 12px;
+  gap: $sp-8;
+  margin-bottom: $sp-12;
 }
 /* 시도 행 sticky(헤더 아래) */
 #tbody tr.sd-st td {
@@ -19,7 +19,7 @@
     flex: 1;
     @include flex-c($jc: space-between);
     height: 48px;
-    padding: 0 16px;
+    padding: 0 $sp-16;
     border: 1px solid $g30;
     border-radius: 4px;
     background: $g5;
@@ -42,7 +42,7 @@
     button {
       flex: 1 1 calc(50% - 4px);
       height: 44px;
-      padding: 0 12px;
+      padding: 0 $sp-12;
     }
   }
 }

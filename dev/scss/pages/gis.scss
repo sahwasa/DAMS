@@ -6,7 +6,7 @@
 .gis {
   flex: 1;
   display: flex;
-  gap: 12px;
+  gap: $sp-12;
   min-height: 600px;
 }
 .gis-side,
@@ -46,12 +46,12 @@
   min-height: 0;
 }
 .gis-flt {
-  padding: 10px 12px;
+  padding: $sp-10 $sp-12;
   background: $g5;
   border-bottom: 1px solid $g30;
 }
 .gis-flt-h {
-  @include flex-c($gap: 8px);
+  @include flex-c($gap: $sp-8);
   font-size: $fs-xs;
   .cnt {
     margin-left: auto;
@@ -65,8 +65,8 @@
 .gis-flt-b {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 6px;
-  margin-top: 8px;
+  gap: $sp-6;
+  margin-top: $sp-8;
 }
 .gis-flt.off .gis-flt-b {
   display: none;
@@ -89,7 +89,7 @@
   }
 }
 .gis-ctx {
-  padding: 8px 12px;
+  padding: $sp-8 $sp-12;
   border-bottom: 1px solid $g10;
   @include txt-sub;
   b {
@@ -103,9 +103,9 @@
 }
 .gis-dtl {
   .gis-h {
-    @include flex-c($gap: 6px);
+    @include flex-c($gap: $sp-6);
     height: 42px;
-    padding: 0 8px 0 14px;
+    padding: 0 $sp-8 0 $sp-14;
     border-bottom: 2px solid $pri;
     font-size: $fs-b;
     @include txt-strong;
@@ -120,18 +120,18 @@
 .gis-list {
   flex: 1;
   overflow-y: auto;
-  padding: 10px 12px;
+  padding: $sp-10 $sp-12;
 }
 .gis-src {
   flex: 0 0 auto;
-  @include flex-c($jc: flex-end, $gap: 4px);
-  padding: 6px 12px;
+  @include flex-c($jc: flex-end, $gap: $sp-4);
+  padding: $sp-6 $sp-12;
   border-top: 1px solid $g20;
   @include txt-sub;
 }
 .gis-card {
-  padding: 10px 12px;
-  margin-bottom: 8px;
+  padding: $sp-10 $sp-12;
+  margin-bottom: $sp-8;
   border: 1px solid $g30;
   border-radius: 4px;
   background: #fff;
@@ -146,7 +146,7 @@
   }
 }
 .gc-h {
-  @include flex-c($gap: 6px);
+  @include flex-c($gap: $sp-6);
   @include txt-sub;
   white-space: nowrap;
   .r {
@@ -155,8 +155,8 @@
   }
 }
 .gc-t {
-  @include flex-c($gap: 6px);
-  margin: 5px 0 6px;
+  @include flex-c($gap: $sp-6);
+  margin: 5px 0 $sp-6;
   font-size: $fs-s;
   font-weight: 600;
   color: $c-title;
@@ -167,7 +167,7 @@
 .chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: $sp-4;
   span,
   button {
     @include flex-c($d: inline-flex);
@@ -186,13 +186,13 @@
 .gc-f .gc-dtl {
   margin-left: auto;
   height: 22px;
-  padding: 0 6px;
+  padding: 0 $sp-6;
   font-size: $fs-2xs;
 }
 .gc-f {
-  @include flex-c($gap: 10px);
-  margin-top: 8px;
-  padding-top: 6px;
+  @include flex-c($gap: $sp-10);
+  margin-top: $sp-8;
+  padding-top: $sp-6;
   border-top: 1px dashed $g30;
   font-size: $fs-2xs;
   color: $g80;
@@ -201,15 +201,15 @@
   }
 }
 .gc-d {
-  margin-top: 8px;
-  padding-top: 8px;
+  margin-top: $sp-8;
+  padding-top: $sp-8;
   border-top: 1px solid $in-b;
   cursor: default;
   dl {
     display: grid;
     grid-template-columns: 62px 1fr;
-    gap: 2px 8px;
-    margin-bottom: 8px;
+    gap: $sp-2 $sp-8;
+    margin-bottom: $sp-8;
     font-size: $fs-2xs;
   }
   dt {
@@ -226,11 +226,11 @@
   &.mini th,
   &.mini td {
     height: 26px;
-    padding: 2px 6px;
+    padding: $sp-2 $sp-6;
   }
 }
 .gis-empty {
-  padding: 40px 0;
+  padding: $sp-40 0;
   text-align: center;
   @include txt-sub($fs-xs);
 }
@@ -290,7 +290,7 @@
   left: 50%;
   transform: translateX(-50%);
   margin-top: 1px;
-  padding: 0 4px;
+  padding: 0 $sp-4;
   border-radius: 2px;
   background: rgba(255, 255, 255, 0.92);
   font-size: $fs-3xs;
@@ -327,8 +327,8 @@
       animation: epi 1.6s ease-out infinite;
     }
     em {
-      margin-top: 2px;
-      padding: 0 4px;
+      margin-top: $sp-2;
+      padding: 0 $sp-4;
       border-radius: 2px;
       background: $dg;
       color: #fff;
@@ -352,7 +352,7 @@
   li {
     &.ly {
       label {
-        @include flex-c($gap: 8px);
+        @include flex-c($gap: $sp-8);
         width: 100%;
         cursor: pointer;
       }
@@ -397,7 +397,7 @@
     }
   }
   .ar li {
-    @include flex-c($gap: 8px);
+    @include flex-c($gap: $sp-8);
     padding: 3px 0;
     font-size: $fs-2xs;
   }
@@ -411,9 +411,9 @@
   padding: 0;
   font-size: $fs-2xs;
   .th {
-    @include flex-c($gap: 6px);
+    @include flex-c($gap: $sp-6);
     height: 36px;
-    padding: 0 6px 0 14px;
+    padding: 0 $sp-6 0 $sp-14;
     border-bottom: 1px solid $g30;
     font-size: $fs-xs;
     font-weight: 700;
@@ -426,12 +426,12 @@
     }
   }
   .tb {
-    padding: 8px 14px;
+    padding: $sp-8 $sp-14;
   }
   dl {
     display: grid;
     grid-template-columns: 70px 1fr;
-    gap: 3px 8px;
+    gap: 3px $sp-8;
   }
   dt {
     color: $c-sub;
@@ -441,7 +441,7 @@
   }
   .tl {
     li {
-      padding: 6px 0;
+      padding: $sp-6 0;
       &:hover {
         background: #fffbd0;
       }
@@ -460,10 +460,10 @@
 .gis-sum {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 4px;
+  gap: $sp-4;
   text-align: center;
   div {
-    padding: 6px 0;
+    padding: $sp-6 0;
     border-radius: 2px;
     background: $g5;
   }
@@ -500,7 +500,7 @@
   }
   .work {
     border: 0;
-    padding: 12px 16px;
+    padding: $sp-12 $sp-16;
   }
 }
 /* 지도 화면: 바깥 여백·테두리 없이 지도 영역 최대(2026-11-16 사용자 결정) */
@@ -508,7 +508,7 @@
   .page-head {
     flex: 0 0 auto;
     margin: 0;
-    padding: 12px 16px 10px;
+    padding: $sp-12 $sp-16 $sp-10;
     .tit {
       font-size: $fs-xl;
     }

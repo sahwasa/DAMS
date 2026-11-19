@@ -97,7 +97,7 @@ img {
 .req::after {
   content: "*";
   color: $dg;
-  margin-left: 2px;
+  margin-left: $sp-2;
 }
 .t-l {
   text-align: left !important;
@@ -127,13 +127,13 @@ img {
   margin-top: 0 !important;
 }
 .mt8 {
-  margin-top: 8px !important;
+  margin-top: $sp-8 !important;
 }
 .mt16 {
-  margin-top: 16px !important;
+  margin-top: $sp-16 !important;
 }
 .mt24 {
-  margin-top: 24px !important;
+  margin-top: $sp-24 !important;
 }
 .w100 {
   width: 100% !important;
@@ -145,7 +145,7 @@ img {
   width: 200px !important;
 }
 .flex {
-  @include flex-c($gap: 6px);
+  @include flex-c($gap: $sp-6);
 }
 .ml-auto {
   margin-left: auto;

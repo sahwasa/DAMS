@@ -3,10 +3,10 @@
 .bbs-v {
   border-top: 2px solid $g80;
   .v-head {
-    padding: 18px 20px 14px;
+    padding: $sp-18 $sp-20 $sp-14;
     border-bottom: 1px solid $g30;
     h3 {
-      @include flex-c($gap: 8px);
+      @include flex-c($gap: $sp-8);
       font-size: $fs-t1;
       @include txt-strong;
       line-height: 1.4;
@@ -15,26 +15,26 @@
   .v-meta {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 10px;
+    margin-top: $sp-10;
     @include txt-sub($fs-xs);
     li + li::before {
       content: "";
       display: inline-block;
       width: 1px;
       height: 11px;
-      margin: 0 12px;
+      margin: 0 $sp-12;
       background: $g40;
       vertical-align: -1px;
     }
     b {
-      margin-left: 6px;
+      margin-left: $sp-6;
       font-weight: 500;
       color: $c-body;
     }
   }
   .v-body {
     min-height: 240px;
-    padding: 24px 20px;
+    padding: $sp-24 $sp-20;
     font-size: $fs-b;
     line-height: 1.8;
     color: $g80;
@@ -42,8 +42,8 @@
   }
   .v-file {
     display: flex;
-    gap: 16px;
-    padding: 12px 20px;
+    gap: $sp-16;
+    padding: $sp-12 $sp-20;
     border-top: 1px solid $g30;
     background: $g5;
     > strong {
@@ -63,13 +63,13 @@
   }
 }
 .v-nav {
-  margin-top: 24px;
+  margin-top: $sp-24;
   border-top: 1px solid $g70;
   border-bottom: 1px solid $g30;
   li {
     @include flex-c;
     height: 44px;
-    padding: 0 20px;
+    padding: 0 $sp-20;
     font-size: $fs-s;
     + li {
       border-top: 1px solid $g10;
@@ -80,7 +80,7 @@
       color: $c-body;
     }
     > span i {
-      margin-right: 4px;
+      margin-right: $sp-4;
       color: $g50;
     }
     > span.none {
@@ -108,28 +108,28 @@
 @include mobile {
   .bbs-v {
     .v-head {
-      padding: 14px 4px 12px;
+      padding: $sp-14 $sp-4 $sp-12;
       h3 {
         flex-wrap: wrap;
         font-size: $fs-l;
       }
     }
     .v-body {
-      padding: 16px 4px;
+      padding: $sp-16 $sp-4;
       min-height: 160px;
     }
     .v-file {
       flex-direction: column;
-      gap: 6px;
-      padding: 12px;
+      gap: $sp-6;
+      padding: $sp-12;
     }
   }
   .v-nav {
     li {
       flex-wrap: wrap;
       height: auto;
-      padding: 10px 4px;
-      gap: 2px 0;
+      padding: $sp-10 $sp-4;
+      gap: $sp-2 0;
       > span {
         flex: 0 0 72px;
       }

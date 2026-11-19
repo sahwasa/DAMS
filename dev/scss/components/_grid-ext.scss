@@ -14,7 +14,7 @@
             font-weight: 400;
             font-size: $fs-2xs;
             color: $c-body;
-            margin-left: 8px;
+            margin-left: $sp-8;
           }
         }
       }
@@ -28,9 +28,9 @@
   }
 }
 .result-box {
-  @include flex-c($gap: 14px);
-  padding: 12px 18px;
-  margin-bottom: 16px;
+  @include flex-c($gap: $sp-14);
+  padding: $sp-12 $sp-18;
+  margin-bottom: $sp-16;
   border: 1px solid;
   border-radius: $r;
   > i {
@@ -59,8 +59,8 @@
   }
 }
 .log-box {
-  margin-top: 12px;
-  padding: 8px 14px;
+  margin-top: $sp-12;
+  padding: $sp-8 $sp-14;
   max-height: 120px;
   overflow-y: auto;
   background: $g5;
@@ -79,7 +79,7 @@
 .tab {
   li {
     .badge {
-      margin-left: 6px;
+      margin-left: $sp-6;
       height: 20px;
       padding-top: 1px;
       font-size: $fs-3xs;

@@ -3,10 +3,10 @@
 .page-head {
   display: flex;
   align-items: flex-end;
-  padding-bottom: 4px;
-  margin-bottom: 20px;
+  padding-bottom: $sp-4;
+  margin-bottom: $sp-20;
   .tit {
-    @include flex-c($gap: 6px);
+    @include flex-c($gap: $sp-6);
     font-size: $fs-3xl;
     @include txt-strong;
     line-height: 1.4;
@@ -29,7 +29,7 @@
 }
 .bread {
   @include flex-c;
-  margin-top: 6px;
+  margin-top: $sp-6;
   @include txt-sub($fs-s);
   li {
     &:first-child {
@@ -43,7 +43,7 @@
     + li::before {
       content: "\ea6e";
       font-family: remixicon;
-      margin: 0 4px;
+      margin: 0 $sp-4;
       color: $g50;
     }
     &:last-child {
@@ -59,9 +59,9 @@
   margin-left: auto;
 }
 .sub-head {
-  @include flex-c($gap: 6px);
+  @include flex-c($gap: $sp-6);
   min-height: $h-btn;
-  margin: 24px 0 8px;
+  margin: $sp-24 0 $sp-8;
   &:first-child {
     margin-top: 0;
   }
@@ -74,7 +74,7 @@
   .h4 {
     font-size: $fs-t3;
     @include txt-strong;
-    @include flex-c($gap: 4px);
+    @include flex-c($gap: $sp-4);
   }
   h4::before,
   .h4::before {
@@ -84,12 +84,12 @@
     font-size: $fs-s;
   }
   .cnt {
-    margin-left: 6px;
+    margin-left: $sp-6;
     font-size: $fs-s;
     color: $c-body;
     b {
       @include txt-pri(500);
-      margin: 0 2px;
+      margin: 0 $sp-2;
     }
   }
   .btns {
@@ -97,7 +97,7 @@
   }
 }
 .btns {
-  @include flex-c($gap: 4px);
+  @include flex-c($gap: $sp-4);
   &.c {
     justify-content: center;
   }

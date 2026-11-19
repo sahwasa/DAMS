@@ -3,7 +3,7 @@
 .mtree {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
+  gap: $sp-12;
   align-items: start;
   > li {
     border: 1px solid $g30;
@@ -13,7 +13,7 @@
   > li > .chk {
     display: flex;
     margin: 0;
-    padding: 0 12px;
+    padding: 0 $sp-12;
     line-height: 38px;
     background: $g5;
     border-bottom: 1px solid $g30;
@@ -24,7 +24,7 @@
     border-bottom: 0;
   }
   ul {
-    padding: 6px 8px 8px 14px;
+    padding: $sp-6 $sp-8 $sp-8 $sp-14;
     .chk {
       display: flex;
       margin: 0;
@@ -41,7 +41,7 @@
     > li {
       @include flex-c;
       flex-wrap: wrap;
-      gap: 2px 4px;
+      gap: $sp-2 $sp-4;
     }
     > li > .chk {
       flex: 0 1 auto;
@@ -50,7 +50,7 @@
   }
   .fns {
     display: flex;
-    gap: 4px;
+    gap: $sp-4;
     margin-left: auto;
     .chk {
       display: inline-flex !important;
@@ -81,8 +81,8 @@
 .fn-guide {
   @include flex-c;
   flex-wrap: wrap;
-  gap: 4px;
-  margin: 0 0 12px;
+  gap: $sp-4;
+  margin: 0 0 $sp-12;
   font-size: $fs-xs;
   color: $c-body;
   i {
@@ -99,9 +99,9 @@
   background: #f3f5ff;
 }
 .sms-row {
-  @include flex-c($gap: 12px);
-  padding: 12px 16px;
-  margin-bottom: 12px;
+  @include flex-c($gap: $sp-12);
+  padding: $sp-12 $sp-16;
+  margin-bottom: $sp-12;
   border: 1px solid $g30;
   border-radius: 4px;
   background: $g5;
@@ -135,7 +135,7 @@
     > span:not(.f-msg) {
       flex: 1 1 100%;
       flex-wrap: wrap;
-      row-gap: 4px;
+      row-gap: $sp-4;
     }
     b {
       flex-basis: 100%;

@@ -316,7 +316,7 @@ $gm-dim: rgba(70, 70, 70, 0.5);
 .gm-cl {
   min-width: 30px;
   height: 30px;
-  padding: 0 4px;
+  padding: 0 $sp-4;
   border: 2px solid #fff;
   border-radius: 15px;
   background: #e5202e;
@@ -343,7 +343,7 @@ $gm-dim: rgba(70, 70, 70, 0.5);
   z-index: 20;
   min-width: 200px;
   max-width: 280px;
-  padding: 6px 14px;
+  padding: $sp-6 $sp-14;
   background: #fff;
   border: 1px solid $c-line2;
   border-radius: 8px;
@@ -352,7 +352,7 @@ $gm-dim: rgba(70, 70, 70, 0.5);
   color: $c-title;
   cursor: default;
   li {
-    @include flex-c($gap: 8px);
+    @include flex-c($gap: $sp-8);
     padding: 7px 0;
     + li {
       border-top: 1px solid $c-line2;
@@ -372,7 +372,7 @@ $gm-dim: rgba(70, 70, 70, 0.5);
   bottom: 10px;
   z-index: 9;
   margin: 0;
-  padding: 3px 8px;
+  padding: 3px $sp-8;
   border-radius: 2px;
   background: rgba(255, 255, 255, 0.88);
   font-size: $fs-2xs;
@@ -407,7 +407,7 @@ $gm-dim: rgba(70, 70, 70, 0.5);
   font-size: $fs-xs;
   summary {
     @include flex-c($gap: 5px);
-    padding: 5px 10px;
+    padding: 5px $sp-10;
     border: 1px solid $c-line2;
     border-radius: 8px;
     background: #fff;
@@ -443,7 +443,7 @@ $gm-dim: rgba(70, 70, 70, 0.5);
   overflow: hidden;
   > ul,
   > .etc {
-    padding: 6px 10px;
+    padding: $sp-6 $sp-10;
   }
   > ul + ul,
   > ul + .etc {
@@ -456,7 +456,7 @@ $gm-dim: rgba(70, 70, 70, 0.5);
     li {
       flex: 1;
       white-space: nowrap;
-      @include flex-c($gap: 6px);
+      @include flex-c($gap: $sp-6);
       padding: 3px 0;
     }
     i {
@@ -478,7 +478,7 @@ $gm-dim: rgba(70, 70, 70, 0.5);
   }
   .md {
     label {
-      @include flex-c($gap: 6px);
+      @include flex-c($gap: $sp-6);
       font-size: $fs-2xs;
       line-height: 22px;
       font-weight: 500;
@@ -535,7 +535,7 @@ $gm-dim: rgba(70, 70, 70, 0.5);
     }
   }
   .hz li {
-    @include flex-c($gap: 8px);
+    @include flex-c($gap: $sp-8);
     padding: 3px 0;
     font-size: $fs-2xs;
   }

@@ -4,7 +4,7 @@
 .cert-chip {
   @include flex-c($gap: 5px, $d: inline-flex);
   height: 26px;
-  padding: 0 12px 0 10px;
+  padding: 0 $sp-12 0 $sp-10;
   border: 1px solid #cfd8f6;
   border-radius: 13px;
   background: #f3f5ff;
@@ -20,7 +20,7 @@
   }
   em {
     position: relative;
-    margin-left: 4px;
+    margin-left: $sp-4;
     padding-left: 9px;
     font-style: normal;
     font-weight: 400;
@@ -40,7 +40,7 @@
 .integ-chip {
   @include flex-c($gap: 3px, $d: inline-flex);
   height: 20px;
-  margin-left: 6px;
+  margin-left: $sp-6;
   padding: 0 7px;
   border: 1px solid #cfd8f6;
   border-radius: 10px;
@@ -55,7 +55,7 @@
   }
 }
 .integ-bd {
-  margin-left: 6px;
+  margin-left: $sp-6;
   vertical-align: 1px;
 }
 .cert-chip.integ {
@@ -65,15 +65,15 @@
   position: absolute;
   z-index: 500;
   width: 340px;
-  padding: 0 0 10px;
+  padding: 0 0 $sp-10;
   border: 1px solid $g40;
   border-radius: 4px;
   background: #fff;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
   .layer-h {
-    @include flex-c($gap: 4px);
+    @include flex-c($gap: $sp-4);
     height: 38px;
-    padding: 0 8px 0 12px;
+    padding: 0 $sp-8 0 $sp-12;
     border-bottom: 1px solid $g20;
     font-size: $fs-s;
     @include txt-strong;
@@ -86,14 +86,14 @@
     }
   }
   p {
-    margin: 8px 12px 6px;
+    margin: $sp-8 $sp-12 $sp-6;
     @include txt-sub;
   }
   ul {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 4px 8px;
-    margin: 0 12px;
+    gap: $sp-4 $sp-8;
+    margin: 0 $sp-12;
     font-size: $fs-xs;
   }
   li::before {
@@ -108,7 +108,7 @@
 .cert-none {
   @include flex-c($d: inline-flex);
   height: 26px;
-  padding: 0 12px;
+  padding: 0 $sp-12;
   border: 1px dashed $g40;
   border-radius: 13px;
   @include txt-sub($fs-xs);
@@ -152,7 +152,7 @@ td.lm {
   white-space: nowrap;
 }
 .acnt-lg .badge {
-  margin-right: 2px;
+  margin-right: $sp-2;
 }
 .lm-via {
   color: $c-sub;
@@ -165,10 +165,10 @@ td.lm {
 td.lm .integ-chip {
   margin-left: 0;
   gap: 1px;
-  padding: 0 4px 0 8px;
+  padding: 0 $sp-4 0 $sp-8;
 }
 .acnt-lg {
-  margin: 0 0 0 8px;
+  margin: 0 0 0 $sp-8;
   b {
     font-weight: 600;
   }

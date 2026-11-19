@@ -4,7 +4,7 @@
 .sel,
 .txa {
   height: $h-inp;
-  padding: 0 10px;
+  padding: 0 $sp-10;
   border: 1px solid $c-line;
   border-radius: $r-s;
   background: #fff;
@@ -55,7 +55,7 @@
   text-align: right;
 }
 .sel {
-  padding-right: 28px;
+  padding-right: $sp-28;
   appearance: none;
   background: #fff
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5'%3E%3Cpath d='M0 0h8L4 5z' fill='%23505050'/%3E%3C/svg%3E")
@@ -70,13 +70,13 @@
   width: 100%;
   height: auto;
   min-height: 90px;
-  padding: 8px 10px;
+  padding: $sp-8 $sp-10;
   resize: vertical;
   line-height: 1.5;
 }
 .f-msg {
   display: block;
-  margin-top: 4px;
+  margin-top: $sp-4;
   @include txt-sub;
   &.err {
     color: $dg-t;
@@ -97,7 +97,7 @@
     float: none;
     display: block;
     text-align: right;
-    margin-top: 2px;
+    margin-top: $sp-2;
   }
 }
 // input + icon (search/date)
@@ -112,7 +112,7 @@
 }
 .inp-date {
   .inp {
-    padding-right: 6px;
+    padding-right: $sp-6;
   }
   input[type="date"]::-webkit-calendar-picker-indicator {
     cursor: pointer;
@@ -146,14 +146,14 @@
   }
 }
 .range {
-  @include flex-c($gap: 4px, $d: inline-flex);
+  @include flex-c($gap: $sp-4, $d: inline-flex);
   > span {
     color: $c-sub;
   }
 }
 .inp-file {
   display: flex;
-  gap: 4px;
+  gap: $sp-4;
   align-items: center;
   .inp {
     flex: 1;
@@ -162,8 +162,8 @@
 // check / radio
 .chk,
 .rdo {
-  @include flex-c($gap: 6px, $d: inline-flex);
-  margin-right: 16px;
+  @include flex-c($gap: $sp-6, $d: inline-flex);
+  margin-right: $sp-16;
   font-size: $fs-s;
   cursor: pointer;
   vertical-align: middle;
@@ -219,7 +219,7 @@
 }
 // toggle
 .tgl {
-  @include flex-c($gap: 6px, $d: inline-flex);
+  @include flex-c($gap: $sp-6, $d: inline-flex);
   cursor: pointer;
   font-size: $fs-s;
   input {

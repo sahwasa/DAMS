@@ -1,9 +1,9 @@
 // 시스템 소개 | 재난 예경보 통합관리시스템 화면 전용
 @use "../abstracts" as *;
 .intro-hero {
-  @include flex-c($gap: 32px);
-  padding: 28px 32px;
-  margin-bottom: 24px;
+  @include flex-c($gap: $sp-32);
+  padding: $sp-28 $sp-32;
+  margin-bottom: $sp-24;
   border: 1px solid $in-b;
   border-radius: 4px;
   background: linear-gradient(90deg, $in-s, #fff);
@@ -16,11 +16,11 @@
     color: $pri;
   }
   h3 {
-    margin: 4px 0 10px;
+    margin: $sp-4 0 $sp-10;
     font-size: $fs-3xl;
     @include txt-strong;
     small {
-      margin-left: 8px;
+      margin-left: $sp-8;
       font-size: $fs-b;
       font-weight: 500;
       color: $c-sub;
@@ -34,7 +34,7 @@
   .kpis {
     display: grid;
     grid-template-columns: repeat(3, 150px);
-    gap: 10px;
+    gap: $sp-10;
   }
   .kpi {
     background: #fff;
@@ -43,7 +43,7 @@
 .feat {
   .card-b {
     display: flex;
-    gap: 14px;
+    gap: $sp-14;
     align-items: flex-start;
   }
   .ic {
@@ -57,7 +57,7 @@
   }
   b {
     display: block;
-    margin-bottom: 4px;
+    margin-bottom: $sp-4;
     font-size: $fs-b;
     color: $c-title;
   }
@@ -69,7 +69,7 @@
 .flow {
   display: flex;
   align-items: stretch;
-  gap: 8px;
+  gap: $sp-8;
   > i {
     align-self: center;
     font-size: $fs-2xl;
@@ -77,14 +77,14 @@
   }
   .nd {
     flex: 1;
-    padding: 14px 16px;
+    padding: $sp-14 $sp-16;
     border: 1px solid $g30;
     border-radius: 4px;
     background: $g5;
     font-size: $fs-xs;
     b {
       display: block;
-      margin-bottom: 6px;
+      margin-bottom: $sp-6;
       font-size: $fs-b;
       color: $c-title;
     }
@@ -104,8 +104,8 @@
   .intro-hero {
     flex-direction: column;
     align-items: stretch;
-    gap: 16px;
-    padding: 20px;
+    gap: $sp-16;
+    padding: $sp-20;
     .kpis {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
@@ -123,7 +123,7 @@
       font-size: $fs-xl;
       small {
         display: block;
-        margin: 2px 0 0;
+        margin: $sp-2 0 0;
       }
     }
     .kpis {

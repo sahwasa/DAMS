@@ -4,20 +4,20 @@
   position: relative;
   display: flex;
   align-items: flex-start;
-  gap: 16px;
-  padding: 14px 20px;
+  gap: $sp-16;
+  padding: $sp-14 $sp-20;
   background: $sch-bg;
   border: 1px solid $sch-bd;
   border-radius: $r;
-  margin-bottom: 16px;
+  margin-bottom: $sp-16;
   .rows {
     flex: 1;
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 8px 24px;
+    gap: $sp-8 $sp-24;
   }
   .it {
-    @include flex-c($gap: 8px);
+    @include flex-c($gap: $sp-8);
     min-width: 0;
     &.c2 {
       grid-column: span 2;
@@ -44,7 +44,7 @@
   }
   .ctrl {
     display: flex;
-    gap: 4px;
+    gap: $sp-4;
     align-self: flex-end;
   }
 }
@@ -55,7 +55,7 @@
       &:not(.r1) {
         display: flex;
         flex-wrap: wrap;
-        gap: 8px 32px;
+        gap: $sp-8 $sp-32;
       }
       &:not(.r1) {
         > .it {
@@ -87,16 +87,16 @@
 @include pc {
   .sch-box {
     .rows.r1.r1 {
-      column-gap: 16px;
+      column-gap: $sp-16;
     }
     #rgSido,
     #rgSgg {
       flex: 0 0 120px;
       width: 120px !important;
-      margin-left: 4px !important;
+      margin-left: $sp-4 !important;
     }
     #regionCond > .rdo {
-      margin-right: 10px;
+      margin-right: $sp-10;
     }
     #selPeriodType,
     .rows.r1 #selYear {
@@ -125,7 +125,7 @@
       &.r1 {
         display: flex;
         flex-wrap: wrap;
-        gap: 8px 28px;
+        gap: $sp-8 $sp-28;
       }
       &.r1 {
         > .it {
@@ -134,7 +134,7 @@
         > .it > .lb,
         > .it > label:not(.rdo):not(.chk) {
           flex: 0 0 auto;
-          margin-right: 4px;
+          margin-right: $sp-4;
         }
         .flex {
           &.w100 {

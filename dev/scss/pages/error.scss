@@ -20,7 +20,7 @@ body {
     height: 100%;
   }
   h1 a {
-    @include flex-c($gap: 10px);
+    @include flex-c($gap: $sp-10);
     font-size: 26px;
     font-weight: 700;
     letter-spacing: -0.03em;
@@ -32,7 +32,7 @@ body {
   }
 }
 .er .er-in {
-  padding: 110px 40px 80px;
+  padding: 110px $sp-40 80px;
 }
 .er-ico {
   display: block;
@@ -64,11 +64,11 @@ body {
 }
 .er-btns {
   display: flex;
-  gap: 2px;
+  gap: $sp-2;
   margin-top: 50px;
   .btn {
     height: 52px;
-    padding: 0 20px;
+    padding: 0 $sp-20;
     font-size: $fs-s;
     border-radius: 2px;
   }
@@ -79,9 +79,9 @@ body {
   }
 }
 .er-desk {
-  @include flex-c($gap: 20px);
-  margin-top: 40px;
-  padding-top: 16px;
+  @include flex-c($gap: $sp-20);
+  margin-top: $sp-40;
+  padding-top: $sp-16;
   border-top: 1px solid $g20;
   font-size: $fs-b;
   strong {
@@ -97,11 +97,11 @@ body {
   .er-head {
     height: 64px;
     .er-in {
-      padding: 0 16px;
+      padding: 0 $sp-16;
     }
     h1 a {
       font-size: $fs-l;
-      gap: 8px;
+      gap: $sp-8;
     }
     .gov-logo {
       width: 36px;
@@ -109,24 +109,24 @@ body {
     }
   }
   .er .er-in {
-    padding: 48px 20px 40px;
+    padding: 48px $sp-20 $sp-40;
   }
   .er-ico {
     font-size: 72px;
     margin-left: -7px;
   }
   .er h2 {
-    margin-bottom: 28px;
+    margin-bottom: $sp-28;
     font-size: 28px;
   }
   .er-btns {
-    margin-top: 32px;
+    margin-top: $sp-32;
   }
 }
 @include mobile {
   .er {
     .er-in {
-      padding: 40px 16px 32px;
+      padding: $sp-40 $sp-16 $sp-32;
     }
     h2 {
       font-size: $fs-3xl;
@@ -142,13 +142,13 @@ body {
   }
   .er-btns {
     flex-direction: column;
-    gap: 8px;
+    gap: $sp-8;
     .btn {
       width: 100%;
       height: 48px;
     }
   }
   .er-desk {
-    gap: 12px;
+    gap: $sp-12;
   }
 }

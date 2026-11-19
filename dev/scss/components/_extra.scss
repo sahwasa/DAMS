@@ -10,7 +10,7 @@
 .col5 {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 16px;
+  gap: $sp-16;
 }
 .chk input:indeterminate {
   background: $pri linear-gradient(#fff, #fff) center/8px 2px no-repeat;
@@ -42,13 +42,13 @@
   &.mini th,
   &.mini td {
     height: 26px;
-    padding: 2px 6px;
+    padding: $sp-2 $sp-6;
   }
 }
 .chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: $sp-4;
   span,
   button {
     @include flex-c($d: inline-flex);

@@ -3,13 +3,13 @@
 .tab {
   display: flex;
   border-bottom: 2px solid $pri;
-  margin-bottom: 16px;
+  margin-bottom: $sp-16;
   li {
     a,
     button {
       @include flex-c;
       height: 38px;
-      padding: 0 24px;
+      padding: 0 $sp-24;
       margin-right: -1px;
       border: 1px solid $c-line2;
       border-bottom: 0;
@@ -37,14 +37,14 @@
 }
 .tab-s {
   display: flex;
-  gap: 16px;
+  gap: $sp-16;
   border-bottom: 1px solid $c-line2;
-  margin-bottom: 12px;
+  margin-bottom: $sp-12;
   li {
     a,
     button {
       display: block;
-      padding: 6px 2px;
+      padding: $sp-6 $sp-2;
       @include txt-sub($fs-s);
       margin-bottom: -1px;
     }
@@ -57,14 +57,14 @@
 }
 .tab-v {
   display: flex;
-  gap: 16px;
+  gap: $sp-16;
   > ul {
     flex: 0 0 180px;
     border-top: 2px solid $c-title;
   }
   > ul li a {
     display: block;
-    padding: 10px 14px;
+    padding: $sp-10 $sp-14;
     border-bottom: 1px solid $c-line2;
     font-size: $fs-s;
   }

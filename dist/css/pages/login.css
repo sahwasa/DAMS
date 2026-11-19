@@ -45,16 +45,6 @@ body {
   letter-spacing: -0.04em;
   color: #404040;
 }
-.lg-logo span {
-  display: inline-block;
-  margin-top: 2px;
-  padding-bottom: 1px;
-  border-bottom: 1px solid #172e55;
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 0.3em;
-  color: #172e55;
-}
 
 .lg-sso {
   margin-top: 24px;

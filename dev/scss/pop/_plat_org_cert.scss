@@ -2,7 +2,7 @@
 // plat_org_cert (화면정의서 UI-DA04-001-P02) 연계확인서 — dialog 안으로 한정
 .pop-dlg[data-pop="plat_org_cert"] {
   .doc-wrap {
-    padding: 20px;
+    padding: $sp-20;
     background: #eef1f6;
     border-radius: 4px;
   }
@@ -20,13 +20,13 @@
     .doc-sub {
       text-align: center;
       @include txt-sub;
-      margin: 4px 0 20px;
+      margin: $sp-4 0 $sp-20;
     }
     .tbl {
       font-size: $fs-xs;
     }
     .sub-head {
-      margin-top: 20px;
+      margin-top: $sp-20;
     }
     .grid {
       td {
@@ -38,8 +38,8 @@
     }
   }
   .cert-info {
-    @include flex-c($gap: 8px);
-    margin-bottom: 12px;
+    @include flex-c($gap: $sp-8);
+    margin-bottom: $sp-12;
     font-size: $fs-xs;
     color: $c-body;
   }

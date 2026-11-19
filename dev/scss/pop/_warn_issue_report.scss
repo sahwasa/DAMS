@@ -2,12 +2,12 @@
 // warn_issue_report (화면정의서 UI-DA03-003-P02) 재난발령 보고서 — dialog 안으로 한정
 .pop-dlg[data-pop="warn_issue_report"] {
   .rpt {
-    padding: 28px 32px 24px;
+    padding: $sp-28 $sp-32 $sp-24;
     border: 1px solid $g30;
     background: #fff;
     color: $g80;
     h1 {
-      margin-bottom: 6px;
+      margin-bottom: $sp-6;
       font-size: $fs-2xl;
       font-weight: 800;
       text-align: center;
@@ -17,15 +17,15 @@
     .meta {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 18px;
-      padding-bottom: 8px;
+      margin-bottom: $sp-18;
+      padding-bottom: $sp-8;
       border-bottom: 2px solid $g90;
       font-size: $fs-xs;
       color: $c-body;
     }
     h2 {
-      @include flex-c($gap: 6px);
-      margin: 18px 0 8px;
+      @include flex-c($gap: $sp-6);
+      margin: $sp-18 0 $sp-8;
       font-size: $fs-b;
       @include txt-strong;
       &::before {
