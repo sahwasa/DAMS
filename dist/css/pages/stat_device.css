@@ -91,7 +91,7 @@
 /* 차트 우선·페이지 스크롤(2026-11-11, 재난발령통계와 같은 방식) */
 .dm-cat {
   position: relative;
-  height: 354px;
+  height: 291px;
 }
 
 .dm-h {
@@ -113,7 +113,7 @@
 }
 
 .dm-v.vbar {
-  height: 230px;
+  height: 167px;
   margin: 22px 0 0;
   gap: 30px;
   padding: 0 24px;
@@ -155,11 +155,11 @@
 .md-tr,
 .ds-tr {
   position: relative;
-  height: 354px;
+  height: 291px;
 }
 
 .ds-tr {
-  height: 354px;
+  height: 291px;
 }
 
 .md-tr svg,

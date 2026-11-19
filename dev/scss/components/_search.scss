@@ -1,17 +1,16 @@
 @use "../abstracts" as *;
 /* ---------- 7. Search box ---------- */
+/* 검색영역(UI 표준정의서 5.2, 2026-11-19): 1줄 4칸 격자 — 검색조건명·컴포넌트 왼쪽 열 맞춤, 정보 흐름 Z, 긴 항목(기간·선택상자 2개)은 2칸(.c2), 홀수면 마지막 칸 비움, 필수 항목 먼저, 버튼은 검색조건 아래 오른쪽 */
 .sch-box {
   position: relative;
-  display: flex;
-  align-items: flex-start;
-  gap: $sp-16;
+  @include flex-col;
+  gap: $sp-10;
   padding: $sp-14 $sp-20;
   background: $sch-bg;
   border: 1px solid $sch-bd;
   border-radius: $r;
   margin-bottom: $sp-16;
   .rows {
-    flex: 1;
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: $sp-8 $sp-24;
@@ -37,103 +36,31 @@
       white-space: nowrap;
     }
     > .inp,
-    > .sel,
     > .inp-ico {
       @include flex-fill;
     }
+    > .sel,
     .flex > .sel {
-      flex: 1 1 0;
-      min-width: 0;
+      flex: 0 1 auto;
+      width: auto;
+      min-width: 100px;
+      max-width: 100%;
     }
   }
 }
-/* 검색 선택상자 폭은 개별 style 대신 공통 규칙(PC는 내용 폭) */
-.sch-box .ctrl {
-  display: flex;
-  gap: $sp-4;
-  align-self: flex-end;
-}
-/* PC 검색영역(2026-11-10): 항목은 내용 폭(컨트롤 고정 폭 — 선택상자 160·입력 200, 임의로 늘리지 않음, 사용자 요청), 줄이 차면 다음 줄 */
-@include pc {
-  .sch-box {
-    .rows {
-      &:not(.r1) {
-        display: flex;
-        flex-wrap: wrap;
-        gap: $sp-8 $sp-32;
-      }
-      &:not(.r1) {
-        > .it {
-          flex: 0 0 auto;
-        }
-        > .it.c4 {
-          flex-basis: 100%;
-        }
-        .flex.w100 {
-          width: auto;
-        }
-        > .it > .inp {
-          flex: 0 0 200px;
-        }
-      }
-      .it {
-        .sel {
-          flex: 0 0 auto;
-          width: auto;
-          min-width: 100px;
-          max-width: 320px;
-        }
-        .inp.lg {
-          flex: 0 0 320px;
-        }
-      }
-      &:not(.r1) .range {
-        width: auto;
-      }
-    }
+/* 선택상자는 내용 폭(칸 안에서 왼쪽 정렬) */
+.sch-box {
+  .ctrl {
+    display: flex;
+    gap: $sp-4;
+    align-self: flex-end;
   }
-}
-/* 한 줄 검색(.rows.r1, PC): 항목 수가 적은 검색영역은 항목을 내용 폭으로 한 줄 배치 */
-@include pc {
-  .sch-box {
-    .rows.r1.r1 {
-      column-gap: $sp-16;
-    }
-    #rgSido,
-    #rgSgg {
-      margin-left: $sp-4;
-    }
-    #regionCond > .rdo {
-      margin-right: $sp-10;
-    }
+  #rgSido,
+  #rgSgg {
+    margin-left: $sp-4;
   }
-}
-/* 통계 검색 항목 간격 16(2026-11-18), 선택상자 폭은 내용에 맞춤(2026-11-19) */
-@include pc {
-  .sch-box {
-    .rows {
-      &.r1 {
-        display: flex;
-        flex-wrap: wrap;
-        gap: $sp-8 $sp-28;
-      }
-      &.r1 {
-        > .it {
-          flex: 0 1 auto;
-        }
-        > .it > .lb,
-        > .it > label:not(.rdo):not(.chk) {
-          flex: 0 0 auto;
-          margin-right: $sp-4;
-        }
-        .flex.w100 {
-          width: auto;
-        }
-        .range {
-          width: auto;
-        }
-      }
-    }
+  #regionCond > .rdo {
+    margin-right: $sp-10;
   }
 }
 .sch-more {

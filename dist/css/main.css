@@ -781,10 +781,6 @@ img {
   color: #707070 !important;
 }
 
-.u-cols-1-1-auto {
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto !important;
-}
-
 .u-cols-5-5 {
   grid-template-columns: minmax(0, 5fr) minmax(0, 5fr) !important;
 }
@@ -861,8 +857,8 @@ img {
   height: 300px !important;
 }
 
-.u-h418px {
-  height: 418px !important;
+.u-h379px {
+  height: 379px !important;
 }
 
 .u-h488px {
@@ -1861,11 +1857,12 @@ img {
 }
 
 /* ---------- 7. Search box ---------- */
+/* 검색영역(UI 표준정의서 5.2, 2026-11-19): 1줄 4칸 격자 — 검색조건명·컴포넌트 왼쪽 열 맞춤, 정보 흐름 Z, 긴 항목(기간·선택상자 2개)은 2칸(.c2), 홀수면 마지막 칸 비움, 필수 항목 먼저, 버튼은 검색조건 아래 오른쪽 */
 .sch-box {
   position: relative;
   display: flex;
-  align-items: flex-start;
-  gap: 16px;
+  flex-direction: column;
+  gap: 10px;
   padding: 14px 20px;
   background: #f8f9ff;
   border: 1px solid #dfe4f6;
@@ -1873,7 +1870,6 @@ img {
   margin-bottom: 16px;
 }
 .sch-box .rows {
-  flex: 1;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 8px 24px;
@@ -1902,90 +1898,32 @@ img {
   white-space: nowrap;
 }
 .sch-box .it > .inp,
-.sch-box .it > .sel,
 .sch-box .it > .inp-ico {
   flex: 1;
   min-width: 0;
 }
+.sch-box .it > .sel,
 .sch-box .it .flex > .sel {
-  flex: 1 1 0;
-  min-width: 0;
+  flex: 0 1 auto;
+  width: auto;
+  min-width: 100px;
+  max-width: 100%;
 }
 
-/* 검색 선택상자 폭은 개별 style 대신 공통 규칙(PC는 내용 폭) */
+/* 선택상자는 내용 폭(칸 안에서 왼쪽 정렬) */
 .sch-box .ctrl {
   display: flex;
   gap: 4px;
   align-self: flex-end;
 }
+.sch-box #rgSido,
+.sch-box #rgSgg {
+  margin-left: 4px;
+}
+.sch-box #regionCond > .rdo {
+  margin-right: 10px;
+}
 
-/* PC 검색영역(2026-11-10): 항목은 내용 폭(컨트롤 고정 폭 — 선택상자 160·입력 200, 임의로 늘리지 않음, 사용자 요청), 줄이 차면 다음 줄 */
-@media (min-width: 1280px) {
-  .sch-box .rows:not(.r1) {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px 32px;
-  }
-  .sch-box .rows:not(.r1) > .it {
-    flex: 0 0 auto;
-  }
-  .sch-box .rows:not(.r1) > .it.c4 {
-    flex-basis: 100%;
-  }
-  .sch-box .rows:not(.r1) .flex.w100 {
-    width: auto;
-  }
-  .sch-box .rows:not(.r1) > .it > .inp {
-    flex: 0 0 200px;
-  }
-  .sch-box .rows .it .sel {
-    flex: 0 0 auto;
-    width: auto;
-    min-width: 100px;
-    max-width: 320px;
-  }
-  .sch-box .rows .it .inp.lg {
-    flex: 0 0 320px;
-  }
-  .sch-box .rows:not(.r1) .range {
-    width: auto;
-  }
-}
-/* 한 줄 검색(.rows.r1, PC): 항목 수가 적은 검색영역은 항목을 내용 폭으로 한 줄 배치 */
-@media (min-width: 1280px) {
-  .sch-box .rows.r1.r1 {
-    column-gap: 16px;
-  }
-  .sch-box #rgSido,
-  .sch-box #rgSgg {
-    margin-left: 4px;
-  }
-  .sch-box #regionCond > .rdo {
-    margin-right: 10px;
-  }
-}
-/* 통계 검색 항목 간격 16(2026-11-18), 선택상자 폭은 내용에 맞춤(2026-11-19) */
-@media (min-width: 1280px) {
-  .sch-box .rows.r1 {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px 28px;
-  }
-  .sch-box .rows.r1 > .it {
-    flex: 0 1 auto;
-  }
-  .sch-box .rows.r1 > .it > .lb,
-  .sch-box .rows.r1 > .it > label:not(.rdo):not(.chk) {
-    flex: 0 0 auto;
-    margin-right: 4px;
-  }
-  .sch-box .rows.r1 .flex.w100 {
-    width: auto;
-  }
-  .sch-box .rows.r1 .range {
-    width: auto;
-  }
-}
 .sch-more {
   display: none;
 }
