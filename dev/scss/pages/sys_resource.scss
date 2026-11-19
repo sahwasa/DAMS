@@ -3,52 +3,40 @@
 .cl-wn {
   background: $wn;
 }
-.gauges {
-  display: flex;
-  justify-content: space-around;
-  gap: $sp-8;
-}
-.gauge {
-  text-align: center;
-  font-size: $fs-xs;
-  font-weight: 600;
-  color: $c-body;
-  .donut {
-    width: 90px;
-    height: 90px;
-    margin: 0 auto $sp-2;
-    &::after {
-      inset: 9px;
-    }
-    b {
-      font-size: $fs-m;
-    }
-    small {
-      font-size: $fs-3xs;
-    }
-  }
-}
 .srv {
   .card-h {
-    padding: 0 $sp-12;
+    height: 30px;
+    padding: 0 $sp-10;
     white-space: nowrap;
+    font-size: $fs-s;
     small {
       font-weight: 400;
       font-size: $fs-2xs;
       color: $c-body;
+      margin-left: $sp-6;
     }
     .badge {
       margin-left: auto;
     }
   }
+  .card-b {
+    padding: $sp-4 $sp-10 $sp-6;
+  }
   .hbar {
-    margin-top: $sp-8;
-    padding-top: $sp-6;
-    border-top: 1px dashed $g30;
     li {
-      grid-template-columns: 62px 1fr auto;
-      height: 20px;
+      grid-template-columns: 36px 1fr auto;
+      height: 17px;
       font-size: $fs-2xs;
+      gap: $sp-6;
+      .v {
+        min-width: 0;
+        white-space: nowrap;
+      }
+    }
+    .nv {
+      grid-column: 2/4;
+      text-align: right;
+      color: $c-body;
     }
     .bar {
       background: $g10;
@@ -79,43 +67,34 @@
     overflow: auto;
   }
 }
-/* 창 높이가 900보다 낮으면 게이지를 줄여 업무영역 스크롤 없음(카드 2줄 — 줄당 (900-창높이)/2) */
+/* 창 높이가 900보다 낮으면 카드를 4열 3줄로(MEM 사용량은 title로), 815 이하는 줄 높이도 줄여 업무영역 스크롤 없음 */
 @media (min-width: 1280px) and (max-height: 899px) {
-  .gauge {
-    .donut {
-      width: max(48px, calc(50vh - 360px));
-      height: max(48px, calc(50vh - 360px));
-      &::after {
-        inset: 7px;
-      }
-      b {
-        font-size: $fs-s;
-      }
-      small {
-        font-size: 10px;
-      }
+  #rsrcCards {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .srv {
+    .mu {
+      display: none;
+    }
+    .card-h small {
+      display: none;
     }
   }
 }
 @media (min-width: 1280px) and (max-height: 815px) {
   .srv {
     .card-h {
-      height: 32px;
+      height: 26px;
     }
     .card-b {
-      padding-top: $sp-8;
-      padding-bottom: $sp-8;
+      padding: $sp-2 $sp-10 $sp-4;
     }
-    .hbar {
-      margin-top: $sp-4;
-      padding-top: $sp-4;
-      li {
-        height: 18px;
-      }
+    .hbar li {
+      height: 15px;
+      font-size: $fs-3xs;
     }
   }
-  .gauge .donut {
-    width: max(48px, calc(50vh - 328px));
-    height: max(48px, calc(50vh - 328px));
+  #rsrcCards {
+    gap: $sp-8 !important;
   }
 }
