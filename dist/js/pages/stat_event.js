@@ -656,7 +656,7 @@ function drawMdTrend() {
         return v == null ? '-' : v.toFixed(1) + '%';
       }
     },
-    legend: ecLegend({ left: 36, right: 'auto', icon: 'roundRect', itemHeight: 3, itemWidth: 14 }),
+    legend: ecLegend({ left: 'center', right: 'auto', icon: 'roundRect', itemHeight: 3, itemWidth: 14 }),
     grid: { left: 44, right: 12, top: 34, bottom: 26 },
     xAxis: ecCat(L, {
       boundaryGap: false,

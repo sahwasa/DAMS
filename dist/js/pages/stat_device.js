@@ -1160,7 +1160,7 @@ function drawStatus() {
           );
         }
       },
-      legend: ecLegend(),
+      legend: ecLegend({ left: 'center', right: 'auto' }),
       grid: { left: 44, right: 12, top: 34, bottom: 26 },
       xAxis: X,
       yAxis: ecVal(
@@ -1206,7 +1206,7 @@ function drawStatus() {
           );
         }
       },
-      legend: ecLegend({ data: ['수신율'] }),
+      legend: ecLegend({ left: 'center', right: 'auto', data: ['수신율'] }),
       grid: { left: 44, right: 64, top: 34, bottom: 26 },
       xAxis: ecCat(
         R.map(function (r) {
@@ -1247,7 +1247,7 @@ function drawStatus() {
         return v.toLocaleString() + '건';
       }
     },
-    legend: ecLegend(),
+    legend: ecLegend({ left: 'center', right: 'auto' }),
     grid: { left: 52, right: 48, top: 46, bottom: 26 },
     xAxis: X,
     yAxis: [
