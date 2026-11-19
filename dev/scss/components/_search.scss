@@ -65,20 +65,41 @@
       .rows {
         flex: 1;
         display: flex;
-        flex-wrap: wrap;
-        gap: $sp-8 $sp-32;
+        flex-wrap: nowrap;
+        gap: $sp-8 $sp-20;
+        min-width: 0;
       }
       .it {
-        flex: 0 0 auto;
+        gap: $sp-6;
+      }
+      .inp-date {
+        width: 130px;
+      }
+      .it {
+        flex: 0 1 auto;
         > label:not(.rdo):not(.chk),
-        > .lb {
+        > .lb,
+        > .rdo,
+        > .range {
           flex: 0 0 auto;
         }
-        > .inp {
-          flex: 0 0 200px;
+        .flex {
+          flex: 0 1 auto;
+          min-width: 0;
+        }
+        .sel {
+          flex: 0 1 auto;
+          min-width: 72px;
+        }
+        > .inp,
+        .flex > .inp {
+          flex: 0 1 200px;
+          min-width: 120px;
+          width: 200px;
         }
         > .inp.lg {
-          flex: 0 0 320px;
+          flex: 0 1 320px;
+          width: 320px;
         }
       }
       .ctrl {
@@ -87,15 +108,10 @@
     }
   }
 }
-/* 검색 항목 4개 미만(.one): 한 줄 — 항목은 내용 폭·간격 32, 입력은 고정 폭(늘리지 않음), 버튼은 같은 줄 오른쪽(태블릿·모바일은 격자·아래 줄) */
-.sch-box {
-  #rgSido,
-  #rgSgg {
-    margin-left: $sp-4;
-  }
-  #regionCond > .rdo {
-    margin-right: $sp-10;
-  }
+/* 검색 항목 4개 미만(.one): 한 줄(줄바꿈 없음) — 항목은 내용 폭·간격 20(조건명 옆 6, 날짜 130), 입력은 200 고정(늘리지 않음, 폭이 모자라면 선택상자가 최소 72까지 줄어듦), 버튼은 같은 줄 오른쪽(태블릿·모바일은 격자·아래 줄) */
+.sch-box #rgSido,
+.sch-box #rgSgg {
+  margin-left: $sp-6;
 }
 .sch-more {
   display: none;

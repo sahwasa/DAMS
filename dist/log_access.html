@@ -72,15 +72,14 @@
         </div>
 
         <!-- ===== 업무영역 (화면별 교체) ===== -->
-<form class="sch-box" id="schForm">
+<form class="sch-box one" id="schForm">
           <div class="rows">
             <div class="it c2"><span class="lb req">기간</span>
               <div class="range"><span class="inp-ico inp-date"><input type="date" class="inp" id="dtFr" name="dtFr" value="2026-09-30" title="시작일" required data-label="기간 시작일"></span><span>~</span><span class="inp-ico inp-date"><input type="date" class="inp" id="dtTo" name="dtTo" value="2026-10-30" title="종료일" required data-label="기간 종료일"></span></div>
             </div>
             <div class="it"><label for="useSe">구분</label><select class="sel" id="useSe" name="useSe" data-f="1"><option value="">전체</option><option>로그인</option><option>로그아웃</option><option>메뉴조회</option></select></div>
-            <div class="it"><label for="cntnId">접속 ID</label><input class="inp" id="cntnId" name="cntnId" maxlength="20" placeholder="사용자 ID 입력" data-f="3"></div>
-            <div class="it"><label for="cntnNm">사용자명</label><input class="inp" id="cntnNm" name="cntnNm" maxlength="20" placeholder="사용자명 입력" data-f="3"></div>
-            <div class="it"><label for="menuNm">메뉴명</label><input class="inp" id="menuNm" name="menuNm" maxlength="50" placeholder="메뉴명 입력" data-f="4"></div>
+            <div class="it"><label for="srchWrd">검색어</label>
+              <div class="flex"><select class="sel" id="searchType" name="searchType" title="검색 유형"><option value="3">접속 ID</option><option value="3">사용자명</option><option value="4">메뉴명</option></select><input class="inp" id="srchWrd" name="srchWrd" maxlength="100" placeholder="검색어 입력" title="검색어" data-f="3"></div></div>
           </div>
           <div class="ctrl">
             <button type="reset" class="btn btn-rst"><i class="ri-refresh-line"></i>초기화</button>

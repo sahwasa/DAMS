@@ -90,6 +90,22 @@ function SIDOS() {
       return r.cells[0].textContent;
     });
 }
+/* 시도 선택상자는 약칭 표시(값은 전체 이름) — 검색 한 줄 폭 확보(2026-11-19) */
+function sdShort(x) {
+  var M = {
+    전남광주통합특별시: '전남광주',
+    충청북도: '충북',
+    충청남도: '충남',
+    전북특별자치도: '전북',
+    경상북도: '경북',
+    경상남도: '경남',
+    강원특별자치도: '강원',
+    제주특별자치도: '제주',
+    세종특별자치시: '세종',
+    경기도: '경기'
+  };
+  return M[x] || x.replace(/(특별시|광역시)$/, '');
+}
 function rgOpts(u) {
   var SL = document.getElementById('rgSido'),
     GL = document.getElementById('rgSgg'),
@@ -100,7 +116,7 @@ function rgOpts(u) {
       (u === 'sgg' ? '' : '<option value="">전국</option>') +
       o
         .map(function (x) {
-          return '<option>' + x + '</option>';
+          return '<option value="' + x + '" title="' + x + '">' + sdShort(x) + '</option>';
         })
         .join('');
     SL.value = o.indexOf(k) > -1 ? k : u === 'sgg' ? o[0] : '';
@@ -124,7 +140,7 @@ function rgOpts(u) {
 }
 /* 선택 변경은 선택 목록만 바꾸고, 통계 적용은 [검색](onSearch에서 지역 조건이 바뀌었으면 setUnit) — 2026-11-18 */
 function rUnit() {
-  return (document.querySelector('[name=regionUnit]:checked') || { value: 'sido' }).value;
+  return document.getElementById('regionUnit').value;
 }
 function rgKey() {
   return (
@@ -150,17 +166,13 @@ function keepRow(h, nm) {
 }
 function setUnit(u) {
   UNIT = u;
-  [].forEach.call(document.getElementsByName('regionUnit'), function (r) {
-    r.checked = r.value === u;
-  });
+  document.getElementById('regionUnit').value = u;
   var SL = document.getElementById('rgSido');
   rgOpts(u);
   RGKEY = rgKey();
   var SEL = SL.value,
     SG = u === 'sgg' ? document.getElementById('rgSgg').value : '';
-  [].forEach.call(document.getElementsByName('regionUnit'), function (r) {
-    r.checked = r.value === u;
-  });
+  document.getElementById('regionUnit').value = u;
   var tb = document.getElementById('regionStatTbody'),
     hb = document.querySelector('#regionHeatmap tbody');
   if (!ORIG.tb) {

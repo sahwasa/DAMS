@@ -857,8 +857,8 @@ img {
   height: 300px !important;
 }
 
-.u-h379px {
-  height: 379px !important;
+.u-h418px {
+  height: 418px !important;
 }
 
 .u-h488px {
@@ -1926,33 +1926,51 @@ img {
   .sch-box.one .rows {
     flex: 1;
     display: flex;
-    flex-wrap: wrap;
-    gap: 8px 32px;
+    flex-wrap: nowrap;
+    gap: 8px 20px;
+    min-width: 0;
   }
   .sch-box.one .it {
-    flex: 0 0 auto;
+    gap: 6px;
+  }
+  .sch-box.one .inp-date {
+    width: 130px;
+  }
+  .sch-box.one .it {
+    flex: 0 1 auto;
   }
   .sch-box.one .it > label:not(.rdo):not(.chk),
-  .sch-box.one .it > .lb {
+  .sch-box.one .it > .lb,
+  .sch-box.one .it > .rdo,
+  .sch-box.one .it > .range {
     flex: 0 0 auto;
   }
-  .sch-box.one .it > .inp {
-    flex: 0 0 200px;
+  .sch-box.one .it .flex {
+    flex: 0 1 auto;
+    min-width: 0;
+  }
+  .sch-box.one .it .sel {
+    flex: 0 1 auto;
+    min-width: 72px;
+  }
+  .sch-box.one .it > .inp,
+  .sch-box.one .it .flex > .inp {
+    flex: 0 1 200px;
+    min-width: 120px;
+    width: 200px;
   }
   .sch-box.one .it > .inp.lg {
-    flex: 0 0 320px;
+    flex: 0 1 320px;
+    width: 320px;
   }
   .sch-box.one .ctrl {
     align-self: center;
   }
 }
-/* 검색 항목 4개 미만(.one): 한 줄 — 항목은 내용 폭·간격 32, 입력은 고정 폭(늘리지 않음), 버튼은 같은 줄 오른쪽(태블릿·모바일은 격자·아래 줄) */
+/* 검색 항목 4개 미만(.one): 한 줄(줄바꿈 없음) — 항목은 내용 폭·간격 20(조건명 옆 6, 날짜 130), 입력은 200 고정(늘리지 않음, 폭이 모자라면 선택상자가 최소 72까지 줄어듦), 버튼은 같은 줄 오른쪽(태블릿·모바일은 격자·아래 줄) */
 .sch-box #rgSido,
 .sch-box #rgSgg {
-  margin-left: 4px;
-}
-.sch-box #regionCond > .rdo {
-  margin-right: 10px;
+  margin-left: 6px;
 }
 
 .sch-more {

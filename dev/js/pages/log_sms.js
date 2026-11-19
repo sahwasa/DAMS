@@ -9,6 +9,8 @@ function setCnt(n, pages) {
 }
 /* TODO(API): 검색 조건(form)으로 목록 조회 API 호출 후 목록·건수·페이징 갱신 */
 window.onSearch = function (f) {
+  var st = document.getElementById('searchType');
+  if (st) document.getElementById('srchWrd').dataset.f = st.value; /* 검색어 유형 = 비교할 열 */
   var k = f.searchKeyword ? f.searchKeyword.value.trim() : '',
     ss = [].slice.call(f.querySelectorAll('[data-f]')),
     tb = document.querySelector('.grid tbody'),

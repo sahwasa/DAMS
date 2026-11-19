@@ -62,11 +62,7 @@
   );
   pointer-events: none;
 }
-@include pc {
-  .sch-box #regionCond > .rdo + .rdo {
-    margin-right: 0;
-  }
-}
+
 .rg-all {
   position: absolute;
   left: 10px;
@@ -125,18 +121,18 @@
 }
 .ev-cat {
   position: relative;
-  height: 299px;
+  height: 338px;
 }
 .ev-note {
   margin: $sp-4 0 0;
 }
 .md-cat {
   position: relative;
-  height: 299px;
+  height: 338px;
 }
 .md-tr {
   position: relative;
-  height: 299px;
+  height: 338px;
   svg {
     display: block;
     width: 100%;
@@ -181,7 +177,7 @@
 }
 .md-v {
   &.vbar {
-    height: 175px;
+    height: 214px;
     margin: 22px 0 0;
     gap: $sp-18;
     padding: 0 $sp-10;
@@ -230,7 +226,7 @@
 }
 .ev-v {
   &.vbar {
-    height: 175px;
+    height: 214px;
     margin: 22px 0 0;
     gap: $sp-8;
     padding: 0 $sp-4;
@@ -282,7 +278,7 @@
 }
 /* 재난별 탭: 기간 추이(연도·분기·기간=월별, 월=일별) 막대 + 값 */
 .ev-tr {
-  height: 299px;
+  height: 338px;
   svg {
     display: block;
     width: 100%;
