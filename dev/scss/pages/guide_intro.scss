@@ -1,9 +1,7 @@
 // 시스템 소개 | 재난 예경보 통합관리시스템 화면 전용
 @use "../abstracts" as *;
 .intro-hero {
-  display: flex;
-  align-items: center;
-  gap: 32px;
+  @include flex-c($gap: 32px);
   padding: 28px 32px;
   margin-bottom: 24px;
   border: 1px solid $in-b;
@@ -56,9 +54,7 @@
     background: #e8ebfc;
     color: $pri;
     font-size: 22px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-c($jc: center);
   }
   b {
     display: block;
@@ -105,7 +101,7 @@
     }
   }
 }
-@media (max-width: 1279px) {
+@include tablet-down {
   .intro-hero {
     flex-direction: column;
     align-items: stretch;
@@ -122,7 +118,7 @@
     }
   }
 }
-@media (max-width: 767px) {
+@include mobile {
   .intro-hero {
     h3 {
       font-size: 20px;

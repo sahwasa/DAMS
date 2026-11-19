@@ -33,7 +33,7 @@
   }
 }
 /* 새 창(1280×860)에서 창 전체 스크롤 없이 탭 목록·서식만 스크롤 */
-@media (min-width: 768px) {
+@include tablet-up {
   html,
   body.win-body {
     height: 100% !important;
@@ -59,15 +59,13 @@
   #docSec:not([hidden]) {
     flex: 1 1 auto;
     min-height: 0;
-    display: flex;
-    flex-direction: column;
+    @include flex-col;
   }
   #tabArea {
     > div:not([hidden]) {
       flex: 1 1 auto;
       min-height: 0;
-      display: flex;
-      flex-direction: column;
+      @include flex-col;
     }
     .grid-wrap {
       flex: 1 1 auto;

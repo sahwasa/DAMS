@@ -39,9 +39,7 @@
     }
   }
   .cert-info {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    @include flex-c($gap: 8px);
     margin-bottom: 12px;
     font-size: 13px;
     color: $g70;

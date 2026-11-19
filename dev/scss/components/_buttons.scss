@@ -1,10 +1,7 @@
 @use "../abstracts" as *;
 /* ---------- 5. Button ---------- */
 .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
+  @include flex-c($jc: center, $gap: 4px, $d: inline-flex);
   height: $h-btn;
   padding: 0 12px;
   border: 1px solid transparent;

@@ -33,9 +33,7 @@
     > b {
       flex: 0 0 66px;
       height: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @include flex-c($jc: center);
       background: $g10;
       border-radius: $r-s;
       font-size: 13px;
@@ -43,8 +41,7 @@
       color: $c-title;
     }
     > div {
-      flex: 1;
-      min-width: 0;
+      @include flex-fill;
       padding: 6px 10px;
       border: 1px solid $c-line;
       font-size: 13px;
@@ -85,9 +82,7 @@
   position: fixed;
   inset: 0;
   z-index: 250;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-c($jc: center);
   background: rgba(160, 160, 160, 0.45)
     repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.12) 0 22px, transparent 22px 44px);
 }
@@ -110,8 +105,7 @@
   overflow: hidden;
   &::after {
     content: "";
-    position: absolute;
-    inset: 0;
+    @include abs-fill;
     border-radius: 4px;
     background: linear-gradient(90deg, #4fd1e8, #7b6cf6, $pri, #7b6cf6, #4fd1e8);
     background-size: 200% 100%;
@@ -130,17 +124,14 @@
   position: fixed;
   inset: 0;
   z-index: 250;
-  display: flex;
-  flex-direction: column;
+  @include flex-col;
   align-items: center;
   justify-content: center;
   gap: 0;
   background: $sec repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.05) 0 18px, transparent 18px 36px);
   color: #fff;
   .ld-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    @include flex-c($gap: 10px);
     font-size: 26px;
     font-weight: 700;
     margin-bottom: 48px;
@@ -185,9 +176,7 @@ body.win-body {
   min-width: 1260px;
 }
 .win-head {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  @include flex-c($gap: 10px);
   height: 50px;
   padding: 0 16px 0 20px;
   flex: 0 0 50px;

@@ -1,8 +1,7 @@
 @use "../abstracts" as *;
 /* ---------- 3. Layout ---------- */
 .wrap {
-  display: flex;
-  flex-direction: column;
+  @include flex-col;
   height: 100%;
 }
 // Body
@@ -17,8 +16,7 @@
   flex: 0 0 $lnb-w;
   width: $lnb-w;
   background: $frame-bg;
-  display: flex;
-  flex-direction: column;
+  @include flex-col;
   transition: margin 0.2s;
 }
 .lnb-tab {
@@ -41,8 +39,7 @@
   }
 }
 .lnb-tit {
-  display: flex;
-  align-items: center;
+  @include flex-c;
   height: 44px;
   padding: 0 16px;
   margin: 0 0 0 10px;
@@ -62,8 +59,7 @@
   border: 1px solid $frame-bd;
   border-top: 0;
   a {
-    display: flex;
-    align-items: center;
+    @include flex-c;
     position: relative;
   }
   .d2 {
@@ -162,9 +158,7 @@
   background: $pri;
   color: #fff;
   font-size: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-c($jc: center);
 }
 .lnb-off {
   .lnb {
@@ -182,8 +176,7 @@
 .main {
   flex: 1;
   min-width: $work-min;
-  display: flex;
-  flex-direction: column;
+  @include flex-col;
   min-height: 0;
   background: $frame-bg;
   padding: 0 10px 10px 10px;
@@ -196,8 +189,7 @@
   border: 1px solid $frame-bd;
 }
 .status {
-  display: flex;
-  align-items: center;
+  @include flex-c;
   height: $stat-h;
   padding: 0 24px;
   flex: 0 0 $stat-h;
@@ -237,7 +229,7 @@
   }
 }
 // MDI 탭 삭제(2026-11-18 사용자 결정 — 2026-11-16 숨김 → 삭제), 업무영역 위 여백 8(LNB 탭 줄과 맞춤)
-@media (min-width: 1280px) {
+@include pc {
   .main {
     padding-top: 8px;
   }

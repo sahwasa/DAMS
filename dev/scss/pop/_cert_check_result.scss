@@ -26,9 +26,7 @@
       color: $g70;
     }
     h2 {
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      @include flex-c($gap: 6px);
       margin: 18px 0 8px;
       font-size: 15px;
       font-weight: 700;
@@ -52,9 +50,7 @@
       }
     }
     .verdict {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      @include flex-c($gap: 10px);
       padding: 10px 14px;
       border: 1px solid $dg-b;
       background: $dg-s;

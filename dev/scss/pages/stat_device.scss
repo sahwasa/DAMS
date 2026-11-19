@@ -235,7 +235,7 @@
   }
 }
 /* 지역별: 오른쪽 표 영역을 차트 카드 높이에 맞추고 안에서 스크롤(헤더 고정), (시도·시군구 × 매체구분 수신율 히트맵은 2026-11-12 사용자 결정으로 삭제) */
-@media (min-width: 1280px) {
+@include pc {
   #tabRegion > .col-lr {
     align-items: stretch;
   }
@@ -248,8 +248,7 @@
       right: 0;
       top: 48px;
       bottom: 0;
-      display: flex;
-      flex-direction: column;
+      @include flex-col;
     }
     .grid-wrap {
       flex: 1;

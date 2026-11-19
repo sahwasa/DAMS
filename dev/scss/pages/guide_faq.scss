@@ -3,9 +3,7 @@
 .faq {
   .faq-q,
   .faq-a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-c($jc: center, $d: inline-flex);
     width: 22px;
     height: 22px;
     margin-right: 8px;
@@ -54,7 +52,7 @@
     }
   }
 }
-@media (max-width: 767px) {
+@include mobile {
   .faq {
     td {
       &.arr::before {

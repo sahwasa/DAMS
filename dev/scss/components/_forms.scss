@@ -133,9 +133,7 @@
   top: 1px;
   width: 28px;
   height: $h-inp - 2px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-c($jc: center);
   color: $g60;
   font-size: 15px;
 }
@@ -150,9 +148,7 @@
   }
 }
 .range {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
+  @include flex-c($gap: 4px, $d: inline-flex);
   > span {
     color: $g60;
   }
@@ -168,9 +164,7 @@
 // check / radio
 .chk,
 .rdo {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+  @include flex-c($gap: 6px, $d: inline-flex);
   margin-right: 16px;
   font-size: $fs-s;
   cursor: pointer;
@@ -227,9 +221,7 @@
 }
 // toggle
 .tgl {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+  @include flex-c($gap: 6px, $d: inline-flex);
   cursor: pointer;
   font-size: $fs-s;
   input {

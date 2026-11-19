@@ -17,14 +17,12 @@ $gm-dim: rgba(70, 70, 70, 0.5);
   }
 }
 .gm-stage {
-  position: absolute;
-  inset: 0;
+  @include abs-fill;
   transform-origin: 0 0;
   --z: 1;
 }
 .gm-svg {
-  position: absolute;
-  inset: 0;
+  @include abs-fill;
   width: 100%;
   height: 100%;
   overflow: visible;
@@ -185,9 +183,7 @@ $gm-dim: rgba(70, 70, 70, 0.5);
 }
 .gm-sym {
   z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-c($jc: center);
   &:hover,
   &.on {
     z-index: 5;
@@ -330,9 +326,7 @@ $gm-dim: rgba(70, 70, 70, 0.5);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 .gm-cl-i {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-c($jc: center, $d: inline-flex);
   min-width: 20px;
   height: 20px;
   padding: 0 3px;
@@ -359,9 +353,7 @@ $gm-dim: rgba(70, 70, 70, 0.5);
   color: $c-title;
   cursor: default;
   li {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    @include flex-c($gap: 8px);
     padding: 7px 0;
     + li {
       border-top: 1px solid $c-line2;
@@ -401,7 +393,7 @@ $gm-dim: rgba(70, 70, 70, 0.5);
   max-width: calc(100% - 70px);
 }
 /* GIS상황판: 선택 표시는 지도 아래(안내 문구 위), 2026-11-16 사용자 요청 */
-@media (max-width: 767px) {
+@include mobile {
   html:not(.pc-pop) .gis-map.gm .lbl {
     bottom: 58px;
   }
@@ -415,9 +407,7 @@ $gm-dim: rgba(70, 70, 70, 0.5);
   min-width: 212px;
   font-size: 13px;
   summary {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+    @include flex-c($gap: 5px);
     padding: 5px 10px;
     border: 1px solid $c-line2;
     border-radius: 8px;
@@ -467,9 +457,7 @@ $gm-dim: rgba(70, 70, 70, 0.5);
     li {
       flex: 1;
       white-space: nowrap;
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      @include flex-c($gap: 6px);
       padding: 3px 0;
     }
     i {
@@ -491,9 +479,7 @@ $gm-dim: rgba(70, 70, 70, 0.5);
   }
   .md {
     label {
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      @include flex-c($gap: 6px);
       font-size: 12px;
       line-height: 22px;
       font-weight: 500;
@@ -550,9 +536,7 @@ $gm-dim: rgba(70, 70, 70, 0.5);
     }
   }
   .hz li {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    @include flex-c($gap: 8px);
     padding: 3px 0;
     font-size: 12px;
   }
@@ -594,8 +578,7 @@ $gm-dim: rgba(70, 70, 70, 0.5);
   right: 10px;
   bottom: 10px;
   z-index: 10;
-  display: flex;
-  flex-direction: column;
+  @include flex-col;
   border: 1px solid $c-line2;
   border-radius: 4px;
   overflow: hidden;

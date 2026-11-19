@@ -68,9 +68,7 @@
   font-weight: 600;
 }
 .ev-d {
-  display: flex;
-  align-items: center;
-  gap: 20px;
+  @include flex-c($gap: 20px);
   height: 100%;
   .donut {
     flex: 0 0 180px;
@@ -95,7 +93,7 @@
   z-index: 1;
   font-size: 12px;
 }
-@media (max-width: 767px) {
+@include mobile {
   html {
     &:not(.pc-pop) {
       .card-h {
@@ -120,7 +118,7 @@
     }
   }
 }
-@media (max-width: 767px) {
+@include mobile {
   html {
     &:not(.pc-pop) {
       .card-h {
@@ -134,7 +132,7 @@
     }
   }
 }
-@media (max-width: 767px) {
+@include mobile {
   html:not(.pc-pop) .tbl-acc .f-msg {
     order: 9;
   }

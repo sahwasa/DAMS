@@ -16,9 +16,7 @@
     border-left-color: #d3d8dd;
     border-right-color: #d3d8dd;
     text-align: center;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    @include ell;
   }
   tr {
     > *:first-child {
@@ -51,8 +49,7 @@
         cursor: pointer;
       }
       &.sort:focus-visible {
-        outline: 2px solid $pri;
-        outline-offset: -2px;
+        @include focus-ring;
       }
       &.sort::after {
         content: "\ea74";
@@ -158,9 +155,7 @@
   }
 }
 .grid-top {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  @include flex-c($gap: 6px);
   margin-left: auto;
   .sel {
     width: 90px;

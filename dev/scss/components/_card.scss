@@ -17,9 +17,7 @@
   min-width: 0;
 }
 .card-h {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  @include flex-c($gap: 6px);
   height: 40px;
   padding: 0 16px;
   border-bottom: 1px solid $c-line2;
@@ -46,8 +44,7 @@
   }
 }
 .kpi {
-  display: flex;
-  flex-direction: column;
+  @include flex-col;
   gap: 2px;
   padding: 14px 18px;
   border: 1px solid $c-line2;
@@ -89,9 +86,7 @@
   font-size: 12px;
   color: $c-body;
   li {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+    @include flex-c($gap: 5px);
   }
   i {
     width: 10px;
@@ -184,9 +179,7 @@
   .lb {
     color: $c-title;
     font-weight: 600;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    @include ell;
   }
   .bar {
     display: flex;
@@ -207,10 +200,7 @@
 }
 // donut
 .donut-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 28px;
+  @include flex-c($jc: center, $gap: 28px);
   height: 244px;
 }
 .donut {
@@ -226,11 +216,9 @@
     background: #fff;
   }
   > div {
-    position: absolute;
-    inset: 0;
+    @include abs-fill;
     z-index: 1;
-    display: flex;
-    flex-direction: column;
+    @include flex-col;
     align-items: center;
     justify-content: center;
   }
@@ -316,9 +304,7 @@
     border-radius: 50%;
     background: rgba(62, 85, 225, 0.35);
     border: 2px solid $pri;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-c($jc: center);
     font-size: 12px;
     font-weight: 700;
     color: $pri-a;

@@ -1,7 +1,7 @@
 @use "../abstracts" as *;
 /* ---------- 23. 인쇄(보고서 인쇄 SFR-02) ---------- */
 /* 태블릿·모바일 푸터(공공기관 모바일 사이트 형식): 세로 가운데 정렬 — 개인정보처리방침 · SERVICE DESK · 저작권 · 바로가기 버튼, 옅은 회색 바탕 */
-@media (max-width: 1279px) {
+@include tablet-down {
   html {
     &:not(.pc-pop) {
       .ft {
@@ -44,7 +44,7 @@
   }
 }
 /* 태블릿 검색영역: 기간(시작~종료)·선택상자 2개짜리 항목은 두 칸을 차지해 잘리지 않게 */
-@media (min-width: 768px) and (max-width: 1279px) {
+@include tablet {
   html {
     &:not(.pc-pop) {
       .sch-box {
@@ -153,7 +153,7 @@
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
-@media (max-width: 1279px) {
+@include tablet-down {
   html {
     &:not(.pc-pop) {
       .mon-kpi {
@@ -165,7 +165,7 @@
     }
   }
 }
-@media (max-width: 767px) {
+@include mobile {
   html:not(.pc-pop) .mon-kpi,
   html:not(.pc-pop) .mon-kpi.c4 {
     grid-template-columns: repeat(2, minmax(0, 1fr));

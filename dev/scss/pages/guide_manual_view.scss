@@ -6,9 +6,7 @@
     padding: 18px 20px 14px;
     border-bottom: 1px solid $g30;
     h3 {
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      @include flex-c($gap: 8px);
       font-size: 19px;
       font-weight: 700;
       color: $g90;
@@ -71,8 +69,7 @@
   border-top: 1px solid $g70;
   border-bottom: 1px solid $g30;
   li {
-    display: flex;
-    align-items: center;
+    @include flex-c;
     height: 44px;
     padding: 0 20px;
     font-size: 14px;
@@ -111,7 +108,7 @@
     color: $g60;
   }
 }
-@media (max-width: 767px) {
+@include mobile {
   .bbs-v {
     .v-head {
       padding: 14px 4px 12px;
@@ -141,11 +138,8 @@
       }
       > a,
       > .none {
-        flex: 1;
-        min-width: 0;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        @include flex-fill;
+        @include ell;
       }
       > em {
         width: 100%;

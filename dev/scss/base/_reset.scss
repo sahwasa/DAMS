@@ -90,8 +90,7 @@ img {
     white-space: nowrap;
     &:focus {
       left: 0;
-      outline: 2px solid $pri;
-      outline-offset: -2px;
+      @include focus-ring;
     }
   }
 }
@@ -102,8 +101,7 @@ img {
 }
 // 스크롤 영역 키보드 포커스(common.js scrollFocus — 안에 포커스 요소가 없는 스크롤 영역에 tabindex=0)
 [data-sf]:focus-visible {
-  outline: 2px solid $pri;
-  outline-offset: -2px;
+  @include focus-ring;
 }
 // 팝업 form 래퍼(role=dialog는 div에, form은 상자 없이 — axe aria-allowed-role)
 .pop-frm {
@@ -164,9 +162,7 @@ img {
   width: 200px !important;
 }
 .flex {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  @include flex-c($gap: 6px);
 }
 .ml-auto {
   margin-left: auto;

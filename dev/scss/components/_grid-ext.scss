@@ -28,9 +28,7 @@
   }
 }
 .result-box {
-  display: flex;
-  align-items: center;
-  gap: 14px;
+  @include flex-c($gap: 14px);
   padding: 12px 18px;
   margin-bottom: 16px;
   border: 1px solid;

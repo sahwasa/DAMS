@@ -2,9 +2,7 @@
 @use "../abstracts" as *;
 /* 연계확인서: 발급 기관은 칩(클릭 시 연계확인서 팝업), 미발급은 회색 점선 칩 */
 .cert-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
+  @include flex-c($gap: 5px, $d: inline-flex);
   height: 26px;
   padding: 0 12px 0 10px;
   border: 1px solid #cfd8f6;
@@ -40,9 +38,7 @@
   }
 }
 .integ-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
+  @include flex-c($gap: 3px, $d: inline-flex);
   height: 20px;
   margin-left: 6px;
   padding: 0 7px;
@@ -75,9 +71,7 @@
   background: #fff;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
   .layer-h {
-    display: flex;
-    align-items: center;
-    gap: 4px;
+    @include flex-c($gap: 4px);
     height: 38px;
     padding: 0 8px 0 12px;
     border-bottom: 1px solid $g20;
@@ -114,8 +108,7 @@
   background: #e9edff;
 }
 .cert-none {
-  display: inline-flex;
-  align-items: center;
+  @include flex-c($d: inline-flex);
   height: 26px;
   padding: 0 12px;
   border: 1px dashed $g40;
@@ -136,10 +129,9 @@
   font-weight: 600;
 }
 /* 목록: 페이징 없이 전체(245건)를 목록 안에서 스크롤 — PC는 화면 남은 높이에 맞춤(페이지 스크롤 없음) */
-@media (min-width: 1280px) {
+@include pc {
   #content {
-    display: flex;
-    flex-direction: column;
+    @include flex-col;
     > * {
       flex: 0 0 auto;
     }
@@ -153,7 +145,7 @@
     }
   }
 }
-@media (max-width: 1279px) {
+@include tablet-down {
   #destWrap {
     max-height: calc(100vh - 120px);
     overflow: auto;

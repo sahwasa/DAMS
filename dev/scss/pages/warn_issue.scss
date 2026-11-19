@@ -1,6 +1,6 @@
 // 재난발령현황 | 재난 예경보 통합관리시스템 화면 전용
 @use "../abstracts" as *;
-@media (min-width: 1280px) {
+@include pc {
   .dev-sch {
     .rows {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -21,7 +21,7 @@
   top: 34px;
   z-index: 1;
 }
-@media (max-width: 767px) {
+@include mobile {
   html {
     &:not(.pc-pop) {
       #devWrap {
@@ -36,18 +36,14 @@
 }
 .tab {
   .tab-info {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    @include flex-c($gap: 8px);
     margin-left: auto;
     padding-bottom: 4px;
     font-size: 14px;
     color: $g90;
     min-width: 0;
     b {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+      @include ell;
     }
     .btn {
       flex: 0 0 auto;
@@ -69,7 +65,7 @@
     }
   }
 }
-@media (max-width: 767px) {
+@include mobile {
   html {
     &:not(.pc-pop) {
       #tab-issue {

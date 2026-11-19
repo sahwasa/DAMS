@@ -51,8 +51,7 @@
   gap: 4px;
   span,
   button {
-    display: inline-flex;
-    align-items: center;
+    @include flex-c($d: inline-flex);
     height: 20px;
     padding: 0 7px;
     border: 1px solid $c-line2;

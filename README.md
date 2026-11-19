@@ -45,7 +45,7 @@ dev/
     pop/팝업명.html     팝업 마크업 <template id="pop-팝업명">
   scss/
     main.scss           진입점 → css/main.css (원본 common.scss 절 순서 그대로 @use)
-    abstracts/          _tokens(디자인 토큰) · _mixin(버튼 색 세트)
+    abstracts/          _tokens(디자인 토큰) · _mixin(버튼 색 세트·배치·말줄임·중단점)
     base/ layout/ components/
     pages/화면.scss      화면 전용 → css/pages/화면.css (그 화면에서만 읽음)
     pop/_팝업명.scss     팝업 전용 — .pop-dlg[data-pop="팝업명"] 안으로 한정
@@ -190,3 +190,19 @@ dev/
 - `dev/scss`는 **중첩 구조**: 같은 부모로 시작하는 연속 규칙을 묶음(`.grid{ thead{ th{ &.sort{..} } } }`). 목업(평평한 SCSS)에서 옮길 때 자동 변환(`tools/dams/nest.py`).
 - CSS 우선순위가 바뀌지 않도록 **연속한 규칙만** 묶고 순서는 그대로 — 그래서 같은 부모가 두 번 나올 수 있음(중간에 다른 규칙이 끼어 있는 경우).
 - 변환할 때마다 평평한 SCSS로 만든 CSS와 중첩 SCSS로 만든 CSS를 비교(주석·공백 제외 동일해야 통과).
+
+## 공통 믹스인(scss/abstracts/_mixin.scss)
+반복 선언 묶음은 변환 때 자동으로 `@include`로 바꿈(`tools/dams/handoff.py mixin`, 같은 블록에서 연달아 쓴 선언만 — CSS 결과 동일 확인). 새로 쓸 때도 아래 믹스인을 사용.
+
+| 믹스인 | 내용 | 예 |
+|---|---|---|
+| `flex-c($jc, $gap, $d)` | display:flex + align-items:center (+ justify-content·gap, `$d: inline-flex`) | `@include flex-c($jc: center, $gap: 6px);` |
+| `flex-col` | display:flex + flex-direction:column | 세로 배치 패널 |
+| `flex-fill` | flex:1 + min-width:0 | flex 안 남은 폭(말줄임 가능) |
+| `ell` | 한 줄 말줄임(…) | 그리드 칸·LNB 경로 |
+| `abs-fill` | position:absolute + inset:0 | 덮개(dim) |
+| `focus-ring($offset: -2px)` | 2px Primary 포커스 링 | `&:focus-visible { @include focus-ring; }` |
+| `btn(...)` | 버튼 색 세트(기본·hover·active·disabled) | `.btn-pri` |
+| `pc` / `tablet-up` / `tablet` / `tablet-down` / `mobile` | ≥1280 / ≥768 / 768~1279 / ≤1279 / ≤767 미디어 쿼리 | `@include mobile { html:not(.pc-pop) .x { … } }` |
+
+- 태블릿·모바일 규칙은 선택자 앞에 `html:not(.pc-pop)`를 붙인다(PC에서 연 팝업은 폭이 좁아도 PC 스타일). 그 밖의 조건(1023·480, 높이, print)은 `@media` 그대로.

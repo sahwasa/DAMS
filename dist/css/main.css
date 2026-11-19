@@ -4858,7 +4858,14 @@ body.win-body {
     white-space: nowrap;
     cursor: pointer;
   }
-  /* 화면명 = 맨 위로 버튼html:not(.pc-pop) .m-tit .star{color:rgba(255,255,255,.6);font-size:18px}html:not(.pc-pop) .m-tit .star.on{color:$wn} */
+  /* 화면명 = 맨 위로 버튼 */
+  html:not(.pc-pop) .m-tit .star {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 18px;
+  }
+  html:not(.pc-pop) .m-tit .star.on {
+    color: #ffb724;
+  }
   html:not(.pc-pop) .m-ham {
     margin-left: 0;
   }

@@ -6,9 +6,7 @@
   padding-bottom: 4px;
   margin-bottom: 20px;
   .tit {
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    @include flex-c($gap: 6px);
     font-size: 24px;
     font-weight: 700;
     color: $c-title;
@@ -31,17 +29,14 @@
   }
 }
 .bread {
-  display: flex;
-  align-items: center;
+  @include flex-c;
   margin-top: 6px;
   font-size: $fs-s;
   color: $g60;
   li {
     &:first-child {
       a {
-        display: inline-flex;
-        align-items: center;
-        gap: 3px;
+        @include flex-c($gap: 3px, $d: inline-flex);
         &::after {
           content: "Home";
         }
@@ -66,9 +61,7 @@
   margin-left: auto;
 }
 .sub-head {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  @include flex-c($gap: 6px);
   min-height: $h-btn;
   margin: 24px 0 8px;
   &:first-child {
@@ -85,9 +78,7 @@
     font-size: $fs-t3;
     font-weight: 700;
     color: $c-title;
-    display: flex;
-    align-items: center;
-    gap: 4px;
+    @include flex-c($gap: 4px);
   }
   h4::before,
   .h4::before {
@@ -111,9 +102,7 @@
   }
 }
 .btns {
-  display: flex;
-  align-items: center;
-  gap: 4px;
+  @include flex-c($gap: 4px);
   &.c {
     justify-content: center;
   }

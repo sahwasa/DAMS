@@ -9,8 +9,7 @@
 .dv-r {
   position: sticky;
   top: 0;
-  display: flex;
-  flex-direction: column;
+  @include flex-col;
   .sub-head .f-msg {
     display: none;
   }
@@ -35,9 +34,7 @@
   td:nth-child(6),
   td:nth-child(7) {
     max-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    @include ell;
   }
   th:nth-child(3),
   td:nth-child(3),
@@ -54,7 +51,7 @@
     width: 40px;
   }
 }
-@media (min-width: 768px) {
+@include tablet-up {
   .dv-l {
     .sch-box {
       display: block;
@@ -81,8 +78,7 @@
           margin-right: 164px;
         }
         > .sel {
-          flex: 1;
-          min-width: 0;
+          @include flex-fill;
         }
         &.c3 {
           grid-column: span 2;
@@ -99,13 +95,12 @@
   row-gap: 6px;
 }
 /* PC: 목록은 왼쪽 열 남은 높이 안에서만 스크롤(헤더·시도 묶음 행 고정) — 지도 열과 높이 맞춤 */
-@media (min-width: 1280px) {
+@include pc {
   .dv-lr {
     align-items: stretch;
   }
   .dv-l {
-    display: flex;
-    flex-direction: column;
+    @include flex-col;
     min-height: 0;
     .grid-wrap {
       flex: 1 1 0;
@@ -129,17 +124,15 @@
 }
 #termMap .lbl {
   max-width: calc(100% - 190px);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  @include ell;
 }
-@media (max-width: 1279px) {
+@include tablet-down {
   html:not(.pc-pop) .dv-l .grid-wrap {
     max-height: 480px;
     overflow: auto;
   }
 }
-@media (max-width: 1279px) {
+@include tablet-down {
   html {
     &:not(.pc-pop) {
       .dv-lr {
@@ -165,9 +158,7 @@
   padding: 6px 8px;
   font-size: 14px;
   .nd {
-    display: flex;
-    align-items: center;
-    gap: 2px;
+    @include flex-c($gap: 2px);
     height: 30px;
     &.top {
       padding-left: 20px;
@@ -197,9 +188,7 @@
     height: 18px;
     color: $g60;
     font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-c($jc: center);
   }
   li.open > .nd .tg i {
     transform: rotate(90deg);
@@ -246,9 +235,7 @@
 }
 .gm-tip {
   .tip-h {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    @include flex-c($gap: 8px);
     padding: 7px 0 6px;
     border-bottom: 1px solid $g30;
     font-size: 14px;
@@ -356,9 +343,7 @@
       min-width: 0;
       line-height: 30px;
       span {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        @include ell;
       }
     }
     .go,
@@ -367,14 +352,14 @@
     }
   }
 }
-@media (max-width: 1279px) {
+@include tablet-down {
   .tree-box {
     height: auto;
     min-height: 0;
     max-height: 300px;
   }
 }
-@media (max-width: 767px) {
+@include mobile {
   .tree-box {
     max-height: 260px;
   }

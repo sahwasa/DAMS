@@ -7,8 +7,7 @@
   li {
     a,
     button {
-      display: flex;
-      align-items: center;
+      @include flex-c;
       height: 38px;
       padding: 0 24px;
       margin-right: -1px;
@@ -78,7 +77,6 @@
     font-weight: 600;
   }
   > div {
-    flex: 1;
-    min-width: 0;
+    @include flex-fill;
   }
 }

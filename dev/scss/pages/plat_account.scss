@@ -1,10 +1,9 @@
 // 계정관리 | 재난 예경보 통합관리시스템 화면 전용
 @use "../abstracts" as *;
 /* 목록: 페이징 없이 목록 안 스크롤 — PC는 화면 남은 높이에 맞춤(페이지 스크롤 없음) */
-@media (min-width: 1280px) {
+@include pc {
   #content {
-    display: flex;
-    flex-direction: column;
+    @include flex-col;
     > * {
       flex: 0 0 auto;
     }
@@ -18,7 +17,7 @@
     }
   }
 }
-@media (max-width: 1279px) {
+@include tablet-down {
   #acntWrap {
     max-height: calc(100vh - 120px);
     overflow: auto;

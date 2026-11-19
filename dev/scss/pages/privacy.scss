@@ -11,17 +11,13 @@ body {
   position: sticky;
   top: 0;
   z-index: 10;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  @include flex-c($gap: 12px);
   height: 60px;
   padding: 0 40px;
   background: $sec;
   color: #fff;
   h1 {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    @include flex-c($gap: 8px);
     font-size: 17px;
     font-weight: 700;
   }
@@ -50,8 +46,7 @@ body {
   border-radius: 4px;
   h2 {
     height: 44px;
-    display: flex;
-    align-items: center;
+    @include flex-c;
     padding: 0 16px;
     border-bottom: 1px solid $g30;
     background: $g5;
@@ -88,9 +83,7 @@ body {
   }
   .ver {
     margin-left: auto;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    @include flex-c($gap: 6px);
     font-size: 13px;
   }
 }

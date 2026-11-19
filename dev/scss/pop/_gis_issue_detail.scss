@@ -2,9 +2,7 @@
 // gis_issue_detail (화면정의서 UI-DA02-001-P01) 재난발령 상세 — dialog 안으로 한정
 .pop-dlg[data-pop="gis_issue_detail"] {
   .is-tit {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    @include flex-c($gap: 8px);
     margin-bottom: 12px;
     font-size: 16px;
     font-weight: 700;
@@ -39,12 +37,12 @@
     z-index: 1;
   }
 }
-@media (max-width: 767px) {
+@include mobile {
   html:not(.pc-pop) .pop-dlg[data-pop="gis_issue_detail"] #device_table tbody tr.grp td {
     top: 0;
   }
 }
-@media (min-width: 768px) {
+@include tablet-up {
   .pop-dlg[data-pop="gis_issue_detail"] {
     #devSch {
       .rows {

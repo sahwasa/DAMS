@@ -7,8 +7,7 @@ body {
   background: $g5;
 }
 .lg {
-  display: flex;
-  flex-direction: column;
+  @include flex-col;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
@@ -74,10 +73,7 @@ body {
     word-break: keep-all;
   }
   .btn-cert {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
+    @include flex-c($jc: center, $gap: 6px);
     width: 100%;
     height: 48px;
     border-radius: 2px;
@@ -94,9 +90,7 @@ body {
   }
 }
 .lg-or {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  @include flex-c($gap: 10px);
   margin: 20px 0 4px;
   font-size: 13px;
   color: $g60;
@@ -139,9 +133,7 @@ body {
   color: $pri;
 }
 .lg-opt {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @include flex-c($jc: space-between);
   margin: 10px 0 18px;
   .chk {
     font-size: 14px;
@@ -157,10 +149,7 @@ body {
   }
 }
 .btn-login {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
+  @include flex-c($jc: center, $gap: 6px);
   width: 100%;
   height: 54px;
   border-radius: 0;
@@ -212,7 +201,7 @@ body {
     margin-top: 4px;
   }
 }
-@media (max-width: 767px) {
+@include mobile {
   .lg {
     justify-content: flex-start;
     padding: 24px 16px 20px;

@@ -1,3 +1,4 @@
+@use "tokens" as *;
 // 버튼 색 세트 믹스인
 @mixin btn($bg, $c, $bd, $h-bg, $h-bd, $a-bg, $a-bd, $d-bg, $d-c, $d-bd) {
   background: $bg;
@@ -17,5 +18,68 @@
     background: $d-bg;
     color: $d-c;
     border-color: $d-bd;
+  }
+}
+
+// ---------- 공통 배치·글자 믹스인(퍼블 변환 때 반복 선언을 묶은 것, 2026-11-19) ----------
+// 가로 배치 + 세로 가운데. $jc 가로 정렬, $gap 간격, $d: inline-flex
+@mixin flex-c($jc: null, $gap: null, $d: flex) {
+  display: $d;
+  align-items: center;
+  justify-content: $jc;
+  gap: $gap;
+}
+// 세로 배치
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+}
+// flex 안에서 남은 폭 채우기(글자 말줄임이 되도록 min-width 0)
+@mixin flex-fill {
+  flex: 1;
+  min-width: 0;
+}
+// 한 줄 말줄임(…)
+@mixin ell {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+// 부모 전체 덮기
+@mixin abs-fill {
+  position: absolute;
+  inset: 0;
+}
+// 키보드 포커스 링(:focus-visible 안에서)
+@mixin focus-ring($offset: -2px) {
+  outline: 2px solid $pri;
+  outline-offset: $offset;
+}
+
+// ---------- 반응형 중단점(PC ≥1280 · 태블릿 768~1279 · 모바일 ≤767) ----------
+// 주의: PC에서 연 팝업(iframe/dialog)은 html.pc-pop — 태블릿·모바일 규칙 선택자 앞에 html:not(.pc-pop)를 붙인다.
+@mixin pc {
+  @media (min-width: 1280px) {
+    @content;
+  }
+}
+@mixin tablet-up {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (min-width: 768px) and (max-width: 1279px) {
+    @content;
+  }
+}
+@mixin tablet-down {
+  @media (max-width: 1279px) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media (max-width: 767px) {
+    @content;
   }
 }

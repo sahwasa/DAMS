@@ -2,8 +2,7 @@
 /* ---------- 3-1. GNB ---------- */
 // GNB
 .gnb {
-  display: flex;
-  align-items: center;
+  @include flex-c;
   height: $gnb-h;
   padding: 0 16px 0 20px;
   white-space: nowrap;
@@ -13,9 +12,7 @@
   position: relative;
   z-index: 30;
   .logo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    @include flex-c($gap: 8px);
     margin-right: 12px;
     font-size: 17px;
     font-weight: 500;
@@ -44,8 +41,7 @@
   .menu {
     gap: 0;
     > li > a {
-      display: flex;
-      align-items: center;
+      @include flex-c;
       height: 100%;
       padding: 0 8px;
       font-size: 17px;
@@ -68,18 +64,14 @@
     }
   }
   .util {
-    display: flex;
-    align-items: center;
-    gap: 2px;
+    @include flex-c($gap: 2px);
     margin-left: auto;
     > .btn {
       margin-left: 6px;
     }
   }
   .sess {
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    @include flex-c($gap: 6px);
     height: 32px;
     padding: 0 3px 0 12px;
     border-radius: 16px;
@@ -96,9 +88,7 @@
     }
   }
   .user {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
+    @include flex-c($gap: 4px, $d: inline-flex);
     padding: 0 6px;
     font-size: $fs-xs;
     text-decoration: underline;
@@ -107,9 +97,7 @@
       font-style: normal;
     }
     i {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+      @include flex-c($jc: center, $d: inline-flex);
       width: 18px;
       height: 18px;
       border-radius: 50%;
@@ -123,9 +111,7 @@
     border-radius: $r;
     color: #fff;
     font-size: 18px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-c($jc: center, $d: inline-flex);
     position: relative;
     &:hover {
       background: rgba(255, 255, 255, 0.12);
@@ -148,9 +134,7 @@
     }
   }
   .fsz {
-    display: flex;
-    align-items: center;
-    gap: 4px;
+    @include flex-c($gap: 4px);
     height: 32px;
     padding: 0 10px;
     border-radius: 16px;

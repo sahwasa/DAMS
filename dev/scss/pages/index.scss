@@ -30,9 +30,7 @@
     border-top: 1px dashed $g40;
   }
   h4 {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    @include flex-c($gap: 8px);
     font-size: 15px;
     color: $g90;
     em {
@@ -95,7 +93,7 @@
     }
   }
 }
-@media (max-width: 767px) {
+@include mobile {
   .win-head .sub {
     display: none;
   }

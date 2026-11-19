@@ -1,8 +1,7 @@
 // GIS상황판 | 재난 예경보 통합관리시스템 화면 전용
 @use "../abstracts" as *;
 .work {
-  display: flex;
-  flex-direction: column;
+  @include flex-col;
 }
 .gis {
   flex: 1;
@@ -13,8 +12,7 @@
 .gis-side,
 .gis-dtl {
   flex: 0 0 360px;
-  display: flex;
-  flex-direction: column;
+  @include flex-col;
   min-height: 0;
   border: 1px solid $g30;
   border-radius: 4px;
@@ -44,8 +42,7 @@
 }
 .gis-pnl {
   flex: 1;
-  display: flex;
-  flex-direction: column;
+  @include flex-col;
   min-height: 0;
 }
 .gis-flt {
@@ -54,9 +51,7 @@
   border-bottom: 1px solid $g30;
 }
 .gis-flt-h {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  @include flex-c($gap: 8px);
   font-size: 13px;
   .cnt {
     margin-left: auto;
@@ -109,9 +104,7 @@
 }
 .gis-dtl {
   .gis-h {
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    @include flex-c($gap: 6px);
     height: 42px;
     padding: 0 8px 0 14px;
     border-bottom: 2px solid $pri;
@@ -134,10 +127,7 @@
 }
 .gis-src {
   flex: 0 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 4px;
+  @include flex-c($jc: flex-end, $gap: 4px);
   padding: 6px 12px;
   border-top: 1px solid $g20;
   font-size: 12px;
@@ -160,9 +150,7 @@
   }
 }
 .gc-h {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  @include flex-c($gap: 6px);
   font-size: 12px;
   color: $g60;
   white-space: nowrap;
@@ -172,17 +160,13 @@
   }
 }
 .gc-t {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  @include flex-c($gap: 6px);
   margin: 5px 0 6px;
   font-size: 14px;
   font-weight: 600;
   color: $g90;
   span {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    @include ell;
   }
 }
 .chips {
@@ -191,8 +175,7 @@
   gap: 4px;
   span,
   button {
-    display: inline-flex;
-    align-items: center;
+    @include flex-c($d: inline-flex);
     height: 20px;
     padding: 0 7px;
     border: 1px solid $g30;
@@ -213,9 +196,7 @@
   font-size: 12px;
 }
 .gc-f {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  @include flex-c($gap: 10px);
   margin-top: 8px;
   padding-top: 6px;
   border-top: 1px dashed $g30;
@@ -261,8 +242,7 @@
   color: $g60;
 }
 .gis-map {
-  flex: 1;
-  min-width: 0;
+  @include flex-fill;
   min-height: 0;
   height: auto;
   .gm-emd {
@@ -337,8 +317,7 @@
   .gm-epi {
     position: absolute;
     transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
+    @include flex-col;
     align-items: center;
     pointer-events: none;
     z-index: 6;
@@ -380,9 +359,7 @@
   li {
     &.ly {
       label {
-        display: flex;
-        align-items: center;
-        gap: 8px;
+        @include flex-c($gap: 8px);
         width: 100%;
         cursor: pointer;
       }
@@ -427,9 +404,7 @@
     }
   }
   .ar li {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    @include flex-c($gap: 8px);
     padding: 3px 0;
     font-size: 12px;
   }
@@ -443,18 +418,14 @@
   padding: 0;
   font-size: 12px;
   .th {
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    @include flex-c($gap: 6px);
     height: 36px;
     padding: 0 6px 0 14px;
     border-bottom: 1px solid $g30;
     font-size: 13px;
     font-weight: 700;
     b {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+      @include ell;
     }
     button {
       margin-left: auto;
@@ -485,9 +456,7 @@
     }
     span {
       flex: 1;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+      @include ell;
       font-weight: 600;
     }
     em {
@@ -512,7 +481,7 @@
     color: $g90;
   }
 }
-@media (max-width: 1279px) {
+@include tablet-down {
   .gis {
     flex-direction: column;
     min-height: 0;
@@ -533,7 +502,7 @@
     overflow: visible;
   }
 }
-@media (min-width: 1280px) {
+@include pc {
   .main {
     padding: 0;
   }
@@ -560,7 +529,7 @@
   }
 }
 /* 화면명·☆(즐겨찾기)는 왼쪽 박스 맨 위(선택 안 된 탭 위에만 1px #f0f0f0 선), 브레드크럼 없음 */
-@media (max-width: 767px) {
+@include mobile {
   .gis.dtl-on .gis-side,
   .gis:not(.dtl-on) .gis-dtl {
     display: none;

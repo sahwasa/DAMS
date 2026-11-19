@@ -17,9 +17,7 @@
 .st-sum {
   button {
     flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include flex-c($jc: space-between);
     height: 48px;
     padding: 0 16px;
     border: 1px solid $g30;
@@ -38,7 +36,7 @@
     }
   }
 }
-@media (max-width: 767px) {
+@include mobile {
   .st-sum {
     flex-wrap: wrap;
     button {
@@ -49,7 +47,7 @@
   }
 }
 /* 새 창(1280×860)에서 창 전체 스크롤 없이 목록만 스크롤 */
-@media (min-width: 768px) {
+@include tablet-up {
   html,
   body.win-body {
     height: 100% !important;
