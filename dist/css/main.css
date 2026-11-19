@@ -1916,6 +1916,21 @@ img {
   gap: 4px;
   align-self: flex-end;
 }
+
+@media (min-width: 1280px) {
+  .sch-box.one {
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+  }
+  .sch-box.one .rows {
+    flex: 1;
+  }
+  .sch-box.one .ctrl {
+    align-self: center;
+  }
+}
+/* 검색 항목 4개 미만·한 줄(.one): 버튼을 같은 줄 오른쪽 — 태블릿·모바일은 아래 줄 */
 .sch-box #rgSido,
 .sch-box #rgSgg {
   margin-left: 4px;

@@ -49,12 +49,30 @@
   }
 }
 /* 선택상자는 내용 폭(칸 안에서 왼쪽 정렬) */
-.sch-box {
-  .ctrl {
-    display: flex;
-    gap: $sp-4;
-    align-self: flex-end;
+.sch-box .ctrl {
+  display: flex;
+  gap: $sp-4;
+  align-self: flex-end;
+}
+@include pc {
+  .sch-box {
+    &.one {
+      flex-direction: row;
+      align-items: center;
+      gap: $sp-24;
+    }
+    &.one {
+      .rows {
+        flex: 1;
+      }
+      .ctrl {
+        align-self: center;
+      }
+    }
   }
+}
+/* 검색 항목 4개 미만·한 줄(.one): 버튼을 같은 줄 오른쪽 — 태블릿·모바일은 아래 줄 */
+.sch-box {
   #rgSido,
   #rgSgg {
     margin-left: $sp-4;
