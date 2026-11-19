@@ -64,6 +64,22 @@
     &.one {
       .rows {
         flex: 1;
+        display: flex;
+        flex-wrap: wrap;
+        gap: $sp-8 $sp-32;
+      }
+      .it {
+        flex: 0 0 auto;
+        > label:not(.rdo):not(.chk),
+        > .lb {
+          flex: 0 0 auto;
+        }
+        > .inp {
+          flex: 0 0 200px;
+        }
+        > .inp.lg {
+          flex: 0 0 320px;
+        }
       }
       .ctrl {
         align-self: center;
@@ -71,7 +87,7 @@
     }
   }
 }
-/* 검색 항목 4개 미만·한 줄(.one): 버튼을 같은 줄 오른쪽 — 태블릿·모바일은 아래 줄 */
+/* 검색 항목 4개 미만(.one): 한 줄 — 항목은 내용 폭·간격 32, 입력은 고정 폭(늘리지 않음), 버튼은 같은 줄 오른쪽(태블릿·모바일은 격자·아래 줄) */
 .sch-box {
   #rgSido,
   #rgSgg {

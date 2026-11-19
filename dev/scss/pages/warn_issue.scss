@@ -102,7 +102,7 @@
     padding: $sp-10 $sp-14;
     &.pre {
       min-height: 0;
-      height: 60px;
+      height: 88px;
       overflow: auto;
       font-size: $fs-xs;
       line-height: 1.5;
@@ -118,9 +118,6 @@
 }
 .sch-box {
   margin-bottom: $sp-12;
-  padding-top: $sp-10;
-  padding-bottom: $sp-10;
-  gap: $sp-6;
 }
 #issue-summary th,
 #issue-summary td {
