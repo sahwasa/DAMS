@@ -24,6 +24,7 @@
         <div class="btns" id="headBtns">
           <span class="upd"><i class="ri-refresh-line"></i>마지막 갱신 <b id="lastUpdateTime">2026-10-30 15:20:30</b></span>
           <label class="tgl" title="30초 주기 자동갱신"><input type="checkbox" id="autoRefresh" checked onchange="setAuto(this.checked)"><span>자동갱신(30초)</span></label>
+          <button type="button" class="btn btn-line" data-tip="연계기관 연결상태: 30초마다 확인 / 단말기 상태정보: 1시간 1회 수신 / 단말기 제원정보: 1일 1회 수신 / 금일 재난정보·발령 건수: 매일 0시 초기화"><i class="ri-question-line"></i>수신 주기</button>
           <button type="button" class="btn btn-line" onclick="refreshDashboard()"><i class="ri-refresh-line"></i>새로고침</button>
         </div>
 

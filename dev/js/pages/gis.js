@@ -1344,4 +1344,22 @@ window.addEventListener('resize', function () {
   fillCategory();
   drawLists();
   render();
+  /* 알림(토스트·GNB 알림 목록) 클릭 → 해당 재난·발령 선택(?ev=재난ID / ?is=발령ID). 상황판에서 누르면 화면 이동 없이 선택만 바꿈 */
+  window.onToastGo = function (h) {
+    var m = /UI-DA02-001\.html\?(ev|is)=(\w+)/.exec(h);
+    if (!m) return;
+    goSel(m[1], m[2]);
+    return false;
+  };
+  var Q = /[?&](ev|is)=(\w+)/.exec(location.search);
+  if (Q) goSel(Q[1], Q[2]);
 })();
+function goSel(k, id) {
+  if (k === 'ev' && EVM[id]) {
+    if (S.tab !== 'occur') document.querySelector('[data-tab="pnlOccur"]').click();
+    selectGroup(id);
+  } else if (k === 'is' && IS[id]) {
+    if (S.tab !== 'local') document.querySelector('[data-tab="pnlLocal"]').click();
+    if (S.is !== id) selectIssue(id);
+  }
+}

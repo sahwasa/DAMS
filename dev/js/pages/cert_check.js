@@ -4,6 +4,19 @@
 var Q = new URLSearchParams(location.search),
   KEY = ORG[Q.get('org')] ? Q.get('org') : 'bucheon',
   D = ORG[KEY];
+/* 목록에서 넘긴 실제 기관명(nm='시도' 또는 '시도 시군구')으로 표시 — 점검 데이터는 샘플 유형(org) 그대로 */
+(function () {
+  var nm = Q.get('nm');
+  if (!nm) return;
+  var a = nm.split(' ');
+  D = Object.assign(
+    {},
+    D,
+    a.length > 1
+      ? { name: a.slice(1).join(' '), parent: a[0], level: 'sgg' }
+      : { name: a[0], parent: '광역', level: 'sido' }
+  );
+})();
 var S = { ran: false, issued: false, running: false, days: [] },
   R = {};
 function $(id) {

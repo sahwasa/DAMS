@@ -559,7 +559,7 @@
       '<p><b>' +
       (o.kind === 'alarm' ? '' : '<em class="tg"></em>') +
       '<span class="tt"></span></b><time></time><span>' +
-      (o.sub != null ? o.sub : '클릭하면 GIS 상황판에서 확인합니다.') +
+      (o.sub != null ? o.sub : '클릭하면 GIS 상황판에서 해당 정보를 선택합니다.') +
       '</span></p><button type="button" class="toast-x" title="알림 닫기"><i class="ri-close-line"></i></button>';
     var g = $('.tg', el);
     if (g) g.textContent = '[' + tg + ']';
@@ -582,6 +582,8 @@
     };
     el.onclick = function () {
       if (o.href) {
+        close();
+        if (window.onToastGo && window.onToastGo(o.href) === false) return;
         location.href = o.href;
         return;
       }
