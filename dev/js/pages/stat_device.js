@@ -991,7 +991,7 @@ function drawDmTrend() {
       }
     },
     legend: ecLegend({
-      left: 52,
+      left: 'center',
       right: 'auto',
       data: DM.map(function (md) {
         return md[0];

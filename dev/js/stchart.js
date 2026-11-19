@@ -42,9 +42,94 @@
           x.axisLabel.hideOverlap = true;
         }
       });
+    dualAx(opt);
     c.setOption(opt, true);
     return c;
   };
+  /* 좌우 2축 차트(2026-11-19): ① 두 축 눈금 칸 수를 같게(가로 보조선·양쪽 끝 눈금이 한 줄로) — min·max·interval이 모두 정해진 축의 칸 수를 따르고(없으면 5칸),
+   나머지 축은 데이터(누적 막대는 합계) 범위로 1·2·2.5·3·4·5 단위 눈금을 맞춤 ② 축 이름을 눈금 글자 바깥 끝에 맞춤(왼쪽 축은 왼쪽 끝, 오른쪽 축은 오른쪽 끝) */
+  var CV;
+  function tw(t) {
+    CV = CV || document.createElement('canvas').getContext('2d');
+    CV.font = '11px ' + FONT;
+    return CV.measureText(String(t)).width;
+  }
+  function nice(r) {
+    var e = Math.pow(10, Math.floor(Math.log10(r))),
+      f = r / e;
+    return (
+      [1, 2, 2.5, 3, 4, 5, 10]
+        .map(function (k) {
+          return k * e;
+        })
+        .filter(function (x) {
+          return x >= r - 1e-9;
+        })[0] || 10 * e
+    );
+  }
+  function dualAx(opt) {
+    var Y = opt.yAxis;
+    if (
+      !Array.isArray(Y) ||
+      Y.length !== 2 ||
+      Y.some(function (y) {
+        return !y || y.type !== 'value';
+      })
+    )
+      return;
+    var ext = [0, 1].map(function (ai) {
+      var lo = Infinity,
+        hi = -Infinity,
+        st = {};
+      [].concat(opt.series || []).forEach(function (s) {
+        if ((s.yAxisIndex || 0) !== ai) return;
+        (s.data || []).forEach(function (d, i) {
+          var v = d && typeof d === 'object' ? d.value : d;
+          if (v == null || isNaN(v)) return;
+          v = +v;
+          if (s.stack) {
+            var k = s.stack + '|' + i;
+            v = st[k] = (st[k] || 0) + v;
+          }
+          lo = Math.min(lo, v);
+          hi = Math.max(hi, v);
+        });
+      });
+      return [lo, hi];
+    });
+    var fix = Y.map(function (y) {
+        return y.min != null && y.max != null && y.interval;
+      }),
+      N = 5;
+    Y.forEach(function (y, i) {
+      if (fix[i]) N = Math.round((y.max - y.min) / y.interval);
+    });
+    Y.forEach(function (y, i) {
+      if (fix[i] || !isFinite(ext[i][1])) return;
+      var lo = y.min != null ? y.min : y.scale ? ext[i][0] : Math.min(0, ext[i][0]),
+        hi = ext[i][1],
+        st = nice(Math.max(hi - lo, 1) / N),
+        mn;
+      for (var g = 0; g < 20; g++) {
+        mn = y.min != null ? y.min : Math.floor(lo / st) * st;
+        if (mn + st * N >= hi) break;
+        st = nice(st * 1.0001 + 1e-9);
+      }
+      y.min = mn;
+      y.max = mn + st * N;
+      y.interval = st;
+    });
+    Y.forEach(function (y, i) {
+      if (!y.name || !y.nameTextStyle) return;
+      var f = y.axisLabel && y.axisLabel.formatter,
+        w = 0;
+      for (var v = y.min; v <= y.max + 1e-9; v += y.interval) {
+        var t = typeof f === 'function' ? f(+v.toFixed(6)) : String(+v.toFixed(6));
+        w = Math.max(w, tw(t));
+      }
+      y.nameTextStyle.padding = i ? [0, -Math.round(8 + w), 0, 0] : [0, 0, 0, -Math.round(8 + w)];
+    });
+  }
   window.ecNar = function (el) {
     return el && el.offsetWidth < 500;
   };
