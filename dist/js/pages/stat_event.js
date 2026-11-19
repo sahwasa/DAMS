@@ -97,14 +97,14 @@ function rgOpts(u) {
   if (SL.dataset.u !== u) {
     var o = u === 'sgg' ? Object.keys(SPLIT) : SIDOS();
     SL.innerHTML =
-      '<option value="">전국</option>' +
+      (u === 'sgg' ? '' : '<option value="">전국</option>') +
       o
         .map(function (x) {
           return '<option>' + x + '</option>';
         })
         .join('');
-    SL.value = o.indexOf(k) > -1 ? k : '';
-    SL.dataset.u = u;
+    SL.value = o.indexOf(k) > -1 ? k : u === 'sgg' ? o[0] : '';
+    /* 시군구별은 '전국' 없이 첫 시도 자동 선택(2026-11-19) */ SL.dataset.u = u;
   }
   GL.hidden = u !== 'sgg';
   var sp = SPLIT[SL.value];
