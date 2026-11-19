@@ -6,8 +6,8 @@ DAMS_POP['plat_org_cert'] = function (location, dlg) {
       return document.getElementById(i);
     };
   var nm = Q.get('nm') || '충청남도 천안시',
-    iss = Q.get('iss') || '2025-02-25',
-    op = Q.get('op') || '2025-03-01',
+    iss = Q.get('iss') || '2026-02-23',
+    op = Q.get('op') || '2026-02-23',
     lv = Q.get('lv') || (nm.indexOf(' ') > -1 ? 'sgg' : 'sido');
   var d = new Date(iss),
     day = function (n) {
