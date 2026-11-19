@@ -73,20 +73,20 @@
           <div class="rows r1">
             <div class="it c2"><label for="selPeriodType">기간 유형</label>
               <div class="flex w100">
-                <select class="sel u-w120px" id="selPeriodType" name="selPeriodType" onchange="changePeriodType(this.value)"><option value="year" selected>연도</option><option value="month">월</option><option value="quarter">분기</option><option value="custom">사용자선택</option></select>
-                <select class="sel u-w110px" id="selYear" name="selYear" title="연도"><option>2026년</option><option>2025년</option><option>2024년</option></select>
-                <select class="sel u-w90px" id="selMonth" name="selMonth" title="월" hidden><option>1월</option><option>2월</option><option>3월</option><option>4월</option><option>5월</option><option>6월</option><option>7월</option><option>8월</option><option>9월</option><option selected>10월</option><option>11월</option><option>12월</option></select>
-                <select class="sel u-w100px" id="selQuarter" name="selQuarter" title="분기" hidden><option>1분기</option><option>2분기</option><option>3분기</option><option selected>4분기</option></select>
+                <select class="sel" id="selPeriodType" name="selPeriodType" onchange="changePeriodType(this.value)"><option value="year" selected>연도</option><option value="month">월</option><option value="quarter">분기</option><option value="custom">사용자선택</option></select>
+                <select class="sel" id="selYear" name="selYear" title="연도"><option>2026년</option><option>2025년</option><option>2024년</option></select>
+                <select class="sel" id="selMonth" name="selMonth" title="월" hidden><option>1월</option><option>2월</option><option>3월</option><option>4월</option><option>5월</option><option>6월</option><option>7월</option><option>8월</option><option>9월</option><option selected>10월</option><option>11월</option><option>12월</option></select>
+                <select class="sel" id="selQuarter" name="selQuarter" title="분기" hidden><option>1분기</option><option>2분기</option><option>3분기</option><option selected>4분기</option></select>
                 <div class="range" id="periodRange" hidden><span class="inp-ico inp-date"><input type="date" class="inp" id="startDate" name="startDate" value="2026-01-01" title="시작일"></span><span>~</span><span class="inp-ico inp-date"><input type="date" class="inp" id="endDate" name="endDate" value="2026-10-30" title="종료일"></span></div>
               </div>
             </div>
             <div class="it c2"><span class="lb">재난분류</span>
-              <div class="flex w100"><select class="sel u-flex1" id="selLclsf" name="selLclsf" title="대분류" onchange="msg('선택한 대분류의 중분류 목록이 설정되었습니다.')"><option value="">대분류 전체</option><option>자연재난</option><option>사회재난</option><option>기타</option></select><select class="sel u-flex1" id="selCategory" name="selCategory" title="중분류"><option value="">중분류 전체</option><option>호우</option><option>강풍</option><option>산불</option></select></div>
+              <div class="flex w100"><select class="sel" id="selLclsf" name="selLclsf" title="대분류" onchange="msg('선택한 대분류의 중분류 목록이 설정되었습니다.')"><option value="">대분류 전체</option><option>자연재난</option><option>사회재난</option><option>기타</option></select><select class="sel" id="selCategory" name="selCategory" title="중분류"><option value="">중분류 전체</option><option>호우</option><option>강풍</option><option>산불</option></select></div>
             </div>
             <div class="it"><label for="selSituation">재난상황</label><select class="sel" id="selSituation" name="selSituation"><option value="">전체</option><option value="R">실제</option><option value="T">훈련</option><option value="E">시험</option></select></div>
             <div class="it c2" id="regionCond"><span class="lb">지역</span>
               <label class="rdo"><input type="radio" name="regionUnit" value="sido" checked onchange="rgOpts(this.value)"><span>시도별</span></label>
-              <label class="rdo"><input type="radio" name="regionUnit" value="sgg" onchange="rgOpts(this.value)"><span>시군구별</span></label><select class="sel u-w170px u-ml8px" id="rgSido" name="rgSido" title="시도" onchange="rgChg()"><option value="">전국</option><option>전남광주통합특별시</option><option>대전광역시</option><option>울산광역시</option><option>경기도</option><option>강원특별자치도</option><option>충청남도</option><option>경상북도</option></select><select class="sel u-w150px u-ml4px" id="rgSgg" name="rgSgg" title="시군구" hidden><option value="">시군구 전체</option></select>
+              <label class="rdo"><input type="radio" name="regionUnit" value="sgg" onchange="rgOpts(this.value)"><span>시군구별</span></label><select class="sel" id="rgSido" name="rgSido" title="시도" onchange="rgChg()"><option value="">전국</option><option>전남광주통합특별시</option><option>대전광역시</option><option>울산광역시</option><option>경기도</option><option>강원특별자치도</option><option>충청남도</option><option>경상북도</option></select><select class="sel" id="rgSgg" name="rgSgg" title="시군구" hidden><option value="">시군구 전체</option></select>
             </div>
           </div>
           <div class="ctrl">

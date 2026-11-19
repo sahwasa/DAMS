@@ -41,12 +41,17 @@
     > .inp-ico {
       @include flex-fill;
     }
+    .flex > .sel {
+      flex: 1 1 0;
+      min-width: 0;
+    }
   }
-  .ctrl {
-    display: flex;
-    gap: $sp-4;
-    align-self: flex-end;
-  }
+}
+/* 검색 선택상자 폭은 개별 style 대신 공통 규칙(PC는 내용 폭) */
+.sch-box .ctrl {
+  display: flex;
+  gap: $sp-4;
+  align-self: flex-end;
 }
 /* PC 검색영역(2026-11-10): 항목은 내용 폭(컨트롤 고정 폭 — 선택상자 160·입력 200, 임의로 늘리지 않음, 사용자 요청), 줄이 차면 다음 줄 */
 @include pc {
@@ -67,18 +72,23 @@
         .flex.w100 {
           width: auto;
         }
-        > .it > .sel {
-          flex: 0 0 160px;
-        }
         > .it > .inp {
           flex: 0 0 200px;
         }
-        .flex > .sel[class*="u-flex"] {
-          flex: 0 0 160px !important;
-        }
-        .range {
+      }
+      .it {
+        .sel {
+          flex: 0 0 auto;
           width: auto;
+          min-width: 100px;
+          max-width: 320px;
         }
+        .inp.lg {
+          flex: 0 0 320px;
+        }
+      }
+      &:not(.r1) .range {
+        width: auto;
       }
     }
   }
@@ -91,34 +101,14 @@
     }
     #rgSido,
     #rgSgg {
-      flex: 0 0 120px;
-      width: 120px !important;
-      margin-left: $sp-4 !important;
+      margin-left: $sp-4;
     }
     #regionCond > .rdo {
       margin-right: $sp-10;
     }
-    #selPeriodType,
-    .rows.r1 #selYear {
-      width: 100px !important;
-    }
-    .rows {
-      &.r1 {
-        #selMonth {
-          width: 80px !important;
-        }
-        #selQuarter {
-          width: 80px !important;
-        }
-        #selDevice {
-          flex: 0 0 116px;
-          width: 116px;
-        }
-      }
-    }
   }
 }
-/* 통계 지역 선택(시도·시군구 120)·기간 유형(100)·매체구분(116)·항목 간격 14: 시군구별로 바꿔도 줄이 넘어가지 않게(2026-11-18) */
+/* 통계 검색 항목 간격 16(2026-11-18), 선택상자 폭은 내용에 맞춤(2026-11-19) */
 @include pc {
   .sch-box {
     .rows {
@@ -136,16 +126,8 @@
           flex: 0 0 auto;
           margin-right: $sp-4;
         }
-        .flex {
-          &.w100 {
-            width: auto;
-          }
-          > .sel[class*="u-flex"] {
-            flex: 0 0 140px !important;
-          }
-        }
-        > .it > .sel {
-          flex: 0 0 160px;
+        .flex.w100 {
+          width: auto;
         }
         .range {
           width: auto;

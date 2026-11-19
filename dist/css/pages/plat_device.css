@@ -82,10 +82,12 @@
   .dv-l .sch-box .it:last-child {
     margin-right: 164px;
   }
-  .dv-l .sch-box .it > .sel {
-    flex: 1;
+  .dv-l .sch-box .rows .it .sel {
+    flex: 1 1 0;
     min-width: 0;
+    max-width: none;
   }
+  /* 좁은 왼쪽 열 격자: 선택상자는 칸 채움 */
   .dv-l .sch-box .it.c3 {
     grid-column: span 2;
   }

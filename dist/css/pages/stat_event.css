@@ -64,12 +64,6 @@
 }
 
 @media (min-width: 1280px) {
-  .sch-box .rows.r1 .flex > .sel[class*=u-flex] {
-    flex: 0 0 120px !important;
-  }
-  .sch-box .rows.r1 > .it > #selSituation {
-    flex: 0 0 120px;
-  }
   .sch-box #regionCond > .rdo + .rdo {
     margin-right: 0;
   }

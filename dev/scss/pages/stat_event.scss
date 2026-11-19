@@ -63,20 +63,8 @@
   pointer-events: none;
 }
 @include pc {
-  .sch-box {
-    .rows {
-      &.r1 {
-        .flex > .sel[class*="u-flex"] {
-          flex: 0 0 120px !important;
-        }
-        > .it > #selSituation {
-          flex: 0 0 120px;
-        }
-      }
-    }
-    #regionCond > .rdo + .rdo {
-      margin-right: 0;
-    }
+  .sch-box #regionCond > .rdo + .rdo {
+    margin-right: 0;
   }
 }
 .rg-all {
