@@ -635,7 +635,7 @@
       fn = n + (c ? '_' + c.replace(/ · /g, '_') : '') + '.png',
       d = card && card.querySelector('[_echarts_instance_]'),
       inst = d && window.echarts && echarts.getInstanceByDom(d);
-    /* ECharts 차트는 실제 PNG 저장(흰 배경·2배 해상도) — 위에 차트명·검색조건(조회기간·지역·분류 등, [data-cond] title)을 넣어 합성. 그 밖(GIS 지도 등)은 목업 문구 */
+    /* ECharts 차트는 실제 PNG 저장(흰 배경·2배 해상도) — 위에 차트명·검색조건(조회기간·지역·분류 등, [data-cond] title)·지도 범례(.rg-lgd)를 넣어 합성. 그 밖(GIS 지도 등)은 목업 문구 */
     if (inst) {
       var full = ((ce || document.querySelector('[data-cond]') || {}).title || c).split(' | ').join(' · ');
       var img = new Image();
@@ -649,7 +649,7 @@
           lines = [],
           cur = '';
         x.font = 13 * R + 'px ' + F;
-        ('[검색조건] ' + full).split(' · ').forEach(function (t, i) {
+        full.split(' · ').forEach(function (t, i) {
           var nx = cur ? cur + ' · ' + t : t;
           if (cur && x.measureText(nx).width > W - P * 2) {
             lines.push(cur + ' ·');
@@ -657,7 +657,9 @@
           } else cur = nx;
         });
         if (cur) lines.push(cur);
-        var H = P + 18 * R + 8 * R + lines.length * 20 * R + P / 2;
+        var lg = card && card.querySelector('.rg-lgd'),
+          LH = lg ? 22 * R : 0,
+          H = P + 18 * R + 8 * R + lines.length * 20 * R + LH + P / 2;
         cv.width = W;
         cv.height = H + img.height;
         x.fillStyle = '#fff';
@@ -671,6 +673,29 @@
         lines.forEach(function (l, i) {
           x.fillText(l, P, P + 26 * R + i * 20 * R);
         });
+        if (lg) {
+          var lx = P,
+            ly = P + 26 * R + lines.length * 20 * R + 4 * R;
+          [].forEach.call(lg.childNodes, function (nd) {
+            if (nd.nodeType === 3) {
+              var tx = nd.textContent.replace(/ · 클릭.*$/, '');
+              x.font = 12 * R + 'px ' + F;
+              x.fillStyle = '#505050';
+              x.fillText(tx, lx, ly);
+              lx += x.measureText(tx).width;
+            } else if (nd.tagName === 'B') {
+              x.font = '700 ' + 12 * R + 'px ' + F;
+              x.fillStyle = '#101010';
+              x.fillText(nd.textContent, lx, ly);
+              lx += x.measureText(nd.textContent).width;
+            } else if (nd.tagName === 'I') {
+              lx += 4 * R;
+              x.fillStyle = getComputedStyle(nd).backgroundColor;
+              x.fillRect(lx, ly + 2 * R, 12 * R, 12 * R);
+              lx += 16 * R;
+            }
+          });
+        }
         x.fillStyle = '#e4e4e4';
         x.fillRect(P, H - 1 * R, W - P * 2, 1 * R);
         x.drawImage(img, 0, H);
