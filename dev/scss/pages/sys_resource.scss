@@ -67,6 +67,53 @@
     overflow: auto;
   }
 }
+/* PC: 업무영역 높이를 꽉 채움(2026-11-23 사용자 요청) — 서버 카드 줄이 남은 높이를 나눠 갖고, 카드 안 막대 줄도 균등 배치, 페이지 스크롤 없음 */
+@include pc {
+  #content {
+    @include flex-col;
+    > .page-head {
+      flex: 0 0 auto;
+    }
+    > .col-lr {
+      flex: 1 1 0;
+      min-height: 0;
+    }
+    > .col-lr > div:first-child {
+      @include flex-col;
+      min-height: 0;
+    }
+  }
+  #rsrcCards {
+    flex: 1 1 0;
+    min-height: 0;
+    grid-auto-rows: minmax(0, 1fr);
+  }
+  .srv {
+    @include flex-col;
+    min-height: 0;
+    .card-b {
+      flex: 1 1 0;
+      @include flex-col;
+      justify-content: center;
+      padding: $sp-6 $sp-12;
+    }
+    .hbar {
+      flex: 1 1 0;
+      @include flex-col;
+      justify-content: space-around;
+      max-height: 120px;
+      li {
+        height: auto;
+        min-height: 15px;
+        font-size: $fs-xs;
+      }
+    }
+    .card-h {
+      height: 34px;
+      font-size: $fs-b;
+    }
+  }
+}
 /* 창 높이가 900보다 낮으면 카드를 4열 3줄로(MEM 사용량은 title로), 815 이하는 줄 높이도 줄여 업무영역 스크롤 없음 */
 @media (min-width: 1280px) and (max-height: 899px) {
   #rsrcCards {

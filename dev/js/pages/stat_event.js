@@ -477,10 +477,12 @@ function evMode(b, m) {
   msg('재난유형별 발령 현황을 ' + b.title + '(으)로 표시합니다.');
 }
 function drawEvCat() {
-  var el = document.getElementById('evCat');
-  var D = EV.map(function (r) {
-      var a = r.slice(1).map(function (x) {
-        return Math.round(x * SCOPE_F);
+  var el = document.getElementById('evCat'),
+    SI = { R: 0, T: 1, E: 2 }[document.getElementById('selSituation').value],
+    K = SI == null ? [0, 1, 2] : [SI];
+  /* 재난상황 선택 시 그 구분만 집계 */ var D = EV.map(function (r) {
+      var a = r.slice(1).map(function (x, i) {
+        return K.indexOf(i) < 0 ? 0 : Math.round(x * SCOPE_F);
       });
       return { n: r[0], a: a, t: a[0] + a[1] + a[2] };
     }),
@@ -596,7 +598,8 @@ function drawEvCat() {
     yAxis: H
       ? ecCat(N, { inverse: true, axisLabel: { color: STC.tt, fontSize: 12, fontWeight: 600, interval: 0 } })
       : ecVal(ecAxName('(건)')),
-    series: S.map(function (x, i) {
+    series: K.map(function (i, j) {
+      var x = S[i];
       return {
         name: x[0],
         type: 'bar',
@@ -607,7 +610,7 @@ function drawEvCat() {
           return d.n === '기타' ? { value: d.a[i], itemStyle: { color: GR[i] } } : d.a[i];
         }),
         label: {
-          show: i === 2,
+          show: j === K.length - 1,
           position: H ? 'right' : 'top',
           fontSize: 11,
           fontWeight: 600,
