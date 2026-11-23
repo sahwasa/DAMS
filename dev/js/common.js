@@ -635,15 +635,54 @@
       fn = n + (c ? '_' + c.replace(/ · /g, '_') : '') + '.png',
       d = card && card.querySelector('[_echarts_instance_]'),
       inst = d && window.echarts && echarts.getInstanceByDom(d);
-    /* ECharts 차트는 실제 PNG 저장(흰 배경·2배 해상도), 그 밖(GIS 지도 등)은 목업 문구 */
+    /* ECharts 차트는 실제 PNG 저장(흰 배경·2배 해상도) — 위에 차트명·검색조건(조회기간·지역·분류 등, [data-cond] title)을 넣어 합성. 그 밖(GIS 지도 등)은 목업 문구 */
     if (inst) {
-      var a = document.createElement('a');
-      a.href = inst.getDataURL({ type: 'png', pixelRatio: 2, backgroundColor: '#fff' });
-      a.download = fn;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      msg(fn + ' 이미지를 저장했습니다.');
+      var full = ((ce || document.querySelector('[data-cond]') || {}).title || c).split(' | ').join(' · ');
+      var img = new Image();
+      img.onload = function () {
+        var R = 2,
+          W = img.width,
+          P = 16 * R,
+          F = "'Pretendard GOV Variable',sans-serif",
+          cv = document.createElement('canvas'),
+          x = cv.getContext('2d'),
+          lines = [],
+          cur = '';
+        x.font = 13 * R + 'px ' + F;
+        ('[검색조건] ' + full).split(' · ').forEach(function (t, i) {
+          var nx = cur ? cur + ' · ' + t : t;
+          if (cur && x.measureText(nx).width > W - P * 2) {
+            lines.push(cur + ' ·');
+            cur = t;
+          } else cur = nx;
+        });
+        if (cur) lines.push(cur);
+        var H = P + 18 * R + 8 * R + lines.length * 20 * R + P / 2;
+        cv.width = W;
+        cv.height = H + img.height;
+        x.fillStyle = '#fff';
+        x.fillRect(0, 0, cv.width, cv.height);
+        x.textBaseline = 'top';
+        x.fillStyle = '#101010';
+        x.font = '700 ' + 16 * R + 'px ' + F;
+        x.fillText(n, P, P);
+        x.fillStyle = '#505050';
+        x.font = 13 * R + 'px ' + F;
+        lines.forEach(function (l, i) {
+          x.fillText(l, P, P + 26 * R + i * 20 * R);
+        });
+        x.fillStyle = '#e4e4e4';
+        x.fillRect(P, H - 1 * R, W - P * 2, 1 * R);
+        x.drawImage(img, 0, H);
+        var a = document.createElement('a');
+        a.href = cv.toDataURL('image/png');
+        a.download = fn;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        msg(fn + ' 이미지를 저장했습니다.');
+      };
+      img.src = inst.getDataURL({ type: 'png', pixelRatio: 2, backgroundColor: '#fff' });
       return;
     }
     doDown(fn);
